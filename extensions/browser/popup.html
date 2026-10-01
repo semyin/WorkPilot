@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>WorkPilot browser probe</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <h1>WorkPilot · P00</h1>
+    <p>仅在你打开的本地测试页上，验证浏览器扩展与本机桥接。不会读取其他标签页。</p>
+    <p>当前标签页：<span id="target">正在读取…</span></p>
+    <button id="probe">连接当前测试页并验证</button>
+    <button id="disconnect">断开连接</button>
+    <pre id="result" aria-live="polite">尚未连接</pre>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

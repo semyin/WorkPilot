@@ -1,0 +1,79 @@
+{
+  "documentationFiles": 34,
+  "checkedLocalLinks": 140,
+  "missingLinks": [],
+  "phaseStates": [
+    {
+      "phase": "P00",
+      "state": "已验收"
+    },
+    {
+      "phase": "P01",
+      "state": "已验收"
+    },
+    {
+      "phase": "P02",
+      "state": "未开始"
+    },
+    {
+      "phase": "P03",
+      "state": "未开始"
+    },
+    {
+      "phase": "P04",
+      "state": "未开始"
+    },
+    {
+      "phase": "P05",
+      "state": "未开始"
+    },
+    {
+      "phase": "P06",
+      "state": "未开始"
+    },
+    {
+      "phase": "P07",
+      "state": "未开始"
+    },
+    {
+      "phase": "P08",
+      "state": "未开始"
+    },
+    {
+      "phase": "P09",
+      "state": "未开始"
+    },
+    {
+      "phase": "P10",
+      "state": "未开始"
+    },
+    {
+      "phase": "P11",
+      "state": "未开始"
+    },
+    {
+      "phase": "P12",
+      "state": "未开始"
+    },
+    {
+      "phase": "P13",
+      "state": "未开始"
+    },
+    {
+      "phase": "P14",
+      "state": "未开始"
+    },
+    {
+      "phase": "P15",
+      "state": "未开始"
+    },
+    {
+      "phase": "P16",
+      "state": "未开始"
+    }
+  ],
+  "verifiedSourceFiles": 126,
+  "verifiedBinaries": 3,
+  "zipBinariesMatch": true,
+  "passed": true
+}

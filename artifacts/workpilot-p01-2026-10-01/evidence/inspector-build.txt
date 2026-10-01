@@ -1,0 +1,6 @@
+   Compiling windows-sys v0.61.2
+   Compiling mio v1.2.3
+   Compiling tempfile v3.27.0
+   Compiling tokio v1.53.1
+   Compiling workpilot-storage v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\storage)
+    Finished `release` profile [optimized] target(s) in 9.26s

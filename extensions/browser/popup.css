@@ -1,0 +1,23 @@
+body {
+  width: 340px;
+  padding: 16px;
+  font: 13px/1.6 system-ui;
+  color: #354252;
+}
+#target {
+  overflow-wrap: anywhere;
+}
+h1 {
+  font-size: 18px;
+}
+button {
+  padding: 8px 10px;
+  margin: 3px;
+}
+pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: #f4f5f7;
+  padding: 12px;
+  font-size: 11px;
+}

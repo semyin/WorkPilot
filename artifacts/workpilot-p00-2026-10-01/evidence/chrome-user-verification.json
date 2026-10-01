@@ -1,0 +1,16 @@
+{
+  "source": "user_report_in_current_task",
+  "date": "2026-10-01",
+  "extensionVersion": "0.1.1",
+  "channel": "daily_chrome_user_authorized_local_fixture",
+  "result": {
+    "state": "passed",
+    "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "nativeHostPid": 23708,
+    "result": {
+      "text": "Hello, WorkPilot",
+      "title": "WorkPilot Browser Fixture"
+    }
+  },
+  "scope": "User installed the local extension and triggered the fixed probe in the existing Chrome. No real account or login information was read."
+}

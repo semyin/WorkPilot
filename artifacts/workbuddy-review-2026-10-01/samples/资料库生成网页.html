@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light" data-sp-mode="scroll">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>功能实测资料1001</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.3.0/chinese-simplified-700.css">
+<style>
+:root {
+  --accent: #b06a2f;
+  --accent2: #8a5a2b;
+  --bg: #faf6f1;
+  --bg-alt: #f4ece3;
+  --panel: #ffffff;
+  --text: #211a14;
+  --muted: rgba(33, 26, 20, 0.58);
+  --faint: rgba(33, 26, 20, 0.34);
+  --line: rgba(33, 26, 20, 0.10);
+  --radius-lg: 20px;
+  --radius-sm: 10px;
+  --font-display: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --font-body: -apple-system, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+  --shadow-card: rgba(176, 106, 47, 0.07) 0px 2px 6px, rgba(33, 26, 20, 0.05) 0px 10px 30px;
+  --shadow-lift: rgba(176, 106, 47, 0.12) 0px 4px 12px, rgba(33, 26, 20, 0.08) 0px 18px 44px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(900px 520px at 12% -8%, rgba(176, 106, 47, 0.14), transparent 62%),
+    radial-gradient(700px 420px at 92% 6%, rgba(196, 148, 92, 0.16), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; }
+.wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px 96px; }
+
+/* ---------- DocHero ---------- */
+.hero { padding: 88px 0 72px; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.75fr;
+  gap: 48px;
+  align-items: center;
+}
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent2);
+  margin-bottom: 24px;
+}
+.eyebrow::before {
+  content: ""; width: 40px; height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(42px, 6.4vw, 72px);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  margin: 0 0 24px;
+  color: var(--text);
+}
+.hero-lede {
+  font-size: clamp(16px, 2.1vw, 20px);
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 34em;
+  margin: 0;
+}
+.hero-note {
+  margin-top: 32px; font-size: 12px; letter-spacing: 0.01em; color: var(--faint);
+}
+/* decorative: concentric coffee rings */
+.hero-art { position: relative; min-height: 260px; }
+.ring {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(176, 106, 47, 0.28);
+}
+.ring-1 { width: 220px; height: 220px; top: 8px; right: 12px; }
+.ring-2 { width: 152px; height: 152px; top: 42px; right: 46px; border-color: rgba(176, 106, 47, 0.42); }
+.ring-3 {
+  width: 92px; height: 92px; top: 72px; right: 76px;
+  border: none;
+  background: linear-gradient(150deg, rgba(176,106,47,0.92), rgba(138,90,43,0.72));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+}
+.ring-4 {
+  width: 300px; height: 300px; top: -28px; right: -28px;
+  border-color: rgba(176, 106, 47, 0.12);
+}
+
+/* ---------- SectionHeading ---------- */
+.sec-head { margin: 8px 0 40px; }
+.sec-index {
+  font-size: 12px; font-weight: 500; letter-spacing: 0.16em;
+  color: var(--accent); margin-bottom: 12px;
+}
+.sec-head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.6vw, 36px);
+  font-weight: 700; line-height: 1.2; letter-spacing: -0.02em;
+  margin: 0; color: var(--text);
+}
+
+/* ---------- asymmetric 2-col cards (never 3 equal columns) ---------- */
+.offer-grid {
+  display: grid;
+  grid-template-columns: 1.28fr 0.92fr;
+  gap: 24px;
+}
+.doc-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+  transition: transform .32s cubic-bezier(.2,0,0,1), box-shadow .32s ease, border-color .32s ease;
+}
+.doc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
+  border-color: rgba(176, 106, 47, 0.32);
+}
+.card-index {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 16px;
+}
+.card-title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 700; line-height: 1.25; letter-spacing: -0.02em;
+  margin: 0 0 12px; color: var(--text);
+}
+.card-desc { font-size: 15px; line-height: 1.7; color: var(--muted); margin: 0; }
+.card-rule {
+  height: 3px; width: 56px; margin-top: 24px;
+  border-radius: 2px;
+  background: linear-gradient(120deg, var(--accent), rgba(176,106,47,0.15));
+}
+
+/* ---------- QuoteBlock ---------- */
+.quote-band {
+  background: linear-gradient(160deg, var(--bg-alt), rgba(250,246,241,0.4));
+  border-radius: var(--radius-lg);
+  padding: 56px 24px;
+  margin: 88px -24px 0;
+}
+.quote-inner { max-width: 760px; margin: 0 auto; }
+.quote-label {
+  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent2); margin-bottom: 24px;
+}
+blockquote {
+  margin: 0;
+  padding: 8px 0 8px 28px;
+  border-left: 3px solid var(--accent);
+  font-family: var(--font-display);
+  font-size: clamp(21px, 2.8vw, 30px);
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+footer {
+  margin-top: 72px; padding-top: 32px;
+  border-top: 1px solid var(--line);
+  font-size: 12px; letter-spacing: 0.02em; color: var(--faint);
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+
+/* ---------- reveal ---------- */
+.reveal { opacity: 0; transform: translateY(26px); filter: blur(6px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,0,0,1), filter .7s ease; }
+.reveal.in { opacity: 1; transform: none; filter: none; }
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero-art { min-height: 200px; }
+  .ring { position: static; }
+  .hero-art { display: flex; align-items: center; gap: 16px; }
+  .ring-1 { width: 84px; height: 84px; }
+  .ring-2 { width: 56px; height: 56px; }
+  .ring-3 { width: 32px; height: 32px; }
+  .ring-4 { display: none; }
+  .offer-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+@media (max-width: 640px) {
+  .hero { padding: 56px 0 48px; }
+  .quote-band { margin: 56px 0 0; padding: 40px 20px; }
+  .doc-card { padding: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; filter: none; transition: none; }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <header class="hero">
+    <div class="hero-grid">
+      <div class="reveal">
+        <div class="eyebrow">功能实测资料 1001</div>
+        <h1>松果咖啡</h1>
+        <p class="hero-lede">提供手冲咖啡与安静阅读空间。</p>
+        <p class="hero-note">一份虚构的功能测试资料</p>
+      </div>
+      <div class="hero-art reveal" aria-hidden="true">
+        <span class="ring ring-4"></span>
+        <span class="ring ring-1"></span>
+        <span class="ring ring-2"></span>
+        <span class="ring ring-3"></span>
+      </div>
+    </div>
+  </header>
+
+  <section class="reveal">
+    <div class="sec-head">
+      <div class="sec-index">01 — 空间与服务</div>
+      <h2>一杯手冲，一段安静</h2>
+    </div>
+    <div class="offer-grid">
+      <article class="doc-card">
+        <div class="card-index">01</div>
+        <h3 class="card-title">手冲咖啡</h3>
+        <p class="card-desc">松果咖啡提供手冲咖啡。</p>
+        <div class="card-rule"></div>
+      </article>
+      <article class="doc-card">
+        <div class="card-index">02</div>
+        <h3 class="card-title">安静阅读空间</h3>
+        <p class="card-desc">松果咖啡提供安静阅读空间。</p>
+        <div class="card-rule"></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="quote-band reveal">
+    <div class="quote-inner">
+      <div class="quote-label">测试结论</div>
+      <blockquote>资料库支持直接编辑文字和自动保存。</blockquote>
+    </div>
+  </section>
+
+  <footer>
+    <span>由 WorkBuddy 资料库生成</span>
+    <span>功能实测资料1001</span>
+  </footer>
+</main>
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>

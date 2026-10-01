@@ -1,0 +1,177 @@
+
+> workpilot@0.1.0-alpha.0 check
+> npm run format:check && npm run ui:typecheck && npm run test:fixtures && npm run rust:fmt && npm run engine:test && npm run rust:check && npm run ui:build
+
+
+> workpilot@0.1.0-alpha.0 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+
+> workpilot@0.1.0-alpha.0 ui:typecheck
+> npm run typecheck --workspace @workpilot/desktop
+
+
+> @workpilot/desktop@0.1.0-alpha.0 typecheck
+> tsc --noEmit
+
+
+> workpilot@0.1.0-alpha.0 test:fixtures
+> node --test tests/node/*.test.mjs
+
+TAP version 13
+# Subtest: missing URL is explained without constructing an invalid URL or broadening access
+ok 1 - missing URL is explained without constructing an invalid URL or broadening access
+  ---
+  duration_ms: 1.152
+  type: 'test'
+  ...
+# Subtest: only the local fixture is accepted
+ok 2 - only the local fixture is accepted
+  ---
+  duration_ms: 0.4297
+  type: 'test'
+  ...
+# Subtest: an inaccessible tab never reaches native messaging or debugger attach
+ok 3 - an inaccessible tab never reaches native messaging or debugger attach
+  ---
+  duration_ms: 2.5989
+  type: 'test'
+  ...
+# Subtest: /v1/chat/completions streams text and complete tool arguments
+ok 4 - /v1/chat/completions streams text and complete tool arguments
+  ---
+  duration_ms: 189.2541
+  type: 'test'
+  ...
+# Subtest: /v1/responses streams text and complete tool arguments
+ok 5 - /v1/responses streams text and complete tool arguments
+  ---
+  duration_ms: 167.8934
+  type: 'test'
+  ...
+# Subtest: /v1/messages streams text and complete tool arguments
+ok 6 - /v1/messages streams text and complete tool arguments
+  ---
+  duration_ms: 215.6986
+  type: 'test'
+  ...
+# Subtest: errors, slow stream and disconnect stay observable
+ok 7 - errors, slow stream and disconnect stay observable
+  ---
+  duration_ms: 62.7113
+  type: 'test'
+  ...
+# Subtest: browser fixture and download contain deterministic local data
+ok 8 - browser fixture and download contain deterministic local data
+  ---
+  duration_ms: 15.3351
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 767.6812
+
+> workpilot@0.1.0-alpha.0 rust:fmt
+> node scripts/cargo.mjs fmt --all -- --check
+
+
+> workpilot@0.1.0-alpha.0 engine:test
+> node scripts/cargo.mjs test --workspace --exclude workpilot-desktop --locked
+
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.19s
+     Running unittests src\main.rs (target\debug\deps\workpilot_browser_bridge-a79f8e2b331d41ae.exe)
+
+running 2 tests
+test tests::rejects_oversized_messages_and_unknown_commands ... ok
+test tests::native_transport_handles_multiple_messages_and_disconnect ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_contracts-2b88a66242aca7bf.exe)
+
+running 1 test
+test tests::rejects_invalid_requests_instead_of_starting_work ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\main.rs (target\debug\deps\workpilot_engine-9726b2f811786217.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\bin\workpilot-process-fixture.rs (target\debug\deps\workpilot_process_fixture-de3000d31bd80742.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\lifecycle.rs (target\debug\deps\lifecycle-7b796066d8954c48.exe)
+
+running 2 tests
+test closing_parent_pipe_exits_without_restarting_work ... ok
+test stream_cancel_and_shutdown_are_observable_and_persisted ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+
+     Running tests\process_tree.rs (target\debug\deps\process_tree-07aa7acbecaf0cbd.exe)
+
+running 1 test
+test dropping_job_ends_parent_child_and_grandchild_within_two_seconds ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_platform-fc766d7eb2b4f67d.exe)
+
+running 3 tests
+test paths::tests::channels_never_share_the_same_directory ... ok
+test paths::tests::checks_real_paths_and_rejects_parent_escape ... ok
+test paths::tests::rejects_windows_directory_junction_escape ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+   Doc-tests workpilot_contracts
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests workpilot_platform
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+> workpilot@0.1.0-alpha.0 rust:check
+> node scripts/cargo.mjs clippy --workspace --all-targets --locked -- -D warnings
+
+   Compiling workpilot-desktop v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\apps\desktop\src-tauri)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.21s
+
+> workpilot@0.1.0-alpha.0 ui:build
+> npm run build --workspace @workpilot/desktop
+
+
+> @workpilot/desktop@0.1.0-alpha.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 20 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.39 kB │ gzip:  0.27 kB
+dist/assets/128-kkOeCthX.png     10.43 kB
+dist/assets/index-CaPQfkQ4.css    5.41 kB │ gzip:  1.82 kB
+dist/assets/index-C1LHxKQc.js   229.64 kB │ gzip: 72.84 kB
+
+✓ built in 118ms

@@ -1,0 +1,8 @@
+WorkPilot P01 开发预览
+
+双击 WorkPilot.exe。请保留旁边的 workpilot-engine.exe。
+本次可验证任务保存、停止、关闭隐藏、重启后查看记录。
+尚未接入真实模型，也还不是正式安装版。
+点击关闭只隐藏到托盘；选择“彻底退出”才会结束程序。
+
+更多说明见交付目录 README.md 与 docs/development/P01-验证记录.md。

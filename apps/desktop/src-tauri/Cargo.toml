@@ -1,0 +1,19 @@
+[package]
+name = "workpilot-desktop"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[build-dependencies]
+tauri-build = { version = "=2.7.1", features = [] }
+
+[dependencies]
+tauri = { version = "=2.12.1", features = ["tray-icon", "image-png", "unstable"] }
+serde.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+uuid.workspace = true
+workpilot-contracts = { path = "../../../crates/contracts" }
+workpilot-platform = { path = "../../../crates/platform" }

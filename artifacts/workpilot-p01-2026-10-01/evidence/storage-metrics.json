@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-01T23:13:14.6380050+08:00",
+  "binary": "D:\\workspace\\kplocker\\WorkPilot\\target\\debug\\deps\\workpilot_storage-3f6ae02b1fc46eb0.exe",
+  "sha256": "295be37dbdf64db94f41d526dfce3db063b8c4827d3c16c3aec25a08386cfd61",
+  "scope": "Windows debug Rust test process; sampled working set includes test harness. Not application total or a release performance promise.",
+  "cases": [
+    {
+      "test": "one_hundred_thousand_events_use_bounded_pages_and_export",
+      "exitCode": 0,
+      "elapsedMs": 12569.73,
+      "peakSampledWorkingSetMiB": 12.28,
+      "samples": 309,
+      "output": "\nrunning 1 test\np01_events=100003, max_page=256, db_cache_kib=4096, elapsed_ms=12420.34, db_bytes=31989760\ntest tests::one_hundred_thousand_events_use_bounded_pages_and_export ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 13 filtered out; finished in 12.46s\n\n",
+      "stderr": null
+    },
+    {
+      "test": "large_output_streams_to_disk_and_content_pages_handle_unicode",
+      "exitCode": 0,
+      "elapsedMs": 2277.09,
+      "peakSampledWorkingSetMiB": 6.94,
+      "samples": 59,
+      "output": "\nrunning 1 test\ntest tests::large_output_streams_to_disk_and_content_pages_handle_unicode ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 13 filtered out; finished in 2.19s\n\n",
+      "stderr": null
+    },
+    {
+      "test": "blocking_database_work_does_not_block_async_stop_or_heartbeat",
+      "exitCode": 0,
+      "elapsedMs": 460.79,
+      "peakSampledWorkingSetMiB": 7.44,
+      "samples": 12,
+      "output": "\nrunning 1 test\np01_async_heartbeat_ms=22.97, worker_queue_capacity=32\ntest tests::blocking_database_work_does_not_block_async_stop_or_heartbeat ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 13 filtered out; finished in 0.38s\n\n",
+      "stderr": null
+    }
+  ]
+}

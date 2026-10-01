@@ -1,0 +1,39 @@
+{
+  "platform": "win32",
+  "node": "v22.23.2",
+  "at": "2026-10-01T13:43:46.753Z",
+  "checks": [
+    "native_bilingual_file_preview",
+    "native_start_stop_20_samples",
+    "hide_and_reopen_same_engine"
+  ],
+  "samples": {
+    "startupObservedMs": 3145.8700000000003,
+    "stopObservedMs": [
+      61.58419999999978,
+      86.13860000000022,
+      151.96340000000055,
+      240.7579999999998,
+      126.45250000000033,
+      29.893800000000738,
+      124.20299999999952,
+      129.9472999999998,
+      119.57300000000032,
+      130.96749999999975,
+      253.40329999999994,
+      137.40499999999975,
+      128.5626000000002,
+      258.34770000000026,
+      78.5037999999995,
+      79.23570000000018,
+      81.97510000000057,
+      68.83240000000023,
+      76.71780000000035,
+      154.22410000000036
+    ],
+    "stopP95Ms": 253.40329999999994
+  },
+  "passed": false,
+  "error": "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  locator('.status')\nExpected: \"已完成\"\nReceived: \"进行中\"\nTimeout:  60000ms\n\nCall log:\n  - Expect \"toHaveText\" locator('.status') with timeout 60000ms\n  - waiting for locator('.status')\n    120 × locator resolved to <span class=\"status running\">进行中</span>\n        - unexpected value \"进行中\"\n",
+  "stderr": ""
+}

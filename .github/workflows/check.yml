@@ -1,0 +1,49 @@
+name: Foundation checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - name: Linux webview dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev
+      - name: Rust toolchain
+        run: rustup show active-toolchain
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm run ui:typecheck
+      - run: npm run test:fixtures
+      - run: npm run rust:fmt
+      - run: npm run engine:test
+      - run: npm run build
+      - run: npm run rust:check
+      - name: Windows UI and browser probes
+        if: runner.os == 'Windows'
+        run: |
+          npm run test:ui
+          npm run test:browser
+          node scripts/desktop-smoke.mjs
+          npm run test:models-desktop
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: checks-${{ matrix.os }}
+          path: .test-results
+          include-hidden-files: true
+          if-no-files-found: ignore

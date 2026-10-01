@@ -1,0 +1,171 @@
+
+> workpilot@0.1.0-alpha.0 test:storage
+> node scripts/cargo.mjs test -p workpilot-storage --locked
+
+   Compiling typenum v1.20.1
+   Compiling windows-sys v0.61.2
+   Compiling foldhash v0.2.0
+   Compiling windows_x86_64_msvc v0.53.1
+   Compiling zeroize v1.8.2
+   Compiling byteorder v1.5.0
+   Compiling smallvec v1.16.2
+   Compiling libsqlite3-sys v0.38.2
+   Compiling getrandom v0.3.4
+   Compiling fallible-iterator v0.3.0
+   Compiling bitflags v2.13.2
+   Compiling fallible-streaming-iterator v0.1.9
+   Compiling cpufeatures v0.2.17
+   Compiling log v0.4.34
+   Compiling windows-targets v0.53.5
+   Compiling hashbrown v0.17.1
+   Compiling windows-sys v0.60.2
+   Compiling uuid v1.18.1
+   Compiling hashlink v0.12.2
+   Compiling generic-array v0.14.7
+   Compiling rusqlite v0.40.2
+   Compiling winapi-util v0.1.11
+   Compiling keyring v3.6.3
+   Compiling termcolor v1.4.1
+   Compiling crypto-common v0.1.7
+   Compiling block-buffer v0.10.4
+   Compiling digest v0.10.7
+   Compiling ts-rs-macros v12.0.1
+   Compiling sha2 v0.10.9
+   Compiling ts-rs v12.0.1
+   Compiling workpilot-contracts v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-platform v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\platform)
+   Compiling workpilot-storage v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\storage)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 8.71s
+     Running unittests src\lib.rs (target\debug\deps\workpilot_storage-3f6ae02b1fc46eb0.exe)
+
+running 14 tests
+test tests::crash_child ... ignored, subprocess helper for abrupt crash injection
+
+running 1 test
+
+thread 'tests::crash_child' (39732) panicked at crates\storage\src\tests.rs:53:49:
+called `Result::unwrap()` on an `Err` value: Io(Os { code: 5, kind: PermissionDenied, message: "拒绝访问。" })
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test tests::crash_child ... FAILED
+
+failures:
+
+failures:
+    tests::crash_child
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 13 filtered out; finished in 0.02s
+
+test tests::queue_steer_and_cancel_survive_restart_without_delivery ... FAILED
+test tests::commands_deduplicate_by_id_without_swallowing_different_requests ... FAILED
+test tests::abrupt_death_between_state_and_event_writes_rolls_back_and_marks_tool_uncertain ... FAILED
+test tests::replay_resumes_mid_sequence_including_after_deletion_gaps ... FAILED
+test tests::one_hundred_thousand_events_use_bounded_pages_and_export ... FAILED
+test tests::blocking_database_work_does_not_block_async_stop_or_heartbeat ... FAILED
+test tests::registered_credentials_and_auth_fields_are_redacted_before_any_plaintext_write ... FAILED
+test tests::failed_migration_keeps_working_database_and_independent_preupgrade_backup ... FAILED
+test tests::task_deletion_and_gc_protect_project_files_and_keep_retry_tombstones ... FAILED
+test tests::large_output_streams_to_disk_and_content_pages_handle_unicode ... FAILED
+test tests::acceptance_does_not_mean_completion_and_crash_does_not_replay ... FAILED
+test tests::missing_or_modified_object_fails_reference_check_before_gc ... FAILED
+test tests::second_writer_and_newer_database_are_rejected_without_overwriting ... FAILED
+
+failures:
+
+---- tests::queue_steer_and_cancel_survive_restart_without_delivery stdout ----
+
+thread 'tests::queue_steer_and_cancel_survive_restart_without_delivery' (31708) panicked at crates\storage\src\tests.rs:88:44:
+called `Result::unwrap()` on an `Err` value: Io(Os { code: 5, kind: PermissionDenied, message: "拒绝访问。" })
+
+---- tests::commands_deduplicate_by_id_without_swallowing_different_requests stdout ----
+
+thread 'tests::commands_deduplicate_by_id_without_swallowing_different_requests' (29804) panicked at crates\storage\src\tests.rs:14:44:
+called `Result::unwrap()` on an `Err` value: Io(Os { code: 5, kind: PermissionDenied, message: "拒绝访问。" })
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- tests::abrupt_death_between_state_and_event_writes_rolls_back_and_marks_tool_uncertain stdout ----
+
+thread 'tests::abrupt_death_between_state_and_event_writes_rolls_back_and_marks_tool_uncertain' (2868) panicked at crates\storage\src\tests.rs:70:5:
+assertion `left == right` failed
+  left: Some(101)
+ right: Some(86)
+
+---- tests::replay_resumes_mid_sequence_including_after_deletion_gaps stdout ----
+
+thread 'tests::replay_resumes_mid_sequence_including_after_deletion_gaps' (35172) panicked at crates\storage\src\tests.rs:106:44:
+called `Result::unwrap()` on an `Err` value: Io(Os { code: 5, kind: PermissionDenied, message: "拒绝访问。" })
+
+---- tests::one_hundred_thousand_events_use_bounded_pages_and_export stdout ----
+
+thread 'tests::one_hundred_thousand_events_use_bounded_pages_and_export' (40288) panicked at crates\storage\src\tests.rs:275:44:
+called `Result::unwrap()` on an `Err` value: Io(Os { code: 5, kind: PermissionDenied, message: "拒绝访问。" })
+
+---- tests::blocking_database_work_does_not_block_async_stop_or_heartbeat stdout ----
+
+thread 'tests::blocking_database_work_does_not_block_async_stop_or_heartbeat' (20292) panicked at crates\storage\src\tests.rs:254:64:
+called `Result::unwrap()` on an `Err` value: Io(Os { code: 5, kind: PermissionDenied, message: "拒绝访问。" })
+
+---- tests::registered_credentials_and_auth_fields_are_redacted_before_any_plaintext_write stdout ----
+
+thread 'tests::registered_credentials_and_auth_fields_are_redacted_before_any_plaintext_write' (15088) panicked at crates\storage\src\tests.rs:150:44:
+called `Result::unwrap()` on an `Err` value: Io(Os { code: 5, kind: PermissionDenied, message: "拒绝访问。" })
+
+---- tests::failed_migration_keeps_working_database_and_independent_preupgrade_backup stdout ----
+
+thread 'tests::failed_migration_keeps_working_database_and_independent_preupgrade_backup' (28452) panicked at crates\storage\src\tests.rs:177:44:
+called `Result::unwrap()` on an `Err` value: Io(Os { code: 5, kind: PermissionDenied, message: "拒绝访问。" })
+
+---- tests::task_deletion_and_gc_protect_project_files_and_keep_retry_tombstones stdout ----
+
+thread 'tests::task_deletion_and_gc_protect_project_files_and_keep_retry_tombstones' (13064) panicked at crates\storage\src\tests.rs:132:44:
+called `Result::unwrap()` on an `Err` value: Io(Os { code: 5, kind: PermissionDenied, message: "拒绝访问。" })
+
+---- tests::large_output_streams_to_disk_and_content_pages_handle_unicode stdout ----
+
+thread 'tests::large_output_streams_to_disk_and_content_pages_handle_unicode' (24832) panicked at crates\storage\src\tests.rs:224:44:
+called `Result::unwrap()` on an `Err` value: Io(Os { code: 5, kind: PermissionDenied, message: "拒绝访问。" })
+
+---- tests::acceptance_does_not_mean_completion_and_crash_does_not_replay stdout ----
+
+thread 'tests::acceptance_does_not_mean_completion_and_crash_does_not_replay' (13408) panicked at crates\storage\src\tests.rs:34:44:
+called `Result::unwrap()` on an `Err` value: Io(Os { code: 5, kind: PermissionDenied, message: "拒绝访问。" })
+
+---- tests::missing_or_modified_object_fails_reference_check_before_gc stdout ----
+
+thread 'tests::missing_or_modified_object_fails_reference_check_before_gc' (33192) panicked at crates\storage\src\tests.rs:242:44:
+called `Result::unwrap()` on an `Err` value: Io(Os { code: 5, kind: PermissionDenied, message: "拒绝访问。" })
+
+---- tests::second_writer_and_newer_database_are_rejected_without_overwriting stdout ----
+
+thread 'tests::second_writer_and_newer_database_are_rejected_without_overwriting' (18148) panicked at crates\storage\src\tests.rs:202:40:
+called `Result::unwrap()` on an `Err` value: Io(Os { code: 5, kind: PermissionDenied, message: "拒绝访问。" })
+
+
+failures:
+    tests::abrupt_death_between_state_and_event_writes_rolls_back_and_marks_tool_uncertain
+    tests::acceptance_does_not_mean_completion_and_crash_does_not_replay
+    tests::blocking_database_work_does_not_block_async_stop_or_heartbeat
+    tests::commands_deduplicate_by_id_without_swallowing_different_requests
+    tests::failed_migration_keeps_working_database_and_independent_preupgrade_backup
+    tests::large_output_streams_to_disk_and_content_pages_handle_unicode
+    tests::missing_or_modified_object_fails_reference_check_before_gc
+    tests::one_hundred_thousand_events_use_bounded_pages_and_export
+    tests::queue_steer_and_cancel_survive_restart_without_delivery
+    tests::registered_credentials_and_auth_fields_are_redacted_before_any_plaintext_write
+    tests::replay_resumes_mid_sequence_including_after_deletion_gaps
+    tests::second_writer_and_newer_database_are_rejected_without_overwriting
+    tests::task_deletion_and_gc_protect_project_files_and_keep_retry_tombstones
+
+test result: FAILED. 0 passed; 13 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.04s
+
+error: test failed, to rerun pass `-p workpilot-storage --lib`
+file:///D:/workspace/kplocker/WorkPilot/scripts/cargo.mjs:25
+      else reject(new Error(command + " exited with " + (code ?? signal)));
+                  ^
+
+Error: C:\Users\semyi\.cargo\bin\cargo.exe exited with 101
+    at ChildProcess.<anonymous> (file:///D:/workspace/kplocker/WorkPilot/scripts/cargo.mjs:25:19)
+    at Object.onceWrapper (node:events:634:26)
+    at ChildProcess.emit (node:events:519:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+
+Node.js v22.23.2

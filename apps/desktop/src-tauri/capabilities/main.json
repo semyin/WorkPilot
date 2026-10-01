@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "main",
+  "description": "Only the WorkPilot main UI receives core window access. Remote preview pages receive no capabilities.",
+  "webviews": ["main"],
+  "permissions": ["core:default", "core:window:allow-close"]
+}

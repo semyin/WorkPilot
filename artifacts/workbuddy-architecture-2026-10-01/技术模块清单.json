@@ -1,0 +1,114 @@
+[
+  {
+    "layer": "桌面界面",
+    "components": "Electron + React",
+    "purpose": "Electron把网页界面装进桌面窗口；React负责聊天、项目、资料库和产物面板等界面。",
+    "status": "已核验",
+    "evidence": "安装包入口为main/index.js；包含renderer和preload；运行进程中有Chromium渲染进程。界面包内发现React 18.3.1。",
+    "limits": "确认本机5.6.2包含这些组件，不代表每一个面板都只使用同一种界面框架。"
+  },
+  {
+    "layer": "桌面宿主",
+    "components": "Electron main + preload bridge",
+    "purpose": "负责窗口、菜单、系统文件操作，并把界面的请求转给后台。preload是界面与系统能力之间的桥接层。",
+    "status": "已核验",
+    "evidence": "preload/index.js中有contextBridge和ipcRenderer；主程序有wb:invoke分发与daemon连接。",
+    "limits": "IPC是电脑内不同进程之间传递消息；它与访问互联网不是同一件事。"
+  },
+  {
+    "layer": "后台业务",
+    "components": "Node daemon / App Server",
+    "purpose": "常驻的任务管家，维护会话状态、后台服务、连接器、数据库和升级迁移。Node用于运行JavaScript业务代码。",
+    "status": "已核验",
+    "evidence": "包内架构说明列出SessionManager、MCP apps host、SQLite和connector；当前确实存在daemon-app-server-entry进程。",
+    "limits": "包内还保留评测时在主进程内运行daemon的路径；常规桌面与评测模式要区分。"
+  },
+  {
+    "layer": "AI执行",
+    "components": "@genie/agent-cli / CodeBuddy执行组件",
+    "purpose": "接收任务，发出模型请求，执行工具，再把进度和结果送回来。CLI在这里是后台执行程序，用户无需打开命令行。",
+    "status": "已核验",
+    "evidence": "cli/package.json名称为@genie/agent-cli，描述明确指向CodeBuddy；包含headless和lite-wb构建；当前观察到2个相关进程。",
+    "limits": "可以确认使用CodeBuddy执行组件；不能据此说整个产品的代码与另一产品完全相同。"
+  },
+  {
+    "layer": "会话通信",
+    "components": "ACP + stdio / Streamable HTTP",
+    "purpose": "ACP是界面与AI执行器沟通的协议，可传提问、进度、工具授权和结果。stdio是子进程间的输入输出通道。",
+    "status": "已核验",
+    "evidence": "本地包有ClientSideConnection、session/prompt、session/update等实现；包内架构说明标注daemon与CLI之间的ACP/stdio链路。",
+    "limits": "不同运行模式可能走不同传输；云端公开通道另见下方，不把所有连接都概括成WebSocket。"
+  },
+  {
+    "layer": "模型适配",
+    "components": "多模型配置与提供方适配模块",
+    "purpose": "执行器把同一任务交给所选模型，让界面和办公功能复用同一套执行流程。",
+    "status": "已核验",
+    "evidence": "包内声明@genie/agent-provider；前轮真实调用快速、均衡、极致，看到Deepseek与Hy4 preview标识。",
+    "limits": "具体请求是否经腾讯统一转发、如何自动选模型、失败后如何切换，没有完成逐请求核验。"
+  },
+  {
+    "layer": "工具扩展",
+    "components": "Skills + MCP + 连接器",
+    "purpose": "Skill保存任务方法、说明及可选脚本；MCP是把外部工具接入AI的标准接口。连接器把工具接入和使用说明一起交给用户。",
+    "status": "已核验",
+    "evidence": "安装包含MCP SDK与技能、连接器模块；官方连接器说明提供MCP+Skill、CLI+Skill两种方案；前轮实际调用过创作工具。",
+    "limits": "包内存在不等于所有连接器已接通。外部服务仍可能需要自己的账号和授权。"
+  },
+  {
+    "layer": "专家与专家团",
+    "components": "角色定义 + 主理人/成员配置 + 协作运行",
+    "purpose": "专家是保存好的角色与方法；专家团由主理人分配任务、收集成员结果。",
+    "status": "已核验",
+    "evidence": "官方开发文档有plugin.json、agents/*.md、leadAgent和memberAgents；前轮看到3名成员独立任务与最终交付。",
+    "limits": "专家角色数不等于系统进程数，也不证明每位专家都有单独训练的大模型。"
+  },
+  {
+    "layer": "办公编辑",
+    "components": "@tencent/tencent-docs-ai-engine",
+    "purpose": "为文档提供打开、编辑、保存等专门能力，供人工界面和AI工具协同使用。",
+    "status": "已核验",
+    "evidence": "桌面包声明0.2.165-wb；当前editor_sdk.exe正在运行；存在文档生命周期和预览桥接模块。前轮Word、PPT及Excel保存均核验过实际文件。",
+    "limits": "能证明存在独立办公引擎；尚未追踪每一种文件格式分别经过哪条底层实现。"
+  },
+  {
+    "layer": "浏览器能力",
+    "components": "@genie/browser-runtime / workbuddy-browser-use",
+    "purpose": "把网页访问与浏览器操作接入任务执行流程。",
+    "status": "组件存在",
+    "evidence": "桌面依赖清单包含两个专用包；前轮浏览器任务最终从本机Chrome读取了公开示例页。",
+    "limits": "前轮原技能缺运行组件，使用替代路径完成；不能说每条浏览器路径都可正常运行。"
+  },
+  {
+    "layer": "本地存储",
+    "components": "SQLite + 文件目录 + 会话记录文件",
+    "purpose": "SQLite是电脑上的小型数据库，保存任务索引和状态；实际文档、图片和视频保存在文件目录。",
+    "status": "已核验",
+    "evidence": "代码有better-sqlite3、建表语句及WAL配置；表含sessions、workspaces、automations和automation_runs。CLI中另有子成员.jsonl记录路径。",
+    "limits": "这里只读了程序中的表结构，没有读取账号数据库。不能据此断言所有聊天正文都存SQLite，或所有资料都只在本机。"
+  },
+  {
+    "layer": "安全执行",
+    "components": "权限策略 + sandbox子进程 + 凭证保护模块",
+    "purpose": "任务执行前后有权限判断和受限制的执行环境；沙箱可以理解为给操作划定可触达范围。",
+    "status": "部分已核验",
+    "evidence": "存在sandbox-center、sandbox-cli、sandbox-cli-gc运行进程；包内有权限策略和credential-protection模块；前轮批量删除曾被拦截。",
+    "limits": "这些证据不等于完成安全审计；沙箱的完整隔离强度、所有边界条件及凭证保护实现尚未验证。"
+  },
+  {
+    "layer": "性能与故障处理",
+    "components": "进程预热、恢复策略、运行监测",
+    "purpose": "提前准备执行进程减少等待；按组件记录故障并处理恢复，帮助定位界面卡顿或后台异常。",
+    "status": "组件存在",
+    "evidence": "包内有CliPrewarmPool、DaemonRecoveryPolicy、CPU采样及OpenTelemetry/Aegis依赖。",
+    "limits": "代码注释中的性能数字不是本次跑分结果；没有据依赖清单推断具体上传了哪些数据。"
+  },
+  {
+    "layer": "云端能力",
+    "components": "开放API + 云端任务 + 实时会话与产物接口",
+    "purpose": "除了电脑执行，产品还有可在云端创建和查询的任务；移动端和第三方应用可以接入这些能力。",
+    "status": "官方披露",
+    "evidence": "官方Open API文档区分本地助理和云端任务，并公开ACP连接与产物接口。",
+    "limits": "接口能确认服务边界；腾讯内部服务器、数据库、队列和集群如何部署，仍不可见。"
+  }
+]

@@ -1,0 +1,66 @@
+{
+  "core_rows": 166,
+  "connector_entries": 204,
+  "categories": 14,
+  "statuses": {
+    "通过": 86,
+    "部分通过": 13,
+    "未验证": 4,
+    "未跑通": 1,
+    "已查看": 62
+  },
+  "original_B2": {
+    "value": "20",
+    "formula": null
+  },
+  "original_D2": {
+    "value": "",
+    "formula": "B2*C2"
+  },
+  "original_D5": {
+    "value": "",
+    "formula": "SUM(D2:D4)"
+  },
+  "xlsx_charts": 1,
+  "ppt_slides": 3,
+  "png_dimensions": {
+    "A_warm__cozy_illustrated_scene_2026-10-01T10-00-49.png": [
+      1024,
+      1024
+    ],
+    "Remove_the_watermark_text_and__2026-10-01T10-01-26.png": [
+      1024,
+      1024
+    ],
+    "松鼠咖啡馆-原图.png": [
+      1024,
+      1024
+    ],
+    "松鼠咖啡馆-改蓝杯.png": [
+      1024,
+      1024
+    ]
+  },
+  "modified_file_B2": {
+    "value": "21",
+    "formula": null
+  },
+  "modified_saved": true,
+  "followup": {
+    "word_checks": {
+      "编辑补测-销售简报.docx": {
+        "marker_paragraphs": 1,
+        "marker_bold_runs": 1
+      },
+      "另存验证-销售简报.docx": {
+        "marker_paragraphs": 1,
+        "marker_bold_runs": 1
+      }
+    },
+    "ppt_title_saved": true,
+    "ppt_notes_saved": true,
+    "team_document_lines": 83,
+    "team_poster_characters_with_punctuation": 104,
+    "team_checklist_items": 3
+  }
+}

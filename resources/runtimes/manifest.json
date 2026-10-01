@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-01",
+  "purpose": "P00 source and packaging-shape inventory; not a shipped runtime bundle",
+  "target": "windows-x86_64",
+  "artifacts": [
+    {
+      "id": "node",
+      "version": "22.23.2",
+      "url": "https://nodejs.org/dist/v22.23.2/node-v22.23.2-win-x64.zip",
+      "archiveBytes": 35683585,
+      "sizeEvidence": "HTTP HEAD 200",
+      "licenseSource": "https://github.com/nodejs/node/blob/v22.23.2/LICENSE",
+      "declaredLicense": "MIT plus bundled third-party notices",
+      "offlineRequirement": "Unpack private runtime; ship locked Node packages separately",
+      "bundledInWorkPilot": false
+    },
+    {
+      "id": "python-embed-reference",
+      "version": "3.12.10",
+      "url": "https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip",
+      "archiveBytes": 11133606,
+      "sizeEvidence": "HTTP HEAD 200",
+      "licenseSource": "https://github.com/python/cpython/blob/v3.12.10/LICENSE",
+      "declaredLicense": "PSF and bundled third-party notices",
+      "offlineRequirement": "Resolve _pth and vendor compatible wheels; embedded distribution is not the system Python",
+      "releaseSelection": "Reference matches current development Python. Select a maintained patched release before P12 delivery.",
+      "bundledInWorkPilot": false
+    },
+    {
+      "id": "playwright-browser-reference",
+      "version": "153.0.8010.12 / playwright revision 1243",
+      "url": "https://cdn.playwright.dev/builds/cft/153.0.8010.12/win64/chrome-win64.zip",
+      "archiveBytes": 205123748,
+      "sizeEvidence": "HTTP HEAD 200",
+      "licenseSource": "https://github.com/GoogleChromeLabs/chrome-for-testing",
+      "licenseReview": "Package-specific browser terms and third-party notices must be captured before redistribution; Playwright's license does not cover every browser component.",
+      "offlineRequirement": "Private browser executable and profile; no copying daily Chrome or Edge profiles",
+      "localProbe": "Downloaded using Playwright. Launch returned spawn UNKNOWN; not approved as a working packaged runtime.",
+      "bundledInWorkPilot": false
+    },
+    {
+      "id": "portable-git",
+      "version": "2.55.0.windows.5",
+      "url": "https://github.com/git-for-windows/git/releases/download/v2.55.0.windows.5/PortableGit-2.55.0.5-64-bit.7z.exe",
+      "archiveBytes": 58960208,
+      "sizeEvidence": "Official GitHub release asset metadata",
+      "licenseSource": "https://github.com/git-for-windows/git/blob/v2.55.0.windows.5/COPYING",
+      "declaredLicense": "GPL-2.0 and bundled third-party notices",
+      "offlineRequirement": "Preserve the portable distribution structure, notices, and source availability obligations",
+      "bundledInWorkPilot": false
+    },
+    {
+      "id": "libreoffice-reference",
+      "version": "26.8.0",
+      "url": "https://download.documentfoundation.org/libreoffice/stable/26.8.0/win/x86_64/LibreOffice_26.8.0_Win_x86-64.msi",
+      "archiveBytes": 374906880,
+      "sizeEvidence": "HTTP HEAD 200",
+      "licenseSource": "https://www.libreoffice.org/licenses/",
+      "declaredLicense": "MPL-2.0 with additional component licenses",
+      "offlineRequirement": "P10/P12 must validate an isolated headless profile, conversion dependencies, fonts and offline installation",
+      "bundledInWorkPilot": false
+    }
+  ]
+}

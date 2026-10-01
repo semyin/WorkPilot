@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-01T23:26:35.9298423+08:00",
+  "dataDirectory": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\desktop\\session-KdgXSc\\test",
+  "firstPageEvents": 256,
+  "nextAfter": 256,
+  "hasMore": true,
+  "exportFormat": "workpilot.events",
+  "exportVersion": 1,
+  "credentialsIncluded": false,
+  "exportedEventCount": 10229,
+  "exportSha256": "5a363f284599247158f5bf3d4314c44763ea5f389b7513bec6ff15c129aa2fbc",
+  "passed": true
+}

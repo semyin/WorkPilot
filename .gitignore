@@ -1,0 +1,15 @@
+/target/
+**/node_modules/
+**/dist/
+/.local/
+/.workpilot-data/
+/.test-results/
+/test-results/
+/playwright-report/
+apps/desktop/src-tauri/binaries/*
+!apps/desktop/src-tauri/binaries/.gitkeep
+apps/desktop/src-tauri/gen/
+*.log
+.DS_Store
+__pycache__/
+*.py[cod]

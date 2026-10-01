@@ -1,0 +1,44 @@
+{
+  "name": "workpilot",
+  "version": "0.1.0-alpha.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.2 <23"
+  },
+  "packageManager": "npm@10.9.8",
+  "workspaces": [
+    "apps/desktop"
+  ],
+  "scripts": {
+    "contracts:generate": "node scripts/cargo.mjs run -p workpilot-contracts --bin generate --locked",
+    "test:storage": "node scripts/cargo.mjs test -p workpilot-storage --locked",
+    "test:credentials": "node scripts/cargo.mjs test -p workpilot-platform windows_credential_roundtrip --locked -- --ignored",
+    "data:inspect": "node scripts/cargo.mjs run -p workpilot-storage --bin workpilot-data --locked --",
+    "test:desktop": "node scripts/desktop-smoke.mjs",
+    "test:models-desktop": "node scripts/models-desktop-smoke.mjs",
+    "test:providers": "node scripts/cargo.mjs test -p workpilot-providers --locked",
+    "dev": "node scripts/desktop.mjs dev",
+    "build": "node scripts/desktop.mjs build",
+    "engine:build": "node scripts/cargo.mjs build -p workpilot-engine --locked",
+    "engine:test": "node scripts/cargo.mjs test --workspace --exclude workpilot-desktop --locked",
+    "rust:check": "node scripts/cargo.mjs clippy --workspace --all-targets --locked -- -D warnings",
+    "rust:fmt": "node scripts/cargo.mjs fmt --all -- --check",
+    "ui:dev": "npm run dev --workspace @workpilot/desktop",
+    "ui:build": "npm run build --workspace @workpilot/desktop",
+    "ui:typecheck": "npm run typecheck --workspace @workpilot/desktop",
+    "test:fixtures": "node --test tests/node/*.test.mjs",
+    "test:browser": "node --test tests/browser/*.test.mjs",
+    "test:ui": "playwright test",
+    "fixtures": "node services/fixtures/server.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run format:check && npm run ui:typecheck && npm run test:fixtures && npm run rust:fmt && npm run engine:test && npm run rust:check && npm run ui:build"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@tauri-apps/cli": "2.12.1",
+    "@types/node": "26.6.3",
+    "prettier": "3.9.9"
+  }
+}

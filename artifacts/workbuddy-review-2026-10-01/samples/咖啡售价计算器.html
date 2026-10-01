@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>咖啡售价计算器</title>
+<style>
+  :root{
+    --bg:#f5f6f8;
+    --card:#ffffff;
+    --line:#e5e7eb;
+    --text:#1f2328;
+    --muted:#6b7280;
+    --profit:#c62828;   /* 盈利：红 */
+    --loss:#1a7f37;     /* 亏损：绿 */
+    --flat:#6b7280;     /* 持平：灰 */
+    --accent:#8a5a2b;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Hiragino Sans GB",sans-serif;
+    font-size:15px;
+    line-height:1.6;
+    display:flex;
+    justify-content:center;
+    padding:32px 16px 48px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .app{width:100%;max-width:520px;}
+  .title{display:flex;align-items:baseline;gap:10px;margin:0 0 4px;}
+  .title h1{font-size:20px;font-weight:650;margin:0;letter-spacing:.2px;}
+  .title .icon{font-size:20px;line-height:1;}
+  .subtitle{color:var(--muted);font-size:13px;margin:0 0 20px;}
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:18px;
+    box-shadow:0 1px 2px rgba(16,24,40,.04);
+  }
+  .card + .card{margin-top:14px;}
+
+  .field + .field{margin-top:14px;}
+  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;}
+  .input-wrap{position:relative;display:flex;align-items:center;}
+  .input-wrap .prefix{
+    position:absolute;left:14px;color:var(--muted);font-size:15px;pointer-events:none;
+  }
+  .field input{
+    width:100%;
+    padding:12px 14px 12px 30px;
+    font-size:17px;
+    font-variant-numeric:tabular-nums;
+    color:var(--text);
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    outline:none;
+    transition:border-color .15s, box-shadow .15s;
+  }
+  .field input::placeholder{color:#b8bdc7;}
+  .field input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(138,90,43,.12);}
+  .field input.is-error{border-color:#d93025;box-shadow:0 0 0 3px rgba(217,48,37,.12);}
+
+  .msg{
+    min-height:20px;
+    font-size:13px;
+    color:#d93025;
+    margin-top:10px;
+    visibility:hidden;
+  }
+  .msg.show{visibility:visible;}
+
+  .results{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .result{
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px;
+    background:#fbfbfc;
+  }
+  .result .label{font-size:13px;color:var(--muted);margin-bottom:6px;}
+  .result .value{
+    font-size:28px;
+    font-weight:650;
+    letter-spacing:.3px;
+    font-variant-numeric:tabular-nums;
+    color:var(--flat);
+    word-break:break-all;
+  }
+  .result .value.small{font-size:16px;font-weight:600;}
+  .result .value.profit-up{color:var(--profit);}
+  .result .value.profit-down{color:var(--loss);}
+
+  .tag{
+    display:none;
+    margin-top:8px;
+    font-size:12px;
+    line-height:18px;
+    padding:1px 8px;
+    border-radius:999px;
+    border:1px solid currentColor;
+  }
+  .tag.show{display:inline-block;}
+  .tag.loss{color:var(--loss);}
+  .tag.even{color:var(--flat);}
+  .tag.gain{color:var(--profit);}
+
+  .formula{
+    margin:14px 2px 0;
+    color:var(--muted);
+    font-size:12.5px;
+    line-height:1.8;
+  }
+  .formula code{
+    font-family:ui-monospace,SFMono-Regular,Consolas,"Courier New",monospace;
+    font-size:12.5px;
+    background:#f0f1f3;
+    border-radius:4px;
+    padding:1px 5px;
+    color:#3d4450;
+  }
+  @media (max-width:420px){
+    .results{grid-template-columns:1fr;}
+    .result .value{font-size:24px;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="title"><span class="icon">☕</span><h1>咖啡售价计算器</h1></div>
+  <p class="subtitle">输入成本与售价，自动算出利润和毛利率。</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="cost">成本（元）</label>
+      <div class="input-wrap">
+        <span class="prefix">¥</span>
+        <input id="cost" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="例如 10">
+      </div>
+    </div>
+    <div class="field">
+      <label for="price">售价（元）</label>
+      <div class="input-wrap">
+        <span class="prefix">¥</span>
+        <input id="price" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="例如 25">
+      </div>
+    </div>
+    <div class="msg" id="msg" role="alert">&nbsp;</div>
+  </div>
+
+  <div class="card">
+    <div class="results">
+      <div class="result">
+        <div class="label">利润</div>
+        <div class="value" id="profit" aria-live="polite">—</div>
+        <span class="tag" id="profitTag"></span>
+      </div>
+      <div class="result">
+        <div class="label">毛利率</div>
+        <div class="value" id="margin" aria-live="polite">—</div>
+        <span class="tag" id="marginTag"></span>
+      </div>
+    </div>
+    <p class="formula">
+      <code>利润 = 售价 − 成本</code><br>
+      <code>毛利率 = 利润 ÷ 售价 × 100%</code>
+    </p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var costEl   = document.getElementById('cost');
+  var priceEl  = document.getElementById('price');
+  var msgEl    = document.getElementById('msg');
+  var profitEl = document.getElementById('profit');
+  var marginEl = document.getElementById('margin');
+  var profitTagEl = document.getElementById('profitTag');
+  var marginTagEl = document.getElementById('marginTag');
+
+  var DASH = '—';
+  var NUM_RE = /^-?(\d+(\.\d*)?|\.\d+)$/;   // 允许前导负号，便于区分「负数」与「非法输入」
+
+  // 解析单个输入框：返回 {state:'empty'|'invalid'|'negative'|'ok', value}
+  function parse(raw) {
+    var s = raw.trim();
+    if (s === '') return { state: 'empty' };
+    if (!NUM_RE.test(s)) return { state: 'invalid' };
+    var n = Number(s);
+    if (!isFinite(n)) return { state: 'invalid' };
+    if (n < 0) return { state: 'negative' };
+    return { state: 'ok', value: n };
+  }
+
+  function money(n) { return '¥' + n.toFixed(2); }
+
+  function setMsg(text) {
+    if (text) { msgEl.textContent = text; msgEl.classList.add('show'); }
+    else { msgEl.innerHTML = '&nbsp;'; msgEl.classList.remove('show'); }
+  }
+
+  function setTag(el, cls, text) {
+    el.className = 'tag' + (text ? ' show ' + cls : '');
+    el.textContent = text || '';
+  }
+
+  // 重置为初始态
+  function resetResults(msgText) {
+    profitEl.textContent = DASH;
+    marginEl.textContent = DASH;
+    profitEl.className = 'value';
+    marginEl.className = 'value';
+    setTag(profitTagEl, '', '');
+    setTag(marginTagEl, '', '');
+    costEl.classList.remove('is-error');
+    priceEl.classList.remove('is-error');
+    setMsg(msgText || '');
+  }
+
+  function compute() {
+    var c = parse(costEl.value);
+    var p = parse(priceEl.value);
+
+    // 空值：结果区保持 —
+    if (c.state === 'empty' || p.state === 'empty') {
+      resetResults('');
+      return;
+    }
+
+    // 非法输入
+    if (c.state === 'invalid' || p.state === 'invalid') {
+      resetResults('请输入数字');
+      costEl.classList.toggle('is-error', c.state === 'invalid');
+      priceEl.classList.toggle('is-error', p.state === 'invalid');
+      return;
+    }
+
+    // 负数
+    if (c.state === 'negative' || p.state === 'negative') {
+      resetResults('成本与售价不能为负');
+      costEl.classList.toggle('is-error', c.state === 'negative');
+      priceEl.classList.toggle('is-error', p.state === 'negative');
+      return;
+    }
+
+    var cost = c.value, price = p.value;
+    var profit = price - cost;
+    costEl.classList.remove('is-error');
+    priceEl.classList.remove('is-error');
+    setMsg('');
+
+    // 利润
+    var cls = profit > 0 ? 'profit-up' : (profit < 0 ? 'profit-down' : '');
+    profitEl.textContent = money(profit);
+    profitEl.className = 'value' + (cls ? ' ' + cls : '');
+    if (profit > 0)       setTag(profitTagEl, 'gain', '盈利');
+    else if (profit < 0)  setTag(profitTagEl, 'loss', '亏损');
+    else                  setTag(profitTagEl, 'even', '持平');
+
+    // 毛利率（分母为售价；售价为 0 时不适用）
+    if (price === 0) {
+      marginEl.textContent = '不适用（售价为 0）';
+      marginEl.className = 'value small';
+      setTag(marginTagEl, '', '');
+    } else {
+      var margin = (profit / price) * 100;
+      var mcls = margin > 0 ? 'profit-up' : (margin < 0 ? 'profit-down' : '');
+      marginEl.textContent = margin.toFixed(1) + '%';
+      marginEl.className = 'value' + (mcls ? ' ' + mcls : '');
+      if (margin < 0) setTag(marginTagEl, 'loss', '亏损');
+      else if (margin === 0) setTag(marginTagEl, 'even', '持平');
+      else setTag(marginTagEl, 'gain', '盈利');
+    }
+  }
+
+  costEl.addEventListener('input', compute);
+  priceEl.addEventListener('input', compute);
+  compute();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+{
+  "main/index.js": [
+    {
+      "term": "应用架构（数据流）",
+      "line": 17088
+    },
+    {
+      "term": "DaemonAppServerProcessManager",
+      "line": 26082
+    },
+    {
+      "term": "dispatchWbInvoke",
+      "line": 6892
+    },
+    {
+      "term": "daemon-app-server-entry.js",
+      "line": 17096
+    }
+  ],
+  "main/cli-prewarm-pool.js": [
+    {
+      "term": "CliPrewarmPool",
+      "line": 34
+    },
+    {
+      "term": "预热 agent-cli",
+      "line": 34
+    }
+  ],
+  "main/conversations.js": [
+    {
+      "term": "ClientSideConnection",
+      "line": 5359
+    },
+    {
+      "term": "Streamable HTTP ACP Client",
+      "line": 4639
+    }
+  ],
+  "main/log-acl-guard.js": [
+    {
+      "term": "CREATE TABLE IF NOT EXISTS sessions",
+      "line": 6331
+    },
+    {
+      "term": "journal_mode = WAL",
+      "line": 12720
+    },
+    {
+      "term": "createWorkbuddyServerDatabase",
+      "line": 14966
+    }
+  ],
+  "preload/index.js": [
+    {
+      "term": "contextBridge.exposeInMainWorld",
+      "line": 79
+    },
+    {
+      "term": "ipcRenderer.invoke",
+      "line": 9225
+    }
+  ]
+}

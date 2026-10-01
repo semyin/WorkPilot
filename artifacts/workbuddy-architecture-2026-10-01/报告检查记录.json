@@ -1,0 +1,12 @@
+{
+  "file_exists": true,
+  "bytes": 28553,
+  "technical_modules": 14,
+  "details_and_summaries_match": true,
+  "duplicate_ids": false,
+  "broken_anchors": [],
+  "missing_local_links": [],
+  "unreplaced_placeholders": [],
+  "visual_preview": "not completed: browser local-file URL policy blocked automatic preview",
+  "evidence_json_valid": true
+}

@@ -1,0 +1,4 @@
+   Compiling ts-rs v12.0.1
+   Compiling workpilot-contracts v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-storage v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\storage)
+    Finished `release` profile [optimized] target(s) in 12.22s

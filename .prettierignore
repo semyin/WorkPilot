@@ -1,0 +1,17 @@
+target
+node_modules
+.local
+.workpilot-data
+.test-results
+test-results
+playwright-report
+package-lock.json
+Cargo.lock
+artifacts
+assets
+docs
+AGENTS.md
+**/dist
+**/gen
+**/binaries
+apps/desktop/src/generated

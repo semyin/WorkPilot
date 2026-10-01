@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "WorkPilot Browser Probe",
+  "version": "0.1.1",
+  "description": "P00 transport probe. Only operates on the WorkPilot local fixture page after a user click.",
+  "permissions": ["activeTab", "debugger", "nativeMessaging"],
+  "host_permissions": ["http://127.0.0.1/*"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "WorkPilot browser probe"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1rc18DbZd6v/vz23W47CGE8ldZ5D3A4/OMEbBwbqTkO+eGgnFi4+KX3iEtc0ao8xVwaOjolQvRVIJHx6CxgZruKsC5IRdfZfTczL5ePuUxjXHMCBM9t1BG57XW73vbj0A9pXfe79NiSQaNydj6gkDb+XbaMMzCnLF9KUU7K8kv9n0WekmfrVUQhrgguk7/3Rn5lVkSDx6crHwA8dZ/p7RGXCNj+1gVC+RRtqlFsodMdcDHAed9+iTTLgV29rxhdoxotjN20tqSoWNBvErTozC34hG9IunAiylFWvEtRwBxA7yB6bXfQiB7p6JHh6L6UIHfeHFOPjGiupFrx65Gy4PQIDAQAB"
+}
