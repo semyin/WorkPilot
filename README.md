@@ -2,9 +2,21 @@
 
 面向个人和小团队的通用 AI 桌面工作平台。采用自研 Rust 执行引擎、React/Tauri 2 桌面及独立工具进程。
 
-当前交付 P02：在任务保存基础上增加三类模型接口、服务设置、系统密钥保存、流式连接测试、错误和取消、配置导入导出。Windows 本地测试通过，三协议真实服务尚待用户配置后验收；正式任务循环、多助手和工具权限仍按后续阶段实现。
+当前交付 P06：三栏工作台连接真实项目、对话、队列、审批和成员记录；支持任务搜索归档、长记录搜索导出、中英界面和外观设置。实现、自动检查和分发程序复测完成，用户重点体验与通知方式集中待确认；下一步为 P07 文件历史与开发工作区。
 
 - [开发计划与当前进度](docs/README.md)
+- [P06 Windows 预览](artifacts/workpilot-p06-2026-10-02/README.md)
+- [P06 工作台与记录](docs/development/P06-工作台与记录.md)
+- [P06 验证与待体验项](docs/development/P06-验证记录.md)
+- [P05 Windows 预览](artifacts/workpilot-p05-2026-10-02/README.md)
+- [P05 调度与交付](docs/development/P05-多助手调度与交付.md)
+- [P05 验证与待体验项](docs/development/P05-验证记录.md)
+- [P04 Windows 预览](artifacts/workpilot-p04-2026-10-02/README.md)
+- [P04 工具与审批边界](docs/development/P04-工具与审批边界.md)
+- [P04 验证与待体验项](docs/development/P04-验证记录.md)
+- [P03 Windows 预览](artifacts/workpilot-p03-2026-10-02/README.md)
+- [P03 执行引擎与恢复](docs/development/P03-执行引擎与恢复.md)
+- [P03 验证与剩余条件](docs/development/P03-验证记录.md)
 - [P02 Windows 预览](artifacts/workpilot-p02-2026-10-02/README.md)
 - [P02 模型配置和适配](docs/development/P02-模型配置与适配.md)
 - [P02 验证与剩余条件](docs/development/P02-验证记录.md)
@@ -23,5 +35,7 @@ npm run check
 ```
 
 开发窗口使用 npm run dev。先准备文档列出的 Rust 与系统构建依赖；以上命令从项目根目录执行。
+
+仓库保留源代码、锁文件、文档、图标、调研样例和阶段验证证据。依赖、编译输出、本机数据、密钥及新生成的 WorkPilot 程序包由 `.gitignore` 排除；已生成的预览程序仍留在本机。新克隆仓库后需按上述命令构建，阶段文档中的程序包路径是本机交付位置，不是在线下载地址。旧提交中的程序包保留在历史中，本次不改写历史。
 
 项目暂不公开发布。平台测试范围以阶段记录为准。

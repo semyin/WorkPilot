@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-02T05:17:24.681Z",
+  "platform": "win32",
+  "service": "synthetic model; native desktop and actual files",
+  "checks": [
+    "native_create_scope_exact_approval_execute_and_file_version_view",
+    "changed_file_approval_error_and_rejection_visible_without_write",
+    "full_access_executes_without_manual_prompt",
+    "independent_review_selection_and_record_visible",
+    "permissions_and_history_survive_full_desktop_restart",
+    "english_permission_workspace"
+  ],
+  "result": "passed",
+  "pageErrors": []
+}

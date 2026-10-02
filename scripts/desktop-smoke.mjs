@@ -75,6 +75,7 @@ async function launch(existingDirectory) {
         .flatMap((c) => c.pages())
         .find((p) => /tauri\.localhost|tauri:/.test(p.url())),
     );
+    await page.goto(page.url().split("?")[0] + "?diagnostics=1");
     await expect(page.getByText("引擎已连接", { exact: true })).toBeVisible();
     const startupMs = performance.now() - start;
     return { child, browser, page, directory, startupMs, stderr: () => stderr };

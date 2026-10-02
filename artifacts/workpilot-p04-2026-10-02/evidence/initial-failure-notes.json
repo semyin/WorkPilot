@@ -1,0 +1,21 @@
+{
+  "source": "observed output and actual fixture corrections in this development turn",
+  "cases": [
+    {
+      "case": "P04 initial full cargo suite",
+      "observed": "failed_migration_keeps_working_database_and_independent_preupgrade_backup failed: injected migration was version 4, now already applied. Changed fixture to version 5; old database and backup invariant retested."
+    },
+    {
+      "case": "P04 initial native tools",
+      "observed": "Changing a target during approval, then rejecting it, produced completed instead of interrupted. The old validation failure bypassed the rejection branch. Rejection now takes precedence; headless regression passed; native retest tracked separately."
+    },
+    {
+      "case": "Windows boundary initial harness",
+      "observed": "Cancellation was triggered before AppContainer startup completed, so no child PIDs were observed; changed harness to await actual third-child marker. Loopback denial may be timeout rather than raw error 10013; now checks actual lack of connection and a full-account positive control."
+    },
+    {
+      "case": "Actual Chat Completions first tool probe",
+      "observed": "Empty id fields in subsequent argument deltas were treated as changed identity. Real returned frames retained separately. Ignore empty placeholders, still reject another nonempty identity or missing final identity."
+    }
+  ]
+}

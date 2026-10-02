@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-02T07:43:50.744Z",
+  "result": "passed",
+  "schema": 6,
+  "sourceFiles": 226,
+  "binaries": 3,
+  "localLinks": 314,
+  "passedReports": 10,
+  "p05BinariesUnchanged": true
+}

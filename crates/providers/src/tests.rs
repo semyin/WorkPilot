@@ -5,6 +5,49 @@ use std::{
     process::{Child, Command, Stdio},
 };
 const KEY: &str = "workpilot-synthetic-key-only";
+#[test]
+fn chat_empty_tool_identity_fragments_preserve_original_but_changes_are_rejected() {
+    use crate::{sse::Frame, stream::Stream};
+    let frame = |call: Value, reason: Option<&str>| {
+        Frame { event:String::new(), data:json!({"id":"response","choices":[{"index":0,"delta":{"tool_calls":[call]},"finish_reason":reason}]}).to_string() }
+    };
+    let tools = input(true).tools;
+    for invalid in [false, true] {
+        let mut stream = Stream::new(ProtocolKind::ChatCompletions, &tools);
+        stream.frame(frame(json!({"index":0,"id":"call-one","function":{"name":"workpilot_echo","arguments":""}}),None)).unwrap();
+        let result=stream.frame(frame(json!({"index":0,"id":if invalid{"call-other"}else{""},"function":{"name":"","arguments":"{\"message\":\"test\"}"}}),Some("tool_calls")));
+        if invalid {
+            assert!(result.is_err());
+        } else {
+            result.unwrap();
+            let output = stream
+                .frame(Frame {
+                    event: String::new(),
+                    data: "[DONE]".into(),
+                })
+                .unwrap()
+                .output
+                .unwrap();
+            assert_eq!(output.tool_calls[0].id, "call-one");
+            assert_eq!(output.tool_calls[0].arguments["message"], "test");
+        }
+    }
+    let mut missing = Stream::new(ProtocolKind::ChatCompletions, &tools);
+    missing
+        .frame(frame(
+            json!({"index":0,"id":"","function":{"name":"workpilot_echo","arguments":"{}"}}),
+            Some("tool_calls"),
+        ))
+        .unwrap();
+    assert!(
+        missing
+            .frame(Frame {
+                event: String::new(),
+                data: "[DONE]".into()
+            })
+            .is_err()
+    );
+}
 struct Fixture {
     child: Child,
     url: String,
@@ -50,6 +93,7 @@ fn profile(protocol: ProtocolKind, url: &str, model: &str) -> ProviderProfile {
 }
 fn input(tools: bool) -> ModelInput {
     ModelInput {
+        history: vec![],
         messages: vec![ModelMessage {
             role: "user".into(),
             content: vec![ModelContent::Text {

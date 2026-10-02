@@ -11,12 +11,24 @@ pub const MAX_TEXT_LINE: usize = 65_536;
 pub const MAX_OBJECT_BYTES: u64 = 256 * 1024 * 1024;
 /// Caller provides bounded, structurally redacted JSON. Text line rules do not apply.
 pub(crate) fn put_json(root: &Path, bytes: &[u8]) -> Result<ContentRef> {
+    put_bytes(root, bytes, "application/json")
+}
+/// Tool capture is already bounded in memory. Redact complete lines before
+/// saving, including a single long line; do not split secrets across chunks.
+pub(crate) fn put_tool_text(root: &Path, text: &str, redactor: &Redactor) -> Result<ContentRef> {
+    if text.len() > 8 * 1024 * 1024 {
+        return Err(Error::Invalid("tool text exceeds 8 MiB"));
+    }
+    let safe = redactor.text(text);
+    put_bytes(root, safe.as_bytes(), "text/plain; charset=utf-8")
+}
+fn put_bytes(root: &Path, bytes: &[u8], media_type: &str) -> Result<ContentRef> {
     let id = format!("{:x}", Sha256::digest(bytes));
     let path = object_path(root, &id)?;
     let content = ContentRef {
         object_id: id,
         bytes: bytes.len() as u64,
-        media_type: "application/json".into(),
+        media_type: media_type.into(),
     };
     if path.exists() {
         verify(root, &content)?;

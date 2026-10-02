@@ -158,7 +158,10 @@ impl Stream {
             }
             let delta = &choice["delta"];
             if self.reason.is_some() && delta.as_object().is_some_and(|m| !m.is_empty()) {
-                return Err(error(ModelErrorCode::MalformedStream));
+                return Err(detail(
+                    ModelErrorCode::MalformedStream,
+                    "Chat stream contained a delta after its finish marker",
+                ));
             }
             if let Some(text) = delta["content"].as_str() {
                 self.text(text, updates)?;
@@ -179,10 +182,16 @@ impl Stream {
                         .as_u64()
                         .ok_or_else(|| error(ModelErrorCode::MalformedStream))?;
                     let call = self.call(index)?;
-                    if let Some(id) = value["id"].as_str() {
+                    // Some compatible services emit empty identity placeholders
+                    // on argument-only deltas. They do not replace a known ID.
+                    if let Some(id) = value["id"].as_str().filter(|s| !s.is_empty()) {
                         set_identity(&mut call.id, id)?;
                     }
-                    if let Some(name) = value.pointer("/function/name").and_then(Value::as_str) {
+                    if let Some(name) = value
+                        .pointer("/function/name")
+                        .and_then(Value::as_str)
+                        .filter(|s| !s.is_empty())
+                    {
                         set_identity(&mut call.name, name)?;
                     }
                     if let Some(args) = value.pointer("/function/arguments").and_then(Value::as_str)
@@ -459,7 +468,10 @@ impl Stream {
         let reason = self.reason.clone().unwrap();
         let tools_reason = ["tool_calls", "tool_use"].contains(&reason.as_str());
         if tools_reason == self.calls.is_empty() {
-            return Err(error(ModelErrorCode::MalformedStream));
+            return Err(detail(
+                ModelErrorCode::MalformedStream,
+                "Tool calls do not match the model finish reason",
+            ));
         }
         let mut calls = vec![];
         let mut ids = HashSet::new();
@@ -537,7 +549,10 @@ fn set_identity(current: &mut String, value: &str) -> Result<()> {
         return Err(error(ModelErrorCode::MalformedStream));
     }
     if !current.is_empty() && current != value {
-        return Err(error(ModelErrorCode::MalformedStream));
+        return Err(detail(
+            ModelErrorCode::MalformedStream,
+            "A streamed tool identity changed during the response",
+        ));
     }
     *current = value.into();
     Ok(())
@@ -559,15 +574,29 @@ fn final_args(call: &mut Call, full: &str) -> Result<()> {
     }
 }
 fn arguments(call: &Call, allowed: &HashSet<String>) -> Result<Value> {
-    if call.id.is_empty() || !allowed.contains(&call.name) {
-        return Err(error(ModelErrorCode::MalformedStream));
+    if call.id.is_empty() {
+        return Err(detail(
+            ModelErrorCode::MalformedStream,
+            "The tool call has no identifier",
+        ));
+    }
+    if !allowed.contains(&call.name) {
+        return Err(detail(
+            ModelErrorCode::MalformedStream,
+            "The model requested a tool that was not advertised",
+        ));
     }
     let args = serde_json::from_str::<Value>(if call.args.is_empty() {
         "{}"
     } else {
         &call.args
     })
-    .map_err(|_| error(ModelErrorCode::MalformedStream))?;
+    .map_err(|_| {
+        detail(
+            ModelErrorCode::MalformedStream,
+            "The streamed tool arguments are not complete JSON",
+        )
+    })?;
     if !args.is_object() {
         return Err(error(ModelErrorCode::MalformedStream));
     }

@@ -1,13 +1,21 @@
 //! Versioned wire and persistence types. TypeScript is generated from these types.
 use serde::{Deserialize, Serialize};
 use ts_rs::TS;
+pub mod execution;
 pub mod model;
 pub mod provider;
+pub mod team;
+pub mod tool;
+pub use execution::*;
 pub use model::*;
 pub use provider::*;
+pub use team::*;
+mod workspace;
+pub use tool::*;
+pub use workspace::*;
 
 pub const PROTOCOL: &str = "workpilot.v1";
-pub const SCHEMA_VERSION: u32 = 2;
+pub const SCHEMA_VERSION: u32 = 6;
 pub const EXPORT_VERSION: u32 = 1;
 pub const MAX_COMMAND_BYTES: usize = 1_048_576;
 pub const MAX_EVENT_BYTES: usize = 65_536;
@@ -24,6 +32,68 @@ pub struct Request {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 pub enum Command {
+    Workspace {
+        action: WorkspaceAction,
+    },
+    ConfigureTeam {
+        task_id: String,
+        settings: TeamSettings,
+    },
+    ConfigureScheduler {
+        settings: SchedulerSettings,
+    },
+    AddTeamMembers {
+        task_id: String,
+        members: Vec<MemberSpec>,
+    },
+    OverrideTeamMember {
+        task_id: String,
+        member_id: String,
+        spec: MemberSpec,
+    },
+    ReplaceTeamMember {
+        task_id: String,
+        member_id: String,
+        profile_id: Option<String>,
+        reason: String,
+    },
+    ReviewTeamMember {
+        task_id: String,
+        member_id: String,
+        report_id: String,
+        accept: bool,
+        reason: String,
+    },
+    ConfigureTaskTools {
+        task_id: String,
+        settings: ToolSettings,
+    },
+    ConfigureToolDefaults {
+        settings: DefaultToolSettings,
+    },
+    DecideToolApproval {
+        task_id: String,
+        approval_id: String,
+        fingerprint: String,
+        approve: bool,
+    },
+    CreateExecution {
+        config: Box<ExecutionConfig>,
+    },
+    StartExecution {
+        task_id: String,
+    },
+    ConfigureExecution {
+        task_id: String,
+        mode: WorkMode,
+        profile_id: Option<String>,
+        limits: ExecutionLimits,
+    },
+    ResolveExecutionAction {
+        task_id: String,
+        action_id: String,
+        resolution: ActionResolution,
+    },
     Ping,
     StartProbe {
         ticks: u32,
@@ -86,6 +156,23 @@ pub enum Command {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 pub enum Query {
+    Workspace {
+        query: WorkspaceQuery,
+    },
+    Team {
+        task_id: String,
+    },
+    TaskTools {
+        task_id: String,
+    },
+    ToolDefaults,
+    ToolRegistry,
+    Execution {
+        task_id: String,
+    },
+    Executions {
+        limit: u32,
+    },
     Profiles,
     ExportProfiles,
     ModelCalls {
@@ -120,6 +207,125 @@ impl Request {
             return Err("invalid request_id");
         }
         match &self.command {
+            Command::Workspace { action } => action.validate()?,
+            Command::ConfigureTeam { task_id, settings } => {
+                if !valid_id(task_id) {
+                    return Err("invalid task");
+                }
+                settings.validate()?;
+            }
+            Command::ConfigureScheduler { settings } => {
+                if !(1..=16).contains(&settings.max_running) {
+                    return Err("invalid scheduler limit");
+                }
+            }
+            Command::AddTeamMembers { task_id, members } => {
+                if !valid_id(task_id) || members.is_empty() || members.len() > 8 {
+                    return Err("invalid member batch");
+                }
+                for m in members {
+                    m.validate()?;
+                }
+            }
+            Command::OverrideTeamMember {
+                task_id,
+                member_id,
+                spec,
+            } => {
+                if !valid_id(task_id) || !valid_id(member_id) {
+                    return Err("invalid member");
+                }
+                spec.validate()?;
+            }
+            Command::ReplaceTeamMember {
+                task_id,
+                member_id,
+                profile_id,
+                reason,
+            } => {
+                if !valid_id(task_id)
+                    || !valid_id(member_id)
+                    || profile_id.as_ref().is_some_and(|p| !valid_id(p))
+                    || reason.trim().is_empty()
+                    || reason.len() > 4096
+                {
+                    return Err("invalid replacement");
+                }
+            }
+            Command::ReviewTeamMember {
+                task_id,
+                member_id,
+                report_id,
+                reason,
+                ..
+            } => {
+                if !valid_id(task_id)
+                    || !valid_id(member_id)
+                    || !valid_id(report_id)
+                    || reason.trim().is_empty()
+                    || reason.len() > 4096
+                {
+                    return Err("invalid member review");
+                }
+            }
+            Command::ConfigureTaskTools { task_id, settings } => {
+                if !valid_id(task_id) {
+                    return Err("invalid task_id");
+                }
+                settings.validate()?;
+            }
+            Command::ConfigureToolDefaults { settings } => {
+                if settings
+                    .review_profile_id
+                    .as_ref()
+                    .is_some_and(|p| !valid_id(p))
+                {
+                    return Err("invalid review profile");
+                }
+            }
+            Command::DecideToolApproval {
+                task_id,
+                approval_id,
+                fingerprint,
+                ..
+            } => {
+                if !valid_id(task_id)
+                    || !valid_id(approval_id)
+                    || fingerprint.len() != 64
+                    || !fingerprint.bytes().all(|b| b.is_ascii_hexdigit())
+                {
+                    return Err("invalid approval decision");
+                }
+            }
+            Command::CreateExecution { config } => config.validate()?,
+            Command::StartExecution { task_id } if !valid_id(task_id) => {
+                return Err("invalid task_id");
+            }
+            Command::ConfigureExecution {
+                task_id,
+                profile_id,
+                limits,
+                ..
+            } => {
+                if !valid_id(task_id) || profile_id.as_ref().is_some_and(|id| !valid_id(id)) {
+                    return Err("invalid execution reference");
+                }
+                limits.validate()?;
+            }
+            Command::ResolveExecutionAction {
+                task_id,
+                action_id,
+                resolution,
+            } => {
+                if !valid_id(task_id) || !valid_id(action_id) {
+                    return Err("invalid action reference");
+                }
+                if let ActionResolution::Applied { output } = resolution
+                    && (output.is_empty() || output.len() > 65_536)
+                {
+                    return Err("invalid resolved output");
+                }
+            }
             Command::StartProbe { ticks, interval_ms }
                 if !(1..=100_000).contains(ticks) || !(1..=1_000).contains(interval_ms) =>
             {
@@ -218,6 +424,19 @@ impl Request {
 impl Query {
     pub fn validate(&self) -> Result<(), &'static str> {
         match self {
+            Self::Workspace { query } => query.validate()?,
+            Self::Team { task_id } | Self::TaskTools { task_id } if !valid_id(task_id) => {
+                return Err("invalid task_id");
+            }
+            Self::Team { .. }
+            | Self::TaskTools { .. }
+            | Self::ToolDefaults
+            | Self::ToolRegistry => {}
+            Self::Execution { task_id } if !valid_id(task_id) => return Err("invalid task_id"),
+            Self::Executions { limit } if !(1..=64).contains(limit) => {
+                return Err("invalid execution page");
+            }
+            Self::Execution { .. } | Self::Executions { .. } => {}
             Self::Profiles | Self::ExportProfiles => {}
             Self::ModelCalls { limit } if !(1..=64).contains(limit) => {
                 return Err("invalid model call page");
@@ -280,6 +499,99 @@ pub struct Event {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case")]
 pub enum Payload {
+    WorkspaceChanged {
+        entity_id: String,
+        change: String,
+        content: Option<ContentRef>,
+    },
+    TeamChanged {
+        member_task_id: Option<String>,
+        change: String,
+        record: Option<ContentRef>,
+    },
+    ToolPolicyChanged {
+        revision: u32,
+    },
+    ToolApprovalRequested {
+        approval_id: String,
+        intent: ContentRef,
+    },
+    ToolApprovalDecided {
+        approval_id: String,
+        approved: bool,
+        decided_by: String,
+    },
+    ToolReviewFinished {
+        approval_id: String,
+        review: ApprovalReview,
+    },
+    ManagedFileChanged {
+        change: ManagedFileChange,
+    },
+    ExecutionCreated {
+        session_id: String,
+        #[serde(rename = "primary_agent_id")]
+        agent_id: String,
+        goal: ContentRef,
+    },
+    ExecutionQueued {
+        run_id: String,
+    },
+    ExecutionStarted {
+        run_id: String,
+        predecessor_id: Option<String>,
+        profile_id: String,
+        profile_revision: u32,
+    },
+    ExecutionStepChanged {
+        run_id: String,
+        step_id: String,
+        name: String,
+        state: ExecutionStepState,
+        input: Option<ContentRef>,
+        output: Option<ContentRef>,
+    },
+    ExecutionText {
+        run_id: String,
+        step_id: String,
+        content: ContentRef,
+        reasoning: bool,
+    },
+    ExecutionEnded {
+        run_id: String,
+        state: TaskState,
+        reason: String,
+        diagnostic: Option<ModelDiagnostic>,
+        output: Option<ContentRef>,
+    },
+    CheckpointSaved {
+        run_id: String,
+        checkpoint_id: String,
+        phase: String,
+    },
+    ContextCompacted {
+        run_id: String,
+        archive: ContentRef,
+        removed_items: u32,
+    },
+    MessageDelivered {
+        message_id: String,
+        run_id: String,
+        steered: bool,
+    },
+    WorkModeChanged {
+        mode: WorkMode,
+    },
+    InputRequested {
+        question: InputQuestion,
+    },
+    PlanUpdated {
+        steps: Vec<PlanStep>,
+    },
+    ActionReconciled {
+        action_id: String,
+        resolution_source: String,
+    },
     ProviderSaved {
         profile_id: String,
         revision: u32,
@@ -378,6 +690,7 @@ pub enum Payload {
         state: ApprovalState,
     },
     AgentChanged {
+        #[serde(rename = "target_agent_id", alias = "agent_id")]
         agent_id: String,
         state: AgentState,
     },
@@ -420,6 +733,27 @@ pub struct ContentPage {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case")]
 pub enum Response {
+    Workspace {
+        data: Box<WorkspaceData>,
+    },
+    Team {
+        view: Box<TeamView>,
+    },
+    TaskTools {
+        state: Box<ToolTaskState>,
+    },
+    ToolDefaults {
+        settings: DefaultToolSettings,
+    },
+    ToolRegistry {
+        tools: Vec<ToolDescriptor>,
+    },
+    Execution {
+        snapshot: Box<ExecutionSnapshot>,
+    },
+    Executions {
+        tasks: Vec<Task>,
+    },
     Profiles {
         catalog: ProfileCatalog,
     },
@@ -555,7 +889,51 @@ pub fn typescript() -> String {
         ProviderContinuation,
         ModelInput,
         ModelOutput,
-        serde_json::Value
+        serde_json::Value,
+        ExecutionLimits,
+        ExecutionConfig,
+        ModelHistoryItem,
+        PlanStep,
+        PlanStepStatus,
+        InputQuestion,
+        UserDirection,
+        ContextSource,
+        ContextDigest,
+        ExecutionContext,
+        PendingBatch,
+        ExecutionStepKind,
+        ExecutionStepState,
+        ExecutionStep,
+        ExecutionRun,
+        ExecutionSnapshot,
+        ActionResolution,
+        ToolSettings,
+        DefaultToolSettings,
+        ToolSettingsView,
+        ToolRisk,
+        ToolDescriptor,
+        FileVersion,
+        ToolIntent,
+        ApprovalReview,
+        ToolApproval,
+        ManagedFileChange,
+        ToolTaskState,
+        TeamSettings,
+        WorkspaceAction,
+        WorkspaceQuery,
+        WorkspaceData,
+        WorkspacePreferences,
+        ProjectSettings,
+        WorkspaceProject,
+        WorkspaceNotice,
+        WorkspaceArtifact,
+        ConversationEntry,
+        SchedulerSettings,
+        MemberSpec,
+        TeamMember,
+        TeamView,
+        AgentArtifact,
+        AgentReport
     );
     output
 }

@@ -1,0 +1,4 @@
+chat_completions: actual file read/write/readback/artifact passed; request_approval
+responses: actual file read/write/readback/artifact passed; auto_review
+messages: actual file read/write/readback/artifact passed; request_approval
+{"result":"passed","count":3}

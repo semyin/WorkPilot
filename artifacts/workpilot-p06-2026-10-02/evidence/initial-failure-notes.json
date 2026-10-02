@@ -1,0 +1,15 @@
+{
+  "phase": "P06",
+  "date": "2026-10-02",
+  "failuresResolved": [
+    {"area":"record readers","initial":"Windows canonical and ordinary paths differed, causing a linked-directory error.","fix":"Canonicalize the test-owned data directory before bounded reads and exports."},
+    {"area":"project UI","initial":"Exact label selection included option text.","fix":"Add explicit accessible names for model and permission selectors."},
+    {"area":"settings UI","initial":"The workbench intercepted clicks on the settings modal.","fix":"Move modal above the workbench, and use a region for the workbench instead of a dialog."},
+    {"area":"dark theme","initial":"Base styles loaded after theme overrides and reduced contrast.","fix":"Load theme overrides last and define title, approval and member colors."},
+    {"area":"native copy verification","initial":"Reading the OS clipboard requested a native permission and waited.","fix":"Close the isolated test application and observe generated copy payload in the test webview; do not read or replace user clipboard data."},
+    {"area":"model settings regression","initial":"An unscoped import-file selector matched both model import and workbench attachment controls.","fix":"Scope the existing assertion to the model settings dialog; retain profile and secret assertions."},
+    {"area":"steering regression","initial":"The 1.5-second fixture window could finish before UI steering arrived.","fix":"Refresh queue from the actual acknowledgement, poll bounded detail every 150 ms, and give the fixture 5 seconds for native UI input. Keep the skipped-action assertion."},
+    {"area":"stress test continuation","initial":"Continuing an already-completed task without a new instruction correctly completed without another model request.","fix":"Send the entered instruction to start a new turn before measuring stop during history search."}
+  ],
+  "remainingManualChecks": ["OS clipboard paste into another application", "native folder dialog interaction", "user reading/layout preferences", "Q44 system notification preference"]
+}

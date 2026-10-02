@@ -13,6 +13,7 @@ use tauri::{
     tray::{TrayIconBuilder, TrayIconEvent},
     webview::WebviewBuilder,
 };
+use tauri_plugin_dialog::DialogExt;
 use tokio::sync::oneshot;
 use workpilot_contracts::{Command, Event, Query, Request, Response, Snapshot, Wire};
 use workpilot_platform::process::ManagedEngine;
@@ -28,6 +29,52 @@ struct Bridge {
     history: Arc<Mutex<History>>,
     pending: Arc<Mutex<HashMap<String, oneshot::Sender<Response>>>>,
 }
+struct TrayLabels {
+    open: MenuItem<tauri::Wry>,
+    quit: MenuItem<tauri::Wry>,
+}
+#[tauri::command]
+async fn pick_project_folder(
+    view: Webview,
+    app: tauri::AppHandle,
+) -> Result<Option<String>, String> {
+    main_only(&view)?;
+    let (sender, receiver) = oneshot::channel();
+    app.dialog().file().pick_folder(move |path| {
+        let _ = sender.send(path);
+    });
+    let path = receiver.await.map_err(|_| "Folder dialog was closed")?;
+    path.map(|p| {
+        p.into_path()
+            .map(|p| p.to_string_lossy().into_owned())
+            .map_err(|e| e.to_string())
+    })
+    .transpose()
+}
+#[tauri::command]
+fn set_desktop_locale(
+    view: Webview,
+    labels: State<'_, TrayLabels>,
+    language: String,
+) -> Result<(), String> {
+    main_only(&view)?;
+    labels
+        .open
+        .set_text(if language == "en" {
+            "Open WorkPilot"
+        } else {
+            "打开 WorkPilot"
+        })
+        .map_err(|e| e.to_string())?;
+    labels
+        .quit
+        .set_text(if language == "en" {
+            "Quit WorkPilot"
+        } else {
+            "彻底退出 WorkPilot"
+        })
+        .map_err(|e| e.to_string())
+}
 impl Bridge {
     fn start() -> Result<Self, Box<dyn std::error::Error>> {
         let executable = std::env::current_exe()?;
@@ -35,9 +82,9 @@ impl Bridge {
             .parent()
             .ok_or("application path has no parent")?
             .join(if cfg!(windows) {
-                "workpilot-engine.exe"
+                "workpilot-sidecar.exe"
             } else {
-                "workpilot-engine"
+                "workpilot-sidecar"
             });
         if !engine_path.is_file() {
             return Err(format!("Engine missing: {}", engine_path.display()).into());
@@ -121,7 +168,17 @@ impl Bridge {
                 .remove(&request.request_id);
             return Err(error);
         }
-        let reply = tokio::time::timeout(std::time::Duration::from_secs(20), receiver).await;
+        let seconds = if matches!(
+            &request.command,
+            Command::Workspace {
+                action: workpilot_contracts::WorkspaceAction::ExportRecords { .. }
+            }
+        ) {
+            180
+        } else {
+            20
+        };
+        let reply = tokio::time::timeout(std::time::Duration::from_secs(seconds), receiver).await;
         self.pending
             .lock()
             .map_err(|e| e.to_string())?
@@ -340,6 +397,7 @@ fn main() {
         }
     };
     let app = tauri::Builder::default()
+        .plugin(tauri_plugin_dialog::init())
         .manage(bridge)
         .invoke_handler(tauri::generate_handler![
             engine_snapshot,
@@ -348,13 +406,16 @@ fn main() {
             exit_app,
             show_window,
             preview_open,
-            preview_close
+            preview_close,
+            pick_project_folder,
+            set_desktop_locale
         ])
         .setup(|app| {
             let open = MenuItem::with_id(app, "open", "打开 / Open WorkPilot", true, None::<&str>)?;
             let quit =
                 MenuItem::with_id(app, "quit", "彻底退出 / Quit WorkPilot", true, None::<&str>)?;
             let menu = Menu::with_items(app, &[&open, &quit])?;
+            app.manage(TrayLabels { open, quit });
             TrayIconBuilder::with_id("workpilot")
                 .icon(
                     app.default_window_icon()

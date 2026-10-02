@@ -13,7 +13,7 @@
     "windows": [
       {
         "label": "main",
-        "title": "WorkPilot · P02",
+        "title": "WorkPilot",
         "width": 1240,
         "height": 820,
         "minWidth": 980,
@@ -30,7 +30,7 @@
   "bundle": {
     "active": true,
     "targets": "all",
-    "externalBin": ["binaries/workpilot-engine"],
+    "externalBin": ["binaries/workpilot-sidecar"],
     "icon": [
       "../../../assets/icons/png/32.png",
       "../../../assets/icons/png/128.png",

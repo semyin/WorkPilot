@@ -1,0 +1,57 @@
+   Compiling windows-sys v0.61.2
+   Compiling mio v1.2.3
+   Compiling socket2 v0.6.5
+   Compiling dirs-sys v0.5.0
+   Compiling tempfile v3.27.0
+   Compiling rustls-platform-verifier v0.7.1
+   Compiling directories v6.0.0
+   Compiling workpilot-platform v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\platform)
+   Compiling tokio v1.53.1
+   Compiling hyper v1.11.1
+   Compiling tower v0.5.3
+   Compiling tokio-rustls v0.26.6
+   Compiling tokio-util v0.7.19
+   Compiling tower-http v0.6.11
+   Compiling hyper-util v0.1.21
+   Compiling hyper-rustls v0.27.10
+   Compiling reqwest v0.13.5
+   Compiling workpilot-providers v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\providers)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 19.00s
+     Running unittests src\lib.rs (target\debug\deps\workpilot_platform-8de7187e694a88e7.exe)
+
+running 7 tests
+test credentials::tests::windows_credential_roundtrip ... ignored, writes and removes an isolated synthetic credential in Windows Credential Manager
+test credentials::tests::secret_debug_never_shows_value ... ok
+test paths::tests::channels_never_share_the_same_directory ... ok
+test paths::tests::checks_real_paths_and_rejects_parent_escape ... ok
+test paths::tests::rejects_windows_directory_junction_escape ... ok
+test tool_process::tests::appcontainer_writes_authorized_project_but_cannot_read_private_sibling ... ok
+test tool_process::tests::process_cancellation_output_limit_and_nonzero_exit_are_truthful ... ok
+
+test result: ok. 6 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+     Running tests\tool_boundary.rs (target\debug\deps\tool_boundary-c48357a0336b9492.exe)
+
+running 4 tests
+test cancelled_sandbox_kills_its_real_three_level_process_tree ... ok
+test abrupt_owner_death_kills_descendants_and_recovers_only_its_sandbox_ledger ... ok
+test actual_timeout_and_output_limits_are_observable ... ok
+test appcontainer_denies_live_loopback_and_does_not_inherit_host_environment ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.05s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_providers-c435450171d9739e.exe)
+
+running 10 tests
+test masking::tests::a_key_split_at_every_character_is_never_emitted ... ok
+test tests::truncating_an_error_cannot_leave_a_secret_prefix ... ok
+test tests::chat_empty_tool_identity_fragments_preserve_original_but_changes_are_rejected ... ok
+test tests::images_and_tool_results_cannot_be_silently_dropped ... ok
+test tests::urls_and_request_shapes_are_protocol_specific ... ok
+test tests::decoder_handles_single_bytes_utf8_multiline_and_all_newlines ... ok
+test tests::unknown_usage_stays_unknown_and_model_list_is_separate ... ok
+test tests::real_http_three_protocols_text_tools_continuation_and_auth ... ok
+test tests::every_failure_makes_one_request_and_never_redirects_or_falls_back ... ok
+test tests::timeout_cancel_drop_connections_without_extra_requests ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.78s

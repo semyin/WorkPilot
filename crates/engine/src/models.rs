@@ -502,7 +502,7 @@ impl Models {
         }
     }
 }
-async fn secret_for(
+pub(crate) async fn secret_for(
     namespace: &str,
     p: &ProviderProfile,
     storage: &Storage,
@@ -649,7 +649,7 @@ pub fn probe_input(mode: ModelProbeMode, prompt: &str) -> ModelInput {
         .into(),
     }];
     if mode == ModelProbeMode::Image {
-        content.push(ModelContent::Image{media_type:"image/png".into(),base64:"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNwKDgAAAJkAXEbVUd6AAAAAElFTkSuQmCC".into()});
+        content.push(ModelContent::Image{media_type:"image/png".into(),base64:"iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAAeElEQVR4nO3PUQkAIBTAwBfNaDbXEH4cwmABbrP2+brhgga0oAEtaEALGtCCBrSgAS1oQAsa0IIGtKABLWhACxrQgga0oAEtaEALGtCCBrSgAS1oQAsa0IIGtKABLWhACxrQgga0oAEtaEALGtCCBrSgAS1oQAseu7+38Zbvl35qAAAAAElFTkSuQmCC".into()});
     }
     let tools = if mode == ModelProbeMode::Tools {
         vec![ToolDefinition {
@@ -661,6 +661,7 @@ pub fn probe_input(mode: ModelProbeMode, prompt: &str) -> ModelInput {
         vec![]
     };
     ModelInput {
+        history: vec![],
         messages: vec![ModelMessage {
             role: "user".into(),
             content,

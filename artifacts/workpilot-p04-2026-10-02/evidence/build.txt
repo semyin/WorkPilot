@@ -1,0 +1,25 @@
+
+> workpilot@0.1.0-alpha.0 build
+> node scripts/desktop.mjs build
+
+    Finished `release` profile [optimized] target(s) in 0.30s
+        Info Looking up installed tauri packages to check mismatched versions...
+     Running beforeBuildCommand `npm run build`
+
+> @workpilot/desktop@0.1.0-alpha.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 25 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.39 kB │ gzip:  0.27 kB
+dist/assets/128-kkOeCthX.png     10.43 kB
+dist/assets/index-Db35xKGW.css   11.81 kB │ gzip:  3.25 kB
+dist/assets/index-6eKvFVYo.js   288.06 kB │ gzip: 90.19 kB
+
+✓ built in 133ms
+   Compiling workpilot-desktop v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\apps\desktop\src-tauri)
+    Finished `release` profile [optimized] target(s) in 1m 32s
+       Built application at: D:\workspace\kplocker\WorkPilot\target\release\workpilot-desktop.exe

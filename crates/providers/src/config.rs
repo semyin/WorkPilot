@@ -159,6 +159,41 @@ pub fn effective_auth(p: &ProviderProfile) -> AuthMode {
     }
 }
 pub fn validate_input(p: &ProviderProfile, input: &ModelInput) -> Result<()> {
+    if input.history.len() > 1024 {
+        return Err(error(ModelErrorCode::Limit));
+    }
+    for item in &input.history {
+        match item {
+            ModelHistoryItem::Message { message } => {
+                // History messages cannot introduce new system-level policy or unvalidated images.
+                if !["user", "assistant"].contains(&message.role.as_str())
+                    || message.content.is_empty()
+                    || message
+                        .content
+                        .iter()
+                        .any(|c| !matches!(c, ModelContent::Text { .. }))
+                {
+                    return Err(error(ModelErrorCode::Configuration));
+                }
+            }
+            ModelHistoryItem::Exchange {
+                continuation,
+                tool_results,
+            } => {
+                let actual: std::collections::HashSet<_> =
+                    tool_results.iter().map(|r| r.call_id.as_str()).collect();
+                if continuation.protocol != p.protocol
+                    || actual.len() != tool_results.len()
+                    || actual != tool_ids(continuation)
+                {
+                    return Err(detail(
+                        ModelErrorCode::Configuration,
+                        "历史工具调用和结果不匹配，或更改了协议",
+                    ));
+                }
+            }
+        }
+    }
     if input.messages.is_empty()
         || input.messages.len() > 512
         || input.tools.len() > 64
@@ -305,6 +340,7 @@ pub fn request_body(p: &ProviderProfile, input: &ModelInput) -> Result<Value> {
                 .iter()
                 .map(|m| json!({"role":m.role,"content":content(&m.content,p.protocol)}))
                 .collect();
+            messages.extend(history_items(&input.history, p.protocol));
             if let Some(c) = &input.continuation {
                 messages.extend(c.items.clone());
             }
@@ -337,6 +373,7 @@ pub fn request_body(p: &ProviderProfile, input: &ModelInput) -> Result<Value> {
                 .iter()
                 .map(|m| json!({"role":m.role,"content":content(&m.content,p.protocol)}))
                 .collect();
+            items.extend(history_items(&input.history, p.protocol));
             if let Some(c) = &input.continuation {
                 items.extend(c.items.clone());
             }
@@ -378,6 +415,7 @@ pub fn request_body(p: &ProviderProfile, input: &ModelInput) -> Result<Value> {
                 .filter(|m| m.role == "user" || m.role == "assistant")
                 .map(|m| json!({"role":m.role,"content":content(&m.content,p.protocol)}))
                 .collect();
+            messages.extend(history_items(&input.history, p.protocol));
             if let Some(c) = &input.continuation {
                 messages.push(json!({"role":"assistant","content":c.items}));
             }
@@ -395,6 +433,37 @@ pub fn request_body(p: &ProviderProfile, input: &ModelInput) -> Result<Value> {
         body["temperature"] = json!(temp);
     }
     Ok(body)
+}
+fn history_items(history: &[ModelHistoryItem], protocol: ProtocolKind) -> Vec<Value> {
+    let mut result = vec![];
+    for item in history {
+        match item {
+            ModelHistoryItem::Message { message } => result
+                .push(json!({"role":message.role,"content":content(&message.content,protocol)})),
+            ModelHistoryItem::Exchange {
+                continuation,
+                tool_results,
+            } => match protocol {
+                ProtocolKind::ChatCompletions => {
+                    result.extend(continuation.items.clone());
+                    result.extend(tool_results.iter().map(
+                        |r| json!({"role":"tool","tool_call_id":r.call_id,"content":r.output}),
+                    ));
+                }
+                ProtocolKind::Responses => {
+                    result.extend(continuation.items.clone());
+                    result.extend(tool_results.iter().map(|r|json!({"type":"function_call_output","call_id":r.call_id,"output":r.output})));
+                }
+                ProtocolKind::Messages => {
+                    result.push(json!({"role":"assistant","content":continuation.items}));
+                    if !tool_results.is_empty() {
+                        result.push(json!({"role":"user","content":tool_results.iter().map(|r|json!({"type":"tool_result","tool_use_id":r.call_id,"content":r.output,"is_error":r.is_error})).collect::<Vec<_>>()}));
+                    }
+                }
+            },
+        }
+    }
+    result
 }
 fn content(parts: &[ModelContent], protocol: ProtocolKind) -> Value {
     if parts.iter().all(|p| matches!(p, ModelContent::Text { .. })) {

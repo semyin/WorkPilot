@@ -1,0 +1,11 @@
+{
+  "source_files_checked": 191,
+  "binaries_checked": 3,
+  "hash_mismatches": [],
+  "local_links_checked": 242,
+  "missing_links": [],
+  "zip_sha256": "5bd4819e0df46643aedfd7935667bd30f3f0a413f2f4115d0c25f9e2a8236810",
+  "zip_contents_match_preview": true,
+  "p03_binary_snapshot_unchanged": true,
+  "result": "passed"
+}

@@ -7,15 +7,19 @@ publish.workspace = true
 license.workspace = true
 
 [dependencies]
+workpilot-tools = { path = "../tools" }
+workpilot-policy = { path = "../policy" }
 workpilot-contracts = { path = "../contracts" }
 workpilot-platform = { path = "../platform" }
 workpilot-storage = { path = "../storage" }
 workpilot-providers = { path = "../providers" }
+workpilot-runtime = { path = "../runtime" }
 tokio-util.workspace = true
 zeroize.workspace = true
 sha2.workspace = true
 uuid.workspace = true
 serde_json.workspace = true
+serde.workspace = true
 tokio.workspace = true
 
 [dev-dependencies]

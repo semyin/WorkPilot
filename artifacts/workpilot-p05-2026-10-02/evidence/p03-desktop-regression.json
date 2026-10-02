@@ -1,0 +1,146 @@
+{
+  "at": "2026-10-02T05:17:31.039Z",
+  "platform": "win32",
+  "service": "synthetic local HTTP only",
+  "checks": [
+    "native_create_model_tool_loop_expand_result_and_full_events",
+    "plan_readonly_until_explicit_execute_confirmation",
+    "answer_question_then_new_run_continues_original_session",
+    "queued_instruction_promoted_to_guide_skips_unstarted_action",
+    "stop_preserves_context_new_message_waits_for_manual_continue",
+    "closing_window_keeps_actual_task_running_in_background",
+    "model_error_visible_without_silent_retry",
+    "desktop_exit_restart_waits_for_manual_continuation",
+    "english_task_workspace"
+  ],
+  "result": "passed",
+  "requests": [
+    {
+      "model": "runtime-sum",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-sum",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 1,
+      "ended": true
+    },
+    {
+      "model": "runtime-sum",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 2,
+      "ended": true
+    },
+    {
+      "model": "runtime-sum",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 3,
+      "ended": true
+    },
+    {
+      "model": "runtime-plan",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-plan",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 1,
+      "ended": true
+    },
+    {
+      "model": "runtime-plan",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 2,
+      "ended": true
+    },
+    {
+      "model": "runtime-plan",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 3,
+      "ended": true
+    },
+    {
+      "model": "runtime-ask",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-ask",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 1,
+      "ended": true
+    },
+    {
+      "model": "runtime-guide",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-guide",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 2,
+      "ended": true
+    },
+    {
+      "model": "runtime-hold",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-hold",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-hold",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-error",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-hold",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-hold",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    }
+  ],
+  "pageErrors": []
+}

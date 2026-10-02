@@ -1,0 +1,5 @@
+    Checking workpilot-storage v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\storage)
+   Compiling workpilot-desktop v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\apps\desktop\src-tauri)
+    Checking workpilot-runtime v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\runtime)
+    Checking workpilot-engine v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\engine)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.66s

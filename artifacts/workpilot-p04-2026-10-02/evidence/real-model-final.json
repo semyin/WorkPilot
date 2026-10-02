@@ -1,0 +1,615 @@
+{
+  "at": "2026-10-02T04:05:46.507Z",
+  "service": "User-provided Alibaba Cloud workspace",
+  "synthetic": false,
+  "checks": [
+    {
+      "protocol": "chat_completions",
+      "model": "qwen3.8-flash",
+      "endpoint": "https://<workspace>.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+      "checks": [
+        {
+          "mode": "text",
+          "state": "completed",
+          "diagnostic": null,
+          "output": {
+            "actual_model": "qwen3.8-flash",
+            "continuation": {
+              "items": [
+                {
+                  "content": "WorkPilot_REAL_OK",
+                  "reasoning_content": "We need respond to user: \"Only reply WorkPilot_REAL_OK.\" Must only reply exact string? User request explicit. Ensure no analysis needed? Then final only WorkPilot_REAL_OK.",
+                  "role": "assistant"
+                }
+              ],
+              "protocol": "chat_completions",
+              "response_id": "chatcmpl-b9efe497-82b0-90d0-b84e-d1fab3907a6a"
+            },
+            "finish_reason": "stop",
+            "raw_usage": {
+              "completion_tokens": 47,
+              "completion_tokens_details": {
+                "reasoning_tokens": 39,
+                "text_tokens": 47
+              },
+              "prompt_tokens": 69,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "text_tokens": 69
+              },
+              "total_tokens": 116
+            },
+            "text": "WorkPilot_REAL_OK",
+            "tool_calls": [],
+            "usage": {
+              "cost_microunits": null,
+              "currency": null,
+              "input_tokens": 69,
+              "output_tokens": 47
+            }
+          }
+        },
+        {
+          "mode": "tools",
+          "state": "completed",
+          "diagnostic": null,
+          "output": {
+            "actual_model": "qwen3.8-flash",
+            "continuation": {
+              "items": [
+                {
+                  "content": null,
+                  "reasoning_content": "The user is asking me to call the workpilot_echo tool, with the message parameter set to \"WorkPilot\". And not to do any other work. Simple.",
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "function": {
+                        "arguments": "{\"message\": \"WorkPilot\"}",
+                        "name": "workpilot_echo"
+                      },
+                      "id": "call_4d7a494f33354dea88f9ebcc",
+                      "type": "function"
+                    }
+                  ]
+                }
+              ],
+              "protocol": "chat_completions",
+              "response_id": "chatcmpl-5386ab0f-4459-9506-a48c-d03d8ec46e02"
+            },
+            "finish_reason": "tool_calls",
+            "raw_usage": {
+              "completion_tokens": 67,
+              "completion_tokens_details": {
+                "reasoning_tokens": 35,
+                "text_tokens": 67
+              },
+              "prompt_tokens": 349,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "text_tokens": 349
+              },
+              "total_tokens": 416
+            },
+            "text": "",
+            "tool_calls": [
+              {
+                "arguments": {
+                  "message": "WorkPilot"
+                },
+                "id": "call_4d7a494f33354dea88f9ebcc",
+                "name": "workpilot_echo",
+                "provider_item_id": null
+              }
+            ],
+            "usage": {
+              "cost_microunits": null,
+              "currency": null,
+              "input_tokens": 349,
+              "output_tokens": 67
+            }
+          }
+        },
+        {
+          "mode": "image",
+          "state": "completed",
+          "diagnostic": null,
+          "output": {
+            "actual_model": "qwen3.8-flash",
+            "continuation": {
+              "items": [
+                {
+                  "content": "我收到了这张蓝色的测试图片。",
+                  "reasoning_content": "用户现在需要确认收到图片，回复一句话。看图片是蓝色的纯色图，所以回复要简洁确认收到。",
+                  "role": "assistant"
+                }
+              ],
+              "protocol": "chat_completions",
+              "response_id": "chatcmpl-99f6eb77-33ed-9892-921e-0ce0047b18ff"
+            },
+            "finish_reason": "stop",
+            "raw_usage": {
+              "completion_tokens": 35,
+              "completion_tokens_details": {
+                "reasoning_tokens": 24
+              },
+              "prompt_tokens": 143,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "image_tokens": 66,
+                "text_tokens": 77
+              },
+              "total_tokens": 178
+            },
+            "text": "我收到了这张蓝色的测试图片。",
+            "tool_calls": [],
+            "usage": {
+              "cost_microunits": null,
+              "currency": null,
+              "input_tokens": 143,
+              "output_tokens": 35
+            }
+          }
+        }
+      ],
+      "execution": {
+        "state": "completed",
+        "reason": "completed",
+        "diagnostic": null,
+        "text": "已按要求依次完成内置样本验收，未使用 `update_plan`，也未创建真实文件：\n\n1. `sample_lookup` 读取 `numbers`：\n   - 返回数值：`[4, 8, 12]`\n\n2. `sample_calculate` 对数值求和：\n   - 计算结果：`24`\n\n3. `sample_write` 将真实计算结果保存为 `real-sum`：\n   - 保存内容：`24`\n   - 仅写入内置样本区域，不生成外部或项目文件。\n\n4. `sample_read` 回读确认 `real-sum`：\n   - 回读内容：`24`\n   - 与计算结果一致，保存和回读校验通过。",
+        "tools": [
+          {
+            "name": "sample_lookup",
+            "state": "completed"
+          },
+          {
+            "name": "sample_calculate",
+            "state": "completed"
+          },
+          {
+            "name": "sample_write",
+            "state": "completed"
+          },
+          {
+            "name": "sample_read",
+            "state": "completed"
+          }
+        ],
+        "task_id": "352fef1b-1979-4135-a459-e3ff252031dc"
+      }
+    },
+    {
+      "protocol": "responses",
+      "model": "qwen3.8-flash",
+      "endpoint": "https://<workspace>.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+      "checks": [
+        {
+          "mode": "text",
+          "state": "completed",
+          "diagnostic": null,
+          "output": {
+            "actual_model": "qwen3.8-flash",
+            "continuation": {
+              "items": [
+                {
+                  "content": null,
+                  "encrypted_content": null,
+                  "id": "msg_375e38b3-23ea-49ee-a5ed-cbef9b12a6a9",
+                  "status": null,
+                  "summary": [
+                    {
+                      "text": "We need respond to user: \"Only reply WorkPilot_REAL_OK.\" They explicitly request only reply that exact string. Final should be WorkPilot_REAL_OK. No analysis leakage.",
+                      "type": "summary_text"
+                    }
+                  ],
+                  "type": "reasoning"
+                },
+                {
+                  "content": [
+                    {
+                      "annotations": [],
+                      "logprobs": null,
+                      "text": "WorkPilot_REAL_OK",
+                      "type": "output_text"
+                    }
+                  ],
+                  "id": "msg_735fc402-6655-4c19-bf3f-ca5fe66abe03",
+                  "role": "assistant",
+                  "status": "completed",
+                  "type": "message"
+                }
+              ],
+              "protocol": "responses",
+              "response_id": "resp_3b94a9ac-6dd7-93dc-9cbc-e9a0618fcca9"
+            },
+            "finish_reason": "stop",
+            "raw_usage": {
+              "input_tokens": 101,
+              "input_tokens_details": {
+                "cached_tokens": 0
+              },
+              "output_tokens": 45,
+              "output_tokens_details": {
+                "reasoning_tokens": 37
+              },
+              "total_tokens": 146,
+              "x_details": [
+                {
+                  "input_tokens": 101,
+                  "output_tokens": 45,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 37
+                  },
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "total_tokens": 146,
+                  "x_billing_type": "response_api"
+                }
+              ]
+            },
+            "text": "WorkPilot_REAL_OK",
+            "tool_calls": [],
+            "usage": {
+              "cost_microunits": null,
+              "currency": null,
+              "input_tokens": 101,
+              "output_tokens": 45
+            }
+          }
+        },
+        {
+          "mode": "tools",
+          "state": "completed",
+          "diagnostic": null,
+          "output": {
+            "actual_model": "qwen3.8-flash",
+            "continuation": {
+              "items": [
+                {
+                  "content": null,
+                  "encrypted_content": null,
+                  "id": "msg_5152c274-5899-4138-8a3f-badfcf1d0964",
+                  "status": null,
+                  "summary": [
+                    {
+                      "text": "The user is asking me to call the `workpilot_echo` tool with the message parameter set to \"WorkPilot\". They also explicitly say not to do anything else. This is a straightforward request to use a specific tool with a specific parameter.",
+                      "type": "summary_text"
+                    }
+                  ],
+                  "type": "reasoning"
+                },
+                {
+                  "arguments": "{\"message\": \"WorkPilot\"}",
+                  "call_id": "call_b6c3a3d49df0496091b5d4b8",
+                  "id": "msg_d4cedf66-a0d6-4cc0-8dfb-60c8b482c588",
+                  "name": "workpilot_echo",
+                  "status": "completed",
+                  "type": "function_call"
+                }
+              ],
+              "protocol": "responses",
+              "response_id": "resp_f881352d-26e6-9efc-b2ea-002833346728"
+            },
+            "finish_reason": "tool_calls",
+            "raw_usage": {
+              "input_tokens": 375,
+              "input_tokens_details": {
+                "cached_tokens": 0
+              },
+              "output_tokens": 83,
+              "output_tokens_details": {
+                "reasoning_tokens": 51
+              },
+              "total_tokens": 458,
+              "x_details": [
+                {
+                  "input_tokens": 375,
+                  "output_tokens": 83,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 51
+                  },
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "total_tokens": 458,
+                  "x_billing_type": "response_api"
+                }
+              ]
+            },
+            "text": "",
+            "tool_calls": [
+              {
+                "arguments": {
+                  "message": "WorkPilot"
+                },
+                "id": "call_b6c3a3d49df0496091b5d4b8",
+                "name": "workpilot_echo",
+                "provider_item_id": "msg_d4cedf66-a0d6-4cc0-8dfb-60c8b482c588"
+              }
+            ],
+            "usage": {
+              "cost_microunits": null,
+              "currency": null,
+              "input_tokens": 375,
+              "output_tokens": 83
+            }
+          }
+        },
+        {
+          "mode": "image",
+          "state": "completed",
+          "diagnostic": null,
+          "output": {
+            "actual_model": "qwen3.8-flash",
+            "continuation": {
+              "items": [
+                {
+                  "content": null,
+                  "encrypted_content": null,
+                  "id": "msg_68283aab-1904-4b9b-bc91-6075762329a2",
+                  "status": null,
+                  "summary": [
+                    {
+                      "text": "用户要求确认收到图片，且只回复一句话。图片显示为纯蓝色方块。需排除冗长描述或额外功能说明，仅用一句简洁中文确认接收。最终选择“已收到图片。”确保符合“只回复一句话”的强制约束。",
+                      "type": "summary_text"
+                    }
+                  ],
+                  "type": "reasoning"
+                },
+                {
+                  "content": [
+                    {
+                      "annotations": [],
+                      "logprobs": null,
+                      "text": "已收到图片。",
+                      "type": "output_text"
+                    }
+                  ],
+                  "id": "msg_a7e0c220-0bbe-4c11-8623-bf79ebe526f8",
+                  "role": "assistant",
+                  "status": "completed",
+                  "type": "message"
+                }
+              ],
+              "protocol": "responses",
+              "response_id": "resp_12cadf12-5818-97fd-984b-87a6f811f648"
+            },
+            "finish_reason": "stop",
+            "raw_usage": {
+              "input_tokens": 166,
+              "input_tokens_details": {
+                "cached_tokens": 0
+              },
+              "output_tokens": 62,
+              "output_tokens_details": {
+                "reasoning_tokens": 54
+              },
+              "total_tokens": 228,
+              "x_details": [
+                {
+                  "image_tokens": 66,
+                  "input_tokens": 166,
+                  "input_tokens_details": {
+                    "image_tokens": 66,
+                    "text_tokens": 100
+                  },
+                  "output_tokens": 62,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 54
+                  },
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "total_tokens": 228,
+                  "x_billing_type": "response_api"
+                }
+              ]
+            },
+            "text": "已收到图片。",
+            "tool_calls": [],
+            "usage": {
+              "cost_microunits": null,
+              "currency": null,
+              "input_tokens": 166,
+              "output_tokens": 62
+            }
+          }
+        }
+      ],
+      "execution": {
+        "state": "completed",
+        "reason": "completed",
+        "diagnostic": null,
+        "text": "验收流程已按要求严格依次完成，未使用 update_plan。\n\n**执行结果**\n\n1. **sample_lookup（numbers）** — 读取到内置合成样本：`[4, 8, 12]`（source: synthetic）。\n2. **sample_calculate（sum）** — 对真实读取到的三个数值求和：4 + 8 + 12 = **24.0**。\n3. **sample_write（real-sum）** — 已将真实计算结果 `24.0` 写入 WorkPilot 内置样本区，名称为 `real-sum`，返回标记 `sample_only: true`。\n4. **sample_read（real-sum）** — 回读内容为 `24.0`，与写入值完全一致，确认保存链路正常。\n\n**说明与限制**\n\n- 计算结果：**24.0**；回读结果：**24.0**，两者一致，无数据丢失或篡改。\n- `sample_write` 仅操作本任务内部的合成样本存储，**不会在磁盘上创建任何真实文件**，也不涉及外部业务数据，符合\"仅操作内置样本、不创建真实文件\"的要求。\n- 上述数值来自内置固定样本，不代表任何真实业务数据；本次仅验证「读取 → 计算 → 写入 → 回读」四项工具能力，结果均符合预期。",
+        "tools": [
+          {
+            "name": "sample_lookup",
+            "state": "completed"
+          },
+          {
+            "name": "sample_calculate",
+            "state": "completed"
+          },
+          {
+            "name": "sample_write",
+            "state": "completed"
+          },
+          {
+            "name": "sample_read",
+            "state": "completed"
+          }
+        ],
+        "task_id": "e69d3a7e-9f7d-45c1-b8a4-153f657efad0"
+      }
+    },
+    {
+      "protocol": "messages",
+      "model": "qwen3.8-flash",
+      "endpoint": "https://<workspace>.cn-beijing.maas.aliyuncs.com/apps/anthropic/v1",
+      "checks": [
+        {
+          "mode": "text",
+          "state": "completed",
+          "diagnostic": null,
+          "output": {
+            "actual_model": "qwen3.8-flash",
+            "continuation": {
+              "items": [
+                {
+                  "signature": "",
+                  "thinking": "We need to respond to user: \"Only reply WorkPilot_REAL_OK.\" User explicitly says only reply that. Need final exact. Ensure not add punctuation? \"WorkPilot_REAL_OK.\" includes period? They said Only reply WorkPilot_REAL_OK. Could mean reply exactly WorkPilot_REAL_OK maybe without period? The text: \"Only reply WorkPilot_REAL_OK.\" Usually means reply WorkPilot_REAL_OK. We should output WorkPilot_REAL_OK. No period. Need comply.",
+                  "type": "thinking"
+                },
+                {
+                  "text": "WorkPilot_REAL_OK",
+                  "type": "text"
+                }
+              ],
+              "protocol": "messages",
+              "response_id": "msg_e742af38-dc1d-99a2-88cf-35cde292b7a1"
+            },
+            "finish_reason": "end_turn",
+            "raw_usage": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "input_tokens": 69,
+              "output_tokens": 109,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            "text": "WorkPilot_REAL_OK",
+            "tool_calls": [],
+            "usage": {
+              "cost_microunits": null,
+              "currency": null,
+              "input_tokens": 69,
+              "output_tokens": 109
+            }
+          }
+        },
+        {
+          "mode": "tools",
+          "state": "completed",
+          "diagnostic": null,
+          "output": {
+            "actual_model": "qwen3.8-flash",
+            "continuation": {
+              "items": [
+                {
+                  "signature": "",
+                  "thinking": "The user is asking me to call the workpilot_echo tool with the message parameter \"WorkPilot\". They explicitly said not to do other work.",
+                  "type": "thinking"
+                },
+                {
+                  "id": "toolu_a587478dcdcd48e6b6a54806",
+                  "input": {
+                    "message": "WorkPilot"
+                  },
+                  "name": "workpilot_echo",
+                  "type": "tool_use"
+                }
+              ],
+              "protocol": "messages",
+              "response_id": "msg_f9d7d859-45cf-9e57-820a-adfa7b6f27df"
+            },
+            "finish_reason": "tool_use",
+            "raw_usage": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "input_tokens": 349,
+              "output_tokens": 63,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            "text": "",
+            "tool_calls": [
+              {
+                "arguments": {
+                  "message": "WorkPilot"
+                },
+                "id": "toolu_a587478dcdcd48e6b6a54806",
+                "name": "workpilot_echo",
+                "provider_item_id": null
+              }
+            ],
+            "usage": {
+              "cost_microunits": null,
+              "currency": null,
+              "input_tokens": 349,
+              "output_tokens": 63
+            }
+          }
+        },
+        {
+          "mode": "image",
+          "state": "completed",
+          "diagnostic": null,
+          "output": {
+            "actual_model": "qwen3.8-flash",
+            "continuation": {
+              "items": [
+                {
+                  "signature": "",
+                  "thinking": "用户现在需要确认收到图片，回复一句话。看用户要求只回复一句话，所以要简洁。首先确认收到，然后描述？不，用户说“只回复一句话”，所以要构造一句话，比如“已收到你提供的小型测试图片。”这样符合要求。",
+                  "type": "thinking"
+                },
+                {
+                  "text": "已收到你提供的小型测试图片。",
+                  "type": "text"
+                }
+              ],
+              "protocol": "messages",
+              "response_id": "msg_481965c1-c0ca-983c-b947-596e55edca0e"
+            },
+            "finish_reason": "end_turn",
+            "raw_usage": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "input_tokens": 143,
+              "output_tokens": 65,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            "text": "已收到你提供的小型测试图片。",
+            "tool_calls": [],
+            "usage": {
+              "cost_microunits": null,
+              "currency": null,
+              "input_tokens": 143,
+              "output_tokens": 65
+            }
+          }
+        }
+      ],
+      "execution": {
+        "state": "completed",
+        "reason": "completed",
+        "diagnostic": null,
+        "text": "验收执行完成，严格按顺序进行了四步操作（未使用 update_plan，未创建任何真实文件）：\n\n**1. sample_lookup 读取 numbers**\n- 返回合成数据：`[4, 8, 12]`（source: synthetic）\n\n**2. sample_calculate 求和**\n- 操作：sum，输入值：`[4, 8, 12]`\n- 真实计算结果：**24.0**（即 4 + 8 + 12 = 24）\n\n**3. sample_write 保存为 real-sum**\n- 写入内容：`24`（即上一步的真实计算结果）\n- 返回：`{\"content\":\"24\",\"name\":\"real-sum\",\"sample_only\":true}`\n- 说明：`sample_only: true` 表示数据仅保存在 WorkPilot 内置样本区域，**没有**生成真实的用户项目文件。\n\n**4. sample_read 回读确认**\n- 读取 name：`real-sum`\n- 返回：`{\"content\":\"24\",\"name\":\"real-sum\",\"sample_only\":true}`\n\n**一致性校验**：回读内容 `24` 与计算结果 24.0 一致，写入→回读链路验证通过。\n\n**功能结论**：lookup → calculate → write → read 四个内置样本工具均正常工作，数据流与真实计算结果保持一致，全程仅操作内置合成样本，符合\"不操作外部业务、不需要创建真实文件\"的约束。",
+        "tools": [
+          {
+            "name": "sample_lookup",
+            "state": "completed"
+          },
+          {
+            "name": "sample_calculate",
+            "state": "completed"
+          },
+          {
+            "name": "sample_write",
+            "state": "completed"
+          },
+          {
+            "name": "sample_read",
+            "state": "completed"
+          }
+        ],
+        "task_id": "ca2f617f-16a6-4178-adbb-0f058239b5ee"
+      }
+    }
+  ],
+  "finished": true
+}

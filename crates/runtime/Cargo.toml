@@ -1,0 +1,23 @@
+[package]
+name = "workpilot-runtime"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[dependencies]
+workpilot-tools = { path = "../tools" }
+workpilot-policy = { path = "../policy" }
+workpilot-contracts = { path = "../contracts" }
+workpilot-platform = { path = "../platform" }
+workpilot-storage = { path = "../storage" }
+workpilot-providers = { path = "../providers" }
+tokio.workspace = true
+tokio-util.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
+uuid.workspace = true

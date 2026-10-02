@@ -1,0 +1,14 @@
+[
+  {
+    "Name": "WorkPilot.exe",
+    "Matches": true
+  },
+  {
+    "Name": "workpilot-sidecar.exe",
+    "Matches": true
+  },
+  {
+    "Name": "使用说明.txt",
+    "Matches": true
+  }
+]

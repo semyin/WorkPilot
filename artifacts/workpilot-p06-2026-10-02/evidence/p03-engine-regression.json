@@ -1,0 +1,195 @@
+{
+  "at": "2026-10-02T07:08:44.221Z",
+  "platform": "win32",
+  "service": "synthetic local HTTP only",
+  "checks": [
+    "chat_completions_http_model_tool_result_loop",
+    "responses_http_model_tool_result_loop",
+    "messages_http_model_tool_result_loop",
+    "model_error_one_request_no_fallback",
+    "four_slots_fifo_queue_and_responsive_control",
+    "real_process_exit_before_tool_manual_recovery",
+    "real_process_exit_during_tool_manual_recovery",
+    "real_process_exit_after_effect_manual_recovery",
+    "real_process_exit_user_reported_manual_recovery"
+  ],
+  "controlReplyMs": 1.817700000000059,
+  "httpRequests": [
+    {
+      "model": "runtime-sum",
+      "protocol": "chat_completions",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-sum",
+      "protocol": "chat_completions",
+      "correlationValid": true,
+      "resultCount": 1,
+      "ended": true
+    },
+    {
+      "model": "runtime-sum",
+      "protocol": "chat_completions",
+      "correlationValid": true,
+      "resultCount": 2,
+      "ended": true
+    },
+    {
+      "model": "runtime-sum",
+      "protocol": "chat_completions",
+      "correlationValid": true,
+      "resultCount": 3,
+      "ended": true
+    },
+    {
+      "model": "runtime-words",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-words",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 1,
+      "ended": true
+    },
+    {
+      "model": "runtime-words",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 2,
+      "ended": true
+    },
+    {
+      "model": "runtime-words",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 3,
+      "ended": true
+    },
+    {
+      "model": "runtime-product",
+      "protocol": "messages",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-product",
+      "protocol": "messages",
+      "correlationValid": true,
+      "resultCount": 1,
+      "ended": true
+    },
+    {
+      "model": "runtime-product",
+      "protocol": "messages",
+      "correlationValid": true,
+      "resultCount": 2,
+      "ended": true
+    },
+    {
+      "model": "runtime-product",
+      "protocol": "messages",
+      "correlationValid": true,
+      "resultCount": 3,
+      "ended": true
+    },
+    {
+      "model": "runtime-error",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-hold",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-hold",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-hold",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-hold",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-crash",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-crash",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 1,
+      "ended": true
+    },
+    {
+      "model": "runtime-crash",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-crash",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 1,
+      "ended": true
+    },
+    {
+      "model": "runtime-crash",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-crash",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 1,
+      "ended": true
+    },
+    {
+      "model": "runtime-crash",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 0,
+      "ended": true
+    },
+    {
+      "model": "runtime-crash",
+      "protocol": "responses",
+      "correlationValid": true,
+      "resultCount": 1,
+      "ended": true
+    }
+  ],
+  "result": "passed"
+}

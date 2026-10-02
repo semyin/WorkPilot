@@ -461,8 +461,12 @@ fn failed_migration_keeps_working_database_and_independent_preupgrade_backup() {
         &[
             (1, include_str!("../migrations/001_initial.sql")),
             (2, include_str!("../migrations/002_providers.sql")),
+            (3, include_str!("../migrations/003_execution.sql")),
+            (4, include_str!("../migrations/004_tools.sql")),
+            (5, include_str!("../migrations/005_teams.sql")),
+            (6, include_str!("../migrations/006_workspace.sql")),
             (
-                3,
+                7,
                 "UPDATE tasks SET title='corrupted'; CREATE TABLE halfway(id INTEGER); INSERT INTO missing_table VALUES(1);",
             ),
         ],
@@ -481,7 +485,7 @@ fn failed_migration_keeps_working_database_and_independent_preupgrade_backup() {
             p.file_name()
                 .unwrap()
                 .to_string_lossy()
-                .starts_with("before-v2-")
+                .starts_with(&format!("before-v{SCHEMA_VERSION}-"))
         })
         .unwrap();
     let backup_conn = Connection::open(&backup).unwrap();

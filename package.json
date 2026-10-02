@@ -18,6 +18,9 @@
     "test:desktop": "node scripts/desktop-smoke.mjs",
     "test:models-desktop": "node scripts/models-desktop-smoke.mjs",
     "test:providers": "node scripts/cargo.mjs test -p workpilot-providers --locked",
+    "test:runtime": "node scripts/cargo.mjs test -p workpilot-runtime --locked",
+    "test:execution-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/execution-engine-test.mjs",
+    "test:execution-desktop": "node scripts/execution-desktop-smoke.mjs",
     "dev": "node scripts/desktop.mjs dev",
     "build": "node scripts/desktop.mjs build",
     "engine:build": "node scripts/cargo.mjs build -p workpilot-engine --locked",
@@ -33,7 +36,12 @@
     "fixtures": "node services/fixtures/server.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "npm run format:check && npm run ui:typecheck && npm run test:fixtures && npm run rust:fmt && npm run engine:test && npm run rust:check && npm run ui:build"
+    "check": "npm run format:check && npm run ui:typecheck && npm run test:fixtures && npm run rust:fmt && npm run engine:test && npm run rust:check && npm run ui:build",
+    "test:tools-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/tools-engine-test.mjs",
+    "test:tools-desktop": "node scripts/tools-desktop-smoke.mjs",
+    "test:teams-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/teams-engine-test.mjs",
+    "test:teams-desktop": "node scripts/teams-desktop-smoke.mjs",
+    "test:workspace-desktop": "node scripts/workspace-desktop-smoke.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",

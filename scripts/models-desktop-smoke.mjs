@@ -202,11 +202,14 @@ try {
   const stopped = await command(page, { kind: "read", query: { kind: "model_calls", limit: 64 } });
   assert(stopped.calls.filter((c) => active.includes(c.id)).every((c) => c.state === "cancelled"));
   report.checks.push("four_independent_calls_fifth_rejected_and_cancellation_isolated");
-  await page.locator('input[type="file"]').setInputFiles({
-    name: "settings.json",
-    mimeType: "application/json",
-    buffer: Buffer.from(exported),
-  });
+  await page
+    .getByRole("dialog")
+    .locator('input[type="file"]')
+    .setInputFiles({
+      name: "settings.json",
+      mimeType: "application/json",
+      buffer: Buffer.from(exported),
+    });
   await expect(page.getByRole("status")).toContainText("已导入为新的服务");
   const imported = await command(page, { kind: "read", query: { kind: "profiles" } });
   assert.equal(imported.catalog.profiles.length, 6);

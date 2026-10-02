@@ -11,6 +11,8 @@ use workpilot_contracts::*;
 use workpilot_platform::paths::{Channel, data_dir};
 use workpilot_storage::{Storage, now_ms};
 mod models;
+mod tasks;
+mod workspace;
 
 struct Probe {
     request_id: String,
@@ -114,7 +116,14 @@ async fn main() -> Result<(), Failure> {
     )
     .await?;
     let mut models = models::Models::new(storage.clone(), out.clone(), &directory)?;
-    let (sender, mut receiver) = mpsc::channel::<Result<Request, String>>(32);
+    let mut tasks = tasks::Tasks::new(
+        storage.clone(),
+        out.clone(),
+        &directory,
+        matches!(channel, Channel::Test),
+    )
+    .await?;
+    let (sender, mut receiver) = mpsc::channel::<Result<Request, (Option<String>, String)>>(32);
     tokio::spawn(async move {
         let mut input = BufReader::new(tokio::io::stdin());
         loop {
@@ -126,7 +135,9 @@ async fn main() -> Result<(), Failure> {
             match read {
                 Ok(0) => break,
                 Ok(n) if n > MAX_COMMAND_BYTES => {
-                    let _ = sender.send(Err("command exceeds 1 MiB".into())).await;
+                    let _ = sender
+                        .send(Err((None, "command exceeds 1 MiB".into())))
+                        .await;
                     break;
                 }
                 Ok(_) => {
@@ -137,27 +148,61 @@ async fn main() -> Result<(), Failure> {
                             r.validate().map_err(str::to_owned)?;
                             Ok(r)
                         });
+                    let request = request.map_err(|message| {
+                        #[derive(serde::Deserialize)]
+                        struct Envelope {
+                            request_id: String,
+                        }
+                        // Read only the correlation ID; never reflect command content.
+                        let id = serde_json::from_str::<Envelope>(&line)
+                            .ok()
+                            .map(|r| r.request_id)
+                            .filter(|id| {
+                                Request {
+                                    request_id: id.clone(),
+                                    command: Command::Ping,
+                                }
+                                .validate()
+                                .is_ok()
+                            });
+                        (id, message)
+                    });
                     if sender.send(request).await.is_err() {
                         break;
                     }
                 }
                 Err(_) => {
-                    let _ = sender.send(Err("command pipe read failed".into())).await;
+                    let _ = sender
+                        .send(Err((None, "command pipe read failed".into())))
+                        .await;
                     break;
                 }
             }
         }
     });
     let mut probe: Option<Probe> = None;
+    let mut workspace = workspace::Workspace::new(storage.clone(), directory.clone(), out.clone());
+    let mut team_tick = tokio::time::interval(std::time::Duration::from_millis(100));
+    team_tick.set_missed_tick_behavior(tokio::time::MissedTickBehavior::Skip);
     loop {
         tokio::select! {
             biased;
             request=receiver.recv()=>{
                 let Some(request)=request else{break;};
                 let request=match request{
-                    Ok(r)=>r,Err(message)=>{append(&storage,&out,Payload::Error{code:ErrorCode::InvalidRequest,message}).await?;continue;}
+                    Ok(r)=>r,Err((id,message))=>{if let Some(request_id)=id {out.send(Wire::Reply{request_id,response:Response::Error{code:ErrorCode::InvalidRequest,message}}).await?;} else {append(&storage,&out,Payload::Error{code:ErrorCode::InvalidRequest,message}).await?;}continue;}
                 };
                 if matches!(request.command,Command::Shutdown){break;}
+                match workspace.dispatch(&request) {
+                    models::Handled::Reply(response)=>{out.send(Wire::Reply{request_id:request.request_id,response:*response}).await?;continue;},
+                    models::Handled::Deferred=>continue,
+                    models::Handled::No=>{},
+                }
+                match tasks.dispatch(&request).await{
+                    models::Handled::Reply(response)=>{out.send(Wire::Reply{request_id:request.request_id,response:*response}).await?;continue;},
+                    models::Handled::Deferred=>continue,
+                    models::Handled::No=>{},
+                }
                 match models.dispatch(&request).await{
                     models::Handled::Reply(response)=>{out.send(Wire::Reply{request_id:request.request_id,response:*response}).await?;continue;},
                     models::Handled::Deferred=>continue,
@@ -207,6 +252,7 @@ async fn main() -> Result<(), Failure> {
                     }
                 }
             }
+            _=team_tick.tick()=>{ tasks.tick().await; }
             _=async{match probe.as_mut(){Some(p)=>{p.interval.tick().await;},None=>std::future::pending::<()>().await}}=>{
                 if let Some(running)=probe.as_mut(){
                     running.current+=1;
@@ -218,8 +264,11 @@ async fn main() -> Result<(), Failure> {
             }
         }
     }
+    tasks.shutdown().await;
+    drop(tasks);
     models.shutdown().await;
     drop(models);
+    workspace.shutdown().await;
     if let Some(running) = probe.take() {
         finish(&storage, &out, running, false).await?;
     }

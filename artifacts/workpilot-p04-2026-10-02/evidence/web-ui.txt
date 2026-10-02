@@ -1,0 +1,15 @@
+
+> workpilot@0.1.0-alpha.0 test:ui
+> playwright test
+
+[WebServer] (node:14756) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:5416) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\ui\workbench.spec.ts:3:1 › preview is honest about absent engine and switches both UI and file preview language (646ms)
+  ok 2 tests\ui\workbench.spec.ts:22:1 › remote preview never fakes a native browser in web-only mode (429ms)
+
+  2 passed (4.2s)

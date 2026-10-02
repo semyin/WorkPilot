@@ -668,3 +668,232 @@ footer button {
     padding: 14px;
   }
 }
+.execution-columns {
+  display: grid;
+  grid-template-columns: 190px minmax(390px, 1fr) 305px;
+  flex: 1;
+  min-height: 0;
+}
+.execution-main,
+.execution-details {
+  min-width: 0;
+  overflow-y: auto;
+  padding: 24px;
+}
+.execution-details {
+  border-left: 1px solid #e0e5eb;
+  background: white;
+  padding: 20px;
+}
+.execution-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+.execution-title h2 {
+  overflow-wrap: anywhere;
+  margin: 0;
+  font-size: 20px;
+}
+.execution-title > span {
+  font-size: 12px;
+  white-space: nowrap;
+  padding: 5px 10px;
+  border-radius: 15px;
+  background: #eaf0ff;
+}
+.execution-title > span[data-state="failed"] {
+  background: #ffeded;
+  color: #a72e2e;
+}
+.execution-title > span[data-state="completed"] {
+  background: #e9f5ee;
+  color: #26794a;
+}
+.execution-answer {
+  padding: 20px;
+  border-radius: 12px;
+  background: white;
+  border: 1px solid #e4e8ef;
+  min-height: 120px;
+  font-family: inherit;
+}
+.execution-notice,
+.execution-question,
+.execution-review {
+  padding: 14px;
+  border: 1px solid #d4dfef;
+  border-radius: 9px;
+  background: #eef4ff;
+  margin: 15px 0;
+}
+.execution-review {
+  background: #fff8e9;
+  border-color: #ead5a5;
+}
+.execution-composer {
+  margin: 24px 0;
+  border-top: 1px solid #dae1ec;
+}
+.execution-composer small {
+  display: block;
+  margin-top: 10px;
+}
+.execution-messages article {
+  border: 1px solid #d9e0eb;
+  padding: 14px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+.execution-plan {
+  padding-left: 24px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.execution-plan li[data-plan-state="done"] {
+  color: #2c7b56;
+}
+.execution-step {
+  margin: 12px 0;
+  border-bottom: 1px solid #e7ebf1;
+  padding-bottom: 9px;
+}
+.execution-step > button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  gap: 8px;
+  font-size: 12px;
+}
+.execution-step small {
+  white-space: nowrap;
+}
+.execution-step[data-step-state="needs_review"] > button {
+  border-color: #d8ac53;
+}
+.execution-step[data-step-state="running"] > button {
+  border-color: #5b81cc;
+}
+.execution-overlay pre {
+  font-family: ui-monospace, "Cascadia Code", "Microsoft YaHei UI", monospace;
+}
+.execution-overlay .execution-answer {
+  font-family: inherit;
+  font-size: 14px;
+}
+.execution-history {
+  margin-top: 24px;
+}
+@media (max-width: 1080px) {
+  .execution-columns {
+    grid-template-columns: 160px minmax(360px, 1fr) 260px;
+  }
+  .execution-main,
+  .execution-details {
+    padding: 15px;
+  }
+}
+
+.tool-panel {
+  border: 1px solid #d9dee8;
+  border-radius: 10px;
+  padding: 14px;
+  margin: 16px 0;
+}
+.tool-fields label {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0;
+}
+.tool-fields .check-label {
+  display: flex;
+}
+.tool-fields input,
+.tool-fields select {
+  max-width: 100%;
+}
+.approval-card {
+  border: 1px solid #c59b48;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 14px 0;
+  background: #fffaf0;
+}
+.approval-card pre,
+.tool-panel pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 400px;
+  overflow: auto;
+}
+.tool-panel details {
+  margin: 10px 0;
+}
+.tool-panel > p {
+  overflow-wrap: anywhere;
+}
+.team-panel {
+  margin: 18px 0;
+  border: 1px solid var(--border, #d4dce5);
+  border-radius: 12px;
+  padding: 16px;
+}
+.team-panel > p {
+  color: #536476;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.team-panel details {
+  margin: 10px 0;
+}
+.team-panel label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 10px 0;
+}
+.team-panel label.check-label {
+  flex-direction: row;
+  align-items: center;
+}
+.team-panel input,
+.team-panel select,
+.team-panel textarea {
+  min-width: 0;
+  max-width: 100%;
+}
+.team-member {
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid #dce3eb;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+.team-member-heading {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+.team-member-heading h3 {
+  margin: 0;
+}
+.team-member-heading span,
+.team-member small {
+  font-size: 12px;
+  color: #536476;
+}
+.team-member p {
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.team-delivery pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 360px;
+  overflow: auto;
+}

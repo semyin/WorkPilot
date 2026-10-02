@@ -12,7 +12,13 @@ impl Store {
             )
             .optional()?
             .ok_or(Error::NotFound)?;
-        let mut p: ProviderProfile = serde_json::from_str(&data)?;
+        let mut data: serde_json::Value = serde_json::from_str(&data)?;
+        // P02/P03's generic text filter could replace the only matching typed
+        // AuthMode variant, api_key. Recover that enum, never a secret value.
+        if data["auth"] == "[REDACTED AUTHENTICATION DATA]" {
+            data["auth"] = serde_json::json!("api_key");
+        }
+        let mut p: ProviderProfile = serde_json::from_value(data)?;
         if p.capabilities.tools.source == CapabilitySource::Unknown && p.supports_tools.is_some() {
             p.capabilities.tools = Capability {
                 supported: p.supports_tools,
@@ -762,7 +768,7 @@ fn fingerprint_of(request: &Request) -> Result<String> {
         Sha256::digest(serde_json::to_vec(&request.command)?)
     ))
 }
-fn accept_command(
+pub(super) fn accept_command(
     connection: &Connection,
     redactor: &Redactor,
     request: &Request,

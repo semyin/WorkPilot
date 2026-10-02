@@ -31,6 +31,9 @@ jobs:
       - run: npm run test:fixtures
       - run: npm run rust:fmt
       - run: npm run engine:test
+      - run: npm run test:execution-engine
+      - run: npm run test:tools-engine
+      - run: npm run test:teams-engine
       - run: npm run build
       - run: npm run rust:check
       - name: Windows UI and browser probes
@@ -40,6 +43,10 @@ jobs:
           npm run test:browser
           node scripts/desktop-smoke.mjs
           npm run test:models-desktop
+          npm run test:execution-desktop
+          npm run test:tools-desktop
+          npm run test:teams-desktop
+          npm run test:workspace-desktop
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -28,7 +28,7 @@ const binaryDir = join(root, "apps/desktop/src-tauri/binaries");
 await mkdir(binaryDir, { recursive: true });
 await copyFile(
   join(buildRoot, release ? "release" : "debug", "workpilot-engine" + extension),
-  join(binaryDir, "workpilot-engine-" + target + extension),
+  join(binaryDir, "workpilot-sidecar-" + target + extension),
 );
 const cli = join(root, "node_modules/@tauri-apps/cli/tauri.js");
 await run(process.execPath, [cli, mode, ...(release ? ["--no-bundle"] : [])], {

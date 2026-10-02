@@ -59,6 +59,17 @@ impl Redactor {
             Value::Object(map) => {
                 for (key, value) in map {
                     let key = key.to_ascii_lowercase().replace(['-', '_'], "");
+                    // A typed authentication-mode identifier is not a credential.
+                    // Keep the finite enum while still redacting actual auth values.
+                    if key == "auth"
+                        && matches!(value.as_str(), Some("auto" | "bearer" | "api_key" | "none"))
+                        && !self
+                            .secrets
+                            .iter()
+                            .any(|s| Some(s.as_str()) == value.as_str())
+                    {
+                        continue;
+                    }
                     if [
                         "authorization",
                         "apikey",

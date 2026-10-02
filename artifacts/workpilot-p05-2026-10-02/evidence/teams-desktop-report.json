@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-02T05:17:08.240Z",
+  "platform": "win32",
+  "service": "synthetic model; native desktop and actual files",
+  "checks": [
+    "native_three_members_dependencies_models_reviewed_artifacts",
+    "native_delivery_usage_source_files_and_member_navigation",
+    "native_draft_manual_member_override_model_and_goal",
+    "native_failure_remains_visible_beside_replacement",
+    "native_parent_stop_exit_manual_continue"
+  ],
+  "result": "passed",
+  "pageErrors": []
+}

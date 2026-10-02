@@ -1,0 +1,144 @@
+[
+  {
+    "id": "chatcmpl-b7f67d56-5272-94ff-83e8-1a1e9e4c015a",
+    "choice": {
+      "index": 0,
+      "delta": {
+        "content": "",
+        "reasoning_content": "",
+        "tool_calls": [
+          {
+            "id": "call_f0293ede512e44bbb0c301b8",
+            "type": "function",
+            "index": 0,
+            "function": {
+              "name": "workpilot_echo",
+              "arguments": ""
+            }
+          }
+        ]
+      },
+      "logprobs": null,
+      "finish_reason": null
+    }
+  },
+  {
+    "id": "chatcmpl-b7f67d56-5272-94ff-83e8-1a1e9e4c015a",
+    "choice": {
+      "index": 0,
+      "delta": {
+        "content": "",
+        "reasoning_content": "",
+        "tool_calls": [
+          {
+            "id": "",
+            "type": "function",
+            "index": 0,
+            "function": {
+              "arguments": "{\"message\": "
+            }
+          }
+        ]
+      },
+      "logprobs": null,
+      "finish_reason": null
+    }
+  },
+  {
+    "id": "chatcmpl-b7f67d56-5272-94ff-83e8-1a1e9e4c015a",
+    "choice": {
+      "index": 0,
+      "delta": {
+        "content": "",
+        "reasoning_content": "",
+        "tool_calls": [
+          {
+            "id": "",
+            "type": "function",
+            "index": 0,
+            "function": {
+              "arguments": "\"WorkPilot"
+            }
+          }
+        ]
+      },
+      "logprobs": null,
+      "finish_reason": null
+    }
+  },
+  {
+    "id": "chatcmpl-b7f67d56-5272-94ff-83e8-1a1e9e4c015a",
+    "choice": {
+      "index": 0,
+      "delta": {
+        "content": "",
+        "reasoning_content": "",
+        "tool_calls": [
+          {
+            "id": "",
+            "type": "function",
+            "index": 0,
+            "function": {
+              "arguments": "\""
+            }
+          }
+        ]
+      },
+      "logprobs": null,
+      "finish_reason": null
+    }
+  },
+  {
+    "id": "chatcmpl-b7f67d56-5272-94ff-83e8-1a1e9e4c015a",
+    "choice": {
+      "index": 0,
+      "delta": {
+        "content": "",
+        "reasoning_content": "",
+        "tool_calls": [
+          {
+            "id": "",
+            "type": "function",
+            "index": 0,
+            "function": {
+              "arguments": "}"
+            }
+          }
+        ]
+      },
+      "logprobs": null,
+      "finish_reason": null
+    }
+  },
+  {
+    "id": "chatcmpl-b7f67d56-5272-94ff-83e8-1a1e9e4c015a",
+    "choice": {
+      "delta": {
+        "tool_calls": [
+          {
+            "function": {
+              "arguments": ""
+            },
+            "index": 0,
+            "type": "function",
+            "id": ""
+          }
+        ],
+        "content": ""
+      },
+      "index": 0,
+      "finish_reason": null,
+      "logprobs": null
+    }
+  },
+  {
+    "id": "chatcmpl-b7f67d56-5272-94ff-83e8-1a1e9e4c015a",
+    "choice": {
+      "index": 0,
+      "delta": {},
+      "finish_reason": "tool_calls",
+      "logprobs": null
+    }
+  },
+  "[DONE]"
+]

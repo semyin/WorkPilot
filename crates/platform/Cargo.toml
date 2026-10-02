@@ -11,9 +11,12 @@ directories.workspace = true
 thiserror.workspace = true
 zeroize.workspace = true
 workpilot-contracts = { path = "../contracts" }
+serde.workspace = true
+serde_json.workspace = true
+uuid.workspace = true
 
 [target.'cfg(windows)'.dependencies]
-windows-sys = { version = "=0.61.2", features = ["Win32_Foundation", "Win32_System_JobObjects", "Win32_System_Threading", "Win32_Security"] }
+windows-sys = { version = "=0.61.2", features = ["Win32_Foundation", "Win32_System_JobObjects", "Win32_System_Threading", "Win32_Security", "Win32_Storage_FileSystem", "Win32_Security_Isolation", "Win32_Security_Authorization", "Win32_System_Pipes", "Win32_System_Memory"] }
 keyring = { version = "=3.6.3", features = ["windows-native"] }
 
 [target.'cfg(target_os = "macos")'.dependencies]

@@ -6,6 +6,41 @@ fn req(command: Command) -> Request {
         command,
     }
 }
+#[test]
+fn all_authentication_modes_survive_redaction_but_auth_values_do_not() {
+    let root = tempfile::tempdir().unwrap();
+    let mut s = Store::open(root.path()).unwrap();
+    for (i, auth) in [
+        AuthMode::Auto,
+        AuthMode::Bearer,
+        AuthMode::ApiKey,
+        AuthMode::None,
+    ]
+    .into_iter()
+    .enumerate()
+    {
+        let mut p = ProviderProfile::new(
+            format!("auth-{i}"),
+            ProtocolKind::Messages,
+            "https://example.com/v1".into(),
+            "test".into(),
+        );
+        p.auth = auth;
+        s.commit_profile(
+            &req(Command::SaveProvider {
+                profile: Box::new(p.clone()),
+                secret: None,
+                clear_credential: false,
+            }),
+            p.clone(),
+        )
+        .unwrap();
+        assert_eq!(s.profile(&p.id).unwrap().auth, auth);
+    }
+    let mut raw = json!({"auth":"Bearer synthetic-secret","api_key":"synthetic-secret"});
+    s.redactor.value(&mut raw);
+    assert!(!raw.to_string().contains("synthetic-secret"));
+}
 fn add(store: &mut Store, name: &str) -> ProviderProfile {
     let p = ProviderProfile::new(
         name.into(),
@@ -323,7 +358,7 @@ fn actual_schema_one_database_upgrades_without_losing_tasks_or_profiles() {
         s.connection
             .query_row("PRAGMA user_version", [], |r| r.get::<_, u32>(0))
             .unwrap(),
-        2
+        SCHEMA_VERSION
     );
     let r = req(Command::SaveProvider {
         profile: Box::new(legacy.clone()),

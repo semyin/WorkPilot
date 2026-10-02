@@ -1,10 +1,20 @@
 //! Durable state is owned by this crate; consumers use typed operations only.
+mod execution;
+#[cfg(test)]
+mod execution_tests;
 mod objects;
 #[cfg(test)]
 mod provider_tests;
 mod providers;
 mod redaction;
+mod team;
+#[cfg(test)]
+mod team_tests;
+mod tool;
 mod worker;
+mod workspace;
+#[cfg(test)]
+mod workspace_tests;
 pub use redaction::Redactor;
 use rusqlite::{Connection, OptionalExtension, TransactionBehavior, params};
 use serde::{Serialize, de::DeserializeOwned};
@@ -107,6 +117,10 @@ impl Store {
             &[
                 (1, include_str!("../migrations/001_initial.sql")),
                 (2, include_str!("../migrations/002_providers.sql")),
+                (3, include_str!("../migrations/003_execution.sql")),
+                (4, include_str!("../migrations/004_tools.sql")),
+                (5, include_str!("../migrations/005_teams.sql")),
+                (6, include_str!("../migrations/006_workspace.sql")),
             ],
         )?;
         let mut store = Self {
@@ -117,6 +131,8 @@ impl Store {
         };
         store.recover()?;
         store.recover_model_calls()?;
+        store.recover_executions()?;
+        store.recover_teams()?;
         Ok(store)
     }
     pub fn register_secret(&mut self, value: &str) -> Result<()> {
@@ -245,6 +261,10 @@ impl Store {
             self.task(task_id)?;
         }
         let queued = if let Command::Enqueue { text, .. } = &request.command {
+            let count:u32=self.connection.query_row("SELECT count(*) FROM messages WHERE task_id=?1 AND state IN ('queued','steer_requested')",[&task_id],|r|r.get(0))?;
+            if count >= 128 {
+                return Err(Error::Invalid("message queue is full"));
+            }
             Some(self.text(text)?)
         } else {
             None
@@ -355,7 +375,17 @@ impl Store {
                 // Persists intent only; P03 dispatches cancellation to actual work.
             }
             Command::DeleteTask { task_id } => {
-                let unsafe_delete: bool = tx.query_row("SELECT EXISTS(SELECT 1 FROM runs WHERE task_id=?1 AND state='running') OR EXISTS(SELECT 1 FROM tool_calls WHERE task_id=?1 AND state IN ('started','needs_review'))", [task_id], |r| r.get(0))?;
+                let grouped: bool = tx.query_row(
+                    "SELECT EXISTS(SELECT 1 FROM team_members WHERE task_id=?1 OR root_task_id=?1)",
+                    [task_id],
+                    |r| r.get(0),
+                )?;
+                if grouped {
+                    return Err(Error::Invalid(
+                        "团队任务保留完整成员与交付记录，当前不能单独删除",
+                    ));
+                }
+                let unsafe_delete: bool = tx.query_row("SELECT EXISTS(SELECT 1 FROM runs WHERE task_id=?1 AND state IN ('queued','running')) OR EXISTS(SELECT 1 FROM tool_calls WHERE task_id=?1 AND state IN ('started','needs_review'))", [task_id], |r| r.get(0))?;
                 if unsafe_delete {
                     return Err(Error::Conflict);
                 }
@@ -623,6 +653,25 @@ impl Store {
     pub fn query(&self, query: &Query) -> Result<Response> {
         query.validate().map_err(Error::Invalid)?;
         match query {
+            Query::Workspace { query } => Ok(Response::Workspace {
+                data: Box::new(self.workspace_query(query)?),
+            }),
+            Query::TaskTools { task_id } => Ok(Response::TaskTools {
+                state: Box::new(self.tool_task_state(task_id)?),
+            }),
+            Query::Team { task_id } => Ok(Response::Team {
+                view: Box::new(self.team_view(task_id)?),
+            }),
+            Query::ToolDefaults => Ok(Response::ToolDefaults {
+                settings: self.tool_defaults()?,
+            }),
+            Query::ToolRegistry => Err(Error::Invalid("tool registry is provided by the engine")),
+            Query::Execution { task_id } => Ok(Response::Execution {
+                snapshot: Box::new(self.execution_snapshot(task_id)?),
+            }),
+            Query::Executions { limit } => Ok(Response::Executions {
+                tasks: self.execution_tasks(*limit)?,
+            }),
             Query::ModelCalls { limit } => Ok(Response::ModelCalls {
                 calls: self.model_calls(*limit)?,
             }),
@@ -637,7 +686,7 @@ impl Store {
                 page: read_events(&self.connection, *after, task_id.as_deref(), *limit)?,
             }),
             Query::Tasks { before, limit } => {
-                let mut statement = self.connection.prepare("SELECT id FROM tasks WHERE (?1 IS NULL OR (created_at_ms,id) < (SELECT created_at_ms,id FROM tasks WHERE id=?1)) ORDER BY created_at_ms DESC,id DESC LIMIT ?2")?;
+                let mut statement = self.connection.prepare("SELECT id FROM tasks WHERE archived=0 AND id NOT IN (SELECT task_id FROM team_members) AND (?1 IS NULL OR (created_at_ms,id) < (SELECT created_at_ms,id FROM tasks WHERE id=?1)) ORDER BY created_at_ms DESC,id DESC LIMIT ?2")?;
                 let ids: Vec<String> = statement
                     .query_map(params![before, limit], |r| r.get(0))?
                     .collect::<std::result::Result<_, _>>()?;
@@ -784,7 +833,19 @@ impl Store {
             UNION SELECT result_object_id FROM runs WHERE result_object_id IS NOT NULL
             UNION SELECT input_object_id FROM tool_calls UNION SELECT output_object_id FROM tool_calls WHERE output_object_id IS NOT NULL
             UNION SELECT object_id FROM revisions UNION SELECT object_id FROM memories UNION SELECT object_id FROM schedules
-            UNION SELECT output_object_id FROM model_calls WHERE output_object_id IS NOT NULL;")?;
+            UNION SELECT before_object_id FROM managed_file_changes WHERE before_object_id IS NOT NULL
+            UNION SELECT after_object_id FROM managed_file_changes
+            UNION SELECT intent_object_id FROM tool_approval_objects
+            UNION SELECT object_id FROM team_action_receipts
+            UNION SELECT report_object_id FROM team_members WHERE report_object_id IS NOT NULL
+            UNION SELECT inspected_object_id FROM team_members WHERE inspected_object_id IS NOT NULL
+            UNION SELECT object_id FROM tool_result_objects
+            UNION SELECT output_object_id FROM model_calls WHERE output_object_id IS NOT NULL
+            UNION SELECT config_object_id FROM execution_sessions UNION SELECT context_object_id FROM execution_sessions
+            UNION SELECT context_object_id FROM execution_checkpoints
+            UNION SELECT input_object_id FROM execution_steps UNION SELECT output_object_id FROM execution_steps WHERE output_object_id IS NOT NULL
+            UNION SELECT output_object_id FROM controlled_effects
+            UNION SELECT output_object_id FROM execution_resolutions;")?;
         // Check missing referenced content before deleting anything.
         {
             let mut stmt = tx.prepare("SELECT id FROM live_objects")?;
@@ -907,7 +968,9 @@ fn record(
         None => None,
     };
     let agent_id = match &payload {
-        Payload::AgentChanged { agent_id, .. } => Some(agent_id.clone()),
+        Payload::AgentChanged { agent_id, .. } | Payload::ExecutionCreated { agent_id, .. } => {
+            Some(agent_id.clone())
+        }
         Payload::ToolStarted { tool_call_id, .. }
         | Payload::ToolFinished { tool_call_id, .. }
         | Payload::ToolNeedsReview { tool_call_id } => connection.query_row(
@@ -915,6 +978,18 @@ fn record(
             [tool_call_id],
             |r| r.get(0),
         )?,
+        Payload::ExecutionQueued { run_id }
+        | Payload::ExecutionStarted { run_id, .. }
+        | Payload::ExecutionStepChanged { run_id, .. }
+        | Payload::ExecutionText { run_id, .. }
+        | Payload::ExecutionEnded { run_id, .. }
+        | Payload::CheckpointSaved { run_id, .. }
+        | Payload::ContextCompacted { run_id, .. }
+        | Payload::MessageDelivered { run_id, .. } => {
+            connection.query_row("SELECT agent_id FROM runs WHERE id=?1", [run_id], |r| {
+                r.get(0)
+            })?
+        }
         _ => None,
     };
     let mut event = Event {
@@ -939,11 +1014,23 @@ fn record(
         )?;
     }
     let reference = match &event.payload {
-        Payload::TextDelta { content }
+        Payload::ToolApprovalRequested {
+            intent: content, ..
+        }
+        | Payload::TextDelta { content }
         | Payload::ModelText { content, .. }
         | Payload::ModelReasoning { content, .. }
         | Payload::MessageQueued { content, .. }
         | Payload::ArtifactCreated { content, .. } => Some(content),
+        Payload::WorkspaceChanged { content, .. } => content.as_ref(),
+        Payload::ExecutionCreated { goal: content, .. }
+        | Payload::ExecutionText { content, .. }
+        | Payload::ContextCompacted {
+            archive: content, ..
+        } => Some(content),
+        Payload::TeamChanged { record: output, .. } | Payload::ExecutionEnded { output, .. } => {
+            output.as_ref()
+        }
         Payload::ToolStarted { input, .. } => Some(input),
         Payload::ToolFinished { output, .. } => Some(output),
         Payload::ModelCallEnded { output, .. } => output.as_ref(),
@@ -955,6 +1042,41 @@ fn record(
         }
         connection.execute(
             "INSERT INTO event_objects(event_sequence,object_id) VALUES(?1,?2)",
+            params![event.sequence, content.object_id],
+        )?;
+    }
+    if let Payload::ExecutionStepChanged { input, output, .. } = &event.payload {
+        for content in [input, output].into_iter().flatten() {
+            if content_ref(connection, &content.object_id)? != *content {
+                return Err(Error::Invalid("object reference mismatch"));
+            }
+            connection.execute(
+                "INSERT OR IGNORE INTO event_objects(event_sequence,object_id) VALUES(?1,?2)",
+                params![event.sequence, content.object_id],
+            )?;
+        }
+    }
+    let extra: Vec<&ContentRef> = match &event.payload {
+        Payload::ToolReviewFinished { review, .. } => {
+            [review.input.as_ref(), review.output.as_ref()]
+                .into_iter()
+                .flatten()
+                .collect()
+        }
+        Payload::ManagedFileChanged { change } => {
+            [change.before_content.as_ref(), Some(&change.after_content)]
+                .into_iter()
+                .flatten()
+                .collect()
+        }
+        _ => vec![],
+    };
+    for content in extra {
+        if content_ref(connection, &content.object_id)? != *content {
+            return Err(Error::Invalid("object reference mismatch"));
+        }
+        connection.execute(
+            "INSERT OR IGNORE INTO event_objects(event_sequence,object_id) VALUES(?1,?2)",
             params![event.sequence, content.object_id],
         )?;
     }

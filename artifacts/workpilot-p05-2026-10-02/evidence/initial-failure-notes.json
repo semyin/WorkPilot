@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-02",
+  "notes": [
+    {
+      "stage": "storage migration",
+      "observed": "Old migration assertion expected schema 4, actual schema was 5.",
+      "fix": "Assert current schema and move deliberately failing upgrade to version 6.",
+      "verified": "Storage 34 tests and full checks pass."
+    },
+    {
+      "stage": "build/runtime mismatch",
+      "observed": "configure_team timed out; diagnostic event said invalid command format. Tauri check had copied an old sidecar over target/debug/workpilot-engine.exe.",
+      "fix": "Separate packaged workpilot-sidecar name from the independent engine binary.",
+      "verified": "Final standalone and native team suites pass."
+    },
+    {
+      "stage": "desktop dispatch",
+      "observed": "Chinese member keys failed validation, causing the fixture lead to hit its step limit.",
+      "fix": "Allow bounded non-whitespace Unicode member keys; internal IDs retain strict validation.",
+      "verified": "Native Chinese members and replacement pass."
+    },
+    {
+      "stage": "desktop accessible fields",
+      "observed": "Exact labels for member model and prefilled goal could not be found by the native UI test.",
+      "fix": "Explicit accessible labels for both model selectors and assignment textareas.",
+      "verified": "Manual assignment, goal override and model override pass."
+    },
+    {
+      "stage": "test assertions",
+      "observed": "Test initially read state.settings instead of state.policy; another test reused an already completed request ID.",
+      "fix": "Correct test field and use a fresh command for the attempted permission change.",
+      "verified": "Headless teams and storage suites pass."
+    },
+    {
+      "stage": "test launch ordering",
+      "observed": "A desktop test ran before the new desktop build finished and opened the previous executable.",
+      "fix": "Wait for desktop and engine builds, then run native tests against the completed pair.",
+      "verified": "Final native reports identify successful runs after builds."
+    }
+  ]
+}

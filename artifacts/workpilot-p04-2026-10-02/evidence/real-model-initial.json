@@ -1,0 +1,410 @@
+{
+  "at": "2026-10-02T03:19:57.762Z",
+  "service": "User-provided Alibaba Cloud workspace",
+  "synthetic": false,
+  "checks": [
+    {
+      "protocol": "chat_completions",
+      "model": "qwen3.8-flash",
+      "endpoint": "https://<workspace>.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+      "checks": [
+        {
+          "mode": "text",
+          "state": "completed",
+          "diagnostic": null,
+          "output": {
+            "actual_model": "qwen3.8-flash",
+            "continuation": {
+              "items": [
+                {
+                  "content": "WorkPilot_REAL_OK",
+                  "reasoning_content": "We need to respond to user: \"Only reply WorkPilot_REAL_OK.\" Need final only WorkPilot_REAL_OK. Ensure no extra.\n",
+                  "role": "assistant"
+                }
+              ],
+              "protocol": "chat_completions",
+              "response_id": "chatcmpl-0074881f-f01e-9331-a667-123c63810c20"
+            },
+            "finish_reason": "stop",
+            "raw_usage": {
+              "completion_tokens": 37,
+              "completion_tokens_details": {
+                "reasoning_tokens": 29,
+                "text_tokens": 37
+              },
+              "prompt_tokens": 69,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "text_tokens": 69
+              },
+              "total_tokens": 106
+            },
+            "text": "WorkPilot_REAL_OK",
+            "tool_calls": [],
+            "usage": {
+              "cost_microunits": null,
+              "currency": null,
+              "input_tokens": 69,
+              "output_tokens": 37
+            }
+          }
+        },
+        {
+          "mode": "tools",
+          "state": "failed",
+          "diagnostic": {
+            "code": "malformed_stream",
+            "message_zh": "服务返回的数据不完整或格式不正确，未执行其中的工具请求。",
+            "message_en": "The service returned malformed data. Its tool requests were not executed.",
+            "detail": null,
+            "http_status": null,
+            "provider_request_id": null,
+            "retryable": false
+          },
+          "output": null
+        }
+      ]
+    },
+    {
+      "protocol": "responses",
+      "model": "qwen3.8-flash",
+      "endpoint": "https://<workspace>.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+      "checks": [
+        {
+          "mode": "text",
+          "state": "completed",
+          "diagnostic": null,
+          "output": {
+            "actual_model": "qwen3.8-flash",
+            "continuation": {
+              "items": [
+                {
+                  "content": null,
+                  "encrypted_content": null,
+                  "id": "msg_941ec07f-bf92-4bc8-91b3-bdd4599fa73a",
+                  "status": null,
+                  "summary": [
+                    {
+                      "text": "The user is asking me to only reply with \"WorkPilot_REAL_OK.\" This is a simple instruction to output a specific string. I'll comply with this request exactly as stated.\n",
+                      "type": "summary_text"
+                    }
+                  ],
+                  "type": "reasoning"
+                },
+                {
+                  "content": [
+                    {
+                      "annotations": [],
+                      "logprobs": null,
+                      "text": "WorkPilot_REAL_OK.",
+                      "type": "output_text"
+                    }
+                  ],
+                  "id": "msg_c50a0487-6e0f-44f8-b2b7-79ccaa5f4471",
+                  "role": "assistant",
+                  "status": "completed",
+                  "type": "message"
+                }
+              ],
+              "protocol": "responses",
+              "response_id": "resp_acd03f39-f1ed-9a18-bcc3-af20c18d003b"
+            },
+            "finish_reason": "stop",
+            "raw_usage": {
+              "input_tokens": 101,
+              "input_tokens_details": {
+                "cached_tokens": 0
+              },
+              "output_tokens": 46,
+              "output_tokens_details": {
+                "reasoning_tokens": 37
+              },
+              "total_tokens": 147,
+              "x_details": [
+                {
+                  "input_tokens": 101,
+                  "output_tokens": 46,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 37
+                  },
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "total_tokens": 147,
+                  "x_billing_type": "response_api"
+                }
+              ]
+            },
+            "text": "WorkPilot_REAL_OK.",
+            "tool_calls": [],
+            "usage": {
+              "cost_microunits": null,
+              "currency": null,
+              "input_tokens": 101,
+              "output_tokens": 46
+            }
+          }
+        },
+        {
+          "mode": "tools",
+          "state": "completed",
+          "diagnostic": null,
+          "output": {
+            "actual_model": "qwen3.8-flash",
+            "continuation": {
+              "items": [
+                {
+                  "content": null,
+                  "encrypted_content": null,
+                  "id": "msg_dc45f751-379b-4ea9-b482-a04674254d91",
+                  "status": null,
+                  "summary": [
+                    {
+                      "text": "用户明确要求调用 workpilot_echo 工具，message 参数填写 WorkPilot，并且不要执行其他工作。我需要立即执行该工具调用。",
+                      "type": "summary_text"
+                    }
+                  ],
+                  "type": "reasoning"
+                },
+                {
+                  "arguments": "{\"message\": \"WorkPilot\"}",
+                  "call_id": "call_39b7d39c969640eab38f0d87",
+                  "id": "msg_a106ddae-0e94-4da3-8394-6ec40c7fdb5f",
+                  "name": "workpilot_echo",
+                  "status": "completed",
+                  "type": "function_call"
+                }
+              ],
+              "protocol": "responses",
+              "response_id": "resp_897e6dfd-dbdd-9411-baa6-f3150910d906"
+            },
+            "finish_reason": "tool_calls",
+            "raw_usage": {
+              "input_tokens": 375,
+              "input_tokens_details": {
+                "cached_tokens": 0
+              },
+              "output_tokens": 63,
+              "output_tokens_details": {
+                "reasoning_tokens": 31
+              },
+              "total_tokens": 438,
+              "x_details": [
+                {
+                  "input_tokens": 375,
+                  "output_tokens": 63,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 31
+                  },
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "total_tokens": 438,
+                  "x_billing_type": "response_api"
+                }
+              ]
+            },
+            "text": "",
+            "tool_calls": [
+              {
+                "arguments": {
+                  "message": "WorkPilot"
+                },
+                "id": "call_39b7d39c969640eab38f0d87",
+                "name": "workpilot_echo",
+                "provider_item_id": "msg_a106ddae-0e94-4da3-8394-6ec40c7fdb5f"
+              }
+            ],
+            "usage": {
+              "cost_microunits": null,
+              "currency": null,
+              "input_tokens": 375,
+              "output_tokens": 63
+            }
+          }
+        },
+        {
+          "mode": "image",
+          "state": "failed",
+          "diagnostic": {
+            "code": "server",
+            "message_zh": "模型服务返回错误，本次已停止，没有自动重试。",
+            "message_en": "The model service returned an error. No retry was made.",
+            "detail": "<400> InternalError.Algo.InvalidParameter: The image length and width do not meet the model restrictions. [height:1 or width:1 must be larger than 10]",
+            "http_status": null,
+            "provider_request_id": null,
+            "retryable": false
+          },
+          "output": null
+        }
+      ],
+      "execution": {
+        "state": "completed",
+        "reason": "completed",
+        "diagnostic": null,
+        "text": "平台功能验收已完成，四步严格按顺序执行，结果如下：\n\n**1. 样本读取（sample_lookup）**\n- key = `numbers`，返回合成数据：`[4, 8, 12]`\n\n**2. 求和计算（sample_calculate）**\n- 运算：sum\n- 计算结果：**24**（返回值 24.0）\n\n**3. 保存结果（sample_write）**\n- 名称：`real-sum`\n- 写入内容：`24`（即上一步的真实计算结果，非预设值）\n- 返回标记：`sample_only: true`\n\n**4. 回读确认（sample_read）**\n- 名称：`real-sum`\n- 读回内容：`24`\n- 与写入内容一致，保存链路校验通过 ✅\n\n**验收结论**\n- 计算结果：4 + 8 + 12 = **24**\n- 保存与回读结果：均为 **24**，数据一致，lookup → calculate → write → read 全链路功能正常。\n- 未调用 `update_plan`，符合要求。\n\n**限制说明**\n- 以上操作全部在 WorkPilot 内置样本区域内进行，`sample_write` 并未在真实项目或外部业务系统中创建任何文件；`real-sum` 仅是本次任务的内部测试数据，仅在本任务范围内可读取。",
+        "tools": [
+          {
+            "name": "sample_lookup",
+            "state": "completed"
+          },
+          {
+            "name": "sample_calculate",
+            "state": "completed"
+          },
+          {
+            "name": "sample_write",
+            "state": "completed"
+          },
+          {
+            "name": "sample_read",
+            "state": "completed"
+          }
+        ],
+        "task_id": "d30de606-eed8-453d-8bd0-234eb5bcec65"
+      }
+    },
+    {
+      "protocol": "messages",
+      "model": "qwen3.8-flash",
+      "endpoint": "https://<workspace>.cn-beijing.maas.aliyuncs.com/apps/anthropic/v1",
+      "checks": [
+        {
+          "mode": "text",
+          "state": "completed",
+          "diagnostic": null,
+          "output": {
+            "actual_model": "qwen3.8-flash",
+            "continuation": {
+              "items": [
+                {
+                  "signature": "",
+                  "thinking": "We need to respond to user: \"Only reply WorkPilot_REAL_OK.\" They explicitly instruct to only reply that. So final should exactly WorkPilot_REAL_OK. Ensure no analysis leaked.",
+                  "type": "thinking"
+                },
+                {
+                  "text": "WorkPilot_REAL_OK",
+                  "type": "text"
+                }
+              ],
+              "protocol": "messages",
+              "response_id": "msg_9c586369-617f-98a4-9c8f-ab097b4cf50b"
+            },
+            "finish_reason": "end_turn",
+            "raw_usage": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "input_tokens": 69,
+              "output_tokens": 47,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            "text": "WorkPilot_REAL_OK",
+            "tool_calls": [],
+            "usage": {
+              "cost_microunits": null,
+              "currency": null,
+              "input_tokens": 69,
+              "output_tokens": 47
+            }
+          }
+        },
+        {
+          "mode": "tools",
+          "state": "completed",
+          "diagnostic": null,
+          "output": {
+            "actual_model": "qwen3.8-flash",
+            "continuation": {
+              "items": [
+                {
+                  "signature": "",
+                  "thinking": "用户明确要求：调用 workpilot_echo 工具，message 参数填写 \"WorkPilot\"。不要执行其他工作。直接调用即可。",
+                  "type": "thinking"
+                },
+                {
+                  "id": "toolu_cd5adf927adc4b0db7cc244f",
+                  "input": {
+                    "message": "WorkPilot"
+                  },
+                  "name": "workpilot_echo",
+                  "type": "tool_use"
+                }
+              ],
+              "protocol": "messages",
+              "response_id": "msg_8ce834b4-b8bc-99e3-acb5-807ecd1196b6"
+            },
+            "finish_reason": "tool_use",
+            "raw_usage": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "input_tokens": 349,
+              "output_tokens": 62,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            "text": "",
+            "tool_calls": [
+              {
+                "arguments": {
+                  "message": "WorkPilot"
+                },
+                "id": "toolu_cd5adf927adc4b0db7cc244f",
+                "name": "workpilot_echo",
+                "provider_item_id": null
+              }
+            ],
+            "usage": {
+              "cost_microunits": null,
+              "currency": null,
+              "input_tokens": 349,
+              "output_tokens": 62
+            }
+          }
+        },
+        {
+          "mode": "image",
+          "state": "failed",
+          "diagnostic": {
+            "code": "configuration",
+            "message_zh": "服务配置不完整或参数不合适，请检查设置。",
+            "message_en": "The service configuration or parameters are invalid.",
+            "detail": null,
+            "http_status": 400,
+            "provider_request_id": "cfccc92c-940c-9393-a833-0154ce4d3d29",
+            "retryable": false
+          },
+          "output": null
+        }
+      ],
+      "execution": {
+        "state": "completed",
+        "reason": "completed",
+        "diagnostic": null,
+        "text": "验收已按要求的顺序完成，全部仅使用内置样本工具，未创建任何真实项目文件。\n\n**执行步骤与结果**\n\n1. `sample_lookup(key=\"numbers\")` → 读取到内置样本数值：`[4, 8, 12]`（来源标记为 synthetic）。\n2. `sample_calculate(operation=\"sum\", values=[4, 8, 12])` → 真实计算结果：**24.0**（即 4 + 8 + 12 = 24）。\n3. `sample_write(name=\"real-sum\", content=\"24\")` → 保存成功，返回 `{\"content\":\"24\",\"name\":\"real-sum\",\"sample_only\":true}`。该写入发生在 WorkPilot 内部的样本数据区，`sample_only=true` 表明**没有生成外部/真实文件**。\n4. `sample_read(name=\"real-sum\")` → 回读成功，返回 `{\"content\":\"24\",\"name\":\"real-sum\",\"sample_only\":true}`。\n\n**结论**\n\n- 计算结果：24（求和自样本 numbers = 4, 8, 12）。\n- 保存与回读一致性：写入内容 `24` 与回读内容 `24` 完全一致，名称均为 `real-sum`，读写链路验证通过。\n- 按你的要求，本次未调用 `update_plan`；未使用任何外部业务或文件系统操作，样本工具的作用域仅限 WorkPilot 内置合成数据。",
+        "tools": [
+          {
+            "name": "sample_lookup",
+            "state": "completed"
+          },
+          {
+            "name": "sample_calculate",
+            "state": "completed"
+          },
+          {
+            "name": "sample_write",
+            "state": "completed"
+          },
+          {
+            "name": "sample_read",
+            "state": "completed"
+          }
+        ],
+        "task_id": "943b0028-223d-4464-a006-4ec7fb651eef"
+      }
+    }
+  ],
+  "finished": true
+}

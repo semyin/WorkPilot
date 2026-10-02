@@ -244,6 +244,8 @@ pub struct ProviderContinuation {
 }
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 pub struct ModelInput {
+    #[serde(default)]
+    pub history: Vec<crate::ModelHistoryItem>,
     pub messages: Vec<ModelMessage>,
     pub tools: Vec<ToolDefinition>,
     pub tool_results: Vec<ModelToolResult>,

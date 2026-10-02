@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-02T04:11:54.485Z",
+  "platform": "win32",
+  "service": "synthetic model; real files and Windows processes",
+  "checks": [
+    "real_file_flow_bound_one_time_approval_and_saved_version",
+    "changed_target_cannot_use_previous_approval",
+    "revoked_scope_expires_queued_authority",
+    "review_rejection_uncertainty_malformed_and_service_failure_have_no_effect",
+    "independent_review_approves_exact_action_with_saved_evidence",
+    "interrupted_review_requires_manual_decision_without_auto_retry",
+    "full_access_bypasses_prompt_but_chat_and_plan_stay_read_only",
+    "invalid_paths_schema_unknown_tools_and_injected_authority_cannot_execute",
+    "approved_real_command_nonzero_exit_saved_output_and_appcontainer",
+    "real_file_crash_before_execution_and_after_effect_recover_without_double_write"
+  ],
+  "result": "passed"
+}

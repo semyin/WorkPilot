@@ -1,0 +1,5 @@
+    Blocking waiting for file lock on build directory
+   Compiling workpilot-storage v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\storage)
+   Compiling workpilot-runtime v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\runtime)
+   Compiling workpilot-engine v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\engine)
+    Finished `release` profile [optimized] target(s) in 51.54s

@@ -1,0 +1,12 @@
+[package]
+name = "workpilot-policy"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+[dependencies]
+workpilot-contracts = { path = "../contracts" }
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true

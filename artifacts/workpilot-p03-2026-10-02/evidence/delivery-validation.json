@@ -1,0 +1,11 @@
+{
+  "sourceFilesVerified": 164,
+  "binariesVerified": 3,
+  "markdownFilesChecked": 39,
+  "localLinksChecked": 204,
+  "hashMismatches": [],
+  "missingLinks": [],
+  "zipBytes": 5533458,
+  "zipSha256": "b2b11401b05fd4c6f3c1bf09d05029e0198abbcf5e582daa3dc1ec25596dbff1",
+  "result": "passed"
+}
