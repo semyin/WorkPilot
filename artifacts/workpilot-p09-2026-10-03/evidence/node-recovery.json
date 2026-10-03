@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-03T06:23:53.252Z",
+  "status": "restored",
+  "version": "22.23.2",
+  "programSha256": "0d0f5e39f9f3d9587bc19f73eab3c2c9c4903fd02d6dbf9c853dd81b3d95fad4",
+  "originalBytesMatchP08": true,
+  "fix": "Refuse unsafe NULL DACL rewrite and use an owned Node copy for extension processes",
+  "regression": "null_dacl_is_not_replaced_with_a_single_sandbox_ace",
+  "failedSyntheticSandboxRecovered": true,
+  "repairHelpersRemoved": true
+}

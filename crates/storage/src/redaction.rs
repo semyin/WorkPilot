@@ -7,6 +7,9 @@ pub struct Redactor {
     secrets: Vec<String>,
 }
 impl Redactor {
+    pub fn contains_registered_secret(&self, text: &str) -> bool {
+        self.secrets.iter().any(|secret| text.contains(secret))
+    }
     pub fn register(&mut self, secret: &str) -> crate::Result<()> {
         if secret.is_empty() || secret.len() > 4096 || secret.chars().any(char::is_control) {
             return Err(crate::Error::Invalid("credential length"));

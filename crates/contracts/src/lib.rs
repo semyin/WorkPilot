@@ -16,10 +16,14 @@ pub use tool::*;
 pub use workbench::*;
 mod browser;
 pub use browser::*;
+mod extension;
+pub use extension::*;
 pub use workspace::*;
+mod media;
+pub use media::*;
 
 pub const PROTOCOL: &str = "workpilot.v1";
-pub const SCHEMA_VERSION: u32 = 7;
+pub const SCHEMA_VERSION: u32 = 9;
 pub const EXPORT_VERSION: u32 = 1;
 pub const MAX_COMMAND_BYTES: usize = 1_048_576;
 pub const MAX_EVENT_BYTES: usize = 65_536;
@@ -36,6 +40,14 @@ pub struct Request {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 pub enum Command {
+    Media {
+        task_id: Option<String>,
+        action: MediaAdmin,
+    },
+    Extensions {
+        task_id: Option<String>,
+        action: ExtensionAdmin,
+    },
     Workbench {
         task_id: String,
         action: WorkbenchAction,
@@ -215,6 +227,18 @@ impl Request {
             return Err("invalid request_id");
         }
         match &self.command {
+            Command::Media { task_id, action } => {
+                if task_id.as_ref().is_some_and(|id| !valid_id(id)) {
+                    return Err("invalid task");
+                }
+                action.validate()?;
+            }
+            Command::Extensions { task_id, action } => {
+                if task_id.as_ref().is_some_and(|id| !valid_id(id)) {
+                    return Err("invalid task");
+                }
+                action.validate()?;
+            }
             Command::Workbench { task_id, action } => {
                 if !valid_id(task_id) {
                     return Err("invalid task");
@@ -848,6 +872,20 @@ pub fn typescript() -> String {
         WorkbenchAction,
         BrowserAction,
         BrowserControl,
+        ExtensionAdmin,
+        ExtensionEffect,
+        PluginManifest,
+        PluginDependency,
+        McpServerSpec,
+        McpTransport,
+        PluginRuntime,
+        McpAuth,
+        SkillMetadata,
+        PluginFile,
+        PluginVersion,
+        PluginInstallation,
+        PluginPreview,
+        SkillDraftFile,
         FileEdit,
         FileRevision,
         FileImage,
@@ -962,7 +1000,14 @@ pub fn typescript() -> String {
         TeamMember,
         TeamView,
         AgentArtifact,
-        AgentReport
+        AgentReport,
+        MediaAdmin,
+        MediaAsset,
+        DocumentUnit,
+        ImageService,
+        ImageRequest,
+        MediaEffect,
+        ImageDimensions
     );
     output
 }

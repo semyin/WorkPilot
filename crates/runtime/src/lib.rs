@@ -1,6 +1,8 @@
 //! General, resumable single-agent loop. No Tauri, project file or shell access.
 mod browser;
 pub mod context;
+mod extensions;
+mod media;
 mod mutation;
 mod real_tools;
 mod team;
@@ -247,6 +249,22 @@ impl<B: ModelBackend + Send + Sync, F: FaultObserver> ExecutionEnvironment<B, F>
                     ));
                 }
                 definitions.extend(team_definitions);
+                if let Some(client) = &self.workbench {
+                    definitions.extend(workpilot_workbench::media::model::definitions(
+                        snapshot.task.mode,
+                        policy.settings.root_path.is_some(),
+                    ));
+                    definitions.extend(
+                        client
+                            .extension_definitions(&snapshot.task.id, snapshot.task.mode)
+                            .await
+                            .map_err(|message| {
+                                let mut e=diagnostic::detail(ModelErrorCode::Configuration,&message);
+                                e.message_zh="技能或插件暂时无法加载，请检查扩展设置和错误详情。".into();
+                                e.message_en="Skills or extensions could not be loaded. Check extension settings and details.".into();e
+                            })?,
+                    );
+                }
                 definitions
             } else {
                 if snapshot.config.controlled_tools || policy.settings.root_path.is_some() {
@@ -286,6 +304,24 @@ impl<B: ModelBackend + Send + Sync, F: FaultObserver> ExecutionEnvironment<B, F>
                 input.messages[0].content.push(ModelContent::Text {
                     text: team_context.clone(),
                 });
+            }
+            if let Some(client) = &self.workbench {
+                let content = client
+                    .media_context(
+                        &snapshot.task.id,
+                        &workpilot_workbench::media::model::references(&snapshot.context),
+                        self.profile.capabilities.images.supported == Some(true),
+                    )
+                    .await
+                    .map_err(|message| {
+                        diagnostic::detail(ModelErrorCode::Configuration, &message)
+                    })?;
+                if !content.is_empty() {
+                    input.messages.push(ModelMessage {
+                        role: "user".into(),
+                        content,
+                    });
+                }
             }
             if let Some(image) = self
                 .workbench
@@ -502,6 +538,24 @@ impl<B: ModelBackend + Send + Sync, F: FaultObserver> ExecutionEnvironment<B, F>
         }
         if matches!(call.name.as_str(), "browser" | "browser_sessions") {
             return self.browser_tool(snapshot, &action, &call).await;
+        }
+        if matches!(
+            call.name.as_str(),
+            "document_list"
+                | "document_read"
+                | "document_import"
+                | "document_create"
+                | "image_services"
+                | "image_generate"
+        ) {
+            return self.media_tool(snapshot, &action, &call).await;
+        }
+        if matches!(
+            call.name.as_str(),
+            "skill_search" | "skill_read" | "skill_draft" | "extension_action"
+        ) || call.name.starts_with("mcp_")
+        {
+            return self.extension_tool(snapshot, &action, &call).await;
         }
         if workpilot_tools::is_real(&call.name) {
             return self.real_tool(snapshot, &action, &call).await;

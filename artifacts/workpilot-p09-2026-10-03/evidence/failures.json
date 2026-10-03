@@ -1,0 +1,43 @@
+{
+  "recordedAt": "2026-10-03T06:25:24.794Z",
+  "source": "Summary of observed failed tool/test output in this implementation, followed by successful reruns",
+  "cases": [
+    {
+      "check": "Initial stdio boundary",
+      "outcome": "Node installed executable access was damaged by adding a sandbox ACE to a NULL DACL.",
+      "resolution": "Original access restored with administrator action; version and bytes verified. Guard against NULL DACL rewrites; execute an owned Node copy."
+    },
+    {
+      "check": "Node startup in AppContainer",
+      "outcome": "EPERM lstat D:\\ while Node resolved the entry path",
+      "resolution": "Preserve symlink paths for packages that reject links; real sandbox read/write and sibling denial passed."
+    },
+    {
+      "check": "Plan-mode skill test",
+      "outcome": "Test expected completed but planning correctly ended in awaiting_input.",
+      "resolution": "Corrected test expectation; actual draft creation and confirmation remained required."
+    },
+    {
+      "check": "Build/test ordering",
+      "outcome": "Windows could not replace an engine executable still used by a test; a later test saw old code.",
+      "resolution": "Wait for build completion before running that executable; new model flow passed."
+    },
+    {
+      "check": "Native tool argument label",
+      "outcome": "Exact accessible label lookup timed out although textarea was visible.",
+      "resolution": "Stable explicit aria-label; actual fill, approve, call and output verification passed."
+    },
+    {
+      "check": "Skill creator validator dependency",
+      "outcome": "ModuleNotFoundError: No module named yaml",
+      "resolution": "PyYAML 6.0.3 installed only in the test dependency directory; original validator passed."
+    },
+    {
+      "check": "First packaged desktop",
+      "at": "2026-10-03T06:11:26.845Z",
+      "desktopSha256": "f839ccde340e086108978d3312818073040d85b119667b44cd7f57f883ecb13e",
+      "outcome": "Timed out locating packaged Tauri page after direct cargo build omitted the production protocol.",
+      "resolution": "Canonical npm run build, hash receipt gate in packager, packaged desktop five checks passed."
+    }
+  ]
+}

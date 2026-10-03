@@ -1,0 +1,167 @@
+.extensions-overlay {
+  position: fixed;
+  inset: 20px;
+  z-index: 70;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 16px 70px #0e282740;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  gap: 12px;
+}
+.extensions-overlay header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px;
+}
+.extensions-overlay h2,
+.extensions-overlay h3 {
+  margin: 0 0 10px;
+}
+.extensions-overlay p {
+  line-height: 1.65;
+}
+.extension-columns {
+  display: grid;
+  grid-template-columns: minmax(210px, 24%) 1fr;
+  min-height: 0;
+  gap: 20px;
+  flex: 1;
+}
+.extension-columns > aside,
+.extension-columns > main {
+  overflow: auto;
+  min-width: 0;
+  padding: 4px 10px 12px 2px;
+}
+.extension-columns > aside {
+  border-right: 1px solid var(--line);
+}
+.extension-columns section {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.extensions-overlay label {
+  display: block;
+  font-size: 13px;
+  margin: 8px 0;
+}
+.extensions-overlay input:not([type="checkbox"]),
+.extensions-overlay textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 5px;
+  padding: 9px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--surface);
+  color: inherit;
+}
+.extensions-overlay textarea {
+  min-height: 78px;
+  resize: vertical;
+}
+.extensions-overlay button {
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 7px 11px;
+  background: var(--surface);
+  color: inherit;
+  cursor: pointer;
+}
+.extensions-overlay button:hover {
+  background: var(--selected);
+  color: var(--ink);
+}
+.extensions-overlay button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.extension-choice {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 10px 0;
+}
+.extension-choice[aria-pressed="true"] {
+  background: var(--selected);
+  border-color: var(--accent);
+}
+.extensions-overlay small {
+  display: block;
+  line-height: 1.7;
+  margin-top: 4px;
+  color: var(--muted);
+}
+.extensions-overlay .extension-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.extensions-overlay input[type="checkbox"] {
+  display: inline-block;
+  width: auto;
+  flex: 0 0 auto;
+  margin: 0;
+}
+.extension-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+.extension-error {
+  border: 1px solid #d99383;
+  background: #fff1ed;
+  color: #7c3020;
+  padding: 10px;
+  border-radius: 8px;
+}
+.extension-file {
+  display: block;
+  margin: 6px 0;
+}
+.extension-break {
+  overflow-wrap: anywhere;
+}
+.extension-preview {
+  background: var(--selected);
+}
+.extension-server,
+.extension-operation {
+  border-top: 1px solid var(--line);
+  padding: 12px 0;
+}
+.extensions-overlay pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 350px;
+  overflow: auto;
+  background: var(--code);
+  color: var(--ink);
+  padding: 12px;
+  border-radius: 8px;
+}
+.extensions-overlay details {
+  margin: 12px 0;
+}
+.extensions-overlay summary {
+  cursor: pointer;
+}
+@media (max-width: 800px) {
+  .extensions-overlay {
+    inset: 6px;
+    padding: 12px;
+  }
+  .extension-columns {
+    grid-template-columns: 190px 1fr;
+    gap: 10px;
+  }
+}

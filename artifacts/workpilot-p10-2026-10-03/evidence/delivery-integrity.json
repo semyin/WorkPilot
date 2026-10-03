@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-03T10:33:42.393Z",
+  "status": "passed",
+  "sourceFiles": 335,
+  "deliveryFiles": 5279,
+  "oldP09FilesVerified": 24,
+  "localMarkdownLinks": 394,
+  "hashErrors": [],
+  "brokenLinks": [],
+  "zip": {
+    "bytes": 114190448,
+    "sha256": "d596187a9830658f75c57bc104859bacc99f8f0b27572e717d4a8274c9b9c7a4"
+  }
+}

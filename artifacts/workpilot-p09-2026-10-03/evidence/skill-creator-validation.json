@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-03T06:23:53.251Z",
+  "source": "Codex system skill-creator quick_validate.py, used only as development validation",
+  "target": "crates/extensions/builtin/skill-creator/SKILL.md",
+  "python": "3.12",
+  "pyyaml": "6.0.3 in isolated .test-results/skill-validator-deps",
+  "status": "passed",
+  "output": "Skill is valid!",
+  "behavioralEvidence": "extensions-model.json",
+  "qualityLimit": "Deterministic model fixture; actual user model quality still pending"
+}

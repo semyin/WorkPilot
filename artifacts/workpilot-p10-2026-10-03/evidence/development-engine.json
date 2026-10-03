@@ -1,0 +1,58 @@
+{
+  "at": "2026-10-03T10:22:00.788Z",
+  "platform": "win32",
+  "service": "Real local files and isolated document worker; synthetic Images API only",
+  "checks": [
+    "chunked_upload_exact_content_source_range_and_cross_task_denial",
+    "real_docx_xlsx_pptx_pdf_csv_markdown_generation_readback_formula_42_and_pdf_render",
+    "generation_uses_file_history_external_edit_blocks_old_approval_and_refresh_reads_new_bytes",
+    "corrupt_password_legacy_unknown_encoding_and_oversize_inputs_are_errors_not_empty_success",
+    "dedicated_image_profile_system_secret_generate_and_multipart_edit_real_bytes_dimensions_usage_cost_unknown",
+    "image_error_disconnect_wrong_format_dimensions_and_count_fail_once_missing_service_never_fakes_success",
+    "image_request_cancellation_is_prompt_and_does_not_retry_or_write_a_result",
+    "image_credential_not_in_event_stream_and_profile_removal_cleans_credential",
+    "real_encrypted_pdf_is_reported_as_password_protected_and_active_parse_can_be_cancelled",
+    "image_key_cannot_accidentally_be_saved_in_plaintext_profile_metadata"
+  ],
+  "stopMs": 66,
+  "parseStopMs": 12,
+  "samples": [
+    {
+      "format": "docx",
+      "sha256": "5a32a37c4e24d76e341a92e6f2cd6bfe3056f7db667136c1db6622e92456921a",
+      "bytes": 9961,
+      "units": 9
+    },
+    {
+      "format": "xlsx",
+      "sha256": "e71f7774a23450e2afddd49e88cb7858b8784e62720b11ce5bafdd3076f86305",
+      "bytes": 15900,
+      "units": 4
+    },
+    {
+      "format": "pptx",
+      "sha256": "6789fc1b5d8642733db7c12930d58c61b2f6659c156b7ce15d9423efa2df86ae",
+      "bytes": 77287,
+      "units": 2
+    },
+    {
+      "format": "pdf",
+      "sha256": "54c4f259008f01a3bf681f4c65ed613b8b750351f49d0c8e0a0a719541774803",
+      "bytes": 13834201,
+      "units": 1
+    },
+    {
+      "format": "csv",
+      "sha256": "0ba0cbbd14fdfba79326874e23b7eb71ac2af25abf31d01928bbea0226d391a0",
+      "bytes": 77,
+      "units": 4
+    },
+    {
+      "format": "md",
+      "sha256": "ad5ab9077fd6f7afdc9c5af61ceb69c06251743ca4b9b1d4e610ad6a849bd050",
+      "bytes": 29,
+      "units": 4
+    }
+  ],
+  "status": "passed"
+}

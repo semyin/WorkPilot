@@ -20,11 +20,16 @@ import { Saved } from "./SavedContent";
 import { ToolFields, ToolPanel, initialTools } from "./ToolPanel";
 import { TeamPanel } from "./TeamPanel";
 import { ProjectSidebar } from "./ProjectSidebar";
-import { Conversation, QueueEdit, TextAttachments } from "./Conversation";
+import { Conversation, QueueEdit } from "./Conversation";
+import { FileAttachments } from "./FileAttachments";
+import { MediaPanel } from "./MediaPanel";
+import { media, attachmentMarkers } from "./mediaClient";
+import type { MediaAsset } from "./generated/contracts";
 import { RecordPanel, ArtifactPanel } from "./RecordPanel";
 import { ResizeHandle } from "./ResizeHandle";
 import { FileWorkbench } from "./FileWorkbench";
 import { BrowserPanel } from "./BrowserPanel";
+import { ExtensionPanel } from "./ExtensionPanel";
 import { workspaceAction, workspaceQuery } from "./workspaceClient";
 import type { Overview } from "./App";
 import icon from "../../../assets/icons/png/128.png";
@@ -154,6 +159,15 @@ export function TaskWorkspace({
   const [effectivePermission, setEffectivePermission] = useState("request_approval");
   const [renaming, setRenaming] = useState<string | null>(null);
   const [fileWorkspace, setFileWorkspace] = useState(false);
+  const [extensionsOpen, setExtensionsOpen] = useState(false);
+  const [mediaOpen, setMediaOpen] = useState(false);
+  const [initialAttachments, setInitialAttachments] = useState<MediaAsset[]>([]);
+  const [messageAttachments, setMessageAttachments] = useState<MediaAsset[]>([]);
+  const [attachmentBusy, setAttachmentBusy] = useState(false);
+  useEffect(() => {
+    setMessageAttachments([]);
+    setAttachmentBusy(false);
+  }, [selected, creating]);
   const selectionGeneration = useRef(0);
   const settingsTask = useRef("");
   const active =
@@ -184,6 +198,18 @@ export function TaskWorkspace({
         "The parent stopped; this member is paused.",
       ),
       awaiting_approval: tr("等待你确认具体操作。", "Waiting for action approval."),
+      awaiting_media_approval: tr(
+        "文件或图片生成需要确认，请查看待批准操作。",
+        "File or image generation needs approval. Review the pending action.",
+      ),
+      image_service_error: tr(
+        "图片服务出错，任务已停止。请在文件成果与图片中查看原因。",
+        "The image service failed and the task stopped. See Files and images for details.",
+      ),
+      awaiting_extension_approval: tr(
+        "扩展操作需要确认。查看并批准后，再继续任务。",
+        "An extension action needs approval. Review it, then continue the task.",
+      ),
       approval_rejected: tr(
         "你已拒绝此操作，任务已暂停。",
         "The action was rejected; this task is paused.",
@@ -313,12 +339,16 @@ export function TaskWorkspace({
     act(async () => {
       const data = {
         ...config,
+        goal: config.goal + attachmentMarkers(initialAttachments),
         constraints: constraints.split("\n").filter((s) => s.trim()),
         title: config.title.trim() || config.goal.slice(0, 60),
       };
       const response = await command({ kind: "create_execution", config: data }, english);
       if (response.kind === "receipt" && response.receipt.task_id) {
         const task = response.receipt.task_id;
+        if (initialAttachments.length)
+          await media(task, { kind: "bind", asset_ids: initialAttachments.map((a) => a.id) });
+        setInitialAttachments([]);
         setSelected(task);
         setCreating(false);
         settingsTask.current = "";
@@ -348,7 +378,17 @@ export function TaskWorkspace({
     act(async () => {
       if (!selected || !message.trim()) return;
       const generation = selectionGeneration.current;
-      await command({ kind: "enqueue", task_id: selected, text: message }, english);
+      if (messageAttachments.length)
+        await media(selected, { kind: "bind", asset_ids: messageAttachments.map((a) => a.id) });
+      await command(
+        {
+          kind: "enqueue",
+          task_id: selected,
+          text: message + attachmentMarkers(messageAttachments),
+        },
+        english,
+      );
+      setMessageAttachments([]);
       setMessage("");
       const current = await refresh(selected);
       if (generation === selectionGeneration.current) setSnapshot(current.snapshot);
@@ -422,20 +462,6 @@ export function TaskWorkspace({
     setMessage("");
     setRenaming(null);
   };
-  const attach = (text: string, initial: boolean) => {
-    const updated = (initial ? config.goal : message) + text;
-    if (new TextEncoder().encode(updated).length > 16384) {
-      setError(
-        tr(
-          "输入与附件合计不能超过 16 KiB，请缩短后重试。",
-          "Instructions and attachments must total at most 16 KiB.",
-        ),
-      );
-      return;
-    }
-    if (initial) setConfig({ ...config, goal: updated });
-    else setMessage(updated);
-  };
   const toolPanel = snapshot && (
     <ToolPanel
       key={snapshot.task.id}
@@ -505,6 +531,9 @@ export function TaskWorkspace({
           </p>
         </div>
         <div className="model-actions">
+          <button onClick={() => setExtensionsOpen(true)}>
+            {tr("技能与插件", "Skills & plugins")}
+          </button>
           {desktop && selected && (
             <>
               <button onClick={() => setFileWorkspace(true)}>
@@ -556,6 +585,9 @@ export function TaskWorkspace({
             </>
           )}
           <button onClick={onModels}>{tr("模型服务", "Model services")}</button>
+          <button onClick={() => setMediaOpen(true)}>
+            {tr("文件成果与图片", "Files and images")}
+          </button>
           <button onClick={onClose}>
             {desktop ? tr("隐藏窗口", "Hide window") : tr("返回工作台", "Back to workspace")}
           </button>
@@ -676,7 +708,14 @@ export function TaskWorkspace({
                   onChange={(e) => setConfig({ ...config, goal: e.target.value })}
                 />
               </label>
-              {desktop && <TextAttachments onAttach={(text) => attach(text, true)} />}
+              {desktop && (
+                <FileAttachments
+                  key="initial"
+                  assets={initialAttachments}
+                  onChange={setInitialAttachments}
+                  onBusy={setAttachmentBusy}
+                />
+              )}
               <label>
                 {tr("工作模式", "Work mode")}
                 <select
@@ -736,13 +775,16 @@ export function TaskWorkspace({
               </p>
               <button
                 className="primary"
-                disabled={busy || !config.goal.trim()}
+                disabled={busy || attachmentBusy || !config.goal.trim()}
                 onClick={() => void create()}
               >
                 {tr("创建并开始", "Create and start")}
               </button>
               {config.mode === "execute" && (
-                <button disabled={busy || !config.goal.trim()} onClick={() => void create(false)}>
+                <button
+                  disabled={busy || attachmentBusy || !config.goal.trim()}
+                  onClick={() => void create(false)}
+                >
                   {tr("先创建并设置分工", "Create and configure team first")}
                 </button>
               )}
@@ -893,6 +935,16 @@ export function TaskWorkspace({
                 {reasonLabel(snapshot.latest_run?.reason) && (
                   <p className="execution-notice">{reasonLabel(snapshot.latest_run?.reason)}</p>
                 )}
+                {snapshot.latest_run?.reason === "awaiting_media_approval" && (
+                  <button onClick={() => setMediaOpen(true)}>
+                    {tr("查看文件或图片待批准操作", "Review pending file or image generation")}
+                  </button>
+                )}
+                {snapshot.latest_run?.reason === "awaiting_extension_approval" && (
+                  <button onClick={() => setExtensionsOpen(true)}>
+                    {tr("查看扩展待批准操作", "Review pending extension action")}
+                  </button>
+                )}
                 {snapshot.context.question && (
                   <section className="execution-question">
                     <h3>{tr("需要你的输入", "Your input is needed")}</h3>
@@ -1022,10 +1074,17 @@ export function TaskWorkspace({
                       onChange={(e) => setMessage(e.target.value)}
                     />
                   </label>
-                  {desktop && <TextAttachments onAttach={(text) => attach(text, false)} />}
+                  {desktop && (
+                    <FileAttachments
+                      key={selected}
+                      assets={messageAttachments}
+                      onChange={setMessageAttachments}
+                      onBusy={setAttachmentBusy}
+                    />
+                  )}
                   <button
                     className="primary"
-                    disabled={busy || archived || !message.trim()}
+                    disabled={busy || attachmentBusy || archived || !message.trim()}
                     onClick={() => void sendMessage()}
                   >
                     {active
@@ -1289,8 +1348,38 @@ export function TaskWorkspace({
           )}
         </aside>
       </div>
+      {mediaOpen && (
+        <MediaPanel
+          key={creating ? "global-media" : selected || "global-media"}
+          task={creating ? null : selected}
+          onClose={() => setMediaOpen(false)}
+        />
+      )}
       {fileWorkspace && selected && (
         <FileWorkbench key={selected} task={selected} onClose={() => setFileWorkspace(false)} />
+      )}
+      {extensionsOpen && (
+        <ExtensionPanel
+          key={selected || "global"}
+          task={selected}
+          onClose={() => setExtensionsOpen(false)}
+          onDraft={(goal) => {
+            setConfig({
+              ...config,
+              title: tr("创建技能", "Create skill"),
+              goal:
+                tr(
+                  "请为下列需求创建可复用技能草稿。保存技能说明和必要的脚本、参考资料或模板，供我检查。不要包含凭据，不要声称已启用；最后说明如何检查和测试。需求：\n",
+                  "Create a reusable skill draft for the following requirement. Save the skill instructions and necessary scripts, references or templates for my review. Include no credentials. Do not claim it is enabled; explain review and testing steps. Requirement:\n",
+                ) + goal,
+              mode: "plan",
+              profile_id: snapshot?.task.profile_id || config.profile_id,
+              project_id: snapshot?.config.project_id || config.project_id,
+            });
+            setCreating(true);
+            setExtensionsOpen(false);
+          }}
+        />
       )}
     </div>
   );

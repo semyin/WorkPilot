@@ -170,6 +170,15 @@ impl Bridge {
         }
         let seconds = if matches!(
             &request.command,
+            Command::Media { .. }
+                | Command::Workbench {
+                    action: workpilot_contracts::WorkbenchAction::ReadDocument { .. },
+                    ..
+                }
+        ) {
+            120
+        } else if matches!(
+            &request.command,
             Command::Workspace {
                 action: workpilot_contracts::WorkspaceAction::ExportRecords { .. }
             }
@@ -243,6 +252,45 @@ fn main_only(view: &Webview) -> Result<(), String> {
     }
 }
 
+#[tauri::command]
+fn extension_open_login(view: Webview, url: String) -> Result<(), String> {
+    main_only(&view)?;
+    let parsed = tauri::Url::parse(&url).map_err(|_| "无效登录地址。")?;
+    if !parsed.username().is_empty()
+        || parsed.password().is_some()
+        || url.len() > 16384
+        || !(parsed.scheme() == "https"
+            || (parsed.scheme() == "http"
+                && matches!(parsed.host_str(), Some("127.0.0.1" | "localhost" | "[::1]"))))
+    {
+        return Err("登录页面必须使用 HTTPS 或本机测试地址。".into());
+    }
+    #[cfg(windows)]
+    {
+        use std::os::windows::process::CommandExt;
+        ProcessCommand::new("explorer.exe")
+            .arg(parsed.as_str())
+            .creation_flags(0x08000000)
+            .spawn()
+            .map_err(|_| "无法打开默认浏览器。")?;
+    }
+    #[cfg(target_os = "macos")]
+    {
+        ProcessCommand::new("/usr/bin/open")
+            .arg("--")
+            .arg(parsed.as_str())
+            .spawn()
+            .map_err(|_| "无法打开默认浏览器。")?;
+    }
+    #[cfg(target_os = "linux")]
+    {
+        ProcessCommand::new("xdg-open")
+            .arg(parsed.as_str())
+            .spawn()
+            .map_err(|_| "无法打开默认浏览器。")?;
+    }
+    Ok(())
+}
 #[tauri::command]
 async fn project_open_external(
     view: Webview,
@@ -513,6 +561,7 @@ fn main() {
             engine_snapshot,
             engine_command,
             project_open_external,
+            extension_open_login,
             project_preview_open,
             project_preview_close,
             hide_window,

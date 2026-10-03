@@ -10,6 +10,7 @@ workpilot-contracts = { path = "../contracts" }
 workpilot-platform = { path = "../platform" }
 workpilot-storage = { path = "../storage" }
 workpilot-tools = { path = "../tools" }
+workpilot-extensions = { path = "../extensions" }
 tokio.workspace = true
 serde.workspace = true
 serde_json.workspace = true
@@ -19,4 +20,7 @@ zeroize.workspace = true
 tempfile.workspace = true
 ring = "=0.17.14"
 base64 = "=0.22.1"
+reqwest = { workspace = true, features = ["multipart"] }
+futures-util.workspace = true
+url.workspace = true
 [dev-dependencies]

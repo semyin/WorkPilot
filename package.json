@@ -47,7 +47,14 @@
     "test:browser-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/browser-engine-test.mjs && node scripts/browser-safety-test.mjs && node scripts/browser-lifecycle-test.mjs && node scripts/browser-model-test.mjs",
     "browser:prepare-companion": "node scripts/prepare-browser-companion.mjs",
     "test:browser-companion": "node scripts/browser-companion-test.mjs",
-    "test:browser-desktop": "node scripts/browser-desktop-smoke.mjs"
+    "test:browser-desktop": "node scripts/browser-desktop-smoke.mjs",
+    "test:extensions-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/extensions-engine-test.mjs",
+    "test:extensions-model": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/extensions-model-test.mjs",
+    "test:extensions-desktop": "node scripts/extensions-desktop-smoke.mjs",
+    "documents:prepare": "node scripts/prepare-documents.mjs",
+    "test:media-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/media-engine-test.mjs",
+    "test:media-model": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/media-model-test.mjs",
+    "test:media-desktop": "node scripts/media-desktop-smoke.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",

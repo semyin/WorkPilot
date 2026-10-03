@@ -1,0 +1,46 @@
+{
+  "at": "2026-10-03T10:29:51.440Z",
+  "platform": "win32",
+  "method": "Actual LibreOffice 26.8.0 headless opens generated OOXML; PDF.js rasterizes the actual saved PDF",
+  "files": [
+    {
+      "format": "docx",
+      "opened": true,
+      "pages": 1,
+      "sourceSha256": "7bb24fa1d031864e21ddfc03cf1885fd3d0ba41abcb808d45db5e64caa5d3320",
+      "pdfSha256": "c1b5d346ef87e97e1e6b0025f5f8638a8793fc9b6f5990a9f188c9f6bd4a7e92",
+      "actualText": [
+        "WorkPilot   中文验收 \n实际内容 \n收入   25 ，其他收入   17 ，合计   42 。 \n项目   金额 \n收入   25 \n其他   17 "
+      ],
+      "converterOutput": "convert D:\\workspace\\kplocker\\WorkPilot\\.test-results\\media-engine\\sample.docx as a Writer document -> D:\\workspace\\kplocker\\WorkPilot\\.test-results\\media-office-open\\docx\\sample.pdf using filter : writer_pdf_Export\nOverwriting: D:\\workspace\\kplocker\\WorkPilot\\.test-results\\media-office-open\\docx\\sample.pdf"
+    },
+    {
+      "format": "xlsx",
+      "opened": true,
+      "pages": 1,
+      "sourceSha256": "da0068c405d94a020857ecafe30c8c50be7175f4002056aa52a7b78d62c45bc4",
+      "pdfSha256": "88f44c6e23b3e06053a582327445d965d7f9c67bc2dcb69309febc95c9fb4f55",
+      "actualText": [
+        "项目   金额 \n收入   25 \n其他   17 \n合计   42 "
+      ],
+      "converterOutput": "convert D:\\workspace\\kplocker\\WorkPilot\\.test-results\\media-engine\\sample.xlsx as a Calc document -> D:\\workspace\\kplocker\\WorkPilot\\.test-results\\media-office-open\\xlsx\\sample.pdf using filter : calc_pdf_Export\r\nOverwriting: D:\\workspace\\kplocker\\WorkPilot\\.test-results\\media-office-open\\xlsx\\sample.pdf"
+    },
+    {
+      "format": "pptx",
+      "opened": true,
+      "pages": 2,
+      "sourceSha256": "045246cacb19d966635b5df9efe5b5432fc796609d98fc9d5dcc216608574ba9",
+      "pdfSha256": "17a9aafd9501b5250af13bd75904b7bb8f4b29139b07f7051b98ff52fec5fcb3",
+      "actualText": [
+        "工作成果   42 \n真实内容 \n合计   42 \n收入   其他 \n0 \n5 \n10 \n15 \n20 \n25 \n30 \n25 \n17 \n构成 \n1 / 2 ",
+        "下一步 \n验证中文显示和版面。 \n2 / 2 "
+      ],
+      "converterOutput": "convert D:\\workspace\\kplocker\\WorkPilot\\.test-results\\media-engine\\sample.pptx as a Impress document -> D:\\workspace\\kplocker\\WorkPilot\\.test-results\\media-office-open\\pptx\\sample.pdf using filter : impress_pdf_Export\nOverwriting: D:\\workspace\\kplocker\\WorkPilot\\.test-results\\media-office-open\\pptx\\sample.pdf"
+    }
+  ],
+  "checks": [
+    "docx_xlsx_pptx_opened_by_independent_office_engine_actual_pdf_pages_rendered_and_value_42_preserved",
+    "actual_password_protected_pdf_is_rejected_as_encrypted"
+  ],
+  "status": "passed"
+}

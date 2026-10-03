@@ -59,7 +59,7 @@ struct Sandbox {
     path: PathBuf,
 }
 impl Sandbox {
-    fn new(spec: &ProcessSpec) -> io::Result<Self> {
+    fn new(spec: &ProcessSpec, extra: Option<&ProcessInput>) -> io::Result<Self> {
         fs::create_dir_all(&spec.ledger_dir)?;
         let name = format!("WorkPilot.Tool.{}", uuid::Uuid::new_v4());
         let text = wide(&name);
@@ -88,7 +88,11 @@ impl Sandbox {
             },
             path,
         };
-        for (path, write, inherit) in [(&spec.cwd, true, true), (&spec.program, false, false)] {
+        let mut paths = vec![(&spec.cwd, true, true), (&spec.program, false, false)];
+        if let Some(input) = extra {
+            paths.extend(input.read_roots.iter().map(|p| (p, false, true)));
+        }
+        for (path, write, inherit) in paths {
             // Windows ships system executables with AppContainer read access;
             // never attempt to change TrustedInstaller-owned system ACLs.
             let system =
@@ -176,6 +180,22 @@ fn acl(path: &std::path::Path, sid: PSID, grant: Option<(bool, bool)>) -> io::Re
     if status != 0 {
         return Err(io::Error::from_raw_os_error(status as i32));
     }
+    // A NULL DACL means unrestricted access, not an empty ACL. Adding one ACE to it
+    // would remove the owner's existing access. Never rewrite such a boundary.
+    if old.is_null() {
+        if !descriptor.is_null() {
+            unsafe {
+                LocalFree(descriptor);
+            }
+        }
+        return if grant.is_some() {
+            Err(io::Error::other(
+                "Cannot safely grant sandbox access to a path with a NULL DACL",
+            ))
+        } else {
+            Ok(())
+        };
+    }
     let mut entry: EXPLICIT_ACCESS_W = unsafe { std::mem::zeroed() };
     entry.grfAccessMode = if grant.is_some() {
         GRANT_ACCESS
@@ -225,6 +245,7 @@ fn acl(path: &std::path::Path, sid: PSID, grant: Option<(bool, bool)>) -> io::Re
         Err(io::Error::from_raw_os_error(status as i32))
     }
 }
+
 pub fn recover(directory: &std::path::Path) -> io::Result<Vec<String>> {
     if !directory.exists() {
         return Ok(vec![]);
@@ -247,7 +268,7 @@ pub fn recover(directory: &std::path::Path) -> io::Result<Vec<String>> {
         let Some(id) = l.name.strip_prefix("WorkPilot.Tool.") else {
             continue;
         };
-        if uuid::Uuid::parse_str(id).is_err() || l.paths.len() > 2 {
+        if uuid::Uuid::parse_str(id).is_err() || l.paths.len() > 10 {
             continue;
         }
         let mut sid = ptr::null_mut();
@@ -384,6 +405,7 @@ pub fn run(
     spec: ProcessSpec,
     stop: Arc<AtomicBool>,
     observer: Option<ProcessObserver>,
+    input: Option<ProcessInput>,
 ) -> io::Result<ProcessResult> {
     if stop.load(Ordering::SeqCst) {
         return Err(io::Error::new(
@@ -393,10 +415,16 @@ pub fn run(
     }
     let start = Instant::now();
     let mut sandbox = if spec.sandboxed {
-        Some(Sandbox::new(&spec)?)
+        Some(Sandbox::new(&spec, input.as_ref())?)
     } else {
         None
     };
+    if stop.load(Ordering::SeqCst) {
+        return Err(io::Error::new(
+            io::ErrorKind::Interrupted,
+            "cancelled during process preparation",
+        ));
+    }
     let job = Job(checked(unsafe {
         CreateJobObjectW(ptr::null(), ptr::null())
     })?);
@@ -435,7 +463,7 @@ pub fn run(
     startup.lpAttributeList = attributes.pointer;
     let system = std::env::var("SystemRoot").unwrap_or_else(|_| "C:\\Windows".into());
     // Explicit environment only. No account keys, SSH agents, user profiles or proxy credentials.
-    let mut variables = vec![
+    let mut variables = zeroize::Zeroizing::new(vec![
         format!(
             "APPDATA={}",
             if spec.sandboxed {
@@ -476,9 +504,18 @@ pub fn run(
             }
         ),
         format!("WINDIR={system}"),
-    ];
+    ]);
+    if let Some(input) = &input {
+        variables.extend(
+            input
+                .environment
+                .iter()
+                .map(|(k, v)| format!("{k}={}", v.as_str())),
+        );
+    }
     variables.sort_by_key(|v| v.to_ascii_uppercase());
-    let mut environment: Vec<u16> = variables.iter().flat_map(wide).collect();
+    let mut environment =
+        zeroize::Zeroizing::new(variables.iter().flat_map(wide).collect::<Vec<u16>>());
     environment.push(0);
     let executable = spec.program.to_string_lossy().replace('/', "\\");
     let mut command = wide(
@@ -522,7 +559,39 @@ pub fn run(
     } else if unsafe { ResumeThread(thread_handle.0) } == u32::MAX {
         return Err(io::Error::last_os_error());
     }
-    drop((input_read, input_write, output_write, error_write));
+    drop((input_read, output_write, error_write));
+    let input_finished = Arc::new(AtomicBool::new(false));
+    let input_worker = if let Some(input) = input {
+        let done = input_finished.clone();
+        let stop = stop.clone();
+        Some(std::thread::spawn(move || {
+            let raw = input_write.0;
+            std::mem::forget(input_write);
+            // SAFETY: the thread uniquely owns the non-inheritable pipe write handle.
+            let mut file = unsafe { File::from_raw_handle(raw) };
+            while !done.load(Ordering::SeqCst) && !stop.load(Ordering::SeqCst) {
+                match input
+                    .messages
+                    .recv_timeout(std::time::Duration::from_millis(20))
+                {
+                    Ok(bytes) if bytes.len() <= 1024 * 1024 => {
+                        if file.write_all(&bytes).is_err() {
+                            break;
+                        }
+                    }
+                    Ok(_) => {
+                        stop.store(true, Ordering::SeqCst);
+                        break;
+                    }
+                    Err(std::sync::mpsc::RecvTimeoutError::Timeout) => {}
+                    Err(_) => break,
+                }
+            }
+        }))
+    } else {
+        drop(input_write);
+        None
+    };
     let overflow = Arc::new(AtomicBool::new(false));
     let stdout = capture(
         output_read,
@@ -600,6 +669,10 @@ pub fn run(
     win(unsafe { GetExitCodeProcess(process_handle.0, &mut exit_code) })?;
     // Main process exit does not grant descendants permission to outlive the tool.
     drop(job);
+    input_finished.store(true, Ordering::SeqCst);
+    if let Some(worker) = input_worker {
+        let _ = worker.join();
+    }
     let stdout = stdout
         .join()
         .map_err(|_| io::Error::other("stdout reader failed"))??;
@@ -631,4 +704,46 @@ pub fn run(
         elapsed_ms: start.elapsed().as_millis() as u64,
         cleanup_errors,
     })
+}
+
+#[cfg(test)]
+mod acl_tests {
+    use super::*;
+    #[test]
+    fn null_dacl_is_not_replaced_with_a_single_sandbox_ace() {
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("owned.txt");
+        fs::write(&path, "preserve access").unwrap();
+        let mut sid = ptr::null_mut();
+        let name = wide("WorkPilot.Tool.00000000-0000-4000-8000-000000000001");
+        assert_eq!(
+            unsafe { DeriveAppContainerSidFromAppContainerName(name.as_ptr(), &mut sid) },
+            0
+        );
+        assert_eq!(
+            unsafe {
+                SetNamedSecurityInfoW(
+                    wide(&path).as_ptr(),
+                    SE_FILE_OBJECT,
+                    DACL_SECURITY_INFORMATION | Security::PROTECTED_DACL_SECURITY_INFORMATION,
+                    ptr::null_mut(),
+                    ptr::null_mut(),
+                    ptr::null(),
+                    ptr::null(),
+                )
+            },
+            0
+        );
+        assert!(
+            acl(&path, sid, Some((false, false)))
+                .unwrap_err()
+                .to_string()
+                .contains("NULL DACL")
+        );
+        assert_eq!(fs::read_to_string(&path).unwrap(), "preserve access");
+        assert!(acl(&path, sid, None).is_ok());
+        unsafe {
+            Security::FreeSid(sid);
+        }
+    }
 }

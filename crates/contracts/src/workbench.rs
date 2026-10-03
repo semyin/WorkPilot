@@ -28,6 +28,16 @@ pub enum FileEdit {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 pub enum WorkbenchAction {
+    Media {
+        effect: MediaEffect,
+    },
+    ReadDocument {
+        path: String,
+        expected: FileVersion,
+    },
+    Extension {
+        effect: ExtensionEffect,
+    },
     BrowserControl {
         control: BrowserControl,
     },
@@ -93,6 +103,9 @@ impl WorkbenchAction {
             !p.is_empty() && p.len() <= 4096 && !p.contains('\0')
         }
         match self {
+            Self::Media { effect } => return effect.validate(),
+            Self::ReadDocument { path: p, .. } if !path(p) => return Err("invalid file path"),
+            Self::Extension { effect } => return effect.validate(),
             Self::Browser { action } => return action.validate(),
             Self::BrowserControl { control } => match control {
                 BrowserControl::Start { channel } | BrowserControl::Pair { channel }
@@ -196,6 +209,9 @@ impl WorkbenchAction {
         Ok(())
     }
     pub fn mutates(&self) -> bool {
+        if matches!(self, Self::Extension { .. } | Self::Media { .. }) {
+            return true;
+        }
         if let Self::Browser { action } = self {
             return !action.read_only();
         }

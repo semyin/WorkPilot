@@ -2,6 +2,8 @@
 mod execution;
 #[cfg(test)]
 mod execution_tests;
+mod extensions;
+mod media;
 mod objects;
 #[cfg(test)]
 mod provider_tests;
@@ -123,6 +125,8 @@ impl Store {
                 (5, include_str!("../migrations/005_teams.sql")),
                 (6, include_str!("../migrations/006_workspace.sql")),
                 (7, include_str!("../migrations/007_workbench.sql")),
+                (8, include_str!("../migrations/008_extensions.sql")),
+                (9, include_str!("../migrations/009_media.sql")),
             ],
         )?;
         let mut store = Self {

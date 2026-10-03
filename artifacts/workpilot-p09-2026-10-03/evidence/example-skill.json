@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-03T06:17:37.689Z",
+  "status": "passed",
+  "checks": [
+    "actual_example_generates_expected_checklist",
+    "second_run_preserves_existing_file"
+  ]
+}

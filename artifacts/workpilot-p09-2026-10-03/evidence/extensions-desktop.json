@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-03T05:49:41.885Z",
+  "platform": "win32",
+  "binary": {
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\target\\release\\workpilot-desktop.exe",
+    "sha256": "145e94e16db67c214604f5ded9e632d0637799c45f077d2f35edfa665de1bc52"
+  },
+  "service": "Actual Windows WebView + Rust engine + local MCP HTTP protocol server",
+  "checks": [
+    "native_import_preview_read_skill_file_confirm_enable_project_scope",
+    "native_mcp_discovery_approval_call_and_complete_saved_input_output",
+    "disable_removes_tool_cache_and_requires_fresh_discovery",
+    "natural_language_skill_creation_prepares_a_real_model_task_for_user_start",
+    "english_interface_no_horizontal_overflow_or_javascript_errors"
+  ],
+  "status": "passed"
+}

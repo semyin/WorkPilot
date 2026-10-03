@@ -34,6 +34,59 @@ pub struct Service {
 #[derive(Clone)]
 pub struct Client(Arc<State>);
 impl Client {
+    pub async fn media(&self, task: Option<String>, action: MediaAdmin) -> Result<Value> {
+        self.0.media.admin(task, action).await
+    }
+    pub async fn media_context(
+        &self,
+        task: &str,
+        delivered: &str,
+        images: bool,
+    ) -> Result<Vec<ModelContent>> {
+        self.0.media.model_context(task, delivered, images).await
+    }
+    pub async fn media_assets(&self, task: &str, delivered: &str) -> Result<Vec<MediaAsset>> {
+        self.0.media.model_assets(task, delivered).await
+    }
+    pub async fn extensions(&self, task: Option<String>, action: ExtensionAdmin) -> Result<Value> {
+        let scope = self.0.extension_scope(task).await?;
+        self.0.extensions.admin(scope, action).await
+    }
+    pub async fn extension_definitions(
+        &self,
+        task: &str,
+        mode: WorkMode,
+    ) -> Result<Vec<ToolDefinition>> {
+        let scope = self.0.extension_scope(Some(task.into())).await?;
+        self.0.extensions.definitions(scope.as_deref(), mode).await
+    }
+    pub async fn extension_input(
+        &self,
+        task: &str,
+        name: &str,
+        arguments: Value,
+    ) -> Result<ExtensionEffect> {
+        let scope = self.0.extension_scope(Some(task.into())).await?;
+        self.0
+            .extensions
+            .resolve(scope.as_deref(), name, arguments)
+            .await
+    }
+    pub async fn skill_draft(
+        &self,
+        task: &str,
+        id: &str,
+        project: bool,
+        files: Vec<SkillDraftFile>,
+    ) -> Result<Value> {
+        let scope = self.0.extension_scope(Some(task.into())).await?;
+        let scope = if project {
+            Some(scope.ok_or("当前任务没有绑定项目文件夹。")?)
+        } else {
+            None
+        };
+        Ok(json!(self.0.extensions.draft(id, scope, files).await?))
+    }
     pub async fn request(
         &self,
         task: String,
@@ -98,6 +151,8 @@ struct State {
     live: Mutex<HashMap<String, Arc<Live>>>,
     jobs: Mutex<Vec<JoinHandle<()>>>,
     browser: crate::browser::BrowserDriver,
+    extensions: workpilot_extensions::Manager,
+    media: crate::media::Manager,
     images: Mutex<HashMap<String, String>>,
 }
 struct Live {
@@ -145,6 +200,8 @@ impl Service {
     pub async fn new(storage: Storage, data: PathBuf, out: mpsc::Sender<Wire>) -> Self {
         let service = Self {
             state: Arc::new(State {
+                media: crate::media::Manager::new(storage.clone(), data.clone()),
+                extensions: workpilot_extensions::Manager::new(storage.clone(), data.clone()),
                 storage,
                 browser: crate::browser::BrowserDriver::new(data.clone()),
                 images: Mutex::new(HashMap::new()),
@@ -171,6 +228,77 @@ impl Service {
             | Command::ConfigureTaskTools { task_id, .. }
             | Command::ConfigureExecution { task_id, .. } => self.cancel_task(task_id),
             _ => {}
+        }
+        if let Command::Media { task_id, action } = &request.command {
+            self.requests.retain(|j| !j.is_finished());
+            let (state, id, task, action) = (
+                self.state.clone(),
+                request.request_id.clone(),
+                task_id.clone(),
+                action.clone(),
+            );
+            if self.requests.len() >= 8 {
+                let _ = state.out.try_send(Wire::Reply {
+                    request_id: id,
+                    response: error("文件处理忙，请稍后重试 / File processing is busy"),
+                });
+                return true;
+            }
+            let runtime = tokio::runtime::Handle::current();
+            self.requests.push(tokio::task::spawn_blocking(move || {
+                runtime.block_on(async move {
+                    let response = match state.media.admin(task, action).await {
+                        Ok(data) => Response::Workbench { data },
+                        Err(e) => error(e),
+                    };
+                    let _ = state
+                        .out
+                        .send(Wire::Reply {
+                            request_id: id,
+                            response,
+                        })
+                        .await;
+                })
+            }));
+            return true;
+        }
+        if let Command::Extensions { task_id, action } = &request.command {
+            self.requests.retain(|j| !j.is_finished());
+            let (state, id, task, action) = (
+                self.state.clone(),
+                request.request_id.clone(),
+                task_id.clone(),
+                action.clone(),
+            );
+            if self.requests.len() >= 8 {
+                let _ = state.out.try_send(Wire::Reply {
+                    request_id: id,
+                    response: error("扩展管理正在处理其他操作，请稍后重试。"),
+                });
+                return true;
+            }
+            let runtime = tokio::runtime::Handle::current();
+            self.requests.push(tokio::task::spawn_blocking(move || {
+                runtime.block_on(async move {
+                    let result = async {
+                        let scope = state.extension_scope(task).await?;
+                        state.extensions.admin(scope, action).await
+                    }
+                    .await;
+                    let response = match result {
+                        Ok(data) => Response::Workbench { data },
+                        Err(e) => error(e),
+                    };
+                    let _ = state
+                        .out
+                        .send(Wire::Reply {
+                            request_id: id,
+                            response,
+                        })
+                        .await;
+                })
+            }));
+            return true;
         }
         let Command::Workbench { task_id, action } = &request.command else {
             return false;
@@ -213,6 +341,7 @@ impl Service {
         true
     }
     fn cancel_task(&self, task: &str) {
+        self.state.media.cancel_task(task);
         self.state.browser.cancel_task(task);
         self.state.images.lock().unwrap().remove(task);
         for live in self.state.live.lock().unwrap().values() {
@@ -223,7 +352,9 @@ impl Service {
         }
     }
     pub fn cancel_all(&self) {
+        self.state.media.cancel_all();
         self.state.browser.cancel_all();
+        self.state.extensions.cancel_all();
         self.state.images.lock().unwrap().clear();
         for live in self.state.live.lock().unwrap().values() {
             live.stop.store(true, Ordering::SeqCst);
@@ -244,6 +375,24 @@ impl Service {
     }
 }
 impl State {
+    async fn extension_scope(&self, task: Option<String>) -> Result<Option<String>> {
+        let Some(task) = task else {
+            return Ok(None);
+        };
+        let policy = self
+            .storage
+            .call(move |s| s.tool_settings(&task))
+            .await
+            .map_err(|e| e.to_string())?;
+        match policy.settings.root_path.as_deref() {
+            Some(path) => Ok(Some(
+                Root::open(path, policy.root_identity.as_deref())
+                    .map_err(|e| e.to_string())?
+                    .identity,
+            )),
+            None => Ok(None),
+        }
+    }
     async fn record_browser_read(
         &self,
         id: &str,
@@ -434,6 +583,37 @@ impl State {
     async fn prepare(&self, task: &str, action: WorkbenchAction) -> Result<(Context, Prepared)> {
         let context = self.context(task, true).await?;
         let scope = match &action {
+            WorkbenchAction::Media { effect } => {
+                self.media.prepare(task, &context.root, effect).await?
+            }
+            WorkbenchAction::Extension { effect } => {
+                let mut scope = self
+                    .extensions
+                    .prepare(
+                        effect,
+                        &context.root.identity,
+                        context.policy.settings.commands_enabled,
+                    )
+                    .await?;
+                if let ExtensionEffect::CopyResource {
+                    destination,
+                    expected,
+                    ..
+                } = effect
+                {
+                    user_path(destination).map_err(|e| e.to_string())?;
+                    let version = context
+                        .root
+                        .binary_snapshot(destination)
+                        .map_err(|e| e.to_string())?
+                        .version;
+                    if &version != expected {
+                        return Err("目标文件已经变化，请重新读取再复制。".into());
+                    }
+                    scope["destination_version"] = json!(version);
+                }
+                scope
+            }
             WorkbenchAction::Browser { action } => {
                 let mut scope = self
                     .browser
@@ -597,6 +777,36 @@ impl State {
             let (context, prepared) = self.prepare(task, action).await?;
             let automatic = context.policy.effective_permission == PermissionMode::FullAccess;
             let (kind, summary, port) = match &prepared.action {
+                WorkbenchAction::Media { effect } => (
+                    "media",
+                    format!(
+                        "{} · {}",
+                        if matches!(effect, MediaEffect::GenerateImage { .. }) {
+                            "生成图片 / Generate image"
+                        } else {
+                            "生成文件 / Generate file"
+                        },
+                        effect.paths().join(", ")
+                    ),
+                    None,
+                ),
+                WorkbenchAction::Extension { effect } => (
+                    "extension",
+                    format!(
+                        "扩展操作 / Extension · {}",
+                        match effect {
+                            ExtensionEffect::Discover { server_id, .. } =>
+                                format!("检查工具 {server_id}"),
+                            ExtensionEffect::Call {
+                                server_id, tool, ..
+                            } => format!("{server_id} / {tool}"),
+                            ExtensionEffect::RunScript { path, .. } => format!("运行 {path}"),
+                            ExtensionEffect::CopyResource { destination, .. } =>
+                                format!("复制到 {destination}"),
+                        }
+                    ),
+                    None,
+                ),
                 WorkbenchAction::Browser { action } => (
                     "browser",
                     format!(
@@ -707,7 +917,21 @@ impl State {
                     return Err("审批已失效或已被使用。".into());
                 }
                 let prepared = self.read_prepared(&operation_id).await?;
-                let (context, fresh) = self.prepare(task, prepared.action.clone()).await?;
+                let (context, fresh) = match self.prepare(task, prepared.action.clone()).await {
+                    Ok(value) => value,
+                    Err(e)
+                        if matches!(
+                            prepared.action,
+                            WorkbenchAction::Extension { .. } | WorkbenchAction::Media { .. }
+                        ) =>
+                    {
+                        op.state = "failed".into();
+                        op.error = Some(e.clone());
+                        self.save_operation(&op, false).await?;
+                        return Err(e);
+                    }
+                    Err(e) => return Err(e),
+                };
                 if hash(&fresh)? != fingerprint {
                     return Err("文件或权限已变化，旧审批不会执行，请重新提交操作。".into());
                 }
@@ -864,6 +1088,11 @@ impl State {
                         let file = root.binary_snapshot(&path).map_err(|e| e.to_string())?;
                         Ok(file_view(&path, &file.version, &file.bytes))
                     }
+                    WorkbenchAction::ReadDocument { path, expected } => {
+                        self.media
+                            .import_project(task, root, &path, &expected)
+                            .await
+                    }
                     WorkbenchAction::Search { text } => Ok(
                         json!({"kind":"search","result":root.search(".",&text).map_err(|e|e.to_string())?}),
                     ),
@@ -978,8 +1207,7 @@ impl State {
                                 }
                                 .into();
                                 if failed {
-                                    op.error =
-                                        Some("命令未正常完成，请展开输出查看退出原因。".into());
+                                    op.error = Some("操作未正常完成，请展开结果查看原因。".into());
                                 }
                             }
                             Err(e) => {
@@ -1016,9 +1244,19 @@ impl State {
             return Err("操作已停止。".into());
         }
         let browser_without_files = matches!(&prepared.action,WorkbenchAction::Browser{action} if !matches!(action,BrowserAction::Upload{..}|BrowserAction::Download{..}));
+        let extension_without_files =
+            if let WorkbenchAction::Extension { effect } = &prepared.action {
+                !matches!(effect, ExtensionEffect::CopyResource { .. })
+                    && !self
+                        .extensions
+                        .is_local(effect, &prepared.root_identity)
+                        .await?
+            } else {
+                false
+            };
         let lock = workpilot_tools::mutation::acquire(
             Some(&prepared.root_identity),
-            if browser_without_files {
+            if browser_without_files || extension_without_files {
                 "browser"
             } else {
                 "workbench"
@@ -1036,17 +1274,25 @@ impl State {
         }
         op.state = "running".into();
         self.save_operation(op, false).await?;
-        let paths = if let WorkbenchAction::Browser {
+        let paths = if let WorkbenchAction::Media { effect } = &prepared.action {
+            Some(effect.paths())
+        } else if let WorkbenchAction::Browser {
             action: BrowserAction::Download { path, .. },
         } = &prepared.action
         {
             Some(vec![path.clone()])
         } else if let WorkbenchAction::Edit { edit } = &prepared.action {
             Some(self.edit_paths(&context, edit).await?.0)
+        } else if let WorkbenchAction::Extension {
+            effect: ExtensionEffect::CopyResource { destination, .. },
+        } = &prepared.action
+        {
+            Some(vec![destination.clone()])
         } else {
             None
         };
-        let capture = if matches!(&prepared.action,WorkbenchAction::Browser{action} if !matches!(action,BrowserAction::Download{..}))
+        let capture = if extension_without_files
+            || matches!(&prepared.action,WorkbenchAction::Browser{action} if !matches!(action,BrowserAction::Download{..}))
         {
             None
         } else {
@@ -1090,6 +1336,56 @@ impl State {
     ) -> Result<Value> {
         let root = &context.root;
         match action {
+            WorkbenchAction::Media { effect } => {
+                let (value, events) = self
+                    .media
+                    .execute(&op.task_id, root, effect, &op.id, live.stop.clone())
+                    .await?;
+                self.events(events).await;
+                Ok(value)
+            }
+            WorkbenchAction::Extension { effect } => {
+                if let ExtensionEffect::CopyResource {
+                    destination,
+                    expected,
+                    ..
+                } = effect
+                {
+                    let bytes = self
+                        .extensions
+                        .copy_resource(effect, Some(&root.identity))
+                        .await?;
+                    if live.stop.load(Ordering::SeqCst) {
+                        return Err("资源复制已停止。".into());
+                    }
+                    let version = root
+                        .replace_bytes(destination, expected, &bytes)
+                        .map_err(|e| e.to_string())?;
+                    return Ok(
+                        json!({"path":destination,"version":version,"history_recorded":true}),
+                    );
+                }
+                let view = live.clone();
+                let observer = Arc::new(move |progress| {
+                    let mut state = view.view.lock().unwrap();
+                    match progress {
+                        ProcessProgress::Started(pid) => state.pid = Some(pid),
+                        ProcessProgress::OwnedProcesses(pids) => state.owned = pids,
+                        ProcessProgress::Stdout(bytes) => state.stdout.extend(bytes),
+                        ProcessProgress::Stderr(bytes) => state.stderr.extend(bytes),
+                    }
+                });
+                self.extensions
+                    .execute(
+                        effect,
+                        &root.identity,
+                        &root.path,
+                        context.policy.effective_permission == PermissionMode::FullAccess,
+                        live.stop.clone(),
+                        Some(observer),
+                    )
+                    .await
+            }
             WorkbenchAction::Browser { action } => {
                 let mut wire = serde_json::to_value(action).map_err(|e| e.to_string())?;
                 if let BrowserAction::Upload { path, expected, .. } = action {

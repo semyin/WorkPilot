@@ -1,0 +1,16 @@
+{
+  "result": "passed",
+  "checks": [
+    "three_independent_model_profiles_parallel_branches_dependency_join_and_reviewed_real_artifacts",
+    "failure_isolation_explicit_new_assistant_keeps_original_error_no_request_retry",
+    "repeated_failure_replacement_limit_stops_new_members_and_requests_input",
+    "concurrent_same_file_create_has_one_version_and_one_visible_conflict",
+    "inherited_human_approval_cross_task_rejected_and_external_edit_preserved",
+    "parent_stop_reopen_manual_continue_preserves_completed_branch_and_blocks_new_tools",
+    "parallel_projects_keep_members_events_and_files_separate",
+    "manual_assignment_override_and_repeated_command_do_not_duplicate_members",
+    "sixteen_members_across_two_projects_respect_global_and_root_running_limits",
+    "nested_teams_with_one_global_slot_release_waiting_parents_without_deadlock",
+    "crash_after_durable_delegation_receipt_recovers_without_duplicate_assistants"
+  ]
+}

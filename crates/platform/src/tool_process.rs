@@ -34,6 +34,69 @@ pub enum ProcessProgress {
     Stderr(Vec<u8>),
 }
 pub type ProcessObserver = Arc<dyn Fn(ProcessProgress) + Send + Sync>;
+/// Trusted host setup for bounded bidirectional tools; never supplied directly by a model.
+pub struct ProcessInput {
+    pub messages: std::sync::mpsc::Receiver<Vec<u8>>,
+    pub read_roots: Vec<PathBuf>,
+    pub environment: Vec<(String, zeroize::Zeroizing<String>)>,
+}
+pub fn run_interactive(
+    spec: ProcessSpec,
+    stop: Arc<AtomicBool>,
+    observer: Option<ProcessObserver>,
+    input: ProcessInput,
+) -> io::Result<ProcessResult> {
+    validate(&spec)?;
+    if input.read_roots.len() > 8
+        || input.read_roots.iter().any(|p| !p.is_absolute())
+        || input.environment.len() > 16
+        || input.environment.iter().any(|(k, v)| {
+            k.is_empty()
+                || k.len() > 64
+                || !k
+                    .bytes()
+                    .all(|c| c.is_ascii_uppercase() || c.is_ascii_digit() || c == b'_')
+                || v.len() > 4096
+                || v.contains('\0')
+                || [
+                    "PATH",
+                    "HOME",
+                    "USERPROFILE",
+                    "SYSTEMROOT",
+                    "WINDIR",
+                    "COMSPEC",
+                    "TEMP",
+                    "TMP",
+                    "APPDATA",
+                    "LOCALAPPDATA",
+                    "NODE_OPTIONS",
+                    "NODE_PATH",
+                    "PYTHONPATH",
+                    "PYTHONHOME",
+                    "LD_PRELOAD",
+                    "LD_LIBRARY_PATH",
+                ]
+                .contains(&k.as_str())
+        })
+    {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidInput,
+            "invalid interactive tool boundary",
+        ));
+    }
+    #[cfg(windows)]
+    {
+        windows::run(spec, stop, observer, Some(input))
+    }
+    #[cfg(not(windows))]
+    {
+        let _ = (spec, stop, observer, input);
+        Err(io::Error::new(
+            io::ErrorKind::Unsupported,
+            "interactive process boundary is not verified on this platform",
+        ))
+    }
+}
 pub fn run(spec: ProcessSpec, stop: Arc<AtomicBool>) -> io::Result<ProcessResult> {
     run_observed(spec, stop, None)
 }
@@ -42,6 +105,21 @@ pub fn run_observed(
     stop: Arc<AtomicBool>,
     observer: Option<ProcessObserver>,
 ) -> io::Result<ProcessResult> {
+    validate(&spec)?;
+    #[cfg(windows)]
+    {
+        windows::run(spec, stop, observer, None)
+    }
+    #[cfg(not(windows))]
+    {
+        let _ = (spec, stop, observer);
+        Err(io::Error::new(
+            io::ErrorKind::Unsupported,
+            "process boundary is not verified on this platform",
+        ))
+    }
+}
+fn validate(spec: &ProcessSpec) -> io::Result<()> {
     if !spec.program.is_absolute()
         || !spec.cwd.is_absolute()
         || spec.args.iter().any(|a| a.contains('\0'))
@@ -55,18 +133,7 @@ pub fn run_observed(
             "invalid process boundary",
         ));
     }
-    #[cfg(windows)]
-    {
-        windows::run(spec, stop, observer)
-    }
-    #[cfg(not(windows))]
-    {
-        let _ = (spec, stop, observer);
-        Err(io::Error::new(
-            io::ErrorKind::Unsupported,
-            "process boundary is not verified on this platform",
-        ))
-    }
+    Ok(())
 }
 pub fn recover(ledger_dir: &std::path::Path) -> io::Result<Vec<String>> {
     #[cfg(windows)]

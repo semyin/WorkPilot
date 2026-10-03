@@ -1,6 +1,7 @@
 # Build outputs and dependency caches. Keep Cargo.lock and package-lock.json.
 /target/
 node_modules/
+/services/documents/fonts/*.otf
 dist/
 .cache/
 .vite/
@@ -72,6 +73,10 @@ coverage/
 /artifacts/workpilot-*/*.deb
 /artifacts/workpilot-*/*.rpm
 /artifacts/workpilot-*/*.AppImage
+/artifacts/workpilot-*/samples/*.docx
+/artifacts/workpilot-*/samples/*.xlsx
+/artifacts/workpilot-*/samples/*.pptx
+/artifacts/workpilot-*/samples/*.pdf
 
 # Python caches and local virtual environments.
 __pycache__/
