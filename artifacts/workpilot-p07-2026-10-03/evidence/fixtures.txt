@@ -1,0 +1,62 @@
+
+> workpilot@0.1.0-alpha.0 test:fixtures
+> node --test tests/node/*.test.mjs
+
+TAP version 13
+# Subtest: missing URL is explained without constructing an invalid URL or broadening access
+ok 1 - missing URL is explained without constructing an invalid URL or broadening access
+  ---
+  duration_ms: 1.1621
+  type: 'test'
+  ...
+# Subtest: only the local fixture is accepted
+ok 2 - only the local fixture is accepted
+  ---
+  duration_ms: 0.4115
+  type: 'test'
+  ...
+# Subtest: an inaccessible tab never reaches native messaging or debugger attach
+ok 3 - an inaccessible tab never reaches native messaging or debugger attach
+  ---
+  duration_ms: 1.9032
+  type: 'test'
+  ...
+# Subtest: /v1/chat/completions streams text and complete tool arguments
+ok 4 - /v1/chat/completions streams text and complete tool arguments
+  ---
+  duration_ms: 158.9389
+  type: 'test'
+  ...
+# Subtest: /v1/responses streams text and complete tool arguments
+ok 5 - /v1/responses streams text and complete tool arguments
+  ---
+  duration_ms: 119.0371
+  type: 'test'
+  ...
+# Subtest: /v1/messages streams text and complete tool arguments
+ok 6 - /v1/messages streams text and complete tool arguments
+  ---
+  duration_ms: 163.6598
+  type: 'test'
+  ...
+# Subtest: errors, slow stream and disconnect stay observable
+ok 7 - errors, slow stream and disconnect stay observable
+  ---
+  duration_ms: 35.7007
+  type: 'test'
+  ...
+# Subtest: browser fixture and download contain deterministic local data
+ok 8 - browser fixture and download contain deterministic local data
+  ---
+  duration_ms: 14.3093
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 595.9416

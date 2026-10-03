@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-03T01:34:22.384Z",
+  "platform": "win32",
+  "checks": [
+    "native_editor_approval_saves_actual_file_and_updates_version",
+    "conflict_preserves_external_file_and_unsaved_editor_draft",
+    "history_diff_and_restore_retain_current_external_version",
+    "static_html_renders_with_scripts_and_host_access_disabled",
+    "native_terminal_runs_real_powershell_with_saved_output",
+    "english_workspace_and_history_fit_native_window"
+  ],
+  "status": "passed"
+}

@@ -234,8 +234,8 @@ export function ArtifactPanel({ task, sequence }: { task: string; sequence: numb
       <h3>{tr("成果文件", "Artifact files")}</h3>
       <p>
         {tr(
-          "展示助手实际登记的文件版本。普通项目文件浏览、比较与回退在 P07 完善。",
-          "Files registered by the assistants. Project file browsing, diffs and rollback are planned in P07.",
+          "展示助手实际登记的文件版本。查看、编辑、比较与恢复项目文件，请打开“文件与终端”。",
+          "Files registered by the assistants. Open Files and terminal to browse, edit, compare and restore project files.",
         )}
       </p>
       {artifacts.map((a) => (

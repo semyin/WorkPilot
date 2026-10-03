@@ -1,0 +1,17 @@
+
+> workpilot@0.1.0-alpha.0 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+
+> workpilot@0.1.0-alpha.0 rust:fmt
+> node scripts/cargo.mjs fmt --all -- --check
+
+
+> workpilot@0.1.0-alpha.0 ui:typecheck
+> npm run typecheck --workspace @workpilot/desktop
+
+
+> @workpilot/desktop@0.1.0-alpha.0 typecheck
+> tsc --noEmit

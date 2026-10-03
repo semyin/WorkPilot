@@ -1,0 +1,22 @@
+[package]
+name = "workpilot-workbench"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+[dependencies]
+workpilot-contracts = { path = "../contracts" }
+workpilot-platform = { path = "../platform" }
+workpilot-storage = { path = "../storage" }
+workpilot-tools = { path = "../tools" }
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+uuid.workspace = true
+zeroize.workspace = true
+tempfile.workspace = true
+ring = "=0.17.14"
+base64 = "=0.22.1"
+[dev-dependencies]

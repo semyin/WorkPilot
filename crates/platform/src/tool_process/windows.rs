@@ -349,6 +349,8 @@ fn capture(
     handle: Handle,
     limit: usize,
     overflow: Arc<AtomicBool>,
+    observer: Option<ProcessObserver>,
+    stderr: bool,
 ) -> std::thread::JoinHandle<io::Result<Vec<u8>>> {
     std::thread::spawn(move || {
         let raw = handle.0;
@@ -367,11 +369,22 @@ fn capture(
                 break;
             }
             result.extend_from_slice(&chunk[..n]);
+            if let Some(observer) = &observer {
+                observer(if stderr {
+                    ProcessProgress::Stderr(chunk[..n].to_vec())
+                } else {
+                    ProcessProgress::Stdout(chunk[..n].to_vec())
+                });
+            }
         }
         Ok(result)
     })
 }
-pub fn run(spec: ProcessSpec, stop: Arc<AtomicBool>) -> io::Result<ProcessResult> {
+pub fn run(
+    spec: ProcessSpec,
+    stop: Arc<AtomicBool>,
+    observer: Option<ProcessObserver>,
+) -> io::Result<ProcessResult> {
     if stop.load(Ordering::SeqCst) {
         return Err(io::Error::new(
             io::ErrorKind::Interrupted,
@@ -423,14 +436,45 @@ pub fn run(spec: ProcessSpec, stop: Arc<AtomicBool>) -> io::Result<ProcessResult
     let system = std::env::var("SystemRoot").unwrap_or_else(|_| "C:\\Windows".into());
     // Explicit environment only. No account keys, SSH agents, user profiles or proxy credentials.
     let mut variables = vec![
-        format!("APPDATA={}", spec.cwd.display()),
-        format!("LOCALAPPDATA={}", spec.cwd.display()),
+        format!(
+            "APPDATA={}",
+            if spec.sandboxed {
+                spec.cwd.to_string_lossy().into_owned()
+            } else {
+                std::env::var("APPDATA").unwrap_or_else(|_| spec.cwd.to_string_lossy().into_owned())
+            }
+        ),
+        format!(
+            "LOCALAPPDATA={}",
+            if spec.sandboxed {
+                spec.cwd.to_string_lossy().into_owned()
+            } else {
+                std::env::var("LOCALAPPDATA")
+                    .unwrap_or_else(|_| spec.cwd.to_string_lossy().into_owned())
+            }
+        ),
         format!("COMSPEC={system}\\System32\\cmd.exe"),
-        format!("PATH={system}\\System32;{system}"),
+        format!(
+            "PATH={};{system}\\System32;{system};{}",
+            spec.program.parent().unwrap_or(&spec.cwd).display(),
+            if spec.sandboxed {
+                String::new()
+            } else {
+                std::env::var("PATH").unwrap_or_default()
+            }
+        ),
         format!("SystemRoot={system}"),
         format!("TEMP={}", spec.cwd.display()),
         format!("TMP={}", spec.cwd.display()),
-        format!("USERPROFILE={}", spec.cwd.display()),
+        format!(
+            "USERPROFILE={}",
+            if spec.sandboxed {
+                spec.cwd.to_string_lossy().into_owned()
+            } else {
+                std::env::var("USERPROFILE")
+                    .unwrap_or_else(|_| spec.cwd.to_string_lossy().into_owned())
+            }
+        ),
         format!("WINDIR={system}"),
     ];
     variables.sort_by_key(|v| v.to_ascii_uppercase());
@@ -470,6 +514,9 @@ pub fn run(spec: ProcessSpec, stop: Arc<AtomicBool>) -> io::Result<ProcessResult
         }
         return Err(e);
     }
+    if let Some(observer) = &observer {
+        observer(ProcessProgress::Started(process.dwProcessId));
+    }
     if stop.load(Ordering::SeqCst) {
         win(unsafe { TerminateJobObject(job.0.0, 1) })?;
     } else if unsafe { ResumeThread(thread_handle.0) } == u32::MAX {
@@ -477,10 +524,56 @@ pub fn run(spec: ProcessSpec, stop: Arc<AtomicBool>) -> io::Result<ProcessResult
     }
     drop((input_read, input_write, output_write, error_write));
     let overflow = Arc::new(AtomicBool::new(false));
-    let stdout = capture(output_read, spec.output_limit, overflow.clone());
-    let stderr = capture(error_read, spec.output_limit, overflow.clone());
+    let stdout = capture(
+        output_read,
+        spec.output_limit,
+        overflow.clone(),
+        observer.clone(),
+        false,
+    );
+    let stderr = capture(
+        error_read,
+        spec.output_limit,
+        overflow.clone(),
+        observer.clone(),
+        true,
+    );
     let mut stopped = None;
+    let mut last_owned = Instant::now() - std::time::Duration::from_secs(1);
     loop {
+        if let Some(observer) = &observer
+            && last_owned.elapsed().as_millis() >= 400
+        {
+            #[repr(C)]
+            struct Owned {
+                assigned: u32,
+                count: u32,
+                pids: [usize; 32],
+            }
+            let mut owned = Owned {
+                assigned: 0,
+                count: 0,
+                pids: [0; 32],
+            };
+            if unsafe {
+                QueryInformationJobObject(
+                    job.0.0,
+                    JobObjectBasicProcessIdList,
+                    (&mut owned as *mut Owned).cast(),
+                    size_of::<Owned>() as u32,
+                    ptr::null_mut(),
+                )
+            } != 0
+            {
+                observer(ProcessProgress::OwnedProcesses(
+                    owned.pids[..(owned.count as usize).min(32)]
+                        .iter()
+                        .map(|p| *p as u32)
+                        .collect(),
+                ));
+            }
+            last_owned = Instant::now();
+        }
         if stop.load(Ordering::SeqCst) {
             stopped = Some("cancelled".into());
             break;

@@ -136,7 +136,7 @@ pub fn registry() -> Vec<ToolDescriptor> {
         ),
         descriptor(
             "run_command",
-            "Run one executable with an argument array in the authorized project directory. Windows limits child lifetime. In approval modes it uses AppContainer with no network; full access uses OS account permissions. Workspace snapshot limit: 1024 files / 64 MiB, no links. Shell commands must explicitly name the shell executable and its arguments.",
+            "Run one executable with an argument array in the authorized project directory. Windows limits child lifetime. In approval modes it uses AppContainer with no network; full access uses OS account permissions. Workspace snapshots: 4096 files / 1024 directories / 256 MiB total / 64 MiB per file, no links; .git, node_modules, target, dist, .venv, .cache, .local, .workpilot-data and .test-results are excluded. Shell commands must explicitly name the shell executable and its arguments.",
             json!({"program":{"type":"string"},"args":{"type":"array","items":{"type":"string"}},"timeout_ms":{"type":"integer","minimum":100,"maximum":300000}}),
             &["program", "args", "timeout_ms"],
             ToolRisk::Process,

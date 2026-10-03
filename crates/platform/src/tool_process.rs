@@ -27,12 +27,26 @@ pub struct ProcessResult {
     pub elapsed_ms: u64,
     pub cleanup_errors: Vec<String>,
 }
+pub enum ProcessProgress {
+    Started(u32),
+    OwnedProcesses(Vec<u32>),
+    Stdout(Vec<u8>),
+    Stderr(Vec<u8>),
+}
+pub type ProcessObserver = Arc<dyn Fn(ProcessProgress) + Send + Sync>;
 pub fn run(spec: ProcessSpec, stop: Arc<AtomicBool>) -> io::Result<ProcessResult> {
+    run_observed(spec, stop, None)
+}
+pub fn run_observed(
+    spec: ProcessSpec,
+    stop: Arc<AtomicBool>,
+    observer: Option<ProcessObserver>,
+) -> io::Result<ProcessResult> {
     if !spec.program.is_absolute()
         || !spec.cwd.is_absolute()
         || spec.args.iter().any(|a| a.contains('\0'))
         || spec.timeout_ms == 0
-        || spec.timeout_ms > 300000
+        || spec.timeout_ms > 86_400_000
         || spec.output_limit == 0
         || spec.output_limit > 8 * 1024 * 1024
     {
@@ -43,11 +57,11 @@ pub fn run(spec: ProcessSpec, stop: Arc<AtomicBool>) -> io::Result<ProcessResult
     }
     #[cfg(windows)]
     {
-        windows::run(spec, stop)
+        windows::run(spec, stop, observer)
     }
     #[cfg(not(windows))]
     {
-        let _ = (spec, stop);
+        let _ = (spec, stop, observer);
         Err(io::Error::new(
             io::ErrorKind::Unsupported,
             "process boundary is not verified on this platform",

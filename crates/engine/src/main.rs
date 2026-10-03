@@ -182,6 +182,8 @@ async fn main() -> Result<(), Failure> {
     });
     let mut probe: Option<Probe> = None;
     let mut workspace = workspace::Workspace::new(storage.clone(), directory.clone(), out.clone());
+    let mut workbench =
+        workpilot_workbench::Service::new(storage.clone(), directory.clone(), out.clone()).await;
     let mut team_tick = tokio::time::interval(std::time::Duration::from_millis(100));
     team_tick.set_missed_tick_behavior(tokio::time::MissedTickBehavior::Skip);
     loop {
@@ -193,6 +195,7 @@ async fn main() -> Result<(), Failure> {
                     Ok(r)=>r,Err((id,message))=>{if let Some(request_id)=id {out.send(Wire::Reply{request_id,response:Response::Error{code:ErrorCode::InvalidRequest,message}}).await?;} else {append(&storage,&out,Payload::Error{code:ErrorCode::InvalidRequest,message}).await?;}continue;}
                 };
                 if matches!(request.command,Command::Shutdown){break;}
+                if workbench.dispatch(&request) {continue;}
                 match workspace.dispatch(&request) {
                     models::Handled::Reply(response)=>{out.send(Wire::Reply{request_id:request.request_id,response:*response}).await?;continue;},
                     models::Handled::Deferred=>continue,
@@ -264,11 +267,13 @@ async fn main() -> Result<(), Failure> {
             }
         }
     }
+    workbench.cancel_all();
     tasks.shutdown().await;
     drop(tasks);
     models.shutdown().await;
     drop(models);
     workspace.shutdown().await;
+    workbench.shutdown().await;
     if let Some(running) = probe.take() {
         finish(&storage, &out, running, false).await?;
     }

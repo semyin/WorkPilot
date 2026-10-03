@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-03T00:39:49.338Z",
+  "platform": "win32",
+  "service": "real local files, Git, Windows processes; no paid model",
+  "checks": [
+    "approval_binds_exact_version_chinese_spaces_long_name_external_edit_preserved",
+    "concurrent_approval_consumed_once_restore_preserves_before_and_current_bytes"
+  ],
+  "status": "failed",
+  "error": "Error: ENOENT: no such file or directory, scandir 'D:\\workspace\\kplocker\\WorkPilot\\.test-results\\tools-engine\\session-pHQrMT\\versions'"
+}

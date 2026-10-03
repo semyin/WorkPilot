@@ -23,6 +23,7 @@ import { ProjectSidebar } from "./ProjectSidebar";
 import { Conversation, QueueEdit, TextAttachments } from "./Conversation";
 import { RecordPanel, ArtifactPanel } from "./RecordPanel";
 import { ResizeHandle } from "./ResizeHandle";
+import { FileWorkbench } from "./FileWorkbench";
 import { workspaceAction, workspaceQuery } from "./workspaceClient";
 import type { Overview } from "./App";
 import icon from "../../../assets/icons/png/128.png";
@@ -40,6 +41,7 @@ function HistoryEvent({ event }: { event: EngineEvent }) {
   if (event.kind === "execution_created") references.push(event.goal);
   if (event.kind === "execution_ended" && event.output) references.push(event.output);
   if (event.kind === "team_changed" && event.record) references.push(event.record);
+  if (event.kind === "workbench_changed" && event.record) references.push(event.record);
   if (event.kind === "execution_step_changed") {
     if (event.input) references.push(event.input);
     if (event.output) references.push(event.output);
@@ -149,6 +151,7 @@ export function TaskWorkspace({
   const [effectiveModel, setEffectiveModel] = useState("");
   const [effectivePermission, setEffectivePermission] = useState("request_approval");
   const [renaming, setRenaming] = useState<string | null>(null);
+  const [fileWorkspace, setFileWorkspace] = useState(false);
   const selectionGeneration = useRef(0);
   const settingsTask = useRef("");
   const active =
@@ -500,6 +503,11 @@ export function TaskWorkspace({
           </p>
         </div>
         <div className="model-actions">
+          {desktop && selected && (
+            <button onClick={() => setFileWorkspace(true)}>
+              {tr("文件与终端", "Files and terminal")}
+            </button>
+          )}
           {desktop && prefs && (
             <>
               <button
@@ -1264,6 +1272,9 @@ export function TaskWorkspace({
           )}
         </aside>
       </div>
+      {fileWorkspace && selected && (
+        <FileWorkbench key={selected} task={selected} onClose={() => setFileWorkspace(false)} />
+      )}
     </div>
   );
 }

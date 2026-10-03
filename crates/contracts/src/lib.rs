@@ -10,12 +10,14 @@ pub use execution::*;
 pub use model::*;
 pub use provider::*;
 pub use team::*;
+mod workbench;
 mod workspace;
 pub use tool::*;
+pub use workbench::*;
 pub use workspace::*;
 
 pub const PROTOCOL: &str = "workpilot.v1";
-pub const SCHEMA_VERSION: u32 = 6;
+pub const SCHEMA_VERSION: u32 = 7;
 pub const EXPORT_VERSION: u32 = 1;
 pub const MAX_COMMAND_BYTES: usize = 1_048_576;
 pub const MAX_EVENT_BYTES: usize = 65_536;
@@ -32,6 +34,10 @@ pub struct Request {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 pub enum Command {
+    Workbench {
+        task_id: String,
+        action: WorkbenchAction,
+    },
     Workspace {
         action: WorkspaceAction,
     },
@@ -207,6 +213,12 @@ impl Request {
             return Err("invalid request_id");
         }
         match &self.command {
+            Command::Workbench { task_id, action } => {
+                if !valid_id(task_id) {
+                    return Err("invalid task");
+                }
+                action.validate()?;
+            }
             Command::Workspace { action } => action.validate()?,
             Command::ConfigureTeam { task_id, settings } => {
                 if !valid_id(task_id) {
@@ -499,6 +511,11 @@ pub struct Event {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case")]
 pub enum Payload {
+    WorkbenchChanged {
+        operation_id: String,
+        state: String,
+        record: Option<ContentRef>,
+    },
     WorkspaceChanged {
         entity_id: String,
         change: String,
@@ -733,6 +750,9 @@ pub struct ContentPage {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case")]
 pub enum Response {
+    Workbench {
+        data: serde_json::Value,
+    },
     Workspace {
         data: Box<WorkspaceData>,
     },
@@ -823,6 +843,11 @@ pub fn typescript() -> String {
     let config = ts_rs::Config::default().with_large_int("number");
     macro_rules! export { ($($ty:ty),* $(,)?) => { $(output.push_str("export "); output.push_str(&<$ty>::decl(&config)); output.push('\n');)* }; }
     export!(
+        WorkbenchAction,
+        FileEdit,
+        FileRevision,
+        FileImage,
+        WorkbenchOperation,
         Request,
         Command,
         Query,

@@ -179,6 +179,9 @@ impl Store {
                 }
                 if self.team_enabled(task_id)?
                     || self.team_subtree(task_id)?.iter().any(|id| {
+                        if self.has_active_workbench(id).unwrap_or(true) {
+                            return true;
+                        }
                         self.execution_snapshot(id).is_ok_and(|s| {
                             s.latest_run.is_some_and(|r| {
                                 matches!(r.run.state, TaskState::Running | TaskState::Queued)
@@ -571,6 +574,14 @@ fn linked_objects(c: &Connection, event: &Event) -> Result<HashSet<String>> {
         let mut q = c.prepare("SELECT object_id FROM tool_result_objects WHERE action_id=?1")?;
         refs.extend(
             q.query_map([step_id], |r| r.get::<_, String>(0))?
+                .collect::<std::result::Result<Vec<_>, _>>()?,
+        );
+    }
+    if let Payload::WorkbenchChanged { operation_id, .. } = &event.payload {
+        let mut q =
+            c.prepare("SELECT object_id FROM workbench_output_objects WHERE operation_id=?1")?;
+        refs.extend(
+            q.query_map([operation_id], |r| r.get::<_, String>(0))?
                 .collect::<std::result::Result<Vec<_>, _>>()?,
         );
     }

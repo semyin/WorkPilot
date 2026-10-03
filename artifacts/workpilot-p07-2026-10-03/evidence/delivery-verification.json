@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-03T01:58:19.563Z",
+  "result": "passed",
+  "schema": 7,
+  "sourceFiles": 247,
+  "binaries": 3,
+  "localLinks": 350,
+  "passedReports": 6,
+  "checks": {
+    "workbench-engine-report.json": 10,
+    "workbench-desktop-report.json": 9,
+    "workbench-packaged-report.json": 9,
+    "p03-engine-regression.json": 9,
+    "p04-engine-regression.json": 10,
+    "p05-engine-regression.json": 11
+  },
+  "p06BinariesUnchanged": true
+}

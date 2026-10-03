@@ -3,7 +3,7 @@ use cap_std::fs::{Dir, File, Metadata, MetadataExt, OpenOptions};
 use serde_json::{Value, json};
 use sha2::{Digest, Sha256};
 use std::{
-    io::{self, Read, Seek, SeekFrom, Write},
+    io::{self, Read, Seek, SeekFrom},
     path::{Path, PathBuf},
 };
 use workpilot_contracts::FileVersion;
@@ -19,7 +19,7 @@ pub type Result<T> = std::result::Result<T, Error>;
 pub struct Root {
     pub path: PathBuf,
     pub identity: String,
-    dir: Dir,
+    pub(crate) dir: Dir,
 }
 pub struct Snapshot {
     pub version: FileVersion,
@@ -42,7 +42,7 @@ fn regular(meta: &Metadata) -> Result<()> {
     }
     Ok(())
 }
-fn no_link(meta: &Metadata) -> Result<()> {
+pub(crate) fn no_link(meta: &Metadata) -> Result<()> {
     if meta.file_type().is_symlink() {
         return Err(Error::Rejected("symbolic links are not accepted"));
     }
@@ -80,69 +80,11 @@ pub fn relative(path: &str, allow_root: bool) -> Result<PathBuf> {
 }
 impl Root {
     pub fn inventory(&self) -> Result<Value> {
-        let mut queue = vec![String::from(".")];
-        let mut entries = vec![];
-        let mut total = 0u64;
-        while let Some(path) = queue.pop() {
-            let listing = self.list(&path)?;
-            if listing["truncated"] == true {
-                return Err(Error::Rejected("directory snapshot exceeds entry limit"));
-            }
-            for e in listing["entries"].as_array().unwrap() {
-                if e["linked"] == true {
-                    return Err(Error::Rejected("process workspace contains a link"));
-                }
-                let name = e["name"].as_str().unwrap();
-                let child = if path == "." {
-                    name.to_owned()
-                } else {
-                    format!("{path}/{name}")
-                };
-                if e["directory"] == true {
-                    queue.push(child);
-                    continue;
-                }
-                if entries.len() >= 1024 {
-                    return Err(Error::Rejected("process workspace exceeds 1024 files"));
-                }
-                let (dir, name) = self.parent(&child)?;
-                let mut file = dir.open(&name)?;
-                let (id, links) =
-                    workpilot_platform::files::identity(&file.try_clone()?.into_std())?;
-                if links != 1 {
-                    return Err(Error::Rejected("process workspace contains a hard link"));
-                }
-                let length = file.metadata()?.len();
-                total = total
-                    .checked_add(length)
-                    .ok_or(Error::Rejected("workspace size overflow"))?;
-                if total > 64 * 1024 * 1024 {
-                    return Err(Error::Rejected(
-                        "process workspace exceeds 64 MiB snapshot limit",
-                    ));
-                }
-                let mut hash = Sha256::new();
-                let mut buf = [0u8; 16384];
-                let mut read = 0u64;
-                loop {
-                    let n = file.read(&mut buf)?;
-                    if n == 0 {
-                        break;
-                    }
-                    read += n as u64;
-                    if read > length {
-                        return Err(Error::Rejected("workspace changed while snapshotting"));
-                    }
-                    hash.update(&buf[..n]);
-                }
-                entries.push(json!({"path":child,"identity":id,"bytes":length,"sha256":format!("{:x}",hash.finalize())}));
-            }
-            if queue.len() > 256 {
-                return Err(Error::Rejected("workspace directory limit"));
-            }
-        }
-        entries.sort_by_key(|e| e["path"].as_str().unwrap().to_owned());
-        Ok(json!({"files":entries,"bytes":total}))
+        let versions = self.version_inventory()?;
+        let files:Vec<_>=versions.iter().map(|(path,v)|json!({"path":path,"identity":v.identity,"bytes":v.bytes,"sha256":v.sha256})).collect();
+        Ok(
+            json!({"files":files,"bytes":versions.values().map(|v|v.bytes).sum::<u64>(),"excluded":crate::binary::EXCLUDED}),
+        )
     }
     pub fn open(path: &str, expected: Option<&str>) -> Result<Self> {
         let p = Path::new(path);
@@ -173,7 +115,7 @@ impl Root {
             dir,
         })
     }
-    fn parent(&self, path: &str) -> Result<(Dir, String)> {
+    pub(crate) fn parent(&self, path: &str) -> Result<(Dir, String)> {
         let p = relative(path, false)?;
         let mut dir = self.dir.try_clone()?;
         if let Some(parent) = p.parent() {
@@ -319,42 +261,15 @@ impl Root {
             json!({"matches":matches,"files_scanned":scanned,"skipped":skipped,"truncated":truncated}),
         )
     }
-    /// The caller persists the before-image before entering this operation.
-    /// Windows denies concurrent writes/deletes while this handle is held.
-    /// A crash mid-write is recoverable via the saved before/desired hashes.
+    /// Complete replacement after a fresh comparison; the caller journals before bytes.
     pub fn write(&self, path: &str, expected: &FileVersion, text: &str) -> Result<FileVersion> {
         if text.len() > MAX_FILE_BYTES as usize {
             return Err(Error::Rejected("write exceeds the managed text limit"));
         }
-        let (dir, name) = self.parent(path)?;
-        let mut options = OpenOptions::new();
-        options.read(true).write(true);
-        if !expected.exists {
-            options.create_new(true);
-        }
-        #[cfg(windows)]
-        {
-            use cap_std::fs::OpenOptionsExt;
-            options.share_mode(0);
-        }
-        let mut file = dir.open_with(&name, &options)?;
-        #[cfg(unix)]
-        let _unix_lock = file.try_clone()?.into_std();
-        #[cfg(unix)]
-        _unix_lock.lock()?;
-        if expected.exists && &snapshot(&mut file)?.version != expected {
-            return Err(Error::Rejected("file changed after approval"));
-        }
-        if !expected.exists && file.metadata()?.len() != 0 {
-            return Err(Error::Rejected("new file is not empty"));
-        }
-        file.seek(SeekFrom::Start(0))?;
-        file.write_all(text.as_bytes())?;
-        file.set_len(text.len() as u64)?;
-        file.sync_all()?;
-        Ok(snapshot(&mut file)?.version)
+        self.replace_bytes(path, expected, text.as_bytes())
     }
 }
+
 fn snapshot(file: &mut File) -> Result<Snapshot> {
     let meta = file.metadata()?;
     regular(&meta)?;

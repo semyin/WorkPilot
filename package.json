@@ -41,7 +41,9 @@
     "test:tools-desktop": "node scripts/tools-desktop-smoke.mjs",
     "test:teams-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/teams-engine-test.mjs",
     "test:teams-desktop": "node scripts/teams-desktop-smoke.mjs",
-    "test:workspace-desktop": "node scripts/workspace-desktop-smoke.mjs"
+    "test:workspace-desktop": "node scripts/workspace-desktop-smoke.mjs",
+    "test:workbench-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/workbench-engine-test.mjs",
+    "test:workbench-desktop": "node scripts/workbench-desktop-smoke.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",

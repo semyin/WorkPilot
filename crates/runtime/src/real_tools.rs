@@ -389,6 +389,21 @@ impl<B: ModelBackend + Send + Sync, F: FaultObserver> ExecutionEnvironment<B, F>
                     output_limit: 4 * 1024 * 1024,
                     ledger_dir: self.tool_ledger.clone(),
                 };
+                let capture = workpilot_workbench::history::Capture::begin(
+                    &self.storage,
+                    self.tool_ledger
+                        .parent()
+                        .ok_or("tool data directory is unavailable")?,
+                    &root,
+                    action,
+                    &snapshot.task.id,
+                    "run_command",
+                    None,
+                )
+                .await?;
+                let storage = self.storage.clone();
+                let events_out = self.events.clone();
+                let runtime = tokio::runtime::Handle::current();
                 let (output, after) = worker::run(&self.run_id, move |stop| {
                     let _lease = mutation_lease;
                     let _guard = _program_guard;
@@ -397,7 +412,22 @@ impl<B: ModelBackend + Send + Sync, F: FaultObserver> ExecutionEnvironment<B, F>
                             "workspace changed after approval",
                         ));
                     }
-                    let result = workpilot_platform::tool_process::run(spec, stop)?;
+                    let result = workpilot_platform::tool_process::run(spec, stop);
+                    // Finish the journal inside owned work even when the async caller is cancelled.
+                    runtime.block_on(async {
+                        let events = capture.finish(&storage, &root).await.map_err(|e| {
+                            workpilot_tools::files::Error::Io(std::io::Error::other(e))
+                        })?;
+                        for event in events {
+                            let _ = events_out
+                                .send(Wire::Event {
+                                    event: Box::new(event),
+                                })
+                                .await;
+                        }
+                        Ok::<_, workpilot_tools::files::Error>(())
+                    })?;
+                    let result = result?;
                     let after = root
                         .inventory()
                         .map(|v| json!({"inventory":v}))

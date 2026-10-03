@@ -244,6 +244,116 @@ fn main_only(view: &Webview) -> Result<(), String> {
 }
 
 #[tauri::command]
+async fn project_open_external(
+    view: Webview,
+    bridge: State<'_, Bridge>,
+    task_id: String,
+    path: String,
+    folder: bool,
+) -> Result<(), String> {
+    main_only(&view)?;
+    let response = bridge
+        .request(Request {
+            request_id: uuid::Uuid::new_v4().to_string(),
+            command: Command::Workbench {
+                task_id,
+                action: workpilot_contracts::WorkbenchAction::ResolvePath { path },
+            },
+        })
+        .await?;
+    let Response::Workbench { data } = response else {
+        return Err("无法核对要打开的项目路径。".into());
+    };
+    let target = PathBuf::from(data["path"].as_str().ok_or("项目路径不可用。")?);
+    let target = if folder && target.is_file() {
+        target.parent().ok_or("没有父目录。")?.to_path_buf()
+    } else {
+        target
+    };
+    if !target.is_absolute() {
+        return Err("项目路径必须是绝对路径。".into());
+    }
+    #[cfg(windows)]
+    {
+        use std::os::windows::process::CommandExt;
+        ProcessCommand::new("explorer.exe")
+            .arg(target)
+            .creation_flags(0x08000000)
+            .spawn()
+            .map_err(|e| e.to_string())?;
+    }
+    #[cfg(target_os = "macos")]
+    {
+        ProcessCommand::new("/usr/bin/open")
+            .arg("--")
+            .arg(target)
+            .spawn()
+            .map_err(|e| e.to_string())?;
+    }
+    #[cfg(target_os = "linux")]
+    {
+        ProcessCommand::new("xdg-open")
+            .arg(target)
+            .spawn()
+            .map_err(|e| e.to_string())?;
+    }
+    Ok(())
+}
+#[tauri::command]
+async fn project_preview_open(
+    view: Webview,
+    app: tauri::AppHandle,
+    bridge: State<'_, Bridge>,
+    task_id: String,
+    operation_id: String,
+) -> Result<(), String> {
+    main_only(&view)?;
+    let response = bridge
+        .request(Request {
+            request_id: uuid::Uuid::new_v4().to_string(),
+            command: Command::Workbench {
+                task_id,
+                action: workpilot_contracts::WorkbenchAction::Preview { operation_id },
+            },
+        })
+        .await?;
+    let data = match response {
+        Response::Workbench { data } => data,
+        Response::Error { message, .. } => return Err(message),
+        _ => return Err("预览验证失败。".into()),
+    };
+    let url: tauri::Url = data["url"]
+        .as_str()
+        .ok_or("预览地址不可用。")?
+        .parse()
+        .map_err(|_| "预览地址格式不正确。")?;
+    if url.scheme() != "http" || url.host_str() != Some("127.0.0.1") {
+        return Err("只允许本任务的本机预览服务。".into());
+    }
+    let port = url.port();
+    if let Some(window) = app.get_webview_window("project-preview") {
+        window.close().map_err(|e| e.to_string())?;
+    }
+    tauri::WebviewWindowBuilder::new(&app, "project-preview", WebviewUrl::External(url))
+        .title("WorkPilot · Project preview")
+        .inner_size(1000.0, 720.0)
+        .on_navigation(move |url| {
+            url.scheme() == "http" && url.host_str() == Some("127.0.0.1") && url.port() == port
+        })
+        .build()
+        .map_err(|e| e.to_string())?;
+    Ok(())
+}
+#[tauri::command]
+fn project_preview_close(view: Webview, app: tauri::AppHandle) -> Result<(), String> {
+    main_only(&view)?;
+    if let Some(window) = app.get_webview_window("project-preview") {
+        window.close().map_err(|e| e.to_string())?;
+    }
+    Ok(())
+}
+
+#[tauri::command]
 async fn engine_snapshot(
     view: Webview,
     bridge: State<'_, Bridge>,
@@ -402,6 +512,9 @@ fn main() {
         .invoke_handler(tauri::generate_handler![
             engine_snapshot,
             engine_command,
+            project_open_external,
+            project_preview_open,
+            project_preview_close,
             hide_window,
             exit_app,
             show_window,

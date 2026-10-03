@@ -465,8 +465,9 @@ fn failed_migration_keeps_working_database_and_independent_preupgrade_backup() {
             (4, include_str!("../migrations/004_tools.sql")),
             (5, include_str!("../migrations/005_teams.sql")),
             (6, include_str!("../migrations/006_workspace.sql")),
+            (7, include_str!("../migrations/007_workbench.sql")),
             (
-                7,
+                SCHEMA_VERSION + 1,
                 "UPDATE tasks SET title='corrupted'; CREATE TABLE halfway(id INTEGER); INSERT INTO missing_table VALUES(1);",
             ),
         ],

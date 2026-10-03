@@ -1,0 +1,256 @@
+
+> workpilot@0.1.0-alpha.0 engine:test
+> node scripts/cargo.mjs test --workspace --exclude workpilot-desktop --locked
+
+   Compiling workpilot-platform v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\platform)
+   Compiling workpilot-storage v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\storage)
+   Compiling workpilot-tools v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\tools)
+   Compiling workpilot-workbench v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\workbench)
+   Compiling workpilot-providers v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\providers)
+   Compiling workpilot-runtime v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\runtime)
+   Compiling workpilot-engine v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\engine)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.19s
+     Running unittests src\main.rs (target\debug\deps\workpilot_browser_bridge-a79f8e2b331d41ae.exe)
+
+running 2 tests
+test tests::rejects_oversized_messages_and_unknown_commands ... ok
+test tests::native_transport_handles_multiple_messages_and_disconnect ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_contracts-0ca34db83803bd57.exe)
+
+running 2 tests
+test tests::rejects_unknown_commands_and_unbounded_input ... ok
+test tests::generated_types_match_checked_in_contract ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\bin\generate.rs (target\debug\deps\generate-02656a40d5be0e03.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\main.rs (target\debug\deps\workpilot_engine-f64721a192a44fef.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\bin\workpilot-process-fixture.rs (target\debug\deps\workpilot_process_fixture-124e2891046c59f1.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\lifecycle.rs (target\debug\deps\lifecycle-6b64701af8aa1675.exe)
+
+running 4 tests
+test closing_parent_pipe_exits_without_restarting_work ... ok
+test stream_cancel_and_shutdown_are_observable_and_persisted ... ok
+test repeated_stop_request_cannot_stop_a_later_probe ... ok
+test kill_restart_replays_saved_events_and_does_not_restart_accepted_work ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+
+     Running tests\process_tree.rs (target\debug\deps\process_tree-af38be5ed069b2c4.exe)
+
+running 1 test
+test dropping_job_ends_parent_child_and_grandchild_within_two_seconds ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.97s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_platform-6463e23caad99039.exe)
+
+running 7 tests
+test credentials::tests::windows_credential_roundtrip ... ignored, writes and removes an isolated synthetic credential in Windows Credential Manager
+test credentials::tests::secret_debug_never_shows_value ... ok
+test paths::tests::channels_never_share_the_same_directory ... ok
+test paths::tests::checks_real_paths_and_rejects_parent_escape ... ok
+test paths::tests::rejects_windows_directory_junction_escape ... ok
+test tool_process::tests::appcontainer_writes_authorized_project_but_cannot_read_private_sibling ... ok
+test tool_process::tests::process_cancellation_output_limit_and_nonzero_exit_are_truthful ... ok
+
+test result: ok. 6 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.17s
+
+     Running unittests src\bin\workpilot-tool-fixture.rs (target\debug\deps\workpilot_tool_fixture-e4f05d5b94671f12.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\tool_boundary.rs (target\debug\deps\tool_boundary-8812a82490cc6560.exe)
+
+running 4 tests
+test actual_timeout_and_output_limits_are_observable ... ok
+test cancelled_sandbox_kills_its_real_three_level_process_tree ... ok
+test abrupt_owner_death_kills_descendants_and_recovers_only_its_sandbox_ledger ... ok
+test appcontainer_denies_live_loopback_and_does_not_inherit_host_environment ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.91s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_policy-7281539977b97ec8.exe)
+
+running 2 tests
+test tests::work_mode_rules_and_strict_review_cannot_be_overridden_by_tool_text ... ok
+test tests::approval_fingerprint_binds_every_authority_and_effect_field ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_providers-91d5f88c20e1e105.exe)
+
+running 10 tests
+test masking::tests::a_key_split_at_every_character_is_never_emitted ... ok
+test tests::truncating_an_error_cannot_leave_a_secret_prefix ... ok
+test tests::chat_empty_tool_identity_fragments_preserve_original_but_changes_are_rejected ... ok
+test tests::urls_and_request_shapes_are_protocol_specific ... ok
+test tests::images_and_tool_results_cannot_be_silently_dropped ... ok
+test tests::decoder_handles_single_bytes_utf8_multiline_and_all_newlines ... ok
+test tests::unknown_usage_stays_unknown_and_model_list_is_separate ... ok
+test tests::real_http_three_protocols_text_tools_continuation_and_auth ... ok
+test tests::every_failure_makes_one_request_and_never_redirects_or_falls_back ... ok
+test tests::timeout_cancel_drop_connections_without_extra_requests ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.74s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_runtime-035c2d72d3e90982.exe)
+
+running 10 tests
+test tests::controlled_tool_arguments_reject_unknown_keys_and_nonfinite_inputs ... ok
+test tests::steering_between_preparation_and_start_skips_obsolete_actions ... ok
+test tests::queue_is_delivered_after_current_answer_and_steer_cancels_old_model ... ok
+test tests::ask_user_pauses_and_the_answer_enters_a_new_run ... ok
+test tests::model_failure_is_one_request_and_manual_continue_preserves_queue ... ok
+test tests::chat_and_plan_cannot_write_and_plan_needs_explicit_mode_change ... ok
+test tests::stopping_at_three_tool_boundaries_requires_different_recovery ... ok
+test tests::context_compaction_keeps_pins_and_retrievable_tool_associations ... ok
+test tests::one_runtime_drives_three_different_tool_combinations ... ok
+test tests::step_and_time_limits_pause_without_fake_completion ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.27s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_storage-4269211da149f07f.exe)
+
+running 43 tests
+test execution_tests::actual_schema_three_database_upgrades_with_existing_provider_intact ... ok
+test execution_tests::queued_runs_recover_to_interrupted_and_duplicate_start_never_restarts ... ok
+test execution_tests::schema_two_upgrades_with_existing_model_profile_and_settings_intact ... ok
+test provider_tests::actual_schema_one_database_upgrades_without_losing_tasks_or_profiles ... ok
+test provider_tests::profile_bundle_excludes_credentials_and_import_is_additive ... ok
+test provider_tests::all_authentication_modes_survive_redaction_but_auth_values_do_not ... ok
+
+running 1 test
+test provider_tests::model_resolution_inherits_and_missing_selection_never_falls_back ... ok
+test provider_tests::revisions_snapshot_dedup_and_capabilities_are_bound_to_actual_configuration ... ok
+test tests::crash_child ... ignored, subprocess helper for abrupt crash injection
+test execution_tests::recovery_event_preserves_envelope_source_and_distinct_resolution_source ... ok
+test provider_tests::cancellation_is_atomic_and_late_output_cannot_turn_successful ... ok
+test execution_tests::managed_versions_and_nested_process_outputs_remain_owned_during_garbage_collection ... ok
+test execution_tests::tool_approvals_bind_versions_are_single_use_and_settings_commands_are_idempotent ... ok
+test tests::acceptance_does_not_mean_completion_and_crash_does_not_replay ... ok
+test team_tests::member_permissions_never_exceed_parent_or_creation_ceiling ... ok
+test tests::commands_deduplicate_by_id_without_swallowing_different_requests ... ok
+test execution_tests::queued_message_prevents_completion_and_acknowledged_stop_wins_racing_success ... ok
+test tests::missing_or_modified_object_fails_reference_check_before_gc ... ok
+test tests::abrupt_death_between_state_and_event_writes_rolls_back_and_marks_tool_uncertain ... ok
+test tests::failed_migration_keeps_working_database_and_independent_preupgrade_backup ... ok
+test team_tests::team_size_and_depth_limits_prevent_unbounded_delegation ... ok
+test tests::second_writer_and_newer_database_are_rejected_without_overwriting ... ok
+test tests::queue_steer_and_cancel_survive_restart_without_delivery ... ok
+test tests::shared_memory_reference_survives_task_deletion_and_gc ... ok
+test team_tests::exact_report_review_ownership_and_gc_protect_deliveries ... ok
+test tests::registered_credentials_and_auth_fields_are_redacted_before_any_plaintext_write ... ok
+test tests::task_deletion_and_gc_protect_project_files_and_keep_retry_tombstones ... ok
+test tests::unfinished_tool_prevents_success_and_resolved_tool_has_a_result ... ok
+test team_tests::stop_and_reopen_disable_entire_tree_without_requeueing_completed_members ... ok
+test team_tests::team_batch_dependency_validation_dedup_and_override_are_atomic ... ok
+test workbench::tests::approval_claim_survives_restart_and_cannot_be_consumed_twice ... ok
+test workspace_tests::archive_search_restore_and_active_guard ... ok
+test workspace_tests::queued_edits_compare_original_content_and_cannot_rewrite_delivery ... ok
+test workspace_tests::project_defaults_are_frozen_for_new_tasks ... ok
+test workspace_tests::record_export_is_complete_redacted_and_cannot_follow_foreign_references ... ok
+test team_tests::replacement_preserves_failure_redirects_future_edges_and_enforces_limits ... ok
+test tests::blocking_database_work_does_not_block_async_stop_or_heartbeat ... ok
+test workbench::tests::active_terminal_blocks_archive_even_when_it_is_older_than_display_page ... ok
+test workbench::tests::full_terminal_outputs_survive_gc_and_are_in_complete_export ... ok
+test tests::replay_resumes_mid_sequence_including_after_deletion_gaps ... ok
+test tests::large_output_streams_to_disk_and_content_pages_handle_unicode ... ok
+test workspace_tests::hundred_thousand_events_keep_detail_and_search_page_bounded ... ok
+test tests::one_hundred_thousand_events_use_bounded_pages_and_export ... ok
+
+test result: ok. 42 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 13.78s
+
+     Running unittests src\bin\workpilot-data.rs (target\debug\deps\workpilot_data-dedfadae920b16a5.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_tools-cca3016c84bb4387.exe)
+
+running 7 tests
+test files::tests::existing_open_writer_blocks_managed_overwrite ... ok
+test files::tests::search_reports_limits_and_read_slices_respect_utf8 ... ok
+test binary::tests::new_file_and_rename_never_replace_existing_destination ... ok
+test files::tests::managed_write_binds_identity_content_and_creation_state ... ok
+test worker::tests::dropping_async_call_waits_until_owned_work_observes_stop ... ok
+test files::tests::parent_escape_devices_links_and_cross_root_rebind_are_rejected ... ok
+test binary::tests::binary_versions_reject_conflicts_and_keep_complete_bytes ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_workbench-c1ef11d8be3b87bb.exe)
+
+running 1 test
+test vault::tests::exact_binary_history_is_encrypted_and_tampering_fails ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+   Doc-tests workpilot_contracts
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests workpilot_platform
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests workpilot_policy
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests workpilot_providers
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests workpilot_runtime
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests workpilot_storage
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests workpilot_tools
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests workpilot_workbench
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

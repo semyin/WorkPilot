@@ -2,9 +2,12 @@
 
 面向个人和小团队的通用 AI 桌面工作平台。采用自研 Rust 执行引擎、React/Tauri 2 桌面及独立工具进程。
 
-当前交付 P06：三栏工作台连接真实项目、对话、队列、审批和成员记录；支持任务搜索归档、长记录搜索导出、中英界面和外观设置。实现、自动检查和分发程序复测完成，用户重点体验与通知方式集中待确认；下一步为 P07 文件历史与开发工作区。
+当前交付 P07：在三栏工作台中加入项目文件编辑、修改历史与恢复、真实终端、所选 Git 提交和本机运行预览。实现、Windows 自动检查和独立分发复测完成，用户重点体验与通知方式集中待确认；下一步为 P08 浏览器双通道。
 
 - [开发计划与当前进度](docs/README.md)
+- [P07 Windows 预览](artifacts/workpilot-p07-2026-10-03/README.md)
+- [P07 文件历史与开发工作区](docs/development/P07-文件历史与开发工作区.md)
+- [P07 验证与待体验项](docs/development/P07-验证记录.md)
 - [P06 Windows 预览](artifacts/workpilot-p06-2026-10-02/README.md)
 - [P06 工作台与记录](docs/development/P06-工作台与记录.md)
 - [P06 验证与待体验项](docs/development/P06-验证记录.md)

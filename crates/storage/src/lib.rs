@@ -11,6 +11,7 @@ mod team;
 #[cfg(test)]
 mod team_tests;
 mod tool;
+mod workbench;
 mod worker;
 mod workspace;
 #[cfg(test)]
@@ -121,6 +122,7 @@ impl Store {
                 (4, include_str!("../migrations/004_tools.sql")),
                 (5, include_str!("../migrations/005_teams.sql")),
                 (6, include_str!("../migrations/006_workspace.sql")),
+                (7, include_str!("../migrations/007_workbench.sql")),
             ],
         )?;
         let mut store = Self {
@@ -133,6 +135,7 @@ impl Store {
         store.recover_model_calls()?;
         store.recover_executions()?;
         store.recover_teams()?;
+        store.recover_workbench()?;
         Ok(store)
     }
     pub fn register_secret(&mut self, value: &str) -> Result<()> {
@@ -385,7 +388,7 @@ impl Store {
                         "团队任务保留完整成员与交付记录，当前不能单独删除",
                     ));
                 }
-                let unsafe_delete: bool = tx.query_row("SELECT EXISTS(SELECT 1 FROM runs WHERE task_id=?1 AND state IN ('queued','running')) OR EXISTS(SELECT 1 FROM tool_calls WHERE task_id=?1 AND state IN ('started','needs_review'))", [task_id], |r| r.get(0))?;
+                let unsafe_delete: bool = tx.query_row("SELECT EXISTS(SELECT 1 FROM runs WHERE task_id=?1 AND state IN ('queued','running')) OR EXISTS(SELECT 1 FROM tool_calls WHERE task_id=?1 AND state IN ('started','needs_review')) OR EXISTS(SELECT 1 FROM workbench_operations WHERE task_id=?1 AND json_extract(data_json,'$.state') IN ('queued','running','stopping'))", [task_id], |r| r.get(0))?;
                 if unsafe_delete {
                     return Err(Error::Conflict);
                 }
@@ -840,6 +843,7 @@ impl Store {
             UNION SELECT report_object_id FROM team_members WHERE report_object_id IS NOT NULL
             UNION SELECT inspected_object_id FROM team_members WHERE inspected_object_id IS NOT NULL
             UNION SELECT object_id FROM tool_result_objects
+            UNION SELECT object_id FROM workbench_output_objects
             UNION SELECT output_object_id FROM model_calls WHERE output_object_id IS NOT NULL
             UNION SELECT config_object_id FROM execution_sessions UNION SELECT context_object_id FROM execution_sessions
             UNION SELECT context_object_id FROM execution_checkpoints
@@ -1028,9 +1032,9 @@ fn record(
         | Payload::ContextCompacted {
             archive: content, ..
         } => Some(content),
-        Payload::TeamChanged { record: output, .. } | Payload::ExecutionEnded { output, .. } => {
-            output.as_ref()
-        }
+        Payload::WorkbenchChanged { record: output, .. }
+        | Payload::TeamChanged { record: output, .. }
+        | Payload::ExecutionEnded { output, .. } => output.as_ref(),
         Payload::ToolStarted { input, .. } => Some(input),
         Payload::ToolFinished { output, .. } => Some(output),
         Payload::ModelCallEnded { output, .. } => output.as_ref(),

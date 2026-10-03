@@ -1,0 +1,26 @@
+[
+  {
+    "i": 0,
+    "state": "completed",
+    "stdout": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\tools-engine\\session-4rsDcD\\project-vQr5uT\r\n\r\nPath\r\n----\r\nC:\\ \r\n\r\n\r\n",
+    "stderr": ""
+  },
+  {
+    "i": 1,
+    "state": "completed",
+    "stdout": "\r\nName           Used (GB)     Free (GB) Provider      Root                                               CurrentLocation\r\n----           ---------     --------- --------      ----                                               ---------------\r\nWP                                     FileSystem    D:\\workspace\\kplocker\\WorkPilot\\...                               \r\n\r\nDrive        : WP\r\nProvider     : Microsoft.PowerShell.Core\\FileSystem\r\nProviderPath : D:\\workspace\\kplocker\\WorkPilot\\.test-results\\tools-engine\\session-4rsDcD\\project-vQr5uT\\\r\nPath         : WP:\\\r\n\r\n\r\n\r\n",
+    "stderr": ""
+  },
+  {
+    "i": 2,
+    "state": "completed",
+    "stdout": "\r\nName           Used (GB)     Free (GB) Provider      Root                                               CurrentLocation\r\n----           ---------     --------- --------      ----                                               ---------------\r\nWP                                     FileSystem    \\\\?\\D:\\workspace\\kplocker\\WorkPi...                               \r\n\r\nDrive        : WP\r\nProvider     : Microsoft.PowerShell.Core\\FileSystem\r\nProviderPath : \\\\?\\D:\\workspace\\kplocker\\WorkPilot\\.test-results\\tools-engine\\session-4rsDcD\\project-vQr5uT\\\r\nPath         : WP:\\\r\n\r\n\r\n\r\n",
+    "stderr": "Set-Content : Could not open the alternate data stream '\\workspace\\kplocker\\WorkPilot\\.test-results\\tools-engine\\sessio\r\nn-4rsDcD\\project-vQr5uT\\?\\D:\\workspace\\kplocker\\WorkPilot\\.test-results\\tools-engine\\session-4rsDcD\\project-vQr5uT\\exte\r\nnded.txt' of the file '\\\\?\\D:\\workspace\\kplocker\\WorkPilot\\.test-results\\tools-engine\\session-4rsDcD\\project-vQr5uT\\?\\D\r\n'.\r\nAt line:1 char:220\r\n+ ... ation WP:\\; Set-Content -LiteralPath 'extended.txt' -Value 'ok'; Get- ...\r\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : ObjectNotFound: (\\\\?\\D:\\workspac...ject-vQr5uT\\?\\D:String) [Set-Content], FileNotFoundEx \r\n   ception\r\n    + FullyQualifiedErrorId : GetContentWriterFileNotFoundError,Microsoft.PowerShell.Commands.SetContentCommand\r\n \r\n"
+  },
+  {
+    "i": 3,
+    "state": "completed",
+    "stdout": "\r\nPath\r\n----\r\nC:\\ \r\n\r\n\r\n",
+    "stderr": "Set-Location : Access is denied\r\nAt line:1 char:55\r\n+ ... ng]::new(); Set-Location -LiteralPath 'Microsoft.PowerShell.Core\\File ...\r\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (:) [Set-Location], UnauthorizedAccessException\r\n    + FullyQualifiedErrorId : System.UnauthorizedAccessException,Microsoft.PowerShell.Commands.SetLocationCommand\r\n \r\nSet-Content : Access to the path 'C:\\provider.txt' is denied.\r\nAt line:1 char:215\r\n+ ... ct-vQr5uT'; Set-Content -LiteralPath 'provider.txt' -Value 'ok'; Get- ...\r\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : PermissionDenied: (C:\\provider.txt:String) [Set-Content], UnauthorizedAccessException\r\n    + FullyQualifiedErrorId : GetContentWriterUnauthorizedAccessError,Microsoft.PowerShell.Commands.SetContentCommand\r\n \r\n"
+  }
+]
