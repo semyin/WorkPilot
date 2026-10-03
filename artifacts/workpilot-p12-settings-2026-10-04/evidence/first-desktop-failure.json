@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-03T20:09:30.970Z",
+  "platform": "win32",
+  "binarySha256": "4cd16db5f1ef0d8db1c5737aed5bdab4e78ea40059a65ac03b1279f7964f126c",
+  "checks": [],
+  "status": "failed",
+  "error": "locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('dialog', { name: '设置', exact: true }).locator('.project-transfer').getByLabel('源项目', { exact: true })\u001b[22m\n\n    at D:\\workspace\\kplocker\\WorkPilot\\scripts\\project-transfer-desktop.mjs:130:53"
+}

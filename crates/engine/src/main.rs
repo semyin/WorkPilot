@@ -271,7 +271,7 @@ async fn main() -> Result<(), Failure> {
             }
         }
     }
-    workbench.cancel_all();
+    workbench.begin_shutdown();
     tasks.shutdown().await;
     drop(tasks);
     models.shutdown().await;

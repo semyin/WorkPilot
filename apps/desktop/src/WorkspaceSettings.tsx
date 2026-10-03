@@ -9,6 +9,7 @@ import { executionCommand } from "./executionClient";
 import { useWords } from "./workspaceClient";
 import { InstallationPanel } from "./InstallationPanel";
 import { BrowserSetupPanel } from "./BrowserSetupPanel";
+import { ProjectTransferPanel } from "./ProjectTransferPanel";
 export function WorkspaceSettings({
   preferences,
   scheduler,
@@ -133,10 +134,14 @@ export function WorkspaceSettings({
           <p>{dataDir}</p>
           <small>
             {tr(
-              "记录保存在本机。完整迁移与备份暂未提供，请保留原数据目录。",
-              "Records stay on this computer. Full migration and backup are not available yet; keep the original data directory.",
+              "记录保存在本机。文件与终端 → 修改历史可备份所选文件版本；完整资料迁移仍在开发，请保留原数据目录。",
+              "Records stay on this computer. File workspace → History can back up selected revisions. Full data migration is still in development; keep the original data directory.",
             )}
           </small>
+        </details>
+        <details>
+          <summary>{tr("项目设置与记忆迁移", "Project settings and memory transfer")}</summary>
+          <ProjectTransferPanel />
         </details>
         <details>
           <summary>{tr("Chrome / Edge 连接设置", "Chrome / Edge connection setup")}</summary>

@@ -2,12 +2,16 @@
 
 面向个人和小团队的通用 AI 桌面工作平台。采用自研 Rust 执行引擎、React/Tauri 2 桌面及独立工具进程。
 
-当前为 P12 安装与环境开发预览：已有 Windows 安装器、随包 Python/Git 和环境诊断；接续版增加“设置 → Chrome / Edge 连接设置”与按安装位置清理浏览器连接的卸载流程。通用 Git 的受限命令仍有兼容问题，浏览器完整分发、签名更新、数据迁移和干净系统验收仍待补齐，P12 尚未整体验收。
+当前接续 P12 项目设置迁移：在设置中选择项目、模型配置与已确认记忆，口令保护导出，先预览再导入为新项目；模型密钥需要时重填。此前“文件与终端 → 修改历史”的版本备份与审批恢复继续保留。完整会话、技能/插件、项目文件迁移及版本清理仍待接续，P12 尚未整体验收。
 
 P11 的确认记忆与本地定时能力保留：关窗继续，彻底退出后停止，错过不补跑，需要审批时等待用户。实际电脑睡眠、真实模型记忆质量、图片配置、用户体验和通知选择仍集中待确认。
 
 - [开发计划与当前进度](docs/README.md)
-- [P12 当前安装包和运行入口](artifacts/workpilot-p12-browser-setup-2026-10-04/README.md)
+- [P12 当前项目设置迁移预览](artifacts/workpilot-p12-settings-2026-10-04/README.md)
+- [P12 项目设置迁移说明](docs/development/P12-项目设置迁移.md)
+- [P12 前一批文件历史备份预览](artifacts/workpilot-p12-history-2026-10-04/README.md)
+- [P12 历史备份与恢复设计](docs/development/P12-历史备份与恢复.md)
+- [P12 前一批安装包和浏览器连接入口](artifacts/workpilot-p12-browser-setup-2026-10-04/README.md)
 - [P12 首批安装与环境历史交付](artifacts/workpilot-p12-install-2026-10-03/README.md)
 - [P12 安装与环境设计](docs/development/P12-安装与环境设计.md)
 - [P12 真实验证与剩余项](docs/development/P12-验证记录.md)

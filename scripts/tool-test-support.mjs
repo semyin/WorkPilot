@@ -101,7 +101,9 @@ async function launch(directory, fault) {
           reject(new Error("IPC reply timed out: " + command.kind + "; " + stderr));
         },
         (command.kind === "media" && command.action?.kind === "preview") ||
-          command.kind === "inspect_installation"
+          command.kind === "inspect_installation" ||
+          command.kind === "history_transfer" ||
+          command.kind === "project_transfer"
           ? 120000
           : 10000,
       );

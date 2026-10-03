@@ -3,11 +3,13 @@ mod execution;
 #[cfg(test)]
 mod execution_tests;
 mod extensions;
+mod history_transfer;
 mod media;
 mod memory;
 #[cfg(test)]
 mod memory_tests;
 mod objects;
+mod project_transfer;
 #[cfg(test)]
 mod provider_tests;
 mod providers;

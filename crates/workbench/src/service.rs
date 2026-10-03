@@ -145,6 +145,7 @@ impl Client {
     }
 }
 struct State {
+    transfer: crate::transfer::Manager,
     storage: Storage,
     data: PathBuf,
     out: mpsc::Sender<Wire>,
@@ -200,6 +201,7 @@ impl Service {
     pub async fn new(storage: Storage, data: PathBuf, out: mpsc::Sender<Wire>) -> Self {
         let service = Self {
             state: Arc::new(State {
+                transfer: crate::transfer::Manager::new(storage.clone(), data.clone(), out.clone()),
                 media: crate::media::Manager::new(storage.clone(), data.clone()),
                 extensions: workpilot_extensions::Manager::new(storage.clone(), data.clone()),
                 storage,
@@ -222,6 +224,50 @@ impl Service {
         Client(self.state.clone())
     }
     pub fn dispatch(&mut self, request: &Request) -> bool {
+        if matches!(
+            &request.command,
+            Command::HistoryTransfer { .. } | Command::ProjectTransfer { .. }
+        ) {
+            self.requests.retain(|j| !j.is_finished());
+            let (state, id, command) = (
+                self.state.clone(),
+                request.request_id.clone(),
+                request.command.clone(),
+            );
+            if self.requests.len() >= 8 {
+                let _ = state.out.try_send(Wire::Reply {
+                    request_id: id,
+                    response: error("历史管理忙，请稍后重试 / History management is busy"),
+                });
+                return true;
+            }
+            let runtime = tokio::runtime::Handle::current();
+            self.requests.push(tokio::task::spawn_blocking(move || {
+                runtime.block_on(async move {
+                    let result = match command {
+                        Command::HistoryTransfer { task_id, action } => {
+                            state.transfer.handle(task_id, action).await
+                        }
+                        Command::ProjectTransfer { action } => {
+                            state.transfer.handle_project(action).await
+                        }
+                        _ => unreachable!(),
+                    };
+                    let response = match result {
+                        Ok(data) => Response::Workbench { data },
+                        Err(e) => error(e),
+                    };
+                    let _ = state
+                        .out
+                        .send(Wire::Reply {
+                            request_id: id,
+                            response,
+                        })
+                        .await;
+                })
+            }));
+            return true;
+        }
         match &request.command {
             Command::ConfigureToolDefaults { .. } => self.cancel_all(),
             Command::Cancel { task_id }
@@ -352,6 +398,7 @@ impl Service {
         }
     }
     pub fn cancel_all(&self) {
+        self.state.transfer.cancel_all();
         self.state.media.cancel_all();
         self.state.browser.cancel_all();
         self.state.extensions.cancel_all();
@@ -362,6 +409,7 @@ impl Service {
         }
     }
     pub async fn shutdown(mut self) {
+        self.begin_shutdown();
         self.cancel_all();
         for request in std::mem::take(&mut self.requests) {
             let _ = request.await;
@@ -372,6 +420,10 @@ impl Service {
             let _ = job.await;
         }
         self.state.browser.shutdown();
+    }
+    pub fn begin_shutdown(&self) {
+        self.state.transfer.shutdown();
+        self.cancel_all();
     }
 }
 impl State {

@@ -30,6 +30,8 @@ coverage/
 *.sqlite3-journal
 *.sqlite3-shm
 *.sqlite3-wal
+*.wphistory
+*.wpsettings
 
 # Local credentials and signing keys. Sanitized example files may be committed.
 .env

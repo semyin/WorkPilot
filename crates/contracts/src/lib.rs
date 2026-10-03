@@ -27,6 +27,10 @@ mod schedule;
 pub use schedule::*;
 mod installation;
 pub use installation::*;
+mod history_transfer;
+pub use history_transfer::*;
+mod project_transfer;
+pub use project_transfer::*;
 
 pub const PROTOCOL: &str = "workpilot.v1";
 pub const SCHEMA_VERSION: u32 = 11;
@@ -46,6 +50,13 @@ pub struct Request {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 pub enum Command {
+    ProjectTransfer {
+        action: ProjectTransferAction,
+    },
+    HistoryTransfer {
+        task_id: String,
+        action: HistoryTransferAction,
+    },
     BrowserSetup {
         action: BrowserSetupAction,
     },
@@ -245,6 +256,13 @@ impl Request {
             return Err("invalid request_id");
         }
         match &self.command {
+            Command::ProjectTransfer { action } => action.validate()?,
+            Command::HistoryTransfer { task_id, action } => {
+                if !valid_id(task_id) {
+                    return Err("invalid task");
+                }
+                action.validate()?;
+            }
             Command::Media { task_id, action } => {
                 if task_id.as_ref().is_some_and(|id| !valid_id(id)) {
                     return Err("invalid task");
@@ -917,6 +935,9 @@ pub fn typescript() -> String {
         MemoryAction,
         MemoryData,
         WorkbenchAction,
+        HistoryTransferAction,
+        ProjectTransferAction,
+        FileRevisionOrigin,
         BrowserAction,
         BrowserControl,
         ExtensionAdmin,

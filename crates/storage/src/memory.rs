@@ -3,8 +3,8 @@ use serde::Deserialize;
 use serde_json::{Value, json};
 
 #[derive(Clone, Serialize, Deserialize)]
-struct Stored {
-    memory: Memory,
+pub(crate) struct Stored {
+    pub(crate) memory: Memory,
     revision: u32,
     deleted: bool,
     source_label: String,
@@ -15,6 +15,32 @@ struct Stored {
 }
 
 impl Store {
+    pub(crate) fn prepare_transferred_memory(
+        &mut self,
+        original: &MemoryItem,
+        project: Option<String>,
+        archive: &str,
+    ) -> Result<Stored> {
+        let mut label = original.source_label.clone();
+        while label.len() > 2048 {
+            label.pop();
+        }
+        let mut value = self.new_memory(
+            &original.text,
+            None,
+            None,
+            format!(
+                "导入 / Imported: {} · {}@{} · {}",
+                label, original.id, original.revision, archive
+            ),
+            original.source_quote.clone(),
+            MemoryState::Confirmed,
+        )?;
+        value.memory.project_id = project;
+        value.created_at_ms = original.created_at_ms;
+        value.change = "imported_and_confirmed".into();
+        Ok(value)
+    }
     // Only migrated placeholders need an index. Normal edits maintain it in their transaction.
     pub(crate) fn memory_reindex(&mut self) -> Result<()> {
         let ids = {
@@ -514,7 +540,7 @@ impl Store {
     }
 }
 
-fn write(tx: &Connection, v: &Stored, text: &str) -> Result<()> {
+pub(crate) fn write(tx: &Connection, v: &Stored, text: &str) -> Result<()> {
     tx.execute("INSERT INTO memories(id,project_id,source_task_id,object_id,data_json) VALUES(?1,?2,?3,?4,?5) ON CONFLICT(id) DO UPDATE SET project_id=excluded.project_id,object_id=excluded.object_id,data_json=excluded.data_json",params![v.memory.id,v.memory.project_id,v.memory.source_task_id,v.memory.content.object_id,encode(&v.memory)?])?;
     let data = encode(v)?;
     tx.execute("INSERT INTO memory_meta(memory_id,revision,deleted,search_text,data_json) VALUES(?1,?2,?3,?4,?5) ON CONFLICT(memory_id) DO UPDATE SET revision=excluded.revision,deleted=excluded.deleted,search_text=excluded.search_text,data_json=excluded.data_json",params![v.memory.id,v.revision,v.deleted,text.to_lowercase(),data])?;

@@ -3,6 +3,7 @@ pub mod git;
 pub mod history;
 pub mod media;
 mod service;
+mod transfer;
 pub mod vault;
 pub use service::Client;
 pub use service::Service;

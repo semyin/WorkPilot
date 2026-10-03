@@ -3,6 +3,25 @@ use std::{
     process::{Child, Command, Stdio},
 };
 
+/// Coordinate Rust's process creation with our Win32 tool launcher. The standard
+/// library's private spawn lock cannot protect inheritable handles we create.
+/// Hold this only while creating handles/processes, never while waiting for exit.
+#[cfg(windows)]
+pub(crate) fn creation_guard() -> std::sync::MutexGuard<'static, ()> {
+    static CREATION: std::sync::Mutex<()> = std::sync::Mutex::new(());
+    CREATION
+        .lock()
+        .unwrap_or_else(|poisoned| poisoned.into_inner())
+}
+
+/// Use this for trusted std::process launches in a process that also runs tools.
+/// Untrusted commands must still go through tool_process's isolated launcher.
+pub fn spawn_command(command: &mut Command) -> io::Result<Child> {
+    #[cfg(windows)]
+    let _creation = creation_guard();
+    command.spawn()
+}
+
 /// Owns the trusted WorkPilot engine and its process group.
 /// The engine must wait for stdin commands before creating descendants.
 /// This is lifecycle containment, NOT isolation for untrusted tools (P04).
@@ -31,7 +50,7 @@ impl ManagedEngine {
             use std::os::unix::process::CommandExt;
             command.process_group(0);
         }
-        let child = command.spawn()?;
+        let child = spawn_command(command)?;
         #[cfg(windows)]
         {
             let mut child = child;

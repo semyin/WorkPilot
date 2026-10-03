@@ -819,7 +819,7 @@ fn finish_configuration(
     )?);
     Ok(events)
 }
-fn clear_observed(p: &mut ProviderProfile) {
+pub(crate) fn clear_observed(p: &mut ProviderProfile) {
     for cap in [
         &mut p.capabilities.text,
         &mut p.capabilities.streaming,

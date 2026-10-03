@@ -9,6 +9,7 @@ license.workspace = true
 workpilot-contracts = { path = "../contracts" }
 workpilot-platform = { path = "../platform" }
 workpilot-storage = { path = "../storage" }
+workpilot-providers = { path = "../providers" }
 workpilot-tools = { path = "../tools" }
 workpilot-extensions = { path = "../extensions" }
 tokio.workspace = true

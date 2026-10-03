@@ -1,0 +1,63 @@
+   Compiling workpilot-platform v0.1.0-alpha.12.2 (D:\workspace\kplocker\WorkPilot\crates\platform)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.50s
+     Running unittests src\lib.rs (target\debug\deps\workpilot_platform-4788d4fbb1edf7a8.exe)
+
+running 21 tests
+test credentials::tests::windows_credential_roundtrip ... ignored, writes and removes an isolated synthetic credential in Windows Credential Manager
+test credentials::tests::secret_debug_never_shows_value ... ok
+test paths::tests::channels_never_share_the_same_directory ... ok
+test runtimes::tests::missing_malformed_traversal_and_cancelled_inventory_are_truthful ... ok
+test paths::tests::checks_real_paths_and_rejects_parent_escape ... ok
+test runtimes::tests::integrity_checks_detect_same_size_damage_missing_files_and_preserve_data ... ok
+test runtimes::tests::packaged_resolution_never_falls_back_when_its_tool_is_missing ... ok
+test tool_process::windows::acl_tests::null_dacl_is_not_replaced_with_a_single_sandbox_ace ... ok
+test paths::tests::rejects_windows_directory_junction_escape ... ok
+test tool_process::tests::cancellation_finishes_while_an_unrelated_managed_process_stays_alive ... ok
+test tool_process::tests::appcontainer_writes_authorized_project_but_cannot_read_private_sibling ... ok
+test runtimes::worker::tests::cancellation_stops_an_unresponsive_owned_process ... ok
+test browser_setup::windows::tests::legacy_packaged_manifest_with_native_windows_paths_is_recognized ... ok
+test tool_process::tests::process_cancellation_output_limit_and_nonzero_exit_are_truthful ... ok
+test browser_setup::windows::tests::foreign_registration_after_inspection_is_preserved_even_when_unregistering ... ok
+test browser_setup::windows::tests::edge_fallback_is_reported_but_explicit_edge_setup_does_not_modify_chrome ... ok
+test browser_setup::windows::tests::invalid_default_and_extra_values_are_not_deleted_or_overwritten ... ok
+test browser_setup::windows::tests::missing_or_changed_assets_and_changed_manifest_fail_before_registration ... ok
+test browser_setup::windows::tests::current_user_registration_is_idempotent_and_separate_per_browser ... ok
+test runtimes::worker::tests::malformed_oversized_and_incomplete_outputs_never_become_successful_reports ... ok
+test runtimes::worker::tests::idle_and_total_limits_stop_owned_processes_and_next_check_can_finish ... ok
+
+test result: ok. 20 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 5.36s
+
+     Running unittests src\bin\workpilot-browser-setup.rs (target\debug\deps\workpilot_browser_setup-612fc7bb651577c8.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\bin\workpilot-runtime-check.rs (target\debug\deps\workpilot_runtime_check-134cdd19f2c74dae.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\bin\workpilot-tool-fixture.rs (target\debug\deps\workpilot_tool_fixture-9edc8dcb780db707.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\tool_boundary.rs (target\debug\deps\tool_boundary-090091511103550a.exe)
+
+running 4 tests
+test actual_timeout_and_output_limits_are_observable ... ok
+test cancelled_sandbox_kills_its_real_three_level_process_tree ... ok
+test abrupt_owner_death_kills_descendants_and_recovers_only_its_sandbox_ledger ... ok
+test appcontainer_denies_live_loopback_and_does_not_inherit_host_environment ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.98s
+
+   Doc-tests workpilot_platform
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

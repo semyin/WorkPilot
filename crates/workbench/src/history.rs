@@ -100,6 +100,7 @@ pub fn differences(
                 at_ms: workpilot_storage::now_ms(),
                 before: old.clone(),
                 after: new.clone(),
+                origin: None,
             })
         })
         .collect()

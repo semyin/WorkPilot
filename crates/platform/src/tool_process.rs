@@ -216,6 +216,59 @@ mod tests {
         stop.store(true, Ordering::SeqCst);
         let result = worker.join().unwrap();
         assert!(result.stopped.is_some());
-        assert!(result.elapsed_ms < 2000);
+        assert!(result.elapsed_ms < 2000, "{result:?}");
+    }
+    #[test]
+    fn cancellation_finishes_while_an_unrelated_managed_process_stays_alive() {
+        use std::{process::Command, sync::Mutex, time::Duration};
+        let temp = tempfile::tempdir().unwrap();
+        let unrelated = Arc::new(Mutex::new(None::<crate::process::ManagedEngine>));
+        let observed = unrelated.clone();
+        let stop = Arc::new(AtomicBool::new(false));
+        let signal = stop.clone();
+        let observer = Arc::new(move |progress| {
+            if let ProcessProgress::Started(_) = progress {
+                let program = PathBuf::from(std::env::var_os("SystemRoot").unwrap())
+                    .join("System32/WindowsPowerShell/v1.0/powershell.exe");
+                let mut command = Command::new(program);
+                command.args([
+                    "-NoProfile",
+                    "-NonInteractive",
+                    "-Command",
+                    "Start-Sleep -Seconds 30",
+                ]);
+                *observed.lock().unwrap() =
+                    Some(crate::process::ManagedEngine::spawn(&mut command).unwrap());
+                signal.store(true, Ordering::SeqCst);
+            }
+        });
+        let request = spec(
+            temp.path(),
+            vec!["/d".into(), "/c".into(), "echo done".into()],
+            false,
+        );
+        let (send, recv) = std::sync::mpsc::channel();
+        let worker = std::thread::spawn(move || {
+            send.send(run_observed(request, stop, Some(observer)))
+                .unwrap();
+        });
+        // Always clean up our unrelated process, including on a regression.
+        let result = recv.recv_timeout(Duration::from_secs(2));
+        let mut unrelated = unrelated.lock().unwrap();
+        let child = unrelated
+            .as_mut()
+            .expect("observer launched the separate process");
+        let still_running = child.child.try_wait().unwrap().is_none();
+        child.terminate().unwrap();
+        worker.join().unwrap();
+        assert!(
+            still_running,
+            "cancelling one tool must not stop the unrelated process"
+        );
+        let result = result
+            .expect("tool output pipes must close without waiting for unrelated children")
+            .unwrap();
+        assert_eq!(result.stopped.as_deref(), Some("cancelled"));
+        assert!(result.elapsed_ms < 2000, "{result:?}");
     }
 }

@@ -258,6 +258,7 @@ impl Store {
                     version: serde_json::from_str(&after)?,
                     blob: Some(format!("legacy:{new}")),
                 },
+                origin: None,
             };
             self.connection.execute("INSERT OR IGNORE INTO file_revisions(id,task_id,root_identity,path,operation_id,data_json) VALUES(?1,?2,?3,?4,?5,?6)",params![revision.id,revision.task_id,revision.root_identity,revision.path,revision.operation_id,encode(&revision)?])?;
         }

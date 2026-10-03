@@ -9,6 +9,7 @@ import type {
 import { executionCommand } from "./executionClient";
 import { useWords } from "./workspaceClient";
 import { Saved } from "./SavedContent";
+import { HistoryTransferPanel } from "./HistoryTransferPanel";
 import "./files.css";
 
 type FileView = {
@@ -286,6 +287,7 @@ export function FileWorkbench({ task, onClose }: { task: string; onClose: () => 
     await invoke("project_open_external", { taskId: task, path, folder });
   };
   const operationTitle = (op: WorkbenchOperation) => {
+    if (op.kind === "history_import") return tr("导入文件历史", "Import file history");
     if (op.kind === "terminal") return tr("运行命令 · ", "Run command · ") + op.summary;
     if (op.kind === "git_commit") return tr("提交选中文件", "Commit selected files");
     if (op.summary.startsWith("恢复文件版本 ")) return tr("恢复文件版本", "Restore file version");
@@ -602,6 +604,12 @@ export function FileWorkbench({ task, onClose }: { task: string; onClose: () => 
           )}
           {tab === "history" && (
             <section className="file-history">
+              <HistoryTransferPanel
+                key={task}
+                task={task}
+                history={history}
+                onImported={() => historyPage()}
+              />
               <div className="file-toolbar">
                 <h3>{tr("项目修改历史", "Project file history")}</h3>
                 <button disabled={busy} onClick={() => void act(() => historyPage())}>
@@ -641,6 +649,12 @@ export function FileWorkbench({ task, onClose }: { task: string; onClose: () => 
                       <small>
                         {r.source} · {r.task_id.slice(0, 8)}
                       </small>
+                      {r.origin && (
+                        <small>
+                          {tr("导入来源任务：", "Imported from task: ")}
+                          {r.origin.task_id.slice(0, 8)} · {r.origin.source}
+                        </small>
+                      )}
                       {r.previous_path && <small>← {r.previous_path}</small>}
                     </button>
                   ))}

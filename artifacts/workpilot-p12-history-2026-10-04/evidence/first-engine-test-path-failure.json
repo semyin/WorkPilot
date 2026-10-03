@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-03T18:35:42.820Z",
+  "platform": "win32",
+  "binarySha256": "2b05274079717e6650366f1467800e6a86462ba2961c02216ac0421375c50039",
+  "checks": [
+    "encrypted_export_no_overwrite_wrong_password_damaged_and_stale_preview_leave_history_unchanged"
+  ],
+  "status": "failed",
+  "error": "Error: ENOENT: no such file or directory, open 'D:\\workspace\\kplocker\\WorkPilot\\.test-results\\history-transfer-engine\\中文 迁移-LISL1Q\\source-data-offline\\versions\\key-id'\n    at async open (node:internal/fs/promises:639:25)\n    at async readFile (node:internal/fs/promises:1252:14)\n    at async file:///D:/workspace/kplocker/WorkPilot/scripts/history-transfer-test.mjs:158:5"
+}

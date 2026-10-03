@@ -1,0 +1,10 @@
+   Compiling workpilot-contracts v0.1.0-alpha.12.2 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-platform v0.1.0-alpha.12.2 (D:\workspace\kplocker\WorkPilot\crates\platform)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 14.19s
+     Running unittests src\lib.rs (target\debug\deps\workpilot_platform-4788d4fbb1edf7a8.exe)
+
+running 1 test
+test tool_process::tests::process_cancellation_output_limit_and_nonzero_exit_are_truthful ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 19 filtered out; finished in 0.15s
+

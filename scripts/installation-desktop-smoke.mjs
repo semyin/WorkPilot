@@ -18,7 +18,7 @@ await mkdir(output, { recursive: true });
 const directory = await mkdtemp(join(output, "data-"));
 const binary =
   process.env.WORKPILOT_DESKTOP_BINARY ||
-  join(root, "artifacts/workpilot-p12-browser-setup-2026-10-04/preview/workpilot-desktop.exe");
+  join(root, "artifacts/workpilot-p12-settings-2026-10-04/preview/workpilot-desktop.exe");
 const registrationsBefore = browserRegistrationSnapshot();
 const report = {
   at: new Date().toISOString(),

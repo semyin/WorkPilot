@@ -1,0 +1,30 @@
+   Compiling workpilot-platform v0.1.0-alpha.12.2 (D:\workspace\kplocker\WorkPilot\crates\platform)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.52s
+     Running unittests src\lib.rs (target\debug\deps\workpilot_platform-4788d4fbb1edf7a8.exe)
+
+running 1 test
+
+thread 'tool_process::tests::cancellation_finishes_while_an_unrelated_managed_process_stays_alive' (2596) panicked at crates\platform\src\tool_process.rs:269:14:
+tool output pipes must close without waiting for unrelated children: Timeout
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test tool_process::tests::cancellation_finishes_while_an_unrelated_managed_process_stays_alive ... FAILED
+
+failures:
+
+failures:
+    tool_process::tests::cancellation_finishes_while_an_unrelated_managed_process_stays_alive
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 20 filtered out; finished in 2.02s
+
+error: test failed, to rerun pass `-p workpilot-platform --lib`
+file:///D:/workspace/kplocker/WorkPilot/scripts/cargo.mjs:25
+      else reject(new Error(command + " exited with " + (code ?? signal)));
+                  ^
+
+Error: C:\Users\semyi\.cargo\bin\cargo.exe exited with 101
+    at ChildProcess.<anonymous> (file:///D:/workspace/kplocker/WorkPilot/scripts/cargo.mjs:25:19)
+    at Object.onceWrapper (node:events:634:26)
+    at ChildProcess.emit (node:events:519:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+
+Node.js v22.23.2

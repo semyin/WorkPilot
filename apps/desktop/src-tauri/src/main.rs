@@ -52,6 +52,57 @@ async fn pick_project_folder(
     .transpose()
 }
 #[tauri::command]
+async fn pick_history_archive(
+    view: Webview,
+    app: tauri::AppHandle,
+    save: bool,
+) -> Result<Option<String>, String> {
+    pick_transfer_archive(view, app, save, false).await
+}
+#[tauri::command]
+async fn pick_settings_archive(
+    view: Webview,
+    app: tauri::AppHandle,
+    save: bool,
+) -> Result<Option<String>, String> {
+    pick_transfer_archive(view, app, save, true).await
+}
+async fn pick_transfer_archive(
+    view: Webview,
+    app: tauri::AppHandle,
+    save: bool,
+    settings: bool,
+) -> Result<Option<String>, String> {
+    main_only(&view)?;
+    let (sender, receiver) = oneshot::channel();
+    let dialog = app.dialog().file().add_filter(
+        "WorkPilot backup",
+        &[if settings { "wpsettings" } else { "wphistory" }],
+    );
+    if save {
+        dialog
+            .set_file_name(if settings {
+                "WorkPilot-project.wpsettings"
+            } else {
+                "WorkPilot-history.wphistory"
+            })
+            .save_file(move |path| {
+                let _ = sender.send(path);
+            });
+    } else {
+        dialog.pick_file(move |path| {
+            let _ = sender.send(path);
+        });
+    }
+    let path = receiver.await.map_err(|_| "Archive dialog closed")?;
+    path.map(|p| {
+        p.into_path()
+            .map(|p| p.to_string_lossy().into_owned())
+            .map_err(|e| e.to_string())
+    })
+    .transpose()
+}
+#[tauri::command]
 fn set_desktop_locale(
     view: Webview,
     labels: State<'_, TrayLabels>,
@@ -171,6 +222,8 @@ impl Bridge {
         let seconds = if matches!(
             &request.command,
             Command::Media { .. }
+                | Command::HistoryTransfer { .. }
+                | Command::ProjectTransfer { .. }
                 | Command::InspectInstallation { .. }
                 | Command::Workbench {
                     action: workpilot_contracts::WorkbenchAction::ReadDocument { .. },
@@ -584,6 +637,8 @@ fn main() {
         .invoke_handler(tauri::generate_handler![
             engine_snapshot,
             engine_command,
+            pick_history_archive,
+            pick_settings_archive,
             project_open_external,
             extension_open_login,
             browser_extension_folder,

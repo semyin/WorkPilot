@@ -106,12 +106,18 @@ mod tests {
         fs::create_dir(&root).unwrap();
         fs::create_dir(&outside).unwrap();
         fs::write(outside.join("file.txt"), "outside").unwrap();
-        let result = std::process::Command::new("cmd.exe")
-            .args(["/c", "mklink", "/J"])
-            .arg(root.join("link"))
-            .arg(&outside)
-            .output()
-            .unwrap();
+        let result = crate::process::spawn_command(
+            std::process::Command::new("cmd.exe")
+                .args(["/c", "mklink", "/J"])
+                .arg(root.join("link"))
+                .arg(&outside)
+                .stdin(std::process::Stdio::null())
+                .stdout(std::process::Stdio::piped())
+                .stderr(std::process::Stdio::piped()),
+        )
+        .unwrap()
+        .wait_with_output()
+        .unwrap();
         assert!(
             result.status.success(),
             "junction fixture could not be created"

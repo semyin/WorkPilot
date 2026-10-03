@@ -444,6 +444,9 @@ pub fn run(
             size_of::<JOBOBJECT_EXTENDED_LIMIT_INFORMATION>() as u32,
         )
     })?;
+    // All inheritable pipe ends must be closed before another trusted Rust
+    // launcher can spawn. HANDLE_LIST protects our child, not unrelated children.
+    let creation = crate::process::creation_guard();
     let (input_read, input_write) = pipe()?;
     let (output_read, output_write) = pipe()?;
     let (error_read, error_write) = pipe()?;
@@ -552,6 +555,8 @@ pub fn run(
     .map_err(|e| io::Error::other(format!("CreateProcess: {e}")))?;
     let process_handle = Handle(process.hProcess);
     let thread_handle = Handle(process.hThread);
+    drop((input_read, output_write, error_write));
+    drop(creation);
     if let Err(e) = win(unsafe { AssignProcessToJobObject(job.0.0, process_handle.0) }) {
         unsafe {
             TerminateProcess(process_handle.0, 1);
@@ -566,7 +571,6 @@ pub fn run(
     } else if unsafe { ResumeThread(thread_handle.0) } == u32::MAX {
         return Err(io::Error::last_os_error());
     }
-    drop((input_read, output_write, error_write));
     let input_finished = Arc::new(AtomicBool::new(false));
     let input_worker = if let Some(input) = input {
         let done = input_finished.clone();

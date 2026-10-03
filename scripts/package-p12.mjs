@@ -4,9 +4,9 @@ import { execFileSync } from "node:child_process";
 import { join, dirname, relative, resolve, isAbsolute } from "node:path";
 import { root } from "./cargo.mjs";
 
-export const destination = join(root, "artifacts/workpilot-p12-browser-setup-2026-10-04");
+export const destination = join(root, "artifacts/workpilot-p12-settings-2026-10-04");
 const preview = join(destination, "preview");
-const previous = join(root, "artifacts/workpilot-p12-install-2026-10-03");
+const previous = join(root, "artifacts/workpilot-p12-history-2026-10-04");
 const hash = (b) => createHash("sha256").update(b).digest("hex");
 const build = JSON.parse(await readFile(join(root, ".local/desktop-release-receipt.json"), "utf8"));
 const sources = JSON.parse(
@@ -137,7 +137,7 @@ for (const browser of ["chrome", "edge"])
   );
 await text(
   "使用说明.txt",
-  "WorkPilot P12 安装与环境开发预览\r\n\r\n运行 workpilot-desktop.exe，或运行上级目录的安装包。请保留整个 preview 文件夹。\r\n设置 → 环境检查与诊断：快速检查、完整核验、导出本机报告。\r\n随包包含 Node、Python 标准库、MinGit、文档工具与 Office 预览环境；不会修改全局 PATH。Python 不含 pip 和任意第三方依赖，MinGit 不含 Git Bash。\r\n浏览器仍需已有 Chrome 或 Edge；Chromium 候选版本因缺少完整第三方许可暂未随包分发。\r\n本版数据仍为版本 11；旧 P11 数据不需要迁移。\r\n关闭窗口保留后台任务，托盘‘退出’才彻底停止。\r\n这是未签名的 Windows 私有开发预览，不是正式 V1。升级、完整数据迁移、干净系统和跨平台验收仍未完成。\r\n",
+  "WorkPilot P12 项目设置迁移开发预览\r\n\r\n运行 workpilot-desktop.exe，请保留整个 preview 文件夹。\r\n设置 → 项目设置与记忆迁移：选择项目、模型和记忆导出；在目标文件夹预览后导入为新项目，模型密钥需重填。\r\n文件与终端 → 修改历史 → 备份与导入文件历史：选择版本、设置口令并导出；在目标项目先预览，再确认导入。导入不会修改当前项目文件，恢复继续遵守原审批流程。请单独保管口令。\r\n本批提供可直接运行的预览程序，上一级说明列出历史交付入口。\r\n设置 → 环境检查与诊断：快速检查、完整核验、导出本机报告。\r\n随包包含 Node、Python 标准库、MinGit、文档工具与 Office 预览环境；不会修改全局 PATH。Python 不含 pip 和任意第三方依赖，MinGit 不含 Git Bash。\r\n浏览器仍需已有 Chrome 或 Edge；Chromium 候选版本因缺少完整第三方许可暂未随包分发。\r\n本版数据仍为版本 11；旧 P11 数据不需要迁移。\r\n关闭窗口保留后台任务，托盘‘退出’才彻底停止。\r\n这是未签名的 Windows 私有开发预览，不是正式 V1。升级、完整数据迁移、干净系统和跨平台验收仍未完成。\r\n",
 );
 await text(
   "RUNTIME-SOURCES.json",
@@ -279,7 +279,7 @@ await writeFile(
   join(destination, "source-and-binary-manifest.json"),
   JSON.stringify(
     {
-      phase: "P12-installation-slice",
+      phase: "P12-settings-slice",
       at: new Date().toISOString(),
       build,
       baseCommit: execFileSync("git", ["rev-parse", "HEAD"], {

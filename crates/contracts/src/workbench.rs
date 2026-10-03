@@ -240,6 +240,8 @@ pub struct FileRevision {
     pub at_ms: u64,
     pub before: FileImage,
     pub after: FileImage,
+    #[serde(default)]
+    pub origin: Option<FileRevisionOrigin>,
 }
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 pub struct WorkbenchOperation {

@@ -21,7 +21,7 @@ const output = resolve(
 await mkdir(output, { recursive: true });
 const binary =
   process.env.WORKPILOT_ENGINE_BINARY ||
-  join(root, "artifacts/workpilot-p12-browser-setup-2026-10-04/preview/workpilot-sidecar.exe");
+  join(root, "artifacts/workpilot-p12-settings-2026-10-04/preview/workpilot-sidecar.exe");
 const bundle = dirname(binary),
   fixture = await startToolFixture();
 setFixture(fixture);
