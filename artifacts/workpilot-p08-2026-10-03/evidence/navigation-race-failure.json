@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-03T03:33:47.838Z",
+  "platform": "win32",
+  "checks": [
+    "chrome_same_and_cross_origin_frames_use_explicit_references",
+    "chrome_upload_waits_for_bound_approval_and_sends_exact_project_bytes",
+    "chrome_stale_page_approval_rejected_and_stop_revokes_connection",
+    "chrome_cross_task_and_project_escape_rejected_web_text_cannot_grant_access",
+    "chrome_popup_and_javascript_dialog_handled_in_owned_browser",
+    "chrome_manual_takeover_and_profile_login_marker_persist_without_copy"
+  ],
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: {\"kind\":\"error\",\"code\":\"invalid_request\",\"message\":\"Page navigated while reading; read it again.\"}\n+ actual - expected\n\n+ 'error'\n- 'workbench'\n"
+}

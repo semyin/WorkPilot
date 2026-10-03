@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-03T03:46:18.549Z",
+  "platform": "win32",
+  "browser": "Official Playwright Chromium / Chrome for Testing, isolated existing session",
+  "dailyChromeVerified": false,
+  "dailyEdgeVerified": false,
+  "checks": [
+    "actual_extension_native_host_one_use_pairing_to_selected_existing_tab",
+    "connected_dom_fill_click_screenshot_and_multiple_frames",
+    "approved_upload_and_binary_download_use_project_versions",
+    "unconnected_tab_rejected_manual_takeover_and_reload_invalidate_old_target",
+    "existing_login_marker_retained_application_exit_detaches_without_closing_daily_tabs"
+  ],
+  "status": "passed"
+}

@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-03T03:36:59.071Z",
+  "platform": "win32",
+  "service": "real local files, Git, Windows processes; no paid model",
+  "checks": [
+    "approval_binds_exact_version_chinese_spaces_long_name_external_edit_preserved",
+    "concurrent_approval_consumed_once_restore_preserves_before_and_current_bytes",
+    "private_windows_acl_preserved_case_alias_conflict_and_64MiB_limit_rejected",
+    "exact_sensitive_file_bytes_are_encrypted_outside_trace_objects",
+    "binary_three_megabyte_delete_restore_and_rename_history",
+    "actual_script_creates_renames_deletes_with_restorable_before_images",
+    "model_write_file_and_run_command_share_browsable_exact_file_history",
+    "git_selected_commit_preserves_other_staged_and_unstaged_changes",
+    "owned_live_preview_port_stops_without_killing_unrelated_process",
+    "engine_crash_recovers_observed_file_history_without_replaying_command"
+  ],
+  "stopMs": 240,
+  "status": "passed"
+}

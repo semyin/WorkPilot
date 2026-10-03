@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-03T03:52:41.253Z",
+  "platform": "win32",
+  "model": "local deterministic model fixture; no paid provider",
+  "checks": [
+    "model_starts_dedicated_browser_only_after_approval_and_does_not_replay_on_resume",
+    "full_access_model_drives_real_browser_results_and_approval_resume_without_replay",
+    "request_approval_model_drives_real_browser_results_and_approval_resume_without_replay",
+    "screenshot_attached_only_to_explicitly_image_capable_model"
+  ],
+  "status": "passed"
+}

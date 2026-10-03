@@ -184,6 +184,7 @@ async fn main() -> Result<(), Failure> {
     let mut workspace = workspace::Workspace::new(storage.clone(), directory.clone(), out.clone());
     let mut workbench =
         workpilot_workbench::Service::new(storage.clone(), directory.clone(), out.clone()).await;
+    tasks.set_workbench(workbench.client());
     let mut team_tick = tokio::time::interval(std::time::Duration::from_millis(100));
     team_tick.set_missed_tick_behavior(tokio::time::MissedTickBehavior::Skip);
     loop {

@@ -1,0 +1,27 @@
+{
+  "at": "2026-10-03T03:53:59.273Z",
+  "result": "passed",
+  "schema": 7,
+  "sourceFiles": 279,
+  "deliveryFiles": 21,
+  "localLinks": 393,
+  "passedReports": 11,
+  "checks": {
+    "browser-engine-report.json": 2,
+    "browser-safety-report.json": 12,
+    "browser-model-report.json": 4,
+    "browser-lifecycle-report.json": 3,
+    "browser-companion-report.json": 5,
+    "browser-desktop-report.json": 7,
+    "browser-packaged-report.json": 7,
+    "p03-engine-regression.json": 9,
+    "p04-engine-regression.json": 10,
+    "p05-engine-regression.json": 11,
+    "p07-engine-regression.json": 10
+  },
+  "p07BinariesUnchanged": true,
+  "dailyChromeUserExperience": "pending",
+  "dailyEdgeUserExperience": "pending",
+  "macOS": "not tested",
+  "linux": "not tested"
+}

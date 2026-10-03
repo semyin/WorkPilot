@@ -1,0 +1,11 @@
+WorkPilot P08 开发预览
+
+先从旧版托盘彻底退出，再双击 WorkPilot.exe。请保留整个 preview 文件夹。
+选择绑定项目文件夹的执行任务，点击顶部“浏览器”：可启动专用 Chrome/Edge，或连接日常浏览器。
+手工读取、点击、填写、截图不调用收费模型。需要审批时，在浏览器操作记录确认；由 AI 发起的操作确认后点击继续 AI 任务。
+日常浏览器需用户安装 browser-companion/extension 扩展并明确连接标签页；本机源码目录的 Companion 已注册，可直接加载项目 extensions/companion。
+新机器先运行 browser-companion/register-chrome.cmd 或 register-edge.cmd，然后在浏览器扩展页面加载相邻 extension 目录。注册脚本不会覆盖其它位置已有登记。
+上传最多 512 KiB；下载最多 8 MiB，保存项目内并保留文件历史。登录和验证码使用手动接管。
+关闭窗口保留后台；彻底退出关闭专用浏览器、断开日常浏览器。不会关闭用户原来的浏览器。
+随包 Node.js 22.23.2，Chrome/Edge 使用电脑已安装版本；干净系统完整安装在 P12 验证。数据版本保持 7。
+Windows 已自动测试，日常 Chrome/Edge 的本轮用户授权体验及 macOS/Linux 尚待补测。

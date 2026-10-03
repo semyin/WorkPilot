@@ -24,6 +24,7 @@ import { Conversation, QueueEdit, TextAttachments } from "./Conversation";
 import { RecordPanel, ArtifactPanel } from "./RecordPanel";
 import { ResizeHandle } from "./ResizeHandle";
 import { FileWorkbench } from "./FileWorkbench";
+import { BrowserPanel } from "./BrowserPanel";
 import { workspaceAction, workspaceQuery } from "./workspaceClient";
 import type { Overview } from "./App";
 import icon from "../../../assets/icons/png/128.png";
@@ -122,6 +123,7 @@ export function TaskWorkspace({
   const [snapshot, setSnapshot] = useState<ExecutionSnapshot | null>(null);
   const [team, setTeam] = useState<TeamView | null>(null);
   const [creating, setCreating] = useState(!selected);
+  const [browserOpen, setBrowserOpen] = useState(false);
   const [config, setConfig] = useState<ExecutionConfig>({
     title: "",
     goal: "",
@@ -504,9 +506,27 @@ export function TaskWorkspace({
         </div>
         <div className="model-actions">
           {desktop && selected && (
-            <button onClick={() => setFileWorkspace(true)}>
-              {tr("文件与终端", "Files and terminal")}
-            </button>
+            <>
+              <button onClick={() => setFileWorkspace(true)}>
+                {tr("文件与终端", "Files and terminal")}
+              </button>
+              <button
+                onClick={() => {
+                  setBrowserOpen(true);
+                  if (prefs?.inspector_closed)
+                    desktop.onPreferences({ ...prefs, inspector_closed: false });
+                  setTimeout(
+                    () =>
+                      document
+                        .getElementById("inspector-browser")
+                        ?.scrollIntoView({ block: "start", behavior: "smooth" }),
+                    50,
+                  );
+                }}
+              >
+                {tr("浏览器", "Browser")}
+              </button>
+            </>
           )}
           {desktop && prefs && (
             <>
@@ -1157,6 +1177,12 @@ export function TaskWorkspace({
                     ))}
                   </nav>
                   <section id="inspector-tools">{toolPanel}</section>
+                  <BrowserPanel
+                    key={snapshot.task.id}
+                    task={snapshot.task.id}
+                    open={browserOpen}
+                    onOpen={setBrowserOpen}
+                  />
                   <section id="inspector-team">{teamPanel}</section>
                   <div id="inspector-trace" />
                 </>
@@ -1256,15 +1282,6 @@ export function TaskWorkspace({
                   </section>
                   <section id="inspector-records">
                     <RecordPanel key={snapshot.task.id} task={snapshot.task.id} />
-                  </section>
-                  <section>
-                    <h3>{tr("网页", "Browser")}</h3>
-                    <p>
-                      {tr(
-                        "日常浏览器接入将在 P08 实现。",
-                        "Connection to your everyday browser arrives in P08.",
-                      )}
-                    </p>
                   </section>
                 </>
               )}

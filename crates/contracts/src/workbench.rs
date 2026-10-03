@@ -28,6 +28,12 @@ pub enum FileEdit {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 pub enum WorkbenchAction {
+    BrowserControl {
+        control: BrowserControl,
+    },
+    Browser {
+        action: BrowserAction,
+    },
     List {
         path: String,
     },
@@ -87,6 +93,22 @@ impl WorkbenchAction {
             !p.is_empty() && p.len() <= 4096 && !p.contains('\0')
         }
         match self {
+            Self::Browser { action } => return action.validate(),
+            Self::BrowserControl { control } => match control {
+                BrowserControl::Start { channel } | BrowserControl::Pair { channel }
+                    if !matches!(channel.as_str(), "chrome" | "msedge") =>
+                {
+                    return Err("unsupported browser channel");
+                }
+                BrowserControl::Disconnect { session_id }
+                | BrowserControl::Takeover { session_id }
+                | BrowserControl::Resume { session_id }
+                    if !valid_id(session_id) =>
+                {
+                    return Err("invalid browser session");
+                }
+                _ => {}
+            },
             Self::List { path: p }
             | Self::ReadFile { path: p }
             | Self::GitDiff { path: p }
@@ -174,6 +196,9 @@ impl WorkbenchAction {
         Ok(())
     }
     pub fn mutates(&self) -> bool {
+        if let Self::Browser { action } = self {
+            return !action.read_only();
+        }
         matches!(
             self,
             Self::Edit { .. } | Self::Terminal { .. } | Self::GitCommit { .. }

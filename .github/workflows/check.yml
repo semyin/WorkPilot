@@ -40,15 +40,39 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           npm run test:ui
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run test:browser
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           node scripts/desktop-smoke.mjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run test:models-desktop
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run test:execution-desktop
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run test:tools-desktop
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run test:teams-desktop
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run test:workspace-desktop
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run test:workbench-engine
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run test:workbench-desktop
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:browser-engine
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run browser:prepare-companion
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          powershell -NoProfile -File scripts/register-browser-companion.ps1 -Browser chrome
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          powershell -NoProfile -File scripts/register-browser-companion.ps1 -Browser edge
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npx playwright install chromium
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:browser-companion
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:browser-desktop
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - uses: actions/upload-artifact@v4
         if: always()
         with:

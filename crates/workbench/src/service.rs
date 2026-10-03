@@ -31,12 +31,74 @@ pub struct Service {
     state: Arc<State>,
     requests: Vec<JoinHandle<()>>,
 }
+#[derive(Clone)]
+pub struct Client(Arc<State>);
+impl Client {
+    pub async fn request(
+        &self,
+        task: String,
+        id: String,
+        action: WorkbenchAction,
+    ) -> Result<Value> {
+        let state = self.0.clone();
+        let runtime = tokio::runtime::Handle::current();
+        let browser_epoch = state.browser.epoch();
+        tokio::task::spawn_blocking(move || {
+            runtime.block_on(state.handle(&id, &task, action, browser_epoch))
+        })
+        .await
+        .map_err(|e| e.to_string())?
+    }
+    pub async fn operation(&self, task: &str, id: &str) -> Result<WorkbenchOperation> {
+        self.0.operation(id, task).await
+    }
+    pub async fn result(&self, operation: &WorkbenchOperation) -> Result<Value> {
+        let reference = operation
+            .output
+            .as_ref()
+            .ok_or("browser operation has no saved result")?;
+        let mut text = String::new();
+        let mut offset = 0;
+        while offset < reference.bytes {
+            let id = reference.object_id.clone();
+            let response = self
+                .0
+                .storage
+                .call(move |s| {
+                    s.query(&Query::Content {
+                        object_id: id,
+                        offset,
+                        limit: 65536,
+                    })
+                })
+                .await
+                .map_err(|e| e.to_string())?;
+            let Response::Content { page } = response else {
+                return Err("browser result unavailable".into());
+            };
+            offset = page.next_offset;
+            text.push_str(&page.text);
+            if text.len() > 8 * 1024 * 1024 {
+                return Err("browser result exceeds limit".into());
+            }
+        }
+        serde_json::from_str(&text).map_err(|e| e.to_string())
+    }
+    pub fn set_image(&self, task: &str, image: String) {
+        self.0.images.lock().unwrap().insert(task.into(), image);
+    }
+    pub fn take_image(&self, task: &str) -> Option<String> {
+        self.0.images.lock().unwrap().remove(task)
+    }
+}
 struct State {
     storage: Storage,
     data: PathBuf,
     out: mpsc::Sender<Wire>,
     live: Mutex<HashMap<String, Arc<Live>>>,
     jobs: Mutex<Vec<JoinHandle<()>>>,
+    browser: crate::browser::BrowserDriver,
+    images: Mutex<HashMap<String, String>>,
 }
 struct Live {
     task: String,
@@ -84,6 +146,8 @@ impl Service {
         let service = Self {
             state: Arc::new(State {
                 storage,
+                browser: crate::browser::BrowserDriver::new(data.clone()),
+                images: Mutex::new(HashMap::new()),
                 data,
                 out,
                 live: Mutex::new(HashMap::new()),
@@ -96,6 +160,9 @@ impl Service {
         let _ =
             tokio::task::spawn_blocking(move || runtime.block_on(state.recover_captures())).await;
         service
+    }
+    pub fn client(&self) -> Client {
+        Client(self.state.clone())
     }
     pub fn dispatch(&mut self, request: &Request) -> bool {
         match &request.command {
@@ -127,9 +194,10 @@ impl Service {
             return true;
         }
         let runtime = tokio::runtime::Handle::current();
+        let browser_epoch = state.browser.epoch();
         self.requests.push(tokio::task::spawn_blocking(move || {
             runtime.block_on(async move {
-                let response = match state.handle(&id, &task, action).await {
+                let response = match state.handle(&id, &task, action, browser_epoch).await {
                     Ok(data) => Response::Workbench { data },
                     Err(e) => error(e),
                 };
@@ -145,6 +213,8 @@ impl Service {
         true
     }
     fn cancel_task(&self, task: &str) {
+        self.state.browser.cancel_task(task);
+        self.state.images.lock().unwrap().remove(task);
         for live in self.state.live.lock().unwrap().values() {
             if live.task == task || live.ancestors.iter().any(|v| v == task) {
                 live.stop.store(true, Ordering::SeqCst);
@@ -153,6 +223,8 @@ impl Service {
         }
     }
     pub fn cancel_all(&self) {
+        self.state.browser.cancel_all();
+        self.state.images.lock().unwrap().clear();
         for live in self.state.live.lock().unwrap().values() {
             live.stop.store(true, Ordering::SeqCst);
             live.notify.notify_one();
@@ -168,9 +240,62 @@ impl Service {
         for job in jobs {
             let _ = job.await;
         }
+        self.state.browser.shutdown();
     }
 }
 impl State {
+    async fn record_browser_read(
+        &self,
+        id: &str,
+        task: &str,
+        context: &Context,
+        action: BrowserAction,
+        value: &Value,
+    ) -> Result<ContentRef> {
+        let prepared = Prepared {
+            action: WorkbenchAction::Browser { action },
+            task: task.into(),
+            root_path: context.root.path.to_string_lossy().into_owned(),
+            root_identity: context.root.identity.clone(),
+            epoch: context.policy.epoch.clone(),
+            scope: Value::Null,
+        };
+        let blob = Vault::open(&self.data)?
+            .put(&serde_json::to_vec(&prepared).map_err(|e| e.to_string())?)?;
+        let mut op = WorkbenchOperation {
+            id: id.into(),
+            task_id: task.into(),
+            fingerprint: hash(&prepared)?,
+            kind: "browser".into(),
+            summary: "read · 页面结构 / Page data".into(),
+            state: "completed".into(),
+            at_ms: workpilot_storage::now_ms(),
+            input: None,
+            output: None,
+            stdout: None,
+            stderr: None,
+            error: None,
+            pid: None,
+            preview_port: None,
+        };
+        let input = serde_json::to_value(prepared).map_err(|e| e.to_string())?;
+        let text = serde_json::to_string_pretty(value).map_err(|e| e.to_string())?;
+        let (reference, events) = self
+            .storage
+            .call(move |s| {
+                let mut events = s.put_workbench_operation(&op, true)?;
+                s.save_workbench_spec(&op.id, &blob)?;
+                events.extend(s.attach_workbench_input(&mut op, input)?);
+                let output = s.save_operation_output(&op.id, &text)?;
+                op.output = Some(output.clone());
+                events.extend(s.put_workbench_operation(&op, false)?);
+                Ok((output, events))
+            })
+            .await
+            .map_err(|e| e.to_string())?;
+        self.events(events).await;
+        Ok(reference)
+    }
     async fn recover_captures(&self) {
         let Ok(items) = self.storage.call(|s| s.pending_file_captures()).await else {
             return;
@@ -309,6 +434,30 @@ impl State {
     async fn prepare(&self, task: &str, action: WorkbenchAction) -> Result<(Context, Prepared)> {
         let context = self.context(task, true).await?;
         let scope = match &action {
+            WorkbenchAction::Browser { action } => {
+                let mut scope = self
+                    .browser
+                    .request(json!({"kind":"validate","task":task,"action":action}))?;
+                if let BrowserAction::Upload { path, expected, .. }
+                | BrowserAction::Download { path, expected, .. } = action
+                {
+                    user_path(path).map_err(|e| e.to_string())?;
+                    let file = context
+                        .root
+                        .binary_snapshot(path)
+                        .map_err(|e| e.to_string())?;
+                    if &file.version != expected {
+                        return Err("本地文件已变化，请重新读取后确认。".into());
+                    }
+                    if matches!(action, BrowserAction::Upload { .. })
+                        && (!file.version.exists || file.bytes.len() > 512 * 1024)
+                    {
+                        return Err("当前浏览器上传支持不超过 512 KiB 的实际文件。".into());
+                    }
+                    scope["file"] = json!(file.version);
+                }
+                scope
+            }
             WorkbenchAction::Edit { edit } => {
                 let (paths, expected) = self.edit_paths(&context, edit).await?;
                 let mut versions = serde_json::Map::new();
@@ -426,6 +575,7 @@ impl State {
         id: &str,
         task: &str,
         action: WorkbenchAction,
+        browser_epoch: u64,
     ) -> Result<Value> {
         action.validate().map_err(str::to_owned)?;
         if action.mutates() {
@@ -447,6 +597,27 @@ impl State {
             let (context, prepared) = self.prepare(task, action).await?;
             let automatic = context.policy.effective_permission == PermissionMode::FullAccess;
             let (kind, summary, port) = match &prepared.action {
+                WorkbenchAction::Browser { action } => (
+                    "browser",
+                    format!(
+                        "{} · {}",
+                        serde_json::to_value(action).map_err(|e| e.to_string())?["kind"]
+                            .as_str()
+                            .unwrap_or("action"),
+                        match action {
+                            BrowserAction::StartDedicated { channel } => channel.as_str(),
+                            BrowserAction::Navigate { url, .. }
+                            | BrowserAction::NewTab { url, .. } => url.as_str(),
+                            BrowserAction::Upload { path, .. }
+                            | BrowserAction::Download { path, .. } => path.as_str(),
+                            _ => prepared.scope["element"]["name"]
+                                .as_str()
+                                .or_else(|| prepared.scope["url"].as_str())
+                                .unwrap_or("当前页面 / Current page"),
+                        }
+                    ),
+                    None,
+                ),
                 WorkbenchAction::Edit { edit } => (
                     "file",
                     match edit {
@@ -546,6 +717,9 @@ impl State {
             }
             WorkbenchAction::Stop { operation_id } => {
                 let mut op = self.operation(&operation_id, task).await?;
+                if op.kind == "browser" {
+                    self.browser.cancel_task(task);
+                }
                 let live = self.live.lock().unwrap().get(&operation_id).cloned();
                 if let Some(live) = live {
                     live.stop.store(true, Ordering::SeqCst);
@@ -655,6 +829,34 @@ impl State {
                 let context = self.context(task, false).await?;
                 let root = &context.root;
                 match other {
+                    WorkbenchAction::BrowserControl { control } => {
+                        let connecting = matches!(
+                            control,
+                            BrowserControl::Start { .. }
+                                | BrowserControl::Pair { .. }
+                                | BrowserControl::Resume { .. }
+                        );
+                        if connecting {
+                            self.context(task, true).await?;
+                        }
+                        let value = json!({"kind":"control","task":task,"ancestors":context.ancestors,"control":control});
+                        if connecting {
+                            self.browser.request_guarded(value, browser_epoch)
+                        } else {
+                            self.browser.request(value)
+                        }
+                    }
+                    WorkbenchAction::Browser { action } => {
+                        let value = self
+                            .browser
+                            .request(json!({"kind":"perform","task":task,"action":action}))?;
+                        let record = self
+                            .record_browser_read(id, task, &context, action, &value)
+                            .await?;
+                        let mut value = value;
+                        value["record"] = json!(record);
+                        Ok(value)
+                    }
                     WorkbenchAction::List { path } => Ok(
                         json!({"kind":"files","listing":root.list(&path).map_err(|e|e.to_string())?,"root_path":root.path,"excluded_from_command_history":EXCLUDED}),
                     ),
@@ -813,7 +1015,15 @@ impl State {
         if live.stop.load(Ordering::SeqCst) {
             return Err("操作已停止。".into());
         }
-        let lock = workpilot_tools::mutation::acquire(Some(&prepared.root_identity), "workbench");
+        let browser_without_files = matches!(&prepared.action,WorkbenchAction::Browser{action} if !matches!(action,BrowserAction::Upload{..}|BrowserAction::Download{..}));
+        let lock = workpilot_tools::mutation::acquire(
+            Some(&prepared.root_identity),
+            if browser_without_files {
+                "browser"
+            } else {
+                "workbench"
+            },
+        );
         let _lease = tokio::select! {lease=lock=>lease,_=live.notify.notified()=>return Err("操作已停止。".into())};
         if live.stop.load(Ordering::SeqCst) {
             return Err("操作已停止。".into());
@@ -826,25 +1036,40 @@ impl State {
         }
         op.state = "running".into();
         self.save_operation(op, false).await?;
-        let paths = if let WorkbenchAction::Edit { edit } = &prepared.action {
+        let paths = if let WorkbenchAction::Browser {
+            action: BrowserAction::Download { path, .. },
+        } = &prepared.action
+        {
+            Some(vec![path.clone()])
+        } else if let WorkbenchAction::Edit { edit } = &prepared.action {
             Some(self.edit_paths(&context, edit).await?.0)
         } else {
             None
         };
-        let capture = Capture::begin(
-            &self.storage,
-            &self.data,
-            &context.root,
-            &op.id,
-            &op.task_id,
-            &op.kind,
-            paths,
-        )
-        .await?;
+        let capture = if matches!(&prepared.action,WorkbenchAction::Browser{action} if !matches!(action,BrowserAction::Download{..}))
+        {
+            None
+        } else {
+            Some(
+                Capture::begin(
+                    &self.storage,
+                    &self.data,
+                    &context.root,
+                    &op.id,
+                    &op.task_id,
+                    &op.kind,
+                    paths,
+                )
+                .await?,
+            )
+        };
         let result = self
             .effect(&context, &prepared.action, &prepared.scope, live, op)
             .await;
-        let versions = capture.finish(&self.storage, &context.root).await;
+        let versions = match capture {
+            Some(capture) => capture.finish(&self.storage, &context.root).await,
+            None => Ok(vec![]),
+        };
         match versions {
             Ok(events) => self.events(events).await,
             Err(e) => {
@@ -865,6 +1090,79 @@ impl State {
     ) -> Result<Value> {
         let root = &context.root;
         match action {
+            WorkbenchAction::Browser { action } => {
+                let mut wire = serde_json::to_value(action).map_err(|e| e.to_string())?;
+                if let BrowserAction::Upload { path, expected, .. } = action {
+                    let file = root.binary_snapshot(path).map_err(|e| e.to_string())?;
+                    if &file.version != expected {
+                        return Err("上传文件已变化，未发送。".into());
+                    }
+                    wire["bytes"] =
+                        json!(base64::engine::general_purpose::STANDARD.encode(file.bytes));
+                    wire["name"] = json!(
+                        std::path::Path::new(path)
+                            .file_name()
+                            .ok_or("invalid upload filename")?
+                            .to_string_lossy()
+                    );
+                }
+                if live.stop.load(Ordering::SeqCst) {
+                    return Err("浏览器操作已停止。".into());
+                }
+                let mut value = self
+                    .browser
+                    .request(json!({"kind":"perform","task":op.task_id,"ancestors":context.ancestors,"action":wire}))?;
+                if live.stop.load(Ordering::SeqCst) {
+                    self.browser.cancel_task(&op.task_id);
+                    return Err("浏览器操作已停止；请核对页面上的实际结果。".into());
+                }
+                if let BrowserAction::Download { path, expected, .. } = action {
+                    let bytes = base64::engine::general_purpose::STANDARD
+                        .decode(
+                            value["bytes"]
+                                .as_str()
+                                .ok_or("download bytes unavailable")?,
+                        )
+                        .map_err(|_| "invalid download bytes")?;
+                    if bytes.len() > 8 * 1024 * 1024 {
+                        return Err("下载文件超过 8 MiB 上限。".into());
+                    }
+                    if live.stop.load(Ordering::SeqCst) {
+                        return Err("下载已停止，未写入项目。".into());
+                    }
+                    let version = root
+                        .replace_bytes(path, expected, &bytes)
+                        .map_err(|e| e.to_string())?;
+                    let blob = Vault::open(&self.data)?.put(&bytes)?;
+                    let (task, saved_path, saved_version, url) = (
+                        op.task_id.clone(),
+                        path.clone(),
+                        version.clone(),
+                        value["url"].clone(),
+                    );
+                    let events = self
+                        .storage
+                        .call(move |s| {
+                            s.register_browser_artifact(
+                                &task,
+                                &saved_path,
+                                &saved_version,
+                                &blob,
+                                url,
+                            )
+                        })
+                        .await
+                        .map_err(|e| e.to_string())?;
+                    self.events(events).await;
+                    value
+                        .as_object_mut()
+                        .ok_or("invalid browser result")?
+                        .remove("bytes");
+                    value["path"] = json!(path);
+                    value["version"] = json!(version);
+                }
+                Ok(value)
+            }
             WorkbenchAction::Edit { edit } => {
                 match edit {
                     FileEdit::Save {

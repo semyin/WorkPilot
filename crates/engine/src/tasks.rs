@@ -17,6 +17,7 @@ struct Job {
     handle: JoinHandle<()>,
 }
 pub struct Tasks {
+    workbench: Option<workpilot_workbench::Client>,
     storage: Storage,
     out: mpsc::Sender<Wire>,
     backend: HttpBackend,
@@ -43,6 +44,9 @@ impl FaultObserver for Observer {
     }
 }
 impl Tasks {
+    pub fn set_workbench(&mut self, client: workpilot_workbench::Client) {
+        self.workbench = Some(client);
+    }
     pub async fn new(
         storage: Storage,
         out: mpsc::Sender<Wire>,
@@ -60,6 +64,7 @@ impl Tasks {
             .await
             .map_err(|_| "Scheduler settings could not load")?;
         Ok(Self {
+            workbench: None,
             root_slots: HashMap::new(),
             tool_ledger,
             storage,
@@ -380,6 +385,7 @@ impl Tasks {
         );
         let task_for_review = task.to_owned();
         let tool_ledger = self.tool_ledger.clone();
+        let workbench = self.workbench.clone();
         let handle = tokio::spawn(async move {
             let group_permit = tokio::select! {biased;_=controls.stop.cancelled()=>None,p=group.acquire_owned()=>p.ok()};
             let _group_permit = group_permit;
@@ -435,6 +441,7 @@ impl Tasks {
                 Err(e) => Some(Reviewer::Unavailable(storage_error(e))),
             };
             ExecutionEnvironment {
+                workbench,
                 reviewer,
                 tool_ledger,
                 storage,

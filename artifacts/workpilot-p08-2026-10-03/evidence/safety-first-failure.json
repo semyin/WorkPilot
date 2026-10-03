@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-03T02:54:47.323Z",
+  "platform": "win32",
+  "checks": [
+    "chrome_same_and_cross_origin_frames_use_explicit_references",
+    "chrome_upload_waits_for_bound_approval_and_sends_exact_project_bytes",
+    "chrome_stale_page_approval_rejected_and_stop_revokes_connection",
+    "chrome_cross_task_and_project_escape_rejected_web_text_cannot_grant_access"
+  ],
+  "status": "failed",
+  "error": "Error: Execution assertion timed out"
+}

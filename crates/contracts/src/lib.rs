@@ -14,6 +14,8 @@ mod workbench;
 mod workspace;
 pub use tool::*;
 pub use workbench::*;
+mod browser;
+pub use browser::*;
 pub use workspace::*;
 
 pub const PROTOCOL: &str = "workpilot.v1";
@@ -844,6 +846,8 @@ pub fn typescript() -> String {
     macro_rules! export { ($($ty:ty),* $(,)?) => { $(output.push_str("export "); output.push_str(&<$ty>::decl(&config)); output.push('\n');)* }; }
     export!(
         WorkbenchAction,
+        BrowserAction,
+        BrowserControl,
         FileEdit,
         FileRevision,
         FileImage,

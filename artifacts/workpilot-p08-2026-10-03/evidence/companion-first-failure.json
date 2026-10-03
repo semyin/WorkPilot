@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-03T02:59:25.983Z",
+  "platform": "win32",
+  "browser": "Official Playwright Chromium / Chrome for Testing, isolated existing session",
+  "dailyChromeVerified": false,
+  "dailyEdgeVerified": false,
+  "checks": [],
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: {\"state\":\"error\",\"error\":\"Failed to construct 'URL': Invalid URL\"}\n+ actual - expected\n\n+ 'error'\n- 'connected'\n"
+}

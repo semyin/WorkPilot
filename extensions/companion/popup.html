@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>WorkPilot Browser Companion</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <h1>WorkPilot 浏览器连接</h1>
+    <p>只连接当前标签页及本任务创建的页面。其它标签页不受控制；无需复制登录资料。</p>
+    <p id="tab"></p>
+    <label
+      >WorkPilot 中的连接码<input
+        id="code"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="从当前任务的浏览器面板复制" /></label
+    ><button id="connect">连接当前标签页</button><button id="disconnect">断开并收回控制</button>
+    <p>Connection is limited to the selected tab. Disconnect any time.</p>
+    <pre id="status" role="status"></pre>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

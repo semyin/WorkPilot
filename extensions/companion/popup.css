@@ -1,0 +1,38 @@
+body {
+  width: 350px;
+  padding: 18px;
+  font: 14px system-ui;
+  color: #203147;
+  background: #fafcff;
+}
+h1 {
+  font-size: 19px;
+}
+p {
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+label,
+input,
+button {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 10px;
+}
+input,
+button {
+  padding: 10px;
+  border: 1px solid #ced7e3;
+  border-radius: 6px;
+}
+button {
+  background: #eef4fd;
+  cursor: pointer;
+}
+pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 210px;
+  overflow: auto;
+}

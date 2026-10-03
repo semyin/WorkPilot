@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-03T03:52:39.895Z",
+  "platform": "win32",
+  "checks": [
+    "saving_global_permission_revokes_even_idle_browser_sessions",
+    "cancel_during_start_cannot_leave_a_late_connected_browser",
+    "connection_count_is_bounded_and_explicit_restart_works"
+  ],
+  "status": "passed"
+}

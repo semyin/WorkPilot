@@ -2,9 +2,13 @@
 
 面向个人和小团队的通用 AI 桌面工作平台。采用自研 Rust 执行引擎、React/Tauri 2 桌面及独立工具进程。
 
-当前交付 P07：在三栏工作台中加入项目文件编辑、修改历史与恢复、真实终端、所选 Git 提交和本机运行预览。实现、Windows 自动检查和独立分发复测完成，用户重点体验与通知方式集中待确认；下一步为 P08 浏览器双通道。
+当前交付 P08：在真实工作台中加入专用 Chrome/Edge、日常浏览器扩展连接、AI 浏览器工具、页面读取/点击/填写/截图、文件上传下载和手动接管。Windows 本机自动验证及独立分发复测完成；日常 Chrome/Edge 新扩展的用户授权体验、其它重点体验与通知方式集中待确认。下一实现阶段为 P09 技能与插件体系。
 
 - [开发计划与当前进度](docs/README.md)
+- [P08 Windows 预览](artifacts/workpilot-p08-2026-10-03/README.md)
+- [P08 浏览器设计与边界](docs/development/P08-浏览器双通道.md)
+- [P08 验证与待授权体验](docs/development/P08-验证记录.md)
+- [Companion 扩展安装与连接](extensions/companion/README.md)
 - [P07 Windows 预览](artifacts/workpilot-p07-2026-10-03/README.md)
 - [P07 文件历史与开发工作区](docs/development/P07-文件历史与开发工作区.md)
 - [P07 验证与待体验项](docs/development/P07-验证记录.md)

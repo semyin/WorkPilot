@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-03T03:25:41.911Z",
+  "platform": "win32",
+  "checks": [
+    "saving_global_permission_revokes_even_idle_browser_sessions"
+  ],
+  "status": "failed",
+  "error": "Error: Execution assertion timed out"
+}

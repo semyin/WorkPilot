@@ -2,6 +2,18 @@ use super::*;
 use serde_json::{Value, json};
 
 impl Store {
+    pub fn register_browser_artifact(
+        &mut self,
+        task: &str,
+        path: &str,
+        version: &FileVersion,
+        blob: &str,
+        url: Value,
+    ) -> Result<Vec<Event>> {
+        let metadata = json!({"kind":"browser_download_receipt","path":path,"version":version,"encrypted_version":blob,"source_url":url});
+        let safe = self.redactor.text(&metadata.to_string());
+        self.register_file_artifact(task, path, &safe)
+    }
     pub fn attach_workbench_input(
         &mut self,
         operation: &mut WorkbenchOperation,
@@ -64,7 +76,7 @@ impl Store {
     }
     pub fn workbench_operations(&self, task: &str) -> Result<Vec<WorkbenchOperation>> {
         self.task(task)?;
-        let mut q = self.connection.prepare("SELECT data_json FROM workbench_operations WHERE task_id=?1 ORDER BY rowid DESC LIMIT 64")?;
+        let mut q = self.connection.prepare("SELECT data_json FROM workbench_operations WHERE task_id=?1 ORDER BY CASE WHEN json_extract(data_json,'$.state') IN ('awaiting_approval','queued','running','stopping') THEN 0 ELSE 1 END, rowid DESC LIMIT 64")?;
         q.query_map([task], |r| r.get::<_, String>(0))?
             .map(|r| Ok(serde_json::from_str(&r?)?))
             .collect()
@@ -368,6 +380,12 @@ mod tests {
             s.put_workbench_operation(&old, true).unwrap();
         }
         assert!(s.has_active_workbench(&task).unwrap());
+        assert!(
+            s.workbench_operations(&task)
+                .unwrap()
+                .iter()
+                .any(|op| op.id == active.id)
+        );
         let action = WorkspaceAction::ArchiveTask {
             task_id: task.clone(),
             archived: true,

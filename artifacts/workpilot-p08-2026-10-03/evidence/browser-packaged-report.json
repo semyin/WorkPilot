@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-03T03:50:34.453Z",
+  "platform": "win32",
+  "service": "Native Windows WebView and actual installed Chrome; local fixture, no paid model",
+  "binary": {
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p08-2026-10-03\\preview\\WorkPilot.exe",
+    "sha256": "ba2891eb1e55a340a82cc21a4b515e261764f12f56773340dbe7f277d8d489f4"
+  },
+  "checks": [
+    "browser_panel_starts_real_dedicated_chrome_and_identifies_tab",
+    "navigate_fill_click_approved_in_ui_and_actual_dom_result_read_back",
+    "real_browser_screenshot_shown_in_task_inspector",
+    "takeover_blocks_automation_resume_requires_fresh_page_read",
+    "english_connection_instructions_one_use_code_and_explicit_revocation",
+    "browser_controls_follow_dark_theme_without_white_input_background",
+    "hide_keeps_dedicated_browser_alive_quit_closes_owned_browser"
+  ],
+  "status": "passed"
+}

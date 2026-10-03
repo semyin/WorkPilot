@@ -43,7 +43,11 @@
     "test:teams-desktop": "node scripts/teams-desktop-smoke.mjs",
     "test:workspace-desktop": "node scripts/workspace-desktop-smoke.mjs",
     "test:workbench-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/workbench-engine-test.mjs",
-    "test:workbench-desktop": "node scripts/workbench-desktop-smoke.mjs"
+    "test:workbench-desktop": "node scripts/workbench-desktop-smoke.mjs",
+    "test:browser-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/browser-engine-test.mjs && node scripts/browser-safety-test.mjs && node scripts/browser-lifecycle-test.mjs && node scripts/browser-model-test.mjs",
+    "browser:prepare-companion": "node scripts/prepare-browser-companion.mjs",
+    "test:browser-companion": "node scripts/browser-companion-test.mjs",
+    "test:browser-desktop": "node scripts/browser-desktop-smoke.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",

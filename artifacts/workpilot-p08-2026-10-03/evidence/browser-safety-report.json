@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-03T03:52:34.121Z",
+  "platform": "win32",
+  "checks": [
+    "chrome_same_and_cross_origin_frames_use_explicit_references",
+    "chrome_upload_waits_for_bound_approval_and_sends_exact_project_bytes",
+    "chrome_stale_page_approval_rejected_and_stop_revokes_connection",
+    "chrome_cross_task_and_project_escape_rejected_web_text_cannot_grant_access",
+    "chrome_popup_new_close_tabs_and_javascript_dialog_handled_in_owned_browser",
+    "chrome_manual_takeover_and_profile_login_marker_persist_without_copy",
+    "msedge_same_and_cross_origin_frames_use_explicit_references",
+    "msedge_upload_waits_for_bound_approval_and_sends_exact_project_bytes",
+    "msedge_stale_page_approval_rejected_and_stop_revokes_connection",
+    "msedge_cross_task_and_project_escape_rejected_web_text_cannot_grant_access",
+    "msedge_popup_new_close_tabs_and_javascript_dialog_handled_in_owned_browser",
+    "msedge_manual_takeover_and_profile_login_marker_persist_without_copy"
+  ],
+  "status": "passed"
+}

@@ -1,0 +1,75 @@
+.browser-panel {
+  border: 1px solid var(--line, #d8e0ea);
+  border-radius: 9px;
+  padding: 12px;
+  margin: 12px 0;
+  min-width: 0;
+}
+.browser-panel > summary {
+  font-weight: 700;
+  cursor: pointer;
+}
+.browser-panel p {
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.browser-panel label {
+  display: block;
+  margin: 10px 0;
+  font-size: 12px;
+}
+.browser-panel select,
+.browser-panel input,
+.browser-panel textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid var(--line, #cbd5e1);
+  border-radius: 5px;
+  background: var(--surface, #fff);
+  color: inherit;
+}
+.browser-panel textarea {
+  min-height: 60px;
+  resize: vertical;
+}
+.browser-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 8px 0;
+}
+.browser-actions button {
+  padding: 6px 9px;
+  font-size: 12px;
+}
+.browser-panel pre {
+  max-height: 240px;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 11px;
+}
+.browser-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line, #d8e0ea);
+  border-radius: 5px;
+}
+.browser-operation {
+  border-top: 1px solid var(--line, #d8e0ea);
+  padding: 10px 0;
+  font-size: 12px;
+}
+.browser-operation > small {
+  float: right;
+}
+.browser-url {
+  padding: 6px;
+  background: var(--surface, #f3f6fa);
+}

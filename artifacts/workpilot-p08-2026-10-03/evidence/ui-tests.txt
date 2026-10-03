@@ -1,0 +1,24 @@
+
+> workpilot@0.1.0-alpha.0 test:ui
+> playwright test
+
+[WebServer] (node:20264) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 5 tests using 4 workers
+
+(node:20820) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:11744) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:24448) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:26108) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\ui\workbench.spec.ts:3:1 › preview is honest about absent engine and switches both UI and file preview language (1.5s)
+  ok 5 tests\ui\workbench.spec.ts:22:1 › remote preview never fakes a native browser in web-only mode (756ms)
+  ok 4 tests\ui\files-live.spec.ts:6:1 › P07 real engine: edit, approval, conflicts, history, static preview and terminal (8.0s)
+  ok 2 tests\ui\browser-live.spec.ts:9:1 › P08 real engine and browser: approvals, DOM, screenshot, takeover and connection UI (8.6s)
+  ok 3 tests\ui\workspace-live.spec.ts:7:1 › P06 real engine: project, conversation, queue, records, archive and preferences (14.8s)
+
+  5 passed (18.4s)

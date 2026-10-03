@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-03T03:52:31.848Z",
+  "platform": "win32",
+  "checks": [
+    "chrome_real_dedicated_snapshot_fill_click_screenshot_download_history",
+    "msedge_real_dedicated_snapshot_fill_click_screenshot_download_history"
+  ],
+  "browsers": [
+    {
+      "channel": "chrome",
+      "error": null,
+      "id": "796bf502-7ded-4a8d-9ac3-db589a5a2cfa",
+      "kind": "dedicated",
+      "owned_pid": 1616,
+      "state": "connected",
+      "tabs": [
+        {
+          "dialog": null,
+          "id": "fdae2183-8a81-4301-b2e6-c624d3876d85",
+          "title": "about:blank",
+          "url": "about:blank"
+        }
+      ],
+      "task_id": "6567c9a0-3a77-4393-ac4b-99c5c9e086f4",
+      "version": "Chrome/154.0.8037.93"
+    },
+    {
+      "channel": "msedge",
+      "error": null,
+      "id": "3d4ef44c-3383-4b60-9c18-957957f38b14",
+      "kind": "dedicated",
+      "owned_pid": 4252,
+      "state": "connected",
+      "tabs": [
+        {
+          "dialog": null,
+          "id": "156f3e1b-d8d7-477f-bf10-719f93091fe5",
+          "title": "",
+          "url": "about:blank"
+        }
+      ],
+      "task_id": "6567c9a0-3a77-4393-ac4b-99c5c9e086f4",
+      "version": "Edg/154.0.4258.48"
+    }
+  ],
+  "status": "passed"
+}

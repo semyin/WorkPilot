@@ -1,0 +1,93 @@
+
+> workpilot@0.1.0-alpha.0 test:browser-engine
+> node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/browser-engine-test.mjs && node scripts/browser-safety-test.mjs && node scripts/browser-lifecycle-test.mjs && node scripts/browser-model-test.mjs
+
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.25s
+{
+  "at": "2026-10-03T03:52:31.848Z",
+  "platform": "win32",
+  "checks": [
+    "chrome_real_dedicated_snapshot_fill_click_screenshot_download_history",
+    "msedge_real_dedicated_snapshot_fill_click_screenshot_download_history"
+  ],
+  "browsers": [
+    {
+      "channel": "chrome",
+      "error": null,
+      "id": "796bf502-7ded-4a8d-9ac3-db589a5a2cfa",
+      "kind": "dedicated",
+      "owned_pid": 1616,
+      "state": "connected",
+      "tabs": [
+        {
+          "dialog": null,
+          "id": "fdae2183-8a81-4301-b2e6-c624d3876d85",
+          "title": "about:blank",
+          "url": "about:blank"
+        }
+      ],
+      "task_id": "6567c9a0-3a77-4393-ac4b-99c5c9e086f4",
+      "version": "Chrome/154.0.8037.93"
+    },
+    {
+      "channel": "msedge",
+      "error": null,
+      "id": "3d4ef44c-3383-4b60-9c18-957957f38b14",
+      "kind": "dedicated",
+      "owned_pid": 4252,
+      "state": "connected",
+      "tabs": [
+        {
+          "dialog": null,
+          "id": "156f3e1b-d8d7-477f-bf10-719f93091fe5",
+          "title": "",
+          "url": "about:blank"
+        }
+      ],
+      "task_id": "6567c9a0-3a77-4393-ac4b-99c5c9e086f4",
+      "version": "Edg/154.0.4258.48"
+    }
+  ],
+  "status": "passed"
+}
+{
+  "at": "2026-10-03T03:52:34.121Z",
+  "platform": "win32",
+  "checks": [
+    "chrome_same_and_cross_origin_frames_use_explicit_references",
+    "chrome_upload_waits_for_bound_approval_and_sends_exact_project_bytes",
+    "chrome_stale_page_approval_rejected_and_stop_revokes_connection",
+    "chrome_cross_task_and_project_escape_rejected_web_text_cannot_grant_access",
+    "chrome_popup_new_close_tabs_and_javascript_dialog_handled_in_owned_browser",
+    "chrome_manual_takeover_and_profile_login_marker_persist_without_copy",
+    "msedge_same_and_cross_origin_frames_use_explicit_references",
+    "msedge_upload_waits_for_bound_approval_and_sends_exact_project_bytes",
+    "msedge_stale_page_approval_rejected_and_stop_revokes_connection",
+    "msedge_cross_task_and_project_escape_rejected_web_text_cannot_grant_access",
+    "msedge_popup_new_close_tabs_and_javascript_dialog_handled_in_owned_browser",
+    "msedge_manual_takeover_and_profile_login_marker_persist_without_copy"
+  ],
+  "status": "passed"
+}
+{
+  "at": "2026-10-03T03:52:39.895Z",
+  "platform": "win32",
+  "checks": [
+    "saving_global_permission_revokes_even_idle_browser_sessions",
+    "cancel_during_start_cannot_leave_a_late_connected_browser",
+    "connection_count_is_bounded_and_explicit_restart_works"
+  ],
+  "status": "passed"
+}
+{
+  "at": "2026-10-03T03:52:41.253Z",
+  "platform": "win32",
+  "model": "local deterministic model fixture; no paid provider",
+  "checks": [
+    "model_starts_dedicated_browser_only_after_approval_and_does_not_replay_on_resume",
+    "full_access_model_drives_real_browser_results_and_approval_resume_without_replay",
+    "request_approval_model_drives_real_browser_results_and_approval_resume_without_replay",
+    "screenshot_attached_only_to_explicitly_image_capable_model"
+  ],
+  "status": "passed"
+}

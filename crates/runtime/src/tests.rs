@@ -229,6 +229,7 @@ impl Harness {
         });
         let signals = Signals::default();
         let env = ExecutionEnvironment {
+            workbench: None,
             reviewer: None,
             tool_ledger: self._root.path().join("tool-ledger"),
             storage: self.storage.clone(),

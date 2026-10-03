@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "WorkPilot Browser Companion",
+  "version": "0.8.0",
+  "description": "Connect only the tabs you authorize to a WorkPilot task. Disconnect at any time.",
+  "permissions": ["activeTab", "debugger", "nativeMessaging"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "WorkPilot 浏览器连接"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu8QQKNQtnDdN4jpp0j91UGbHdtTx2OypY0QQl8xNUlQLnCHOgv8zFHda5CcPkmz3vfQYKRTquaF7jVnl4wViPjPo0yr0/S+FbTnAnN/PLqrbLuLg9p4fq0bB9rnijxvkIyJrSnATed1NAFRGFoZ2lnJBxAdnrWG4JmupBTHC3/xyJMdQaB35Jld1L2z88eyFbRCY3AG0FzKDwJAWtj114GH6JKgpEz+sNoxKsAqnZHOnuVKUMLFLGZ0oMlqcv3RpwPrDu2k8IgOHWlxdFqfiADM5aF7hpkkuUWJZu3HK7dE+zHRjOWhKokIkwX22Igk/IM/ExQdaNhLCbecyQZTHZwIDAQAB"
+}
