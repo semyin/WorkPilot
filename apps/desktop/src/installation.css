@@ -1,0 +1,12 @@
+.installation-panel p,
+.installation-panel li {
+  overflow-wrap: anywhere;
+}
+.installation-panel details {
+  margin: 10px 0;
+}
+.installation-panel small {
+  display: block;
+  margin-top: 12px;
+  color: var(--muted);
+}

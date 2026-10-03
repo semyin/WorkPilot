@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-03T14:54:12.998Z",
+  "platform": "win32",
+  "binarySha256": "d3046de223a27267f8b4c8fcb30ec718bee26fa99a4bd65e963349b1ae328cab",
+  "environment": "Windows developer machine; engine PATH restricted to System32. This is not a clean-OS test.",
+  "checks": [
+    "full_installed_inventory_verified_and_engine_responsive",
+    "full_access_model_calls_bundled_python_stdlib_node_git_commit_without_developer_PATH"
+  ],
+  "verificationMs": 8744,
+  "components": [
+    {
+      "id": "application",
+      "files": 4,
+      "bytes": 28491770
+    },
+    {
+      "id": "node",
+      "files": 5,
+      "bytes": 87180776
+    },
+    {
+      "id": "python",
+      "files": 34,
+      "bytes": 22640669
+    },
+    {
+      "id": "git",
+      "files": 373,
+      "bytes": 95772593
+    },
+    {
+      "id": "documents",
+      "files": 5244,
+      "bytes": 167872404
+    },
+    {
+      "id": "office",
+      "files": 19448,
+      "bytes": 1579736503
+    },
+    {
+      "id": "companion",
+      "files": 12,
+      "bytes": 234720
+    }
+  ],
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: [{\"id\":\"fdf38759-db0c-4ea2-b18e-73dcadc1ca98\",\"run_id\":\"aeafbd90-2593-425a-9a57-9f4ef140d9ae\",\"ordinal\":1,\"kind\":\"model\",\"name\":\"model\",\"state\":\"completed\",\"provider_call_id\":null,\"input\":{\"object_id\":\"9544e5c549ea95317250a7b2e73bb90d78546470db6256157f54023e3fc612d4\",\"bytes\":19855,\"media_type\":\"application/json\"},\"output\":{\"object_id\":\"a3e629136f1818f3accadf051d0cb2f8c6c73cdb70043147e8489ac94bb0d0c1\",\"bytes\":1064,\"media_type\":\"application/json\"},\"tool_call_id\":null,\"started_at_ms\":1791039269180,\"ended_at_ms\":1791039269209},{\"id\":\"dd598d8f-cfc0-4102-a362-b4e219d983d1\",\"run_id\":\"aeafbd90-2593-425a-9a57-9f4ef140d9ae\",\"ordinal\":2,\"kind\":\"tool\",\"name\":\"run_command\",\"state\":\"completed\",\"provider_call_id\":\"runtime-call-0-0\",\"input\":{\"object_id\":\"38830ac10263553a2b4bb1007410f37aefaa537bdffc8ff3a1002a46286053fc\",\"bytes\":348,\"media_type\":\"application/json\"},\"output\":{\"object_id\":\"1a05cb6b66b250763781ef04965b1234d86cae0e12a5b90d1b17492fac3df657\",\"bytes\":1248,\"media_type\":\"application/json\"},\"tool_call_id\":\"067f6055-ba4e-451c-83cb-daf6543874b0\",\"started_at_ms\":1791039269244,\"ended_at_ms\":1791039269375},{\"id\":\"19de4f32-a16b-4727-8708-7e56e903507b\",\"run_id\":\"ea19fc0a-d926-4158-85f0-4a546ae486d1\",\"ordinal\":1,\"kind\":\"model\",\"name\":\"model\",\"state\":\"completed\",\"provider_call_id\":null,\"input\":{\"object_id\":\"a9af0a80270474e8bcae91d6a9ad1207ba3e10ea1e18153afa370b00df8d7165\",\"bytes\":21621,\"media_type\":\"application/json\"},\"output\":{\"object_id\":\"970bbdaea242959ee2164431b5170049257355b620cdd4c6655217d85ac998d8\",\"bytes\":840,\"media_type\":\"application/json\"},\"tool_call_id\":null,\"started_at_ms\":1791039269389,\"ended_at_ms\":1791039269409},{\"id\":\"94205eeb-8067-415c-bb1d-10956df41a52\",\"run_id\":\"ea19fc0a-d926-4158-85f0-4a546ae486d1\",\"ordinal\":2,\"kind\":\"tool\",\"name\":\"run_command\",\"state\":\"completed\",\"provider_call_id\":\"runtime-call-1-0\",\"input\":{\"object_id\":\"e62c98fefd9e7c2bc8528f24911984919f21df28cbefd0d09efde6feed7fc900\",\"bytes\":236,\"media_type\":\"application/json\"},\"output\":{\"object_id\":\"7c8a5c2f537b55ae7ca9d9809b1b047c819146360548075409e0dedb7e531d0e\",\"bytes\":1240,\"media_type\":\"application/json\"},\"tool_call_id\":\"5f653358-efda-4098-907b-222497ef8c65\",\"started_at_ms\":1791039270109,\"ended_at_ms\":1791039270240},{\"id\":\"5e555f96-1a1e-4ac2-ae08-d61869421a03\",\"run_id\":\"49238282-3298-48c0-a81e-05b2702af6be\",\"ordinal\":1,\"kind\":\"model\",\"name\":\"model\",\"state\":\"completed\",\"provider_call_id\":null,\"input\":{\"object_id\":\"953ae69d0d363c43370a3293daae9e4a4832f48e83dbcbe600da2e3902185e24\",\"bytes\":23268,\"media_type\":\"application/json\"},\"output\":{\"object_id\":\"a2f0d3e5e29d9b40d72f181190b1e47e77255341917478e000bdf28ae971de0a\",\"bytes\":664,\"media_type\":\"application/json\"},\"tool_call_id\":null,\"started_at_ms\":1791039270256,\"ended_at_ms\":1791039270289},{\"id\":\"e97e3b3c-0063-42e9-805c-5879eef5b7d8\",\"run_id\":\"49238282-3298-48c0-a81e-05b2702af6be\",\"ordinal\":2,\"kind\":\"tool\",\"name\":\"run_command\",\"state\":\"failed\",\"provider_call_id\":\"runtime-call-2-0\",\"input\":{\"object_id\":\"48252119aee1ff388dc20a1a96b2b4ece9fb2e71d5f63a1ab0942ab746b2ab8e\",\"bytes\":149,\"media_type\":\"application/json\"},\"output\":{\"object_id\":\"656c42016f3004331f5321c1c95c4deab57e5777981a82f9caf3821a73aab16f\",\"bytes\":1300,\"media_type\":\"application/json\"},\"tool_call_id\":\"72333ecd-967f-4ae7-ac5d-b0ba71e74136\",\"started_at_ms\":1791039270322,\"ended_at_ms\":1791039270485},{\"id\":\"c5e0057a-8654-444d-b20c-17f525b69e12\",\"run_id\":\"fda519fa-56ae-442d-862b-365f982d7caa\",\"ordinal\":1,\"kind\":\"model\",\"name\":\"model\",\"state\":\"completed\",\"provider_call_id\":null,\"input\":{\"object_id\":\"5860c0992cf696b00005565093e6ef1c75b23be645a742cbacc68fce4e8b833d\",\"bytes\":24886,\"media_type\":\"application/json\"},\"output\":{\"object_id\":\"de8cc0d5d08048b3516836c04dfaf49bf5fe75ab236755ca25121588b1faf2e8\",\"bytes\":744,\"media_type\":\"application/json\"},\"tool_call_id\":null,\"started_at_ms\":1791039270500,\"ended_at_ms\":1791039270542},{\"id\":\"461eb183-cdd4-46cc-bdb2-8f922fcb65b5\",\"run_id\":\"fda519fa-56ae-442d-862b-365f982d7caa\",\"ordinal\":2,\"kind\":\"tool\",\"name\":\"run_command\",\"state\":\"failed\",\"provider_call_id\":\"runtime-call-3-0\",\"input\":{\"object_id\":\"3478bcc043051d56a90ce22de672c957269e7f36e8bad2b811cb21aef6c93edc\",\"bytes\":187,\"media_type\":\"application/json\"},\"output\":{\"object_id\":\"02f8ef938c68310eabe05218fca4eaa7ce2e8ea988e51d76c53688c4ba1245d6\",\"bytes\":1301,\"media_type\":\"application/json\"},\"tool_call_id\":\"1ffef88b-3539-4f8b-a5ca-0480f44665d8\",\"started_at_ms\":1791039270601,\"ended_at_ms\":1791039270771},{\"id\":\"2f49f44c-1426-4092-b7e2-6d5070345cb8\",\"run_id\":\"ed67e7e7-f6f9-496e-a536-231717032035\",\"ordinal\":1,\"kind\":\"model\",\"name\":\"model\",\"state\":\"completed\",\"provider_call_id\":null,\"input\":{\"object_id\":\"b985e0d9490bcaf00e0e053f10dd458b824e6a0e53cf9b9de3dd6f6cb17a2b2d\",\"bytes\":26547,\"media_type\":\"application/json\"},\"output\":{\"object_id\":\"cac95c252feae137f6cfc21dc20b594dc71db68bf551b6bfa06e99c0fea106d0\",\"bytes\":950,\"media_type\":\"application/json\"},\"tool_call_id\":null,\"started_at_ms\":1791039270788,\"ended_at_ms\":1791039270841},{\"id\":\"c492eae8-9450-48e7-a289-b4bc3712715a\",\"run_id\":\"ed67e7e7-f6f9-496e-a536-231717032035\",\"ordinal\":2,\"kind\":\"tool\",\"name\":\"run_command\",\"state\":\"failed\",\"provider_call_id\":\"runtime-call-4-0\",\"input\":{\"object_id\":\"460611c308262b7d525086a3d39e061613f7c00b41865565578c144963114402\",\"bytes\":284,\"media_type\":\"application/json\"},\"output\":{\"object_id\":\"37dd516d46a16b545bcb40231e908aa29f89ee74509f2a7e165a686124cece93\",\"bytes\":1301,\"media_type\":\"application/json\"},\"tool_call_id\":\"e344ee07-bb54-4010-b914-22e061708347\",\"started_at_ms\":1791039270904,\"ended_at_ms\":1791039271072},{\"id\":\"92686ac9-1ea4-4890-9304-13aed7eb8a7c\",\"run_id\":\"96957efa-a71b-4ae5-8c89-3a7fb0af2fbe\",\"ordinal\":1,\"kind\":\"model\",\"name\":\"model\",\"state\":\"completed\",\"provider_call_id\":null,\"input\":{\"object_id\":\"d4c2f95b4218f1a44b01745f22b86df8c204d2b8b541f8090e0d744440e40e53\",\"bytes\":28317,\"media_type\":\"application/json\"},\"output\":{\"object_id\":\"74fac5577d9ce7f5b99dc806d8b0c0a0ee4a2a65567e1bb9bfecab526b9a487b\",\"bytes\":487,\"media_type\":\"application/json\"},\"tool_call_id\":null,\"started_at_ms\":1791039271090,\"ended_at_ms\":1791039271108}]\n\n2 !== 5\n\n    at exercise (file:///D:/workspace/kplocker/WorkPilot/scripts/installation-engine-test.mjs:159:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async file:///D:/workspace/kplocker/WorkPilot/scripts/installation-engine-test.mjs:219:3"
+}

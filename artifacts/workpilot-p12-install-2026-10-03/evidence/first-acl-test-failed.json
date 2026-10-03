@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-03T14:53:49.258Z",
+  "platform": "win32",
+  "binarySha256": "d3046de223a27267f8b4c8fcb30ec718bee26fa99a4bd65e963349b1ae328cab",
+  "environment": "Windows developer machine; engine PATH restricted to System32. This is not a clean-OS test.",
+  "checks": [],
+  "status": "failed",
+  "error": "Error: Command failed: C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoProfile -NonInteractive -Command (Get-Acl -LiteralPath $env:WORKPILOT_TEST_ACL_PATH).Sddl\nGet-Acl : The 'Get-Acl' command was found in the module 'Microsoft.PowerShell.Security', but the module could not be lo\r\naded. For more information, run 'Import-Module Microsoft.PowerShell.Security'.\r\nAt line:1 char:2\r\n+ (Get-Acl -LiteralPath $env:WORKPILOT_TEST_ACL_PATH).Sddl\r\n+  ~~~~~~~\r\n    + CategoryInfo          : ObjectNotFound: (Get-Acl:String) [], CommandNotFoundException\r\n    + FullyQualifiedErrorId : CouldNotAutoloadMatchingModule\r\n \r\n\n    at genericNodeError (node:internal/errors:983:15)\n    at wrappedFn (node:internal/errors:537:14)\n    at checkExecSyncError (node:child_process:916:11)\n    at execFileSync (node:child_process:952:15)\n    at acl (file:///D:/workspace/kplocker/WorkPilot/scripts/installation-engine-test.mjs:44:3)\n    at file:///D:/workspace/kplocker/WorkPilot/scripts/installation-engine-test.mjs:192:22\n    at Array.map (<anonymous>)\n    at file:///D:/workspace/kplocker/WorkPilot/scripts/installation-engine-test.mjs:192:7"
+}

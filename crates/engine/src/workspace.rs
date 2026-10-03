@@ -9,6 +9,7 @@ pub struct Workspace {
     directory: PathBuf,
     out: mpsc::Sender<Wire>,
     jobs: HashMap<String, JoinHandle<()>>,
+    checks_stop: std::sync::Arc<std::sync::atomic::AtomicBool>,
 }
 impl Workspace {
     pub fn new(storage: Storage, directory: PathBuf, out: mpsc::Sender<Wire>) -> Self {
@@ -17,12 +18,14 @@ impl Workspace {
             directory,
             out,
             jobs: HashMap::new(),
+            checks_stop: std::sync::Arc::new(std::sync::atomic::AtomicBool::new(false)),
         }
     }
     pub fn dispatch(&mut self, request: &Request) -> Handled {
         if !matches!(
             &request.command,
-            Command::Memory { .. }
+            Command::InspectInstallation { .. }
+                | Command::Memory { .. }
                 | Command::Workspace { .. }
                 | Command::Read {
                     query: Query::Workspace {
@@ -46,8 +49,15 @@ impl Workspace {
             self.out.clone(),
             request.clone(),
         );
+        let checks_stop = self.checks_stop.clone();
         let handle = tokio::spawn(async move {
-            let response = if matches!(&req.command, Command::Memory { .. }) {
+            let response = if let Command::InspectInstallation { verify_hashes } = &req.command {
+                let verify = *verify_hashes;
+                match tokio::task::spawn_blocking(move || workpilot_platform::runtimes::inspect(verify, checks_stop)).await {
+                    Ok(Ok(report)) => Response::Installation { report },
+                    _ => Response::Error { code: ErrorCode::InvalidRequest, message: "无法完成环境检查，清单可能损坏或检查已取消 / Installation check failed or was cancelled".into() },
+                }
+            } else if matches!(&req.command, Command::Memory { .. }) {
                 let saved = req.clone();
                 match storage.call(move |s| s.memory_action(&saved)).await {
                     Ok((data, events)) => {
@@ -81,6 +91,8 @@ impl Workspace {
         Handled::Deferred
     }
     pub async fn shutdown(self) {
+        self.checks_stop
+            .store(true, std::sync::atomic::Ordering::Relaxed);
         for (_, job) in self.jobs {
             let _ = job.await;
         }

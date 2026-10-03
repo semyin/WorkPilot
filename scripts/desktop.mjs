@@ -7,6 +7,7 @@ import { cargo, cargoBin, root, run, rustEnv } from "./cargo.mjs";
 const mode = process.argv[2] || "dev";
 if (!["dev", "build"].includes(mode)) throw new Error("Use dev or build");
 const release = mode === "build";
+const appVersion = JSON.parse(await readFile(join(root, "package.json"), "utf8")).version;
 await run(cargo, [
   "build",
   "-p",
@@ -56,6 +57,7 @@ if (release) {
     JSON.stringify(
       {
         command: "npm run build (Tauri build --no-bundle)",
+        appVersion,
         at: new Date().toISOString(),
         platform: process.platform,
         desktop: await hash(join(buildRoot, "release/workpilot-desktop" + extension)),

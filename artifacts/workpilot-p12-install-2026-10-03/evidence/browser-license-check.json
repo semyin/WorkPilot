@@ -1,0 +1,7 @@
+{
+  "version": "157.0.8086.0",
+  "revision": 1710726,
+  "status": "blocked",
+  "reason": "Official snapshot has sample chrome://credits, not full third-party licenses. Excluded from distribution.",
+  "creditsBytes": 446
+}

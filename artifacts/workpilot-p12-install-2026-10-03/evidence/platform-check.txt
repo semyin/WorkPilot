@@ -1,0 +1,41 @@
+   Compiling workpilot-contracts v0.1.0-alpha.12 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-platform v0.1.0-alpha.12 (D:\workspace\kplocker\WorkPilot\crates\platform)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.91s
+     Running unittests src\lib.rs (target\debug\deps\workpilot_platform-c4ad4dce6f067ca2.exe)
+
+running 11 tests
+test credentials::tests::windows_credential_roundtrip ... ignored, writes and removes an isolated synthetic credential in Windows Credential Manager
+test credentials::tests::secret_debug_never_shows_value ... ok
+test runtimes::tests::packaged_resolution_never_falls_back_when_its_tool_is_missing ... ok
+test paths::tests::channels_never_share_the_same_directory ... ok
+test paths::tests::checks_real_paths_and_rejects_parent_escape ... ok
+test tool_process::windows::acl_tests::null_dacl_is_not_replaced_with_a_single_sandbox_ace ... ok
+test runtimes::tests::missing_malformed_traversal_and_cancelled_inventory_are_truthful ... ok
+test runtimes::tests::integrity_checks_detect_same_size_damage_missing_files_and_preserve_data ... ok
+test paths::tests::rejects_windows_directory_junction_escape ... ok
+test tool_process::tests::appcontainer_writes_authorized_project_but_cannot_read_private_sibling ... ok
+test tool_process::tests::process_cancellation_output_limit_and_nonzero_exit_are_truthful ... ok
+
+test result: ok. 10 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.18s
+
+     Running unittests src\bin\workpilot-tool-fixture.rs (target\debug\deps\workpilot_tool_fixture-dc953dfd4f247abd.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\tool_boundary.rs (target\debug\deps\tool_boundary-be66650ebd4f62c0.exe)
+
+running 4 tests
+test cancelled_sandbox_kills_its_real_three_level_process_tree ... ok
+test abrupt_owner_death_kills_descendants_and_recovers_only_its_sandbox_ledger ... ok
+test actual_timeout_and_output_limits_are_observable ... ok
+test appcontainer_denies_live_loopback_and_does_not_inherit_host_environment ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.96s
+
+   Doc-tests workpilot_platform
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

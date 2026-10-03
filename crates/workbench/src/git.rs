@@ -8,45 +8,7 @@ use std::{
 use workpilot_platform::tool_process::{self, ProcessResult, ProcessSpec};
 use workpilot_tools::{binary::user_path, files::Root};
 pub fn executable(name: &str) -> Result<PathBuf> {
-    fn canonical(path: &Path) -> Result<PathBuf> {
-        let path = path.canonicalize().map_err(|e| e.to_string())?;
-        #[cfg(windows)]
-        {
-            let text = path.to_string_lossy();
-            if text.starts_with(r"\\?\UNC\") {
-                return Err("network executables are not supported".into());
-            }
-            Ok(PathBuf::from(text.strip_prefix(r"\\?\").unwrap_or(&text)))
-        }
-        #[cfg(not(windows))]
-        {
-            Ok(path)
-        }
-    }
-    let input = Path::new(name);
-    if input.is_absolute() {
-        return canonical(input);
-    }
-    if name.contains(['/', '\\']) {
-        return Err("executable must be absolute or a simple installed program name".into());
-    }
-    let names = if cfg!(windows) && !name.to_ascii_lowercase().ends_with(".exe") {
-        vec![format!("{name}.exe")]
-    } else {
-        vec![name.into()]
-    };
-    let extra = std::env::var_os("SystemRoot")
-        .map(|s| PathBuf::from(s).join("System32/WindowsPowerShell/v1.0"));
-    for folder in std::env::split_paths(&std::env::var_os("PATH").unwrap_or_default()).chain(extra)
-    {
-        for file in &names {
-            let p = folder.join(file);
-            if p.is_file() {
-                return canonical(&p);
-            }
-        }
-    }
-    Err(format!("找不到 {name}；请安装该工具或填写程序的完整路径。"))
+    workpilot_platform::runtimes::resolve_program(name).map_err(|e| e.to_string())
 }
 pub fn run(
     root: &Root,

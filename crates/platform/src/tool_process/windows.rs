@@ -88,7 +88,11 @@ impl Sandbox {
             },
             path,
         };
+        let runtime_root = crate::runtimes::owned_read_root(&spec.program)?;
         let mut paths = vec![(&spec.cwd, true, true), (&spec.program, false, false)];
+        if let Some(root) = &runtime_root {
+            paths.push((root, false, true));
+        }
         if let Some(input) = extra {
             paths.extend(input.read_roots.iter().map(|p| (p, false, true)));
         }
@@ -492,6 +496,9 @@ pub fn run(
             }
         ),
         format!("SystemRoot={system}"),
+        // The embedded Python preconfiguration reads UTF-8 mode before its
+        // isolated path setup; keep Chinese text safe through captured pipes.
+        "PYTHONUTF8=1".into(),
         format!("TEMP={}", spec.cwd.display()),
         format!("TMP={}", spec.cwd.display()),
         format!(

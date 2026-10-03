@@ -25,6 +25,8 @@ mod memory;
 pub use memory::*;
 mod schedule;
 pub use schedule::*;
+mod installation;
+pub use installation::*;
 
 pub const PROTOCOL: &str = "workpilot.v1";
 pub const SCHEMA_VERSION: u32 = 11;
@@ -44,6 +46,9 @@ pub struct Request {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 pub enum Command {
+    InspectInstallation {
+        verify_hashes: bool,
+    },
     Schedules {
         action: ScheduleAction,
     },
@@ -788,6 +793,9 @@ pub struct ContentPage {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case")]
 pub enum Response {
+    Installation {
+        report: InstallationReport,
+    },
     Schedules {
         data: ScheduleData,
     },
@@ -887,6 +895,8 @@ pub fn typescript() -> String {
     let config = ts_rs::Config::default().with_large_int("number");
     macro_rules! export { ($($ty:ty),* $(,)?) => { $(output.push_str("export "); output.push_str(&<$ty>::decl(&config)); output.push('\n');)* }; }
     export!(
+        RuntimeHealth,
+        InstallationReport,
         ScheduleRule,
         ScheduleSpec,
         SchedulePlan,

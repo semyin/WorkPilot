@@ -7,6 +7,7 @@ import type {
 } from "./generated/contracts";
 import { executionCommand } from "./executionClient";
 import { useWords } from "./workspaceClient";
+import { InstallationPanel } from "./InstallationPanel";
 export function WorkspaceSettings({
   preferences,
   scheduler,
@@ -131,8 +132,8 @@ export function WorkspaceSettings({
           <p>{dataDir}</p>
           <small>
             {tr(
-              "记录保存在本机。完整迁移与备份在 P12 实现。",
-              "Records stay on this computer. Full migration and backup arrive in P12.",
+              "记录保存在本机。完整迁移与备份暂未提供，请保留原数据目录。",
+              "Records stay on this computer. Full migration and backup are not available yet; keep the original data directory.",
             )}
           </small>
         </details>
@@ -140,8 +141,8 @@ export function WorkspaceSettings({
           <summary>{tr("浏览器、技能与插件", "Browser, skills and plugins")}</summary>
           <p>
             {tr(
-              "浏览器接入在 P08、技能与插件在 P09 开发。当前没有可用的安装或执行按钮。",
-              "Browser integration is planned for P08; skills and plugins for P09.",
+              "工作台顶部可管理技能与插件，右侧浏览器面板可启动内置浏览器或连接日常 Chrome/Edge。第三方插件的额外依赖仍需按其说明配置。",
+              "Manage skills and plugins from the workspace toolbar. The browser panel provides a bundled browser and daily Chrome/Edge connections. Third-party plugins may need additional dependencies.",
             )}
           </p>
         </details>
@@ -149,10 +150,14 @@ export function WorkspaceSettings({
           <summary>{tr("通知", "Notifications")}</summary>
           <p>
             {tr(
-              "当前在软件内显示需要输入、审批和错误。系统通知的方式还等你统一确认（Q44）。",
-              "Input requests, approvals and errors are shown in the app. System notification behavior awaits your Q44 decision.",
+              "当前在软件内显示需要输入、审批和错误。系统通知暂未提供。",
+              "Input requests, approvals and errors are shown in the app. System notifications are not available yet.",
             )}
           </p>
+        </details>
+        <details>
+          <summary>{tr("环境检查与诊断", "Environment and diagnostics")}</summary>
+          <InstallationPanel />
         </details>
         {error && (
           <p className="error" role="alert">

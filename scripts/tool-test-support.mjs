@@ -100,7 +100,10 @@ async function launch(directory, fault) {
           pending.delete(request_id);
           reject(new Error("IPC reply timed out: " + command.kind + "; " + stderr));
         },
-        command.kind === "media" && command.action?.kind === "preview" ? 120000 : 10000,
+        (command.kind === "media" && command.action?.kind === "preview") ||
+          command.kind === "inspect_installation"
+          ? 120000
+          : 10000,
       );
       pending.set(request_id, { resolve, reject, timer });
       child.stdin.write(JSON.stringify({ request_id, command }) + "\n");

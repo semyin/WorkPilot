@@ -1,0 +1,8 @@
+{
+  "command": "npm run build (Tauri build --no-bundle)",
+  "appVersion": "0.1.0-alpha.12",
+  "at": "2026-10-03T15:03:32.277Z",
+  "platform": "win32",
+  "desktop": "842c539901eb2fec461ab4aee354ebedb3677dd940b06f748184e64c9022578a",
+  "engine": "0d63cc070f1051ddc671e053dae9b3e60bd4528f5acc43537d25a90c6644e140"
+}

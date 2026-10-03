@@ -136,7 +136,7 @@ pub fn registry() -> Vec<ToolDescriptor> {
         ),
         descriptor(
             "run_command",
-            "Run one executable with an argument array in the authorized project directory. Windows limits child lifetime. In approval modes it uses AppContainer with no network; full access uses OS account permissions. Workspace snapshots: 4096 files / 1024 directories / 256 MiB total / 64 MiB per file, no links; .git, node_modules, target, dist, .venv, .cache, .local, .workpilot-data and .test-results are excluded. Shell commands must explicitly name the shell executable and its arguments.",
+            "Run one executable (absolute path, or bundled node/python/git alias) with an argument array in the authorized project directory. Windows limits child lifetime. In approval modes it uses AppContainer with no network; full access uses OS account permissions. Workspace snapshots: 4096 files / 1024 directories / 256 MiB total / 64 MiB per file, no links; .git, node_modules, target, dist, .venv, .cache, .local, .workpilot-data and .test-results are excluded. Shell commands must explicitly name the shell executable and its arguments.",
             json!({"program":{"type":"string"},"args":{"type":"array","items":{"type":"string"}},"timeout_ms":{"type":"integer","minimum":100,"maximum":300000}}),
             &["program", "args", "timeout_ms"],
             ToolRisk::Process,
@@ -355,7 +355,24 @@ pub fn prepare(
                 ));
             }
             let a: ProcessArg = decode(&call.arguments)?;
-            let program = PathBuf::from(&a.program);
+            if !PathBuf::from(&a.program).is_absolute()
+                && !matches!(
+                    a.program.to_ascii_lowercase().as_str(),
+                    "node"
+                        | "node.exe"
+                        | "python"
+                        | "python.exe"
+                        | "python3"
+                        | "python3.exe"
+                        | "git"
+                        | "git.exe"
+                )
+            {
+                return Err(Error::Rejected(
+                    "Use an absolute program path or the bundled node/python/git alias",
+                ));
+            }
+            let program = workpilot_platform::runtimes::resolve_program(&a.program)?;
             if !program.is_absolute()
                 || a.args.len() > 128
                 || a.args.iter().any(|s| s.len() > 16384 || s.contains('\0'))

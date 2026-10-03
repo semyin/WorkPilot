@@ -6010,14 +6010,14 @@ checksum = "1ebf944e87a7c253233ad6766e082e3cd714b5d03812acc24c318f549614536e"
 
 [[package]]
 name = "workpilot-browser-bridge"
-version = "0.1.0-alpha.0"
+version = "0.1.0-alpha.12"
 dependencies = [
  "serde_json",
 ]
 
 [[package]]
 name = "workpilot-contracts"
-version = "0.1.0-alpha.0"
+version = "0.1.0-alpha.12"
 dependencies = [
  "serde",
  "serde_json",
@@ -6027,7 +6027,7 @@ dependencies = [
 
 [[package]]
 name = "workpilot-desktop"
-version = "0.1.0-alpha.0"
+version = "0.1.0-alpha.12"
 dependencies = [
  "serde",
  "serde_json",
@@ -6042,7 +6042,7 @@ dependencies = [
 
 [[package]]
 name = "workpilot-engine"
-version = "0.1.0-alpha.0"
+version = "0.1.0-alpha.12"
 dependencies = [
  "serde",
  "serde_json",
@@ -6065,7 +6065,7 @@ dependencies = [
 
 [[package]]
 name = "workpilot-extensions"
-version = "0.1.0-alpha.0"
+version = "0.1.0-alpha.12"
 dependencies = [
  "base64 0.22.1",
  "futures-util",
@@ -6091,20 +6091,21 @@ dependencies = [
 
 [[package]]
 name = "workpilot-office"
-version = "0.1.0-alpha.0"
+version = "0.1.0-alpha.12"
 dependencies = [
  "serde_json",
 ]
 
 [[package]]
 name = "workpilot-platform"
-version = "0.1.0-alpha.0"
+version = "0.1.0-alpha.12"
 dependencies = [
  "directories",
  "keyring",
  "libc",
  "serde",
  "serde_json",
+ "sha2",
  "tempfile",
  "thiserror 2.0.21",
  "uuid",
@@ -6115,7 +6116,7 @@ dependencies = [
 
 [[package]]
 name = "workpilot-policy"
-version = "0.1.0-alpha.0"
+version = "0.1.0-alpha.12"
 dependencies = [
  "serde",
  "serde_json",
@@ -6125,7 +6126,7 @@ dependencies = [
 
 [[package]]
 name = "workpilot-providers"
-version = "0.1.0-alpha.0"
+version = "0.1.0-alpha.12"
 dependencies = [
  "futures-util",
  "reqwest",
@@ -6142,7 +6143,7 @@ dependencies = [
 
 [[package]]
 name = "workpilot-runtime"
-version = "0.1.0-alpha.0"
+version = "0.1.0-alpha.12"
 dependencies = [
  "serde",
  "serde_json",
@@ -6161,7 +6162,7 @@ dependencies = [
 
 [[package]]
 name = "workpilot-storage"
-version = "0.1.0-alpha.0"
+version = "0.1.0-alpha.12"
 dependencies = [
  "chrono",
  "chrono-tz",
@@ -6180,7 +6181,7 @@ dependencies = [
 
 [[package]]
 name = "workpilot-tools"
-version = "0.1.0-alpha.0"
+version = "0.1.0-alpha.12"
 dependencies = [
  "cap-std",
  "serde",
@@ -6197,7 +6198,7 @@ dependencies = [
 
 [[package]]
 name = "workpilot-workbench"
-version = "0.1.0-alpha.0"
+version = "0.1.0-alpha.12"
 dependencies = [
  "base64 0.22.1",
  "futures-util",

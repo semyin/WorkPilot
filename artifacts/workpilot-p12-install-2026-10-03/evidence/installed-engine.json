@@ -1,0 +1,61 @@
+{
+  "at": "2026-10-03T15:27:21.854Z",
+  "platform": "win32",
+  "binarySha256": "0d63cc070f1051ddc671e053dae9b3e60bd4528f5acc43537d25a90c6644e140",
+  "environment": "Windows developer machine; engine PATH restricted to System32. This is not a clean-OS test.",
+  "checks": [
+    "full_installed_inventory_verified_and_engine_responsive",
+    "request_approval_workbench_git_commit_uses_bundled_git_and_explicit_approval",
+    "full_access_bundled_python_unicode_node_git_commit_without_developer_PATH",
+    "request_approval_bundled_python_unicode_node_work_and_git_compatibility_failure_is_recorded",
+    "sandbox_uses_only_owned_runtime_roots_and_restores_their_permissions",
+    "damaged_missing_and_traversal_files_are_rejected_missing_tool_does_not_use_global_python"
+  ],
+  "verificationMs": 9180,
+  "components": [
+    {
+      "id": "application",
+      "files": 4,
+      "bytes": 28492282
+    },
+    {
+      "id": "node",
+      "files": 5,
+      "bytes": 87180776
+    },
+    {
+      "id": "python",
+      "files": 34,
+      "bytes": 22640669
+    },
+    {
+      "id": "git",
+      "files": 373,
+      "bytes": 95772593
+    },
+    {
+      "id": "documents",
+      "files": 5244,
+      "bytes": 167872404
+    },
+    {
+      "id": "office",
+      "files": 19448,
+      "bytes": 1579736503
+    },
+    {
+      "id": "companion",
+      "files": 12,
+      "bytes": 234720
+    }
+  ],
+  "knownFailures": [
+    {
+      "id": "T-P12-04",
+      "component": "Git in AppContainer",
+      "observed": "fatal: unable to get current working directory: Permission denied",
+      "scope": "Generic git init cannot resolve directory ancestors under restricted permissions; no broader permission fallback. Full-access commands and existing approved workbench Git operations work."
+    }
+  ],
+  "status": "passed_with_known_failure"
+}

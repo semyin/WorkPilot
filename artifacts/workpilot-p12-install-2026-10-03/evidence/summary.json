@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-03T15:37:55.512Z",
+  "phase": "P12-installation-environment-slice",
+  "status": "local_checks_pass_with_documented_git_failure_phase_not_accepted",
+  "platform": "Windows 11 Home x64 developer machine",
+  "schema": 11,
+  "appVersion": "0.1.0-alpha.12",
+  "basePushedCommit": "9961f74",
+  "p12CommittedOrPushed": false,
+  "checks": {
+    "rust": 113,
+    "rustIgnored": 2,
+    "node": 9,
+    "engine": 6,
+    "nativeDesktop": 3,
+    "office": 5,
+    "installer": 5,
+    "localLinks": 209,
+    "sourceFiles": 385,
+    "deliveryFiles": 25121
+  },
+  "installer": {
+    "file": "WorkPilot_0.1.0-alpha.12_x64-setup.exe",
+    "bytes": 706661786,
+    "sha256": "58653a9be82bec879433ba5445fa676c4af145bd3e4ef355dd00ccd33ace828d",
+    "signed": false
+  },
+  "knownFailures": [
+    {
+      "id": "T-P12-04",
+      "component": "Git in AppContainer",
+      "observed": "fatal: unable to get current working directory: Permission denied",
+      "scope": "Generic git init cannot resolve directory ancestors under restricted permissions; no broader permission fallback. Full-access commands and existing approved workbench Git operations work."
+    }
+  ],
+  "preservedDatabaseFiles": 6,
+  "preexistingApplicationProcessesStillRunning": 1,
+  "pending": [
+    "T-P12-01 bundled browser licenses",
+    "T-P12-02 signed updates",
+    "T-P12-03 full migration/vault/history lifecycle",
+    "T-P12-04 Git generic restricted commands",
+    "T-P12-05 installer lifecycle and build time",
+    "E-P12-01 clean Windows/WebView2-free OS",
+    "E-P10-01",
+    "E-P11-01",
+    "E-P11-02",
+    "O-01/Q44",
+    "earlier user experiences",
+    "macOS/Linux"
+  ],
+  "previousP11DeliveryPreserved": true,
+  "finalAudit": {
+    "diffCheck": "passed",
+    "credentialPatternMatches": 0,
+    "sourceFilesChecked": 385,
+    "binariesOrDatabasesInPendingGitFiles": false
+  }
+}

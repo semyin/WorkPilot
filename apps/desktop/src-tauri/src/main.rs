@@ -171,6 +171,7 @@ impl Bridge {
         let seconds = if matches!(
             &request.command,
             Command::Media { .. }
+                | Command::InspectInstallation { .. }
                 | Command::Workbench {
                     action: workpilot_contracts::WorkbenchAction::ReadDocument { .. },
                     ..

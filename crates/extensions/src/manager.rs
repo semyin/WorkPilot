@@ -1272,39 +1272,7 @@ pub fn script_runtime(path: &str) -> Result<PluginRuntime> {
 }
 pub fn runtime_command(runtime: PluginRuntime, entry: &Path) -> Result<(PathBuf, Vec<String>)> {
     fn executable(name: &str) -> Result<PathBuf> {
-        if name == "node" {
-            let bundled = std::env::current_exe().ok().and_then(|p| {
-                p.parent().map(|p| {
-                    p.join(if cfg!(windows) {
-                        "browser-runtime/node.exe"
-                    } else {
-                        "browser-runtime/node"
-                    })
-                })
-            });
-            if let Some(p) = bundled.filter(|p| p.is_file()) {
-                return Ok(p);
-            }
-        }
-        let names = if cfg!(windows) {
-            vec![format!("{name}.exe")]
-        } else {
-            vec![name.to_owned()]
-        };
-        let extra = std::env::var_os("SystemRoot")
-            .map(|s| PathBuf::from(s).join("System32/WindowsPowerShell/v1.0"));
-        for dir in std::env::split_paths(&std::env::var_os("PATH").unwrap_or_default()).chain(extra)
-        {
-            for n in &names {
-                let p = dir.join(n);
-                if p.is_file() {
-                    return Ok(p);
-                }
-            }
-        }
-        Err(format!(
-            "缺少 {name} 运行环境。请先准备依赖；不会静默安装。"
-        ))
+        workpilot_platform::runtimes::resolve_program(name).map_err(|e| e.to_string())
     }
     let entry = entry.to_string_lossy().replace(r"\\?\", "");
     match runtime {

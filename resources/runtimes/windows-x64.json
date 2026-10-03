@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "target": "windows-x86_64",
+  "checkedAt": "2026-10-03",
+  "assets": [
+    {
+      "id": "node",
+      "version": "22.23.2",
+      "file": "node-v22.23.2-win-x64.zip",
+      "url": "https://nodejs.org/dist/v22.23.2/node-v22.23.2-win-x64.zip",
+      "sha256": "1177b4137ba5adaa56354ae40f1080c7450e8ae09cecb47da459d1c52ac99f97",
+      "bytes": 35683585,
+      "source": "https://github.com/nodejs/node/tree/v22.23.2",
+      "license": "MIT and bundled third-party notices",
+      "entry": "node-v22.23.2-win-x64/node.exe"
+    },
+    {
+      "id": "python",
+      "version": "3.13.16",
+      "file": "python-3.13.16-embed-amd64.zip",
+      "url": "https://www.python.org/ftp/python/3.13.16/python-3.13.16-embed-amd64.zip",
+      "sha256": "97dae5274cc54867065e8d5a3226e48c35017ed332a0fdb0e27d5b5821961297",
+      "bytes": 11439094,
+      "source": "https://github.com/python/cpython/tree/v3.13.16",
+      "license": "PSF and bundled third-party notices",
+      "entry": "python.exe"
+    },
+    {
+      "id": "git",
+      "version": "2.56.0.windows.1",
+      "file": "MinGit-2.56.0-64-bit.zip",
+      "url": "https://github.com/git-for-windows/git/releases/download/v2.56.0.windows.1/MinGit-2.56.0-64-bit.zip",
+      "sha256": "064b440ff870ed5198527e8f3a92cdf5bd2fd0fedf5e718af95e3fdaddeff718",
+      "bytes": 39602073,
+      "source": "https://github.com/git-for-windows/git/tree/v2.56.0.windows.1",
+      "license": "GPL-2.0 and bundled component notices",
+      "entry": "cmd/git.exe"
+    },
+    {
+      "id": "chromium",
+      "distribution": "blocked-missing-component-licenses",
+      "version": "snapshot-1710726",
+      "file": "chromium-1710726.zip",
+      "url": "https://commondatastorage.googleapis.com/chromium-browser-snapshots/Win_x64/1710726/chrome-win.zip",
+      "sha256": "41fc1181ce9fd97f56c65b7e532ae6fdd71516b60354e5ccf6217242004b8e6b",
+      "bytes": 360101016,
+      "source": "https://chromium.googlesource.com/chromium/src/+/cf098eeefcd5aca3361bba7216c1f704592acfd8",
+      "license": "Research only: BSD root license; this snapshot ships sample credits, not complete component notices. Do not package.",
+      "entry": "chrome-win/chrome.exe"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-03T15:29:15.185Z",
+  "platform": "win32",
+  "binarySha256": "842c539901eb2fec461ab4aee354ebedb3677dd940b06f748184e64c9022578a",
+  "service": "Actual Windows desktop; isolated test data; PATH contains System32 only; network blocked at test browser context (not an OS firewall)",
+  "checks": [
+    "native_offline_ui_quick_full_inspection_and_real_download_without_private_paths",
+    "english_settings_render_without_horizontal_overflow",
+    "native_application_exits_cleanly"
+  ],
+  "status": "passed"
+}

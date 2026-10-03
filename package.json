@@ -1,6 +1,6 @@
 {
   "name": "workpilot",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.12",
   "private": true,
   "type": "module",
   "engines": {
@@ -23,6 +23,11 @@
     "test:execution-desktop": "node scripts/execution-desktop-smoke.mjs",
     "dev": "node scripts/desktop.mjs dev",
     "build": "node scripts/desktop.mjs build",
+    "runtimes:prepare": "node scripts/prepare-runtime-sources.mjs",
+    "package:p12": "node scripts/package-p12.mjs",
+    "bundle:installer": "node scripts/installer-p12.mjs",
+    "test:installation-engine": "node scripts/installation-engine-test.mjs",
+    "test:installation-desktop": "node scripts/installation-desktop-smoke.mjs",
     "engine:build": "node scripts/cargo.mjs build -p workpilot-engine --locked",
     "engine:test": "node scripts/cargo.mjs test --workspace --exclude workpilot-desktop --locked",
     "rust:check": "node scripts/cargo.mjs clippy --workspace --all-targets --locked -- -D warnings",
