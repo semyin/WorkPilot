@@ -1,6 +1,8 @@
 use crate::*;
 use serde::{Deserialize, Serialize};
 use ts_rs::TS;
+mod memory_history;
+pub use memory_history::ProjectMemoryHistory;
 
 /// Manual settings migration, separate from model tools and saved command inputs.
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
@@ -10,6 +12,8 @@ pub enum ProjectTransferAction {
         project_id: String,
         profile_ids: Vec<String>,
         memory_ids: Vec<String>,
+        #[serde(default)]
+        include_memory_history: bool,
         path: String,
         password: SecretInput,
     },
@@ -36,6 +40,7 @@ impl ProjectTransferAction {
                 memory_ids,
                 path,
                 password,
+                ..
             } => {
                 if !valid_id(project_id) || !selection(profile_ids) || !selection(memory_ids) {
                     return Err("迁移选择无效或超过 128 项 / Invalid migration selection");
@@ -95,10 +100,15 @@ pub struct ProjectTransferBundle {
     pub project: WorkspaceProject,
     pub profiles: Vec<ProviderProfile>,
     pub memories: Vec<MemoryItem>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub memory_history: Vec<ProjectMemoryHistory>,
 }
 impl ProjectTransferBundle {
     pub fn validate(&self) -> Result<(), &'static str> {
-        if self.version != 1 || !valid_id(&self.archive_id) || !valid_id(&self.project.id) {
+        if ![1, 2].contains(&self.version)
+            || !valid_id(&self.archive_id)
+            || !valid_id(&self.project.id)
+        {
             return Err("不支持的项目设置包 / Unsupported project settings archive");
         }
         WorkspaceAction::SaveProject {
@@ -121,8 +131,7 @@ impl ProjectTransferBundle {
                     .collect::<Vec<_>>(),
             )
             || self.memories.iter().any(|m| {
-                m.deleted
-                    || m.state != MemoryState::Confirmed
+                (self.version == 1 && (m.deleted || m.state != MemoryState::Confirmed))
                     || m.text.trim().is_empty()
                     || m.text.len() > 4096
                     || m.source_label.len() > 4096
@@ -147,6 +156,7 @@ impl ProjectTransferBundle {
         {
             return Err("缺少所选默认模型 / Missing selected default model");
         }
+        self.validate_memory_history()?;
         Ok(())
     }
 }

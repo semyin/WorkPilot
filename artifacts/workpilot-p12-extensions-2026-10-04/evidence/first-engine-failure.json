@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-03T22:58:19.480Z",
+  "platform": "win32",
+  "binarySha256": "8f2c4d7a3744d22d8279bc06042fdd73e3c42cf68687ed0c168ca68338b51f5e",
+  "checks": [
+    "selected_current_packages_encrypted_without_credentials_no_overwrite_stale_or_foreign_scope_export_rejected",
+    "preview_maps_project_scope_shows_dependencies_wrong_password_damage_missing_target_and_stale_destination_refused",
+    "whole_batch_imports_inactive_new_ids_binary_resources_preserved_global_project_mapping_no_credentials_catalog_or_service_start"
+  ],
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: {\"kind\":\"error\",\"code\":\"invalid_request\",\"message\":\"只允许运行已确认技能的 scripts 目录中的脚本。\"}\n+ actual - expected\n\n+ 'error'\n- 'workbench'\n\n    at wb (file:///D:/workspace/kplocker/WorkPilot/scripts/extension-transfer-test.mjs:220:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async file:///D:/workspace/kplocker/WorkPilot/scripts/extension-transfer-test.mjs:234:5"
+}

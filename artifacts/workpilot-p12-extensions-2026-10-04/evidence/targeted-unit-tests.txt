@@ -1,0 +1,30 @@
+   Compiling workpilot-extensions v0.1.0-alpha.12.5 (D:\workspace\kplocker\WorkPilot\crates\extensions)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.97s
+     Running unittests src\lib.rs (target\debug\deps\workpilot_extensions-038ddf668c0b3982.exe)
+
+running 2 tests
+test manager::transfer::tests::extension_migration_rejects_bad_packages_credentials_and_cancel ... ok
+test manager::transfer::tests::extension_migration_revalidates_resources_and_imports_inactive ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.07s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_storage-439cbd355c475832.exe)
+
+running 2 tests
+test extension_transfer_tests::extension_migration_rolls_back_entire_batch_and_checks_stale_state ... ok
+test extension_transfer_tests::extension_migration_disabled_scope_and_dedup_survive_restart ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 64 filtered out; finished in 0.04s
+
+     Running unittests src\bin\workpilot-data.rs (target\debug\deps\workpilot_data-47a281b11fbce1ca.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_workbench-004e08132c02c552.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.00s
+

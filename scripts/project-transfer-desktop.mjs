@@ -7,8 +7,12 @@ import { mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { createHash } from "node:crypto";
 import { until, profile } from "./tool-test-support.mjs";
+const withHistory = process.argv.includes("--memory-history");
 const output = resolve(
-  process.env.WORKPILOT_TEST_OUTPUT || ".test-results/project-transfer-desktop",
+  process.env.WORKPILOT_TEST_OUTPUT ||
+    (withHistory
+      ? ".test-results/memory-history-transfer-desktop"
+      : ".test-results/project-transfer-desktop"),
 );
 await mkdir(output, { recursive: true });
 const directory = await mkdtemp(join(output, "session-"));
@@ -109,27 +113,55 @@ try {
       },
     })
   ).data.project;
-  for (const scope of [project.id, null])
-    assert.equal(
-      (
-        await request({
-          kind: "memory",
-          action: {
-            kind: "save",
-            memory_id: null,
-            revision: 0,
-            project_id: scope,
-            text: scope ? "项目记忆测试" : "通用记忆测试",
-          },
-        })
-      ).kind,
-      "memory",
-    );
+  const memoryIds = [];
+  for (const scope of [project.id, null]) {
+    const created = await request({
+      kind: "memory",
+      action: {
+        kind: "save",
+        memory_id: null,
+        revision: 0,
+        project_id: scope,
+        text: scope ? "项目记忆测试" : "通用记忆测试",
+      },
+    });
+    assert.equal(created.kind, "memory");
+    memoryIds.push(created.data.memory_id);
+  }
+  if (withHistory) {
+    for (const action of [
+      {
+        kind: "save",
+        memory_id: memoryIds[0],
+        revision: 1,
+        project_id: project.id,
+        text: "项目记忆新版",
+      },
+      { kind: "delete", memory_id: memoryIds[0], revision: 2 },
+    ])
+      assert.equal((await request({ kind: "memory", action })).kind, "memory");
+  }
   let panel = await openPanel(),
     transfer = panel.locator(".project-transfer");
   await transfer.getByLabel("源项目", { exact: true }).selectOption(project.id);
-  await transfer.getByRole("checkbox", { name: "项目 · 项目记忆测试", exact: true }).check();
-  await transfer.getByRole("checkbox", { name: "通用 · 通用记忆测试", exact: true }).check();
+  if (withHistory) {
+    await expect(
+      transfer.getByRole("checkbox", { name: "项目 · 已删除 · 项目记忆新版", exact: true }),
+    ).toHaveCount(0);
+    await transfer.getByRole("checkbox", { name: "包含记忆历史与未生效记录", exact: true }).check();
+  }
+  await transfer
+    .getByRole("checkbox", {
+      name: withHistory ? "项目 · 已删除 · 项目记忆新版" : "项目 · 项目记忆测试",
+      exact: true,
+    })
+    .check();
+  await transfer
+    .getByRole("checkbox", {
+      name: withHistory ? "通用 · 已确认 · 通用记忆测试" : "通用 · 通用记忆测试",
+      exact: true,
+    })
+    .check();
   const archive = join(directory, "界面设置.wpsettings"),
     password = "native settings fixture passphrase";
   await transfer.getByLabel("设置包保存位置", { exact: true }).fill(archive);
@@ -159,6 +191,10 @@ try {
   let preview = transfer.getByRole("region", { name: "项目迁移预览" });
   await expect(preview).toContainText("需要重新填写");
   await expect(preview).toContainText("通用记忆会用于所有项目");
+  if (withHistory) {
+    await expect(preview).toContainText("3 个历史版本");
+    await expect(preview).toContainText("已删除的记录不会生效");
+  }
   const before = (
     await request({ kind: "read", query: { kind: "workspace", query: { kind: "overview" } } })
   ).data.projects;
@@ -175,6 +211,45 @@ try {
   assert.equal(after.length, 2);
   assert.equal(after.find((p) => p.id !== project.id).settings.permission, "request_approval");
   assert.equal(await readFile(join(target, "keep.txt"), "utf8"), "keep current file");
+  if (withHistory) {
+    const projectId = after.find((p) => p.id !== project.id).id;
+    const memories = (
+      await request({
+        kind: "memory",
+        action: {
+          kind: "list",
+          project_id: projectId,
+          search: "",
+          include_deleted: true,
+          offset: 0,
+          limit: 64,
+        },
+      })
+    ).data.items;
+    const imported = memories.find((m) => m.project_id === projectId);
+    assert(imported.deleted);
+    assert.equal(imported.revision, 4);
+    const history = (
+      await request({
+        kind: "memory",
+        action: { kind: "history", memory_id: imported.id, before_revision: null, limit: 64 },
+      })
+    ).data.items;
+    assert.equal(history.length, 4);
+    assert.equal(history.at(-1).text, "项目记忆测试");
+    assert.equal(
+      (
+        await request({
+          kind: "memory",
+          action: { kind: "restore", memory_id: imported.id, revision: 4, target_revision: 1 },
+        })
+      ).kind,
+      "memory",
+    );
+    report.checks.push(
+      "native_full_history_selection_preview_preserves_deleted_state_and_imported_original_can_be_restored",
+    );
+  }
   report.checks.push(
     "wrong_passphrase_and_duplicate_name_block_import_preview_requires_confirmation_and_preserves_current_files",
   );
@@ -189,6 +264,10 @@ try {
   await transfer.getByRole("button", { name: "Preview project transfer", exact: true }).click();
   preview = transfer.getByRole("region", { name: "Project transfer preview" });
   await expect(preview).toContainText("Already imported");
+  if (withHistory) {
+    await expect(preview).toContainText("3 historical revisions");
+    await expect(preview).toContainText("Candidates still need confirmation");
+  }
   await expect(
     transfer.getByRole("button", { name: "Confirm project and memory import", exact: true }),
   ).toHaveCount(0);

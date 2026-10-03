@@ -1,4 +1,5 @@
 mod codec;
+mod extensions;
 mod project;
 #[cfg(test)]
 mod tests;

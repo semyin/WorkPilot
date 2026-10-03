@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-03T23:10:48.944Z",
+  "platform": "win32",
+  "binarySha256": "881f6b38477a5ad05c4469b34310dcacfbad7194c0669ce9bf2de51ca0475279",
+  "checks": [
+    "real_engine_exports_deleted_memory_with_encrypted_complete_revisions",
+    "preview_counts_state_and_restart_dedup_preserve_inactive_imported_history",
+    "restoration_keeps_original_global_or_project_scope_and_appends_a_new_version",
+    "tampered_history_archive_is_rejected_without_mutating_restored_data"
+  ],
+  "status": "passed"
+}

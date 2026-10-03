@@ -16,6 +16,7 @@ type Preview = {
   root_path: string;
   profiles: ProviderProfile[];
   memories: MemoryItem[];
+  memory_history: { memory_id: string; versions: number }[];
   conflicts: string[];
   already_imported: boolean;
   credentials_required: boolean;
@@ -30,6 +31,7 @@ export function ProjectTransferPanel() {
     [offset, setOffset] = useState(0);
   const [profileIds, setProfileIds] = useState<string[]>([]),
     [memoryIds, setMemoryIds] = useState<string[]>([]);
+  const [includeHistory, setIncludeHistory] = useState(false);
   const [destination, setDestination] = useState(""),
     [exportPassword, setExportPassword] = useState(""),
     [repeat, setRepeat] = useState("");
@@ -84,7 +86,7 @@ export function ProjectTransferPanel() {
     if (r.kind !== "workbench") throw new Error("Unexpected settings transfer response");
     return r.data as unknown as Preview;
   };
-  const loadMemories = async (id: string, append = false) => {
+  const loadMemories = async (id: string, append = false, withHistory = includeHistory) => {
     const current = ++generation.current;
     const start = append ? offset : 0;
     const r = await executionCommand({
@@ -93,7 +95,7 @@ export function ProjectTransferPanel() {
         kind: "list",
         project_id: id,
         search: "",
-        include_deleted: false,
+        include_deleted: withHistory,
         offset: start,
         limit: 64,
       },
@@ -105,7 +107,7 @@ export function ProjectTransferPanel() {
       r.data.kind !== "list"
     )
       return;
-    const items = r.data.items.filter((m) => m.state === "confirmed");
+    const items = r.data.items.filter((m) => withHistory || m.state === "confirmed");
     setMemories((old) => (append ? [...old, ...items] : items));
     setOffset(start + r.data.items.length);
     setTotal(r.data.total);
@@ -134,6 +136,14 @@ export function ProjectTransferPanel() {
     }
   };
   const valid = (p: string) => Array.from(p).length >= 12;
+  const memoryState = (m: MemoryItem) =>
+    m.deleted
+      ? tr("已删除", "Deleted")
+      : m.state === "suggested"
+        ? tr("待确认", "Pending confirmation")
+        : m.state === "rejected"
+          ? tr("已拒绝", "Rejected")
+          : tr("已确认", "Confirmed");
   const changeImport = (setter: (s: string) => void, value: string) => {
     setter(value);
     setPreview(null);
@@ -142,8 +152,8 @@ export function ProjectTransferPanel() {
     <div className="project-transfer history-transfer">
       <p>
         {tr(
-          "本入口迁移项目名称和规则、勾选的模型配置与已确认记忆。会话、技能、定时计划、项目文件和文件历史不在此包内。",
-          "Transfers project name and rules, selected model configurations and confirmed memories. Conversations, skills, schedules, project files and file history are not included.",
+          "本入口迁移项目名称和规则、勾选的模型配置与记忆。可包含候选、已删除记忆和旧版本；会话、技能、定时计划、项目文件和文件历史不在此包内。",
+          "Transfers project name and rules, selected model configurations and memories, optionally including candidates, deleted entries and revisions. Conversations, skills, schedules, project files and file history are not included.",
         )}
       </p>
       <p>
@@ -189,7 +199,32 @@ export function ProjectTransferPanel() {
             </label>
           ))}
         </div>
-        <p>{tr("选择已确认的记忆", "Select confirmed memories")}</p>
+        <label>
+          <input
+            type="checkbox"
+            checked={includeHistory}
+            onChange={(e) => {
+              const enabled = e.target.checked;
+              setIncludeHistory(enabled);
+              setMemoryIds([]);
+              if (project) void act(() => loadMemories(project, false, enabled));
+            }}
+          />
+          {tr("包含记忆历史与未生效记录", "Include memory history and inactive entries")}
+        </label>
+        {includeHistory && (
+          <p>
+            {tr(
+              "候选、已拒绝、已删除的记忆保持原状态。每条最多 256 个历史版本，每包最多 2048 个；超限会明确报错，不截断历史。曾属于其它项目的旧版本暂不导出。",
+              "Candidates, rejected and deleted entries keep their state. Limits: 256 revisions per entry, 2048 per archive; oversized or cross-project histories are rejected without truncation.",
+            )}
+          </p>
+        )}
+        <p>
+          {includeHistory
+            ? tr("选择记忆及全部历史", "Select memories and their complete history")
+            : tr("选择已确认的记忆", "Select confirmed memories")}
+        </p>
         <div className="transfer-selection">
           {memories.map((m) => (
             <label key={m.id}>
@@ -199,7 +234,9 @@ export function ProjectTransferPanel() {
                 onChange={(e) => setMemoryIds(toggle(memoryIds, m.id, e.target.checked))}
               />
               <span>
-                {m.project_id ? tr("项目", "Project") : tr("通用", "Global")} · {m.text}
+                {m.project_id ? tr("项目", "Project") : tr("通用", "Global")} ·{" "}
+                {includeHistory && `${memoryState(m)} · `}
+                {m.text}
               </span>
             </label>
           ))}
@@ -255,6 +292,7 @@ export function ProjectTransferPanel() {
                 project_id: project,
                 profile_ids: profileIds,
                 memory_ids: memoryIds,
+                include_memory_history: includeHistory,
                 path: destination,
                 password: exportPassword,
               });
@@ -364,15 +402,28 @@ export function ProjectTransferPanel() {
               ))}
             </ul>
             <p>
-              {tr(
-                "确认导入后，下列记忆生效。通用记忆会用于所有项目。",
-                "Confirming import activates these memories. Global memories apply to all projects.",
-              )}
+              {preview.memory_history.length
+                ? tr(
+                    "只会启用当前已确认且未删除的记忆。候选仍待确认，已拒绝或已删除的记录不会生效。通用记忆会用于所有项目。导入后可在“记忆”中查看和恢复旧版本。",
+                    "Only currently confirmed, undeleted memories become active. Candidates still need confirmation; rejected and deleted entries stay inactive. Global memories apply to all projects. Review and restore revisions in Memory after import.",
+                  )
+                : tr(
+                    "确认导入后，下列记忆生效。通用记忆会用于所有项目。",
+                    "Confirming import activates these memories. Global memories apply to all projects.",
+                  )}
             </p>
             <ul>
               {preview.memories.map((m) => (
                 <li key={m.id}>
                   {m.project_id ? tr("项目", "Project") : tr("通用", "Global")} · {m.text}
+                  {preview.memory_history.find((h) => h.memory_id === m.id) && (
+                    <small>
+                      {" "}
+                      · {memoryState(m)} ·{" "}
+                      {preview.memory_history.find((h) => h.memory_id === m.id)!.versions}{" "}
+                      {tr("个历史版本", "historical revisions")}
+                    </small>
+                  )}
                 </li>
               ))}
             </ul>

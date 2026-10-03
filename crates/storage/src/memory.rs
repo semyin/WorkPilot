@@ -1,3 +1,4 @@
+mod transfer;
 use super::*;
 use serde::Deserialize;
 use serde_json::{Value, json};
@@ -15,32 +16,6 @@ pub(crate) struct Stored {
 }
 
 impl Store {
-    pub(crate) fn prepare_transferred_memory(
-        &mut self,
-        original: &MemoryItem,
-        project: Option<String>,
-        archive: &str,
-    ) -> Result<Stored> {
-        let mut label = original.source_label.clone();
-        while label.len() > 2048 {
-            label.pop();
-        }
-        let mut value = self.new_memory(
-            &original.text,
-            None,
-            None,
-            format!(
-                "导入 / Imported: {} · {}@{} · {}",
-                label, original.id, original.revision, archive
-            ),
-            original.source_quote.clone(),
-            MemoryState::Confirmed,
-        )?;
-        value.memory.project_id = project;
-        value.created_at_ms = original.created_at_ms;
-        value.change = "imported_and_confirmed".into();
-        Ok(value)
-    }
     // Only migrated placeholders need an index. Normal edits maintain it in their transaction.
     pub(crate) fn memory_reindex(&mut self) -> Result<()> {
         let ids = {

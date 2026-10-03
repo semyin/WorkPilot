@@ -161,3 +161,33 @@ fn settings_document_is_encrypted_authenticated_bounded_and_distinct_from_histor
             .is_err()
     );
 }
+
+#[test]
+fn extension_archive_has_distinct_authenticated_format_and_bound() {
+    let stop = AtomicBool::new(false);
+    let mut bytes = Vec::new();
+    let payload = b"portable extension fixture";
+    codec::write_sized_document(&mut bytes, PASSWORD, payload, &stop, b"WPEXT001", 1024).unwrap();
+    assert!(!bytes.windows(payload.len()).any(|part| part == payload));
+    assert_eq!(
+        codec::read_sized_document(bytes.as_slice(), PASSWORD, &stop, b"WPEXT001", 1024)
+            .unwrap()
+            .0
+            .as_slice(),
+        payload
+    );
+    assert!(codec::read_document(bytes.as_slice(), PASSWORD, &stop).is_err());
+    assert!(codec::read_sized_document(bytes.as_slice(), PASSWORD, &stop, b"WPEXT001", 8).is_err());
+    assert!(codec::write_sized_document(vec![], PASSWORD, payload, &stop, b"WPEXT001", 8).is_err());
+    for index in [0, 8, 32, bytes.len() - 1] {
+        let mut bad = bytes.clone();
+        bad[index] ^= 1;
+        assert!(
+            codec::read_sized_document(bad.as_slice(), PASSWORD, &stop, b"WPEXT001", 1024).is_err()
+        );
+    }
+    bytes.push(0);
+    assert!(
+        codec::read_sized_document(bytes.as_slice(), PASSWORD, &stop, b"WPEXT001", 1024).is_err()
+    );
+}

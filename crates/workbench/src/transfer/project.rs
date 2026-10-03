@@ -7,13 +7,21 @@ impl Manager {
             project_id,
             profile_ids,
             memory_ids,
+            include_memory_history,
             path,
             password,
         } = action
         {
             let bundle = self
                 .storage
-                .call(move |s| s.export_project_settings(&project_id, &profile_ids, &memory_ids))
+                .call(move |s| {
+                    s.export_project_settings(
+                        &project_id,
+                        &profile_ids,
+                        &memory_ids,
+                        include_memory_history,
+                    )
+                })
                 .await
                 .map_err(|e| e.to_string())?;
             validate(&bundle)?;
@@ -112,8 +120,13 @@ impl Manager {
             return Ok(json!({"kind":"imported","duplicate":duplicate,"receipt":receipt}));
         }
         let needs_credentials = bundle.profiles.iter().any(|p| p.auth != AuthMode::None);
+        let history = bundle
+            .memory_history
+            .iter()
+            .map(|h| json!({"memory_id":h.memory_id,"versions":h.versions.len()}))
+            .collect::<Vec<_>>();
         Ok(
-            json!({"kind":"preview","fingerprint":fingerprint,"source_project":bundle.project.settings.name,"name":name.trim(),"rules":bundle.project.settings.rules,"root_path":canonical,"profiles":bundle.profiles,"memories":bundle.memories,"already_imported":state["already_imported"],"conflicts":state["conflicts"],"permission":"request_approval","credentials_required":needs_credentials}),
+            json!({"kind":"preview","fingerprint":fingerprint,"source_project":bundle.project.settings.name,"name":name.trim(),"rules":bundle.project.settings.rules,"root_path":canonical,"profiles":bundle.profiles,"memories":bundle.memories,"memory_history":history,"already_imported":state["already_imported"],"conflicts":state["conflicts"],"permission":"request_approval","credentials_required":needs_credentials}),
         )
     }
     fn check_project_stop(&self) -> Result<()> {

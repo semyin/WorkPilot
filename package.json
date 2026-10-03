@@ -1,6 +1,6 @@
 {
   "name": "workpilot",
-  "version": "0.1.0-alpha.12.3",
+  "version": "0.1.0-alpha.12.5",
   "private": true,
   "type": "module",
   "engines": {
@@ -28,6 +28,8 @@
     "bundle:installer": "node scripts/installer-p12.mjs",
     "test:installation-engine": "node scripts/installation-engine-test.mjs",
     "test:installation-desktop": "node scripts/installation-desktop-smoke.mjs",
+    "test:memory-history-transfer": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/memory-history-transfer-test.mjs",
+    "test:memory-history-desktop": "node scripts/project-transfer-desktop.mjs --memory-history",
     "engine:build": "node scripts/cargo.mjs build -p workpilot-engine --locked",
     "engine:test": "node scripts/cargo.mjs test --workspace --exclude workpilot-desktop --locked",
     "rust:check": "node scripts/cargo.mjs clippy --workspace --all-targets --locked -- -D warnings",
@@ -41,7 +43,8 @@
     "fixtures": "node services/fixtures/server.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "npm run format:check && npm run ui:typecheck && npm run test:fixtures && npm run rust:fmt && npm run engine:test && npm run rust:check && npm run ui:build",
+    "check:lines": "node scripts/check-code-lines.mjs",
+    "check": "npm run check:lines && npm run format:check && npm run ui:typecheck && npm run test:fixtures && npm run rust:fmt && npm run engine:test && npm run rust:check && npm run ui:build",
     "test:tools-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/tools-engine-test.mjs",
     "test:tools-desktop": "node scripts/tools-desktop-smoke.mjs",
     "test:teams-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/teams-engine-test.mjs",
@@ -65,7 +68,9 @@
     "test:memory-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/memory-engine-test.mjs",
     "test:memory-desktop": "node scripts/memory-desktop-smoke.mjs",
     "test:schedules-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/schedules-engine-test.mjs",
-    "test:schedules-desktop": "node scripts/schedules-desktop-smoke.mjs"
+    "test:schedules-desktop": "node scripts/schedules-desktop-smoke.mjs",
+    "test:extension-transfer": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/extension-transfer-test.mjs",
+    "test:extension-transfer-desktop": "node scripts/extension-transfer-desktop.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",

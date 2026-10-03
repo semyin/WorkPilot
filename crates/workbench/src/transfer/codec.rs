@@ -293,19 +293,29 @@ pub(super) fn digest(bytes: &[u8]) -> String {
 }
 /// Small authenticated settings document. A distinct magic keeps history archives incompatible.
 pub(super) fn write_document(
-    mut output: impl Write,
+    output: impl Write,
     password: &str,
     bytes: &[u8],
     stop: &AtomicBool,
 ) -> Result<()> {
-    if bytes.len() > MAX_META {
+    write_sized_document(output, password, bytes, stop, b"WPSET001", MAX_META)
+}
+pub(super) fn write_sized_document(
+    mut output: impl Write,
+    password: &str,
+    bytes: &[u8],
+    stop: &AtomicBool,
+    magic: &[u8; 8],
+    maximum: usize,
+) -> Result<()> {
+    if bytes.len() > maximum {
         return Err(
-            "设置包超过 1 MiB，请减少所选记忆或模型 / Settings archive exceeds 1 MiB".into(),
+            "迁移包超过容量上限，请减少选择 / Transfer archive exceeds its size limit".into(),
         );
     }
     check(stop)?;
     let mut header = [0; 24];
-    header[..8].copy_from_slice(b"WPSET001");
+    header[..8].copy_from_slice(magic);
     SystemRandom::new()
         .fill(&mut header[8..])
         .map_err(|_| "Randomness unavailable")?;
@@ -321,6 +331,15 @@ pub(super) fn read_document(
     password: &str,
     stop: &AtomicBool,
 ) -> Result<(Zeroizing<Vec<u8>>, String)> {
+    read_sized_document(input, password, stop, b"WPSET001", MAX_META)
+}
+pub(super) fn read_sized_document(
+    input: impl Read,
+    password: &str,
+    stop: &AtomicBool,
+    magic: &[u8; 8],
+    maximum: usize,
+) -> Result<(Zeroizing<Vec<u8>>, String)> {
     check(stop)?;
     let mut input = Reader {
         inner: input,
@@ -331,11 +350,11 @@ pub(super) fn read_document(
     input
         .read_exact(&mut header)
         .map_err(|_| "不完整的设置包 / Incomplete settings archive")?;
-    if &header[..8] != b"WPSET001" {
-        return Err("不是支持的项目设置包 / Unsupported project settings archive".into());
+    if &header[..8] != magic {
+        return Err("不是支持的迁移包 / Unsupported transfer archive".into());
     }
     let key = key(password, &header[8..])?;
-    let bytes = unframe(&mut input, &key, &header, 0, MAX_META)?;
+    let bytes = unframe(&mut input, &key, &header, 0, maximum)?;
     let mut tail = [0];
     if input
         .read(&mut tail)

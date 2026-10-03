@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-03T21:18:27.928Z",
+  "platform": "win32",
+  "service": "Actual Rust engine, SQLite and three HTTP protocol adapters; deterministic local model only",
+  "checks": [
+    "three_protocols_propose_in_chat_mode_require_human_confirmation_scope_and_source_visible",
+    "only_global_and_current_project_memories_sent_to_model_no_confirmation_or_delete_tools",
+    "stale_edit_rejected_and_request_retry_does_not_create_duplicate",
+    "responses_deleted_memory_removed_from_new_input_and_old_search_results_after_resume",
+    "chat_completions_deleted_memory_removed_from_new_input_and_old_search_results_after_resume",
+    "messages_deleted_memory_removed_from_new_input_and_old_search_results_after_resume",
+    "fabricated_provenance_rejected_and_failed_attempt_retained",
+    "export_excludes_candidates_deleted_rejected_and_other_projects_restart_and_undo_preserve_history",
+    "actual_engine_crash_after_durable_proposal_manual_resume_no_duplicate_and_preserves_user_rejection"
+  ],
+  "status": "passed"
+}

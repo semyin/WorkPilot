@@ -1,0 +1,5 @@
+{
+  "rustMethodsCompared": 145,
+  "changedMethodBodies": 0,
+  "scope": "Supplemental textual check, ignores formatting, optional trailing argument commas, module visibility and qualified sibling paths; runtime behavior verified separately"
+}

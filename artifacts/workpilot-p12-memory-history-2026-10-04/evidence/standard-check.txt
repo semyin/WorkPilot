@@ -1,0 +1,484 @@
+
+> workpilot@0.1.0-alpha.12.4 check
+> npm run check:lines && npm run format:check && npm run ui:typecheck && npm run test:fixtures && npm run rust:fmt && npm run engine:test && npm run rust:check && npm run ui:build
+
+
+> workpilot@0.1.0-alpha.12.4 check:lines
+> node scripts/check-code-lines.mjs
+
+Code line check passed: 312 files, maximum 984/1000 lines.
+
+> workpilot@0.1.0-alpha.12.4 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+
+> workpilot@0.1.0-alpha.12.4 ui:typecheck
+> npm run typecheck --workspace @workpilot/desktop
+
+
+> @workpilot/desktop@0.1.0-alpha.12.4 typecheck
+> tsc --noEmit
+
+
+> workpilot@0.1.0-alpha.12.4 test:fixtures
+> node --test tests/node/*.test.mjs
+
+TAP version 13
+# Subtest: physical line counts handle empty files, final newline and Windows line endings
+ok 1 - physical line counts handle empty files, final newline and Windows line endings
+  ---
+  duration_ms: 1.5104
+  type: 'test'
+  ...
+# Subtest: line guard checks tracked and new code, including generated sources, with an exact 1000-line boundary
+ok 2 - line guard checks tracked and new code, including generated sources, with an exact 1000-line boundary
+  ---
+  duration_ms: 567.0002
+  type: 'test'
+  ...
+# Subtest: missing URL is explained without constructing an invalid URL or broadening access
+ok 3 - missing URL is explained without constructing an invalid URL or broadening access
+  ---
+  duration_ms: 1.7065
+  type: 'test'
+  ...
+# Subtest: only the local fixture is accepted
+ok 4 - only the local fixture is accepted
+  ---
+  duration_ms: 0.5558
+  type: 'test'
+  ...
+# Subtest: an inaccessible tab never reaches native messaging or debugger attach
+ok 5 - an inaccessible tab never reaches native messaging or debugger attach
+  ---
+  duration_ms: 3.9937
+  type: 'test'
+  ...
+# Subtest: /v1/chat/completions streams text and complete tool arguments
+ok 6 - /v1/chat/completions streams text and complete tool arguments
+  ---
+  duration_ms: 218.2629
+  type: 'test'
+  ...
+# Subtest: /v1/responses streams text and complete tool arguments
+ok 7 - /v1/responses streams text and complete tool arguments
+  ---
+  duration_ms: 189.8332
+  type: 'test'
+  ...
+# Subtest: /v1/messages streams text and complete tool arguments
+ok 8 - /v1/messages streams text and complete tool arguments
+  ---
+  duration_ms: 236.8075
+  type: 'test'
+  ...
+# Subtest: errors, slow stream and disconnect stay observable
+ok 9 - errors, slow stream and disconnect stay observable
+  ---
+  duration_ms: 78.5115
+  type: 'test'
+  ...
+# Subtest: browser fixture and download contain deterministic local data
+ok 10 - browser fixture and download contain deterministic local data
+  ---
+  duration_ms: 32.2105
+  type: 'test'
+  ...
+# Subtest: runtime archives reject traversal, aliases, links and existing destinations
+ok 11 - runtime archives reject traversal, aliases, links and existing destinations
+  ---
+  duration_ms: 5588.0862
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5827.3862
+
+> workpilot@0.1.0-alpha.12.4 rust:fmt
+> node scripts/cargo.mjs fmt --all -- --check
+
+
+> workpilot@0.1.0-alpha.12.4 engine:test
+> node scripts/cargo.mjs test --workspace --exclude workpilot-desktop --locked
+
+   Compiling workpilot-contracts v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-office v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\office)
+   Compiling workpilot-browser-bridge v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\browser-bridge)
+   Compiling workpilot-platform v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\platform)
+   Compiling workpilot-policy v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\policy)
+   Compiling workpilot-storage v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\storage)
+   Compiling workpilot-tools v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\tools)
+   Compiling workpilot-providers v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\providers)
+   Compiling workpilot-extensions v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\extensions)
+   Compiling workpilot-workbench v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\workbench)
+   Compiling workpilot-runtime v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\runtime)
+   Compiling workpilot-engine v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\engine)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 49.52s
+     Running unittests src\bin\companion.rs (target\debug\deps\companion-52675e2ae5aaf4db.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\main.rs (target\debug\deps\workpilot_browser_bridge-7285dca69b8436ca.exe)
+
+running 2 tests
+test tests::rejects_oversized_messages_and_unknown_commands ... ok
+test tests::native_transport_handles_multiple_messages_and_disconnect ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_contracts-4a0b9dfcd3ecaa1f.exe)
+
+running 2 tests
+test tests::rejects_unknown_commands_and_unbounded_input ... ok
+test tests::generated_types_match_checked_in_contract ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\bin\generate.rs (target\debug\deps\generate-f85c9359ccd9c906.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\main.rs (target\debug\deps\workpilot_engine-330ea83c7cb7b645.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\bin\workpilot-process-fixture.rs (target\debug\deps\workpilot_process_fixture-cb3b49105b7fd5d2.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\lifecycle.rs (target\debug\deps\lifecycle-c9b78b6f7710a4c8.exe)
+
+running 4 tests
+test closing_parent_pipe_exits_without_restarting_work ... ok
+test stream_cancel_and_shutdown_are_observable_and_persisted ... ok
+test repeated_stop_request_cannot_stop_a_later_probe ... ok
+test kill_restart_replays_saved_events_and_does_not_restart_accepted_work ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.59s
+
+     Running tests\process_tree.rs (target\debug\deps\process_tree-64aff337396036c6.exe)
+
+running 1 test
+test dropping_job_ends_parent_child_and_grandchild_within_two_seconds ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.08s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_extensions-a383e1d4cc519443.exe)
+
+running 3 tests
+test tests::schemas_reject_remote_refs_and_invalid_arguments ... ok
+test tests::skill_roundtrip_canonical_digest_and_tamper_detection ... ok
+test tests::bad_packages_cannot_escape_or_hide_credential_files ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.30s
+
+     Running unittests src\main.rs (target\debug\deps\workpilot_office-b6a38837d40f6fad.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_platform-5401aace6cf02112.exe)
+
+running 21 tests
+test credentials::tests::windows_credential_roundtrip ... ignored, writes and removes an isolated synthetic credential in Windows Credential Manager
+test credentials::tests::secret_debug_never_shows_value ... ok
+test paths::tests::channels_never_share_the_same_directory ... ok
+test paths::tests::checks_real_paths_and_rejects_parent_escape ... ok
+test runtimes::tests::packaged_resolution_never_falls_back_when_its_tool_is_missing ... ok
+test tool_process::windows::acl_tests::null_dacl_is_not_replaced_with_a_single_sandbox_ace ... ok
+test runtimes::tests::integrity_checks_detect_same_size_damage_missing_files_and_preserve_data ... ok
+test runtimes::tests::missing_malformed_traversal_and_cancelled_inventory_are_truthful ... ok
+test paths::tests::rejects_windows_directory_junction_escape ... ok
+test tool_process::tests::cancellation_finishes_while_an_unrelated_managed_process_stays_alive ... ok
+test tool_process::tests::appcontainer_writes_authorized_project_but_cannot_read_private_sibling ... ok
+test runtimes::worker::tests::cancellation_stops_an_unresponsive_owned_process ... ok
+test tool_process::tests::process_cancellation_output_limit_and_nonzero_exit_are_truthful ... ok
+test browser_setup::windows::tests::legacy_packaged_manifest_with_native_windows_paths_is_recognized ... ok
+test browser_setup::windows::tests::edge_fallback_is_reported_but_explicit_edge_setup_does_not_modify_chrome ... ok
+test browser_setup::windows::tests::foreign_registration_after_inspection_is_preserved_even_when_unregistering ... ok
+test browser_setup::windows::tests::invalid_default_and_extra_values_are_not_deleted_or_overwritten ... ok
+test browser_setup::windows::tests::missing_or_changed_assets_and_changed_manifest_fail_before_registration ... ok
+test browser_setup::windows::tests::current_user_registration_is_idempotent_and_separate_per_browser ... ok
+test runtimes::worker::tests::malformed_oversized_and_incomplete_outputs_never_become_successful_reports ... ok
+test runtimes::worker::tests::idle_and_total_limits_stop_owned_processes_and_next_check_can_finish ... ok
+
+test result: ok. 20 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 5.35s
+
+     Running unittests src\bin\workpilot-browser-setup.rs (target\debug\deps\workpilot_browser_setup-6aedf6459bc14f65.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\bin\workpilot-runtime-check.rs (target\debug\deps\workpilot_runtime_check-0514cef45a3838ed.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\bin\workpilot-tool-fixture.rs (target\debug\deps\workpilot_tool_fixture-3f2ac22d362da6a7.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\tool_boundary.rs (target\debug\deps\tool_boundary-a3cad02f49a7483c.exe)
+
+running 4 tests
+test actual_timeout_and_output_limits_are_observable ... ok
+test cancelled_sandbox_kills_its_real_three_level_process_tree ... ok
+test abrupt_owner_death_kills_descendants_and_recovers_only_its_sandbox_ledger ... ok
+test appcontainer_denies_live_loopback_and_does_not_inherit_host_environment ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.40s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_policy-913cbd8911313001.exe)
+
+running 2 tests
+test tests::work_mode_rules_and_strict_review_cannot_be_overridden_by_tool_text ... ok
+test tests::approval_fingerprint_binds_every_authority_and_effect_field ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_providers-6418c0f55775325d.exe)
+
+running 10 tests
+test masking::tests::a_key_split_at_every_character_is_never_emitted ... ok
+test tests::truncating_an_error_cannot_leave_a_secret_prefix ... ok
+test tests::chat_empty_tool_identity_fragments_preserve_original_but_changes_are_rejected ... ok
+test tests::urls_and_request_shapes_are_protocol_specific ... ok
+test tests::images_and_tool_results_cannot_be_silently_dropped ... ok
+test tests::decoder_handles_single_bytes_utf8_multiline_and_all_newlines ... ok
+test tests::unknown_usage_stays_unknown_and_model_list_is_separate ... ok
+test tests::real_http_three_protocols_text_tools_continuation_and_auth ... ok
+test tests::every_failure_makes_one_request_and_never_redirects_or_falls_back ... ok
+test tests::timeout_cancel_drop_connections_without_extra_requests ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.76s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_runtime-8743e96c3b1d7238.exe)
+
+running 10 tests
+test tests::controlled_tool_arguments_reject_unknown_keys_and_nonfinite_inputs ... ok
+test tests::steering_between_preparation_and_start_skips_obsolete_actions ... ok
+test tests::ask_user_pauses_and_the_answer_enters_a_new_run ... ok
+test tests::model_failure_is_one_request_and_manual_continue_preserves_queue ... ok
+test tests::queue_is_delivered_after_current_answer_and_steer_cancels_old_model ... ok
+test tests::chat_and_plan_cannot_write_and_plan_needs_explicit_mode_change ... ok
+test tests::stopping_at_three_tool_boundaries_requires_different_recovery ... ok
+test tests::context_compaction_keeps_pins_and_retrievable_tool_associations ... ok
+test tests::one_runtime_drives_three_different_tool_combinations ... ok
+test tests::step_and_time_limits_pause_without_fake_completion ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.29s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_storage-372e6cae61a43f68.exe)
+
+running 64 tests
+test memory_tests::context_skips_a_large_entry_without_losing_smaller_eligible_entries ... ok
+test execution_tests::tool_approvals_bind_versions_are_single_use_and_settings_commands_are_idempotent ... ok
+test execution_tests::actual_schema_three_database_upgrades_with_existing_provider_intact ... ok
+test execution_tests::schema_two_upgrades_with_existing_model_profile_and_settings_intact ... ok
+test execution_tests::recovery_event_preserves_envelope_source_and_distinct_resolution_source ... ok
+test history_transfer::tests::partial_import_rolls_back_and_replay_or_stale_policy_cannot_duplicate_history ... ok
+test memory_tests::candidate_requires_confirm_and_real_source_and_duplicate_is_inert ... ok
+test memory_tests::edits_compare_revision_and_history_survives_restart_and_gc ... ok
+test execution_tests::queued_runs_recover_to_interrupted_and_duplicate_start_never_restarts ... ok
+test project_transfer::tests::conflicts_stale_destination_and_foreign_memories_cannot_overwrite_existing_data ... ok
+test provider_tests::actual_schema_one_database_upgrades_without_losing_tasks_or_profiles ... ok
+test provider_tests::all_authentication_modes_survive_redaction_but_auth_values_do_not ... ok
+test project_transfer::tests::failed_import_is_atomic_retry_is_deduplicated_and_scopes_survive_restart ... ok
+test memory_tests::delegated_instructions_cannot_be_presented_as_user_memory_provenance ... ok
+test execution_tests::queued_message_prevents_completion_and_acknowledged_stop_wins_racing_success ... ok
+test provider_tests::profile_bundle_excludes_credentials_and_import_is_additive ... ok
+test memory_transfer_tests::legacy_settings_without_history_remain_readable ... ok
+test memory_tests::schema_nine_upgrade_preserves_legacy_objects_and_confirmation ... ok
+test schedule_tests::timezone_rules_skip_gap_choose_first_fold_and_preserve_wall_hour ... ok
+test provider_tests::cancellation_is_atomic_and_late_output_cannot_turn_successful ... ok
+test provider_tests::model_resolution_inherits_and_missing_selection_never_falls_back ... ok
+test memory_tests::projects_search_export_and_deletion_do_not_cross_scopes ... ok
+test provider_tests::revisions_snapshot_dedup_and_capabilities_are_bound_to_actual_configuration ... ok
+test execution_tests::managed_versions_and_nested_process_outputs_remain_owned_during_garbage_collection ... ok
+test schedule_tests::changed_model_is_recorded_without_dispatch_and_manual_run_requires_current_bindings ... ok
+
+running 1 test
+test schedule_tests::finished_parent_does_not_hide_waiting_descendant_or_workbench_operation ... ok
+test schedule_tests::re_open_marks_claimed_interrupted_and_past_due_missed_without_dispatch ... ok
+test schedule_tests::timer_claims_are_unique_overdue_is_coalesced_and_rollback_never_repeats ... ok
+test schedule_tests::save_toggle_conflicts_and_retry_receipts_preserve_plans_and_old_occurrence_specs ... ok
+test tests::crash_child ... ignored, subprocess helper for abrupt crash injection
+test schedule_tests::recovery_finds_task_created_before_link_and_human_resume_cannot_overlap ... ok
+test schedule_tests::schema_ten_upgrade_preserves_memory_and_inert_legacy_schedule ... ok
+test team_tests::member_permissions_never_exceed_parent_or_creation_ceiling ... ok
+test tests::acceptance_does_not_mean_completion_and_crash_does_not_replay ... ok
+test memory_transfer_tests::history_import_failure_rolls_back_all_records_and_rejects_malformed_or_foreign_revisions ... ok
+test memory_transfer_tests::history_transfer_preserves_inactive_states_and_restorable_scopes_after_restart_and_gc ... ok
+test tests::abrupt_death_between_state_and_event_writes_rolls_back_and_marks_tool_uncertain ... ok
+test tests::commands_deduplicate_by_id_without_swallowing_different_requests ... ok
+test team_tests::team_size_and_depth_limits_prevent_unbounded_delegation ... ok
+test tests::missing_or_modified_object_fails_reference_check_before_gc ... ok
+test tests::failed_migration_keeps_working_database_and_independent_preupgrade_backup ... ok
+test team_tests::exact_report_review_ownership_and_gc_protect_deliveries ... ok
+test tests::second_writer_and_newer_database_are_rejected_without_overwriting ... ok
+test tests::queue_steer_and_cancel_survive_restart_without_delivery ... ok
+test team_tests::team_batch_dependency_validation_dedup_and_override_are_atomic ... ok
+test team_tests::stop_and_reopen_disable_entire_tree_without_requeueing_completed_members ... ok
+test tests::shared_memory_reference_survives_task_deletion_and_gc ... ok
+test tests::task_deletion_and_gc_protect_project_files_and_keep_retry_tombstones ... ok
+test tests::registered_credentials_and_auth_fields_are_redacted_before_any_plaintext_write ... ok
+test schedule_tests::disabled_plans_never_fire_and_large_resume_batches_are_recorded_once ... ok
+test tests::unfinished_tool_prevents_success_and_resolved_tool_has_a_result ... ok
+test workbench::tests::approval_claim_survives_restart_and_cannot_be_consumed_twice ... ok
+test workspace_tests::archive_search_restore_and_active_guard ... ok
+test workspace_tests::project_defaults_are_frozen_for_new_tasks ... ok
+test workspace_tests::queued_edits_compare_original_content_and_cannot_rewrite_delivery ... ok
+test workspace_tests::record_export_is_complete_redacted_and_cannot_follow_foreign_references ... ok
+test team_tests::replacement_preserves_failure_redirects_future_edges_and_enforces_limits ... ok
+test workbench::tests::active_terminal_blocks_archive_even_when_it_is_older_than_display_page ... ok
+test tests::blocking_database_work_does_not_block_async_stop_or_heartbeat ... ok
+test workbench::tests::full_terminal_outputs_survive_gc_and_are_in_complete_export ... ok
+test tests::replay_resumes_mid_sequence_including_after_deletion_gaps ... ok
+test tests::large_output_streams_to_disk_and_content_pages_handle_unicode ... ok
+test workspace_tests::hundred_thousand_events_keep_detail_and_search_page_bounded ... ok
+test tests::one_hundred_thousand_events_use_bounded_pages_and_export ... ok
+
+test result: ok. 63 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 17.03s
+
+     Running unittests src\bin\workpilot-data.rs (target\debug\deps\workpilot_data-07e3ffca4ba37530.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_tools-30c1db75c29d926d.exe)
+
+running 7 tests
+test files::tests::existing_open_writer_blocks_managed_overwrite ... ok
+test files::tests::search_reports_limits_and_read_slices_respect_utf8 ... ok
+test binary::tests::new_file_and_rename_never_replace_existing_destination ... ok
+test files::tests::managed_write_binds_identity_content_and_creation_state ... ok
+test worker::tests::dropping_async_call_waits_until_owned_work_observes_stop ... ok
+test files::tests::parent_escape_devices_links_and_cross_root_rebind_are_rejected ... ok
+test binary::tests::binary_versions_reject_conflicts_and_keep_complete_bytes ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_workbench-c83837bf3318fbc7.exe)
+
+running 5 tests
+test transfer::tests::traversal_excess_size_duplicate_entries_and_cancellation_are_rejected ... ok
+test vault::tests::exact_binary_history_is_encrypted_and_tampering_fails ... ok
+test transfer::tests::encrypted_archive_preserves_binary_and_sources_without_exporting_local_identity ... ok
+test transfer::tests::settings_document_is_encrypted_authenticated_bounded_and_distinct_from_history ... ok
+test transfer::tests::wrong_password_tampering_truncation_and_trailing_bytes_are_rejected ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 12.54s
+
+   Doc-tests workpilot_contracts
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests workpilot_extensions
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests workpilot_platform
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests workpilot_policy
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests workpilot_providers
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests workpilot_runtime
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests workpilot_storage
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests workpilot_tools
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests workpilot_workbench
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+> workpilot@0.1.0-alpha.12.4 rust:check
+> node scripts/cargo.mjs clippy --workspace --all-targets --locked -- -D warnings
+
+    Checking workpilot-contracts v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-desktop v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\apps\desktop\src-tauri)
+    Checking workpilot-office v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\office)
+    Checking workpilot-browser-bridge v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\browser-bridge)
+    Checking workpilot-platform v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\platform)
+    Checking workpilot-policy v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\policy)
+    Checking workpilot-storage v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\storage)
+    Checking workpilot-tools v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\tools)
+    Checking workpilot-providers v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\providers)
+    Checking workpilot-extensions v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\extensions)
+    Checking workpilot-workbench v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\workbench)
+    Checking workpilot-runtime v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\runtime)
+    Checking workpilot-engine v0.1.0-alpha.12.4 (D:\workspace\kplocker\WorkPilot\crates\engine)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 20.18s
+
+> workpilot@0.1.0-alpha.12.4 ui:build
+> npm run build --workspace @workpilot/desktop
+
+
+> @workpilot/desktop@0.1.0-alpha.12.4 build
+> tsc --noEmit && vite build
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 62 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.39 kB │ gzip:   0.27 kB
+dist/assets/128-kkOeCthX.png     10.43 kB
+dist/assets/index-CHZvC3oF.css   37.63 kB │ gzip:   7.93 kB
+dist/assets/index-mvQkrfFY.js   467.27 kB │ gzip: 142.71 kB
+
+✓ built in 185ms

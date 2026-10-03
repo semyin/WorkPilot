@@ -26,6 +26,7 @@ jobs:
       - name: Rust toolchain
         run: rustup show active-toolchain
       - run: npm ci
+      - run: npm run check:lines
       - run: npm run format:check
       - run: npm run ui:typecheck
       - run: npm run test:fixtures

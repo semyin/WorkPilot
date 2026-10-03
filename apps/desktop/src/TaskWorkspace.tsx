@@ -1,107 +1,42 @@
+import { TaskMessages } from "./task-workspace/TaskMessages";
+import { HistoryEvent } from "./task-workspace/HistoryEvent";
+import { TaskCreateForm } from "./task-workspace/TaskCreateForm";
+import { TaskInspector } from "./task-workspace/TaskInspector";
+import { TaskWorkspaceHeader } from "./task-workspace/TaskWorkspaceHeader";
+import { taskLabels } from "./task-workspace/taskLabels";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import type {
-  ContentRef,
   ExecutionConfig,
   ExecutionLimits,
   ExecutionSnapshot,
-  ExecutionStep,
   ProfileCatalog,
   Task,
-  TaskState,
   WorkMode,
   EventPage,
-  Event as EngineEvent,
   TeamView,
-  WorkspacePreferences,
   WorkspaceProject,
 } from "./generated/contracts";
 import { executionCommand as command } from "./executionClient";
-import { Saved } from "./SavedContent";
-import { ToolFields, ToolPanel, initialTools } from "./ToolPanel";
+import { ToolPanel, initialTools } from "./ToolPanel";
 import { TeamPanel } from "./TeamPanel";
 import { ProjectSidebar } from "./ProjectSidebar";
-import { Conversation, QueueEdit } from "./Conversation";
-import { FileAttachments } from "./FileAttachments";
+import { Conversation } from "./Conversation";
 import { MediaPanel } from "./MediaPanel";
 import { MemoryPanel } from "./MemoryPanel";
 import { SchedulePanel } from "./SchedulePanel";
 import { media, attachmentMarkers } from "./mediaClient";
 import type { MediaAsset } from "./generated/contracts";
-import { RecordPanel, ArtifactPanel } from "./RecordPanel";
 import { ResizeHandle } from "./ResizeHandle";
 import { FileWorkbench } from "./FileWorkbench";
-import { BrowserPanel } from "./BrowserPanel";
 import { ExtensionPanel } from "./ExtensionPanel";
 import { workspaceAction, workspaceQuery } from "./workspaceClient";
-import type { Overview } from "./App";
-import icon from "../../../assets/icons/png/128.png";
+import type { TaskDesktop } from "./task-workspace/types";
 const limitsDefault: ExecutionLimits = {
   max_steps: 32,
   max_duration_ms: 300000,
   context_bytes: 65536,
   max_result_bytes: 32768,
 };
-function HistoryEvent({ event }: { event: EngineEvent }) {
-  const [expanded, setExpanded] = useState(false);
-  const references: ContentRef[] = [];
-  if ("content" in event && event.content) references.push(event.content);
-  if (event.kind === "context_compacted") references.push(event.archive);
-  if (event.kind === "execution_created") references.push(event.goal);
-  if (event.kind === "execution_ended" && event.output) references.push(event.output);
-  if (event.kind === "team_changed" && event.record) references.push(event.record);
-  if (event.kind === "workbench_changed" && event.record) references.push(event.record);
-  if (event.kind === "execution_step_changed") {
-    if (event.input) references.push(event.input);
-    if (event.output) references.push(event.output);
-  }
-  return (
-    <details onToggle={(e) => setExpanded(e.currentTarget.open)}>
-      <summary>
-        #{event.task_sequence} · {event.kind}
-      </summary>
-      {expanded && (
-        <>
-          <pre>{JSON.stringify(event, null, 2)}</pre>
-          {references.map((r) => (
-            <Saved key={r.object_id} reference={r} plain={r.media_type !== "application/json"} />
-          ))}
-        </>
-      )}
-    </details>
-  );
-}
-function Step({ step, english }: { step: ExecutionStep; english: boolean }) {
-  const [expanded, setExpanded] = useState(false);
-  const words = {
-    prepared: ["待执行", "Prepared"],
-    running: ["执行中", "Running"],
-    completed: ["已完成", "Completed"],
-    failed: ["失败", "Failed"],
-    cancelled: ["已取消", "Cancelled"],
-    skipped: ["已跳过", "Skipped"],
-    needs_review: ["结果待核对", "Needs review"],
-  };
-  return (
-    <article className="execution-step" data-step-name={step.name} data-step-state={step.state}>
-      <button onClick={() => setExpanded(!expanded)}>
-        <span>{step.kind === "model" ? (english ? "Model" : "模型") : step.name}</span>
-        <small>{words[step.state][english ? 1 : 0]}</small>
-      </button>
-      {expanded && (
-        <div>
-          <small>{english ? "Input" : "输入"}</small>
-          <Saved reference={step.input} />
-          {step.output && (
-            <>
-              <small>{english ? "Result" : "结果"}</small>
-              <Saved reference={step.output} />
-            </>
-          )}
-        </div>
-      )}
-    </article>
-  );
-}
 export function TaskWorkspace({
   language,
   onClose,
@@ -111,14 +46,7 @@ export function TaskWorkspace({
   language: string;
   onClose: () => void;
   onModels: () => void;
-  desktop?: {
-    overview: Overview | null;
-    preferences: WorkspacePreferences;
-    connected: boolean;
-    onRefresh: () => void;
-    onPreferences: (p: WorkspacePreferences) => void;
-    onSettings: () => void;
-  };
+  desktop?: TaskDesktop;
 }) {
   const english = language === "en";
   const tr = (zh: string, en: string) => (english ? en : zh);
@@ -176,74 +104,7 @@ export function TaskWorkspace({
   const settingsTask = useRef("");
   const active =
     !!snapshot?.latest_run && ["queued", "running", "stopping"].includes(snapshot.task.state);
-  const status = (s: TaskState) =>
-    ({
-      queued: tr("排队", "Queued"),
-      running: tr("运行中", "Running"),
-      stopping: tr("正在停止", "Stopping"),
-      interrupted: tr("已中断", "Interrupted"),
-      failed: tr("失败", "Failed"),
-      completed: tr("已完成", "Completed"),
-      awaiting_input: tr("等待输入", "Awaiting input"),
-      awaiting_approval: tr("等待审批", "Awaiting approval"),
-    })[s];
-  const reasonLabel = (r: string | null | undefined) =>
-    ({
-      team_waiting: tr(
-        "主助手正在等待成员交付，成员继续工作。",
-        "The lead is waiting; members continue working.",
-      ),
-      team_results_need_review: tr(
-        "还有成员成果需要检查。可查看团队情况，再继续主任务。",
-        "Member deliveries still need review. Inspect the team and continue the lead.",
-      ),
-      parent_stopped: tr(
-        "主任务已停止，成员一起暂停。",
-        "The parent stopped; this member is paused.",
-      ),
-      awaiting_approval: tr("等待你确认具体操作。", "Waiting for action approval."),
-      awaiting_media_approval: tr(
-        "文件或图片生成需要确认，请查看待批准操作。",
-        "File or image generation needs approval. Review the pending action.",
-      ),
-      image_service_error: tr(
-        "图片服务出错，任务已停止。请在文件成果与图片中查看原因。",
-        "The image service failed and the task stopped. See Files and images for details.",
-      ),
-      awaiting_extension_approval: tr(
-        "扩展操作需要确认。查看并批准后，再继续任务。",
-        "An extension action needs approval. Review it, then continue the task.",
-      ),
-      approval_rejected: tr(
-        "你已拒绝此操作，任务已暂停。",
-        "The action was rejected; this task is paused.",
-      ),
-      user_stop: tr(
-        "你停止了任务，可手动继续。",
-        "You stopped the task. Continue manually when ready.",
-      ),
-      engine_exit: tr(
-        "程序曾退出，任务未自动重跑。",
-        "The engine exited. This task was not restarted.",
-      ),
-      step_limit: tr(
-        "达到步骤上限，已暂停。可调整上限后继续。",
-        "The step limit was reached. Adjust limits or continue.",
-      ),
-      time_limit: tr("达到时间上限，已暂停。", "The time limit was reached."),
-      context_limit_pinned_requirements: tr(
-        "必须保留的要求已超过上下文容量。可提高容量或新建任务。",
-        "Pinned requirements exceed the context budget. Increase it or start a new task.",
-      ),
-      tool_result_needs_review: tr(
-        "有工具结果不确定，请先核对下方记录。",
-        "A tool result is uncertain. Review the action below.",
-      ),
-      plan_has_unfinished_steps: tr(
-        "计划中还有未完成项，任务已暂停。",
-        "The plan still has unfinished steps.",
-      ),
-    })[r || ""] || "";
+  const { status, reasonLabel } = taskLabels(english);
   const refresh = async (task: string) => {
     const result = await workspaceQuery({ kind: "detail", task_id: task });
     if (result.kind === "detail") return result;
@@ -511,94 +372,21 @@ export function TaskWorkspace({
       role={desktop ? "region" : "dialog"}
       aria-label={tr("任务执行", "Task execution")}
     >
-      <div className="model-header">
-        <div>
-          <h1>
-            {desktop ? (
-              <>
-                <img src={icon} alt="" />
-                WorkPilot
-              </>
-            ) : (
-              tr("任务执行", "Task execution")
-            )}
-          </h1>
-          <p>
-            {desktop
-              ? desktop.connected
-                ? tr("引擎已连接", "Engine connected")
-                : tr("正在连接…", "Connecting…")
-              : tr(
-                  "模型驱动的任务循环 · 保存过程 · 手动继续",
-                  "Model-driven tasks · Saved progress · Manual continuation",
-                )}
-          </p>
-        </div>
-        <div className="model-actions">
-          <button onClick={() => setExtensionsOpen(true)}>
-            {tr("技能与插件", "Skills & plugins")}
-          </button>
-          {desktop && selected && (
-            <>
-              <button onClick={() => setFileWorkspace(true)}>
-                {tr("文件与终端", "Files and terminal")}
-              </button>
-              <button
-                onClick={() => {
-                  setBrowserOpen(true);
-                  if (prefs?.inspector_closed)
-                    desktop.onPreferences({ ...prefs, inspector_closed: false });
-                  setTimeout(
-                    () =>
-                      document
-                        .getElementById("inspector-browser")
-                        ?.scrollIntoView({ block: "start", behavior: "smooth" }),
-                    50,
-                  );
-                }}
-              >
-                {tr("浏览器", "Browser")}
-              </button>
-            </>
-          )}
-          {desktop && prefs && (
-            <>
-              <button
-                aria-pressed={!prefs.sidebar_closed}
-                onClick={() =>
-                  desktop.onPreferences({ ...prefs, sidebar_closed: !prefs.sidebar_closed })
-                }
-              >
-                {tr("项目与任务", "Projects & tasks")}
-              </button>
-              <button onClick={desktop.onSettings}>{tr("设置", "Settings")}</button>
-              <button
-                className="language"
-                onClick={() => desktop.onPreferences({ ...prefs, language: english ? "zh" : "en" })}
-              >
-                {english ? "简体中文" : "English"}
-              </button>
-              <button
-                aria-pressed={!prefs.inspector_closed}
-                onClick={() =>
-                  desktop.onPreferences({ ...prefs, inspector_closed: !prefs.inspector_closed })
-                }
-              >
-                {tr("详情面板", "Details panel")}
-              </button>
-            </>
-          )}
-          <button onClick={onModels}>{tr("模型服务", "Model services")}</button>
-          <button onClick={() => setMemoryOpen(true)}>{tr("记忆", "Memory")}</button>
-          <button onClick={() => setSchedulesOpen(true)}>{tr("定时任务", "Schedules")}</button>
-          <button onClick={() => setMediaOpen(true)}>
-            {tr("文件成果与图片", "Files and images")}
-          </button>
-          <button onClick={onClose}>
-            {desktop ? tr("隐藏窗口", "Hide window") : tr("返回工作台", "Back to workspace")}
-          </button>
-        </div>
-      </div>
+      <TaskWorkspaceHeader
+        english={english}
+        desktop={desktop}
+        selected={selected}
+        onClose={onClose}
+        onModels={onModels}
+        open={{
+          extensions: () => setExtensionsOpen(true),
+          files: () => setFileWorkspace(true),
+          browser: () => setBrowserOpen(true),
+          memory: () => setMemoryOpen(true),
+          schedules: () => setSchedulesOpen(true),
+          media: () => setMediaOpen(true),
+        }}
+      />
       <div className="execution-columns">
         {desktop ? (
           <>
@@ -687,114 +475,25 @@ export function TaskWorkspace({
             </div>
           )}
           {creating ? (
-            <section className="execution-create">
-              <h2>{tr("新建任务", "New task")}</h2>
-              {config.project_id && (
-                <p className="execution-notice">
-                  {tr("项目：", "Project: ")}
-                  {
-                    desktop?.overview?.projects.find((p) => p.id === config.project_id)?.settings
-                      .name
-                  }
-                </p>
-              )}
-              <label>
-                {tr("任务名称（可留空）", "Task title (optional)")}
-                <input
-                  value={config.title}
-                  onChange={(e) => setConfig({ ...config, title: e.target.value })}
-                />
-              </label>
-              <label>
-                {tr("你想完成什么？", "What would you like to do?")}
-                <textarea
-                  rows={5}
-                  aria-label={tr("你想完成什么？", "What would you like to do?")}
-                  value={config.goal}
-                  onChange={(e) => setConfig({ ...config, goal: e.target.value })}
-                />
-              </label>
-              {desktop && (
-                <FileAttachments
-                  key="initial"
-                  assets={initialAttachments}
-                  onChange={setInitialAttachments}
-                  onBusy={setAttachmentBusy}
-                />
-              )}
-              <label>
-                {tr("工作模式", "Work mode")}
-                <select
-                  aria-label={tr("工作模式", "Work mode")}
-                  value={config.mode}
-                  onChange={(e) => setConfig({ ...config, mode: e.target.value as WorkMode })}
-                >
-                  {modes}
-                </select>
-              </label>
-              <label>
-                {tr("任务模型", "Task model")}
-                <select
-                  aria-label={tr("任务模型", "Task model")}
-                  value={config.profile_id || ""}
-                  onChange={(e) => setConfig({ ...config, profile_id: e.target.value || null })}
-                >
-                  {profileOptions}
-                </select>
-              </label>
-              <details>
-                <summary>{tr("需要始终遵守的要求", "Requirements to preserve")}</summary>
-                <label>
-                  {tr("限制条件（每行一条）", "Constraints (one per line)")}
-                  <textarea
-                    aria-label={tr("限制条件（每行一条）", "Constraints (one per line)")}
-                    value={constraints}
-                    onChange={(e) => setConstraints(e.target.value)}
-                  />
-                </label>
-                <label>
-                  {tr("提供给此任务的项目规则", "Project rules for this task")}
-                  <textarea
-                    aria-label={tr("提供给此任务的项目规则", "Project rules for this task")}
-                    value={config.project_rules}
-                    onChange={(e) => setConfig({ ...config, project_rules: e.target.value })}
-                  />
-                </label>
-              </details>
-              <ToolFields value={tools} onChange={setTools} english={english} catalog={catalog} />
-              <label className="check-label" hidden={!!desktop}>
-                <input
-                  type="checkbox"
-                  checked={config.controlled_tools}
-                  onChange={(e) => setConfig({ ...config, controlled_tools: e.target.checked })}
-                />
-                {tr(
-                  "启用内置样本工具（验证执行流程）",
-                  "Enable sample tools (test the execution flow)",
-                )}
-              </label>
-              <p hidden={!!desktop}>
-                {tr(
-                  "样本工具用于验证流程。授权文件夹后可读取、搜索、修改文本文件和登记成果；浏览器操作将在后续接入。",
-                  "Sample tools test the execution flow. Authorize a folder to read, search, edit text files and register artifacts. Browser tools arrive later.",
-                )}
-              </p>
-              <button
-                className="primary"
-                disabled={busy || attachmentBusy || !config.goal.trim()}
-                onClick={() => void create()}
-              >
-                {tr("创建并开始", "Create and start")}
-              </button>
-              {config.mode === "execute" && (
-                <button
-                  disabled={busy || attachmentBusy || !config.goal.trim()}
-                  onClick={() => void create(false)}
-                >
-                  {tr("先创建并设置分工", "Create and configure team first")}
-                </button>
-              )}
-            </section>
+            <TaskCreateForm
+              english={english}
+              desktop={desktop}
+              config={config}
+              setConfig={setConfig}
+              constraints={constraints}
+              setConstraints={setConstraints}
+              tools={tools}
+              setTools={setTools}
+              catalog={catalog}
+              initialAttachments={initialAttachments}
+              setInitialAttachments={setInitialAttachments}
+              setAttachmentBusy={setAttachmentBusy}
+              attachmentBusy={attachmentBusy}
+              busy={busy}
+              modes={modes}
+              profileOptions={profileOptions}
+              create={create}
+            />
           ) : (
             snapshot && (
               <>
@@ -1070,72 +769,23 @@ export function TaskWorkspace({
                     </button>
                   </section>
                 ))}
-                <section className="execution-composer">
-                  <label>
-                    {tr("发送新的要求", "Send a new instruction")}
-                    <textarea
-                      rows={3}
-                      aria-label={tr("发送新的要求", "Send a new instruction")}
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                    />
-                  </label>
-                  {desktop && (
-                    <FileAttachments
-                      key={selected}
-                      assets={messageAttachments}
-                      onChange={setMessageAttachments}
-                      onBusy={setAttachmentBusy}
-                    />
-                  )}
-                  <button
-                    className="primary"
-                    disabled={busy || attachmentBusy || archived || !message.trim()}
-                    onClick={() => void sendMessage()}
-                  >
-                    {active
-                      ? tr("加入队列", "Queue message")
-                      : ["completed", "awaiting_input"].includes(snapshot.task.state)
-                        ? tr("发送并继续", "Send and continue")
-                        : tr("保存消息", "Save message")}
-                  </button>
-                  <small>
-                    {tr(
-                      "运行时默认排队；点击下方消息的“引导”可调整当前工作。中断或失败后，点击“继续任务”恢复。",
-                      "Messages queue while running. Use Guide to steer current work. Interrupted or failed tasks require Continue task.",
-                    )}
-                  </small>
-                </section>
-                <section className="execution-messages">
-                  {snapshot.messages
-                    .filter((m) => m.state !== "delivered")
-                    .map((m) => (
-                      <article key={m.id} data-message-id={m.id} data-message-state={m.state}>
-                        <small>
-                          {m.state === "steer_requested"
-                            ? tr("等待在安全边界引导", "Steering at the next safe boundary")
-                            : m.state === "cancelled"
-                              ? tr("已取消", "Cancelled")
-                              : tr("尚未处理", "Not yet processed")}
-                        </small>
-                        <Saved reference={m.content} plain />
-                        <button
-                          disabled={busy || m.state !== "queued"}
-                          onClick={() =>
-                            void act(async () => {
-                              await command(
-                                { kind: "steer", task_id: snapshot.task.id, message_id: m.id },
-                                english,
-                              );
-                            })
-                          }
-                        >
-                          {tr("引导", "Guide")}
-                        </button>
-                        <QueueEdit task={snapshot.task.id} message={m} />
-                      </article>
-                    ))}
-                </section>
+                <TaskMessages
+                  english={english}
+                  desktop={!!desktop}
+                  selected={selected}
+                  snapshot={snapshot}
+                  message={message}
+                  setMessage={setMessage}
+                  messageAttachments={messageAttachments}
+                  setMessageAttachments={setMessageAttachments}
+                  setAttachmentBusy={setAttachmentBusy}
+                  busy={busy}
+                  attachmentBusy={attachmentBusy}
+                  archived={archived}
+                  active={active}
+                  sendMessage={sendMessage}
+                  act={act}
+                />
                 {needsReview.map((s) => (
                   <section key={"result-" + s.id} className="execution-review">
                     <label>
@@ -1205,154 +855,32 @@ export function TaskWorkspace({
           ) : (
             <div />
           ))}
-        <aside className="execution-details" hidden={prefs?.inspector_closed}>
-          {desktop && creating && (
-            <div className="workspace-empty">
-              <h2>{tr("从一个目标开始", "Start with a goal")}</h2>
-              <p>
-                {tr(
-                  "任务开始后，这里会显示执行过程、协作成员和成果文件。",
-                  "Once you start, execution steps, team members and artifacts appear here.",
-                )}
-              </p>
-            </div>
-          )}
-          {!creating && snapshot && (
-            <>
-              {desktop && (
-                <>
-                  <nav className="inspector-links">
-                    {[
-                      ["tools", tr("权限", "Permissions")],
-                      ["team", tr("协作", "Team")],
-                      ["trace", tr("过程", "Trace")],
-                      ["artifacts", tr("成果", "Artifacts")],
-                      ["records", tr("记录", "Records")],
-                    ].map(([id, label]) => (
-                      <button
-                        key={id}
-                        onClick={() =>
-                          document
-                            .getElementById(`inspector-${id}`)
-                            ?.scrollIntoView({ block: "start", behavior: "smooth" })
-                        }
-                      >
-                        {label}
-                      </button>
-                    ))}
-                  </nav>
-                  <section id="inspector-tools">{toolPanel}</section>
-                  <BrowserPanel
-                    key={snapshot.task.id}
-                    task={snapshot.task.id}
-                    open={browserOpen}
-                    onOpen={setBrowserOpen}
-                  />
-                  <section id="inspector-team">{teamPanel}</section>
-                  <div id="inspector-trace" />
-                </>
-              )}
-              <h2>{tr("执行过程", "Execution trace")}</h2>
-              <p>
-                {tr(
-                  "真实工具按左侧有效权限执行。每个步骤都可展开查看输入与结果；文件修改和审批会留下记录。",
-                  "Real tools follow the effective permission on the left. Expand steps for their inputs and results; file changes and approvals are recorded.",
-                )}
-              </p>
-              <details>
-                <summary>{tr("模式、模型与运行上限", "Mode, model and limits")}</summary>
-                <fieldset disabled={busy || active}>
-                  <label>
-                    {tr("工作模式", "Work mode")}
-                    <select
-                      aria-label={tr("修改工作模式", "Change work mode")}
-                      value={mode}
-                      onChange={(e) => setMode(e.target.value as WorkMode)}
-                    >
-                      {modes}
-                    </select>
-                  </label>
-                  <label>
-                    {tr("任务模型", "Task model")}
-                    <select
-                      aria-label={tr("修改任务模型", "Change task model")}
-                      value={profile}
-                      onChange={(e) => setProfile(e.target.value)}
-                    >
-                      {profileOptions}
-                    </select>
-                  </label>
-                  <label>
-                    {tr("每次执行最多步骤", "Steps per run")}
-                    <input
-                      type="number"
-                      value={limits.max_steps}
-                      onChange={(e) => setLimits({ ...limits, max_steps: Number(e.target.value) })}
-                    />
-                  </label>
-                  <label>
-                    {tr("每次执行最多秒数", "Seconds per run")}
-                    <input
-                      type="number"
-                      value={limits.max_duration_ms / 1000}
-                      onChange={(e) =>
-                        setLimits({ ...limits, max_duration_ms: Number(e.target.value) * 1000 })
-                      }
-                    />
-                  </label>
-                  <label>
-                    {tr("上下文容量（KiB）", "Context budget (KiB)")}
-                    <input
-                      type="number"
-                      value={limits.context_bytes / 1024}
-                      onChange={(e) =>
-                        setLimits({ ...limits, context_bytes: Number(e.target.value) * 1024 })
-                      }
-                    />
-                  </label>
-                  <button
-                    onClick={() =>
-                      void act(async () => {
-                        await configure(mode);
-                      })
-                    }
-                  >
-                    {tr("保存运行设置", "Save run settings")}
-                  </button>
-                </fieldset>
-              </details>
-              <small>
-                {tr(
-                  "最近 64 个步骤。展开查看实际输入和结果；更早过程见“完整事件”。",
-                  "Latest 64 steps. Expand inputs and results; earlier records are in Full events.",
-                )}
-              </small>
-              {snapshot.steps.map((step) => (
-                <Step key={step.id} step={step} english={english} />
-              ))}
-              {snapshot.latest_run && (
-                <details>
-                  <summary>{tr("本次执行信息", "Current run details")}</summary>
-                  <pre>{JSON.stringify(snapshot.latest_run, null, 2)}</pre>
-                </details>
-              )}
-              {desktop && (
-                <>
-                  <section id="inspector-artifacts">
-                    <ArtifactPanel
-                      key={snapshot.task.id}
-                      task={snapshot.task.id}
-                      sequence={snapshot.task.last_sequence}
-                    />
-                  </section>
-                  <section id="inspector-records">
-                    <RecordPanel key={snapshot.task.id} task={snapshot.task.id} />
-                  </section>
-                </>
-              )}
-            </>
-          )}
-        </aside>
+        <TaskInspector
+          english={english}
+          prefs={prefs}
+          creating={creating}
+          snapshot={snapshot}
+          toolPanel={toolPanel}
+          teamPanel={teamPanel}
+          browserOpen={browserOpen}
+          setBrowserOpen={setBrowserOpen}
+          busy={busy}
+          active={active}
+          mode={mode}
+          setMode={setMode}
+          modes={modes}
+          profile={profile}
+          setProfile={setProfile}
+          profileOptions={profileOptions}
+          limits={limits}
+          setLimits={setLimits}
+          desktop={!!desktop}
+          saveSettings={() =>
+            void act(async () => {
+              await configure(mode);
+            })
+          }
+        />
       </div>
       {mediaOpen && (
         <MediaPanel

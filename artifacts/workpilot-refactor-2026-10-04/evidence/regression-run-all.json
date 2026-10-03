@@ -1,0 +1,122 @@
+[
+  {
+    "name": "execution-engine",
+    "command": "node scripts/execution-engine-test.mjs",
+    "began": "2026-10-03T20:46:07.065Z",
+    "ended": "2026-10-03T20:46:16.851Z",
+    "exitCode": 0,
+    "status": "passed",
+    "checks": 9,
+    "binarySha256": "791ad4753ffbf684c09a6def142d4ed63e3c0a8d7d7177b41561b5a35eac59c3"
+  },
+  {
+    "name": "teams-engine",
+    "command": "node scripts/teams-engine-test.mjs",
+    "began": "2026-10-03T20:46:16.852Z",
+    "ended": "2026-10-03T20:46:32.638Z",
+    "exitCode": 0,
+    "status": "passed",
+    "checks": 11,
+    "binarySha256": "791ad4753ffbf684c09a6def142d4ed63e3c0a8d7d7177b41561b5a35eac59c3"
+  },
+  {
+    "name": "workbench-engine",
+    "command": "node scripts/workbench-engine-test.mjs",
+    "began": "2026-10-03T20:46:32.639Z",
+    "ended": "2026-10-03T20:46:40.476Z",
+    "exitCode": 0,
+    "status": "passed",
+    "checks": 10,
+    "binarySha256": "791ad4753ffbf684c09a6def142d4ed63e3c0a8d7d7177b41561b5a35eac59c3"
+  },
+  {
+    "name": "extensions-engine",
+    "command": "node scripts/extensions-engine-test.mjs",
+    "began": "2026-10-03T20:46:40.477Z",
+    "ended": "2026-10-03T20:46:48.488Z",
+    "exitCode": 0,
+    "status": "passed",
+    "checks": 12,
+    "binarySha256": "791ad4753ffbf684c09a6def142d4ed63e3c0a8d7d7177b41561b5a35eac59c3"
+  },
+  {
+    "name": "extensions-model",
+    "command": "node scripts/extensions-model-test.mjs",
+    "began": "2026-10-03T20:46:48.489Z",
+    "ended": "2026-10-03T20:46:53.792Z",
+    "exitCode": 0,
+    "status": "passed",
+    "checks": 4,
+    "binarySha256": "791ad4753ffbf684c09a6def142d4ed63e3c0a8d7d7177b41561b5a35eac59c3"
+  },
+  {
+    "name": "history-engine",
+    "command": "node scripts/history-transfer-test.mjs",
+    "began": "2026-10-03T20:46:53.793Z",
+    "ended": "2026-10-03T20:46:55.309Z",
+    "exitCode": 0,
+    "status": "passed",
+    "checks": 5,
+    "binarySha256": "791ad4753ffbf684c09a6def142d4ed63e3c0a8d7d7177b41561b5a35eac59c3"
+  },
+  {
+    "name": "project-engine",
+    "command": "node scripts/project-transfer-test.mjs",
+    "began": "2026-10-03T20:46:55.309Z",
+    "ended": "2026-10-03T20:46:56.727Z",
+    "exitCode": 0,
+    "status": "passed",
+    "checks": 4,
+    "binarySha256": "791ad4753ffbf684c09a6def142d4ed63e3c0a8d7d7177b41561b5a35eac59c3"
+  },
+  {
+    "name": "execution-desktop",
+    "command": "node scripts/execution-desktop-smoke.mjs",
+    "began": "2026-10-03T20:46:56.728Z",
+    "ended": "2026-10-03T20:47:41.847Z",
+    "exitCode": 0,
+    "status": "passed",
+    "checks": 9,
+    "binarySha256": "32223a2285db16d49d9ea4bcb5f9c61ebbb5dd0c9ef188544762c3a041b340c7"
+  },
+  {
+    "name": "workspace-desktop",
+    "command": "node scripts/workspace-desktop-smoke.mjs",
+    "began": "2026-10-03T20:47:41.848Z",
+    "ended": "2026-10-03T20:48:15.386Z",
+    "exitCode": 0,
+    "status": "passed",
+    "checks": 10,
+    "binarySha256": "32223a2285db16d49d9ea4bcb5f9c61ebbb5dd0c9ef188544762c3a041b340c7"
+  },
+  {
+    "name": "workbench-desktop",
+    "command": "node scripts/workbench-desktop-smoke.mjs",
+    "began": "2026-10-03T20:48:15.387Z",
+    "ended": "2026-10-03T20:48:24.631Z",
+    "exitCode": 0,
+    "status": "passed",
+    "checks": 9,
+    "binarySha256": "32223a2285db16d49d9ea4bcb5f9c61ebbb5dd0c9ef188544762c3a041b340c7"
+  },
+  {
+    "name": "history-desktop",
+    "command": "node scripts/history-transfer-desktop.mjs",
+    "began": "2026-10-03T20:48:24.632Z",
+    "ended": "2026-10-03T20:48:28.437Z",
+    "exitCode": 0,
+    "status": "passed",
+    "checks": 4,
+    "binarySha256": "32223a2285db16d49d9ea4bcb5f9c61ebbb5dd0c9ef188544762c3a041b340c7"
+  },
+  {
+    "name": "project-desktop",
+    "command": "node scripts/project-transfer-desktop.mjs",
+    "began": "2026-10-03T20:48:28.438Z",
+    "ended": "2026-10-03T20:48:31.459Z",
+    "exitCode": 0,
+    "status": "passed",
+    "checks": 4,
+    "binarySha256": "32223a2285db16d49d9ea4bcb5f9c61ebbb5dd0c9ef188544762c3a041b340c7"
+  }
+]

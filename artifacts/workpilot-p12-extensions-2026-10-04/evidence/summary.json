@@ -1,0 +1,76 @@
+{
+  "at": "2026-10-03T23:20:58.526Z",
+  "phase": "P12-extension-transfer-slice",
+  "status": "local_checks_pass_with_documented_limits_phase_not_accepted",
+  "appVersion": "0.1.0-alpha.12.5",
+  "schema": 11,
+  "platform": "Windows 11 Home x64 developer machine",
+  "basePushedCommit": "d42e9d4d5304a44548bac6041998dc3169f573ca",
+  "thisSliceCommittedOrPushed": false,
+  "checks": {
+    "rust": 138,
+    "rustIgnored": 2,
+    "node": 11,
+    "extensionTransferUnitCases": 4,
+    "extensionFormatCases": 1,
+    "engine": 35,
+    "desktop": 19,
+    "codeFiles": 322,
+    "maximumCodeLines": 984,
+    "localLinks": 577,
+    "sourceFiles": 448,
+    "deliveryFiles": 25123,
+    "deliveryBytes": 1989105023,
+    "credentialScannedTextFiles": 869,
+    "credentialPatternMatches": 0,
+    "trackedDiffWhitespaceCheck": "passed",
+    "bilingualScreenshotsViewed": true
+  },
+  "build": {
+    "command": "npm run build (Tauri build --no-bundle)",
+    "appVersion": "0.1.0-alpha.12.5",
+    "at": "2026-10-03T23:13:40.271Z",
+    "platform": "win32",
+    "desktop": "63faf50cdabdec2e0c47417349ac93882393f9fb84a2f814dc6fa4139660f0d1",
+    "engine": "881f6b38477a5ad05c4469b34310dcacfbad7194c0669ce9bf2de51ca0475279",
+    "runtimeCheck": "0e09bd15399f6b96c59917759fc990efadc8cbfc26b634b007793641b56e4c14",
+    "browserSetup": "7c82ed93a54b2e413585ac0a0fe71a16c96d34f63594b5d6e4940c03d696bde1",
+    "companion": "19844b08c575783c7ad7a0e88119dd2a8b838adc65780f1db14a9a264cd9a8ff"
+  },
+  "extensionTransferLimits": {
+    "packages": 32,
+    "files": 2048,
+    "resourceBytes": 67108864,
+    "plaintextDocumentBytes": 100663296,
+    "perPackageFiles": 512,
+    "perFileBytes": 8388608,
+    "perPackageBytes": 33554432
+  },
+  "delivery": "Runnable Windows preview; no new installer build or installation in this slice",
+  "previousDeliveryPreserved": [
+    "workpilot-p12-memory-history-2026-10-04",
+    "workpilot-p12-settings-2026-10-04",
+    "workpilot-p12-history-2026-10-04"
+  ],
+  "originalUserProcessesPreserved": [
+    25624,
+    12372
+  ],
+  "modelTests": "Local deterministic HTTP services only; no new commercial-model acceptance",
+  "pending": [
+    "Full sessions and multi-agent records with complete content references",
+    "Earlier installed extension versions, uninstalled drafts, installation activity history and automatic hardcoded path conversion",
+    "Selected files and attachments; unified selection/path/reference mapping",
+    "Memory histories spanning more than one original project",
+    "Version lifecycle cleanup and team permanent deletion",
+    "T-P12-01/02/04/05/06",
+    "E-P12-01",
+    "E-P08-01",
+    "E-P09-01",
+    "E-P10-01/02",
+    "E-P11-01/02",
+    "O-01/Q44",
+    "Native file picker and user experience",
+    "Physical cross-machine recovery; clean installation; macOS/Linux"
+  ]
+}

@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { join } from "node:path";
 import { root, run } from "./cargo.mjs";
-const destination = join(root, "artifacts/workpilot-p12-settings-2026-10-04");
+const destination = join(root, "artifacts/workpilot-p12-extensions-2026-10-04");
 const started = Date.now();
 await run(
   process.execPath,

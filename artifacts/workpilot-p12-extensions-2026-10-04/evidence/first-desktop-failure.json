@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-03T23:14:09.652Z",
+  "platform": "win32",
+  "binarySha256": "63faf50cdabdec2e0c47417349ac93882393f9fb84a2f814dc6fa4139660f0d1",
+  "checks": [
+    "native_multi_selection_encrypted_export_repeated_password_clear_and_same_scope_conflicts_block_import",
+    "native_wrong_password_preview_files_permissions_dependencies_explicit_import_keeps_packages_disabled_without_credentials"
+  ],
+  "status": "failed",
+  "error": "Error: expect(locator).toHaveText(expected) failed\n\nLocator: getByRole('dialog', { name: 'Skills & plugins', exact: true }).locator('details.history-transfer').getByRole('status')\nExpected: \"Already imported; no duplicates added.\"\nError: strict mode violation: getByRole('dialog', { name: 'Skills & plugins', exact: true }).locator('details.history-transfer').getByRole('status') resolved to 2 elements:\n    1) <p role=\"status\">Processing extension archive…</p> aka getByText('Processing extension archive…')\n    2) <p role=\"status\">Already imported; no duplicates added.</p> aka getByText('Already imported; no')\n\nCall log:\n  - Expect \"toHaveText\" getByRole('dialog', { name: 'Skills & plugins', exact: true }).locator('details.history-transfer').getByRole('status') with timeout 5000ms\n  - waiting for getByRole('dialog', { name: 'Skills & plugins', exact: true }).locator('details.history-transfer').getByRole('status')\n    2 × locator resolved to <p role=\"status\">Processing extension archive…</p>\n      - unexpected value \"Processing extension archive…\"\n\n    at captureRawStack (D:\\workspace\\kplocker\\WorkPilot\\node_modules\\playwright-core\\lib\\coreBundle.js:8588:17)\n    at callMatcherAsStep (D:\\workspace\\kplocker\\WorkPilot\\node_modules\\playwright\\lib\\matchers\\expect.js:13310:57)\n    at Object.toHaveText (D:\\workspace\\kplocker\\WorkPilot\\node_modules\\playwright\\lib\\matchers\\expect.js:13302:23)\n    at D:\\workspace\\kplocker\\WorkPilot\\scripts\\extension-transfer-desktop.mjs:183:46"
+}

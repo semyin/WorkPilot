@@ -1,0 +1,68 @@
+[
+  {
+    "name": "extension-transfer-engine",
+    "command": "node scripts/extension-transfer-test.mjs",
+    "status": "passed",
+    "checks": 6,
+    "exitCode": 0,
+    "began": "2026-10-03T23:10:26.514Z",
+    "ended": "2026-10-03T23:10:34.569Z",
+    "binarySha256": "881f6b38477a5ad05c4469b34310dcacfbad7194c0669ce9bf2de51ca0475279",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-extensions-extension-transfer-engine\\report.json"
+  },
+  {
+    "name": "extensions-engine",
+    "command": "node scripts/extensions-engine-test.mjs",
+    "status": "passed",
+    "checks": 12,
+    "exitCode": 0,
+    "began": "2026-10-03T23:10:34.570Z",
+    "ended": "2026-10-03T23:10:42.486Z",
+    "binarySha256": "881f6b38477a5ad05c4469b34310dcacfbad7194c0669ce9bf2de51ca0475279",
+    "report": ".test-results\\extensions-engine\\report.json"
+  },
+  {
+    "name": "extensions-model",
+    "command": "node scripts/extensions-model-test.mjs",
+    "status": "passed",
+    "checks": 4,
+    "exitCode": 0,
+    "began": "2026-10-03T23:10:42.486Z",
+    "ended": "2026-10-03T23:10:47.383Z",
+    "binarySha256": "881f6b38477a5ad05c4469b34310dcacfbad7194c0669ce9bf2de51ca0475279",
+    "report": ".test-results\\extensions-model\\report.json"
+  },
+  {
+    "name": "settings-engine",
+    "command": "node scripts/project-transfer-test.mjs",
+    "status": "passed",
+    "checks": 4,
+    "exitCode": 0,
+    "began": "2026-10-03T23:10:47.384Z",
+    "ended": "2026-10-03T23:10:48.857Z",
+    "binarySha256": "881f6b38477a5ad05c4469b34310dcacfbad7194c0669ce9bf2de51ca0475279",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-extensions-settings-engine\\report.json"
+  },
+  {
+    "name": "memory-history-engine",
+    "command": "node scripts/memory-history-transfer-test.mjs",
+    "status": "passed",
+    "checks": 4,
+    "exitCode": 0,
+    "began": "2026-10-03T23:10:48.858Z",
+    "ended": "2026-10-03T23:10:49.738Z",
+    "binarySha256": "881f6b38477a5ad05c4469b34310dcacfbad7194c0669ce9bf2de51ca0475279",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-extensions-memory-history-engine\\report.json"
+  },
+  {
+    "name": "file-history-engine",
+    "command": "node scripts/history-transfer-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-03T23:10:49.738Z",
+    "ended": "2026-10-03T23:10:51.264Z",
+    "binarySha256": "881f6b38477a5ad05c4469b34310dcacfbad7194c0669ce9bf2de51ca0475279",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-extensions-file-history-engine\\report.json"
+  }
+]

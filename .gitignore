@@ -32,6 +32,7 @@ coverage/
 *.sqlite3-wal
 *.wphistory
 *.wpsettings
+*.wpextensions
 
 # Local credentials and signing keys. Sanitized example files may be committed.
 .env

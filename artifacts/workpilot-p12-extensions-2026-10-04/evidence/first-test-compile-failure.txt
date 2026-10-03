@@ -1,0 +1,31 @@
+   Compiling workpilot-contracts v0.1.0-alpha.12.5 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-platform v0.1.0-alpha.12.5 (D:\workspace\kplocker\WorkPilot\crates\platform)
+   Compiling workpilot-policy v0.1.0-alpha.12.5 (D:\workspace\kplocker\WorkPilot\crates\policy)
+   Compiling workpilot-storage v0.1.0-alpha.12.5 (D:\workspace\kplocker\WorkPilot\crates\storage)
+   Compiling workpilot-tools v0.1.0-alpha.12.5 (D:\workspace\kplocker\WorkPilot\crates\tools)
+   Compiling workpilot-providers v0.1.0-alpha.12.5 (D:\workspace\kplocker\WorkPilot\crates\providers)
+   Compiling workpilot-extensions v0.1.0-alpha.12.5 (D:\workspace\kplocker\WorkPilot\crates\extensions)
+   Compiling workpilot-workbench v0.1.0-alpha.12.5 (D:\workspace\kplocker\WorkPilot\crates\workbench)
+error[E0502]: cannot borrow `b.entries` as immutable because it is also borrowed as mutable
+   --> crates\extensions\src\manager\transfer\tests.rs:125:29
+    |
+125 |     b.entries[0].files.push(b.entries[0].files[0].clone());
+    |     ---------          ---- ^^^^^^^^^ immutable borrow occurs here
+    |     |                  |
+    |     |                  mutable borrow later used by call
+    |     mutable borrow occurs here
+
+For more information about this error, try `rustc --explain E0502`.
+error: could not compile `workpilot-extensions` (lib test) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+file:///D:/workspace/kplocker/WorkPilot/scripts/cargo.mjs:25
+      else reject(new Error(command + " exited with " + (code ?? signal)));
+                  ^
+
+Error: C:\Users\semyi\.cargo\bin\cargo.exe exited with 101
+    at ChildProcess.<anonymous> (file:///D:/workspace/kplocker/WorkPilot/scripts/cargo.mjs:25:19)
+    at Object.onceWrapper (node:events:634:26)
+    at ChildProcess.emit (node:events:519:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+
+Node.js v22.23.2

@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-03T20:46:48.594Z",
+  "platform": "win32",
+  "model": "deterministic local provider; real Rust engine and actual MCP HTTP service",
+  "checks": [
+    "natural_language_model_saves_skill_draft_and_resources_cannot_enable_itself",
+    "builtin_skill_creator_is_discovered_and_read_before_the_model_writes_a_draft",
+    "enabled_skill_search_progressive_resource_loading_real_script_approval_resume_no_replay",
+    "three_protocol_model_tool_discovery_approval_resume_without_replaying_side_effects"
+  ],
+  "status": "passed"
+}

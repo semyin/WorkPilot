@@ -1,0 +1,42 @@
+[
+  {
+    "name": "memory-history-engine",
+    "command": "node scripts/memory-history-transfer-test.mjs ",
+    "status": "passed",
+    "checks": 4,
+    "exitCode": 0,
+    "began": "2026-10-03T21:18:20.132Z",
+    "ended": "2026-10-03T21:18:24.708Z",
+    "binarySha256": "e733f3cf7785f490d86f4197c5561b771be61efb79d157d49dc46d6b6649f096"
+  },
+  {
+    "name": "legacy-settings-engine",
+    "command": "node scripts/project-transfer-test.mjs ",
+    "status": "passed",
+    "checks": 4,
+    "exitCode": 0,
+    "began": "2026-10-03T21:18:24.709Z",
+    "ended": "2026-10-03T21:18:26.210Z",
+    "binarySha256": "e733f3cf7785f490d86f4197c5561b771be61efb79d157d49dc46d6b6649f096"
+  },
+  {
+    "name": "file-history-engine",
+    "command": "node scripts/history-transfer-test.mjs ",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-03T21:18:26.211Z",
+    "ended": "2026-10-03T21:18:27.814Z",
+    "binarySha256": "e733f3cf7785f490d86f4197c5561b771be61efb79d157d49dc46d6b6649f096"
+  },
+  {
+    "name": "memory-runtime",
+    "command": "node scripts/memory-engine-test.mjs ",
+    "status": "passed",
+    "checks": 9,
+    "exitCode": 0,
+    "began": "2026-10-03T21:18:27.815Z",
+    "ended": "2026-10-03T21:18:30.420Z",
+    "binarySha256": "e733f3cf7785f490d86f4197c5561b771be61efb79d157d49dc46d6b6649f096"
+  }
+]

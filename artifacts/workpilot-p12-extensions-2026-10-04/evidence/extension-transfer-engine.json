@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-03T23:10:26.613Z",
+  "platform": "win32",
+  "binarySha256": "881f6b38477a5ad05c4469b34310dcacfbad7194c0669ce9bf2de51ca0475279",
+  "checks": [
+    "selected_current_packages_encrypted_without_credentials_no_overwrite_stale_or_foreign_scope_export_rejected",
+    "preview_maps_project_scope_shows_dependencies_wrong_password_damage_missing_target_and_stale_destination_refused",
+    "whole_batch_imports_inactive_new_ids_binary_resources_preserved_global_project_mapping_no_credentials_catalog_or_service_start",
+    "missing_dependency_blocks_activation_explicit_enable_and_approval_run_actual_script_remote_auth_requires_fresh_credential",
+    "restart_and_retry_are_idempotent_preserve_user_activation_global_conflict_prevents_partial_project_import",
+    "passphrase_and_test_credential_absent_from_normal_database_objects_logs_and_installed_resources"
+  ],
+  "status": "passed"
+}

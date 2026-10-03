@@ -1,0 +1,22 @@
+[
+  {
+    "name": "memory-history-desktop",
+    "command": "node scripts/project-transfer-desktop.mjs --memory-history",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-03T21:20:41.623Z",
+    "ended": "2026-10-03T21:20:49.623Z",
+    "binarySha256": "6af277bfc222ffd6e3aabff626210b14abb1bf46ee823d447cfcdc80a69269e2"
+  },
+  {
+    "name": "legacy-settings-desktop",
+    "command": "node scripts/project-transfer-desktop.mjs ",
+    "status": "passed",
+    "checks": 4,
+    "exitCode": 0,
+    "began": "2026-10-03T21:20:49.624Z",
+    "ended": "2026-10-03T21:20:54.417Z",
+    "binarySha256": "6af277bfc222ffd6e3aabff626210b14abb1bf46ee823d447cfcdc80a69269e2"
+  }
+]

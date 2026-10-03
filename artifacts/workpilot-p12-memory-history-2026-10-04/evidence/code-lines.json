@@ -1,0 +1,1254 @@
+{
+  "limit": 1000,
+  "files": [
+    {
+      "path": "apps/desktop/index.html",
+      "lines": 12
+    },
+    {
+      "path": "apps/desktop/src-tauri/build.rs",
+      "lines": 3
+    },
+    {
+      "path": "apps/desktop/src-tauri/src/main.rs",
+      "lines": 698
+    },
+    {
+      "path": "apps/desktop/src/App.tsx",
+      "lines": 137
+    },
+    {
+      "path": "apps/desktop/src/BrowserPanel.tsx",
+      "lines": 596
+    },
+    {
+      "path": "apps/desktop/src/BrowserSetupPanel.tsx",
+      "lines": 194
+    },
+    {
+      "path": "apps/desktop/src/Conversation.tsx",
+      "lines": 164
+    },
+    {
+      "path": "apps/desktop/src/ExtensionPanel.tsx",
+      "lines": 885
+    },
+    {
+      "path": "apps/desktop/src/FileAttachments.tsx",
+      "lines": 151
+    },
+    {
+      "path": "apps/desktop/src/FileWorkbench.tsx",
+      "lines": 855
+    },
+    {
+      "path": "apps/desktop/src/HistoryTransferPanel.tsx",
+      "lines": 297
+    },
+    {
+      "path": "apps/desktop/src/InstallationPanel.tsx",
+      "lines": 143
+    },
+    {
+      "path": "apps/desktop/src/LegacyApp.tsx",
+      "lines": 483
+    },
+    {
+      "path": "apps/desktop/src/MediaPanel.tsx",
+      "lines": 929
+    },
+    {
+      "path": "apps/desktop/src/MemoryPanel.tsx",
+      "lines": 648
+    },
+    {
+      "path": "apps/desktop/src/ModelSettings.tsx",
+      "lines": 951
+    },
+    {
+      "path": "apps/desktop/src/ProjectSidebar.tsx",
+      "lines": 294
+    },
+    {
+      "path": "apps/desktop/src/ProjectTransferPanel.tsx",
+      "lines": 488
+    },
+    {
+      "path": "apps/desktop/src/RecordPanel.tsx",
+      "lines": 257
+    },
+    {
+      "path": "apps/desktop/src/ResizeHandle.tsx",
+      "lines": 56
+    },
+    {
+      "path": "apps/desktop/src/SavedContent.tsx",
+      "lines": 139
+    },
+    {
+      "path": "apps/desktop/src/SchedulePanel.tsx",
+      "lines": 930
+    },
+    {
+      "path": "apps/desktop/src/TaskWorkspace.tsx",
+      "lines": 937
+    },
+    {
+      "path": "apps/desktop/src/TeamPanel.tsx",
+      "lines": 507
+    },
+    {
+      "path": "apps/desktop/src/ToolPanel.tsx",
+      "lines": 397
+    },
+    {
+      "path": "apps/desktop/src/WorkspaceSettings.tsx",
+      "lines": 188
+    },
+    {
+      "path": "apps/desktop/src/browser.css",
+      "lines": 75
+    },
+    {
+      "path": "apps/desktop/src/executionClient.ts",
+      "lines": 56
+    },
+    {
+      "path": "apps/desktop/src/extensions.css",
+      "lines": 167
+    },
+    {
+      "path": "apps/desktop/src/file-workbench/FileHistory.tsx",
+      "lines": 201
+    },
+    {
+      "path": "apps/desktop/src/file-workbench/api.ts",
+      "lines": 35
+    },
+    {
+      "path": "apps/desktop/src/files.css",
+      "lines": 311
+    },
+    {
+      "path": "apps/desktop/src/generated/contracts.ts",
+      "lines": 163
+    },
+    {
+      "path": "apps/desktop/src/i18n.ts",
+      "lines": 236
+    },
+    {
+      "path": "apps/desktop/src/installation.css",
+      "lines": 29
+    },
+    {
+      "path": "apps/desktop/src/main.tsx",
+      "lines": 10
+    },
+    {
+      "path": "apps/desktop/src/media.css",
+      "lines": 156
+    },
+    {
+      "path": "apps/desktop/src/mediaClient.ts",
+      "lines": 55
+    },
+    {
+      "path": "apps/desktop/src/memory.css",
+      "lines": 195
+    },
+    {
+      "path": "apps/desktop/src/schedule.css",
+      "lines": 163
+    },
+    {
+      "path": "apps/desktop/src/style.css",
+      "lines": 899
+    },
+    {
+      "path": "apps/desktop/src/task-workspace/HistoryEvent.tsx",
+      "lines": 32
+    },
+    {
+      "path": "apps/desktop/src/task-workspace/TaskCreateForm.tsx",
+      "lines": 154
+    },
+    {
+      "path": "apps/desktop/src/task-workspace/TaskInspector.tsx",
+      "lines": 233
+    },
+    {
+      "path": "apps/desktop/src/task-workspace/TaskMessages.tsx",
+      "lines": 111
+    },
+    {
+      "path": "apps/desktop/src/task-workspace/TaskWorkspaceHeader.tsx",
+      "lines": 104
+    },
+    {
+      "path": "apps/desktop/src/task-workspace/taskLabels.ts",
+      "lines": 73
+    },
+    {
+      "path": "apps/desktop/src/task-workspace/types.ts",
+      "lines": 10
+    },
+    {
+      "path": "apps/desktop/src/transfer.css",
+      "lines": 70
+    },
+    {
+      "path": "apps/desktop/src/workspace.css",
+      "lines": 440
+    },
+    {
+      "path": "apps/desktop/src/workspaceClient.ts",
+      "lines": 30
+    },
+    {
+      "path": "apps/desktop/vite.config.ts",
+      "lines": 8
+    },
+    {
+      "path": "crates/browser-bridge/src/bin/companion.rs",
+      "lines": 103
+    },
+    {
+      "path": "crates/browser-bridge/src/main.rs",
+      "lines": 103
+    },
+    {
+      "path": "crates/contracts/src/bin/generate.rs",
+      "lines": 7
+    },
+    {
+      "path": "crates/contracts/src/browser.rs",
+      "lines": 119
+    },
+    {
+      "path": "crates/contracts/src/execution.rs",
+      "lines": 202
+    },
+    {
+      "path": "crates/contracts/src/extension.rs",
+      "lines": 274
+    },
+    {
+      "path": "crates/contracts/src/history_transfer.rs",
+      "lines": 77
+    },
+    {
+      "path": "crates/contracts/src/installation.rs",
+      "lines": 60
+    },
+    {
+      "path": "crates/contracts/src/lib.rs",
+      "lines": 453
+    },
+    {
+      "path": "crates/contracts/src/media.rs",
+      "lines": 240
+    },
+    {
+      "path": "crates/contracts/src/memory.rs",
+      "lines": 120
+    },
+    {
+      "path": "crates/contracts/src/model.rs",
+      "lines": 188
+    },
+    {
+      "path": "crates/contracts/src/project_transfer.rs",
+      "lines": 162
+    },
+    {
+      "path": "crates/contracts/src/project_transfer/memory_history.rs",
+      "lines": 86
+    },
+    {
+      "path": "crates/contracts/src/provider.rs",
+      "lines": 275
+    },
+    {
+      "path": "crates/contracts/src/request.rs",
+      "lines": 519
+    },
+    {
+      "path": "crates/contracts/src/schedule.rs",
+      "lines": 229
+    },
+    {
+      "path": "crates/contracts/src/team.rs",
+      "lines": 136
+    },
+    {
+      "path": "crates/contracts/src/tool.rs",
+      "lines": 133
+    },
+    {
+      "path": "crates/contracts/src/typescript.rs",
+      "lines": 171
+    },
+    {
+      "path": "crates/contracts/src/workbench.rs",
+      "lines": 262
+    },
+    {
+      "path": "crates/contracts/src/workspace.rs",
+      "lines": 295
+    },
+    {
+      "path": "crates/engine/src/bin/workpilot-process-fixture.rs",
+      "lines": 46
+    },
+    {
+      "path": "crates/engine/src/main.rs",
+      "lines": 292
+    },
+    {
+      "path": "crates/engine/src/models.rs",
+      "lines": 674
+    },
+    {
+      "path": "crates/engine/src/tasks.rs",
+      "lines": 610
+    },
+    {
+      "path": "crates/engine/src/tasks/schedules.rs",
+      "lines": 228
+    },
+    {
+      "path": "crates/engine/src/tasks/team_control.rs",
+      "lines": 231
+    },
+    {
+      "path": "crates/engine/src/workspace.rs",
+      "lines": 186
+    },
+    {
+      "path": "crates/engine/tests/lifecycle.rs",
+      "lines": 229
+    },
+    {
+      "path": "crates/engine/tests/process_tree.rs",
+      "lines": 56
+    },
+    {
+      "path": "crates/extensions/src/lib.rs",
+      "lines": 15
+    },
+    {
+      "path": "crates/extensions/src/manager.rs",
+      "lines": 810
+    },
+    {
+      "path": "crates/extensions/src/manager/admin.rs",
+      "lines": 498
+    },
+    {
+      "path": "crates/extensions/src/mcp.rs",
+      "lines": 662
+    },
+    {
+      "path": "crates/extensions/src/model.rs",
+      "lines": 132
+    },
+    {
+      "path": "crates/extensions/src/oauth.rs",
+      "lines": 384
+    },
+    {
+      "path": "crates/extensions/src/package.rs",
+      "lines": 474
+    },
+    {
+      "path": "crates/extensions/src/tests.rs",
+      "lines": 87
+    },
+    {
+      "path": "crates/office/src/main.rs",
+      "lines": 33
+    },
+    {
+      "path": "crates/office/src/windows.rs",
+      "lines": 101
+    },
+    {
+      "path": "crates/platform/src/bin/workpilot-browser-setup.rs",
+      "lines": 25
+    },
+    {
+      "path": "crates/platform/src/bin/workpilot-runtime-check.rs",
+      "lines": 6
+    },
+    {
+      "path": "crates/platform/src/bin/workpilot-tool-fixture.rs",
+      "lines": 70
+    },
+    {
+      "path": "crates/platform/src/browser_setup.rs",
+      "lines": 183
+    },
+    {
+      "path": "crates/platform/src/browser_setup/windows.rs",
+      "lines": 362
+    },
+    {
+      "path": "crates/platform/src/browser_setup/windows/tests.rs",
+      "lines": 252
+    },
+    {
+      "path": "crates/platform/src/credentials.rs",
+      "lines": 128
+    },
+    {
+      "path": "crates/platform/src/files.rs",
+      "lines": 101
+    },
+    {
+      "path": "crates/platform/src/lib.rs",
+      "lines": 7
+    },
+    {
+      "path": "crates/platform/src/paths.rs",
+      "lines": 144
+    },
+    {
+      "path": "crates/platform/src/process.rs",
+      "lines": 148
+    },
+    {
+      "path": "crates/platform/src/runtimes.rs",
+      "lines": 402
+    },
+    {
+      "path": "crates/platform/src/runtimes/worker.rs",
+      "lines": 257
+    },
+    {
+      "path": "crates/platform/src/tool_process.rs",
+      "lines": 274
+    },
+    {
+      "path": "crates/platform/src/tool_process/windows.rs",
+      "lines": 760
+    },
+    {
+      "path": "crates/platform/tests/tool_boundary.rs",
+      "lines": 151
+    },
+    {
+      "path": "crates/policy/src/lib.rs",
+      "lines": 144
+    },
+    {
+      "path": "crates/providers/src/config.rs",
+      "lines": 503
+    },
+    {
+      "path": "crates/providers/src/diagnostic.rs",
+      "lines": 96
+    },
+    {
+      "path": "crates/providers/src/lib.rs",
+      "lines": 293
+    },
+    {
+      "path": "crates/providers/src/masking.rs",
+      "lines": 42
+    },
+    {
+      "path": "crates/providers/src/sse.rs",
+      "lines": 60
+    },
+    {
+      "path": "crates/providers/src/stream.rs",
+      "lines": 622
+    },
+    {
+      "path": "crates/providers/src/tests.rs",
+      "lines": 408
+    },
+    {
+      "path": "crates/runtime/src/browser.rs",
+      "lines": 99
+    },
+    {
+      "path": "crates/runtime/src/context.rs",
+      "lines": 49
+    },
+    {
+      "path": "crates/runtime/src/extensions.rs",
+      "lines": 75
+    },
+    {
+      "path": "crates/runtime/src/lib.rs",
+      "lines": 750
+    },
+    {
+      "path": "crates/runtime/src/media.rs",
+      "lines": 94
+    },
+    {
+      "path": "crates/runtime/src/memory.rs",
+      "lines": 109
+    },
+    {
+      "path": "crates/runtime/src/mutation.rs",
+      "lines": 2
+    },
+    {
+      "path": "crates/runtime/src/real_tools.rs",
+      "lines": 580
+    },
+    {
+      "path": "crates/runtime/src/team.rs",
+      "lines": 259
+    },
+    {
+      "path": "crates/runtime/src/tests.rs",
+      "lines": 793
+    },
+    {
+      "path": "crates/runtime/src/tools.rs",
+      "lines": 206
+    },
+    {
+      "path": "crates/storage/migrations/001_initial.sql",
+      "lines": 64
+    },
+    {
+      "path": "crates/storage/migrations/002_providers.sql",
+      "lines": 23
+    },
+    {
+      "path": "crates/storage/migrations/003_execution.sql",
+      "lines": 40
+    },
+    {
+      "path": "crates/storage/migrations/004_tools.sql",
+      "lines": 21
+    },
+    {
+      "path": "crates/storage/migrations/005_teams.sql",
+      "lines": 18
+    },
+    {
+      "path": "crates/storage/migrations/006_workspace.sql",
+      "lines": 5
+    },
+    {
+      "path": "crates/storage/migrations/007_workbench.sql",
+      "lines": 20
+    },
+    {
+      "path": "crates/storage/migrations/008_extensions.sql",
+      "lines": 6
+    },
+    {
+      "path": "crates/storage/migrations/009_media.sql",
+      "lines": 13
+    },
+    {
+      "path": "crates/storage/migrations/010_memory.sql",
+      "lines": 32
+    },
+    {
+      "path": "crates/storage/migrations/011_schedules.sql",
+      "lines": 34
+    },
+    {
+      "path": "crates/storage/src/bin/workpilot-data.rs",
+      "lines": 29
+    },
+    {
+      "path": "crates/storage/src/commands.rs",
+      "lines": 362
+    },
+    {
+      "path": "crates/storage/src/execution.rs",
+      "lines": 790
+    },
+    {
+      "path": "crates/storage/src/execution/actions.rs",
+      "lines": 350
+    },
+    {
+      "path": "crates/storage/src/execution/model.rs",
+      "lines": 333
+    },
+    {
+      "path": "crates/storage/src/execution_tests.rs",
+      "lines": 480
+    },
+    {
+      "path": "crates/storage/src/extensions.rs",
+      "lines": 296
+    },
+    {
+      "path": "crates/storage/src/history_transfer.rs",
+      "lines": 196
+    },
+    {
+      "path": "crates/storage/src/lib.rs",
+      "lines": 862
+    },
+    {
+      "path": "crates/storage/src/media.rs",
+      "lines": 90
+    },
+    {
+      "path": "crates/storage/src/memory.rs",
+      "lines": 527
+    },
+    {
+      "path": "crates/storage/src/memory/transfer.rs",
+      "lines": 109
+    },
+    {
+      "path": "crates/storage/src/memory_tests.rs",
+      "lines": 421
+    },
+    {
+      "path": "crates/storage/src/memory_transfer_tests.rs",
+      "lines": 282
+    },
+    {
+      "path": "crates/storage/src/objects.rs",
+      "lines": 181
+    },
+    {
+      "path": "crates/storage/src/project_transfer.rs",
+      "lines": 460
+    },
+    {
+      "path": "crates/storage/src/provider_tests.rs",
+      "lines": 370
+    },
+    {
+      "path": "crates/storage/src/providers.rs",
+      "lines": 838
+    },
+    {
+      "path": "crates/storage/src/redaction.rs",
+      "lines": 97
+    },
+    {
+      "path": "crates/storage/src/schedule.rs",
+      "lines": 663
+    },
+    {
+      "path": "crates/storage/src/schedule_tests.rs",
+      "lines": 476
+    },
+    {
+      "path": "crates/storage/src/schedule_time.rs",
+      "lines": 89
+    },
+    {
+      "path": "crates/storage/src/team.rs",
+      "lines": 746
+    },
+    {
+      "path": "crates/storage/src/team/members.rs",
+      "lines": 420
+    },
+    {
+      "path": "crates/storage/src/team_tests.rs",
+      "lines": 302
+    },
+    {
+      "path": "crates/storage/src/tests.rs",
+      "lines": 803
+    },
+    {
+      "path": "crates/storage/src/tool.rs",
+      "lines": 606
+    },
+    {
+      "path": "crates/storage/src/workbench.rs",
+      "lines": 405
+    },
+    {
+      "path": "crates/storage/src/worker.rs",
+      "lines": 50
+    },
+    {
+      "path": "crates/storage/src/workspace.rs",
+      "lines": 759
+    },
+    {
+      "path": "crates/storage/src/workspace_tests.rs",
+      "lines": 299
+    },
+    {
+      "path": "crates/tools/src/binary.rs",
+      "lines": 304
+    },
+    {
+      "path": "crates/tools/src/files.rs",
+      "lines": 394
+    },
+    {
+      "path": "crates/tools/src/lib.rs",
+      "lines": 7
+    },
+    {
+      "path": "crates/tools/src/mutation.rs",
+      "lines": 29
+    },
+    {
+      "path": "crates/tools/src/registry.rs",
+      "lines": 463
+    },
+    {
+      "path": "crates/tools/src/worker.rs",
+      "lines": 94
+    },
+    {
+      "path": "crates/workbench/examples/office_probe.rs",
+      "lines": 77
+    },
+    {
+      "path": "crates/workbench/src/browser.rs",
+      "lines": 294
+    },
+    {
+      "path": "crates/workbench/src/git.rs",
+      "lines": 205
+    },
+    {
+      "path": "crates/workbench/src/history.rs",
+      "lines": 205
+    },
+    {
+      "path": "crates/workbench/src/lib.rs",
+      "lines": 9
+    },
+    {
+      "path": "crates/workbench/src/media/images.rs",
+      "lines": 224
+    },
+    {
+      "path": "crates/workbench/src/media/mod.rs",
+      "lines": 852
+    },
+    {
+      "path": "crates/workbench/src/media/model.rs",
+      "lines": 137
+    },
+    {
+      "path": "crates/workbench/src/media/office.rs",
+      "lines": 276
+    },
+    {
+      "path": "crates/workbench/src/media/worker.rs",
+      "lines": 180
+    },
+    {
+      "path": "crates/workbench/src/service.rs",
+      "lines": 431
+    },
+    {
+      "path": "crates/workbench/src/service/execution.rs",
+      "lines": 453
+    },
+    {
+      "path": "crates/workbench/src/service/preparation.rs",
+      "lines": 384
+    },
+    {
+      "path": "crates/workbench/src/service/requests.rs",
+      "lines": 433
+    },
+    {
+      "path": "crates/workbench/src/transfer/codec.rs",
+      "lines": 375
+    },
+    {
+      "path": "crates/workbench/src/transfer/mod.rs",
+      "lines": 375
+    },
+    {
+      "path": "crates/workbench/src/transfer/project.rs",
+      "lines": 147
+    },
+    {
+      "path": "crates/workbench/src/transfer/tests.rs",
+      "lines": 163
+    },
+    {
+      "path": "crates/workbench/src/vault.rs",
+      "lines": 196
+    },
+    {
+      "path": "examples/extensions/report-checklist/scripts/checklist.mjs",
+      "lines": 5
+    },
+    {
+      "path": "extensions/browser/background.js",
+      "lines": 111
+    },
+    {
+      "path": "extensions/browser/fixture-tab.js",
+      "lines": 29
+    },
+    {
+      "path": "extensions/browser/popup.css",
+      "lines": 23
+    },
+    {
+      "path": "extensions/browser/popup.html",
+      "lines": 17
+    },
+    {
+      "path": "extensions/browser/popup.js",
+      "lines": 45
+    },
+    {
+      "path": "extensions/companion/background.js",
+      "lines": 220
+    },
+    {
+      "path": "extensions/companion/cdp-actions.js",
+      "lines": 398
+    },
+    {
+      "path": "extensions/companion/popup.css",
+      "lines": 38
+    },
+    {
+      "path": "extensions/companion/popup.html",
+      "lines": 23
+    },
+    {
+      "path": "extensions/companion/popup.js",
+      "lines": 21
+    },
+    {
+      "path": "playwright.config.ts",
+      "lines": 17
+    },
+    {
+      "path": "resources/windows/browser-companion-hooks.nsh",
+      "lines": 65
+    },
+    {
+      "path": "resources/windows/installer.nsi",
+      "lines": 984
+    },
+    {
+      "path": "scripts/browser-companion-test.mjs",
+      "lines": 197
+    },
+    {
+      "path": "scripts/browser-desktop-smoke.mjs",
+      "lines": 119
+    },
+    {
+      "path": "scripts/browser-engine-test.mjs",
+      "lines": 131
+    },
+    {
+      "path": "scripts/browser-extension-smoke.mjs",
+      "lines": 79
+    },
+    {
+      "path": "scripts/browser-installer-hooks-test.ps1",
+      "lines": 106
+    },
+    {
+      "path": "scripts/browser-lifecycle-test.mjs",
+      "lines": 62
+    },
+    {
+      "path": "scripts/browser-model-test.mjs",
+      "lines": 152
+    },
+    {
+      "path": "scripts/browser-registration-snapshot.mjs",
+      "lines": 51
+    },
+    {
+      "path": "scripts/browser-safety-test.mjs",
+      "lines": 226
+    },
+    {
+      "path": "scripts/browser-scenario.mjs",
+      "lines": 92
+    },
+    {
+      "path": "scripts/browser-test-support.mjs",
+      "lines": 104
+    },
+    {
+      "path": "scripts/build-icons.ps1",
+      "lines": 124
+    },
+    {
+      "path": "scripts/capture-runtime-credits.mjs",
+      "lines": 63
+    },
+    {
+      "path": "scripts/cargo.mjs",
+      "lines": 33
+    },
+    {
+      "path": "scripts/check-code-lines.mjs",
+      "lines": 112
+    },
+    {
+      "path": "scripts/desktop-smoke.mjs",
+      "lines": 374
+    },
+    {
+      "path": "scripts/desktop.mjs",
+      "lines": 106
+    },
+    {
+      "path": "scripts/execution-desktop-smoke.mjs",
+      "lines": 272
+    },
+    {
+      "path": "scripts/execution-engine-test.mjs",
+      "lines": 276
+    },
+    {
+      "path": "scripts/extensions-desktop-smoke.mjs",
+      "lines": 253
+    },
+    {
+      "path": "scripts/extensions-engine-test.mjs",
+      "lines": 505
+    },
+    {
+      "path": "scripts/extensions-model-test.mjs",
+      "lines": 227
+    },
+    {
+      "path": "scripts/extract-runtime.ps1",
+      "lines": 25
+    },
+    {
+      "path": "scripts/history-transfer-desktop.mjs",
+      "lines": 222
+    },
+    {
+      "path": "scripts/history-transfer-test.mjs",
+      "lines": 245
+    },
+    {
+      "path": "scripts/install-packaged-browser-companion.ps1",
+      "lines": 7
+    },
+    {
+      "path": "scripts/installation-desktop-smoke.mjs",
+      "lines": 188
+    },
+    {
+      "path": "scripts/installation-engine-test.mjs",
+      "lines": 380
+    },
+    {
+      "path": "scripts/installer-p12.mjs",
+      "lines": 82
+    },
+    {
+      "path": "scripts/installer-smoke.ps1",
+      "lines": 93
+    },
+    {
+      "path": "scripts/measure-processes.ps1",
+      "lines": 14
+    },
+    {
+      "path": "scripts/media-desktop-smoke.mjs",
+      "lines": 277
+    },
+    {
+      "path": "scripts/media-engine-test.mjs",
+      "lines": 428
+    },
+    {
+      "path": "scripts/media-model-test.mjs",
+      "lines": 283
+    },
+    {
+      "path": "scripts/media-office-test.mjs",
+      "lines": 107
+    },
+    {
+      "path": "scripts/memory-desktop-smoke.mjs",
+      "lines": 257
+    },
+    {
+      "path": "scripts/memory-engine-test.mjs",
+      "lines": 297
+    },
+    {
+      "path": "scripts/memory-history-transfer-test.mjs",
+      "lines": 165
+    },
+    {
+      "path": "scripts/models-desktop-smoke.mjs",
+      "lines": 265
+    },
+    {
+      "path": "scripts/office-preview-test.mjs",
+      "lines": 216
+    },
+    {
+      "path": "scripts/package-p01.mjs",
+      "lines": 67
+    },
+    {
+      "path": "scripts/package-p02.mjs",
+      "lines": 67
+    },
+    {
+      "path": "scripts/package-p03.mjs",
+      "lines": 67
+    },
+    {
+      "path": "scripts/package-p04.mjs",
+      "lines": 67
+    },
+    {
+      "path": "scripts/package-p05.mjs",
+      "lines": 67
+    },
+    {
+      "path": "scripts/package-p06.mjs",
+      "lines": 72
+    },
+    {
+      "path": "scripts/package-p07.mjs",
+      "lines": 80
+    },
+    {
+      "path": "scripts/package-p08.mjs",
+      "lines": 126
+    },
+    {
+      "path": "scripts/package-p09.mjs",
+      "lines": 142
+    },
+    {
+      "path": "scripts/package-p10.mjs",
+      "lines": 196
+    },
+    {
+      "path": "scripts/package-p11-memory.mjs",
+      "lines": 124
+    },
+    {
+      "path": "scripts/package-p11-schedules.mjs",
+      "lines": 124
+    },
+    {
+      "path": "scripts/package-p12.mjs",
+      "lines": 318
+    },
+    {
+      "path": "scripts/prepare-browser-companion.mjs",
+      "lines": 44
+    },
+    {
+      "path": "scripts/prepare-browser-probe.mjs",
+      "lines": 51
+    },
+    {
+      "path": "scripts/prepare-documents.mjs",
+      "lines": 90
+    },
+    {
+      "path": "scripts/prepare-office.mjs",
+      "lines": 126
+    },
+    {
+      "path": "scripts/prepare-runtime-sources.mjs",
+      "lines": 96
+    },
+    {
+      "path": "scripts/project-transfer-desktop.mjs",
+      "lines": 299
+    },
+    {
+      "path": "scripts/project-transfer-test.mjs",
+      "lines": 260
+    },
+    {
+      "path": "scripts/real-model-check.mjs",
+      "lines": 239
+    },
+    {
+      "path": "scripts/real-teams-check.mjs",
+      "lines": 189
+    },
+    {
+      "path": "scripts/real-tools-check.mjs",
+      "lines": 133
+    },
+    {
+      "path": "scripts/register-browser-companion.ps1",
+      "lines": 12
+    },
+    {
+      "path": "scripts/register-browser-probe.ps1",
+      "lines": 26
+    },
+    {
+      "path": "scripts/schedules-desktop-smoke.mjs",
+      "lines": 293
+    },
+    {
+      "path": "scripts/schedules-engine-test.mjs",
+      "lines": 479
+    },
+    {
+      "path": "scripts/storage-metrics.ps1",
+      "lines": 49
+    },
+    {
+      "path": "scripts/teams-desktop-smoke.mjs",
+      "lines": 327
+    },
+    {
+      "path": "scripts/teams-engine-test.mjs",
+      "lines": 462
+    },
+    {
+      "path": "scripts/tool-test-support.mjs",
+      "lines": 174
+    },
+    {
+      "path": "scripts/tools-desktop-smoke.mjs",
+      "lines": 250
+    },
+    {
+      "path": "scripts/tools-engine-test.mjs",
+      "lines": 330
+    },
+    {
+      "path": "scripts/verify-p06.mjs",
+      "lines": 92
+    },
+    {
+      "path": "scripts/verify-p07.mjs",
+      "lines": 100
+    },
+    {
+      "path": "scripts/verify-p08.mjs",
+      "lines": 103
+    },
+    {
+      "path": "scripts/workbench-desktop-smoke.mjs",
+      "lines": 237
+    },
+    {
+      "path": "scripts/workbench-engine-test.mjs",
+      "lines": 412
+    },
+    {
+      "path": "scripts/workbench-scenario.mjs",
+      "lines": 103
+    },
+    {
+      "path": "scripts/workspace-desktop-smoke.mjs",
+      "lines": 320
+    },
+    {
+      "path": "scripts/workspace-scenario.mjs",
+      "lines": 148
+    },
+    {
+      "path": "services/browser-fixtures/server.mjs",
+      "lines": 70
+    },
+    {
+      "path": "services/browser/driver.mjs",
+      "lines": 585
+    },
+    {
+      "path": "services/documents/image-fixture.mjs",
+      "lines": 75
+    },
+    {
+      "path": "services/documents/worker.mjs",
+      "lines": 381
+    },
+    {
+      "path": "services/documents/write.mjs",
+      "lines": 447
+    },
+    {
+      "path": "services/execution-fixtures/server.mjs",
+      "lines": 320
+    },
+    {
+      "path": "services/execution-fixtures/teams.mjs",
+      "lines": 84
+    },
+    {
+      "path": "services/execution-fixtures/tools.mjs",
+      "lines": 31
+    },
+    {
+      "path": "services/extension-fixtures/local.mjs",
+      "lines": 79
+    },
+    {
+      "path": "services/extension-fixtures/server.mjs",
+      "lines": 248
+    },
+    {
+      "path": "services/fixtures/server.mjs",
+      "lines": 265
+    },
+    {
+      "path": "services/office/worker.py",
+      "lines": 89
+    },
+    {
+      "path": "services/provider-fixtures/server.mjs",
+      "lines": 388
+    },
+    {
+      "path": "tests/browser/dedicated.test.mjs",
+      "lines": 55
+    },
+    {
+      "path": "tests/node/code-lines.test.mjs",
+      "lines": 49
+    },
+    {
+      "path": "tests/node/extension-tab.test.mjs",
+      "lines": 63
+    },
+    {
+      "path": "tests/node/fixtures.test.mjs",
+      "lines": 58
+    },
+    {
+      "path": "tests/node/runtime-archives.test.mjs",
+      "lines": 79
+    },
+    {
+      "path": "tests/ui/browser-live.spec.ts",
+      "lines": 50
+    },
+    {
+      "path": "tests/ui/files-live.spec.ts",
+      "lines": 61
+    },
+    {
+      "path": "tests/ui/workbench.spec.ts",
+      "lines": 27
+    },
+    {
+      "path": "tests/ui/workspace-live.spec.ts",
+      "lines": 84
+    }
+  ],
+  "violations": []
+}

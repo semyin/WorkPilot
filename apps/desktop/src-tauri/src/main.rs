@@ -57,7 +57,7 @@ async fn pick_history_archive(
     app: tauri::AppHandle,
     save: bool,
 ) -> Result<Option<String>, String> {
-    pick_transfer_archive(view, app, save, false).await
+    pick_transfer_archive(view, app, save, "wphistory", "WorkPilot-history.wphistory").await
 }
 #[tauri::command]
 async fn pick_settings_archive(
@@ -65,30 +65,47 @@ async fn pick_settings_archive(
     app: tauri::AppHandle,
     save: bool,
 ) -> Result<Option<String>, String> {
-    pick_transfer_archive(view, app, save, true).await
+    pick_transfer_archive(
+        view,
+        app,
+        save,
+        "wpsettings",
+        "WorkPilot-project.wpsettings",
+    )
+    .await
+}
+#[tauri::command]
+async fn pick_extension_archive(
+    view: Webview,
+    app: tauri::AppHandle,
+    save: bool,
+) -> Result<Option<String>, String> {
+    pick_transfer_archive(
+        view,
+        app,
+        save,
+        "wpextensions",
+        "WorkPilot-extensions.wpextensions",
+    )
+    .await
 }
 async fn pick_transfer_archive(
     view: Webview,
     app: tauri::AppHandle,
     save: bool,
-    settings: bool,
+    extension: &'static str,
+    filename: &'static str,
 ) -> Result<Option<String>, String> {
     main_only(&view)?;
     let (sender, receiver) = oneshot::channel();
-    let dialog = app.dialog().file().add_filter(
-        "WorkPilot backup",
-        &[if settings { "wpsettings" } else { "wphistory" }],
-    );
+    let dialog = app
+        .dialog()
+        .file()
+        .add_filter("WorkPilot backup", &[extension]);
     if save {
-        dialog
-            .set_file_name(if settings {
-                "WorkPilot-project.wpsettings"
-            } else {
-                "WorkPilot-history.wphistory"
-            })
-            .save_file(move |path| {
-                let _ = sender.send(path);
-            });
+        dialog.set_file_name(filename).save_file(move |path| {
+            let _ = sender.send(path);
+        });
     } else {
         dialog.pick_file(move |path| {
             let _ = sender.send(path);
@@ -224,6 +241,7 @@ impl Bridge {
             Command::Media { .. }
                 | Command::HistoryTransfer { .. }
                 | Command::ProjectTransfer { .. }
+                | Command::ExtensionTransfer { .. }
                 | Command::InspectInstallation { .. }
                 | Command::Workbench {
                     action: workpilot_contracts::WorkbenchAction::ReadDocument { .. },
@@ -638,6 +656,7 @@ fn main() {
             engine_snapshot,
             engine_command,
             pick_history_archive,
+            pick_extension_archive,
             pick_settings_archive,
             project_open_external,
             extension_open_login,

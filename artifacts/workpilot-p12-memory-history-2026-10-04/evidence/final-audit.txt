@@ -1,0 +1,72 @@
+Verified all 25123 delivery files.
+{
+  "at": "2026-10-03T21:31:58.918Z",
+  "phase": "P12-memory-history-slice",
+  "status": "local_checks_pass_with_documented_limits_phase_not_accepted",
+  "appVersion": "0.1.0-alpha.12.4",
+  "schema": 11,
+  "platform": "Windows 11 Home x64 developer machine",
+  "basePushedCommit": "d42e9d4d5304a44548bac6041998dc3169f573ca",
+  "thisSliceCommittedOrPushed": false,
+  "checks": {
+    "rust": 133,
+    "rustIgnored": 2,
+    "node": 11,
+    "memoryTransferUnitCases": 3,
+    "engine": 22,
+    "desktop": 9,
+    "codeFiles": 312,
+    "maximumCodeLines": 984,
+    "localLinks": 565,
+    "sourceFiles": 437,
+    "deliveryFiles": 25123,
+    "deliveryBytes": 1988873349,
+    "credentialScannedTextFiles": 828,
+    "credentialPatternMatches": 0,
+    "trackedDiffWhitespaceCheck": "passed",
+    "bilingualScreenshotsViewed": true
+  },
+  "build": {
+    "command": "npm run build (Tauri build --no-bundle)",
+    "appVersion": "0.1.0-alpha.12.4",
+    "at": "2026-10-03T21:19:58.940Z",
+    "platform": "win32",
+    "desktop": "6af277bfc222ffd6e3aabff626210b14abb1bf46ee823d447cfcdc80a69269e2",
+    "engine": "e733f3cf7785f490d86f4197c5561b771be61efb79d157d49dc46d6b6649f096",
+    "runtimeCheck": "460bb81f00a241a94804ce9a2902a76b3efcc773d04f27ded26f8e85f327ac10",
+    "browserSetup": "4581ba6d2641924500dcc59abb8ed06ac8112b71f383e2e844125965f21916f4",
+    "companion": "70e597216e030ec57917a23167e66efbce017427691c80a2ed8c59df63a14fe6"
+  },
+  "memoryHistoryLimits": {
+    "memories": 128,
+    "versionsPerMemory": 256,
+    "versionsPerArchive": 2048,
+    "plaintextBytes": 1048576
+  },
+  "delivery": "Runnable Windows preview; no new installer build or installation in this slice",
+  "previousDeliveryPreserved": [
+    "workpilot-p12-settings-2026-10-04",
+    "workpilot-p12-history-2026-10-04"
+  ],
+  "originalUserProcessesPreserved": [
+    25624,
+    12372
+  ],
+  "modelTests": "Local deterministic HTTP services only; no new commercial-model acceptance",
+  "pending": [
+    "Full sessions and multi-agent records with complete content references",
+    "Skill/plugin import with paths, dependencies and authorization review",
+    "Selected files and attachments; unified selection/path/reference mapping",
+    "Memory histories spanning more than one original project",
+    "Version lifecycle cleanup and team permanent deletion",
+    "T-P12-01/02/04/05/06",
+    "E-P12-01",
+    "E-P08-01",
+    "E-P09-01",
+    "E-P10-01/02",
+    "E-P11-01/02",
+    "O-01/Q44",
+    "Native file picker and user experience",
+    "Physical cross-machine recovery; clean installation; macOS/Linux"
+  ]
+}

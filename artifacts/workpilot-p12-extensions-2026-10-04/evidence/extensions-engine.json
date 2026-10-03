@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-03T23:10:34.664Z",
+  "platform": "win32",
+  "checks": [
+    "preview_files_permissions_digest_confirmation_global_project_scope",
+    "real_stdio_approval_appcontainer_write_history_outside_denied_tool_error_skill_script",
+    "skill_template_copy_uses_project_file_version_and_history",
+    "cancel_terminates_actual_stdio_process_and_closes_owned_job",
+    "disable_installed_extension_cancels_its_running_process_before_reenable",
+    "http_json_sse_chunking_session_version_server_ping_drop_no_replay_dynamic_schema_invalidates_old_approval",
+    "http_cancel_notification_without_replaying_side_effect",
+    "real_oauth_discovery_dynamic_registration_pkce_state_issuer_resource_binding_system_credential",
+    "bearer_secret_redaction_export_without_credentials_online_zip_preview",
+    "installed_credential_cannot_be_imported_as_skill_resource",
+    "dependency_failure_preserves_old_version_update_rollback_disable_invalidates_approval_uninstall_preserves_user_files",
+    "builtin_skill_creator_disable_and_uninstall_choices_survive_engine_restart"
+  ],
+  "status": "passed"
+}

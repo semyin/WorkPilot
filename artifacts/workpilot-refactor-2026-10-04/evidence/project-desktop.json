@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-03T20:48:28.812Z",
+  "platform": "win32",
+  "binarySha256": "32223a2285db16d49d9ea4bcb5f9c61ebbb5dd0c9ef188544762c3a041b340c7",
+  "checks": [
+    "native_selects_project_models_and_memories_exports_encrypted_settings_and_clears_passphrase",
+    "wrong_passphrase_and_duplicate_name_block_import_preview_requires_confirmation_and_preserves_current_files",
+    "english_preview_no_duplicate_import_and_no_horizontal_overflow",
+    "application_exits_without_leaving_owned_work"
+  ],
+  "status": "passed"
+}

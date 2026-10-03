@@ -8,6 +8,7 @@ impl Store {
         project: &str,
         profiles: &[String],
         memories: &[String],
+        include_memory_history: bool,
     ) -> Result<ProjectTransferBundle> {
         let mut p = self.workspace_project(project)?;
         let available = self.export_profiles()?.profiles;
@@ -28,12 +29,27 @@ impl Store {
         {
             p.settings.default_profile_id = None;
         }
+        let mut memory_history = Vec::new();
+        let mut version_count = 0;
+        if include_memory_history {
+            for memory in memories {
+                let history = self.transferred_memory_history(memory)?;
+                version_count += history.versions.len();
+                if version_count > 2048 {
+                    return Err(Error::Invalid(
+                        "记忆历史超过 2048 个版本，请减少选择 / Archive exceeds 2048 memory revisions",
+                    ));
+                }
+                memory_history.push(history);
+            }
+        }
         let bundle = ProjectTransferBundle {
-            version: 1,
+            version: if include_memory_history { 2 } else { 1 },
             archive_id: id(),
             created_at_ms: now_ms(),
             project: p,
             profiles,
+            memory_history,
             memories: memories
                 .iter()
                 .map(|id| self.memory_get(id))
@@ -171,14 +187,21 @@ impl Store {
         let mut memories = vec![];
         let mut origins = vec![];
         for source in &bundle.memories {
-            let memory = self.prepare_transferred_memory(
+            let versions = self.prepare_transferred_history(
                 source,
-                source.project_id.as_ref().map(|_| project_id.clone()),
+                bundle
+                    .memory_history
+                    .iter()
+                    .find(|h| h.memory_id == source.id),
+                &project_id,
                 &bundle.archive_id,
             )?;
-            let text = self.read_text_value(&memory.memory.content)?;
-            origins.push(json!({"source_id":source.id,"source_revision":source.revision,"source_task_id":source.source_task_id,"target_id":memory.memory.id}));
-            memories.push((memory, text));
+            let memory = &versions
+                .last()
+                .ok_or(Error::Invalid("missing imported memory"))?
+                .0;
+            origins.push(json!({"source_id":source.id,"source_revision":source.revision,"source_task_id":source.source_task_id,"target_id":memory.memory.id,"history_versions":versions.len().saturating_sub(1)}));
+            memories.extend(versions);
         }
         let receipt = json!({"project_id":project_id,"archive_id":bundle.archive_id,"source_project_id":bundle.project.id,"digest":digest,"profiles":profile_map,"memories":origins,"at_ms":now_ms()});
         let tx = self.connection.transaction()?;
@@ -267,6 +290,7 @@ mod tests {
         };
         ProjectTransferBundle {
             version: 1,
+            memory_history: vec![],
             archive_id: id(),
             created_at_ms: 3,
             project,

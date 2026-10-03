@@ -1,0 +1,46 @@
+[
+  {
+    "name": "extension-transfer-desktop",
+    "command": "node scripts/extension-transfer-desktop.mjs",
+    "status": "passed",
+    "checks": 4,
+    "exitCode": 0,
+    "began": "2026-10-03T23:15:24.002Z",
+    "ended": "2026-10-03T23:15:28.097Z",
+    "binarySha256": "63faf50cdabdec2e0c47417349ac93882393f9fb84a2f814dc6fa4139660f0d1",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-extensions-extension-transfer-desktop\\report.json"
+  },
+  {
+    "name": "extensions-desktop",
+    "command": "node scripts/extensions-desktop-smoke.mjs",
+    "status": "passed",
+    "checks": 6,
+    "exitCode": 0,
+    "began": "2026-10-03T23:15:28.098Z",
+    "ended": "2026-10-03T23:15:32.126Z",
+    "binarySha256": "63faf50cdabdec2e0c47417349ac93882393f9fb84a2f814dc6fa4139660f0d1",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-extensions-extensions-desktop\\report.json"
+  },
+  {
+    "name": "settings-desktop",
+    "command": "node scripts/project-transfer-desktop.mjs",
+    "status": "passed",
+    "checks": 4,
+    "exitCode": 0,
+    "began": "2026-10-03T23:15:32.127Z",
+    "ended": "2026-10-03T23:15:35.091Z",
+    "binarySha256": "63faf50cdabdec2e0c47417349ac93882393f9fb84a2f814dc6fa4139660f0d1",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-extensions-settings-desktop\\report.json"
+  },
+  {
+    "name": "memory-history-desktop",
+    "command": "node scripts/project-transfer-desktop.mjs --memory-history",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-03T23:15:35.093Z",
+    "ended": "2026-10-03T23:15:38.263Z",
+    "binarySha256": "63faf50cdabdec2e0c47417349ac93882393f9fb84a2f814dc6fa4139660f0d1",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-extensions-memory-history-desktop\\report.json"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-03T20:46:53.881Z",
+  "platform": "win32",
+  "binarySha256": "791ad4753ffbf684c09a6def142d4ed63e3c0a8d7d7177b41561b5a35eac59c3",
+  "checks": [
+    "encrypted_export_no_overwrite_wrong_password_damaged_and_stale_preview_leave_history_unchanged",
+    "independent_vault_import_preserves_current_file_origins_and_deduplicates_repeated_requests",
+    "model_configuration_and_credential_are_excluded_and_target_profiles_are_unchanged",
+    "restoring_imported_binary_requires_existing_approval_and_preserves_replaced_file_as_a_new_revision",
+    "restart_preserves_import_receipt_and_history_no_passphrase_in_database_objects_or_events"
+  ],
+  "status": "passed"
+}

@@ -14,6 +14,7 @@ import type {
 import { executionCommand } from "./executionClient";
 import { useWords } from "./workspaceClient";
 import { Saved } from "./SavedContent";
+import { ExtensionTransferPanel } from "./ExtensionTransferPanel";
 import "./extensions.css";
 type Tool = { name: string; description?: string; inputSchema: JsonValue };
 type Server = {
@@ -272,6 +273,7 @@ export function ExtensionPanel({
           </details>
         </aside>
         <main>
+          <ExtensionTransferPanel key={task || "global"} task={task} onImported={refresh} />
           <section>
             <h3>{tr("导入扩展", "Import extension")}</h3>
             <label>
