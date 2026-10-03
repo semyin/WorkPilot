@@ -1,0 +1,13 @@
+{
+    "at":  "2026-10-03T16:03:47.0807266Z",
+    "platform":  "Windows x64",
+    "scope":  "Actual NSIS installer/uninstaller with the production hook and isolated registry prefix; no daily-browser registration changes",
+    "checks":  [
+                   "owned_registrations_and_unknown_files",
+                   "foreign_registrations_and_unknown_files",
+                   "mixed_registrations_and_unknown_files",
+                   "empty_registrations_and_unknown_files",
+                   "update_registrations_and_unknown_files"
+               ],
+    "status":  "passed"
+}

@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-03T16:31:08.921Z",
+  "scope": "Single Windows developer-machine comparison; caches/load not controlled; same payload inventory",
+  "lzma": {
+    "bytes": 709596180,
+    "seconds": 808.111,
+    "sha256": "1226f85c0a0ac40cb31652aa6b83103560469548fbd5d0c743d7d9a246fb6d7d"
+  },
+  "zlib": {
+    "bytes": 873800363,
+    "seconds": 235.1755435,
+    "sha256": "97ab2f6dcaff921706db2947cb01785609c20a0d859900f46071d95e2f12ff16"
+  },
+  "selected": "zlib",
+  "sameRuntimeFiles": 25122
+}

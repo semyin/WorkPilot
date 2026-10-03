@@ -23,6 +23,35 @@ const target = execFileSync(rustc, ["-vV"], { env: rustEnv(), encoding: "utf8" }
   .trim();
 if (!target) throw new Error("Cannot identify the Rust host target");
 const extension = process.platform === "win32" ? ".exe" : "";
+await run(cargo, [
+  "build",
+  "-p",
+  "workpilot-platform",
+  "--bin",
+  "workpilot-runtime-check",
+  "--locked",
+  ...(release ? ["--release"] : []),
+]);
+if (release && process.platform === "win32") {
+  await run(cargo, [
+    "build",
+    "-p",
+    "workpilot-platform",
+    "--bin",
+    "workpilot-browser-setup",
+    "--release",
+    "--locked",
+  ]);
+  await run(cargo, [
+    "build",
+    "-p",
+    "workpilot-browser-bridge",
+    "--bin",
+    "companion",
+    "--release",
+    "--locked",
+  ]);
+}
 const buildRoot = process.env.CARGO_TARGET_DIR
   ? resolve(root, process.env.CARGO_TARGET_DIR)
   : join(root, "target");
@@ -62,6 +91,13 @@ if (release) {
         platform: process.platform,
         desktop: await hash(join(buildRoot, "release/workpilot-desktop" + extension)),
         engine: await hash(join(buildRoot, "release/workpilot-engine" + extension)),
+        runtimeCheck: await hash(join(buildRoot, "release/workpilot-runtime-check" + extension)),
+        ...(process.platform === "win32"
+          ? {
+              browserSetup: await hash(join(buildRoot, "release/workpilot-browser-setup.exe")),
+              companion: await hash(join(buildRoot, "release/companion.exe")),
+            }
+          : {}),
       },
       null,
       2,

@@ -1,0 +1,36 @@
+   Compiling workpilot-contracts v0.1.0-alpha.12.1 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-platform v0.1.0-alpha.12.1 (D:\workspace\kplocker\WorkPilot\crates\platform)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 13.93s
+     Running unittests src\lib.rs (target\debug\deps\workpilot_platform-69163e394bd76404.exe)
+
+running 1 test
+test browser_setup::windows::tests::legacy_packaged_manifest_with_native_windows_paths_is_recognized ... FAILED
+
+failures:
+
+---- browser_setup::windows::tests::legacy_packaged_manifest_with_native_windows_paths_is_recognized stdout ----
+
+thread 'browser_setup::windows::tests::legacy_packaged_manifest_with_native_windows_paths_is_recognized' (8436) panicked at crates\platform\src\browser_setup\windows\tests.rs:70:5:
+assertion `left == right` failed
+  left: "repair"
+ right: "ready"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    browser_setup::windows::tests::legacy_packaged_manifest_with_native_windows_paths_is_recognized
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.13s
+
+error: test failed, to rerun pass `-p workpilot-platform --lib`
+file:///D:/workspace/kplocker/WorkPilot/scripts/cargo.mjs:25
+      else reject(new Error(command + " exited with " + (code ?? signal)));
+                  ^
+
+Error: C:\Users\semyi\.cargo\bin\cargo.exe exited with 101
+    at ChildProcess.<anonymous> (file:///D:/workspace/kplocker/WorkPilot/scripts/cargo.mjs:25:19)
+    at Object.onceWrapper (node:events:634:26)
+    at ChildProcess.emit (node:events:519:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+
+Node.js v22.23.2

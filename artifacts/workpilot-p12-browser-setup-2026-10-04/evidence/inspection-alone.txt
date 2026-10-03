@@ -1,0 +1,1 @@
+{"kind":"installation","ms":3117,"components":[{"id":"application","state":"present"},{"id":"node","state":"present"},{"id":"python","state":"present"},{"id":"git","state":"present"},{"id":"documents","state":"present"},{"id":"office","state":"present"},{"id":"companion","state":"present"}]}

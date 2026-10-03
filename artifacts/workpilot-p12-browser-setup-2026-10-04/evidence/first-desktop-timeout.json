@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-03T16:10:19.928Z",
+  "platform": "win32",
+  "binarySha256": "ad1e0cecbb1009308cf648ef80d68963e1a545e13e96d105adfe5b10551dc1cf",
+  "service": "Actual Windows desktop; isolated test data; PATH contains System32 only; network blocked at test browser context (not an OS firewall)",
+  "checks": [
+    "native_browser_setup_status_copy_folder_and_existing_registration_conflicts"
+  ],
+  "browserStates": [
+    {
+      "browser": "chrome",
+      "state": "conflict"
+    },
+    {
+      "browser": "edge",
+      "state": "conflict"
+    }
+  ],
+  "status": "failed",
+  "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: getByRole('dialog', { name: '设置', exact: true }).locator('[data-runtime-id=python] summary')\nExpected substring: \"文件齐全\"\nTimeout: 120000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toContainText\" getByRole('dialog', { name: '设置', exact: true }).locator('[data-runtime-id=python] summary') with timeout 120000ms\n  - waiting for getByRole('dialog', { name: '设置', exact: true }).locator('[data-runtime-id=python] summary')\n\n    at captureRawStack (D:\\workspace\\kplocker\\WorkPilot\\node_modules\\playwright-core\\lib\\coreBundle.js:8588:17)\n    at callMatcherAsStep (D:\\workspace\\kplocker\\WorkPilot\\node_modules\\playwright\\lib\\matchers\\expect.js:13310:57)\n    at Object.toContainText (D:\\workspace\\kplocker\\WorkPilot\\node_modules\\playwright\\lib\\matchers\\expect.js:13302:23)\n    at D:\\workspace\\kplocker\\WorkPilot\\scripts\\installation-desktop-smoke.mjs:122:67"
+}

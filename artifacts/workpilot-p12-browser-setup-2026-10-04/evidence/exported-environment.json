@@ -1,0 +1,95 @@
+{
+  "report_version": 1,
+  "app_version": "0.1.0-alpha.12.1",
+  "schema_version": 11,
+  "platform": "windows",
+  "architecture": "x86_64",
+  "checked_at_ms": 1791049341927,
+  "manifest_present": true,
+  "verified_hashes": true,
+  "components": [
+    {
+      "id": "application",
+      "version": "0.1.0-alpha.12.1",
+      "source": "WorkPilot source workspace",
+      "license": "Private WorkPilot development preview",
+      "state": "verified",
+      "files": 6,
+      "checked_files": 6,
+      "bytes": 29225468,
+      "issues": []
+    },
+    {
+      "id": "node",
+      "version": "22.23.2",
+      "source": "https://github.com/nodejs/node/tree/v22.23.2",
+      "license": "MIT and bundled third-party notices",
+      "state": "verified",
+      "files": 5,
+      "checked_files": 5,
+      "bytes": 87180776,
+      "issues": []
+    },
+    {
+      "id": "python",
+      "version": "3.13.16",
+      "source": "https://github.com/python/cpython/tree/v3.13.16",
+      "license": "PSF and bundled third-party notices",
+      "state": "verified",
+      "files": 34,
+      "checked_files": 34,
+      "bytes": 22640669,
+      "issues": []
+    },
+    {
+      "id": "git",
+      "version": "2.56.0.windows.1",
+      "source": "https://github.com/git-for-windows/git/tree/v2.56.0.windows.1",
+      "license": "GPL-2.0 and bundled component notices",
+      "state": "verified",
+      "files": 373,
+      "checked_files": 373,
+      "bytes": 95772593,
+      "issues": []
+    },
+    {
+      "id": "documents",
+      "version": "P10-locked",
+      "source": "services/documents/package-lock.json; Noto Sans CJK SC 2.004",
+      "license": "Bundled npm package licenses; font OFL-1.1",
+      "state": "verified",
+      "files": 5244,
+      "checked_files": 5244,
+      "bytes": 167872404,
+      "issues": []
+    },
+    {
+      "id": "office",
+      "version": "26.8.0",
+      "source": "https://github.com/LibreOffice/core/tree/bce0998afefdbc355585ca324285661a2170ba77",
+      "license": "MPL-2.0 and bundled LICENSE.html, NOTICE and component licenses",
+      "state": "verified",
+      "files": 19448,
+      "checked_files": 19448,
+      "bytes": 1579736503,
+      "issues": []
+    },
+    {
+      "id": "companion",
+      "version": "0.1.0-alpha.12.1",
+      "source": "WorkPilot extensions/companion and browser-bridge",
+      "license": "Private WorkPilot development preview",
+      "state": "verified",
+      "files": 12,
+      "checked_files": 12,
+      "bytes": 234094,
+      "issues": []
+    }
+  ],
+  "notices": [
+    "此预览未包含专用浏览器，浏览器操作仍需要本机 Chrome 或 Edge / This preview requires an installed Chrome or Edge browser.",
+    "Python 仅含标准库，MinGit 不含 Git Bash；其他插件依赖需单独核对 / Python includes its standard library; MinGit does not include Git Bash. Additional plugin dependencies are separate.",
+    "Git 的通用命令在 Windows 受限模式下存在目录兼容问题；不会自动提高权限。文件工作区的 Git 操作保留原审批流程 / Generic Git commands have a directory compatibility limitation in Windows restricted mode. Permissions are never automatically broadened; workbench Git keeps its existing approval route.",
+    "检查依据本机随包清单，不代替更新签名验证；报告不包含项目正文、用户路径或凭据 / Local inventory checks do not verify update signatures; project content, user paths and credentials are excluded"
+  ]
+}

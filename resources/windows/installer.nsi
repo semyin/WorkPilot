@@ -15,6 +15,8 @@ ManifestDPIAwareness PerMonitorV2
 ; Upstream: tauri-cli-v2.12.1, crates/tauri-bundler/src/bundle/windows/nsis/installer.nsi
 ; Upstream MIT licensing is retained in TAURI-LICENSE-MIT.
 SetCompressor "{{compression}}"
+; Skip comparisons against previously written data blocks during packing.
+SetDatablockOptimize off
 !endif
 
 ; Keep above !include to stay ahead of any plugin command
@@ -780,11 +782,11 @@ FunctionEnd
 
 Section Uninstall
 
+  !insertmacro CheckIfAppIsRunning "$INSTDIR\${MAINBINARYNAME}.exe" "${PRODUCTNAME}"
+
   !ifmacrodef NSIS_HOOK_PREUNINSTALL
     !insertmacro NSIS_HOOK_PREUNINSTALL
   !endif
-
-  !insertmacro CheckIfAppIsRunning "$INSTDIR\${MAINBINARYNAME}.exe" "${PRODUCTNAME}"
 
   ; Delete the app directory and its content from disk
   ; Copy main executable

@@ -1,0 +1,11 @@
+
+> workpilot@0.1.0-alpha.12.1 bundle:installer
+> node scripts/installer-p12.mjs
+
+        Warn Skipping binary patching for D:\workspace\kplocker\WorkPilot\target\release\workpilot-desktop.exe due to --no-binary-patching flag.
+        Info Target: x64
+     Running makensis to produce D:\workspace\kplocker\WorkPilot\target\release\bundle\nsis\WorkPilot_0.1.0-alpha.12.1_x64-setup.exe
+    Finished 1 bundle at:
+        D:\workspace\kplocker\WorkPilot\target\release\bundle\nsis\WorkPilot_0.1.0-alpha.12.1_x64-setup.exe (676.72 MiB)
+
+{"installer":"WorkPilot_0.1.0-alpha.12.1_x64-setup.exe","bytes":709596180}

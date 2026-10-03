@@ -21,7 +21,7 @@ const output = resolve(
 await mkdir(output, { recursive: true });
 const binary =
   process.env.WORKPILOT_ENGINE_BINARY ||
-  join(root, "artifacts/workpilot-p12-install-2026-10-03/preview/workpilot-sidecar.exe");
+  join(root, "artifacts/workpilot-p12-browser-setup-2026-10-04/preview/workpilot-sidecar.exe");
 const bundle = dirname(binary),
   fixture = await startToolFixture();
 setFixture(fixture);
@@ -306,6 +306,10 @@ try {
 
   const damaged = await mkdtemp(join(output, "损坏 安装-"));
   await copyFile(binary, join(damaged, "workpilot-sidecar.exe"));
+  await copyFile(
+    join(bundle, "workpilot-runtime-check.exe"),
+    join(damaged, "workpilot-runtime-check.exe"),
+  );
   process.env.WORKPILOT_ENGINE_BINARY = join(damaged, "workpilot-sidecar.exe");
   await writeFile(join(damaged, "worker.bin"), "valid");
   const catalog = {
@@ -348,10 +352,16 @@ try {
   catalog.components[0].files[0].path = "../outside.txt";
   await writeFile(manifest, JSON.stringify(catalog));
   assert.equal((await check()).kind, "error");
+  const checker = join(damaged, "workpilot-runtime-check.exe");
+  await rename(checker, checker + ".saved");
+  const missingChecker = await check();
+  assert.equal(missingChecker.kind, "error");
+  assert.match(missingChecker.message, /Runtime checker is missing/);
+  await rename(checker + ".saved", checker);
   await rename(manifest, join(damaged, "saved-catalog.json"));
   assert.equal((await check()).report.manifest_present, false);
   report.checks.push(
-    "damaged_missing_and_traversal_files_are_rejected_missing_tool_does_not_use_global_python",
+    "damaged_missing_traversal_and_missing_checker_rejected_no_global_python_fallback",
   );
   await engine.close();
   engine = null;

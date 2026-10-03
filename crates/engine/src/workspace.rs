@@ -25,6 +25,7 @@ impl Workspace {
         if !matches!(
             &request.command,
             Command::InspectInstallation { .. }
+                | Command::BrowserSetup { .. }
                 | Command::Memory { .. }
                 | Command::Workspace { .. }
                 | Command::Read {
@@ -55,7 +56,15 @@ impl Workspace {
                 let verify = *verify_hashes;
                 match tokio::task::spawn_blocking(move || workpilot_platform::runtimes::inspect(verify, checks_stop)).await {
                     Ok(Ok(report)) => Response::Installation { report },
-                    _ => Response::Error { code: ErrorCode::InvalidRequest, message: "无法完成环境检查，清单可能损坏或检查已取消 / Installation check failed or was cancelled".into() },
+                    Ok(Err(e)) => Response::Error { code: ErrorCode::InvalidRequest, message: e.to_string() },
+                    Err(_) => Response::Error { code: ErrorCode::InvalidRequest, message: "环境检查程序未正常完成，请重新检查 / Installation worker did not finish; check again".into() },
+                }
+            } else if let Command::BrowserSetup { action } = &req.command {
+                let action = action.clone();
+                match tokio::task::spawn_blocking(move || workpilot_platform::browser_setup::perform(&action)).await {
+                    Ok(Ok(report)) => Response::BrowserSetup { report },
+                    Ok(Err(e)) => Response::Error { code: ErrorCode::InvalidRequest, message: e.to_string() },
+                    Err(_) => Response::Error { code: ErrorCode::InvalidRequest, message: "浏览器连接配置未完成，请重新检查 / Browser setup did not finish; check again".into() },
                 }
             } else if matches!(&req.command, Command::Memory { .. }) {
                 let saved = req.clone();

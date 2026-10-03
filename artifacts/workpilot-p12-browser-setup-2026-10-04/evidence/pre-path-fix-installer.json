@@ -1,0 +1,24 @@
+{
+    "at":  "2026-10-03T16:31:10.5100479Z",
+    "environment":  "Windows Home developer machine; not a clean OS",
+    "installFolder":  "中文 安装-b010456fc30a4b47aed8f90a7f911301",
+    "checks":  [
+                   "current_user_silent_install_in_chinese_space_path_and_uninstall_registration",
+                   "installed_engine_inventory_supported_runtime_workflows_and_known_limits_recorded",
+                   "installed_office_renders_real_documents_without_external_image_fetches",
+                   "installed_native_desktop_checks_and_diagnostic_export",
+                   "uninstall_removes_only_owned_program_and_preserves_projects_and_unlisted_files",
+                   "existing_companion_and_probe_registrations_in_both_registry_views_preserved"
+               ],
+    "status":  "passed_with_known_failure",
+    "knownFailures":  [
+                          {
+                              "id":  "T-P12-04",
+                              "component":  "Git in AppContainer",
+                              "observed":  "fatal: unable to get current working directory: Permission denied",
+                              "scope":  "Generic git init cannot resolve directory ancestors under restricted permissions; no broader permission fallback. Full-access commands and existing approved workbench Git operations work."
+                          }
+                      ],
+    "preservedDatabaseFiles":  12,
+    "preexistingApplicationProcessesStillRunning":  1
+}

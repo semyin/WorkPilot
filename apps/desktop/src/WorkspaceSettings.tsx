@@ -8,6 +8,7 @@ import type {
 import { executionCommand } from "./executionClient";
 import { useWords } from "./workspaceClient";
 import { InstallationPanel } from "./InstallationPanel";
+import { BrowserSetupPanel } from "./BrowserSetupPanel";
 export function WorkspaceSettings({
   preferences,
   scheduler,
@@ -138,11 +139,15 @@ export function WorkspaceSettings({
           </small>
         </details>
         <details>
+          <summary>{tr("Chrome / Edge 连接设置", "Chrome / Edge connection setup")}</summary>
+          <BrowserSetupPanel />
+        </details>
+        <details>
           <summary>{tr("浏览器、技能与插件", "Browser, skills and plugins")}</summary>
           <p>
             {tr(
-              "工作台顶部可管理技能与插件，右侧浏览器面板可启动内置浏览器或连接日常 Chrome/Edge。第三方插件的额外依赖仍需按其说明配置。",
-              "Manage skills and plugins from the workspace toolbar. The browser panel provides a bundled browser and daily Chrome/Edge connections. Third-party plugins may need additional dependencies.",
+              "工作台顶部可管理技能与插件，浏览器面板可启动独立的 Chrome/Edge 或连接日常浏览器。当前需要电脑已有 Chrome/Edge。第三方插件的额外依赖仍需按其说明配置。",
+              "Manage skills and plugins from the workspace toolbar. The browser panel starts an isolated Chrome/Edge or connects your daily browser. Chrome/Edge currently needs to be installed. Third-party plugins may need additional dependencies.",
             )}
           </p>
         </details>

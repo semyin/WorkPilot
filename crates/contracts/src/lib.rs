@@ -46,6 +46,9 @@ pub struct Request {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 pub enum Command {
+    BrowserSetup {
+        action: BrowserSetupAction,
+    },
     InspectInstallation {
         verify_hashes: bool,
     },
@@ -793,6 +796,9 @@ pub struct ContentPage {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case")]
 pub enum Response {
+    BrowserSetup {
+        report: BrowserSetupReport,
+    },
     Installation {
         report: InstallationReport,
     },
@@ -897,6 +903,10 @@ pub fn typescript() -> String {
     export!(
         RuntimeHealth,
         InstallationReport,
+        SetupBrowser,
+        BrowserSetupAction,
+        BrowserRegistration,
+        BrowserSetupReport,
         ScheduleRule,
         ScheduleSpec,
         SchedulePlan,

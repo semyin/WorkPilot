@@ -1,4 +1,4 @@
-param([Parameter(Mandatory=$true)][string]$Installer)
+﻿param([Parameter(Mandatory=$true)][string]$Installer)
 $ErrorActionPreference = 'Stop'
 $repo = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $testRoot = Join-Path $repo '.test-results/installer'
@@ -14,6 +14,8 @@ if ((Get-ItemProperty -LiteralPath $runKey -Name WorkPilot -ErrorAction Silently
 $otherApps = @(Get-CimInstance Win32_Process -Filter "Name='workpilot-desktop.exe' OR Name='WorkPilot.exe'")
 if ($otherApps | Where-Object { -not $_.ExecutablePath -or $_.ExecutablePath.StartsWith($installRoot + [IO.Path]::DirectorySeparatorChar,[StringComparison]::OrdinalIgnoreCase) }) { throw 'Unable to confirm process ownership for the temporary install' }
 $node = @(Get-Command node -CommandType Application)[0].Source
+$browserRegistrationsBefore = & $node (Join-Path $repo 'scripts/browser-registration-snapshot.mjs')
+if($LASTEXITCODE -ne 0){throw 'Cannot record browser registration baseline'}
 New-Item -ItemType Directory -Path $installRoot | Out-Null
 $project = Join-Path $testRoot ('保留 项目-' + [Guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $project | Out-Null
@@ -80,6 +82,9 @@ finally {
         Remove-Item -LiteralPath $productKey
       }
       $report.checks += 'uninstall_removes_only_owned_program_and_preserves_projects_and_unlisted_files'
+      $browserRegistrationsAfter = & $node (Join-Path $repo 'scripts/browser-registration-snapshot.mjs')
+      if($LASTEXITCODE -ne 0 -or $browserRegistrationsAfter -cne $browserRegistrationsBefore){throw 'Existing daily-browser registrations changed'}
+      $report.checks += 'existing_companion_and_probe_registrations_in_both_registry_views_preserved'
     } catch { $report.status='failed'; $report.cleanupError=$_.Exception.Message }
   }
   [IO.File]::WriteAllText((Join-Path $testRoot 'report.json'),($report | ConvertTo-Json -Depth 8),(New-Object System.Text.UTF8Encoding($false)))

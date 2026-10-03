@@ -254,6 +254,29 @@ fn main_only(view: &Webview) -> Result<(), String> {
 }
 
 #[tauri::command]
+fn browser_extension_folder(view: Webview) -> Result<(), String> {
+    main_only(&view)?;
+    let folder =
+        workpilot_platform::browser_setup::extension_directory().map_err(|e| e.to_string())?;
+    #[cfg(windows)]
+    {
+        use std::os::windows::process::CommandExt;
+        let windows = std::env::var_os("SystemRoot").ok_or("Windows directory is unavailable")?;
+        ProcessCommand::new(std::path::PathBuf::from(windows).join("explorer.exe"))
+            .arg(folder)
+            .creation_flags(0x08000000)
+            .spawn()
+            .map_err(|e| e.to_string())?;
+    }
+    #[cfg(not(windows))]
+    {
+        let _ = folder;
+        return Err("Browser setup is not implemented on this platform".into());
+    }
+    #[cfg(windows)]
+    Ok(())
+}
+#[tauri::command]
 fn extension_open_login(view: Webview, url: String) -> Result<(), String> {
     main_only(&view)?;
     let parsed = tauri::Url::parse(&url).map_err(|_| "无效登录地址。")?;
@@ -563,6 +586,7 @@ fn main() {
             engine_command,
             project_open_external,
             extension_open_login,
+            browser_extension_folder,
             project_preview_open,
             project_preview_close,
             hide_window,

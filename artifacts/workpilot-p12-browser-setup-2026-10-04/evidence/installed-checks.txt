@@ -1,0 +1,153 @@
+{
+  "at": "2026-10-03T17:40:20.921Z",
+  "platform": "win32",
+  "binarySha256": "b5abba4eb724d02bb8c37127a4d55492b20a312e6bb2281b052a1f506886a02b",
+  "environment": "Windows developer machine; engine PATH restricted to System32. This is not a clean-OS test.",
+  "checks": [
+    "full_installed_inventory_verified_and_engine_responsive",
+    "request_approval_workbench_git_commit_uses_bundled_git_and_explicit_approval",
+    "full_access_bundled_python_unicode_node_git_commit_without_developer_PATH",
+    "request_approval_bundled_python_unicode_node_work_and_git_compatibility_failure_is_recorded",
+    "sandbox_uses_only_owned_runtime_roots_and_restores_their_permissions",
+    "damaged_missing_traversal_and_missing_checker_rejected_no_global_python_fallback"
+  ],
+  "verificationMs": 11047,
+  "components": [
+    {
+      "id": "application",
+      "files": 6,
+      "bytes": 29225468
+    },
+    {
+      "id": "node",
+      "files": 5,
+      "bytes": 87180776
+    },
+    {
+      "id": "python",
+      "files": 34,
+      "bytes": 22640669
+    },
+    {
+      "id": "git",
+      "files": 373,
+      "bytes": 95772593
+    },
+    {
+      "id": "documents",
+      "files": 5244,
+      "bytes": 167872404
+    },
+    {
+      "id": "office",
+      "files": 19448,
+      "bytes": 1579736503
+    },
+    {
+      "id": "companion",
+      "files": 12,
+      "bytes": 234094
+    }
+  ],
+  "knownFailures": [
+    {
+      "id": "T-P12-04",
+      "component": "Git in AppContainer",
+      "observed": "fatal: unable to get current working directory: Permission denied",
+      "scope": "Generic git init cannot resolve directory ancestors under restricted permissions; no broader permission fallback. Full-access commands and existing approved workbench Git operations work."
+    }
+  ],
+  "status": "passed_with_known_failure"
+}
+{
+  "at": "2026-10-03T17:40:51.176Z",
+  "platform": "win32",
+  "binary": {
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\installer\\中文 安装-cde3ee415fd242b9a05ef30fa1a5d330\\workpilot-sidecar.exe",
+    "sha256": "b5abba4eb724d02bb8c37127a4d55492b20a312e6bb2281b052a1f506886a02b"
+  },
+  "checks": [
+    "real_docx_xlsx_pptx_layout_pages_in_appcontainer_source_unchanged_and_cache_paging",
+    "preview_and_preview_cancellation_are_bound_to_attachment_owner",
+    "cancelled_preview_returns_an_error_then_can_restart_external_refresh_uses_new_bytes_old_snapshot_stays_original",
+    "page_limit_is_enforced_before_rendering",
+    "office_external_image_relationship_does_not_contact_live_http_canary"
+  ],
+  "renders": [
+    {
+      "format": "docx",
+      "pages": 1,
+      "firstRenderMs": 16550,
+      "sourceSha256": "71d89cd5dabc87b660f471d199cc343a52f52be4423afa463298349f55bf4ba7",
+      "renderer": "LibreOfficeKit 26.8.0 · eebf1580cfbc"
+    },
+    {
+      "format": "xlsx",
+      "pages": 1,
+      "firstRenderMs": 11161,
+      "sourceSha256": "2c4d7b217dcc1569c1082adabb62d75f2f0b84da8cb34addada388af80a82eec",
+      "renderer": "LibreOfficeKit 26.8.0 · eebf1580cfbc"
+    },
+    {
+      "format": "pptx",
+      "pages": 2,
+      "firstRenderMs": 10732,
+      "sourceSha256": "97240693000942de1252ce42ae49689162af09b4f75752038f9b9feef984451c",
+      "renderer": "LibreOfficeKit 26.8.0 · eebf1580cfbc"
+    }
+  ],
+  "cancelAcknowledgedMs": 2,
+  "cancelCompletedMs": 3005,
+  "externalImageRequests": 0,
+  "status": "passed"
+}
+{
+  "at": "2026-10-03T17:42:16.691Z",
+  "platform": "win32",
+  "binarySha256": "693aa710359fd8cbf8c3fd0be330eab629fdd9b10716419a76ea1959da163927",
+  "service": "Actual Windows desktop; isolated test data; PATH contains System32 only; network blocked at test browser context (not an OS firewall)",
+  "checks": [
+    "native_browser_setup_status_copy_folder_and_existing_registration_conflicts",
+    "native_offline_ui_quick_full_inspection_and_real_download_without_private_paths",
+    "english_browser_setup_and_current_daily_browser_registrations_preserved",
+    "english_settings_render_without_horizontal_overflow",
+    "native_application_exits_cleanly"
+  ],
+  "browserStates": [
+    {
+      "browser": "chrome",
+      "state": "conflict"
+    },
+    {
+      "browser": "edge",
+      "state": "conflict"
+    }
+  ],
+  "quickCheckMs": 3470,
+  "fullCheckMs": 10158,
+  "status": "passed"
+}
+{
+    "at":  "2026-10-03T17:39:02.9330932Z",
+    "environment":  "Windows Home developer machine; not a clean OS",
+    "installFolder":  "中文 安装-cde3ee415fd242b9a05ef30fa1a5d330",
+    "checks":  [
+                   "current_user_silent_install_in_chinese_space_path_and_uninstall_registration",
+                   "installed_engine_inventory_supported_runtime_workflows_and_known_limits_recorded",
+                   "installed_office_renders_real_documents_without_external_image_fetches",
+                   "installed_native_desktop_checks_and_diagnostic_export",
+                   "uninstall_removes_only_owned_program_and_preserves_projects_and_unlisted_files",
+                   "existing_companion_and_probe_registrations_in_both_registry_views_preserved"
+               ],
+    "status":  "passed_with_known_failure",
+    "knownFailures":  [
+                          {
+                              "id":  "T-P12-04",
+                              "component":  "Git in AppContainer",
+                              "observed":  "fatal: unable to get current working directory: Permission denied",
+                              "scope":  "Generic git init cannot resolve directory ancestors under restricted permissions; no broader permission fallback. Full-access commands and existing approved workbench Git operations work."
+                          }
+                      ],
+    "preservedDatabaseFiles":  24,
+    "preexistingApplicationProcessesStillRunning":  1
+}

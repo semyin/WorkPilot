@@ -4,9 +4,9 @@ import { execFileSync } from "node:child_process";
 import { join, dirname, relative, resolve, isAbsolute } from "node:path";
 import { root } from "./cargo.mjs";
 
-export const destination = join(root, "artifacts/workpilot-p12-install-2026-10-03");
+export const destination = join(root, "artifacts/workpilot-p12-browser-setup-2026-10-04");
 const preview = join(destination, "preview");
-const previous = join(root, "artifacts/workpilot-p11-schedules-2026-10-03");
+const previous = join(root, "artifacts/workpilot-p12-install-2026-10-03");
 const hash = (b) => createHash("sha256").update(b).digest("hex");
 const build = JSON.parse(await readFile(join(root, ".local/desktop-release-receipt.json"), "utf8"));
 const sources = JSON.parse(
@@ -25,6 +25,8 @@ function checked(base, path) {
   return p;
 }
 const files = new Map();
+if (!build.browserSetup || !build.companion || !build.runtimeCheck)
+  throw new Error("Build the current companion/setup tools before packaging");
 async function copy(source, path, expected) {
   const bytes = await readFile(source),
     sha256 = hash(bytes);
@@ -54,6 +56,16 @@ await copy(
   join(root, "target/release/workpilot-engine.exe"),
   "workpilot-sidecar.exe",
   build.engine,
+);
+await copy(
+  join(root, "target/release/workpilot-browser-setup.exe"),
+  "workpilot-browser-setup.exe",
+  build.browserSetup,
+);
+await copy(
+  join(root, "target/release/workpilot-runtime-check.exe"),
+  "workpilot-runtime-check.exe",
+  build.runtimeCheck,
 );
 // Build from current prepared outputs, never require an ignored historical binary package.
 for (const runtime of ["office-runtime", "document-runtime"]) {
@@ -90,7 +102,11 @@ for (const id of ["node", "python", "git"]) {
   }
 }
 // Refresh app-owned helpers, scripts and inventories from the current release build.
-await copy(join(root, "target/release/companion.exe"), "browser-companion/companion.exe");
+await copy(
+  join(root, "target/release/companion.exe"),
+  "browser-companion/companion.exe",
+  build.companion,
+);
 await copy(
   join(root, "services/browser/driver.mjs"),
   "browser-runtime/services/browser/driver.mjs",
@@ -231,7 +247,14 @@ await writeFile(
       bundle: {
         resources,
         windows: {
-          nsis: { template: join(root, "resources/windows/installer.nsi").replaceAll("\\", "/") },
+          nsis: {
+            compression: "zlib",
+            template: join(root, "resources/windows/installer.nsi").replaceAll("\\", "/"),
+            installerHooks: join(root, "resources/windows/browser-companion-hooks.nsh").replaceAll(
+              "\\",
+              "/",
+            ),
+          },
         },
       },
     },

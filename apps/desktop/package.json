@@ -1,6 +1,6 @@
 {
   "name": "@workpilot/desktop",
-  "version": "0.1.0-alpha.12",
+  "version": "0.1.0-alpha.12.1",
   "private": true,
   "type": "module",
   "scripts": {

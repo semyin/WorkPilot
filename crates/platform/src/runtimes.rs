@@ -13,6 +13,8 @@ use std::{
 use workpilot_contracts::{InstallationReport, RuntimeHealth, SCHEMA_VERSION};
 type Result<T> = io::Result<T>;
 const MANIFEST: &str = "runtime-catalog.json";
+mod worker;
+pub use worker::worker_main;
 pub fn app_root() -> Result<PathBuf> {
     std::env::current_exe()?
         .parent()
@@ -186,9 +188,19 @@ fn checked_file(base: &Path, p: &str) -> Result<PathBuf> {
     Ok(path)
 }
 pub fn inspect(verify: bool, stop: Arc<AtomicBool>) -> Result<InstallationReport> {
-    inspect_at(&app_root()?, verify, stop)
+    worker::inspect(verify, stop)
 }
+#[cfg(test)]
 fn inspect_at(base: &Path, verify: bool, stop: Arc<AtomicBool>) -> Result<InstallationReport> {
+    inspect_with_progress(base, verify, stop, || Ok(()))
+}
+fn inspect_with_progress(
+    base: &Path,
+    verify: bool,
+    stop: Arc<AtomicBool>,
+    mut progress: impl FnMut() -> Result<()>,
+) -> Result<InstallationReport> {
+    progress()?;
     let mut report = InstallationReport {
         report_version: 1,
         app_version: env!("CARGO_PKG_VERSION").into(),
@@ -266,17 +278,20 @@ fn inspect_at(base: &Path, verify: bool, stop: Arc<AtomicBool>) -> Result<Instal
             {
                 return Err(io::Error::other("Invalid runtime file declaration"));
             }
+            progress()?;
             h.bytes = h
                 .bytes
                 .checked_add(file.bytes)
                 .ok_or_else(|| io::Error::other("Runtime size overflow"))?;
             let state = (|| -> Result<()> {
                 let p = checked_file(base, &file.path)?;
-                let mut input = fs::File::open(p)?;
-                if input.metadata()?.len() != file.bytes {
+                // A quick check reads metadata only. Opening file contents can
+                // block in OS filters even when only the length was requested.
+                if fs::metadata(&p)?.len() != file.bytes {
                     return Err(io::Error::other("size mismatch"));
                 }
                 if verify {
+                    let mut input = fs::File::open(p)?;
                     let mut hash = Sha256::new();
                     let mut buffer = [0u8; 65536];
                     let mut n = 0u64;
@@ -284,6 +299,7 @@ fn inspect_at(base: &Path, verify: bool, stop: Arc<AtomicBool>) -> Result<Instal
                         if stop.load(Ordering::Relaxed) {
                             return Err(io::Error::new(io::ErrorKind::Interrupted, "cancelled"));
                         }
+                        progress()?;
                         let size = input.read(&mut buffer)?;
                         if size == 0 {
                             break;

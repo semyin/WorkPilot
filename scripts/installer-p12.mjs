@@ -3,7 +3,8 @@ import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { join } from "node:path";
 import { root, run } from "./cargo.mjs";
-const destination = join(root, "artifacts/workpilot-p12-install-2026-10-03");
+const destination = join(root, "artifacts/workpilot-p12-browser-setup-2026-10-04");
+const started = Date.now();
 await run(
   process.execPath,
   [
@@ -58,6 +59,9 @@ await writeFile(
       sha256: createHash("sha256").update(bytes).digest("hex"),
       command: "npm run bundle:installer",
       signed: false,
+      elapsedSeconds: (Date.now() - started) / 1000,
+      compression: nsis.match(/^SetCompressor "(\w+)"/m)?.[1] || "unknown",
+      dataBlockOptimization: !nsis.includes("SetDatablockOptimize off"),
       webview2: {
         source: "https://go.microsoft.com/fwlink/?linkid=2124701",
         installerFileVersion: webviewVersion,

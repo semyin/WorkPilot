@@ -14,6 +14,7 @@ export function InstallationPanel() {
     busyRef.current = true;
     setBusy(true);
     setError("");
+    setReport(null);
     try {
       const r = await executionCommand({ kind: "inspect_installation", verify_hashes });
       if (r.kind !== "installation") throw new Error("Unexpected installation report");
@@ -55,7 +56,7 @@ export function InstallationPanel() {
       <p>
         {tr(
           "检查随包工具是否齐全。完整检查会核对文件内容，可能需要几十秒。",
-          "Check the tools included with this installation. Full verification may take a few seconds.",
+          "Check the tools included with this installation. Full verification may take tens of seconds.",
         )}
       </p>
       <div className="model-actions">

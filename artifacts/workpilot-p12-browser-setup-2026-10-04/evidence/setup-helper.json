@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-03T17:35:50.4710877Z",
+  "status": "passed",
+  "binarySha256": "ee63a80728ee9d27ab501d62a6203b7ab3cd92b6defe8118a450b46bd326284b",
+  "assetsReady": true,
+  "extensionDirectory": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-browser-setup-2026-10-04\\preview\\browser-companion\\extension",
+  "existingRegistrationsUnchanged": true,
+  "browsers": [
+    {
+      "browser": "chrome",
+      "state": "conflict",
+      "can_register": false,
+      "can_unregister": false,
+      "other_location": "D:\\workspace\\kplocker\\WorkPilot\\.local\\browser-companion\\com.workpilot.browser_companion.json",
+      "fallback_detected": false
+    },
+    {
+      "browser": "edge",
+      "state": "conflict",
+      "can_register": false,
+      "can_unregister": false,
+      "other_location": "D:\\workspace\\kplocker\\WorkPilot\\.local\\browser-companion\\com.workpilot.browser_companion.json",
+      "fallback_detected": false
+    }
+  ]
+}

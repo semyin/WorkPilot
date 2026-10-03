@@ -1,0 +1,65 @@
+{
+  "at": "2026-10-03T17:43:53.062Z",
+  "phase": "P12-browser-setup-slice",
+  "status": "local_checks_pass_with_documented_limits_phase_not_accepted",
+  "appVersion": "0.1.0-alpha.12.1",
+  "schema": 11,
+  "platform": "Windows 11 Home x64 developer machine",
+  "basePushedCommit": "01e6b2f",
+  "thisSliceCommittedOrPushed": false,
+  "checks": {
+    "rust": 122,
+    "rustIgnored": 2,
+    "node": 9,
+    "browserRegistryCases": 6,
+    "runtimeWorkerProcessCases": 3,
+    "actualNsisHookScenarios": 5,
+    "installedEngine": 6,
+    "installedNativeDesktop": 5,
+    "installedOffice": 5,
+    "installer": 6,
+    "localLinks": 515,
+    "sourceFiles": 395,
+    "deliveryFiles": 25123
+  },
+  "installer": {
+    "file": "WorkPilot_0.1.0-alpha.12.1_x64-setup.exe",
+    "bytes": 873936508,
+    "sha256": "3d6b5767231903a12a7ac14dea372a9f41490aa899b593a9fb4d7884d161a613",
+    "compression": "zlib",
+    "signed": false
+  },
+  "fullInventoryMs": 11047,
+  "nativeQuickCheckMs": 3470,
+  "nativeFullCheckMs": 10158,
+  "knownFailures": [
+    {
+      "id": "T-P12-04",
+      "component": "Git in AppContainer",
+      "observed": "fatal: unable to get current working directory: Permission denied",
+      "scope": "Generic git init cannot resolve directory ancestors under restricted permissions; no broader permission fallback. Full-access commands and existing approved workbench Git operations work."
+    }
+  ],
+  "unresolvedObservation": "T-P12-06: test engine stack blocked in Windows CreateFileW on a bundled Office resource, while normal engine requests stayed responsive. Independent owned scanner, metadata-only quick check, idle/total timeout and cancellation implemented and tested. OS-level blocking source not uniquely determined; clean-machine and stress validation still pending.",
+  "preservedDatabaseFiles": 24,
+  "preexistingApplicationProcessesStillRunning": 1,
+  "previousDeliveryPreserved": true,
+  "credentialPatternMatches": 0,
+  "pending": [
+    "T-P12-01",
+    "T-P12-02",
+    "T-P12-03",
+    "T-P12-04",
+    "T-P12-05 data cleanup",
+    "T-P12-06 OS root cause and stress validation",
+    "E-P12-01",
+    "E-P08-01",
+    "E-P09-01",
+    "E-P10-01",
+    "E-P10-02",
+    "E-P11-01",
+    "E-P11-02",
+    "O-01/Q44",
+    "macOS/Linux"
+  ]
+}
