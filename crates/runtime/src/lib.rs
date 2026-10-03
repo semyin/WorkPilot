@@ -3,6 +3,7 @@ mod browser;
 pub mod context;
 mod extensions;
 mod media;
+mod memory;
 mod mutation;
 mod real_tools;
 mod team;
@@ -249,6 +250,7 @@ impl<B: ModelBackend + Send + Sync, F: FaultObserver> ExecutionEnvironment<B, F>
                     ));
                 }
                 definitions.extend(team_definitions);
+                definitions.extend(memory::definitions());
                 if let Some(client) = &self.workbench {
                     definitions.extend(workpilot_workbench::media::model::definitions(
                         snapshot.task.mode,
@@ -278,6 +280,7 @@ impl<B: ModelBackend + Send + Sync, F: FaultObserver> ExecutionEnvironment<B, F>
             input.messages[0].content.push(ModelContent::Text {
                 text: team_context.clone(),
             });
+            self.refresh_memory(&mut input, &snapshot).await?;
             while serde_json::to_vec(&input)
                 .map_err(|_| diagnostic::error(ModelErrorCode::Configuration))?
                 .len()
@@ -304,6 +307,7 @@ impl<B: ModelBackend + Send + Sync, F: FaultObserver> ExecutionEnvironment<B, F>
                 input.messages[0].content.push(ModelContent::Text {
                     text: team_context.clone(),
                 });
+                self.refresh_memory(&mut input, &snapshot).await?;
             }
             if let Some(client) = &self.workbench {
                 let content = client
@@ -497,6 +501,9 @@ impl<B: ModelBackend + Send + Sync, F: FaultObserver> ExecutionEnvironment<B, F>
         if step.state == ExecutionStepState::NeedsReview && team::is_team(&call.name) {
             return self.team_tool(snapshot, &action, &call).await;
         }
+        if step.state == ExecutionStepState::NeedsReview && memory::is_memory(&call.name) {
+            return self.memory_tool(snapshot, &action, &call).await;
+        }
         if step.state == ExecutionStepState::NeedsReview {
             if workpilot_tools::is_real(&call.name) && self.reconcile_file(&action, &call).await? {
                 return Ok(None);
@@ -535,6 +542,9 @@ impl<B: ModelBackend + Send + Sync, F: FaultObserver> ExecutionEnvironment<B, F>
         }
         if team::is_team(&call.name) {
             return self.team_tool(snapshot, &action, &call).await;
+        }
+        if memory::is_memory(&call.name) {
+            return self.memory_tool(snapshot, &action, &call).await;
         }
         if matches!(call.name.as_str(), "browser" | "browser_sessions") {
             return self.browser_tool(snapshot, &action, &call).await;

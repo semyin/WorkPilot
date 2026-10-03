@@ -13,7 +13,9 @@ function teamState(body) {
     const i = text.indexOf(marker);
     if (i >= 0) {
       try {
-        return JSON.parse(text.slice(i + marker.length));
+        // Platform sections share a text block. Read just the team's JSON line;
+        // later sections (for example current memories) are independent state.
+        return JSON.parse(text.slice(i + marker.length).split("\n")[0]);
       } catch {}
     }
   }

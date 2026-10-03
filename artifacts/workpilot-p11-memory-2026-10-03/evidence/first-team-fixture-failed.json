@@ -1,0 +1,224 @@
+{
+  "at": "2026-10-03T12:23:45.464Z",
+  "service": "synthetic HTTP model; independent sessions and actual files",
+  "checks": [],
+  "result": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: {\"run\":{\"id\":\"03ec3e46-1f68-49f2-824a-bffc854a6073\",\"task_id\":\"9c55214b-10dd-42d5-8408-f00de7d26095\",\"agent_id\":\"f7272f6d-b619-4b1c-8375-87c8b51f4235\",\"state\":\"interrupted\",\"started_at_ms\":1791030225608,\"ended_at_ms\":1791030229699,\"result\":{\"object_id\":\"cf8ef74313665d9f435eb8a7babeee84d6eb8608c2e7fd1769b1cc2b37993ec1\",\"bytes\":111,\"media_type\":\"application/json\"},\"failure_code\":\"step_limit\"},\"session_id\":\"b15210cb-2346-41cb-bea6-0dac77060a82\",\"request_id\":\"c904ed2c-9b7b-458d-b90a-151af5892c6b\",\"predecessor_id\":null,\"profile\":{\"id\":\"603c8141-7630-446c-b938-eb34e2747629\",\"label\":\"team-7f7c4947-2f18-43aa-a952-e77c1d77a969\",\"protocol\":\"responses\",\"base_url\":\"http://127.0.0.1:49797\",\"model\":\"team-7f7c4947-2f18-43aa-a952-e77c1d77a969\",\"credential\":null,\"supports_tools\":true,\"supports_images\":null,\"revision\":1,\"auth\":\"none\",\"capabilities\":{\"text\":{\"supported\":null,\"source\":\"unknown\",\"checked_at_ms\":null},\"streaming\":{\"supported\":null,\"source\":\"unknown\",\"checked_at_ms\":null},\"tools\":{\"supported\":true,\"source\":\"user\",\"checked_at_ms\":null},\"images\":{\"supported\":null,\"source\":\"unknown\",\"checked_at_ms\":null},\"usage\":{\"supported\":null,\"source\":\"unknown\",\"checked_at_ms\":null}},\"options\":{\"max_output_tokens\":1024,\"temperature\":null,\"reasoning_effort\":null,\"chat_token_parameter\":\"max_completion_tokens\",\"timeout_ms\":20000,\"idle_timeout_ms\":10000,\"anthropic_version\":\"2023-06-01\"},\"pricing\":null},\"mode\":\"execute\",\"limits\":{\"max_steps\":64,\"max_duration_ms\":90000,\"context_bytes\":262144,\"max_result_bytes\":65536},\"steps\":64,\"reason\":\"step_limit\",\"diagnostic\":null}\n+ actual - expected\n\n+ 'interrupted'\n- 'completed'\n\n    at file:///D:/workspace/kplocker/WorkPilot/scripts/teams-engine-test.mjs:156:10\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+  "requests": [
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030225643,
+      "results": 0
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030225771,
+      "results": 1
+    },
+    {
+      "model": "member-a",
+      "at": 1791030225788,
+      "results": 0
+    },
+    {
+      "model": "member-b",
+      "at": 1791030225795,
+      "results": 0
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030225902,
+      "results": 2
+    },
+    {
+      "model": "member-a",
+      "at": 1791030226007,
+      "results": 1
+    },
+    {
+      "model": "member-b",
+      "at": 1791030226028,
+      "results": 1
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030226037,
+      "results": 3
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030226201,
+      "results": 4
+    },
+    {
+      "model": "member-b",
+      "at": 1791030226207,
+      "results": 2
+    },
+    {
+      "model": "member-a",
+      "at": 1791030226215,
+      "results": 2
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030226328,
+      "results": 5
+    },
+    {
+      "model": "member-join",
+      "at": 1791030226434,
+      "results": 0
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030226445,
+      "results": 6
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030226584,
+      "results": 7
+    },
+    {
+      "model": "member-join",
+      "at": 1791030226591,
+      "results": 1
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030226712,
+      "results": 8
+    },
+    {
+      "model": "member-join",
+      "at": 1791030226723,
+      "results": 2
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030226852,
+      "results": 9
+    },
+    {
+      "model": "member-join",
+      "at": 1791030226867,
+      "results": 3
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030227009,
+      "results": 10
+    },
+    {
+      "model": "member-join",
+      "at": 1791030227018,
+      "results": 4
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030227112,
+      "results": 11
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030227229,
+      "results": 12
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030227346,
+      "results": 13
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030227473,
+      "results": 14
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030227574,
+      "results": 15
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030227692,
+      "results": 16
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030227825,
+      "results": 17
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030227952,
+      "results": 18
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030228082,
+      "results": 19
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030228213,
+      "results": 20
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030228348,
+      "results": 21
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030228478,
+      "results": 22
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030228594,
+      "results": 23
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030228710,
+      "results": 24
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030228833,
+      "results": 25
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030228944,
+      "results": 26
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030229071,
+      "results": 27
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030229214,
+      "results": 28
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030229328,
+      "results": 29
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030229457,
+      "results": 30
+    },
+    {
+      "model": "team-7f7c4947-2f18-43aa-a952-e77c1d77a969",
+      "at": 1791030229589,
+      "results": 31
+    }
+  ]
+}

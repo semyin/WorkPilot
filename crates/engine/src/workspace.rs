@@ -22,7 +22,8 @@ impl Workspace {
     pub fn dispatch(&mut self, request: &Request) -> Handled {
         if !matches!(
             &request.command,
-            Command::Workspace { .. }
+            Command::Memory { .. }
+                | Command::Workspace { .. }
                 | Command::Read {
                     query: Query::Workspace {
                         query: WorkspaceQuery::SearchRecords { .. }
@@ -46,15 +47,28 @@ impl Workspace {
             request.clone(),
         );
         let handle = tokio::spawn(async move {
-            let result = run(storage, directory, &req, &out).await;
-            let response = match result {
-                Ok(data) => Response::Workspace {
-                    data: Box::new(data),
-                },
-                Err(e) => Response::Error {
-                    code: e.code(),
-                    message: e.to_string(),
-                },
+            let response = if matches!(&req.command, Command::Memory { .. }) {
+                let saved = req.clone();
+                match storage.call(move |s| s.memory_action(&saved)).await {
+                    Ok((data, events)) => {
+                        let _ = crate::publish(&out, events).await;
+                        Response::Memory { data }
+                    }
+                    Err(e) => Response::Error {
+                        code: e.code(),
+                        message: e.to_string(),
+                    },
+                }
+            } else {
+                match run(storage, directory, &req, &out).await {
+                    Ok(data) => Response::Workspace {
+                        data: Box::new(data),
+                    },
+                    Err(e) => Response::Error {
+                        code: e.code(),
+                        message: e.to_string(),
+                    },
+                }
             };
             let _ = out
                 .send(Wire::Reply {

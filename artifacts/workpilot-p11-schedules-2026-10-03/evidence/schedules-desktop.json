@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-03T14:14:11.638Z",
+  "platform": "win32",
+  "binary": {
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p11-schedules-2026-10-03\\preview\\WorkPilot.exe",
+    "sha256": "a3bc9ff837fed391ba0c463d2a6359ebf61bb9036c8c4a52fd261ae1686b8fe5"
+  },
+  "service": "Actual native Windows WebView2 desktop, owned test data and local deterministic model. Real hide/quit/reopen, no OS sleep or real model.",
+  "checks": [
+    "native_create_weekly_plan_preview_timezone_validate_and_enable_disable",
+    "stale_edit_rejected_manual_run_history_and_navigation_to_actual_task",
+    "history_pagination_survives_auto_refresh_and_deleted_plan_keeps_history",
+    "actual_desktop_hidden_ordinary_and_scheduled_tasks_run_restore_does_not_resubmit",
+    "actual_quit_stops_running_task_restart_records_missed_time_without_resuming_or_catch_up",
+    "english_layout_no_horizontal_overflow_escape_closes_dialog_no_js_errors"
+  ],
+  "result": "passed"
+}

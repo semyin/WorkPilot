@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-03T14:03:38.566Z",
+  "platform": "win32",
+  "binary": {
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\target\\release\\workpilot-engine.exe",
+    "sha256": "b17787f88508ba48733c2a1928875fcf9f82442277e0a047312f6d7d4eb7e32d"
+  },
+  "service": "Actual Rust engine, SQLite, local files and deterministic HTTP model fixtures. No real model or OS sleep.",
+  "checks": [
+    "three_protocols_create_independent_tasks_and_manual_request_retry_is_idempotent",
+    "real_wall_clock_once_trigger_persists_and_never_repeats_after_restart",
+    "scheduled_write_waits_for_human_approval_timer_skips_overlap_and_approved_change_runs_once",
+    "all_three_permissions_preserved_rejection_has_no_file_effect_review_evidence_is_saved",
+    "deleting_plan_keeps_active_task_and_history_user_can_continue_it",
+    "model_quota_error_is_visible_and_has_no_automatic_retry_or_fallback",
+    "provider_revision_and_replaced_project_directory_cannot_silently_change_unattended_execution",
+    "scheduled_root_uses_real_multi_assistant_delegation_and_reviews_member_result",
+    "scheduled_member_error_only_stops_branch_parent_explicitly_delegates_replacement",
+    "owned_engine_process_suspend_resume_drains_all_17_due_plans_without_dispatch_not_an_OS_sleep_test",
+    "closed_application_records_missed_time_on_restart_without_catch_up",
+    "schedule_after_claim_recovery_preserves_single_occurrence_without_automatic_resubmit",
+    "schedule_after_create_recovery_preserves_single_occurrence_without_automatic_resubmit",
+    "schedule_after_start_recovery_preserves_single_occurrence_without_automatic_resubmit"
+  ],
+  "result": "passed"
+}

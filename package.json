@@ -56,7 +56,11 @@
     "test:office-preview": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/office-preview-test.mjs",
     "test:media-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/media-engine-test.mjs",
     "test:media-model": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/media-model-test.mjs",
-    "test:media-desktop": "node scripts/media-desktop-smoke.mjs"
+    "test:media-desktop": "node scripts/media-desktop-smoke.mjs",
+    "test:memory-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/memory-engine-test.mjs",
+    "test:memory-desktop": "node scripts/memory-desktop-smoke.mjs",
+    "test:schedules-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/schedules-engine-test.mjs",
+    "test:schedules-desktop": "node scripts/schedules-desktop-smoke.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",

@@ -1,0 +1,52 @@
+{
+  "phase": "P11-memory-and-schedules",
+  "at": "2026-10-03T14:15:38.709Z",
+  "platform": "Windows 11 x64",
+  "status": "implementation_and_local_automation_verified_pending_user_and_external_acceptance",
+  "baseCommit": "727d394",
+  "schema": 11,
+  "build": {
+    "command": "npm run build (Tauri build --no-bundle)",
+    "at": "2026-10-03T14:13:30.896Z",
+    "platform": "win32",
+    "desktop": "a3bc9ff837fed391ba0c463d2a6359ebf61bb9036c8c4a52fd261ae1686b8fe5",
+    "engine": "b17787f88508ba48733c2a1928875fcf9f82442277e0a047312f6d7d4eb7e32d"
+  },
+  "checks": {
+    "rustPassed": 110,
+    "rustIgnored": 2,
+    "nodePassed": 8,
+    "scheduleStorageTests": 9,
+    "schedulesEngineGroups": 14,
+    "nativeDesktopGroups": 6,
+    "memoryRegression": 9,
+    "singleAgentRegression": 9,
+    "teamRegression": 11,
+    "uiRegression": 5
+  },
+  "visualReview": [
+    "schedule-editor-zh.png",
+    "missed-after-restart-zh.png",
+    "schedule-editor-en.png"
+  ],
+  "evidenceUses": "Owned local test data and deterministic HTTP model fixtures; actual engine, SQLite, files and Windows desktop. Process suspend/resume only, not OS sleep.",
+  "notVerified": [
+    "real OS sleep/wake",
+    "real model memory quality and user experience",
+    "system notification combination Q44",
+    "real image service from P10",
+    "macOS/Linux",
+    "clean Windows install and long-running performance"
+  ],
+  "pending": [
+    "E-P11-01",
+    "E-P11-02",
+    "O-01",
+    "E-P10-01",
+    "E-P08-01",
+    "E-P09-01",
+    "E-P10-02"
+  ],
+  "previousDeliveryPreserved": true,
+  "newCommitOrPush": false
+}

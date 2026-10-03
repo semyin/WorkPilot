@@ -1,3 +1,4 @@
+mod schedules;
 mod team_control;
 use crate::models::{Handled, secret_for};
 use sha2::{Digest, Sha256};
@@ -27,6 +28,8 @@ pub struct Tasks {
     root_slots: HashMap<String, Arc<Semaphore>>,
     fault: Option<String>,
     tool_ledger: std::path::PathBuf,
+    schedule_clock: Option<(std::time::Instant, u64)>,
+    schedule_error: bool,
 }
 struct Observer {
     fault: Option<String>,
@@ -65,6 +68,8 @@ impl Tasks {
             .map_err(|_| "Scheduler settings could not load")?;
         Ok(Self {
             workbench: None,
+            schedule_clock: None,
+            schedule_error: false,
             root_slots: HashMap::new(),
             tool_ledger,
             storage,
@@ -84,6 +89,9 @@ impl Tasks {
         })
     }
     pub async fn dispatch(&mut self, request: &Request) -> Handled {
+        if matches!(request.command, Command::Schedules { .. }) {
+            return self.schedule_command(request).await;
+        }
         self.jobs.retain(|_, job| !job.handle.is_finished());
         if matches!(
             &request.command,

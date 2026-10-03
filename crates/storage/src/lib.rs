@@ -4,11 +4,18 @@ mod execution;
 mod execution_tests;
 mod extensions;
 mod media;
+mod memory;
+#[cfg(test)]
+mod memory_tests;
 mod objects;
 #[cfg(test)]
 mod provider_tests;
 mod providers;
 mod redaction;
+mod schedule;
+#[cfg(test)]
+mod schedule_tests;
+pub mod schedule_time;
 mod team;
 #[cfg(test)]
 mod team_tests;
@@ -127,6 +134,8 @@ impl Store {
                 (7, include_str!("../migrations/007_workbench.sql")),
                 (8, include_str!("../migrations/008_extensions.sql")),
                 (9, include_str!("../migrations/009_media.sql")),
+                (10, include_str!("../migrations/010_memory.sql")),
+                (11, include_str!("../migrations/011_schedules.sql")),
             ],
         )?;
         let mut store = Self {
@@ -140,6 +149,8 @@ impl Store {
         store.recover_executions()?;
         store.recover_teams()?;
         store.recover_workbench()?;
+        store.memory_reindex()?;
+        store.recover_schedules()?;
         Ok(store)
     }
     pub fn register_secret(&mut self, value: &str) -> Result<()> {
@@ -840,6 +851,8 @@ impl Store {
             UNION SELECT result_object_id FROM runs WHERE result_object_id IS NOT NULL
             UNION SELECT input_object_id FROM tool_calls UNION SELECT output_object_id FROM tool_calls WHERE output_object_id IS NOT NULL
             UNION SELECT object_id FROM revisions UNION SELECT object_id FROM memories UNION SELECT object_id FROM schedules
+            UNION SELECT object_id FROM memory_versions
+            UNION SELECT plan_object_id FROM schedule_occurrences
             UNION SELECT before_object_id FROM managed_file_changes WHERE before_object_id IS NOT NULL
             UNION SELECT after_object_id FROM managed_file_changes
             UNION SELECT intent_object_id FROM tool_approval_objects

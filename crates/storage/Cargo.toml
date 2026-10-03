@@ -17,6 +17,8 @@ thiserror.workspace = true
 sha2.workspace = true
 uuid.workspace = true
 tempfile.workspace = true
+chrono.workspace = true
+chrono-tz.workspace = true
 
 [dev-dependencies]
 workpilot-platform = { path = "../platform" }

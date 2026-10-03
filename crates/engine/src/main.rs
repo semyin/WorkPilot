@@ -187,6 +187,8 @@ async fn main() -> Result<(), Failure> {
     tasks.set_workbench(workbench.client());
     let mut team_tick = tokio::time::interval(std::time::Duration::from_millis(100));
     team_tick.set_missed_tick_behavior(tokio::time::MissedTickBehavior::Skip);
+    let mut schedule_tick = tokio::time::interval(std::time::Duration::from_millis(250));
+    schedule_tick.set_missed_tick_behavior(tokio::time::MissedTickBehavior::Skip);
     loop {
         tokio::select! {
             biased;
@@ -257,6 +259,7 @@ async fn main() -> Result<(), Failure> {
                 }
             }
             _=team_tick.tick()=>{ tasks.tick().await; }
+            _=schedule_tick.tick()=>{ tasks.schedule_tick().await; }
             _=async{match probe.as_mut(){Some(p)=>{p.interval.tick().await;},None=>std::future::pending::<()>().await}}=>{
                 if let Some(running)=probe.as_mut(){
                     running.current+=1;

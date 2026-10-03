@@ -33,6 +33,28 @@ impl Store {
         request: &Request,
         config: &ExecutionConfig,
     ) -> Result<(Receipt, Vec<Event>)> {
+        self.create_execution_inner(request, config, None)
+    }
+    pub fn create_scheduled_execution(
+        &mut self,
+        request: &Request,
+        config: &ExecutionConfig,
+        occurrence: &str,
+    ) -> Result<(Receipt, Vec<Event>)> {
+        let plan = self.schedule_dispatch_plan(occurrence)?;
+        if config.project_id != plan.spec.project_id
+            || config.profile_id.as_deref() != Some(&plan.spec.profile_id)
+        {
+            return Err(Error::Conflict);
+        }
+        self.create_execution_inner(request, config, Some(&plan.spec))
+    }
+    fn create_execution_inner(
+        &mut self,
+        request: &Request,
+        config: &ExecutionConfig,
+        schedule: Option<&ScheduleSpec>,
+    ) -> Result<(Receipt, Vec<Event>)> {
         if let Some(receipt) = self.cached_receipt(request)? {
             return Ok((receipt, vec![]));
         }
@@ -85,12 +107,31 @@ impl Store {
         let tx = self.connection.transaction()?;
         tx.execute("INSERT INTO tasks(id,project_id,title,state,mode,permission,profile_id,created_at_ms,updated_at_ms) VALUES(?1,?2,?3,'queued',?4,'request_approval',?5,?6,?6)",
             params![task,config.project_id,self.redactor.text(&config.title),word(&config.mode)?,config.profile_id,now_ms()])?;
-        if let Some((project, identity)) = project_defaults {
-            let settings = ToolSettings {
-                root_path: Some(project.settings.root_path),
-                permission: Some(project.settings.permission),
-                ..Default::default()
-            };
+        if project_defaults.is_some() || schedule.is_some() {
+            let (mut settings, identity) = project_defaults.map_or_else(
+                || (ToolSettings::default(), None),
+                |(project, identity)| {
+                    (
+                        ToolSettings {
+                            root_path: Some(project.settings.root_path),
+                            permission: Some(project.settings.permission),
+                            ..Default::default()
+                        },
+                        identity,
+                    )
+                },
+            );
+            // Commit the schedule's authority with the task itself. A crash before
+            // dispatch must not leave a task inheriting a broader project/global default.
+            if let Some(spec) = schedule {
+                settings.permission = Some(spec.permission);
+                settings.review_profile_id = spec.review_profile_id.clone();
+                settings.commands_enabled = spec.commands_enabled;
+                tx.execute(
+                    "UPDATE tasks SET permission=?2 WHERE id=?1",
+                    params![task, word(&spec.permission)?],
+                )?;
+            }
             tx.execute(
                 "INSERT INTO task_tool_settings(task_id,data_json,root_identity) VALUES(?1,?2,?3)",
                 params![task, encode(&settings)?, identity],
@@ -247,6 +288,7 @@ impl Store {
         if let Some(receipt) = self.cached_receipt(request)? {
             return Ok((receipt, vec![]));
         }
+        self.schedule_can_start(task, profile)?;
         if self.task_archived(task)? {
             return Err(Error::Invalid("restore archived task before continuing"));
         }
@@ -806,11 +848,13 @@ impl Store {
         pending.next += 1;
         context.sources.push(ContextSource {
             step_id: action.into(),
-            summary: format!(
+            summary: if step.name == "memory_search" {
+                "memory_search: historical search only; reload current memories before using preferences".into()
+            } else { format!(
                 "{}: {}",
                 step.name,
                 result.output.chars().take(160).collect::<String>()
-            ),
+            ) },
             output: output.clone(),
             tool_call_ids: vec![result.call_id.clone()],
         });

@@ -23,6 +23,8 @@ import { ProjectSidebar } from "./ProjectSidebar";
 import { Conversation, QueueEdit } from "./Conversation";
 import { FileAttachments } from "./FileAttachments";
 import { MediaPanel } from "./MediaPanel";
+import { MemoryPanel } from "./MemoryPanel";
+import { SchedulePanel } from "./SchedulePanel";
 import { media, attachmentMarkers } from "./mediaClient";
 import type { MediaAsset } from "./generated/contracts";
 import { RecordPanel, ArtifactPanel } from "./RecordPanel";
@@ -161,6 +163,8 @@ export function TaskWorkspace({
   const [fileWorkspace, setFileWorkspace] = useState(false);
   const [extensionsOpen, setExtensionsOpen] = useState(false);
   const [mediaOpen, setMediaOpen] = useState(false);
+  const [memoryOpen, setMemoryOpen] = useState(false);
+  const [schedulesOpen, setSchedulesOpen] = useState(false);
   const [initialAttachments, setInitialAttachments] = useState<MediaAsset[]>([]);
   const [messageAttachments, setMessageAttachments] = useState<MediaAsset[]>([]);
   const [attachmentBusy, setAttachmentBusy] = useState(false);
@@ -585,6 +589,8 @@ export function TaskWorkspace({
             </>
           )}
           <button onClick={onModels}>{tr("模型服务", "Model services")}</button>
+          <button onClick={() => setMemoryOpen(true)}>{tr("记忆", "Memory")}</button>
+          <button onClick={() => setSchedulesOpen(true)}>{tr("定时任务", "Schedules")}</button>
           <button onClick={() => setMediaOpen(true)}>
             {tr("文件成果与图片", "Files and images")}
           </button>
@@ -1353,6 +1359,23 @@ export function TaskWorkspace({
           key={creating ? "global-media" : selected || "global-media"}
           task={creating ? null : selected}
           onClose={() => setMediaOpen(false)}
+        />
+      )}
+      {memoryOpen && (
+        <MemoryPanel
+          projects={desktop?.overview?.projects || []}
+          initialProject={creating ? config.project_id : snapshot?.task.project_id || null}
+          onClose={() => setMemoryOpen(false)}
+          onNavigate={selectTask}
+        />
+      )}
+      {schedulesOpen && (
+        <SchedulePanel
+          projects={desktop?.overview?.projects || []}
+          catalog={catalog}
+          initialProject={creating ? config.project_id : snapshot?.task.project_id || null}
+          onClose={() => setSchedulesOpen(false)}
+          onNavigate={selectTask}
         />
       )}
       {fileWorkspace && selected && (

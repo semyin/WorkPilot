@@ -21,9 +21,13 @@ pub use extension::*;
 pub use workspace::*;
 mod media;
 pub use media::*;
+mod memory;
+pub use memory::*;
+mod schedule;
+pub use schedule::*;
 
 pub const PROTOCOL: &str = "workpilot.v1";
-pub const SCHEMA_VERSION: u32 = 9;
+pub const SCHEMA_VERSION: u32 = 11;
 pub const EXPORT_VERSION: u32 = 1;
 pub const MAX_COMMAND_BYTES: usize = 1_048_576;
 pub const MAX_EVENT_BYTES: usize = 65_536;
@@ -40,6 +44,12 @@ pub struct Request {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 pub enum Command {
+    Schedules {
+        action: ScheduleAction,
+    },
+    Memory {
+        action: MemoryAction,
+    },
     Media {
         task_id: Option<String>,
         action: MediaAdmin,
@@ -246,6 +256,8 @@ impl Request {
                 action.validate()?;
             }
             Command::Workspace { action } => action.validate()?,
+            Command::Memory { action } => action.validate()?,
+            Command::Schedules { action } => action.validate()?,
             Command::ConfigureTeam { task_id, settings } => {
                 if !valid_id(task_id) {
                     return Err("invalid task");
@@ -776,6 +788,12 @@ pub struct ContentPage {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case")]
 pub enum Response {
+    Schedules {
+        data: ScheduleData,
+    },
+    Memory {
+        data: MemoryData,
+    },
     Workbench {
         data: serde_json::Value,
     },
@@ -869,6 +887,15 @@ pub fn typescript() -> String {
     let config = ts_rs::Config::default().with_large_int("number");
     macro_rules! export { ($($ty:ty),* $(,)?) => { $(output.push_str("export "); output.push_str(&<$ty>::decl(&config)); output.push('\n');)* }; }
     export!(
+        ScheduleRule,
+        ScheduleSpec,
+        SchedulePlan,
+        ScheduleOccurrence,
+        ScheduleAction,
+        ScheduleData,
+        MemoryItem,
+        MemoryAction,
+        MemoryData,
         WorkbenchAction,
         BrowserAction,
         BrowserControl,

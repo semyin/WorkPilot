@@ -26,6 +26,8 @@ tokio-util = { version = "=0.7.19", features = ["rt"] }
 futures-util = "=0.3.34"
 url = "=2.5.8"
 cap-std = "=4.0.3"
+chrono = { version = "=0.4.45", default-features = false, features = ["std"] }
+chrono-tz = "=0.10.4"
 
 [profile.release]
 opt-level = "s"

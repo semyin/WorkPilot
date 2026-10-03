@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-03T14:01:54.865Z",
+  "platform": "win32",
+  "binary": {
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p11-schedules-2026-10-03\\preview\\WorkPilot.exe",
+    "sha256": "8872215676dcbfd438978a020fef077eb7f6727506d3fa55639558dba9656ccb"
+  },
+  "service": "Actual native Windows WebView2 desktop, owned test data and local deterministic model. Real hide/quit/reopen, no OS sleep or real model.",
+  "checks": [
+    "native_create_weekly_plan_preview_timezone_validate_and_enable_disable"
+  ],
+  "result": "failed",
+  "error": "Error: expect(locator).toHaveText(expected) failed\n\nLocator: getByRole('dialog', { name: '定时任务', exact: true }).locator('.schedule-occurrence strong').first()\nExpected: \"已完成\"\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toHaveText\" getByRole('dialog', { name: '定时任务', exact: true }).locator('.schedule-occurrence strong').first() with timeout 20000ms\n  - waiting for getByRole('dialog', { name: '定时任务', exact: true }).locator('.schedule-occurrence strong').first()\n\n    at captureRawStack (D:\\workspace\\kplocker\\WorkPilot\\node_modules\\playwright-core\\lib\\coreBundle.js:8588:17)\n    at callMatcherAsStep (D:\\workspace\\kplocker\\WorkPilot\\node_modules\\playwright\\lib\\matchers\\expect.js:13310:57)\n    at Object.toHaveText (D:\\workspace\\kplocker\\WorkPilot\\node_modules\\playwright\\lib\\matchers\\expect.js:13302:23)\n    at D:\\workspace\\kplocker\\WorkPilot\\scripts\\schedules-desktop-smoke.mjs:170:70"
+}

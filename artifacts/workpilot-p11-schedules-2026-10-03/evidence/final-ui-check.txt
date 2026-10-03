@@ -1,0 +1,27 @@
+
+> workpilot@0.1.0-alpha.0 ui:typecheck
+> npm run typecheck --workspace @workpilot/desktop
+
+
+> @workpilot/desktop@0.1.0-alpha.0 typecheck
+> tsc --noEmit
+
+
+> workpilot@0.1.0-alpha.0 ui:build
+> npm run build --workspace @workpilot/desktop
+
+
+> @workpilot/desktop@0.1.0-alpha.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 48 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.39 kB │ gzip:   0.27 kB
+dist/assets/128-kkOeCthX.png     10.43 kB
+dist/assets/index-G_96fbwZ.css   36.08 kB │ gzip:   7.64 kB
+dist/assets/index-D_dJjUrU.js   437.68 kB │ gzip: 132.61 kB
+
+✓ built in 153ms

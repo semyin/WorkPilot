@@ -1,0 +1,7 @@
+{
+  "command": "npm run build (Tauri build --no-bundle)",
+  "at": "2026-10-03T14:13:30.896Z",
+  "platform": "win32",
+  "desktop": "a3bc9ff837fed391ba0c463d2a6359ebf61bb9036c8c4a52fd261ae1686b8fe5",
+  "engine": "b17787f88508ba48733c2a1928875fcf9f82442277e0a047312f6d7d4eb7e32d"
+}

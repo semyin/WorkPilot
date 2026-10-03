@@ -1,0 +1,83 @@
+{
+  "exported_at_ms": 1791031039217,
+  "format": "workpilot.memories",
+  "items": [
+    {
+      "change": "confirmed",
+      "confirmed_at_ms": 1791031037833,
+      "created_at_ms": 1791031037747,
+      "deleted": false,
+      "id": "3050441a-7e5c-49bc-afbc-d7b3b6f1a2bd",
+      "project_id": "24a17636-6bab-4c26-bf9b-9182f83ec093",
+      "revision": 2,
+      "source_label": "p11-propose-chat_completions",
+      "source_quote": "我喜欢使用短句回答",
+      "source_task_id": "1e20d99a-6cad-4ff6-b6a2-c6eb03658e64",
+      "state": "confirmed",
+      "text": "候选偏好:chat_completions",
+      "updated_at_ms": 1791031037833
+    },
+    {
+      "change": "confirmed",
+      "confirmed_at_ms": 1791031037660,
+      "created_at_ms": 1791031037548,
+      "deleted": false,
+      "id": "fd599032-fee4-4ab8-a8f1-84ed49382513",
+      "project_id": "24a17636-6bab-4c26-bf9b-9182f83ec093",
+      "revision": 2,
+      "source_label": "p11-propose-responses",
+      "source_quote": "我喜欢使用短句回答",
+      "source_task_id": "5115d71c-983d-46b4-a997-3eb6265467d8",
+      "state": "confirmed",
+      "text": "候选偏好:responses",
+      "updated_at_ms": 1791031037660
+    },
+    {
+      "change": "created",
+      "confirmed_at_ms": 1791031037445,
+      "created_at_ms": 1791031037445,
+      "deleted": false,
+      "id": "04f25e4c-87fa-4bbb-97f6-e2f82c623e54",
+      "project_id": "24a17636-6bab-4c26-bf9b-9182f83ec093",
+      "revision": 1,
+      "source_label": "你手动填写 / Entered by you",
+      "source_quote": "",
+      "source_task_id": null,
+      "state": "confirmed",
+      "text": "私有偏好:本项目用人民币",
+      "updated_at_ms": 1791031037445
+    },
+    {
+      "change": "created",
+      "confirmed_at_ms": 1791031038052,
+      "created_at_ms": 1791031038052,
+      "deleted": false,
+      "id": "05520a65-db38-46aa-9a92-c448e0783664",
+      "project_id": null,
+      "revision": 1,
+      "source_label": "你手动填写 / Entered by you",
+      "source_quote": "",
+      "source_task_id": null,
+      "state": "confirmed",
+      "text": "可重复请求的记忆",
+      "updated_at_ms": 1791031038052
+    },
+    {
+      "change": "created",
+      "confirmed_at_ms": 1791031037109,
+      "created_at_ms": 1791031037109,
+      "deleted": false,
+      "id": "339ca43a-68f0-4195-b283-45f7adcef64e",
+      "project_id": null,
+      "revision": 1,
+      "source_label": "你手动填写 / Entered by you",
+      "source_quote": "",
+      "source_task_id": null,
+      "state": "confirmed",
+      "text": "通用偏好:回答用短句",
+      "updated_at_ms": 1791031037109
+    }
+  ],
+  "scope": "24a17636-6bab-4c26-bf9b-9182f83ec093",
+  "version": 1
+}

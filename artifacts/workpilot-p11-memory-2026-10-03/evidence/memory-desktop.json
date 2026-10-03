@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-03T12:37:13.613Z",
+  "platform": "win32",
+  "binary": {
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p11-memory-2026-10-03\\preview\\WorkPilot.exe",
+    "sha256": "f40390fb18c387bce0b933d2b42b3057d3ada14be3832e7ffb3468ff3a2f4af1"
+  },
+  "service": "Actual Windows desktop WebView and engine. Local deterministic model for AI candidate only.",
+  "checks": [
+    "native_project_scope_candidate_source_and_confirmation_no_other_project_leak",
+    "native_add_edit_delete_search_and_restore_original_version",
+    "native_stale_editor_cannot_overwrite_concurrent_edit",
+    "native_export_download_has_current_confirmed_scope_only",
+    "english_layout_no_horizontal_overflow_scope_switch_and_reload_preserve_records",
+    "memory_text_is_not_executed_as_html_and_source_navigation_works"
+  ],
+  "status": "passed"
+}

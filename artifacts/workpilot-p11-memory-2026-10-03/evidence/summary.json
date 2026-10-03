@@ -1,0 +1,50 @@
+{
+  "phase": "P11-memory",
+  "at": "2026-10-03T12:39:13.629Z",
+  "platform": "Windows 11 x64",
+  "status": "memory_implementation_verified_scheduling_pending",
+  "baseCommit": "727d394",
+  "schema": 10,
+  "build": {
+    "command": "npm run build (Tauri build --no-bundle)",
+    "at": "2026-10-03T12:35:32.657Z",
+    "platform": "win32",
+    "desktop": "f40390fb18c387bce0b933d2b42b3057d3ada14be3832e7ffb3468ff3a2f4af1",
+    "engine": "6b42ab4b725e9e5b747a71af515bc920a5b7d2e1ddbeb38a64963c7c28c033c7"
+  },
+  "checks": {
+    "standard": "passed",
+    "rustPassed": 101,
+    "rustIgnored": 2,
+    "nodePassed": 8,
+    "memoryStorageTests": 6,
+    "memoryEngineGroups": 9,
+    "nativeDesktopGroups": 6,
+    "uiRegression": 5,
+    "singleAgentRegression": 9,
+    "teamRegression": 11
+  },
+  "visualReview": [
+    "candidate-zh.png",
+    "memory-en.png"
+  ],
+  "evidenceUses": "Only isolated local test directories and deterministic local model HTTP services. Actual engine, database, Windows desktop and exported files.",
+  "notVerified": [
+    "real model memory quality and user experience",
+    "all local schedules in P11",
+    "real image service from P10",
+    "macOS/Linux",
+    "clean Windows install and long-running performance"
+  ],
+  "pending": [
+    "T-P11-01",
+    "E-P11-01",
+    "O-01",
+    "E-P10-01",
+    "E-P08-01",
+    "E-P09-01",
+    "E-P10-02"
+  ],
+  "previousDeliveryPreserved": true,
+  "newCommitOrPush": false
+}

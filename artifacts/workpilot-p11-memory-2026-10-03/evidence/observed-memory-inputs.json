@@ -1,0 +1,194 @@
+[
+  {
+    "model": "p11-propose-responses",
+    "views": [
+      {
+        "confirmed_at_ms": 1791031037445,
+        "id": "04f25e4c-87fa-4bbb-97f6-e2f82c623e54",
+        "project_id": "24a17636-6bab-4c26-bf9b-9182f83ec093",
+        "revision": 1,
+        "source_label": "你手动填写 / Entered by you",
+        "source_task_id": null,
+        "text": "私有偏好:本项目用人民币"
+      },
+      {
+        "confirmed_at_ms": 1791031037109,
+        "id": "339ca43a-68f0-4195-b283-45f7adcef64e",
+        "project_id": null,
+        "revision": 1,
+        "source_label": "你手动填写 / Entered by you",
+        "source_task_id": null,
+        "text": "通用偏好:回答用短句"
+      }
+    ]
+  },
+  {
+    "model": "p11-propose-responses",
+    "views": [
+      {
+        "confirmed_at_ms": 1791031037445,
+        "id": "04f25e4c-87fa-4bbb-97f6-e2f82c623e54",
+        "project_id": "24a17636-6bab-4c26-bf9b-9182f83ec093",
+        "revision": 1,
+        "source_label": "你手动填写 / Entered by you",
+        "source_task_id": null,
+        "text": "私有偏好:本项目用人民币"
+      },
+      {
+        "confirmed_at_ms": 1791031037109,
+        "id": "339ca43a-68f0-4195-b283-45f7adcef64e",
+        "project_id": null,
+        "revision": 1,
+        "source_label": "你手动填写 / Entered by you",
+        "source_task_id": null,
+        "text": "通用偏好:回答用短句"
+      }
+    ]
+  },
+  {
+    "model": "p11-propose-chat_completions",
+    "views": [
+      {
+        "confirmed_at_ms": 1791031037660,
+        "id": "fd599032-fee4-4ab8-a8f1-84ed49382513",
+        "project_id": "24a17636-6bab-4c26-bf9b-9182f83ec093",
+        "revision": 2,
+        "source_label": "p11-propose-responses",
+        "source_task_id": "5115d71c-983d-46b4-a997-3eb6265467d8",
+        "text": "候选偏好:responses"
+      },
+      {
+        "confirmed_at_ms": 1791031037445,
+        "id": "04f25e4c-87fa-4bbb-97f6-e2f82c623e54",
+        "project_id": "24a17636-6bab-4c26-bf9b-9182f83ec093",
+        "revision": 1,
+        "source_label": "你手动填写 / Entered by you",
+        "source_task_id": null,
+        "text": "私有偏好:本项目用人民币"
+      },
+      {
+        "confirmed_at_ms": 1791031037109,
+        "id": "339ca43a-68f0-4195-b283-45f7adcef64e",
+        "project_id": null,
+        "revision": 1,
+        "source_label": "你手动填写 / Entered by you",
+        "source_task_id": null,
+        "text": "通用偏好:回答用短句"
+      }
+    ]
+  },
+  {
+    "model": "p11-propose-chat_completions",
+    "views": [
+      {
+        "confirmed_at_ms": 1791031037660,
+        "id": "fd599032-fee4-4ab8-a8f1-84ed49382513",
+        "project_id": "24a17636-6bab-4c26-bf9b-9182f83ec093",
+        "revision": 2,
+        "source_label": "p11-propose-responses",
+        "source_task_id": "5115d71c-983d-46b4-a997-3eb6265467d8",
+        "text": "候选偏好:responses"
+      },
+      {
+        "confirmed_at_ms": 1791031037445,
+        "id": "04f25e4c-87fa-4bbb-97f6-e2f82c623e54",
+        "project_id": "24a17636-6bab-4c26-bf9b-9182f83ec093",
+        "revision": 1,
+        "source_label": "你手动填写 / Entered by you",
+        "source_task_id": null,
+        "text": "私有偏好:本项目用人民币"
+      },
+      {
+        "confirmed_at_ms": 1791031037109,
+        "id": "339ca43a-68f0-4195-b283-45f7adcef64e",
+        "project_id": null,
+        "revision": 1,
+        "source_label": "你手动填写 / Entered by you",
+        "source_task_id": null,
+        "text": "通用偏好:回答用短句"
+      }
+    ]
+  },
+  {
+    "model": "p11-propose-messages",
+    "views": [
+      {
+        "confirmed_at_ms": 1791031037833,
+        "id": "3050441a-7e5c-49bc-afbc-d7b3b6f1a2bd",
+        "project_id": "24a17636-6bab-4c26-bf9b-9182f83ec093",
+        "revision": 2,
+        "source_label": "p11-propose-chat_completions",
+        "source_task_id": "1e20d99a-6cad-4ff6-b6a2-c6eb03658e64",
+        "text": "候选偏好:chat_completions"
+      },
+      {
+        "confirmed_at_ms": 1791031037660,
+        "id": "fd599032-fee4-4ab8-a8f1-84ed49382513",
+        "project_id": "24a17636-6bab-4c26-bf9b-9182f83ec093",
+        "revision": 2,
+        "source_label": "p11-propose-responses",
+        "source_task_id": "5115d71c-983d-46b4-a997-3eb6265467d8",
+        "text": "候选偏好:responses"
+      },
+      {
+        "confirmed_at_ms": 1791031037445,
+        "id": "04f25e4c-87fa-4bbb-97f6-e2f82c623e54",
+        "project_id": "24a17636-6bab-4c26-bf9b-9182f83ec093",
+        "revision": 1,
+        "source_label": "你手动填写 / Entered by you",
+        "source_task_id": null,
+        "text": "私有偏好:本项目用人民币"
+      },
+      {
+        "confirmed_at_ms": 1791031037109,
+        "id": "339ca43a-68f0-4195-b283-45f7adcef64e",
+        "project_id": null,
+        "revision": 1,
+        "source_label": "你手动填写 / Entered by you",
+        "source_task_id": null,
+        "text": "通用偏好:回答用短句"
+      }
+    ]
+  },
+  {
+    "model": "p11-propose-messages",
+    "views": [
+      {
+        "confirmed_at_ms": 1791031037833,
+        "id": "3050441a-7e5c-49bc-afbc-d7b3b6f1a2bd",
+        "project_id": "24a17636-6bab-4c26-bf9b-9182f83ec093",
+        "revision": 2,
+        "source_label": "p11-propose-chat_completions",
+        "source_task_id": "1e20d99a-6cad-4ff6-b6a2-c6eb03658e64",
+        "text": "候选偏好:chat_completions"
+      },
+      {
+        "confirmed_at_ms": 1791031037660,
+        "id": "fd599032-fee4-4ab8-a8f1-84ed49382513",
+        "project_id": "24a17636-6bab-4c26-bf9b-9182f83ec093",
+        "revision": 2,
+        "source_label": "p11-propose-responses",
+        "source_task_id": "5115d71c-983d-46b4-a997-3eb6265467d8",
+        "text": "候选偏好:responses"
+      },
+      {
+        "confirmed_at_ms": 1791031037445,
+        "id": "04f25e4c-87fa-4bbb-97f6-e2f82c623e54",
+        "project_id": "24a17636-6bab-4c26-bf9b-9182f83ec093",
+        "revision": 1,
+        "source_label": "你手动填写 / Entered by you",
+        "source_task_id": null,
+        "text": "私有偏好:本项目用人民币"
+      },
+      {
+        "confirmed_at_ms": 1791031037109,
+        "id": "339ca43a-68f0-4195-b283-45f7adcef64e",
+        "project_id": null,
+        "revision": 1,
+        "source_label": "你手动填写 / Entered by you",
+        "source_task_id": null,
+        "text": "通用偏好:回答用短句"
+      }
+    ]
+  }
+]
