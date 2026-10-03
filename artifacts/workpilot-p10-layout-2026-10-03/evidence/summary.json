@@ -1,0 +1,81 @@
+{
+  "phase": "P10",
+  "addition": "Office original-file layout preview",
+  "status": "in_progress",
+  "date": "2026-10-03T11:57:01.157Z",
+  "environment": "Windows 11 x64, existing developer machine",
+  "build": {
+    "command": "npm run build (Tauri build --no-bundle)",
+    "at": "2026-10-03T11:50:43.517Z",
+    "platform": "win32",
+    "desktop": "a773d91967eb3b07aa41110c226c04275d6ae799eb01fb9e3e390467ca06c239",
+    "engine": "4c2a495dfd78d352cf2af968bda7cc4311d571f2c2d61a1e79dbe507a66abd9b"
+  },
+  "rust": {
+    "passed": 95,
+    "ignored": 2,
+    "failed": 0
+  },
+  "nodeFixtures": {
+    "passed": 8,
+    "failed": 0
+  },
+  "mediaEngine": {
+    "passed": 10
+  },
+  "mediaModel": {
+    "passed": 5
+  },
+  "office": {
+    "passed": 5,
+    "renders": [
+      {
+        "format": "docx",
+        "pages": 1,
+        "firstRenderMs": 9650,
+        "sourceSha256": "71d89cd5dabc87b660f471d199cc343a52f52be4423afa463298349f55bf4ba7",
+        "renderer": "LibreOfficeKit 26.8.0 · 191a264ea595"
+      },
+      {
+        "format": "xlsx",
+        "pages": 1,
+        "firstRenderMs": 8820,
+        "sourceSha256": "2c4d7b217dcc1569c1082adabb62d75f2f0b84da8cb34addada388af80a82eec",
+        "renderer": "LibreOfficeKit 26.8.0 · 191a264ea595"
+      },
+      {
+        "format": "pptx",
+        "pages": 2,
+        "firstRenderMs": 8854,
+        "sourceSha256": "97240693000942de1252ce42ae49689162af09b4f75752038f9b9feef984451c",
+        "renderer": "LibreOfficeKit 26.8.0 · 191a264ea595"
+      }
+    ],
+    "externalImageRequests": 0,
+    "cancelAcknowledgedMs": 2,
+    "cancelCompletedMs": 2316,
+    "manuallyInspected": true
+  },
+  "nativeDesktop": {
+    "passed": 8
+  },
+  "runtime": {
+    "version": "26.8.0",
+    "buildId": "bce0998afefdbc355585ca324285661a2170ba77",
+    "files": 19447,
+    "bytes": 1576066913,
+    "installer": {
+      "url": "https://download.documentfoundation.org/libreoffice/stable/26.8.0/win/x86_64/LibreOffice_26.8.0_Win_x86-64.msi?download=1",
+      "sha256": "4aa6c6e1895f4055104effcb556bd3362d20c6ad707c149543304f395ef9db95"
+    },
+    "upstreamBinariesModified": false
+  },
+  "limitations": [
+    "P10 real image generation/editing/provider compatibility is still unverified; all Images API tests use local synthetic replies.",
+    "Windows developer machine only; clean-machine install, macOS and Linux require later verification.",
+    "Office rendering may differ from Microsoft Office due to fonts, formulas and complex layout.",
+    "Single-run timings do not establish performance percentiles.",
+    "User daily experience and original outstanding confirmations remain pending."
+  ],
+  "git": "Baseline P09/P10 committed and pushed as 1825a54 before this continuation. Previous P10 distribution and evidence preserved."
+}

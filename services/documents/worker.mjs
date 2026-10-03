@@ -317,6 +317,7 @@ async function preview(bytes, name, page) {
   if (formatOf(name) === "pdf") {
     const doc = await pdfDocument(bytes);
     try {
+      if (doc.numPages > 500) fail("PDF 超过 500 页 / PDF exceeds 500 pages");
       if (page < 1 || page > doc.numPages) fail("页码超出范围 / Page is out of range");
       const p = await doc.getPage(page),
         initial = p.getViewport({ scale: 1 });
@@ -327,7 +328,7 @@ async function preview(bytes, name, page) {
         fail("PDF 页面尺寸无效 / Invalid page dimensions");
       const canvas = createCanvas(Math.ceil(viewport.width), Math.ceil(viewport.height));
       await p.render({ canvasContext: canvas.getContext("2d"), viewport }).promise;
-      return canvas.toBuffer("image/png");
+      return { png: canvas.toBuffer("image/png"), pages: doc.numPages };
     } finally {
       await doc.loadingTask.destroy();
     }
@@ -341,7 +342,7 @@ async function preview(bytes, name, page) {
     Math.max(1, Math.round(img.height * scale)),
   );
   canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
-  return canvas.toBuffer("image/png");
+  return { png: canvas.toBuffer("image/png"), pages: 1 };
 }
 export async function execute(job) {
   if (job.kind === "generate") {
@@ -354,10 +355,10 @@ export async function execute(job) {
   }
   const bytes = fs.readFileSync("input.bin");
   if (job.kind === "preview") {
-    const png = await preview(bytes, job.name, job.page);
+    const { png, pages } = await preview(bytes, job.name, job.page);
     if (png.length > 4 * 1024 * 1024) fail("预览图片过大 / Preview exceeds limit");
     fs.writeFileSync("preview.png", png, { flag: "wx" });
-    return { preview: true };
+    return { preview: true, pages };
   }
   if (job.kind !== "parse") fail("Unknown worker operation");
   return parse(bytes, job.name);

@@ -1,0 +1,35 @@
+
+> workpilot@0.1.0-alpha.0 test:office-preview
+> node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/office-preview-test.mjs
+
+   Compiling workpilot-contracts v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-platform v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\platform)
+   Compiling workpilot-policy v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\policy)
+   Compiling workpilot-storage v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\storage)
+   Compiling workpilot-tools v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\tools)
+   Compiling workpilot-providers v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\providers)
+   Compiling workpilot-extensions v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\extensions)
+   Compiling workpilot-workbench v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\workbench)
+   Compiling workpilot-runtime v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\runtime)
+   Compiling workpilot-engine v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\engine)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 22.30s
+{
+  "at": "2026-10-03T11:07:27.152Z",
+  "platform": "win32",
+  "binary": {
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\target\\debug\\workpilot-engine.exe",
+    "sha256": "c6029479a036c66aa0e6294339218790a0cb7e13c5cb7833e33257d5eb76f706"
+  },
+  "checks": [],
+  "renders": [
+    {
+      "format": "docx",
+      "pages": 1,
+      "firstRenderMs": 41884,
+      "sourceSha256": "7bb24fa1d031864e21ddfc03cf1885fd3d0ba41abcb808d45db5e64caa5d3320",
+      "renderer": "LibreOfficeKit 26.8.0 · e55a901f8c75"
+    }
+  ],
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: {\"kind\":\"error\",\"code\":\"invalid_request\",\"message\":\"Office 预览已停止 / Office preview stopped: timeout\"}\n+ actual - expected\n\n+ 'error'\n- 'workbench'\n\n    at admin (file:///D:/workspace/kplocker/WorkPilot/scripts/office-preview-test.mjs:25:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async file:///D:/workspace/kplocker/WorkPilot/scripts/office-preview-test.mjs:62:19"
+}

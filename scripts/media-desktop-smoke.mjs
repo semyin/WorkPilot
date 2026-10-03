@@ -16,6 +16,7 @@ const directory = await mkdtemp(join(output, "session-")),
   project = join(directory, "project");
 await mkdir(project);
 await copyFile(join(root, ".test-results/media-engine/sample.docx"), join(project, "报告.docx"));
+await copyFile(join(root, ".test-results/media-engine/sample.pptx"), join(project, "演示.pptx"));
 await copyFile(join(root, ".test-results/media-engine/sample.pdf"), join(project, "报告.pdf"));
 const unsafe =
   '<script>window.__P10_UNSAFE=true;window.__TAURI_INTERNALS__.invoke("exit_app")</script><svg onload="window.__P10_UNSAFE=true"></svg>';
@@ -160,6 +161,29 @@ try {
   await panel.getByRole("button", { name: "读取文件", exact: true }).click();
   await expect(panel.locator(".media-detail")).toContainText("合计 42");
   await page.screenshot({ path: join(output, "documents-zh.png") });
+  await panel.getByRole("button", { name: "查看原版式预览", exact: true }).click();
+  await expect(panel.locator(".media-preview")).toBeVisible({ timeout: 110000 });
+  await expect(panel.getByLabel("预览页码", { exact: true })).toHaveText("1 / 1");
+  await expect(panel.getByRole("button", { name: "下一页", exact: true })).toBeDisabled();
+  await page.screenshot({ path: join(output, "office-layout-zh.png") });
+  report.checks.push(
+    "native_docx_original_layout_preview_shows_real_page_count_and_keeps_original_file",
+  );
+  await panel.getByLabel("读取项目文件", { exact: true }).fill("演示.pptx");
+  await panel.getByRole("button", { name: "读取文件", exact: true }).click();
+  await expect(panel.locator(".media-detail h3")).toHaveText("演示.pptx");
+  await panel.getByRole("button", { name: "查看原版式预览", exact: true }).click();
+  await panel.getByRole("button", { name: "停止预览", exact: true }).click();
+  await expect(panel.getByRole("button", { name: "查看原版式预览", exact: true })).toBeEnabled();
+  await panel.getByRole("button", { name: "查看原版式预览", exact: true }).click();
+  await expect(panel.getByLabel("预览页码", { exact: true })).toHaveText("1 / 2", {
+    timeout: 110000,
+  });
+  await panel.getByRole("button", { name: "下一页", exact: true }).click();
+  await expect(panel.getByLabel("预览页码", { exact: true })).toHaveText("2 / 2");
+  await expect(panel.getByRole("button", { name: "下一页", exact: true })).toBeDisabled();
+  await page.screenshot({ path: join(output, "office-slides-zh.png") });
+  report.checks.push("native_slide_preview_can_stop_restart_and_page_to_actual_last_slide");
   await panel.getByLabel("读取项目文件", { exact: true }).fill("报告.pdf");
   await panel.getByRole("button", { name: "读取文件", exact: true }).click();
   await expect(panel.locator(".media-detail h3")).toHaveText("报告.pdf");

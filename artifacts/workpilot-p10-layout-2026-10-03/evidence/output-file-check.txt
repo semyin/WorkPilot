@@ -1,0 +1,8 @@
+    Checking workpilot-contracts v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+    Checking workpilot-policy v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\policy)
+    Checking workpilot-platform v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\platform)
+    Checking workpilot-storage v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\storage)
+    Checking workpilot-tools v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\tools)
+    Checking workpilot-extensions v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\extensions)
+    Checking workpilot-workbench v0.1.0-alpha.0 (D:\workspace\kplocker\WorkPilot\crates\workbench)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 8.71s

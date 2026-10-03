@@ -3,7 +3,7 @@ import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { join, dirname } from "node:path";
 import { root } from "./cargo.mjs";
-const destination = join(root, "artifacts/workpilot-p10-2026-10-03");
+const destination = join(root, "artifacts/workpilot-p10-layout-2026-10-03");
 const digest = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const build = JSON.parse(await readFile(join(root, ".local/desktop-release-receipt.json"), "utf8"));
 for (const [key, file] of [
@@ -15,11 +15,11 @@ for (const [key, file] of [
       "Run npm run build before packaging; binary differs from the Tauri build receipt: " + key,
     );
 }
-const previous = join(root, "artifacts/workpilot-p09-2026-10-03");
+const previous = join(root, "artifacts/workpilot-p10-2026-10-03");
 const old = JSON.parse(await readFile(join(previous, "source-and-binary-manifest.json"), "utf8"));
 for (const file of old.binaries)
   if (digest(await readFile(join(previous, file.path))) !== file.sha256)
-    throw new Error("P09 delivery changed: " + file.path);
+    throw new Error("Previous P10 delivery changed: " + file.path);
 const binaries = [];
 async function copy(source, path) {
   await mkdir(dirname(join(destination, path)), { recursive: true });
@@ -75,24 +75,37 @@ for (const path of ["SKILL.md", "references/checklist.md", "scripts/checklist.mj
     "examples/report-checklist/" + path,
   );
 const runtime = join(root, "target/release/document-runtime");
+const treeCopies = [];
 async function copyTree(source, relativePath) {
   for (const entry of await readdir(source, { withFileTypes: true })) {
     const child = join(source, entry.name),
       target = relativePath + "/" + entry.name;
     if (entry.isDirectory()) await copyTree(child, target);
-    else if (entry.isFile()) await copy(child, target);
+    else if (entry.isFile()) treeCopies.push([child, target]);
   }
 }
 await copyTree(runtime, "preview/document-runtime");
+await copyTree(join(root, "target/release/office-runtime"), "preview/office-runtime");
+let next = 0;
+await Promise.all(
+  Array.from({ length: 4 }, async () => {
+    while (next < treeCopies.length) {
+      const [source, path] = treeCopies[next++];
+      await copy(source, path);
+    }
+  }),
+);
 if (process.argv.includes("--preview-only")) {
   console.log("P10 preview staged for distribution checks.");
   process.exit(0);
 }
 const openedSamples = JSON.parse(
-  await readFile(join(root, ".test-results/media-office-open/report.json"), "utf8"),
+  await readFile(join(root, ".test-results/office-distribution/report.json"), "utf8"),
 );
 if (openedSamples.status !== "passed") throw new Error("Office sample verification did not pass");
-for (const sample of openedSamples.files)
+if (openedSamples.binary.sha256 !== build.engine)
+  throw new Error("Office check used another engine");
+for (const sample of openedSamples.renders)
   if (
     digest(await readFile(join(root, ".test-results/media-engine/sample." + sample.format))) !==
     sample.sourceSha256
@@ -107,13 +120,13 @@ for (const [format, count] of [
 ])
   for (let page = 1; page <= count; page++)
     await copy(
-      join(root, `.test-results/media-office-open/${format}/page-${page}.png`),
+      join(root, `.test-results/office-distribution/${format}-page-${page}.png`),
       `samples/${format}-page-${page}.png`,
     );
 await copy(join(root, ".test-results/media-engine/pdf-preview.png"), "samples/pdf-page-1.png");
 await generated(
   "preview/使用说明.txt",
-  "WorkPilot P10 开发预览\r\n\r\n先从旧版托盘彻底退出，再双击 WorkPilot.exe。保留整个 preview 文件夹。\r\n任务输入框可添加文件、拖入文件或粘贴图片。顶部‘文件成果与图片’查看输入和成果、读取项目文件、刷新外部修改、配置图片服务。\r\nDOCX/XLSX/PPTX 当前提供内容预览和外部打开；PDF 与图片可显示实际画面。Office 完整原版式预览仍未完成，P10 尚在实施。\r\n图片服务单独配置，未配置时不会显示生成成功。参考图来自当前任务附件；生成需要相应任务模式和审批。没有服务返回价格时费用未知。真实图片服务验收仍待配置。\r\n相邻 samples 文件夹含固定测试数据的真实办公文件和页面图片，数值为 25+17=42。\r\n数据版本为 9，不用旧版打开升级后的数据。Windows 本机自动检查和真实文件验证通过不代表正式 V1、干净机器或其它平台已经验收。\r\n",
+  "WorkPilot P10 原版式预览补充版\r\n\r\n先从旧版托盘彻底退出，再双击 WorkPilot.exe。保留整个 preview 文件夹。\r\n任务顶部‘文件成果与图片’→读取项目文件→查看内容→查看原版式预览。DOCX/XLSX/PPTX 从原文件转换成 PDF 页面，支持翻页和停止，原文件不改写。字体与复杂排版可能和 Microsoft Office 有差异。\r\n输入框可添加文件、拖入文件或粘贴图片。外部修改后可刷新成新快照，原快照保留。\r\n转换环境随包提供，体积较大。首次查看需要几秒到几十秒；重复翻页复用转换结果。宏和外部更新关闭，转换进程不能联网。\r\n图片服务单独配置，未配置时不会显示生成成功。参考图来自当前任务附件；生成需要相应任务模式和审批。真实图片服务验收仍待配置，P10 尚未整体验收。\r\n相邻 samples 文件夹含固定样本和实际转换页面，数值为 25+17=42。\r\n数据版本仍为 9。Windows 开发机检查通过不代表正式 V1、干净机器或其它平台已经验收。\r\n",
 );
 if (process.platform === "win32")
   execFileSync(
@@ -154,7 +167,7 @@ await writeFile(
         encoding: "utf8",
       }).trim(),
       workingTree:
-        "P10 working-tree snapshot based on the existing P08 commit plus the uncommitted P09 work. No new commit or push was requested for this phase.",
+        "P10 Office layout preview continuation after the P09/P10 baseline was committed and pushed as 1825a54. The prior P10 delivery remains unchanged.",
       versions: {
         protocol: "workpilot.v1",
         schema: 9,

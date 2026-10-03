@@ -1,5 +1,6 @@
 mod images;
 pub mod model;
+mod office;
 mod worker;
 use crate::vault::{Result, Vault};
 use base64::{Engine, engine::general_purpose::STANDARD};
@@ -23,6 +24,7 @@ pub struct Manager {
     storage: Storage,
     data: PathBuf,
     worker: worker::Worker,
+    office: office::Converter,
     uploads: Mutex<HashMap<String, Upload>>,
     active: Mutex<HashMap<String, Running>>,
     config_gate: tokio::sync::Mutex<()>,
@@ -68,6 +70,7 @@ impl Manager {
             storage,
             data,
             worker: worker::Worker::default(),
+            office: office::Converter::default(),
             uploads: Mutex::new(HashMap::new()),
             active: Mutex::new(HashMap::new()),
             config_gate: tokio::sync::Mutex::new(()),
@@ -125,6 +128,9 @@ impl Manager {
         let id = id
             .map(str::to_owned)
             .unwrap_or_else(|| uuid::Uuid::new_v4().to_string());
+        if active.contains_key(&id) {
+            return Err("此文件正在处理 / This file is already being processed".into());
+        }
         let stop = Arc::new(AtomicBool::new(false));
         active.insert(
             id.clone(),
@@ -320,25 +326,77 @@ impl Manager {
                 start,
                 limit,
             } => self.read(task.as_deref(), &asset_id, start, limit).await,
+            MediaAdmin::CancelPreview { asset_id } => {
+                self.asset(task.as_deref(), &asset_id).await?;
+                if let Some(running) = self
+                    .active
+                    .lock()
+                    .unwrap()
+                    .get(&format!("preview:{asset_id}"))
+                {
+                    running.stop.store(true, Ordering::SeqCst);
+                }
+                Ok(json!({"cancelled":true}))
+            }
             MediaAdmin::Preview { asset_id, page } => {
+                if !(1..=500).contains(&page) {
+                    return Err("页码超出范围 / Page is out of range".into());
+                }
                 let (asset, original, _) = self.asset(task.as_deref(), &asset_id).await?;
-                let active = self.active(task.as_deref(), false, None).await?;
-                let bytes = Vault::open(&self.data)?.read(&original)?;
-                let result = self
-                    .worker
-                    .run(
-                        &self.data,
-                        json!({"kind":"preview","name":asset.name,"page":page}),
-                        Some(&bytes),
-                        active.stop.clone(),
-                    )
+                let active = self
+                    .active(task.as_deref(), false, Some(&format!("preview:{asset_id}")))
                     .await?;
-                Ok(
-                    json!({"image":format!("data:image/png;base64,{}",STANDARD.encode(result.bytes.ok_or("Missing preview")?)),"page":page,"asset_id":asset.id}),
-                )
+                let work = async {
+                    let bytes = Vault::open(&self.data)?.read(&original)?;
+                    let converted = if let Some(format) = office::format(&asset.media_type) {
+                        Some(
+                            self.office
+                                .pdf(
+                                    &self.data,
+                                    &asset.sha256,
+                                    format,
+                                    &bytes,
+                                    active.stop.clone(),
+                                )
+                                .await?,
+                        )
+                    } else {
+                        None
+                    };
+                    let (name, input) = if let Some(pdf) = &converted {
+                        ("preview.pdf", pdf.bytes.as_slice())
+                    } else {
+                        (asset.name.as_str(), bytes.as_slice())
+                    };
+                    let result = self
+                        .worker
+                        .run(
+                            &self.data,
+                            json!({"kind":"preview","name":name,"page":page}),
+                            Some(input),
+                            active.stop.clone(),
+                        )
+                        .await?;
+                    Ok::<Value, String>(
+                        json!({"image":format!("data:image/png;base64,{}",STANDARD.encode(result.bytes.ok_or("Missing preview")?)),"page":page,"pages":result.report["pages"],"asset_id":asset.id,"source_sha256":asset.sha256,"conversion":converted.is_some(),"renderer":converted.as_ref().map(|p|p.renderer.as_str()),"cache_hit":converted.as_ref().is_some_and(|p|p.cached)}),
+                    )
+                };
+                tokio::time::timeout(std::time::Duration::from_secs(110), work)
+                    .await
+                    .map_err(|_| {
+                        "版式预览超时，请尝试较小的文件 / Layout preview timed out".to_string()
+                    })?
             }
             MediaAdmin::Remove { asset_id } => {
                 self.asset(task.as_deref(), &asset_id).await?;
+                if let Some(running) = self
+                    .active
+                    .lock()
+                    .unwrap()
+                    .get(&format!("preview:{asset_id}"))
+                {
+                    running.stop.store(true, Ordering::SeqCst);
+                }
                 if let Some(task) = task
                     && self
                         .storage

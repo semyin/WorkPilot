@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-03T12:00:40.220Z",
+  "status": "passed",
+  "sourceFiles": 343,
+  "deliveryFiles": 24727,
+  "previousP10FilesVerified": 5279,
+  "previousP10ZipUnchanged": true,
+  "localMarkdownLinks": 441,
+  "hashErrors": [],
+  "brokenLinks": [],
+  "zip": {
+    "bytes": 626899188,
+    "sha256": "fc433e080f00b8c51c12a148435507d724e9f41b5615e126a3a865fbe80b9e55",
+    "entries": 25011,
+    "selectedEntriesVerified": [
+      "preview/WorkPilot.exe",
+      "preview/workpilot-sidecar.exe",
+      "preview/office-runtime/office/program/workpilot-office.exe",
+      "preview/使用说明.txt"
+    ]
+  }
+}

@@ -77,6 +77,9 @@ pub enum MediaAdmin {
         asset_id: String,
         page: u32,
     },
+    CancelPreview {
+        asset_id: String,
+    },
     Remove {
         asset_id: String,
     },

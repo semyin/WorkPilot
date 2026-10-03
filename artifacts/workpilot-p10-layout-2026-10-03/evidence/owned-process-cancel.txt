@@ -1,0 +1,13 @@
+started=13868
+Failed to find real location of \\?\D:\workspace\kplocker\WorkPilot\target\debug\office-runtime\office\program\workpilot-office.exe
+office: initializing
+{
+  "pid": 13868,
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Failed to find real location of \\\\?\\D:\\workspace\\kplocker\\WorkPilot\\target\\debug\\office-runtime\\office\\program\\workpilot-office.exe\r\noffice: initializing\r\n",
+  "stopped": "cancelled",
+  "containment": "windows_appcontainer_no_network",
+  "elapsed_ms": 4246,
+  "cleanup_errors": []
+}

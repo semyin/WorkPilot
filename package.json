@@ -52,6 +52,8 @@
     "test:extensions-model": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/extensions-model-test.mjs",
     "test:extensions-desktop": "node scripts/extensions-desktop-smoke.mjs",
     "documents:prepare": "node scripts/prepare-documents.mjs",
+    "office:prepare": "node scripts/prepare-office.mjs",
+    "test:office-preview": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/office-preview-test.mjs",
     "test:media-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/media-engine-test.mjs",
     "test:media-model": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/media-model-test.mjs",
     "test:media-desktop": "node scripts/media-desktop-smoke.mjs"

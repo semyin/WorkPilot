@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-03T11:51:21.713Z",
+  "platform": "win32",
+  "binary": {
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p10-layout-2026-10-03\\preview\\workpilot-sidecar.exe",
+    "sha256": "4c2a495dfd78d352cf2af968bda7cc4311d571f2c2d61a1e79dbe507a66abd9b"
+  },
+  "model": "Deterministic local responses/chat_completions/messages; actual files and Images HTTP fixture",
+  "checks": [
+    "three_protocols_receive_attachment_content_read_citations_generate_docx_and_resume_approval_without_duplicate_files",
+    "actual_image_bytes_reach_each_protocol_with_explicit_vision_capability",
+    "unknown_vision_capability_blocks_image_request_before_network_without_switching_model",
+    "attachment_bound_to_task_but_not_in_delivered_message_is_hidden_from_model_tools",
+    "text_only_model_can_generate_images_without_claiming_vision_image_error_stops_task_without_retry"
+  ],
+  "status": "passed"
+}

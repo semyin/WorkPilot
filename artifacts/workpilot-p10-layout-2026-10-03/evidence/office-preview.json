@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-03T11:51:56.974Z",
+  "platform": "win32",
+  "binary": {
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p10-layout-2026-10-03\\preview\\workpilot-sidecar.exe",
+    "sha256": "4c2a495dfd78d352cf2af968bda7cc4311d571f2c2d61a1e79dbe507a66abd9b"
+  },
+  "checks": [
+    "real_docx_xlsx_pptx_layout_pages_in_appcontainer_source_unchanged_and_cache_paging",
+    "preview_and_preview_cancellation_are_bound_to_attachment_owner",
+    "cancelled_preview_returns_an_error_then_can_restart_external_refresh_uses_new_bytes_old_snapshot_stays_original",
+    "page_limit_is_enforced_before_rendering",
+    "office_external_image_relationship_does_not_contact_live_http_canary"
+  ],
+  "renders": [
+    {
+      "format": "docx",
+      "pages": 1,
+      "firstRenderMs": 9650,
+      "sourceSha256": "71d89cd5dabc87b660f471d199cc343a52f52be4423afa463298349f55bf4ba7",
+      "renderer": "LibreOfficeKit 26.8.0 · 191a264ea595"
+    },
+    {
+      "format": "xlsx",
+      "pages": 1,
+      "firstRenderMs": 8820,
+      "sourceSha256": "2c4d7b217dcc1569c1082adabb62d75f2f0b84da8cb34addada388af80a82eec",
+      "renderer": "LibreOfficeKit 26.8.0 · 191a264ea595"
+    },
+    {
+      "format": "pptx",
+      "pages": 2,
+      "firstRenderMs": 8854,
+      "sourceSha256": "97240693000942de1252ce42ae49689162af09b4f75752038f9b9feef984451c",
+      "renderer": "LibreOfficeKit 26.8.0 · 191a264ea595"
+    }
+  ],
+  "cancelAcknowledgedMs": 2,
+  "cancelCompletedMs": 2316,
+  "externalImageRequests": 0,
+  "status": "passed"
+}

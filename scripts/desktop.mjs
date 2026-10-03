@@ -25,6 +25,12 @@ const extension = process.platform === "win32" ? ".exe" : "";
 const buildRoot = process.env.CARGO_TARGET_DIR
   ? resolve(root, process.env.CARGO_TARGET_DIR)
   : join(root, "target");
+if (process.platform === "win32")
+  await run(process.execPath, [
+    join(root, "scripts/prepare-office.mjs"),
+    join(buildRoot, release ? "release" : "debug", "office-runtime"),
+    ...(release ? ["--release"] : []),
+  ]);
 await run(process.execPath, [
   join(root, "scripts/prepare-documents.mjs"),
   join(buildRoot, release ? "release" : "debug", "document-runtime"),

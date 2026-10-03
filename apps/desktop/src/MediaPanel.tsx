@@ -13,6 +13,12 @@ import { Saved } from "./SavedContent";
 import { executionCommand } from "./executionClient";
 import "./media.css";
 type Page = { asset: MediaAsset; units: DocumentUnit[]; next: number | null; total: number };
+const isOffice = (asset: MediaAsset) =>
+  [
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+  ].includes(asset.media_type);
 const newService = (): ImageService => ({
   id: crypto.randomUUID(),
   label: "",
@@ -40,6 +46,8 @@ export function MediaPanel({ task, onClose }: { task: string | null; onClose: ()
     [page, setPage] = useState<Page | null>(null),
     [preview, setPreview] = useState(""),
     [previewPage, setPreviewPage] = useState(1),
+    [previewPages, setPreviewPages] = useState(1),
+    [rendering, setRendering] = useState(false),
     [importPath, setImportPath] = useState("");
   const [service, setService] = useState<ImageService>(newService),
     [secret, setSecret] = useState(""),
@@ -52,7 +60,8 @@ export function MediaPanel({ task, onClose }: { task: string | null; onClose: ()
     [outputName, setOutputName] = useState(""),
     [references, setReferences] = useState<string[]>([]);
   const live = useRef(true),
-    working = useRef(false);
+    working = useRef(false),
+    previewAsset = useRef<string | null>(null);
   const refresh = async () => {
     const result = await media<{ services: ImageService[] }>(null, { kind: "image_services" });
     if (!live.current) return;
@@ -87,6 +96,10 @@ export function MediaPanel({ task, onClose }: { task: string | null; onClose: ()
     return () => {
       live.current = false;
       clearInterval(timer);
+      if (previewAsset.current)
+        void media(task, { kind: "cancel_preview", asset_id: previewAsset.current }).catch(
+          () => {},
+        );
     };
   }, [task]);
   const act = async (fn: () => Promise<void>) => {
@@ -111,17 +124,26 @@ export function MediaPanel({ task, onClose }: { task: string | null; onClose: ()
       setPage(result);
       setPreview("");
       setPreviewPage(1);
+      setPreviewPages(1);
     }
   };
   const render = async (asset: MediaAsset, number: number) => {
-    const result = await media<{ image: string }>(task, {
-      kind: "preview",
-      asset_id: asset.id,
-      page: number,
-    });
-    if (live.current) {
-      setPreview(result.image);
-      setPreviewPage(number);
+    previewAsset.current = asset.id;
+    setRendering(true);
+    try {
+      const result = await media<{ image: string; pages: number }>(task, {
+        kind: "preview",
+        asset_id: asset.id,
+        page: number,
+      });
+      if (live.current) {
+        setPreview(result.image);
+        setPreviewPage(number);
+        setPreviewPages(result.pages || 1);
+      }
+    } finally {
+      previewAsset.current = null;
+      if (live.current) setRendering(false);
     }
   };
   const selectedService = services.find((s) => s.id === selected);
@@ -300,12 +322,16 @@ export function MediaPanel({ task, onClose }: { task: string | null; onClose: ()
                           )}
                         </p>
                         <div className="media-actions">
-                          {(page.asset.image || page.asset.media_type === "application/pdf") && (
+                          {(page.asset.image ||
+                            page.asset.media_type === "application/pdf" ||
+                            isOffice(page.asset)) && (
                             <button
                               disabled={busy}
                               onClick={() => void act(() => render(page.asset, 1))}
                             >
-                              {tr("查看图像预览", "View image preview")}
+                              {isOffice(page.asset)
+                                ? tr("查看原版式预览", "View layout preview")
+                                : tr("查看图像预览", "View image preview")}
                             </button>
                           )}
                           {page.asset.path && (
@@ -374,6 +400,28 @@ export function MediaPanel({ task, onClose }: { task: string | null; onClose: ()
                             {tr("移除记录（保留原文件）", "Remove record (keep original)")}
                           </button>
                         </div>
+                        {rendering && (
+                          <p className="execution-notice">
+                            {tr("正在准备预览…", "Preparing preview…")}
+                            <button
+                              onClick={() =>
+                                void media(task, {
+                                  kind: "cancel_preview",
+                                  asset_id: page.asset.id,
+                                })
+                                  .then(() => {
+                                    if (live.current)
+                                      setNotice(tr("正在停止预览…", "Stopping preview…"));
+                                  })
+                                  .catch((e) => {
+                                    if (live.current) setError(String(e));
+                                  })
+                              }
+                            >
+                              {tr("停止预览", "Stop preview")}
+                            </button>
+                          </p>
+                        )}
                         {page.asset.warnings.map((warning, i) => (
                           <p key={i} className="execution-notice">
                             {warning}
@@ -381,8 +429,17 @@ export function MediaPanel({ task, onClose }: { task: string | null; onClose: ()
                         ))}
                         {preview && (
                           <>
+                            {isOffice(page.asset) && (
+                              <p className="execution-notice">
+                                {tr(
+                                  "由原文件转换为页面预览。字体替代可能影响排版；原文件保持不变。",
+                                  "Page preview converted from the original file. Font substitutions may affect layout; the original stays unchanged.",
+                                )}
+                              </p>
+                            )}
                             <img className="media-preview" src={preview} alt={page.asset.name} />
-                            {page.asset.media_type === "application/pdf" && (
+                            {(page.asset.media_type === "application/pdf" ||
+                              isOffice(page.asset)) && (
                               <div className="media-actions">
                                 <button
                                   disabled={busy || previewPage <= 1}
@@ -392,9 +449,11 @@ export function MediaPanel({ task, onClose }: { task: string | null; onClose: ()
                                 >
                                   {tr("上一页", "Previous page")}
                                 </button>
-                                <span>{previewPage}</span>
+                                <span aria-label={tr("预览页码", "Preview page")}>
+                                  {previewPage} / {previewPages}
+                                </span>
                                 <button
-                                  disabled={busy}
+                                  disabled={busy || previewPage >= previewPages}
                                   onClick={() =>
                                     void act(() => render(page.asset, previewPage + 1))
                                   }

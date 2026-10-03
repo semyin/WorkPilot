@@ -6062,6 +6062,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "workpilot-office"
+version = "0.1.0-alpha.0"
+dependencies = [
+ "serde_json",
+]
+
+[[package]]
 name = "workpilot-platform"
 version = "0.1.0-alpha.0"
 dependencies = [

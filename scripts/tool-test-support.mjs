@@ -95,10 +95,13 @@ async function launch(directory, fault) {
   });
   const request = (command, request_id = crypto.randomUUID()) =>
     new Promise((resolve, reject) => {
-      const timer = setTimeout(() => {
-        pending.delete(request_id);
-        reject(new Error("IPC reply timed out: " + command.kind + "; " + stderr));
-      }, 10000);
+      const timer = setTimeout(
+        () => {
+          pending.delete(request_id);
+          reject(new Error("IPC reply timed out: " + command.kind + "; " + stderr));
+        },
+        command.kind === "media" && command.action?.kind === "preview" ? 120000 : 10000,
+      );
       pending.set(request_id, { resolve, reject, timer });
       child.stdin.write(JSON.stringify({ request_id, command }) + "\n");
     });
