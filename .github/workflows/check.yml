@@ -30,6 +30,7 @@ jobs:
       - run: npm run format:check
       - run: npm run ui:typecheck
       - run: npm run test:fixtures
+      - run: npm run test:pdf-text
       - run: npm run rust:fmt
       - run: npm run engine:test
       - run: npm run test:execution-engine
@@ -40,6 +41,8 @@ jobs:
       - name: Windows UI and browser probes
         if: runner.os == 'Windows'
         run: |
+          npm run test:office-path
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run test:ui
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run test:browser
@@ -55,6 +58,10 @@ jobs:
           npm run test:teams-desktop
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run test:workspace-desktop
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:task-archive
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:task-archive-desktop
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run test:workbench-engine
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

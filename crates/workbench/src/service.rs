@@ -230,6 +230,7 @@ impl Service {
         if matches!(
             &request.command,
             Command::HistoryTransfer { .. }
+                | Command::TaskArchive { .. }
                 | Command::FileTransfer { .. }
                 | Command::MediaTransfer { .. }
                 | Command::ProjectTransfer { .. }
@@ -252,6 +253,9 @@ impl Service {
             self.requests.push(tokio::task::spawn_blocking(move || {
                 runtime.block_on(async move {
                     let result = match command {
+                        Command::TaskArchive { action } => {
+                            state.transfer.handle_task_archive(action).await
+                        }
                         Command::MediaTransfer { task_id, action } => {
                             state
                                 .transfer

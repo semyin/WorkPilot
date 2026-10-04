@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-04T04:22:36.163Z",
+  "platform": "win32",
+  "binarySha256": "6e7e1530b49fae0af1f565c73268ae87d95ad5790d4f9865cc8f0102920bb4e3",
+  "checks": [],
+  "renders": [
+    {
+      "format": "docx",
+      "pathCharacters": 89,
+      "elapsedMs": 15812,
+      "sha256": "7da5f3aeb7e859f2b2e2fe5d62b6d349d5a30903bcc724881d6f3a640ef2489c",
+      "imageSha256": "71b24deddd2877de0ce9d822cb07aaa00cfcc72f9724d6aa1dd24affce77318b"
+    }
+  ],
+  "status": "failed",
+  "error": "Error: IPC reply timed out: media; \n    at Timeout._onTimeout (file:///D:/workspace/kplocker/WorkPilot/scripts/tool-test-support.mjs:101:18)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+}

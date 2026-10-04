@@ -1,0 +1,24 @@
+[
+  {
+    "name": "media-desktop",
+    "command": "node scripts/media-desktop-smoke.mjs",
+    "status": "passed",
+    "checks": 8,
+    "exitCode": 0,
+    "began": "2026-10-04T04:42:03.436Z",
+    "ended": "2026-10-04T04:42:54.436Z",
+    "binarySha256": "e892ef104c1c9eba4c024b39d49d0995bfd5aa268c1b9fccc958e39412dfb80a",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\office-path-final-media-desktop\\report.json"
+  },
+  {
+    "name": "media-transfer-desktop",
+    "command": "node scripts/media-transfer-desktop.mjs",
+    "status": "passed",
+    "checks": 4,
+    "exitCode": 0,
+    "began": "2026-10-04T04:42:54.445Z",
+    "ended": "2026-10-04T04:43:09.076Z",
+    "binarySha256": "e892ef104c1c9eba4c024b39d49d0995bfd5aa268c1b9fccc958e39412dfb80a",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\office-path-final-media-transfer-desktop\\report.json"
+  }
+]

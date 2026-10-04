@@ -41,6 +41,8 @@ mod file_transfer;
 pub use file_transfer::*;
 mod media_transfer;
 pub use media_transfer::*;
+mod task_archive;
+pub use task_archive::*;
 
 pub const PROTOCOL: &str = "workpilot.v1";
 pub const SCHEMA_VERSION: u32 = 11;

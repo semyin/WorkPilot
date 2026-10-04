@@ -100,11 +100,12 @@ async function launch(directory, fault) {
           pending.delete(request_id);
           reject(new Error("IPC reply timed out: " + command.kind + "; " + stderr));
         },
-        (command.kind === "media" && command.action?.kind === "preview") ||
+        (command.kind === "media" && ["preview", "finish_upload"].includes(command.action?.kind)) ||
           command.kind === "inspect_installation" ||
           command.kind === "history_transfer" ||
           command.kind === "file_transfer" ||
           command.kind === "media_transfer" ||
+          command.kind === "task_archive" ||
           command.kind === "project_transfer" ||
           command.kind === "extension_transfer"
           ? 120000

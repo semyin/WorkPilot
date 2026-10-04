@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-04T03:05:01.390Z",
+  "platform": "win32",
+  "binarySha256": "5b2e2deb9bbbf51d010ba689521b2c22a44d5017d0281f4066fd244ea3aa798f",
+  "checks": [
+    "native_selected_attachments_encrypted_export_requires_repeated_passphrase_and_clears_it",
+    "native_wrong_password_and_mapping_preview_same_name_keeps_original_then_imported_content_and_origin_are_readable",
+    "add_to_next_message_returns_attachment_chip_without_sending_then_explicit_save_queues_new_asset_id",
+    "english_duplicate_import_shows_original_names_ignores_new_prefix_keeps_three_snapshots_without_overflow_or_javascript_errors"
+  ],
+  "status": "passed"
+}

@@ -1,6 +1,6 @@
 {
   "name": "workpilot",
-  "version": "0.1.0-alpha.12.7",
+  "version": "0.1.0-alpha.12.10",
   "private": true,
   "type": "module",
   "engines": {
@@ -44,7 +44,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check:lines": "node scripts/check-code-lines.mjs",
-    "check": "npm run check:lines && npm run format:check && npm run ui:typecheck && npm run test:fixtures && npm run rust:fmt && npm run engine:test && npm run rust:check && npm run ui:build",
+    "check": "npm run check:lines && npm run format:check && npm run ui:typecheck && npm run test:fixtures && npm run test:pdf-text && npm run rust:fmt && npm run engine:test && npm run rust:check && npm run ui:build",
     "test:tools-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/tools-engine-test.mjs",
     "test:tools-desktop": "node scripts/tools-desktop-smoke.mjs",
     "test:teams-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/teams-engine-test.mjs",
@@ -74,7 +74,11 @@
     "test:file-transfer": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/file-transfer-test.mjs",
     "test:file-transfer-desktop": "node scripts/file-transfer-desktop.mjs",
     "test:media-transfer": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/media-transfer-test.mjs",
-    "test:media-transfer-desktop": "node scripts/media-transfer-desktop.mjs"
+    "test:media-transfer-desktop": "node scripts/media-transfer-desktop.mjs",
+    "test:pdf-text": "node scripts/prepare-documents.mjs && node --test tests/documents/*.test.mjs",
+    "test:task-archive": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/task-archive-test.mjs",
+    "test:task-archive-desktop": "node scripts/task-archive-desktop.mjs",
+    "test:office-path": "node scripts/office-path-test.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",

@@ -1,0 +1,58 @@
+
+> workpilot@0.1.0-alpha.12.10 build
+> node scripts/desktop.mjs build
+
+   Compiling workpilot-contracts v0.1.0-alpha.12.10 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-platform v0.1.0-alpha.12.10 (D:\workspace\kplocker\WorkPilot\crates\platform)
+   Compiling workpilot-policy v0.1.0-alpha.12.10 (D:\workspace\kplocker\WorkPilot\crates\policy)
+   Compiling workpilot-storage v0.1.0-alpha.12.10 (D:\workspace\kplocker\WorkPilot\crates\storage)
+   Compiling workpilot-tools v0.1.0-alpha.12.10 (D:\workspace\kplocker\WorkPilot\crates\tools)
+   Compiling workpilot-providers v0.1.0-alpha.12.10 (D:\workspace\kplocker\WorkPilot\crates\providers)
+   Compiling workpilot-extensions v0.1.0-alpha.12.10 (D:\workspace\kplocker\WorkPilot\crates\extensions)
+   Compiling workpilot-workbench v0.1.0-alpha.12.10 (D:\workspace\kplocker\WorkPilot\crates\workbench)
+   Compiling workpilot-runtime v0.1.0-alpha.12.10 (D:\workspace\kplocker\WorkPilot\crates\runtime)
+   Compiling workpilot-engine v0.1.0-alpha.12.10 (D:\workspace\kplocker\WorkPilot\crates\engine)
+    Finished `release` profile [optimized] target(s) in 1m 39s
+   Compiling workpilot-contracts v0.1.0-alpha.12.10 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-platform v0.1.0-alpha.12.10 (D:\workspace\kplocker\WorkPilot\crates\platform)
+    Finished `release` profile [optimized] target(s) in 17.59s
+   Compiling workpilot-platform v0.1.0-alpha.12.10 (D:\workspace\kplocker\WorkPilot\crates\platform)
+    Finished `release` profile [optimized] target(s) in 1.86s
+   Compiling workpilot-browser-bridge v0.1.0-alpha.12.10 (D:\workspace\kplocker\WorkPilot\crates\browser-bridge)
+    Finished `release` profile [optimized] target(s) in 2.01s
+   Compiling workpilot-office v0.1.0-alpha.12.10 (D:\workspace\kplocker\WorkPilot\crates\office)
+    Finished `release` profile [optimized] target(s) in 1.66s
+Office runtime verified 2000/19442 files
+Office runtime verified 4000/19442 files
+Office runtime verified 6000/19442 files
+Office runtime verified 8000/19442 files
+Office runtime verified 10000/19442 files
+Office runtime verified 12000/19442 files
+Office runtime verified 14000/19442 files
+Office runtime verified 16000/19442 files
+Office runtime verified 18000/19442 files
+{"officeRuntime":"target\\release\\office-runtime","version":"26.8.0","files":19447,"bytes":1576066913}
+{"runtime":"target\\release\\document-runtime","files":5244,"fontVerified":true}
+        Info Looking up installed tauri packages to check mismatched versions...
+     Running beforeBuildCommand `npm run build`
+
+> @workpilot/desktop@0.1.0-alpha.12.10 build
+> tsc --noEmit && vite build
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 69 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                             0.39 kB │ gzip:   0.27 kB
+dist/assets/128-kkOeCthX.png               10.43 kB
+dist/assets/index-CW_70bNu.css             37.88 kB │ gzip:   7.97 kB
+dist/assets/TaskArchivePanel-KkC_LSa9.js   13.10 kB │ gzip:   5.07 kB
+dist/assets/index-B7OXtABD.js             493.51 kB │ gzip: 149.93 kB
+
+✓ built in 672ms
+   Compiling workpilot-desktop v0.1.0-alpha.12.10 (D:\workspace\kplocker\WorkPilot\apps\desktop\src-tauri)
+   Compiling workpilot-contracts v0.1.0-alpha.12.10 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-platform v0.1.0-alpha.12.10 (D:\workspace\kplocker\WorkPilot\crates\platform)
+    Finished `release` profile [optimized] target(s) in 2m 33s
+       Built application at: D:\workspace\kplocker\WorkPilot\target\release\workpilot-desktop.exe

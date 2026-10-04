@@ -68,3 +68,18 @@
 .project-transfer select {
   max-width: 100%;
 }
+.task-archive-panel select {
+  max-width: 100%;
+  min-width: 0;
+}
+.task-archive-panel p,
+.task-archive-panel li,
+.task-archive-panel summary {
+  overflow-wrap: anywhere;
+}
+.task-archive-panel pre {
+  max-height: 320px;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}

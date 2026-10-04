@@ -1,0 +1,22 @@
+   Compiling workpilot-contracts v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-policy v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\policy)
+   Compiling workpilot-platform v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\platform)
+   Compiling workpilot-storage v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\storage)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 28.46s
+     Running unittests src\lib.rs (target\debug\deps\workpilot_storage-c87a58ac1865d3a9.exe)
+
+running 5 tests
+test task_archive_tests::task_archive_never_follows_untrusted_reference_to_another_task ... ok
+test task_archive_tests::task_archive_refuses_active_work_and_later_registered_secret_without_touching_source ... ok
+test task_archive_tests::task_archive_import_database_failure_never_exposes_partial_library ... ok
+test task_archive_tests::task_archive_rejects_damaged_missing_foreign_and_unconfirmed_contents ... ok
+test task_archive_tests::task_archive_transfers_complete_tree_long_bodies_and_pages_without_live_state ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 69 filtered out; finished in 0.63s
+
+     Running unittests src\bin\workpilot-data.rs (target\debug\deps\workpilot_data-3a88b66ca7d95060.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

@@ -1,0 +1,58 @@
+[
+  {
+    "name": "task-archive-engine",
+    "command": "node scripts/task-archive-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-04T03:49:26.050Z",
+    "ended": "2026-10-04T03:49:34.331Z",
+    "binarySha256": "997893a95e87c58e2408a489b71b60ba17e908667893d32d85a5bf727b9e6024",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\task-archive-final-task-archive-engine\\report.json"
+  },
+  {
+    "name": "project-transfer-engine",
+    "command": "node scripts/project-transfer-test.mjs",
+    "status": "passed",
+    "checks": 4,
+    "exitCode": 0,
+    "began": "2026-10-04T03:49:34.332Z",
+    "ended": "2026-10-04T03:49:35.960Z",
+    "binarySha256": "997893a95e87c58e2408a489b71b60ba17e908667893d32d85a5bf727b9e6024",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\task-archive-final-project-transfer-engine\\report.json"
+  },
+  {
+    "name": "history-transfer-engine",
+    "command": "node scripts/history-transfer-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-04T03:49:35.961Z",
+    "ended": "2026-10-04T03:49:37.570Z",
+    "binarySha256": "997893a95e87c58e2408a489b71b60ba17e908667893d32d85a5bf727b9e6024",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\task-archive-final-history-transfer-engine\\report.json"
+  },
+  {
+    "name": "media-transfer-engine",
+    "command": "node scripts/media-transfer-test.mjs",
+    "status": "failed",
+    "checks": 2,
+    "exitCode": 1,
+    "began": "2026-10-04T03:49:37.571Z",
+    "ended": "2026-10-04T03:50:42.760Z",
+    "binarySha256": "997893a95e87c58e2408a489b71b60ba17e908667893d32d85a5bf727b9e6024",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\task-archive-final-media-transfer-engine\\report.json"
+  },
+  {
+    "name": "media-transfer-short-engine",
+    "command": "node scripts/media-transfer-test.mjs with shorter isolated WORKPILOT_TEST_OUTPUT",
+    "status": "passed",
+    "checks": 7,
+    "exitCode": 0,
+    "began": "2026-10-04T03:52:28.172Z",
+    "ended": "2026-10-04T03:55:00.397Z",
+    "binarySha256": "997893a95e87c58e2408a489b71b60ba17e908667893d32d85a5bf727b9e6024",
+    "report": ".test-results/ta-media-final-short/report.json",
+    "scope": "Short data path only; the longer-path failure remains unresolved and retained above."
+  }
+]

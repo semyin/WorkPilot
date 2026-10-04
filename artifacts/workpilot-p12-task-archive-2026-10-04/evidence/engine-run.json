@@ -1,0 +1,46 @@
+[
+  {
+    "name": "task-archive-engine",
+    "command": "node scripts/task-archive-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-04T04:06:16.308Z",
+    "ended": "2026-10-04T04:06:24.326Z",
+    "binarySha256": "4b390efadb6a27fb597e7e0fb9ee460dd969c8ef52c01c7a12779989254b42b6",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\task-archive-final-task-archive-engine\\report.json"
+  },
+  {
+    "name": "project-transfer-engine",
+    "command": "node scripts/project-transfer-test.mjs",
+    "status": "passed",
+    "checks": 4,
+    "exitCode": 0,
+    "began": "2026-10-04T04:06:24.327Z",
+    "ended": "2026-10-04T04:06:25.932Z",
+    "binarySha256": "4b390efadb6a27fb597e7e0fb9ee460dd969c8ef52c01c7a12779989254b42b6",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\task-archive-final-project-transfer-engine\\report.json"
+  },
+  {
+    "name": "history-transfer-engine",
+    "command": "node scripts/history-transfer-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-04T04:06:25.933Z",
+    "ended": "2026-10-04T04:06:27.645Z",
+    "binarySha256": "4b390efadb6a27fb597e7e0fb9ee460dd969c8ef52c01c7a12779989254b42b6",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\task-archive-final-history-transfer-engine\\report.json"
+  },
+  {
+    "name": "media-transfer-short-engine",
+    "command": "node scripts/media-transfer-test.mjs",
+    "status": "passed",
+    "checks": 7,
+    "exitCode": 0,
+    "began": "2026-10-04T04:06:27.646Z",
+    "ended": "2026-10-04T04:07:41.676Z",
+    "binarySha256": "4b390efadb6a27fb597e7e0fb9ee460dd969c8ef52c01c7a12779989254b42b6",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\ta-media-final-short\\report.json"
+  }
+]

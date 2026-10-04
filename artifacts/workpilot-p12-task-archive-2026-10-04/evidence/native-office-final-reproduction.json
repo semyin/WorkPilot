@@ -1,0 +1,28 @@
+{
+  "issue": "T-P10-04",
+  "status": "unresolved",
+  "sameFinalEngine": "997893a95e87c58e2408a489b71b60ba17e908667893d32d85a5bf727b9e6024",
+  "observedLongPathFailures": [
+    {
+      "at": "2026-10-04T03:34:07.0918062Z",
+      "engine": "b49008f7af1b22e589c85a4b8e56afb6c11a9be02da7b74cf345cc54210b08f5"
+    },
+    {
+      "at": "2026-10-04T03:50:39.3999952Z",
+      "engine": "997893a95e87c58e2408a489b71b60ba17e908667893d32d85a5bf727b9e6024"
+    }
+  ],
+  "windowsApplicationEvents": {
+    "id": 1000,
+    "application": "workpilot-office.exe",
+    "module": "ucrtbase.dll",
+    "exception": "0xc0000409"
+  },
+  "sourceFilesPreserved": true,
+  "shortPathRetest": {
+    "status": "passed",
+    "checks": 7,
+    "binary": "997893a95e87c58e2408a489b71b60ba17e908667893d32d85a5bf727b9e6024"
+  },
+  "inference": "The repeated failure occurs in the longer test data path. Short paths passed twice; a same-input controlled comparison is still needed before attributing the root cause or changing staging."
+}

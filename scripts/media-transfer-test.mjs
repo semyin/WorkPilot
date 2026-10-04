@@ -255,11 +255,8 @@ try {
   ).units;
   assert.deepEqual(importedPdfUnits, originalPdfUnits);
   assert(importedPdfUnits.some((u) => u.text.includes("Portable generated output")));
-  report.existingPdfExtractionIssue = originalPdfUnits.some(
-    (u) => u.text.includes("Portable generated output") && !u.text.includes("42"),
-  )
-    ? "T-P10-03: original generated PDF already extracts its 42 as private-use glyphs; migration preserves original bytes and identical extracted units"
-    : null;
+  assert(importedPdfUnits.some((u) => u.text.includes("Portable generated output 42")));
+  report.pdfNumericTextPreserved = true;
   for (const a of [migratedPicture, migratedPdf, migratedDoc]) {
     const p = await admin(target, task, { kind: "preview", asset_id: a.id, page: 1 });
     assert(p.image.startsWith("data:image/png;base64,"));

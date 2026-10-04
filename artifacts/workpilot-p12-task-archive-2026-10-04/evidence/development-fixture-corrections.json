@@ -1,0 +1,35 @@
+{
+  "scope": "Test harness corrections; not product fixes",
+  "items": [
+    {
+      "at": "2026-10-04T03:25:04.709Z",
+      "observed": "Stopped waiting on a transient awaiting_input state while the main task waited for assistants",
+      "corrected": "Wait for completed/failed/interrupted terminal state"
+    },
+    {
+      "at": "2026-10-04T03:25:22.617Z",
+      "observed": "Fixture generated more than the configured 65536-byte model-result limit and the engine correctly stopped it",
+      "corrected": "Use a 12800-byte model result; the storage regression independently covers a 352000-byte body"
+    },
+    {
+      "at": "2026-10-04T03:27:24.821Z",
+      "observed": "Team response uses view, not team",
+      "corrected": "Use the actual contract response field"
+    },
+    {
+      "at": "2026-10-04T03:28:06.508Z",
+      "observed": "Executions query rejected 128 because its page maximum is 64",
+      "corrected": "Use 64 and assert response kind"
+    },
+    {
+      "at": "2026-10-04T03:28:57.292Z",
+      "observed": "Expected a standalone text object; model text is also saved inside structured JSON",
+      "corrected": "Verify complete exact model text in the saved text field"
+    },
+    {
+      "at": "2026-10-04T03:38:15.416Z",
+      "observed": "Desktop test looked for a Cancel button where the actual settings action is Close",
+      "corrected": "Use the actual button label"
+    }
+  ]
+}

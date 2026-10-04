@@ -1,0 +1,65 @@
+{
+  "at": "2026-10-04T03:08:20.805Z",
+  "phase": "P10-pdf-text-fix",
+  "status": "T-P10-03_fixed_for_new_output_P10_and_P12_not_accepted",
+  "appVersion": "0.1.0-alpha.12.8",
+  "schema": 11,
+  "platform": "Windows 11 Home x64 developer machine",
+  "pushedBeforeWork": "b116e0876a29b5174c6cc183ebbea697c44da094",
+  "pushedBranch": "origin/main",
+  "thisFixCommittedOrPushed": false,
+  "checks": {
+    "rust": 146,
+    "rustIgnored": 2,
+    "node": 14,
+    "addedPdfRegressionTests": 3,
+    "preFixFailures": 2,
+    "independentChecks": 3,
+    "independentRenderedPages": 6,
+    "engine": 22,
+    "desktop": 12,
+    "codeFiles": 339,
+    "maximumCodeLines": 984,
+    "sourceFiles": 467,
+    "localLinks": 622,
+    "deliveryFiles": 25123,
+    "deliveryBytes": 1989624472,
+    "credentialScannedTextFiles": 970,
+    "credentialPatternMatches": 0,
+    "pdfAndDesktopScreenshotsViewed": true
+  },
+  "build": {
+    "command": "npm run build (Tauri build --no-bundle)",
+    "appVersion": "0.1.0-alpha.12.8",
+    "at": "2026-10-04T03:03:40.849Z",
+    "platform": "win32",
+    "desktop": "5b2e2deb9bbbf51d010ba689521b2c22a44d5017d0281f4066fd244ea3aa798f",
+    "engine": "3bbfcc746937e603ede874dbf468ca626a6f5d18363f123c8cda157a94e07f5b",
+    "runtimeCheck": "8731df0cf43c8ecafb93c6761616ae72595d8ccc70cd274c3d165f3c553f06fa",
+    "browserSetup": "8e66ed7633eb9382e5ba91483bade02ec443ab0f29a654b3aa2ed60d8e37288d",
+    "companion": "5e2450a3d01f4472aaa0d5a752469cb849fd077ba67dddd62016751bacb82971"
+  },
+  "documentWorkerSha256": "d19c7095e3f67b0b4cb55e51fd1099b073e7499973c5b5e9edaadfb24fcd85b0",
+  "priorDeliveryPreserved": [
+    "workpilot-p12-media-2026-10-04",
+    "workpilot-p12-files-2026-10-04",
+    "workpilot-p10-layout-2026-10-03"
+  ],
+  "originalUserProcessesPreserved": [
+    25624,
+    12372
+  ],
+  "limits": [
+    "Fix applies to newly generated PDFs; old originals and parsed snapshots remain unchanged",
+    "Full pinned font still embedded; typical small PDF about 13 MiB",
+    "Local deterministic model/image fixtures only; no new commercial-service acceptance",
+    "No new installer build, clean-system, physical cross-machine, macOS/Linux or hosted CI verification"
+  ],
+  "pending": [
+    "Full sessions/multi-agent and attachment/reference mappings",
+    "Unified multi-project migration, earlier extension versions and drafts",
+    "Version cleanup and team permanent deletion",
+    "Signed updates and other T-P12-01/02/04/05/06",
+    "Real image service, user experience, sleep/notification decisions and cross-platform acceptance"
+  ]
+}

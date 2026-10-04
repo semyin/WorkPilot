@@ -30,6 +30,9 @@ pub fn typescript() -> String {
         ExtensionTransferAction,
         FileTransferAction,
         MediaTransferAction,
+        TaskArchiveAction,
+        TaskArchiveIndex,
+        ArchiveTask,
         MediaAssetOrigin,
         ExtensionSelection,
         FileRevisionOrigin,
@@ -172,5 +175,12 @@ pub fn typescript() -> String {
         MediaEffect,
         ImageDimensions
     );
+    // Field documentation can make ts-rs leave a space before a newline.
+    // Normalize generation itself so checked-in declarations stay reproducible.
     output
+        .lines()
+        .map(str::trim_end)
+        .collect::<Vec<_>>()
+        .join("\n")
+        + "\n"
 }

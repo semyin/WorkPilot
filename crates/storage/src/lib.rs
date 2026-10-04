@@ -20,6 +20,8 @@ mod memory_tests;
 mod memory_transfer_tests;
 mod objects;
 mod project_transfer;
+mod task_archive;
+pub use task_archive::{TaskArchiveBytes, task_archive_summary};
 #[cfg(test)]
 mod provider_tests;
 mod providers;
@@ -28,6 +30,8 @@ mod schedule;
 #[cfg(test)]
 mod schedule_tests;
 pub mod schedule_time;
+#[cfg(test)]
+mod task_archive_tests;
 mod team;
 #[cfg(test)]
 mod team_tests;
@@ -516,6 +520,7 @@ impl Store {
             UNION SELECT inspected_object_id FROM team_members WHERE inspected_object_id IS NOT NULL
             UNION SELECT object_id FROM tool_result_objects
             UNION SELECT object_id FROM workbench_output_objects
+            UNION SELECT json_extract(a.value,'$.object_id') FROM settings s,json_each(s.value_json,'$.index.objects') a WHERE s.key GLOB 'task-archive:*'
             UNION SELECT output_object_id FROM model_calls WHERE output_object_id IS NOT NULL
             UNION SELECT config_object_id FROM execution_sessions UNION SELECT context_object_id FROM execution_sessions
             UNION SELECT context_object_id FROM execution_checkpoints

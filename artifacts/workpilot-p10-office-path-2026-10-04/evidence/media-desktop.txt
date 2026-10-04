@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-04T04:42:04.932Z",
+  "platform": "win32",
+  "binary": {
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p10-office-path-2026-10-04\\preview\\workpilot-desktop.exe",
+    "sha256": "e892ef104c1c9eba4c024b39d49d0995bfd5aa268c1b9fccc958e39412dfb80a"
+  },
+  "service": "Actual Windows WebView, document worker and files; synthetic Images API and model only",
+  "checks": [
+    "native_file_picker_upload_attaches_original_bytes_to_saved_message",
+    "drop_and_image_paste_event_handlers_import_files_without_accessing_system_clipboard",
+    "native_docx_original_layout_preview_shows_real_page_count_and_keeps_original_file",
+    "native_slide_preview_can_stop_restart_and_page_to_actual_last_slide",
+    "native_office_content_and_actual_pdf_page_preview_use_saved_files",
+    "untrusted_html_svg_are_text_only_no_host_script_execution_external_refresh_reads_new_snapshot",
+    "unconfigured_image_service_is_explicit_native_settings_generate_approval_save_preview_and_edit_reference",
+    "english_ui_no_horizontal_overflow_or_javascript_errors"
+  ],
+  "status": "passed"
+}

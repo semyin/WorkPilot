@@ -187,6 +187,11 @@ try {
   await panel.getByLabel("读取项目文件", { exact: true }).fill("报告.pdf");
   await panel.getByRole("button", { name: "读取文件", exact: true }).click();
   await expect(panel.locator(".media-detail h3")).toHaveText("报告.pdf");
+  await expect(panel.locator(".media-detail")).toContainText("Portable generated output 42");
+  await expect(panel.locator(".media-detail")).toContainText(
+    "Invoice A00123456789Z: 1234.56 -17 25/17 100%",
+  );
+  await expect(panel.locator(".media-detail")).not.toContainText(/[\uE000-\uF8FF]/u);
   await panel.getByRole("button", { name: "查看图像预览", exact: true }).click();
   await expect(panel.locator(".media-preview")).toBeVisible();
   await page.screenshot({ path: join(output, "pdf-preview-zh.png") });

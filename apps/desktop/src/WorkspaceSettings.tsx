@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import type {
   WorkspacePreferences,
   SchedulerSettings,
@@ -10,6 +10,11 @@ import { useWords } from "./workspaceClient";
 import { InstallationPanel } from "./InstallationPanel";
 import { BrowserSetupPanel } from "./BrowserSetupPanel";
 import { ProjectTransferPanel } from "./ProjectTransferPanel";
+const TaskArchivePanel = lazy(() =>
+  import("./task-archive/TaskArchivePanel").then((module) => ({
+    default: module.TaskArchivePanel,
+  })),
+);
 export function WorkspaceSettings({
   preferences,
   scheduler,
@@ -32,6 +37,7 @@ export function WorkspaceSettings({
   const [originalDefaults, setOriginalDefaults] = useState<DefaultToolSettings | null>(null);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const [archiveOpen, setArchiveOpen] = useState(false);
   useEffect(() => {
     void executionCommand({ kind: "read", query: { kind: "tool_defaults" } })
       .then((r) => {
@@ -142,6 +148,14 @@ export function WorkspaceSettings({
         <details>
           <summary>{tr("项目设置与记忆迁移", "Project settings and memory transfer")}</summary>
           <ProjectTransferPanel />
+        </details>
+        <details onToggle={(e) => setArchiveOpen(e.currentTarget.open)}>
+          <summary>{tr("任务与助手档案迁移", "Task and assistant archive transfer")}</summary>
+          {archiveOpen && (
+            <Suspense fallback={<p>{tr("正在打开任务档案…", "Opening task archives…")}</p>}>
+              <TaskArchivePanel />
+            </Suspense>
+          )}
         </details>
         <details>
           <summary>{tr("Chrome / Edge 连接设置", "Chrome / Edge connection setup")}</summary>

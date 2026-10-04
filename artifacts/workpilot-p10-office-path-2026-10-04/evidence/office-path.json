@@ -1,0 +1,91 @@
+{
+  "at": "2026-10-04T04:38:01.167Z",
+  "platform": "win32",
+  "binarySha256": "d48700ae26f7641aed263f3126db61c3d6f8caf50e1bc0f4f8741f5671738071",
+  "checks": [
+    "same_docx_xlsx_pptx_original_bytes_and_identical_layout_at_101_characters",
+    "same_docx_xlsx_pptx_original_bytes_and_identical_layout_at_165_characters",
+    "same_docx_xlsx_pptx_original_bytes_and_identical_layout_at_205_characters",
+    "document_runtime_cache_above_260_characters_installs_and_runs",
+    "long_path_cancellation_finishes_and_a_new_preview_succeeds",
+    "restart_reopens_original_encrypted_snapshot_and_renders_without_old_cache"
+  ],
+  "renders": [
+    {
+      "format": "docx",
+      "pathCharacters": 101,
+      "uploadMs": 3165,
+      "elapsedMs": 10046,
+      "sha256": "6fc691f48b7280de78cd82a6b9304f2bedbb7f8adc47629ef670944db2da92b7",
+      "imageSha256": "71b24deddd2877de0ce9d822cb07aaa00cfcc72f9724d6aa1dd24affce77318b"
+    },
+    {
+      "format": "xlsx",
+      "pathCharacters": 101,
+      "uploadMs": 1581,
+      "elapsedMs": 9348,
+      "sha256": "b188839ea10e15ba3c938997113c2955a75b22633ece6c4a2b47fa4b8ae855d0",
+      "imageSha256": "b4f6529bc4d99552d769d1d636b154aa9965835e815e30bdd115e3fc25fa3b9e"
+    },
+    {
+      "format": "pptx",
+      "pathCharacters": 101,
+      "uploadMs": 1320,
+      "elapsedMs": 9466,
+      "sha256": "d9408eef00726bc6d5ea0563feef9277d39ecc10f2265fef66c5282b393d6762",
+      "imageSha256": "890a105d3d7f260fa843cd0170c9acb13f2d1f8e2d1a30af244cd5d57a82d1c8"
+    },
+    {
+      "format": "docx",
+      "pathCharacters": 165,
+      "uploadMs": 3191,
+      "elapsedMs": 9878,
+      "sha256": "6fc691f48b7280de78cd82a6b9304f2bedbb7f8adc47629ef670944db2da92b7",
+      "imageSha256": "71b24deddd2877de0ce9d822cb07aaa00cfcc72f9724d6aa1dd24affce77318b"
+    },
+    {
+      "format": "xlsx",
+      "pathCharacters": 165,
+      "uploadMs": 1569,
+      "elapsedMs": 9287,
+      "sha256": "b188839ea10e15ba3c938997113c2955a75b22633ece6c4a2b47fa4b8ae855d0",
+      "imageSha256": "b4f6529bc4d99552d769d1d636b154aa9965835e815e30bdd115e3fc25fa3b9e"
+    },
+    {
+      "format": "pptx",
+      "pathCharacters": 165,
+      "uploadMs": 1265,
+      "elapsedMs": 9619,
+      "sha256": "d9408eef00726bc6d5ea0563feef9277d39ecc10f2265fef66c5282b393d6762",
+      "imageSha256": "890a105d3d7f260fa843cd0170c9acb13f2d1f8e2d1a30af244cd5d57a82d1c8"
+    },
+    {
+      "format": "docx",
+      "pathCharacters": 205,
+      "uploadMs": 3332,
+      "elapsedMs": 9888,
+      "sha256": "6fc691f48b7280de78cd82a6b9304f2bedbb7f8adc47629ef670944db2da92b7",
+      "imageSha256": "71b24deddd2877de0ce9d822cb07aaa00cfcc72f9724d6aa1dd24affce77318b"
+    },
+    {
+      "format": "xlsx",
+      "pathCharacters": 205,
+      "uploadMs": 1607,
+      "elapsedMs": 9465,
+      "sha256": "b188839ea10e15ba3c938997113c2955a75b22633ece6c4a2b47fa4b8ae855d0",
+      "imageSha256": "b4f6529bc4d99552d769d1d636b154aa9965835e815e30bdd115e3fc25fa3b9e"
+    },
+    {
+      "format": "pptx",
+      "pathCharacters": 205,
+      "uploadMs": 1266,
+      "elapsedMs": 9482,
+      "sha256": "d9408eef00726bc6d5ea0563feef9277d39ecc10f2265fef66c5282b393d6762",
+      "imageSha256": "890a105d3d7f260fa843cd0170c9acb13f2d1f8e2d1a30af244cd5d57a82d1c8"
+    }
+  ],
+  "runtimePathCharacters": 293,
+  "cancelAcknowledgedMs": 2,
+  "cancelCompletedMs": 2889,
+  "status": "passed"
+}

@@ -4,6 +4,7 @@ mod file_index;
 pub(crate) mod files;
 mod media;
 mod project;
+mod task_archive;
 #[cfg(test)]
 mod tests;
 use crate::{

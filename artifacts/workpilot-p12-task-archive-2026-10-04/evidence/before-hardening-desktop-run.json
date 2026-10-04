@@ -1,0 +1,35 @@
+[
+  {
+    "name": "task-archive-desktop",
+    "command": "node scripts/task-archive-desktop.mjs",
+    "status": "passed",
+    "checks": 3,
+    "exitCode": 0,
+    "began": "2026-10-04T03:49:26.044Z",
+    "ended": "2026-10-04T03:49:35.137Z",
+    "binarySha256": "091d2310aa7963ba47c0e98f9c2f92743be3673973d04edb137fce72d16fd9d3",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\task-archive-final-task-archive-desktop\\report.json"
+  },
+  {
+    "name": "project-transfer-desktop",
+    "command": "node scripts/project-transfer-desktop.mjs",
+    "status": "passed",
+    "checks": 4,
+    "exitCode": 0,
+    "began": "2026-10-04T03:49:35.138Z",
+    "ended": "2026-10-04T03:49:38.245Z",
+    "binarySha256": "091d2310aa7963ba47c0e98f9c2f92743be3673973d04edb137fce72d16fd9d3",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\task-archive-final-project-transfer-desktop\\report.json"
+  },
+  {
+    "name": "media-transfer-desktop",
+    "command": "node scripts/media-transfer-desktop.mjs",
+    "status": "passed",
+    "checks": 4,
+    "exitCode": 0,
+    "began": "2026-10-04T03:49:38.245Z",
+    "ended": "2026-10-04T03:49:54.527Z",
+    "binarySha256": "091d2310aa7963ba47c0e98f9c2f92743be3673973d04edb137fce72d16fd9d3",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\task-archive-final-media-transfer-desktop\\report.json"
+  }
+]

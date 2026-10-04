@@ -1,0 +1,13 @@
+   Compiling workpilot-workbench v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\workbench)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.79s
+     Running unittests src\lib.rs (target\debug\deps\workpilot_workbench-7b9f2852cfc9d582.exe)
+
+running 5 tests
+test media::office::tests::crash_reports_exit_and_last_known_phase_without_leaking_document_text ... ok
+test media::office_jobs::tests::too_long_staging_path_is_rejected_before_writing_plaintext ... ok
+test media::office_jobs::tests::separate_data_roots_do_not_clean_each_others_jobs ... ok
+test media::office_jobs::tests::live_jobs_are_kept_stale_jobs_removed_and_other_files_preserved ... ok
+test media::office_jobs::tests::redirected_staging_entry_is_not_followed_during_recovery ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 10 filtered out; finished in 0.26s
+

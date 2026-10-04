@@ -1,0 +1,33 @@
+   Compiling workpilot-storage v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\storage)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.87s
+     Running unittests src\lib.rs (target\debug\deps\workpilot_storage-c87a58ac1865d3a9.exe)
+
+running 1 test
+test task_archive_tests::task_archive_never_follows_untrusted_reference_to_another_task ... FAILED
+
+failures:
+
+---- task_archive_tests::task_archive_never_follows_untrusted_reference_to_another_task stdout ----
+
+thread 'task_archive_tests::task_archive_never_follows_untrusted_reference_to_another_task' (26560) panicked at crates\storage\src\task_archive_tests.rs:265:5:
+assertion failed: s.export_task_archive(&title_task, &AtomicBool::new(false)).is_err()
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    task_archive_tests::task_archive_never_follows_untrusted_reference_to_another_task
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 73 filtered out; finished in 0.07s
+
+error: test failed, to rerun pass `-p workpilot-storage --lib`
+file:///D:/workspace/kplocker/WorkPilot/scripts/cargo.mjs:25
+      else reject(new Error(command + " exited with " + (code ?? signal)));
+                  ^
+
+Error: C:\Users\semyi\.cargo\bin\cargo.exe exited with 101
+    at ChildProcess.<anonymous> (file:///D:/workspace/kplocker/WorkPilot/scripts/cargo.mjs:25:19)
+    at Object.onceWrapper (node:events:634:26)
+    at ChildProcess.emit (node:events:519:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+
+Node.js v22.23.2

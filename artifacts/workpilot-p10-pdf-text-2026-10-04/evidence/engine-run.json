@@ -1,0 +1,35 @@
+[
+  {
+    "name": "media-engine",
+    "command": "node scripts/media-engine-test.mjs",
+    "status": "passed",
+    "checks": 10,
+    "exitCode": 0,
+    "began": "2026-10-04T03:01:29.499Z",
+    "ended": "2026-10-04T03:02:12.494Z",
+    "binarySha256": "3bbfcc746937e603ede874dbf468ca626a6f5d18363f123c8cda157a94e07f5b",
+    "report": ".test-results\\media-engine\\report.json"
+  },
+  {
+    "name": "media-model",
+    "command": "node scripts/media-model-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-04T03:02:12.495Z",
+    "ended": "2026-10-04T03:02:34.398Z",
+    "binarySha256": "3bbfcc746937e603ede874dbf468ca626a6f5d18363f123c8cda157a94e07f5b",
+    "report": ".test-results\\media-model\\report.json"
+  },
+  {
+    "name": "media-transfer-engine",
+    "command": "node scripts/media-transfer-test.mjs",
+    "status": "passed",
+    "checks": 7,
+    "exitCode": 0,
+    "began": "2026-10-04T03:02:34.399Z",
+    "ended": "2026-10-04T03:03:53.832Z",
+    "binarySha256": "3bbfcc746937e603ede874dbf468ca626a6f5d18363f123c8cda157a94e07f5b",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\pdf-fix-media-transfer-engine\\report.json"
+  }
+]

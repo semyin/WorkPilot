@@ -44,6 +44,10 @@ fn put_bytes(root: &Path, bytes: &[u8], media_type: &str) -> Result<ContentRef> 
     File::open(root.join("objects"))?.sync_all()?;
     Ok(content)
 }
+/// Already authenticated, hash-checked and credential-checked archive content.
+pub(crate) fn put_archive_bytes(root: &Path, bytes: &[u8], media_type: &str) -> Result<ContentRef> {
+    put_bytes(root, bytes, media_type)
+}
 pub(crate) fn object_path(root: &Path, id: &str) -> Result<PathBuf> {
     if id.len() != 64
         || !id

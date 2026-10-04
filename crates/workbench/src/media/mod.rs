@@ -1,6 +1,7 @@
 mod images;
 pub mod model;
 mod office;
+mod office_jobs;
 mod transfer;
 mod worker;
 use crate::vault::{Result, Vault};

@@ -222,17 +222,28 @@ fn convert(
     stop: Arc<AtomicBool>,
 ) -> Result<Vec<u8>> {
     stopped(&stop)?;
-    let jobs = data.join("media/office-jobs");
-    std::fs::create_dir_all(&jobs).map_err(|e| e.to_string())?;
-    let job = tempfile::tempdir_in(jobs).map_err(|e| e.to_string())?;
-    std::fs::write(job.path().join(format!("input.{format}")), bytes).map_err(|e| e.to_string())?;
+    let job = super::office_jobs::Job::create(data)?;
+    let result = convert_in_job(runtime, data, job.path(), format, bytes, stop);
+    job.close()?;
+    result
+}
+
+fn convert_in_job(
+    runtime: &Runtime,
+    data: &Path,
+    job: &Path,
+    format: &str,
+    bytes: &[u8],
+    stop: Arc<AtomicBool>,
+) -> Result<Vec<u8>> {
+    std::fs::write(job.join(format!("input.{format}")), bytes).map_err(|e| e.to_string())?;
     let (tx, rx) = std::sync::mpsc::channel();
     drop(tx);
     let result = tool_process::run_interactive(
         ProcessSpec {
             program: runtime.program.clone(),
             args: vec![],
-            cwd: job.path().to_owned(),
+            cwd: job.to_owned(),
             sandboxed: true,
             timeout_ms: 90000,
             output_limit: 128 * 1024,
@@ -258,19 +269,65 @@ fn convert(
             "Office 预览已停止 / Office preview stopped: {reason}"
         ));
     }
-    let report = job.path().join("report.json");
+    let report = job.join("report.json");
+    let report =
+        read_result(&report, 16384).map_err(|_| worker_failure(&result, "missing_report"))?;
     let report: Value =
-        serde_json::from_slice(&read_result(&report, 16384)?).map_err(|e| e.to_string())?;
+        serde_json::from_slice(&report).map_err(|_| worker_failure(&result, "invalid_report"))?;
     if result.exit_code != 0 || report["ok"] != true {
-        return Err(report["error"]
-            .as_str()
-            .unwrap_or("Office conversion failed")
-            .to_owned());
+        return Err(worker_failure(&result, "conversion_failed"));
     }
-    let output = job.path().join("preview.pdf");
+    let output = job.join("preview.pdf");
     let bytes = read_result(&output, 32 * 1024 * 1024)?;
     if !bytes.starts_with(b"%PDF-") {
         return Err("Office 转换结果不是 PDF / Office renderer output is not a PDF".into());
     }
     Ok(bytes)
+}
+
+fn worker_failure(result: &tool_process::ProcessResult, reason: &str) -> String {
+    // Never expose arbitrary renderer stderr or report text: either may contain
+    // document content and local paths. Only fixed progress markers are public.
+    let stage = result
+        .stderr
+        .lines()
+        .rev()
+        .find_map(|line| match line.trim() {
+            "office: initializing" => Some("initializing"),
+            "office: initialized" => Some("initialized"),
+            "office: main thread callback" => Some("loading"),
+            "office: loaded" => Some("exporting"),
+            "office: saved" => Some("saved"),
+            _ => None,
+        })
+        .unwrap_or("starting");
+    format!(
+        "Office 预览进程未能完成转换，原文件未改变 / Office preview failed; source unchanged ({reason}, exit=0x{:08X}, stage={stage})",
+        result.exit_code
+    )
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn crash_reports_exit_and_last_known_phase_without_leaking_document_text() {
+        let mut result = tool_process::ProcessResult {
+            pid: 1,
+            exit_code: 0xC0000409,
+            stdout: "private stdout".into(),
+            stderr: "office: initializing\nprivate document path\noffice: forged secret\n".into(),
+            stopped: None,
+            containment: "windows_appcontainer_no_network".into(),
+            elapsed_ms: 100,
+            cleanup_errors: vec![],
+        };
+        let message = worker_failure(&result, "missing_report");
+        assert!(message.contains("exit=0xC0000409, stage=initializing"));
+        assert!(!message.contains("private"));
+        assert!(!message.contains("secret"));
+        result.stderr += "office: loaded\n";
+        assert!(worker_failure(&result, "invalid_report").contains("stage=exporting"));
+    }
 }

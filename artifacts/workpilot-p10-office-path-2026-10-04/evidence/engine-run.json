@@ -1,0 +1,46 @@
+[
+  {
+    "name": "media-engine",
+    "command": "node scripts/media-engine-test.mjs",
+    "status": "passed",
+    "checks": 10,
+    "exitCode": 0,
+    "began": "2026-10-04T04:35:36.864Z",
+    "ended": "2026-10-04T04:36:31.518Z",
+    "binarySha256": "d48700ae26f7641aed263f3126db61c3d6f8caf50e1bc0f4f8741f5671738071",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\media-engine\\report.json"
+  },
+  {
+    "name": "office-preview",
+    "command": "node scripts/office-preview-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-04T04:36:31.521Z",
+    "ended": "2026-10-04T04:38:00.537Z",
+    "binarySha256": "d48700ae26f7641aed263f3126db61c3d6f8caf50e1bc0f4f8741f5671738071",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\office-path-final-office-preview\\report.json"
+  },
+  {
+    "name": "office-path",
+    "command": "node scripts/office-path-test.mjs",
+    "status": "passed",
+    "checks": 6,
+    "exitCode": 0,
+    "began": "2026-10-04T04:38:00.543Z",
+    "ended": "2026-10-04T04:40:23.286Z",
+    "binarySha256": "d48700ae26f7641aed263f3126db61c3d6f8caf50e1bc0f4f8741f5671738071",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\office-path-final-office-path\\report.json"
+  },
+  {
+    "name": "long-media-transfer-engine",
+    "command": "node scripts/media-transfer-test.mjs",
+    "status": "passed",
+    "checks": 7,
+    "exitCode": 0,
+    "began": "2026-10-04T04:40:23.293Z",
+    "ended": "2026-10-04T04:41:35.448Z",
+    "binarySha256": "d48700ae26f7641aed263f3126db61c3d6f8caf50e1bc0f4f8741f5671738071",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\office-path-final-long-media-transfer-engine\\report.json"
+  }
+]

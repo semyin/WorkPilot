@@ -381,7 +381,13 @@ export async function generateDocument(format, recipe, directory) {
     pdf.registerFontkit(fontkit);
     pdf.setTitle(title);
     pdf.setCreator("WorkPilot");
-    const font = await pdf.embedFont(fs.readFileSync(fontPath), { subset: false });
+    // Keep the pinned Simplified Chinese font intact. Its `locl` digit variants
+    // have no Unicode/width entries in pdf-lib's full-font cmap; they otherwise
+    // render with fallback spacing and extract as private-use characters.
+    const font = await pdf.embedFont(fs.readFileSync(fontPath), {
+      subset: false,
+      features: { locl: false },
+    });
     const glyphs = new Set(font.getCharacterSet());
     let page, y;
     const newPage = () => {

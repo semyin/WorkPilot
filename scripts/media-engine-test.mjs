@@ -159,7 +159,12 @@ try {
       sections: [
         {
           heading: "核对项",
-          paragraphs: ["实际收入 25 + 17 = 42。", "这是重新生成的 PDF，不是 Word 转换结果。"],
+          paragraphs: [
+            "实际收入 25 + 17 = 42。",
+            "Portable generated output 42",
+            "Invoice A00123456789Z: 1234.56 -17 25/17 100%",
+            "这是重新生成的 PDF，不是 Word 转换结果。",
+          ],
         },
       ],
     },
@@ -195,6 +200,10 @@ try {
     if (format === "xlsx")
       assert(contents.units.some((u) => u.text.includes("SUM(B2:B3)") && u.text.includes("42")));
     if (format === "pdf") {
+      const pdfText = contents.units.map((u) => u.text).join("\n");
+      assert(pdfText.includes("Portable generated output 42"));
+      assert(pdfText.includes("Invoice A00123456789Z: 1234.56 -17 25/17 100%"));
+      assert(!/[\uE000-\uF8FF]/u.test(pdfText));
       const preview = await admin({ kind: "preview", asset_id: asset.id, page: 1 });
       assert(preview.image.startsWith("data:image/png;base64,"));
       await writeFile(

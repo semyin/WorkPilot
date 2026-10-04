@@ -1,0 +1,79 @@
+{
+  "at": "2026-10-04T04:10:04.297Z",
+  "phase": "P12-task-archive",
+  "status": "read_only_task_archive_implemented_P12_not_accepted",
+  "appVersion": "0.1.0-alpha.12.9",
+  "schema": 11,
+  "platform": "Windows 11 Home x64 developer machine",
+  "latestPushedCommit": "b116e0876a29b5174c6cc183ebbea697c44da094",
+  "thisWorkCommittedOrPushed": false,
+  "checks": {
+    "rust": 151,
+    "rustIgnored": 2,
+    "node": 14,
+    "newArchiveStorageTests": 5,
+    "archiveGcRetentionFollowupPassed": true,
+    "enginePassed": 21,
+    "currentScopedEngineSuitesFailed": 0,
+    "priorLongPathWordSuitesFailed": 2,
+    "nativeWordIssueResolved": false,
+    "storageFollowupPassed": 73,
+    "storageFollowupIgnored": 1,
+    "desktop": 11,
+    "sourceFiles": 479,
+    "codeFiles": 350,
+    "maximumCodeLines": 984,
+    "localLinks": 646,
+    "deliveryFiles": 25123,
+    "deliveryBytes": 1989974680,
+    "credentialScannedTextFiles": 1028,
+    "credentialPatternMatches": 0,
+    "screenshotsViewed": true
+  },
+  "build": {
+    "command": "npm run build (Tauri build --no-bundle)",
+    "appVersion": "0.1.0-alpha.12.9",
+    "at": "2026-10-04T04:05:43.193Z",
+    "platform": "win32",
+    "desktop": "092ec2aa9e2dd0872a5f0a93260bba6872dd4e89214fa49b350ec2de07d05ea5",
+    "engine": "4b390efadb6a27fb597e7e0fb9ee460dd969c8ef52c01c7a12779989254b42b6",
+    "runtimeCheck": "f893300c89ed88a2252c5e295b5668221210c600171df611f35b83b9446457ef",
+    "browserSetup": "cd8f5802b9dbdd79deb9ae334b03ed913452cb93df52ed195a23cd5c049d50d7",
+    "companion": "fccb3408d212e412e326c281b5bc8b8121d5aba8ea381497b0329f0016105269"
+  },
+  "previousDeliveriesPreserved": [
+    "workpilot-p10-pdf-text-2026-10-04",
+    "workpilot-p12-media-2026-10-04",
+    "workpilot-p12-files-2026-10-04"
+  ],
+  "originalUserProcessesPreserved": [
+    25624,
+    12372
+  ],
+  "nativeOfficeBinaryUnchangedFromFailedRuns": "27e4981256c6776160677e428bbc8867268f359ff98525d0824bbf4fbf78b8b2",
+  "titleReferenceRegressionFailedBeforeAndPassedAfter": true,
+  "priorFailures": [
+    {
+      "issue": "T-P10-04",
+      "state": "unresolved",
+      "detail": "Two longer-path DOCX preview workers aborted before report.json; Windows 0xc0000409/ucrtbase.dll. Two shorter-path runs passed, including the final binary, but cause is unproven; no repair claimed."
+    },
+    {
+      "issue": "development_fixture_expectations",
+      "state": "corrected",
+      "detail": "Transient team waiting, over-limit synthetic output, response field/page contracts, structured model body and Close button label; original observations preserved."
+    }
+  ],
+  "limits": [
+    "Read-only imported archives: no resumable execution or live approvals",
+    "Existing attachment and file-history formats remain separate; no automatic cross-package references",
+    "No new installer, clean-system, physical cross-machine, non-Windows or manual native-picker verification",
+    "Local model fixtures only; no new commercial service acceptance"
+  ],
+  "pending": [
+    "T-P10-04 native Office crash reproduction and diagnostic handling",
+    "Resumable task/multi-agent migration, attachment markers and unified project/path mapping",
+    "Earlier extension versions/drafts, orphan/version cleanup, team permanent deletion and signed updates",
+    "Other T-P12-01/02/04/05/06 plus real image services, user experience, notifications/sleep and platform acceptance"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-04T03:33:00.708Z",
+  "platform": "win32",
+  "binarySha256": "b49008f7af1b22e589c85a4b8e56afb6c11a9be02da7b74cf345cc54210b08f5",
+  "checks": [
+    "encrypted_originals_include_uploaded_text_image_project_docx_generated_pdf_with_offline_source_and_no_cross_task_or_credential_export",
+    "authenticated_preview_reparses_formats_without_creating_rows_warns_same_names_and_refuses_changed_target"
+  ],
+  "pdfNumericTextPreserved": true,
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: {\"kind\":\"error\",\"code\":\"invalid_request\",\"message\":\"系统找不到指定的文件。 (os error 2)\"}\n+ actual - expected\n\n+ 'error'\n- 'workbench'\n\n    at media (file:///D:/workspace/kplocker/WorkPilot/scripts/media-transfer-support.mjs:4:10)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async file:///D:/workspace/kplocker/WorkPilot/scripts/media-transfer-test.mjs:261:15"
+}

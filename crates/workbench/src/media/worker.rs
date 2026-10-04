@@ -49,6 +49,9 @@ fn runtime(data: &Path, stop: &AtomicBool) -> Result<(PathBuf, PathBuf)> {
     let hash = checked_hash(&bytes, stop)?;
     let folder = data.join("media/runtime").join(&hash);
     std::fs::create_dir_all(&folder).map_err(|e| e.to_string())?;
+    // tempfile's Windows rename uses the supplied path verbatim. Canonicalizing
+    // retains the extended-length prefix when the cache exceeds MAX_PATH.
+    let folder = folder.canonicalize().map_err(|e| e.to_string())?;
     let program = folder.join(if cfg!(windows) { "node.exe" } else { "node" });
     if !program.exists() {
         let mut temp = tempfile::NamedTempFile::new_in(&folder).map_err(|e| e.to_string())?;

@@ -1,0 +1,29 @@
+
+> workpilot@0.1.0-alpha.12.9 build
+> node scripts/desktop.mjs build
+
+   Compiling workpilot-contracts v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-platform v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\platform)
+   Compiling workpilot-policy v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\policy)
+   Compiling workpilot-storage v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\storage)
+   Compiling workpilot-tools v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\tools)
+   Compiling workpilot-providers v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\providers)
+   Compiling workpilot-extensions v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\extensions)
+   Compiling workpilot-workbench v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\workbench)
+   Compiling workpilot-runtime v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\runtime)
+   Compiling workpilot-engine v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\engine)
+    Finished `release` profile [optimized] target(s) in 2m 08s
+   Compiling workpilot-contracts v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-platform v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\platform)
+    Finished `release` profile [optimized] target(s) in 20.82s
+   Compiling workpilot-platform v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\platform)
+    Finished `release` profile [optimized] target(s) in 1.90s
+    Finished `release` profile [optimized] target(s) in 0.28s
+    Finished `release` profile [optimized] target(s) in 0.18s
+Office runtime verified 2000/19442 files
+Office runtime verified 4000/19442 files
+Office runtime verified 6000/19442 files
+Office runtime verified 8000/19442 files
+Office runtime verified 10000/19442 files
+Office runtime verified 12000/19442 files
+Office runtime verified 14000/19442 files

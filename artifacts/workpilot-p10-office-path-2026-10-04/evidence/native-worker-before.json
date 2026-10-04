@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-04T04:16:39.476Z",
+  "workerSha256": "27e4981256c6776160677e428bbc8867268f359ff98525d0824bbf4fbf78b8b2",
+  "sourceSha256": "b3c295e59f1af2213f825a68bb08a4e65a8eb9201283a3e3b804a23639668e40",
+  "cases": [
+    {
+      "jobCharacters": 100,
+      "code": 0,
+      "stdout": "{\n  \"pid\": 29080,\n  \"exit_code\": 0,\n  \"stdout\": \"\",\n  \"stderr\": \"Failed to find real location of \\\\\\\\?\\\\D:\\\\workspace\\\\kplocker\\\\WorkPilot\\\\target\\\\release\\\\office-runtime\\\\office\\\\program\\\\workpilot-office.exe\\r\\noffice: initializing\\r\\noffice: initialized\\r\\noffice: main thread callback\\r\\noffice: loaded\\r\\noffice: saved\\r\\n\",\n  \"stopped\": null,\n  \"containment\": \"windows_appcontainer_no_network\",\n  \"elapsed_ms\": 7124,\n  \"cleanup_errors\": []\n}\n",
+      "stderr": "started=29080\nFailed to find real location of \\\\?\\D:\\workspace\\kplocker\\WorkPilot\\target\\release\\office-runtime\\office\\program\\workpilot-office.exe\r\noffice: initializing\r\noffice: initialized\r\noffice: main thread callback\r\noffice: loaded\r\noffice: saved\r\n"
+    },
+    {
+      "jobCharacters": 170,
+      "code": 1,
+      "stdout": "{\n  \"pid\": 16400,\n  \"exit_code\": 3221226505,\n  \"stdout\": \"\",\n  \"stderr\": \"Failed to find real location of \\\\\\\\?\\\\D:\\\\workspace\\\\kplocker\\\\WorkPilot\\\\target\\\\release\\\\office-runtime\\\\office\\\\program\\\\workpilot-office.exe\\r\\noffice: initializing\\r\\n\",\n  \"stopped\": null,\n  \"containment\": \"windows_appcontainer_no_network\",\n  \"elapsed_ms\": 6458,\n  \"cleanup_errors\": []\n}\n",
+      "stderr": "started=16400\nFailed to find real location of \\\\?\\D:\\workspace\\kplocker\\WorkPilot\\target\\release\\office-runtime\\office\\program\\workpilot-office.exe\r\noffice: initializing\r\nError: \"Office preview did not produce PDF\"\n"
+    },
+    {
+      "jobCharacters": 210,
+      "code": 1,
+      "stdout": "{\n  \"pid\": 23996,\n  \"exit_code\": 3221226505,\n  \"stdout\": \"\",\n  \"stderr\": \"Failed to find real location of \\\\\\\\?\\\\D:\\\\workspace\\\\kplocker\\\\WorkPilot\\\\target\\\\release\\\\office-runtime\\\\office\\\\program\\\\workpilot-office.exe\\r\\noffice: initializing\\r\\n\",\n  \"stopped\": null,\n  \"containment\": \"windows_appcontainer_no_network\",\n  \"elapsed_ms\": 6922,\n  \"cleanup_errors\": []\n}\n",
+      "stderr": "started=23996\nFailed to find real location of \\\\?\\D:\\workspace\\kplocker\\WorkPilot\\target\\release\\office-runtime\\office\\program\\workpilot-office.exe\r\noffice: initializing\r\nError: \"Office preview did not produce PDF\"\n"
+    }
+  ]
+}

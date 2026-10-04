@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-04T04:06:24.428Z",
+  "platform": "win32",
+  "binarySha256": "4b390efadb6a27fb597e7e0fb9ee460dd969c8ef52c01c7a12779989254b42b6",
+  "checks": [
+    "offline_source_metadata_exports_selected_scope_without_plaintext_credentials_and_never_overwrites_archive",
+    "wrong_password_damage_foreign_scope_conflicts_and_stale_preview_cannot_modify_existing_projects_or_models",
+    "atomic_import_preserves_existing_models_default_project_files_and_maps_memory_scope_with_credentials_missing",
+    "repeat_and_restart_do_not_duplicate_data_and_passphrase_is_not_persisted"
+  ],
+  "status": "passed"
+}

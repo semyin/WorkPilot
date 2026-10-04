@@ -1,0 +1,16 @@
+{
+  "observedAt": "2026-10-04T03:34:07.0918062Z",
+  "source": "Windows Application event 1000, associated WER 1001",
+  "application": "workpilot-office.exe",
+  "applicationPath": "target/release/office-runtime/office/program/workpilot-office.exe",
+  "faultingModule": "ucrtbase.dll",
+  "moduleVersion": "10.0.26100.9444",
+  "exceptionCode": "0xc0000409",
+  "werFastFailParameter": "7",
+  "affectedTest": "media-transfer-engine / migrated DOCX layout preview",
+  "sourceDocumentIsSynthetic": true,
+  "originalsRetained": true,
+  "rootCauseConfirmed": false,
+  "shorterDataPathRecheckPassed": true,
+  "inference": "A standalone Office worker exited abnormally before writing report.json. The host only reported missing output. The shorter-path retest does not establish a path-length cause or fix."
+}

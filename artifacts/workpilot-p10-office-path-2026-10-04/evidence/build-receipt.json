@@ -1,0 +1,11 @@
+{
+  "command": "npm run build (Tauri build --no-bundle)",
+  "appVersion": "0.1.0-alpha.12.10",
+  "at": "2026-10-04T04:33:23.669Z",
+  "platform": "win32",
+  "desktop": "e892ef104c1c9eba4c024b39d49d0995bfd5aa268c1b9fccc958e39412dfb80a",
+  "engine": "d48700ae26f7641aed263f3126db61c3d6f8caf50e1bc0f4f8741f5671738071",
+  "runtimeCheck": "c2d83acb3e76bbce27a67e300be66e5c44f976e90df801df3ce487f09d6a354a",
+  "browserSetup": "b9125f11ad1e6ef25f3cf648484b2508d3287d8269353fada61bdb1c17fd0166",
+  "companion": "147920e23bd2d636414f67bb2a96d1620d6d95c18571dbd833a48da706ad8485"
+}

@@ -1,0 +1,79 @@
+[
+  {
+    "disabled": "default",
+    "digits": [
+      63157,
+      63155
+    ]
+  },
+  {
+    "disabled": "locl",
+    "digits": [
+      21,
+      19
+    ]
+  },
+  {
+    "disabled": "ccmp",
+    "digits": [
+      63157,
+      63155
+    ]
+  },
+  {
+    "disabled": "numr",
+    "digits": [
+      63157,
+      63155
+    ]
+  },
+  {
+    "disabled": "dnom",
+    "digits": [
+      63157,
+      63155
+    ]
+  },
+  {
+    "disabled": "frac",
+    "digits": [
+      63157,
+      63155
+    ]
+  },
+  {
+    "disabled": "liga",
+    "digits": [
+      63157,
+      63155
+    ]
+  },
+  {
+    "disabled": "clig",
+    "digits": [
+      63157,
+      63155
+    ]
+  },
+  {
+    "disabled": "calt",
+    "digits": [
+      63157,
+      63155
+    ]
+  },
+  {
+    "disabled": "rvrn",
+    "digits": [
+      63157,
+      63155
+    ]
+  },
+  {
+    "disabled": "kern",
+    "digits": [
+      63157,
+      63155
+    ]
+  }
+]

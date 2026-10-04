@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-04T04:15:22.664Z",
+  "binarySha256": "ca132768acc15052416fba16ef780741d774c79d1ef41f1725f9117d93e67612",
+  "workerSha256": "687ffdf727f5cc441289604f950da7826fa7212656ce14751bcc2b4f2fcbb8eb",
+  "sourceSha256": "b3c295e59f1af2213f825a68bb08a4e65a8eb9201283a3e3b804a23639668e40",
+  "cases": [
+    {
+      "dataPathCharacters": 75,
+      "status": "workbench",
+      "response": {
+        "pages": 1,
+        "source_sha256": "b3c295e59f1af2213f825a68bb08a4e65a8eb9201283a3e3b804a23639668e40"
+      },
+      "elapsedMs": 34504
+    },
+    {
+      "dataPathCharacters": 165,
+      "status": "error",
+      "response": {
+        "kind": "error",
+        "code": "invalid_request",
+        "message": "Office 预览进程未能完成转换，原文件未改变 / Office preview failed; source unchanged (missing_report, exit=0xC0000409, stage=initializing)"
+      },
+      "elapsedMs": 11507
+    },
+    {
+      "dataPathCharacters": 205,
+      "error": "AssertionError [ERR_ASSERTION]: {\"kind\":\"error\",\"code\":\"invalid_request\",\"message\":\"failed to persist temporary file: 系统找不到指定的路径。 (os error 3)\"}\n+ actual - expected\n\n+ 'error'\n- 'workbench'\n\n    at media (file:///D:/workspace/kplocker/WorkPilot/scripts/media-transfer-support.mjs:4:10)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async uploadMedia (file:///D:/workspace/kplocker/WorkPilot/scripts/media-transfer-support.mjs:21:21)\n    at async file:///D:/workspace/kplocker/WorkPilot/.local/office-path-repro.mjs:18:19"
+    }
+  ],
+  "sourceUnchanged": true
+}

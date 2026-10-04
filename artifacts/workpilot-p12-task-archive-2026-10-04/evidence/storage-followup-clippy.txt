@@ -1,0 +1,2 @@
+    Checking workpilot-storage v0.1.0-alpha.12.9 (D:\workspace\kplocker\WorkPilot\crates\storage)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.01s
