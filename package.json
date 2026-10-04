@@ -1,6 +1,6 @@
 {
   "name": "workpilot",
-  "version": "0.1.0-alpha.12.10",
+  "version": "0.1.0-alpha.12.15",
   "private": true,
   "type": "module",
   "engines": {
@@ -27,6 +27,13 @@
     "package:p12": "node scripts/package-p12.mjs",
     "bundle:installer": "node scripts/installer-p12.mjs",
     "test:installation-engine": "node scripts/installation-engine-test.mjs",
+    "test:installation-stress": "node scripts/installation-stress-test.mjs",
+    "test:offline-environment": "node scripts/offline-environment-test.mjs",
+    "test:bundled-browser": "node scripts/bundled-browser-test.mjs",
+    "test:git-sandbox": "node scripts/git-sandbox-test.mjs",
+    "test:extension-history": "node scripts/extension-history-test.mjs",
+    "test:maintenance": "node scripts/maintenance-engine-test.mjs",
+    "test:maintenance-desktop": "node scripts/maintenance-desktop-test.mjs",
     "test:installation-desktop": "node scripts/installation-desktop-smoke.mjs",
     "test:memory-history-transfer": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/memory-history-transfer-test.mjs",
     "test:memory-history-desktop": "node scripts/project-transfer-desktop.mjs --memory-history",
@@ -78,7 +85,18 @@
     "test:pdf-text": "node scripts/prepare-documents.mjs && node --test tests/documents/*.test.mjs",
     "test:task-archive": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/task-archive-test.mjs",
     "test:task-archive-desktop": "node scripts/task-archive-desktop.mjs",
-    "test:office-path": "node scripts/office-path-test.mjs"
+    "test:office-path": "node scripts/office-path-test.mjs",
+    "test:task-restore": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/task-restore-test.mjs",
+    "test:task-restore-desktop": "node scripts/task-restore-desktop.mjs",
+    "test:team-restore": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/team-restore-test.mjs",
+    "test:team-restore-desktop": "node scripts/team-restore-desktop.mjs",
+    "test:task-media-restore": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/task-media-restore-test.mjs",
+    "test:task-media-restore-desktop": "node scripts/task-media-restore-desktop.mjs",
+    "test:task-history-restore": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/task-history-restore-test.mjs",
+    "test:task-history-restore-desktop": "node scripts/task-history-restore-desktop.mjs",
+    "test:migration": "node scripts/migration-test.mjs",
+    "test:migration-cleanup": "node scripts/migration-cleanup-test.mjs",
+    "test:migration-desktop": "node scripts/migration-desktop.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",

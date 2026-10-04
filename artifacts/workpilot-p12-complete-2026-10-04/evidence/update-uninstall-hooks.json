@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-04T09:40:19.908Z",
+  "platform": "win32",
+  "scope": "Actual production NSIS pre-uninstall hook, actual offline reset engine and isolated data; opt-in state supplied by test harness, native checkbox user experience remains separate",
+  "checks": [
+    {
+      "name": "default-keeps",
+      "state": "passed"
+    },
+    {
+      "name": "opt-in-clears",
+      "state": "passed"
+    },
+    {
+      "name": "silent-keeps",
+      "state": "passed"
+    },
+    {
+      "name": "update-keeps",
+      "state": "passed"
+    },
+    {
+      "name": "busy-refuses",
+      "state": "passed"
+    }
+  ],
+  "state": "passed"
+}

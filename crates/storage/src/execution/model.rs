@@ -319,6 +319,9 @@ impl Store {
     }
     pub fn read_execution_step_result(&self, run: &str, step_id: &str) -> Result<Value> {
         let current = self.execution_run(run)?;
+        if let Some(value) = self.restored_step_result(&current.run.task_id, step_id)? {
+            return Ok(value);
+        }
         let step = self.execution_step(step_id)?;
         let previous = self.execution_run(&step.run_id)?;
         if current.session_id != previous.session_id {

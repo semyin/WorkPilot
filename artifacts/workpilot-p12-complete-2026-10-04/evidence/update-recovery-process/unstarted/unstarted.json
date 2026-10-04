@@ -1,0 +1,17 @@
+{
+    "state":  "passed",
+    "expected":  "unstarted",
+    "processId":  31484,
+    "executable":  "\\\\?\\D:\\workspace\\kplocker\\WorkPilot\\.test-results\\update-recovery-process-release-final\\独立恢复-tr07ex\\interrupted\\WorkPilot-Recover-30d7daeb-0139-4949-b392-193c5f07f8b4.exe",
+    "dialogs":  [
+                    {
+                        "name":  "unstarted",
+                        "text":  [
+                                     "确定",
+                                     "这个编号的更新尚未开始，不会修改任何程序或数据。若其它更新被中断，请使用它对应编号的恢复入口。\nThis prepared update has not started. No program or data is changed. Use the matching recovery entry for an interrupted update."
+                                 ],
+                        "screenshot":  "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\update-recovery-process-release-final\\unstarted\\unstarted.png"
+                    }
+                ],
+    "exitCode":  0
+}

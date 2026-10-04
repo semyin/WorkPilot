@@ -10,8 +10,10 @@ use tokio::{
 use workpilot_contracts::*;
 use workpilot_platform::paths::{Channel, data_dir};
 use workpilot_storage::{Storage, now_ms};
+mod maintenance;
 mod models;
 mod tasks;
+mod update_check;
 mod workspace;
 
 struct Probe {
@@ -54,6 +56,33 @@ async fn finish(
 #[tokio::main]
 async fn main() -> Result<(), Failure> {
     let args: Vec<_> = std::env::args().skip(1).collect();
+    if args
+        .first()
+        .is_some_and(|a| a == "--maintenance-reset-default")
+    {
+        if args.len() != 2 || args[1] != "--confirmed" {
+            return Err("explicit reset confirmation required".into());
+        }
+        return maintenance::reset_default();
+    }
+    if args.first().is_some_and(|a| a == "--maintenance-reset") {
+        if args.len() != 3 || args[2] != "--confirmed" {
+            return Err("explicit reset confirmation required".into());
+        }
+        return maintenance::reset(std::path::Path::new(&args[1]));
+    }
+    if args.first().is_some_and(|a| a == "--maintenance") {
+        if args.len() != 2 {
+            return Err("expected one maintenance data directory".into());
+        }
+        return maintenance::run(std::path::Path::new(&args[1]));
+    }
+    if args.first().is_some_and(|a| a == "--check-update-data") {
+        if args.len() != 2 {
+            return Err("expected one update data directory".into());
+        }
+        return update_check::run(std::path::Path::new(&args[1]));
+    }
     let mut channel = if cfg!(debug_assertions) || env!("CARGO_PKG_VERSION").contains('-') {
         Channel::Development
     } else {
@@ -78,6 +107,8 @@ async fn main() -> Result<(), Failure> {
         index += 2;
     }
     let directory = data_dir(channel, root.as_deref())?;
+    // Retry only an already-confirmed reset whose file/credential cleanup was interrupted.
+    workpilot_workbench::maintenance::resume_pending(&directory)?;
     let storage = Storage::open(directory.clone()).await?;
     // A bounded output worker keeps blocking stdout and diagnostic disk I/O off Tokio.
     // JSONL is a diagnostic mirror; SQLite is the sole state/replay authority.

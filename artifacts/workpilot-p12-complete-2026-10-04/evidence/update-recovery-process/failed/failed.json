@@ -1,0 +1,17 @@
+{
+    "state":  "passed",
+    "expected":  "failed",
+    "processId":  11932,
+    "executable":  "\\\\?\\D:\\workspace\\kplocker\\WorkPilot\\.test-results\\update-recovery-process-release-final\\独立恢复-tr07ex\\completed\\WorkPilot-Recover-f5a0dda5-57c4-4afb-955d-e4dde082db96.exe",
+    "dialogs":  [
+                    {
+                        "name":  "failed",
+                        "text":  [
+                                     "确定",
+                                     "恢复尚未完成，请保留恢复工具和备份目录。\nRecovery did not complete. Keep the recovery tool and backup directories.\n\n恢复记录中的签名清单不一致；没有修改程序或数据。"
+                                 ],
+                        "screenshot":  "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\update-recovery-process-release-final\\failed\\failed.png"
+                    }
+                ],
+    "exitCode":  1
+}

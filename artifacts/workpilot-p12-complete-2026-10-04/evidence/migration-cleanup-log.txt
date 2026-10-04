@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-04T09:39:51.060Z",
+  "platform": "win32",
+  "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+  "checks": [
+    "Completed and pending live file tasks protect manifests and shared encrypted source bytes during garbage collection",
+    "Permanent deletion releases the removed file-task manifest and unique bytes while preserving another pending plan and current project files",
+    "Restart, repeated import and file preparation preserve the deletion tombstone without accessing a removed manifest or recreating the task",
+    "The retained pending plan still approves and writes exact bytes; deleting its task later releases all remaining staged contents without deleting project files"
+  ],
+  "status": "passed"
+}

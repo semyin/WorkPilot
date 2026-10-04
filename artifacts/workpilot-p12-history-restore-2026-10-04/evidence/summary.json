@@ -1,0 +1,56 @@
+{
+  "at": "2026-10-04T07:23:58.047Z",
+  "phase": "P12-history-restore",
+  "status": "task_and_team_file_history_restored_P12_not_accepted",
+  "appVersion": "0.1.0-alpha.12.14",
+  "schema": 11,
+  "platform": "Windows 11 Home x64 developer machine",
+  "baseCommit": "503662e00f80d81b85e8491e436ec20fa195265a",
+  "latestPushedCommit": "b116e0876a29b5174c6cc183ebbea697c44da094",
+  "newImplementationCommittedOrPushed": false,
+  "checks": {
+    "rust": 177,
+    "rustIgnored": 2,
+    "node": 14,
+    "newRestorationUnitTests": 4,
+    "engine": 36,
+    "desktop": 20,
+    "sourceFiles": 514,
+    "codeFiles": 385,
+    "maximumCodeLines": 984,
+    "localLinks": 700,
+    "deliveryFiles": 25123,
+    "deliveryBytes": 1990790868,
+    "credentialScannedTextFiles": 1240,
+    "credentialPatternMatches": 0,
+    "screenshotsViewed": [
+      "task-history-restore-desktop-history-preview-zh.png",
+      "task-history-restore-desktop-history-diff-zh.png",
+      "task-history-restore-desktop-history-approval-zh.png",
+      "task-history-restore-desktop-history-preview-en.png"
+    ]
+  },
+  "build": {
+    "command": "npm run build (Tauri build --no-bundle)",
+    "appVersion": "0.1.0-alpha.12.14",
+    "at": "2026-10-04T07:20:01.177Z",
+    "platform": "win32",
+    "desktop": "892f78028d26aaa56e7aa4dd6413c6b43d547d88b409b9cf6a02af99aa49d89f",
+    "engine": "0d928ea43c0095e3ffcbde2bd27a583d96e7f7a4566af8f2f83ba3810c0450fc",
+    "runtimeCheck": "b9af83ecc12dd447b83b18190e323eebd6f707a13f9534e606c4dc154f4c373f",
+    "browserSetup": "c88b90490d5e17865b746a508c6b5ce79d3cdfc1473001be18f17226e26982e0",
+    "companion": "376e8f07352e03998f7fa76fe12692f7fda6438e3c2911dcbff1862ccaf0a8e0"
+  },
+  "originalUserProcessesPreserved": [
+    25624,
+    12372
+  ],
+  "remaining": [
+    "Migration of unresolved tool calls, team waiters and uncertain effects",
+    "Cross-package current-file/project/source associations, multi-project and multiple-source-folder mapping",
+    "Historical command paging tool association; full results remain readable in the archive library",
+    "Old extension versions and drafts; data retention/deletion; signed updates",
+    "T-P12-06 system file-open blocking",
+    "Real model/Images API, user experience, browser authorization, clean Windows, physical cross-machine, macOS/Linux acceptance"
+  ]
+}

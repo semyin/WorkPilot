@@ -1,0 +1,17 @@
+{
+    "state":  "passed",
+    "expected":  "completed",
+    "processId":  26808,
+    "executable":  "\\\\?\\D:\\workspace\\kplocker\\WorkPilot\\.test-results\\update-recovery-process-release-final\\独立恢复-tr07ex\\completed\\WorkPilot-Recover-f5a0dda5-57c4-4afb-955d-e4dde082db96.exe",
+    "dialogs":  [
+                    {
+                        "name":  "completed",
+                        "text":  [
+                                     "确定",
+                                     "此次更新已经完成或恢复，无需再次回退。请使用原快捷方式打开 WorkPilot。\nThis update is already completed or restored. Open the usual WorkPilot shortcut."
+                                 ],
+                        "screenshot":  "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\update-recovery-process-release-final\\completed\\completed.png"
+                    }
+                ],
+    "exitCode":  0
+}

@@ -1,3 +1,4 @@
+import { MigrationRecovery } from "./task-archive/MigrationRecovery";
 import { TaskMessages } from "./task-workspace/TaskMessages";
 import { HistoryEvent } from "./task-workspace/HistoryEvent";
 import { TaskCreateForm } from "./task-workspace/TaskCreateForm";
@@ -583,6 +584,7 @@ export function TaskWorkspace({
                     )}
                   </>
                 )}
+                <MigrationRecovery key={snapshot.task.id} task={snapshot.task.id} />
                 {!desktop && toolPanel}
                 <details className="execution-goal">
                   <summary>{tr("任务目标和限制", "Goal and constraints")}</summary>

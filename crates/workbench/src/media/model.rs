@@ -41,9 +41,10 @@ pub fn references(context: &ExecutionContext) -> String {
 impl Manager {
     pub async fn model_assets(&self, task: &str, delivered: &str) -> Result<Vec<MediaAsset>> {
         let t = task.to_owned();
-        let items = self
+        let text = delivered.to_owned();
+        let (items, delivered) = self
             .storage
-            .call(move |s| s.media_list(&t))
+            .call(move |s| Ok((s.media_list(&t)?, s.restored_media_references(&t, &text)?)))
             .await
             .map_err(|e| e.to_string())?;
         Ok(items

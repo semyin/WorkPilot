@@ -1,6 +1,7 @@
 ; Current-user registration only. The test harness supplies a private registry prefix.
 !define /ifndef WP_NATIVE_ROOT "Software"
 !define WP_NATIVE_HOST "com.workpilot.browser_companion"
+!define WP_UNINSTALL_OPTIONS "${__FILEDIR__}\uninstall-options.nsh"
 
 !macro WP_REMOVE_OWNED_HOST VENDOR VIEW
   Push $0
@@ -37,10 +38,31 @@
 
 !macro NSIS_HOOK_PREUNINSTALL
   ${If} $UpdateMode <> 1
+  ${If} $DeleteWorkPilotHistoryCheckboxState = 1
+  ${AndIfNot} ${Silent}
+  ${AndIf} $PassiveMode <> 1
+    ; The user chose this scope on the native confirm page. Never infer it from /S or /UPDATE.
+    nsExec::ExecToStack '"$INSTDIR\workpilot-sidecar.exe" --maintenance-reset-default --confirmed'
+    Pop $0
+    Pop $1
+    ${If} $0 != 0
+      MessageBox MB_OK|MB_ICONSTOP "WorkPilot: local history/credential cleanup did not finish. Uninstall stopped; keep the app and retry cleanup from Settings. Project files were not selected for deletion. / 本机历史与凭据清理未完成，已停止卸载。请保留程序，在设置中重试；不会删除项目文件。" /SD IDOK
+      Abort
+    ${EndIf}
+  ${EndIf}
   !insertmacro WP_REMOVE_OWNED_HOST "Google\Chrome" 32
   !insertmacro WP_REMOVE_OWNED_HOST "Google\Chrome" 64
   !insertmacro WP_REMOVE_OWNED_HOST "Microsoft\Edge" 32
   !insertmacro WP_REMOVE_OWNED_HOST "Microsoft\Edge" 64
+  IfFileExists "$INSTDIR\workpilot-update.exe" 0 wp_skip_updated_files
+    nsExec::ExecToStack '"$INSTDIR\workpilot-update.exe" --uninstall-updated "$INSTDIR"'
+    Pop $0
+    Pop $1
+    ${If} $0 != 0
+      MessageBox MB_OK|MB_ICONSTOP "WorkPilot: updated file cleanup failed. Uninstall stopped; reopen WorkPilot to recover the update or retry. / 无法清理已更新文件，卸载已停止。请先打开 WorkPilot 恢复更新后重试。" /SD IDOK
+      Abort
+    ${EndIf}
+  wp_skip_updated_files:
   ${EndIf}
 !macroend
 

@@ -5,11 +5,13 @@ use std::collections::HashSet;
 #[cfg(test)]
 mod tests;
 
+mod export;
 const MAX_TOTAL: usize = 64 * 1024 * 1024;
 struct Prepared {
     candidate: ExtensionImportCandidate,
     files: package::Contents,
     was_enabled: bool,
+    previous: Vec<(PluginVersion, package::Contents)>,
 }
 fn check(stop: &AtomicBool) -> Result<()> {
     if stop.load(Ordering::SeqCst) {
@@ -25,53 +27,8 @@ impl Manager {
         selections: &[ExtensionSelection],
         stop: &AtomicBool,
     ) -> Result<ExtensionTransferBundle> {
-        let _guard = self.0.gate.lock().await;
-        let mut bundle = ExtensionTransferBundle {
-            version: 1,
-            archive_id: uuid::Uuid::new_v4().to_string(),
-            created_at_ms: workpilot_storage::now_ms(),
-            entries: vec![],
-        };
-        let mut total = 0;
-        let mut count = 0;
-        for selection in selections {
-            check(stop)?;
-            let (installation, version) = self
-                .installation(
-                    &selection.installation_id,
-                    Some(selection.revision),
-                    scope,
-                    false,
-                )
-                .await?;
-            let mut files = Vec::new();
-            for file in &version.files {
-                check(stop)?;
-                let bytes = package::read_verified(
-                    &self.version_path(&version.digest),
-                    &version,
-                    &file.path,
-                )?;
-                total += bytes.len();
-                count += 1;
-                if total > MAX_TOTAL || count > 2048 {
-                    return Err("扩展备份最多 2048 个文件、64 MiB 原文 / Archive exceeds 2048 files or 64 MiB".into());
-                }
-                files.push(ExtensionArchiveFile {
-                    path: file.path.clone(),
-                    base64: STANDARD.encode(bytes),
-                });
-            }
-            bundle.entries.push(PortableExtension {
-                source_id: installation.id,
-                project_scoped: installation.scope.is_some(),
-                was_enabled: installation.enabled,
-                digest: version.digest,
-                files,
-            });
-        }
-        self.prepare_transfer(&bundle, scope, stop).await?;
-        Ok(bundle)
+        self.export_transfer_complete(scope, selections, false, &[], stop)
+            .await
     }
 
     async fn prepare_transfer(
@@ -80,7 +37,7 @@ impl Manager {
         scope: Option<&str>,
         stop: &AtomicBool,
     ) -> Result<Vec<Prepared>> {
-        if bundle.version != 1
+        if ![1, 2].contains(&bundle.version)
             || uuid::Uuid::parse_str(&bundle.archive_id).is_err()
             || bundle.entries.is_empty()
             || bundle.entries.len() > 32
@@ -126,28 +83,75 @@ impl Manager {
             }
             let (version, files) = package::validate(files)?;
             if version.digest != entry.digest
-                || !scopes.insert((target.clone(), version.manifest.id.clone()))
+                || (!entry.draft && !scopes.insert((target.clone(), version.manifest.id.clone())))
             {
                 return Err(
                     "扩展内容摘要不符或目标重名 / Extension checksum mismatch or duplicate target"
                         .into(),
                 );
             }
+            if entry.earlier.len() > 127
+                || (bundle.version == 1
+                    && (!entry.earlier.is_empty() || entry.draft || !entry.installed))
+                || (entry.draft
+                    && (!entry.earlier.is_empty() || entry.installed || entry.was_enabled))
+            {
+                return Err("Invalid extension history or draft state".into());
+            }
+            let mut previous = vec![];
+            let mut digests = HashSet::from([version.digest.clone()]);
+            for earlier in &entry.earlier {
+                check(stop)?;
+                let mut contents = package::Contents::new();
+                for f in &earlier.files {
+                    if f.base64.len() > package::MAX_FILE.div_ceil(3) * 4 {
+                        return Err("Extension version file too large".into());
+                    }
+                    let bytes = STANDARD
+                        .decode(&f.base64)
+                        .map_err(|_| "Invalid extension version encoding")?;
+                    total += bytes.len();
+                    count += 1;
+                    if total > MAX_TOTAL
+                        || count > 2048
+                        || contents.insert(f.path.clone(), bytes).is_some()
+                    {
+                        return Err("Extension history exceeds limits or duplicates files".into());
+                    }
+                }
+                let (mut v, contents) = package::validate(contents)?;
+                if v.digest != earlier.digest
+                    || v.manifest.id != version.manifest.id
+                    || !digests.insert(v.digest.clone())
+                {
+                    return Err("Invalid historical extension ownership or checksum".into());
+                }
+                v.created_at_ms = earlier.created_at_ms;
+                previous.push((v, contents));
+            }
             prepared.push(Prepared {
                 candidate: ExtensionImportCandidate {
                     source_id: entry.source_id.clone(),
                     scope: target,
+                    earlier: previous.iter().map(|(v, _)| v.clone()).collect(),
+                    draft: entry.draft,
+                    installed: entry.installed,
                     version,
                 },
                 files,
                 was_enabled: entry.was_enabled,
+                previous,
             });
         }
         self.0
             .storage
             .call(move |store| {
                 for item in &prepared {
-                    for bytes in item.files.values() {
+                    for bytes in item
+                        .files
+                        .values()
+                        .chain(item.previous.iter().flat_map(|(_, f)| f.values()))
+                    {
                         store.extension_content_allowed(&String::from_utf8_lossy(bytes))?;
                     }
                 }
@@ -199,7 +203,7 @@ impl Manager {
                     warnings.push(error);
                 }
             }
-            entries.push(json!({"source_id":item.candidate.source_id,"project_scoped":item.candidate.scope.is_some(),"was_enabled":item.was_enabled,
+            entries.push(json!({"source_id":item.candidate.source_id,"project_scoped":item.candidate.scope.is_some(),"was_enabled":item.was_enabled,"draft":item.candidate.draft,"installed":item.candidate.installed,"versions":item.candidate.earlier.iter().map(|v|json!({"digest":v.digest,"version":v.manifest.version,"files":v.files,"permissions":v.permissions})).collect::<Vec<_>>(),
                 "manifest":v.manifest,"files":v.files,"skills":v.skills,"permissions":v.permissions,"warnings":warnings,"digest":v.digest}));
         }
         Ok(
@@ -256,19 +260,22 @@ impl Manager {
             .map_err(|_| "无法创建扩展目录 / Cannot prepare extension directory")?;
         for item in &prepared {
             check(stop)?;
-            let version = &item.candidate.version;
-            let destination = self.version_path(&version.digest);
-            if !destination.exists() {
-                let temporary =
-                    tempfile::tempdir_in(&directory).map_err(|_| "Cannot stage extension")?;
-                let staged = temporary.path().join("package");
-                package::write_new(&staged, &item.files)?;
-                check(stop)?;
-                std::fs::rename(&staged, &destination)
-                    .map_err(|_| "无法完成扩展落盘 / Cannot persist extension package")?;
-            }
-            for file in &version.files {
-                package::read_verified(&destination, version, &file.path)?;
+            for (version, files) in std::iter::once((&item.candidate.version, &item.files))
+                .chain(item.previous.iter().map(|(v, f)| (v, f)))
+            {
+                let destination = self.version_path(&version.digest);
+                if !destination.exists() {
+                    let temporary =
+                        tempfile::tempdir_in(&directory).map_err(|_| "Cannot stage extension")?;
+                    let staged = temporary.path().join("package");
+                    package::write_new(&staged, files)?;
+                    check(stop)?;
+                    std::fs::rename(&staged, &destination)
+                        .map_err(|_| "无法完成扩展落盘 / Cannot persist extension package")?;
+                }
+                for file in &version.files {
+                    package::read_verified(&destination, version, &file.path)?;
+                }
             }
         }
         check(stop)?;

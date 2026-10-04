@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-04T09:40:31.869Z",
+  "platform": "win32",
+  "binarySha256": "c7b81dca8b21989ae2e8d9fcecf5a267adb83d9b4aad2a993f5f030ba99bcaf0",
+  "checks": [
+    "native_multi_selection_encrypted_export_repeated_password_clear_and_same_scope_conflicts_block_import",
+    "native_wrong_password_preview_files_permissions_dependencies_explicit_import_keeps_packages_disabled_without_credentials",
+    "native_history_checkbox_and_draft_uninstalled_selection_preview_preserve_both_versions_and_pending_state",
+    "english_preview_duplicate_import_no_new_installations_and_no_horizontal_overflow",
+    "source_and_target_applications_exit_without_leaving_owned_work"
+  ],
+  "status": "passed"
+}

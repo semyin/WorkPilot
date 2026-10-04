@@ -1,0 +1,11 @@
+{
+  "expectedOriginalPids": [
+    25624,
+    12372
+  ],
+  "lastVerifiedAlive": "2026-10-04 approximately 08:44:28 UTC, update agent read-only Get-Process output",
+  "finalObservedAt": "2026-10-04T09:55:28.406Z",
+  "finalProcesses": [],
+  "exitCause": "Not established; no automatic restart performed",
+  "testExitScope": "Only processes owned by each isolated test; root terminated its superseded NSIS compiler PID 41804 after command-line ownership check"
+}

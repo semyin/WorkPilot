@@ -1,0 +1,57 @@
+[
+  {
+    "name": "team-restore",
+    "command": "node scripts/team-restore-test.mjs",
+    "status": "passed",
+    "checks": 7,
+    "exitCode": 0,
+    "began": "2026-10-04T06:35:04.750Z",
+    "ended": "2026-10-04T06:35:42.135Z",
+    "binarySha256": "382c4740c38ce4e6cdebf0bec351d765e69b43047b872dfb6244d17d7bbf57ec",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\attachment-restore-final-team-restore\\report.json"
+  },
+  {
+    "name": "task-restore",
+    "command": "node scripts/task-restore-test.mjs",
+    "status": "passed",
+    "checks": 6,
+    "exitCode": 0,
+    "began": "2026-10-04T06:35:42.137Z",
+    "ended": "2026-10-04T06:35:48.986Z",
+    "binarySha256": "382c4740c38ce4e6cdebf0bec351d765e69b43047b872dfb6244d17d7bbf57ec",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\attachment-restore-final-task-restore\\report.json"
+  },
+  {
+    "name": "task-archive",
+    "command": "node scripts/task-archive-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-04T06:35:48.987Z",
+    "ended": "2026-10-04T06:35:53.670Z",
+    "binarySha256": "382c4740c38ce4e6cdebf0bec351d765e69b43047b872dfb6244d17d7bbf57ec",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\attachment-restore-final-task-archive\\report.json"
+  },
+  {
+    "name": "task-media-restore",
+    "command": "node scripts/task-media-restore-test.mjs",
+    "status": "passed",
+    "checks": 8,
+    "exitCode": 0,
+    "began": "2026-10-04T06:35:04.733Z",
+    "ended": "2026-10-04T06:38:14.844Z",
+    "binarySha256": "382c4740c38ce4e6cdebf0bec351d765e69b43047b872dfb6244d17d7bbf57ec",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\attachment-restore-final-task-media-restore\\report.json"
+  },
+  {
+    "name": "media-transfer",
+    "command": "node scripts/media-transfer-test.mjs",
+    "status": "passed",
+    "checks": 7,
+    "exitCode": 0,
+    "began": "2026-10-04T06:35:53.671Z",
+    "ended": "2026-10-04T06:38:26.986Z",
+    "binarySha256": "382c4740c38ce4e6cdebf0bec351d765e69b43047b872dfb6244d17d7bbf57ec",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\attachment-restore-final-media-transfer\\report.json"
+  }
+]

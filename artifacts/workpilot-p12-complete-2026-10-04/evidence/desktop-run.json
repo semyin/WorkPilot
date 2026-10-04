@@ -1,0 +1,50 @@
+[
+  {
+    "name": "maintenance-desktop",
+    "command": "node scripts/maintenance-desktop-test.mjs",
+    "status": "passed",
+    "checks": 2,
+    "exitCode": 0,
+    "began": "2026-10-04T09:39:45.366Z",
+    "ended": "2026-10-04T09:39:54.241Z",
+    "binarySha256": "c7b81dca8b21989ae2e8d9fcecf5a267adb83d9b4aad2a993f5f030ba99bcaf0",
+    "report": "maintenance-desktop.json",
+    "rawReport": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-final-maintenance-desktop\\report.json"
+  },
+  {
+    "name": "task-history-restore-desktop",
+    "command": "node scripts/task-history-restore-desktop.mjs",
+    "status": "passed",
+    "checks": 3,
+    "exitCode": 0,
+    "began": "2026-10-04T09:39:54.246Z",
+    "ended": "2026-10-04T09:40:00.143Z",
+    "binarySha256": "c7b81dca8b21989ae2e8d9fcecf5a267adb83d9b4aad2a993f5f030ba99bcaf0",
+    "report": "task-history-restore-desktop.json",
+    "rawReport": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-final-task-history-restore-desktop\\report.json"
+  },
+  {
+    "name": "team-restore-desktop",
+    "command": "node scripts/team-restore-desktop.mjs",
+    "status": "passed",
+    "checks": 3,
+    "exitCode": 0,
+    "began": "2026-10-04T09:40:00.152Z",
+    "ended": "2026-10-04T09:40:06.008Z",
+    "binarySha256": "c7b81dca8b21989ae2e8d9fcecf5a267adb83d9b4aad2a993f5f030ba99bcaf0",
+    "report": "team-restore-desktop.json",
+    "rawReport": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-final-team-restore-desktop\\report.json"
+  },
+  {
+    "name": "workspace-desktop",
+    "command": "node scripts/workspace-desktop-smoke.mjs",
+    "status": "passed",
+    "checks": 10,
+    "exitCode": 0,
+    "began": "2026-10-04T09:40:06.015Z",
+    "ended": "2026-10-04T09:40:44.309Z",
+    "binarySha256": "c7b81dca8b21989ae2e8d9fcecf5a267adb83d9b4aad2a993f5f030ba99bcaf0",
+    "report": "workspace-desktop.json",
+    "rawReport": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\workspace-desktop\\report.json"
+  }
+]

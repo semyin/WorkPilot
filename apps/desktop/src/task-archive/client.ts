@@ -9,6 +9,10 @@ export type ArchiveSummary = {
   objects: number;
   bytes: number;
   excluded_media: number;
+  included_media?: number;
+  media_bytes?: number;
+  included_file_revisions?: number;
+  history_bytes?: number;
   excluded_file_revisions: number;
 };
 export type ArchivePreview = {

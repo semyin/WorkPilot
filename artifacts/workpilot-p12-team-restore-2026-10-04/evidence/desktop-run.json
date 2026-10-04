@@ -1,0 +1,35 @@
+[
+  {
+    "name": "team-restore-desktop",
+    "command": "node scripts/team-restore-desktop.mjs",
+    "status": "passed",
+    "checks": 3,
+    "exitCode": 0,
+    "began": "2026-10-04T05:58:10.585Z",
+    "ended": "2026-10-04T05:58:19.549Z",
+    "binarySha256": "4e9ea49f447757f841005447c0bb3fec40308485bc0a57c1c8debfa71c6359e2",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\team-restore-final-team-restore-desktop\\report.json"
+  },
+  {
+    "name": "task-restore-desktop",
+    "command": "node scripts/task-restore-desktop.mjs",
+    "status": "passed",
+    "checks": 3,
+    "exitCode": 0,
+    "began": "2026-10-04T05:58:19.555Z",
+    "ended": "2026-10-04T05:58:23.797Z",
+    "binarySha256": "4e9ea49f447757f841005447c0bb3fec40308485bc0a57c1c8debfa71c6359e2",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\team-restore-final-task-restore-desktop\\report.json"
+  },
+  {
+    "name": "workspace-desktop",
+    "command": "node scripts/workspace-desktop-smoke.mjs",
+    "status": "passed",
+    "checks": 10,
+    "exitCode": 0,
+    "began": "2026-10-04T05:58:23.803Z",
+    "ended": "2026-10-04T05:58:59.550Z",
+    "binarySha256": "4e9ea49f447757f841005447c0bb3fec40308485bc0a57c1c8debfa71c6359e2",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\workspace-desktop\\report.json"
+  }
+]

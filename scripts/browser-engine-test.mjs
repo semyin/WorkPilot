@@ -3,7 +3,7 @@ import { mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { launch, create, until } from "./tool-test-support.mjs";
 import { startFixtureServer } from "../services/fixtures/server.mjs";
-const output = ".test-results/browser-engine";
+const output = process.env.WORKPILOT_TEST_OUTPUT || ".test-results/browser-engine";
 await mkdir(output, { recursive: true });
 const report = {
   at: new Date().toISOString(),
@@ -48,7 +48,7 @@ try {
     assert.equal(op.state, "completed", JSON.stringify(op));
     return op;
   };
-  for (const channel of ["chrome", "msedge"]) {
+  for (const channel of (process.env.WORKPILOT_BROWSER_CHANNELS || "chrome,msedge").split(",")) {
     const s = await call({ kind: "browser_control", control: { kind: "start", channel } });
     report.browsers.push(s);
     assert.equal(s.state, "connected");

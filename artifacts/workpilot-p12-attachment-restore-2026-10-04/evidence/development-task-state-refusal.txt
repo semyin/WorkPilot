@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-04T06:23:23.263Z",
+  "platform": "win32",
+  "binarySha256": "ff30496ee65a166a57e55abed7d8784471dc0c71dbda9d6d79fff981e7dc868b",
+  "service": "Real attachment workers and separate engines; synthetic local three-protocol models",
+  "checks": [],
+  "passed": false,
+  "error": "AssertionError [ERR_ASSERTION]: {\"kind\":\"error\",\"code\":\"invalid_request\",\"message\":\"请先停止任务再移除附件 / Stop the task before removing its attachment\"}\n+ actual - expected\n\n+ 'error'\n- 'workbench'\n\n    at media (file:///D:/workspace/kplocker/WorkPilot/scripts/media-transfer-support.mjs:4:10)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async file:///D:/workspace/kplocker/WorkPilot/scripts/task-media-restore-test.mjs:112:5"
+}

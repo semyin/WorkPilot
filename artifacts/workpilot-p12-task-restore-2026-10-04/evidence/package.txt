@@ -1,0 +1,5 @@
+
+> workpilot@0.1.0-alpha.12.11 package:p12
+> node scripts/package-p12.mjs
+
+{"phase":"P12","files":25123,"bytes":1990203997,"components":7}

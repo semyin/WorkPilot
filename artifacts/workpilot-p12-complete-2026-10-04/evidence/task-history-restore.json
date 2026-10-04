@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-04T09:39:45.486Z",
+  "platform": "win32",
+  "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+  "service": "Real engines and encrypted archives; separate data roots and a local synthetic team model",
+  "checks": [
+    "multiple_versions_and_child_binary_export_with_original_project_and_data_offline",
+    "integrity_required_project_and_atomic_group_restore_preserve_owners_sources_files_and_independent_encryption",
+    "imported_binary_restore_requires_fresh_approval_blocks_changed_file_and_saves_replaced_content_with_project_scope",
+    "standalone_history_archive_accepts_two_versions_of_same_path_preserves_first_origin_and_deduplicates",
+    "reexport_and_second_project_restore_preserve_first_origins_restart_deduplicates_and_never_runs_old_tools"
+  ],
+  "status": "passed"
+}

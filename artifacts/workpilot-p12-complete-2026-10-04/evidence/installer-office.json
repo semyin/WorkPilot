@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-04T09:50:01.442Z",
+  "platform": "win32",
+  "binary": {
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\installer\\中文 安装-02895bf0dafa4668ad4ad8708ba74d82\\workpilot-sidecar.exe",
+    "sha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4"
+  },
+  "checks": [
+    "real_docx_xlsx_pptx_layout_pages_in_appcontainer_source_unchanged_and_cache_paging",
+    "preview_and_preview_cancellation_are_bound_to_attachment_owner",
+    "cancelled_preview_returns_an_error_then_can_restart_external_refresh_uses_new_bytes_old_snapshot_stays_original",
+    "page_limit_is_enforced_before_rendering",
+    "office_external_image_relationship_does_not_contact_live_http_canary"
+  ],
+  "renders": [
+    {
+      "format": "docx",
+      "pages": 1,
+      "firstRenderMs": 16874,
+      "sourceSha256": "6157427feab03d9377539e04d92408ad2560114d8d6f9f0da23d6642794f5dc3",
+      "renderer": "LibreOfficeKit 26.8.0 · c43291e1f444"
+    },
+    {
+      "format": "xlsx",
+      "pages": 1,
+      "firstRenderMs": 10589,
+      "sourceSha256": "c82224fa7ba1df7a037908a4bd20fc74d25870da616b61ff8f638d46f1e31a6c",
+      "renderer": "LibreOfficeKit 26.8.0 · c43291e1f444"
+    },
+    {
+      "format": "pptx",
+      "pages": 2,
+      "firstRenderMs": 8854,
+      "sourceSha256": "7a445948ffceebb3962e1cd93feddab61f2cf9a6e58ad379848f2689bd410472",
+      "renderer": "LibreOfficeKit 26.8.0 · c43291e1f444"
+    }
+  ],
+  "cancelAcknowledgedMs": 2,
+  "cancelCompletedMs": 2407,
+  "externalImageRequests": 0,
+  "status": "passed"
+}

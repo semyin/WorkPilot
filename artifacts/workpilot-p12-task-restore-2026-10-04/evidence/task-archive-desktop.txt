@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-04T05:20:38.476Z",
+  "platform": "win32",
+  "binarySha256": "4a83f0a37a0e71bd5de11cbf12c15e9fe0e43c68350953fd3bdb593ad2d22d1a",
+  "checks": [
+    "native_desktop_password_confirmation_export_root_and_assistant_queue_original_unchanged",
+    "wrong_password_then_preview_import_paginated_messages_linked_full_body_assistant_report_no_run_or_overflow",
+    "english_boundary_and_duplicate_preview_one_archive_no_javascript_errors"
+  ],
+  "status": "passed"
+}

@@ -90,7 +90,7 @@ pub struct MediaAssetOrigin {
     pub operation_id: Option<String>,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(deny_unknown_fields)]
 pub struct MediaTransferEntry {
     pub id: String,

@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-04T07:22:08.224Z",
+  "platform": "win32",
+  "binarySha256": "892f78028d26aaa56e7aa4dd6413c6b43d547d88b409b9cf6a02af99aa49d89f",
+  "service": "Native Windows WebView2 and local synthetic model",
+  "checks": [
+    "native_chinese_preview_shows_both_versions_explicit_project_and_import_preserves_current_file_without_model_calls",
+    "native_history_diff_provenance_approved_restore_and_replaced_current_content_preserved_source_unchanged",
+    "english_second_archive_preview_has_three_versions_no_horizontal_overflow_or_javascript_errors"
+  ],
+  "status": "passed"
+}

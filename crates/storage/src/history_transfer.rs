@@ -53,7 +53,19 @@ impl Store {
             {
                 return Err(Error::Conflict);
             }
-            tx.execute("INSERT INTO file_revisions(id,task_id,root_identity,path,operation_id,data_json) VALUES(?1,?2,?3,?4,?5,?6)",params![r.id,task,root,r.path,operation,encode(r)?])?;
+            // Several saved versions of one path are distinct imported changes.
+            // A batch receipt still deduplicates the whole import, while each
+            // revision gets its own inert operation to preserve (operation,path).
+            let mut row = r.clone();
+            row.operation_id = format!(
+                "history-item:{:x}",
+                Sha256::digest(format!("{operation}\0{}", r.id).as_bytes())
+            );
+            let mut item = op.clone();
+            item.id = row.operation_id.clone();
+            item.summary = format!("导入历史版本 / Imported revision: {}", r.path);
+            tx.execute("INSERT INTO workbench_operations(id,task_id,fingerprint,data_json,started) VALUES(?1,?2,?3,?4,1)",params![item.id,task,digest,encode(&item)?])?;
+            tx.execute("INSERT INTO file_revisions(id,task_id,root_identity,path,operation_id,data_json) VALUES(?1,?2,?3,?4,?5,?6)",params![row.id,task,root,row.path,row.operation_id,encode(&row)?])?;
         }
         let event = record(
             &tx,
@@ -155,6 +167,10 @@ mod tests {
             )
             .is_err()
         );
+        let mut earlier = row.clone();
+        earlier.id = id();
+        earlier.at_ms = 0;
+        let versions = [earlier, row.clone()];
         assert_eq!(
             s.import_history_rows(
                 &task,
@@ -162,7 +178,7 @@ mod tests {
                 &epoch,
                 "import-test",
                 "hash",
-                std::slice::from_ref(&row)
+                &versions
             )
             .unwrap()
             .len(),
@@ -182,11 +198,13 @@ mod tests {
         );
         drop(s);
         let s = Store::open(dir.path()).unwrap();
+        let saved = s.file_history("target-root", None, None, 100).unwrap();
+        assert_ne!(saved[0].operation_id, saved[1].operation_id);
         assert_eq!(
             s.file_history("target-root", None, None, 100)
                 .unwrap()
                 .len(),
-            1
+            2
         );
         assert_eq!(
             s.workbench_operation("import-test").unwrap().unwrap().state,

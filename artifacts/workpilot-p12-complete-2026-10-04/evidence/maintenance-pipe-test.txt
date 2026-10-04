@@ -1,0 +1,10 @@
+   Compiling workpilot-platform v0.1.0-alpha.12.15 (D:\workspace\kplocker\WorkPilot\crates\platform)
+   Compiling workpilot-desktop v0.1.0-alpha.12.15 (D:\workspace\kplocker\WorkPilot\apps\desktop\src-tauri)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 17.85s
+     Running unittests src\main.rs (target\debug\deps\workpilot_desktop-a9a8d419aca6f6aa.exe)
+
+running 1 test
+test maintenance::tests::oversized_helper_output_is_drained_while_child_is_running ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.21s
+

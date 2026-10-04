@@ -36,6 +36,10 @@ export function ArchiveSummaryView({ summary }: { summary: ArchiveSummary }) {
         ))}
       </ul>
       <p>
+        {tr("已包含的附件原文件：", "Included attachment originals: ")}
+        {summary.included_media || 0} · {((summary.media_bytes || 0) / 1024 / 1024).toFixed(2)} MiB
+      </p>
+      <p>
         {tr("此包未包含的附件记录数：", "Attachment records outside this archive: ")}
         {summary.excluded_media}
         {" · "}
@@ -43,9 +47,14 @@ export function ArchiveSummaryView({ summary }: { summary: ArchiveSummary }) {
         {summary.excluded_file_revisions}
       </p>
       <p>
+        {tr("已包含的文件历史：", "Included file revisions: ")}
+        {summary.included_file_revisions || 0} ·{" "}
+        {((summary.history_bytes || 0) / 1024 / 1024).toFixed(2)} MiB
+      </p>
+      <p>
         {tr(
-          "这是查阅用的历史档案。附件原文件、加密文件历史、当前项目文件需用各自的迁移入口。档案不会恢复运行、启用旧审批或自动发送内容给模型。",
-          "This is a read-only historical archive. Use the separate transfer tools for attachment originals, encrypted file history and current project files. It does not restore execution, activate old approvals or send content to models.",
+          "导入后先作为查阅档案保存，在下方另行确认恢复。新版档案包含附件原文和文件修改历史；旧版缺少这些原文时需要从原任务重新导出。当前项目文件仍可通过文件迁移入口搬迁。导入不会启动任务、覆盖当前文件或发送内容给模型。",
+          "Imported archives remain read-only until restoration is confirmed below. New archives include attachment originals and file history; export old archives again from the source task if originals are missing. Current project files can be moved through file transfer. Import does not start tasks, overwrite current files or send content to models.",
         )}
       </p>
     </div>

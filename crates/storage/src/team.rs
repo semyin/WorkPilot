@@ -504,6 +504,11 @@ impl Store {
         let reference = m.report.ok_or(Error::Invalid("成员还没有交付记录"))?;
         let report: AgentReport = self.read_json(&reference)?;
         if let Some(id) = step {
+            if let Some(output) = self.restored_step_result(member, id)? {
+                return Ok(
+                    json!({"historical":true,"step":report.steps.iter().find(|s|s.id == id),"output":output}),
+                );
+            }
             let s = self.execution_step(id)?;
             if self.execution_run(&s.run_id)?.run.task_id != member {
                 return Err(Error::Conflict);
@@ -714,7 +719,7 @@ impl Store {
             return Err(Error::Conflict);
         }
         let mut snapshot = self.execution_snapshot(task)?;
-        if snapshot.latest_run.is_none() {
+        if snapshot.latest_run.is_none() && !self.restored_member_started(task)? {
             let mut dependencies = vec![];
             for dep in &m.depends_on {
                 let d = self.team_member(dep)?;

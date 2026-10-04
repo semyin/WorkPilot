@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-04T07:15:48.343Z",
+  "platform": "win32",
+  "service": "synthetic local model; native WebView and real engine/files",
+  "checks": [
+    "project_folder_defaults_real_text_attachment",
+    "queue_edit_cancel_stop_reload_preserves_receipts_no_resubmit",
+    "real_conversation_uses_delivered_edited_message_once",
+    "full_body_search_complete_export_hashes_match",
+    "rename_archive_search_restore_persisted",
+    "panel_resize_collapse_english_dark_and_reload_persist_without_duplication",
+    "english_approval_task_switch_only_changes_bound_task_rejection_preserved",
+    "english_model_error_and_manual_continue_visible",
+    "appearance_does_not_stop_work_hide_keeps_task_running_restore_no_resubmit",
+    "native_100000_events_input_search_2mb_paging_and_full_copy"
+  ],
+  "layout": {
+    "screen": 1240,
+    "width": 1240,
+    "nodes": 212
+  },
+  "stressOpenMs": 681,
+  "stressInputMs": 27,
+  "stressStopFeedbackMs": 35,
+  "stressSearchMs": 1376,
+  "result": "passed",
+  "pageErrors": []
+}

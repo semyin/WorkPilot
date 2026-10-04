@@ -23,6 +23,10 @@ impl Store {
         if !["stdout", "stderr"].contains(&channel) || limit == 0 || limit > 32768 {
             return Err(Error::Invalid("output page"));
         }
+        let task = self.execution_run(run)?.run.task_id;
+        if let Some(page) = self.restored_command_output(&task, step, channel, offset, limit)? {
+            return Ok(page);
+        }
         let value = self.read_execution_step_result(run, step)?;
         if self.execution_step(step)?.name != "run_command" {
             return Err(Error::Invalid("not a command result"));

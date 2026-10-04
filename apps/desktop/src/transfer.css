@@ -83,3 +83,20 @@
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
+.migration-panel label:has(input[type="checkbox"]) {
+  display: flex;
+  align-items: start;
+  gap: 0.5rem;
+  overflow-wrap: anywhere;
+}
+.migration-panel input[type="checkbox"] {
+  flex-shrink: 0;
+  width: auto;
+}
+.migration-panel details {
+  min-width: 0;
+}
+.migration-panel textarea {
+  min-width: 0;
+  max-width: 100%;
+}

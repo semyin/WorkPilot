@@ -38,6 +38,15 @@ if (release && process.platform === "win32") {
     "-p",
     "workpilot-platform",
     "--bin",
+    "workpilot-update",
+    "--release",
+    "--locked",
+  ]);
+  await run(cargo, [
+    "build",
+    "-p",
+    "workpilot-platform",
+    "--bin",
     "workpilot-browser-setup",
     "--release",
     "--locked",
@@ -95,6 +104,7 @@ if (release) {
         ...(process.platform === "win32"
           ? {
               browserSetup: await hash(join(buildRoot, "release/workpilot-browser-setup.exe")),
+              updateHelper: await hash(join(buildRoot, "release/workpilot-update.exe")),
               companion: await hash(join(buildRoot, "release/companion.exe")),
             }
           : {}),

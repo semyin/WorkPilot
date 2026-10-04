@@ -108,8 +108,8 @@ impl Store {
             return Err(Error::Invalid("too many archive tasks"));
         }
         let mut tasks = Vec::new();
-        let mut media = 0;
-        let mut revisions = 0;
+        let mut media = vec![];
+        let mut file_history = vec![];
         for task in &tree {
             check_stop(stop)?;
             let item = self.task(task)?;
@@ -127,16 +127,22 @@ impl Store {
                 state: item.state,
                 parent_task_id: self.member_parent(task)?,
             });
-            media += self.connection.query_row(
-                "SELECT count(*) FROM media_assets WHERE task_id=?1",
-                [task],
-                |r| r.get::<_, u32>(0),
-            )?;
-            revisions += self.connection.query_row(
-                "SELECT count(*) FROM file_revisions WHERE task_id=?1",
-                [task],
-                |r| r.get::<_, u32>(0),
-            )?;
+            media.extend(self.task_archive_media_rows(task)?);
+            if media.len() > 64 {
+                return Err(Error::Invalid(
+                    "任务组附件超过 64 项，未截断导出 / Task group exceeds 64 attachments; nothing was truncated",
+                ));
+            }
+            file_history.extend(
+                self.task_archive_file_history_rows(task)?
+                    .iter()
+                    .map(TaskArchiveHistory::from_revision),
+            );
+            if file_history.len() > 128 {
+                return Err(Error::Invalid(
+                    "任务组文件历史超过 128 条，未截断 / Task group history exceeds 128 revisions; nothing was truncated",
+                ));
+            }
         }
         let mut tables = BTreeMap::new();
         let mut counts = BTreeMap::new();
@@ -235,8 +241,11 @@ impl Store {
         };
         refs.insert(snapshot_ref.object_id.clone(), snapshot_ref.clone());
         blobs.insert(snapshot_ref.object_id.clone(), snapshot_bytes);
+        file_history.sort_by(|a, b| {
+            (a.revision.at_ms, &a.revision.id).cmp(&(b.revision.at_ms, &b.revision.id))
+        });
         let index = TaskArchiveIndex {
-            version: 1,
+            version: 3,
             archive_id: id(),
             created_at_ms: now_ms(),
             root_task_id: root.into(),
@@ -244,10 +253,13 @@ impl Store {
             snapshot: snapshot_ref,
             objects: refs.into_values().collect(),
             counts,
-            excluded_media: media,
-            excluded_file_revisions: revisions,
+            media,
+            file_history,
+            excluded_media: 0,
+            excluded_file_revisions: 0,
         };
         validate_bundle(&index, &blobs)?;
+        self.check_archive_secret(&serde_json::to_vec(&index)?)?;
         Ok(TaskArchiveBytes { index, blobs })
     }
 }

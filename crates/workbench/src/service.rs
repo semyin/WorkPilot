@@ -230,6 +230,8 @@ impl Service {
         if matches!(
             &request.command,
             Command::HistoryTransfer { .. }
+                | Command::Maintenance { .. }
+                | Command::Migration { .. }
                 | Command::TaskArchive { .. }
                 | Command::FileTransfer { .. }
                 | Command::MediaTransfer { .. }
@@ -253,8 +255,40 @@ impl Service {
             self.requests.push(tokio::task::spawn_blocking(move || {
                 runtime.block_on(async move {
                     let result = match command {
+                        Command::Maintenance { action } => state
+                            .storage
+                            .call(move |s| match action {
+                                MaintenanceAction::Catalog => s.maintenance_catalog(),
+                                MaintenanceAction::Preview { selection } => {
+                                    Ok(s.maintenance_plan(&selection)?.preview)
+                                }
+                            })
+                            .await
+                            .map_err(|e| e.to_string()),
+                        Command::Migration { action } => {
+                            match state
+                                .transfer
+                                .migration_transfer(action, &state.extensions, &state.media)
+                                .await
+                            {
+                                Ok(crate::transfer::files::FileReply::Data(data)) => Ok(data),
+                                Ok(crate::transfer::files::FileReply::Ready {
+                                    id,
+                                    task,
+                                    action,
+                                }) => {
+                                    state
+                                        .handle(&id, &task, *action, state.browser.epoch())
+                                        .await
+                                }
+                                Err(e) => Err(e),
+                            }
+                        }
                         Command::TaskArchive { action } => {
-                            state.transfer.handle_task_archive(action).await
+                            state
+                                .transfer
+                                .handle_task_archive(action, &state.media)
+                                .await
                         }
                         Command::MediaTransfer { task_id, action } => {
                             state
@@ -265,9 +299,11 @@ impl Service {
                         Command::FileTransfer { task_id, action } => {
                             match state.transfer.handle_files(task_id.clone(), action).await {
                                 Ok(crate::transfer::files::FileReply::Data(data)) => Ok(data),
-                                Ok(crate::transfer::files::FileReply::Ready { id, action }) => {
+                                Ok(crate::transfer::files::FileReply::Ready {
+                                    id, action, ..
+                                }) => {
                                     state
-                                        .handle(&id, &task_id, action, state.browser.epoch())
+                                        .handle(&id, &task_id, *action, state.browser.epoch())
                                         .await
                                 }
                                 Err(e) => Err(e),

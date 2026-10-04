@@ -4,6 +4,7 @@ import { LegacyApp } from "./LegacyApp";
 import { TaskWorkspace } from "./TaskWorkspace";
 import { ModelSettings } from "./ModelSettings";
 import { WorkspaceSettings } from "./WorkspaceSettings";
+import { MaintenanceStatus } from "./MaintenanceStatus";
 import { LanguageContext, workspaceAction, workspaceQuery } from "./workspaceClient";
 import type { WorkspaceData, WorkspacePreferences } from "./generated/contracts";
 export type Overview = Extract<WorkspaceData, { kind: "overview" }>;
@@ -25,9 +26,11 @@ function Workbench() {
   const [preferences, setPreferences] = useState(defaults);
   const [models, setModels] = useState(false);
   const [settings, setSettings] = useState(false);
+  const [workspaceGeneration, setWorkspaceGeneration] = useState(0);
   const [error, setError] = useState("");
   const [connectionError, setConnectionError] = useState("");
   const [connected, setConnected] = useState(false);
+  const [maintenance, setMaintenance] = useState<boolean | null>(null);
   const english = preferences.language === "en";
   const refresh = async () => {
     const r = await workspaceQuery({ kind: "overview" });
@@ -38,6 +41,7 @@ function Workbench() {
     }
   };
   useEffect(() => {
+    if (maintenance !== null) return;
     let disposed = false;
     let timer: ReturnType<typeof setTimeout>;
     const poll = async () => {
@@ -62,7 +66,7 @@ function Workbench() {
       disposed = true;
       clearTimeout(timer);
     };
-  }, []);
+  }, [maintenance]);
   useEffect(() => {
     document.documentElement.lang = english ? "en" : "zh-CN";
     document.documentElement.dataset.theme = preferences.theme;
@@ -78,20 +82,25 @@ function Workbench() {
   };
   return (
     <LanguageContext.Provider value={english}>
-      <TaskWorkspace
-        language={preferences.language}
-        onClose={() => void invoke("hide_window").catch((e) => setError(String(e)))}
-        onModels={() => setModels(true)}
-        desktop={{
-          overview,
-          preferences,
-          connected,
-          onRefresh: () => void refresh().catch((e) => setError(String(e))),
-          onPreferences: update,
-          onSettings: () => setSettings(true),
-        }}
-      />
-      {(error || connectionError) && (
+      {maintenance !== null ? (
+        <MaintenanceStatus running={maintenance} showRestart={!settings} />
+      ) : (
+        <TaskWorkspace
+          key={workspaceGeneration}
+          language={preferences.language}
+          onClose={() => void invoke("hide_window").catch((e) => setError(String(e)))}
+          onModels={() => setModels(true)}
+          desktop={{
+            overview,
+            preferences,
+            connected,
+            onRefresh: () => void refresh().catch((e) => setError(String(e))),
+            onPreferences: update,
+            onSettings: () => setSettings(true),
+          }}
+        />
+      )}
+      {maintenance === null && (error || connectionError) && (
         <div className="workspace-connection-error" role="alert">
           {error
             ? english
@@ -124,11 +133,18 @@ function Workbench() {
           scheduler={overview.scheduler}
           dataDir={overview.data_dir}
           onPreferences={save}
+          onMaintenance={setMaintenance}
           onModels={() => {
             setSettings(false);
             setModels(true);
           }}
           onClose={() => setSettings(false)}
+          onOpenTask={(id) => {
+            localStorage.setItem("workpilot.execution", id);
+            localStorage.removeItem("workpilot.project");
+            setSettings(false);
+            setWorkspaceGeneration((value) => value + 1);
+          }}
         />
       )}{" "}
       {models && <ModelSettings language={preferences.language} onClose={() => setModels(false)} />}

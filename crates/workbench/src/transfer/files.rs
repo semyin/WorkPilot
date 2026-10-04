@@ -8,11 +8,15 @@ use zeroize::Zeroizing;
 
 pub(crate) enum FileReply {
     Data(Value),
-    Ready { id: String, action: WorkbenchAction },
+    Ready {
+        id: String,
+        task: String,
+        action: Box<WorkbenchAction>,
+    },
 }
 
 impl Manager {
-    async fn file_content_allowed(&self, bytes: &[u8]) -> Result<()> {
+    pub(super) async fn file_content_allowed(&self, bytes: &[u8]) -> Result<()> {
         let text = Zeroizing::new(String::from_utf8_lossy(bytes).into_owned());
         self.storage
             .call(move |s| s.extension_content_allowed(&text))
@@ -159,7 +163,8 @@ impl Manager {
                 vault.put(&serde_json::to_vec(&plan).map_err(|e| e.to_string())?)?;
             return Ok(FileReply::Ready {
                 id: operation_id,
-                action: WorkbenchAction::ImportFiles { manifest_blob },
+                task: task.clone(),
+                action: Box::new(WorkbenchAction::ImportFiles { manifest_blob }),
             });
         }
         let mappings: Vec<_> = plan.index.files.iter().zip(paths).map(|(f, target)| json!({"source":f.path,"target":target,"bytes":f.bytes,"sha256":f.sha256})).collect();

@@ -63,6 +63,36 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run test:task-archive-desktop
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:task-restore
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:task-restore-desktop
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:team-restore
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:team-restore-desktop
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:task-media-restore
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:task-media-restore-desktop
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:task-history-restore
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:task-history-restore-desktop
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:migration
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:migration-cleanup
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:extension-history
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:extension-transfer-desktop
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:migration-desktop
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:maintenance
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:maintenance-desktop
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run test:workbench-engine
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run test:workbench-desktop

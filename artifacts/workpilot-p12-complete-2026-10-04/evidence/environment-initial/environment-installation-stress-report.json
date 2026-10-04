@@ -1,0 +1,83 @@
+{
+  "at": "2026-10-04T08:44:46.633Z",
+  "platform": "win32",
+  "binarySha256": "6c58ea0c2847fa7fabc46eefcf78a617bbb5afce2682bc140aa8ebc557ee4da4",
+  "environment": "Windows developer machine; repeated complete packaged-file reads with concurrent ordinary engine requests; not a clean OS.",
+  "rounds": [
+    {
+      "verify": false,
+      "elapsedMs": 4504,
+      "ordinaryRequests": 42,
+      "maxResponseMs": 1,
+      "files": 25238
+    },
+    {
+      "verify": true,
+      "elapsedMs": 71745,
+      "ordinaryRequests": 663,
+      "maxResponseMs": 2,
+      "files": 25238
+    },
+    {
+      "verify": false,
+      "elapsedMs": 3551,
+      "ordinaryRequests": 33,
+      "maxResponseMs": 1,
+      "files": 25238
+    },
+    {
+      "verify": true,
+      "elapsedMs": 10565,
+      "ordinaryRequests": 97,
+      "maxResponseMs": 1,
+      "files": 25238
+    },
+    {
+      "verify": false,
+      "elapsedMs": 3141,
+      "ordinaryRequests": 29,
+      "maxResponseMs": 1,
+      "files": 25238
+    },
+    {
+      "verify": true,
+      "elapsedMs": 10116,
+      "ordinaryRequests": 93,
+      "maxResponseMs": 2,
+      "files": 25238
+    },
+    {
+      "verify": false,
+      "elapsedMs": 3180,
+      "ordinaryRequests": 29,
+      "maxResponseMs": 1,
+      "files": 25238
+    },
+    {
+      "verify": true,
+      "elapsedMs": 10093,
+      "ordinaryRequests": 93,
+      "maxResponseMs": 1,
+      "files": 25238
+    },
+    {
+      "verify": false,
+      "elapsedMs": 3116,
+      "ordinaryRequests": 29,
+      "maxResponseMs": 1,
+      "files": 25238
+    },
+    {
+      "verify": true,
+      "elapsedMs": 10050,
+      "ordinaryRequests": 93,
+      "maxResponseMs": 1,
+      "files": 25238
+    }
+  ],
+  "checks": [
+    "five_quick_and_five_complete_checks_verify_every_packaged_file",
+    "ordinary_requests_remain_responsive_during_environment_scanning"
+  ],
+  "status": "passed"
+}

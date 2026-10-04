@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-04T05:58:21.767Z",
+  "platform": "win32",
+  "binarySha256": "f03fa0418d459ec5686951431e9390dd75a5d751ea984258300efc6b0d08860b",
+  "service": "Local synthetic three-protocol model; real engines, separate data roots and approved file writes",
+  "checks": [
+    {
+      "name": "chat_completions_full_context_messages_and_results_restored_project_mapped_old_approval_rejected_new_write_approved_once",
+      "passed": true
+    },
+    {
+      "name": "chat_completions_restart_idempotence_and_second_migration_preserve_history_without_restart",
+      "passed": true
+    },
+    {
+      "name": "responses_full_context_messages_and_results_restored_project_mapped_old_approval_rejected_new_write_approved_once",
+      "passed": true
+    },
+    {
+      "name": "responses_restart_idempotence_and_second_migration_preserve_history_without_restart",
+      "passed": true
+    },
+    {
+      "name": "messages_full_context_messages_and_results_restored_project_mapped_old_approval_rejected_new_write_approved_once",
+      "passed": true
+    },
+    {
+      "name": "messages_restart_idempotence_and_second_migration_preserve_history_without_restart",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

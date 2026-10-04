@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-04T05:03:18.221Z",
+  "platform": "win32",
+  "binarySha256": "193714931b0897d3341e44df7ca39dce496ba9c03e944d78939b9f2472a628e5",
+  "service": "Local synthetic three-protocol model; real engines, separate data roots and approved file writes",
+  "checks": [],
+  "passed": false,
+  "error": "TypeError: Cannot read properties of undefined (reading 'entries')\n    at file:///D:/workspace/kplocker/WorkPilot/scripts/task-restore-test.mjs:257:30\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)"
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "name": "migration-engine",
+    "status": "passed",
+    "checks": 7,
+    "command": "node scripts/migration-test.mjs",
+    "environment": {
+      "WORKPILOT_ENGINE_BINARY": "artifacts/workpilot-p12-complete-2026-10-04/preview/workpilot-sidecar.exe",
+      "WORKPILOT_TEST_OUTPUT": ".test-results/p12-complete-package-migration-engine"
+    },
+    "binarySha256": "6c58ea0c2847fa7fabc46eefcf78a617bbb5afce2682bc140aa8ebc557ee4da4",
+    "report": "migration-engine-report.json",
+    "log": "migration-engine-log.txt",
+    "at": "2026-10-04T08:41:10.392Z"
+  },
+  {
+    "name": "migration-desktop",
+    "status": "passed",
+    "checks": 3,
+    "command": "node scripts/migration-desktop.mjs",
+    "environment": {
+      "WORKPILOT_DESKTOP_BINARY": "artifacts/workpilot-p12-complete-2026-10-04/preview/workpilot-desktop.exe",
+      "WORKPILOT_TEST_OUTPUT": ".test-results/p12-complete-package-migration-desktop"
+    },
+    "binarySha256": "ebbd93f5a2f1522d99de5b1a5a6eb8ed1b0d27e2ef1b88f9eae9d497adcd9a4d",
+    "report": "migration-desktop-report.json",
+    "log": "migration-desktop-log.txt",
+    "at": "2026-10-04T08:41:11.172Z",
+    "screenshots": [
+      "migration-preview-zh.png",
+      "migration-imported-zh.png",
+      "migration-review-zh.png",
+      "migration-summary-en.png"
+    ],
+    "visualInspection": "All four screenshots viewed; Chinese preview/import/review and English project mapping readable, no horizontal overflow."
+  }
+]

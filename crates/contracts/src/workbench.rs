@@ -117,7 +117,12 @@ impl WorkbenchAction {
             Self::Extension { effect } => return effect.validate(),
             Self::Browser { action } => return action.validate(),
             Self::BrowserControl { control } => match control {
-                BrowserControl::Start { channel } | BrowserControl::Pair { channel }
+                BrowserControl::Start { channel }
+                    if !matches!(channel.as_str(), "chromium" | "chrome" | "msedge") =>
+                {
+                    return Err("unsupported browser channel");
+                }
+                BrowserControl::Pair { channel }
                     if !matches!(channel.as_str(), "chrome" | "msedge") =>
                 {
                     return Err("unsupported browser channel");

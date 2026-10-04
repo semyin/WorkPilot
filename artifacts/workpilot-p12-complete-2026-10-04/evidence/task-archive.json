@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-04T09:40:32.958Z",
+  "platform": "win32",
+  "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+  "service": "Local synthetic model; real engines, encrypted files and separate data roots",
+  "checks": [
+    {
+      "name": "stopped_root_and_two_real_assistants_with_full_records_encrypted_source_unchanged",
+      "passed": true,
+      "tasks": 3,
+      "steps": 15
+    },
+    {
+      "name": "wrong_passphrase_corruption_trailing_data_stale_preview_rejected_atomic_idempotent_import_no_execution",
+      "passed": true
+    },
+    {
+      "name": "all_29_record_categories_paged_full_assistant_body_and_original_task_links_readable",
+      "passed": true,
+      "fullBodyBytes": 12800
+    },
+    {
+      "name": "restart_reexport_different_ciphertext_same_archive_deduplicated",
+      "passed": true
+    },
+    {
+      "name": "active_work_registered_secret_and_child_selection_rejected_passphrase_absent_from_records",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

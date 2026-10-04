@@ -1,4 +1,4 @@
-import { chromium, expect } from "@playwright/test";
+import { chromium, expect as baseExpect } from "@playwright/test";
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { once } from "node:events";
@@ -12,6 +12,8 @@ import {
   installExtension,
   extensionAdmin,
 } from "./extension-transfer-fixtures.mjs";
+import { makeHistoryFixture } from "./extension-history-fixtures.mjs";
+const expect = baseExpect.configure({ timeout: 60000 });
 
 const output = resolve(
   process.env.WORKPILOT_TEST_OUTPUT || ".test-results/extension-transfer-desktop",
@@ -70,7 +72,7 @@ async function boot(name) {
       .find((p) => /tauri\.localhost|tauri:/.test(p.url())),
   );
   page.on("pageerror", (e) => errors.push(String(e)));
-  page.setDefaultTimeout(20000);
+  page.setDefaultTimeout(120000);
   await expect(page.getByText("引擎已连接", { exact: true })).toBeVisible();
 }
 async function close() {
@@ -107,13 +109,23 @@ try {
   await boot("source");
   await installExtension(request, null, fixtures.base, false);
   await installExtension(request, null, fixtures.tool, false);
+  await makeHistoryFixture(request, null, join(directory, "history-fixtures"));
   let view = await panel();
   const box = view.transfer;
   await box.getByLabel(/migration-base ·/).check();
   await box.getByLabel(/迁移插件 \/ Portable plugin ·/).check();
+  const earlier = box.getByLabel("包含所选扩展的历史版本", { exact: true });
+  await expect(earlier).toBeChecked();
+  await earlier.uncheck();
+  await earlier.check();
+  await box.getByLabel(/migration-history · 2\.0\.0 ·/).check();
+  await box.getByLabel(/migration-history · 3\.0\.0 · 待安装草稿/).check();
+  await box.getByLabel(/migration-removed · 1\.0\.0 ·/).check();
+  await box.scrollIntoViewIfNeeded();
+  await page.screenshot({ path: join(output, "extension-history-selection-zh.png") });
   await box.getByLabel("扩展备份保存位置", { exact: true }).fill(archive);
   await box.getByLabel("扩展备份口令（至少 12 个字符）", { exact: true }).fill(password);
-  const save = box.getByRole("button", { name: "保存扩展备份 (2)", exact: true });
+  const save = box.getByRole("button", { name: "保存扩展备份 (5)", exact: true });
   await expect(save).toBeDisabled();
   await box.getByLabel("再次输入扩展备份口令", { exact: true }).fill(password);
   await save.click();
@@ -143,9 +155,13 @@ try {
   await transfer.getByLabel("扩展导入口令", { exact: true }).fill(password);
   await transfer.getByRole("button", { name: "预览扩展迁移", exact: true }).click();
   let preview = transfer.getByRole("region", { name: "扩展迁移预览" });
-  await expect(preview).toContainText("导入后：已停用");
+  await expect(preview).toContainText("导入后不会自动启用");
+  await expect(preview).toContainText("待安装草稿");
+  await expect(preview).toContainText("已卸载");
+  await preview.locator("summary").filter({ hasText: "一并保留的旧版本" }).click();
+  await expect(preview).toContainText("1.0.0 · 2 个文件");
   await expect(preview).toContainText("migration-base ^1.0.0");
-  await preview.locator("summary").filter({ hasText: "查看所含文件" }).last().click();
+  await preview.locator("summary").filter({ hasText: "查看所含文件" }).nth(1).click();
   await expect(preview).toContainText("assets/template.bin");
   await preview.scrollIntoViewIfNeeded();
   assert(await view.dialog.evaluate((e) => e.scrollWidth <= e.clientWidth + 2));
@@ -157,7 +173,25 @@ try {
   await expect(transfer.getByText("正在处理扩展备份…", { exact: true })).toHaveCount(0);
   await expect(transfer.getByLabel("扩展导入口令", { exact: true })).toHaveValue("");
   const catalog = await extensionAdmin(request, null, { kind: "catalog", query: "migration" });
-  assert.equal(catalog.items.length, 2);
+  assert.equal(catalog.items.length, 3);
+  assert.equal(catalog.previews.length, 1);
+  const migrated = await request({
+    kind: "extension_transfer",
+    task_id: null,
+    action: { kind: "catalog" },
+  });
+  assert.equal(migrated.kind, "workbench");
+  assert(
+    migrated.data.items.some(
+      (item) => item.installation.slug === "migration-removed" && !item.installation.installed,
+    ),
+  );
+  const retained = catalog.items.find((item) => item.installation.slug === "migration-history");
+  const versions = await extensionAdmin(request, null, {
+    kind: "versions",
+    installation_id: retained.installation.id,
+  });
+  assert.equal(new Set(versions.history.map((item) => item.data.active_digest)).size, 2);
   assert(catalog.items.every((i) => !i.installation.enabled));
   assert(
     catalog.items
@@ -166,6 +200,9 @@ try {
   );
   report.checks.push(
     "native_wrong_password_preview_files_permissions_dependencies_explicit_import_keeps_packages_disabled_without_credentials",
+  );
+  report.checks.push(
+    "native_history_checkbox_and_draft_uninstalled_selection_preview_preserve_both_versions_and_pending_state",
   );
 
   await view.dialog.getByRole("button", { name: "关闭", exact: true }).click();
@@ -177,6 +214,9 @@ try {
   await transfer.getByRole("button", { name: "Preview extension transfer", exact: true }).click();
   preview = transfer.getByRole("region", { name: "Extension transfer preview" });
   await expect(preview).toContainText("This archive was already imported");
+  await expect(preview).toContainText("Pending draft");
+  await expect(preview).toContainText("Uninstalled");
+  await expect(preview).toContainText("Earlier versions preserved");
   await preview.scrollIntoViewIfNeeded();
   assert(await view.dialog.evaluate((e) => e.scrollWidth <= e.clientWidth + 2));
   await page.screenshot({ path: join(output, "extension-transfer-en.png") });
@@ -187,7 +227,7 @@ try {
   await expect(transfer.getByText("Processing extension archive…", { exact: true })).toHaveCount(0);
   assert.equal(
     (await extensionAdmin(request, null, { kind: "catalog", query: "migration" })).items.length,
-    2,
+    3,
   );
   report.checks.push(
     "english_preview_duplicate_import_no_new_installations_and_no_horizontal_overflow",

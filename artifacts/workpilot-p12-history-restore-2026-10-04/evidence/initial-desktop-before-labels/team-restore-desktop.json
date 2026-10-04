@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-04T07:15:43.899Z",
+  "platform": "win32",
+  "binarySha256": "20ef3db89be2f1a81d6860946fb8111be4a6337f72a14dc145dd8c435f51cbd1",
+  "service": "Native Windows WebView2 and local synthetic three-protocol models",
+  "checks": [
+    "native_per_assistant_model_matching_rejects_wrong_protocol_and_previews_dependencies_and_reviews",
+    "native_confirm_opens_restored_team_history_and_deliveries_manual_continue_does_not_rerun_completed_assistants",
+    "native_english_duplicate_receipt_no_layout_overflow_and_no_javascript_errors"
+  ],
+  "status": "passed"
+}

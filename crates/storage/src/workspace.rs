@@ -436,7 +436,7 @@ impl Store {
                 limit,
             } => {
                 self.task(task_id)?;
-                let mut q=self.connection.prepare("SELECT e.sequence,e.at_ms,json_extract(e.payload_json,'$.kind'),e.payload_json FROM events e WHERE e.task_id=?1 AND (?2 IS NULL OR e.sequence<?2) AND (json_extract(e.payload_json,'$.kind') IN ('execution_created','message_delivered') OR (json_extract(e.payload_json,'$.kind')='execution_step_changed' AND json_extract(e.payload_json,'$.name')='model' AND json_extract(e.payload_json,'$.state')='completed')) ORDER BY e.sequence DESC LIMIT ?3")?;
+                let mut q=self.connection.prepare("SELECT e.sequence,e.at_ms,json_extract(e.payload_json,'$.kind'),e.payload_json FROM events e WHERE e.task_id=?1 AND (?2 IS NULL OR e.sequence<?2) AND (json_extract(e.payload_json,'$.kind') IN ('execution_created','message_delivered','restored_message') OR (json_extract(e.payload_json,'$.kind')='execution_step_changed' AND json_extract(e.payload_json,'$.name')='model' AND json_extract(e.payload_json,'$.state')='completed')) ORDER BY e.sequence DESC LIMIT ?3")?;
                 let mut rows = q
                     .query_map(params![task_id, before, limit + 1], |r| {
                         Ok((
@@ -453,7 +453,22 @@ impl Store {
                 let mut entries = vec![];
                 for (sequence, at_ms, kind, raw) in rows.into_iter().rev() {
                     let v: Value = serde_json::from_str(&raw)?;
+                    let at_ms = if kind == "restored_message" {
+                        v["original_at_ms"].as_u64().unwrap_or(at_ms)
+                    } else {
+                        at_ms
+                    };
                     let (role, source, text) = match kind.as_str() {
+                        "restored_message" => {
+                            let source: ContentRef = serde_json::from_value(v["content"].clone())?;
+                            if v["role"] == "assistant" {
+                                let output: ModelOutput = self.read_json(&source)?;
+                                ("assistant", source, output.text)
+                            } else {
+                                let text = self.read_text_value(&source)?;
+                                ("user", source, text)
+                            }
+                        }
                         "execution_created" => {
                             let source: ContentRef = serde_json::from_value(v["goal"].clone())?;
                             let text = self.read_text_value(&source)?;

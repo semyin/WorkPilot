@@ -33,6 +33,8 @@ mod installation;
 pub use installation::*;
 mod history_transfer;
 pub use history_transfer::*;
+mod portable_history;
+pub use portable_history::*;
 mod project_transfer;
 pub use project_transfer::*;
 mod extension_transfer;
@@ -43,6 +45,10 @@ mod media_transfer;
 pub use media_transfer::*;
 mod task_archive;
 pub use task_archive::*;
+mod migration;
+pub use migration::*;
+mod maintenance;
+pub use maintenance::*;
 
 pub const PROTOCOL: &str = "workpilot.v1";
 pub const SCHEMA_VERSION: u32 = 11;
@@ -109,6 +115,16 @@ pub enum Payload {
         #[serde(rename = "primary_agent_id")]
         agent_id: String,
         goal: ContentRef,
+    },
+    TaskRestored {
+        archive_id: String,
+        source_task_id: String,
+        history: ContentRef,
+    },
+    RestoredMessage {
+        role: String,
+        content: ContentRef,
+        original_at_ms: u64,
     },
     ExecutionQueued {
         run_id: String,

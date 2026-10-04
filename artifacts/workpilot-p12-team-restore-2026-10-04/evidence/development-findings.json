@@ -1,0 +1,30 @@
+{
+  "recordedAt": "2026-10-04T05:45:49.234Z",
+  "source": "Development tool output observed before final release validation",
+  "findings": [
+    {
+      "check": "storage restore tests, first run",
+      "observed": "Four team cases rejected unsupported conversation history",
+      "cause": "The new fixture created an empty Responses continuation exchange, which is not valid provider history",
+      "resolution": "Supply an actual Responses assistant message; keep production history validation strict"
+    },
+    {
+      "check": "storage repeated team restoration",
+      "observed": "Restoration refused stale delivery state",
+      "cause": "Test requeued a restored member and then exported without finishing or stopping that run",
+      "resolution": "Finish the continued member at an interrupted checkpoint before another export; retain stale report rejection"
+    },
+    {
+      "check": "engine integration, first two runs",
+      "observed": "TypeError at commands_enabled assertion",
+      "cause": "Test used settings then view instead of ToolTaskState.policy.settings",
+      "resolution": "Read the typed policy field; no product validation weakened"
+    },
+    {
+      "check": "additional malformed identity fixture",
+      "observed": "Foreign-task agent rejected during read-only import",
+      "cause": "The fixture expected restoration to handle a record already rejected by the container",
+      "resolution": "Use a duplicate agent ID with consistent links and an extra same-task agent to exercise restoration checks; six targeted tests passed"
+    }
+  ]
+}

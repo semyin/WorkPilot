@@ -341,6 +341,7 @@ impl Store {
         let mut s = self.execution_snapshot(member)?;
         if m.parent_task_id != parent
             || s.latest_run.is_some()
+            || self.restored_member_started(member)?
             || !m.pending_start
             || m.superseded_by.is_some()
             || spec.key != m.key

@@ -1,0 +1,8 @@
+
+> workpilot@0.1.0-alpha.12.15 ui:typecheck
+> npm run typecheck --workspace @workpilot/desktop
+
+
+> @workpilot/desktop@0.1.0-alpha.12.15 typecheck
+> tsc --noEmit
+

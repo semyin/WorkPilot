@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-04T09:40:19.978Z",
+  "platform": "win32",
+  "checks": [
+    "unstarted_recovery_entry_displays_status_without_changing_program_data_or_update_state",
+    "real_process_interruption_and_recovery_cancel_preserve_the_known_previous_program_and_data",
+    "actual_double_click_entry_restores_the_missing_install_and_original_database_with_visible_success",
+    "completed_update_entry_displays_status_and_never_rolls_back_new_work",
+    "altered_recovery_record_produces_a_visible_error_without_changing_program_or_data"
+  ],
+  "scope": "A cfg(test)-only child executes the production directory switch, then is forcibly terminated at application_saved. The real copied updater is launched without arguments and its native dialogs are controlled only by its created PID. This is not a hardware power-loss test.",
+  "binarySha256": {
+    "helper": "23c53e23feb17011a2e090713d41a26ad2f6d657c82ce9f31dd9277166dd20c8",
+    "engine": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "testOnlyChild": "2568cda7fac3c4ad58145562204c2d735ca0d999684b832d95c25a96cc41720d"
+  },
+  "interruption": {
+    "mechanism": "forced termination of independent cfg(test) child",
+    "phase": "application_saved",
+    "pid": 39632,
+    "originalShortcutTargetMissing": true
+  },
+  "state": "passed"
+}

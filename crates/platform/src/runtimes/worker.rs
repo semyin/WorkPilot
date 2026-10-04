@@ -4,7 +4,7 @@ use super::*;
 use crate::process::ManagedEngine;
 use serde::{Deserialize, Serialize};
 use std::{
-    io::{BufRead, BufReader, Write},
+    io::{BufRead, BufReader, Read, Write},
     process::Command,
     sync::mpsc::{self, RecvTimeoutError},
     thread,
@@ -14,8 +14,13 @@ use std::{
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 enum Message {
-    Progress,
-    Complete { report: InstallationReport },
+    Progress {
+        #[serde(default)]
+        path: Option<String>,
+    },
+    Complete {
+        report: InstallationReport,
+    },
     Failed,
 }
 #[derive(Clone, Copy)]
@@ -35,10 +40,14 @@ fn stopped() -> io::Error {
         "环境检查已取消 / Installation check cancelled",
     )
 }
-fn timed_out() -> io::Error {
+fn timed_out(path: Option<&str>) -> io::Error {
     io::Error::new(
         io::ErrorKind::TimedOut,
-        "环境文件读取长时间未完成，已停止本次检查；尚未确认文件完整，可稍后重试 / Runtime inspection timed out and was stopped; integrity is unconfirmed",
+        format!(
+            "环境文件读取长时间未完成，已停止本次检查；尚未确认文件完整，可稍后重试 / Runtime inspection timed out and was stopped; integrity is unconfirmed{}",
+            path.map(|path| format!("; last component file: {path}"))
+                .unwrap_or_default()
+        ),
     )
 }
 fn failed() -> io::Error {
@@ -63,7 +72,7 @@ pub(super) fn inspect(verify: bool, stop: Arc<AtomicBool>) -> Result<Installatio
     }
     let base = app_root()?;
     if !base.join(MANIFEST).is_file() {
-        return inspect_with_progress(&base, verify, stop, || Ok(()));
+        return inspect_with_progress(&base, verify, stop, |_, _| Ok(()));
     }
     let name = if cfg!(windows) {
         "workpilot-runtime-check.exe"
@@ -113,15 +122,25 @@ fn supervise(
     });
     let start = Instant::now();
     let mut progress = start;
+    let mut last_path = None;
     let result = (|| loop {
         if stop.load(Ordering::Relaxed) {
             return Err(stopped());
         }
         if start.elapsed() >= limits.total || progress.elapsed() >= limits.idle {
-            return Err(timed_out());
+            return Err(timed_out(last_path.as_deref()));
         }
         match receiver.recv_timeout(Duration::from_millis(50)) {
-            Ok(Ok(Message::Progress)) => progress = Instant::now(),
+            Ok(Ok(Message::Progress { path })) => {
+                if path
+                    .as_ref()
+                    .is_some_and(|value| value.len() > 4096 || !valid_relative(value))
+                {
+                    return Err(failed());
+                }
+                progress = Instant::now();
+                last_path = path;
+            }
             Ok(Ok(Message::Complete { report })) => return Ok(report),
             Ok(Ok(Message::Failed)) | Ok(Err(_)) | Err(RecvTimeoutError::Disconnected) => {
                 return Err(failed());
@@ -152,9 +171,16 @@ pub fn worker_main() -> Result<()> {
         &app_root()?,
         verify,
         Arc::new(AtomicBool::new(false)),
-        || {
-            if last.is_none_or(|at: Instant| at.elapsed() >= Duration::from_millis(250)) {
-                serde_json::to_writer(&mut output, &Message::Progress)?;
+        |path, before_open| {
+            if before_open
+                || last.is_none_or(|at: Instant| at.elapsed() >= Duration::from_millis(250))
+            {
+                serde_json::to_writer(
+                    &mut output,
+                    &Message::Progress {
+                        path: path.map(str::to_owned),
+                    },
+                )?;
                 output.write_all(b"\n")?;
                 output.flush()?;
                 last = Some(Instant::now());
@@ -248,10 +274,21 @@ mod tests {
             "Write-Output 'invalid'; Start-Sleep -Seconds 30",
             "Write-Output ('x' * 8192); Start-Sleep -Seconds 30",
             "Write-Output '{\"kind\":\"progress\"}'",
+            "Write-Output '{\"kind\":\"progress\",\"path\":\"../private-file\"}'; Start-Sleep -Seconds 30",
         ] {
             let mut child = fixture(script);
             assert!(supervise(&mut child, Arc::new(AtomicBool::new(false)), limits()).is_err());
             assert!(child.child.try_wait().unwrap().is_some());
         }
+    }
+    #[test]
+    fn stalled_reads_keep_only_the_last_relative_installation_path() {
+        let mut child = fixture(
+            "Write-Output '{\"kind\":\"progress\",\"path\":\"office-runtime/component.bin\"}'; Start-Sleep -Seconds 30",
+        );
+        let error = supervise(&mut child, Arc::new(AtomicBool::new(false)), limits()).unwrap_err();
+        assert_eq!(error.kind(), io::ErrorKind::TimedOut);
+        assert!(error.to_string().contains("office-runtime/component.bin"));
+        assert!(child.child.try_wait().unwrap().is_some());
     }
 }

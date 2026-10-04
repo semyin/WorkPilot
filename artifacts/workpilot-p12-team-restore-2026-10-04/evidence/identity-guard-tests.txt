@@ -1,0 +1,20 @@
+   Compiling workpilot-storage v0.1.0-alpha.12.12 (D:\workspace\kplocker\WorkPilot\crates\storage)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.51s
+     Running unittests src\lib.rs (target\debug\deps\workpilot_storage-ac0fc3d2196229f7.exe)
+
+running 6 tests
+test team_restore_tests::team_restore_rolls_back_whole_tree_and_survives_restart_without_duplicates ... ok
+test team_restore_tests::team_restore_rejects_incomplete_mapping_stale_preview_wrong_models_and_cancellation ... ok
+test team_restore_tests::team_restore_keeps_tree_inherited_directions_and_starts_only_after_manual_resume ... ok
+test team_restore_tests::team_restore_retains_started_context_and_composes_identifiers_after_another_transfer ... ok
+test team_restore_tests::team_restore_preserves_failures_replacements_reviews_and_scoped_historical_reports ... ok
+test team_restore_tests::team_restore_rejects_corrupted_graphs_without_creating_partial_tasks ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 81 filtered out; finished in 1.07s
+
+     Running unittests src\bin\workpilot-data.rs (target\debug\deps\workpilot_data-bb19c576261d4d29.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

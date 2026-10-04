@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-04T06:24:27.659Z",
+  "platform": "win32",
+  "binarySha256": "ff30496ee65a166a57e55abed7d8784471dc0c71dbda9d6d79fff981e7dc868b",
+  "service": "Real attachment workers and separate engines; synthetic local three-protocol models",
+  "checks": [
+    {
+      "name": "wrong_passphrase_tamper_and_worker_cancellation_leave_archive_readable",
+      "passed": true
+    },
+    {
+      "name": "chat_completions_encrypted_originals_reparsed_old_ids_read_actual_images_sent_and_undelivered_removed_foreign_assets_denied",
+      "passed": true
+    },
+    {
+      "name": "chat_completions_second_migration_old_citations_restart_duplicate_and_saved_archive_reexport",
+      "passed": true
+    },
+    {
+      "name": "responses_encrypted_originals_reparsed_old_ids_read_actual_images_sent_and_undelivered_removed_foreign_assets_denied",
+      "passed": true
+    },
+    {
+      "name": "responses_second_migration_old_citations_restart_duplicate_and_saved_archive_reexport",
+      "passed": true
+    },
+    {
+      "name": "messages_encrypted_originals_reparsed_old_ids_read_actual_images_sent_and_undelivered_removed_foreign_assets_denied",
+      "passed": true
+    },
+    {
+      "name": "messages_second_migration_old_citations_restart_duplicate_and_saved_archive_reexport",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

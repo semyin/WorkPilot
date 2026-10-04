@@ -8,7 +8,11 @@ import type {
 import { executionCommand } from "./executionClient";
 import { useWords } from "./workspaceClient";
 import { InstallationPanel } from "./InstallationPanel";
+import { MaintenancePanel } from "./MaintenancePanel";
+import type { MaintenanceProgress } from "./MaintenanceStatus";
+import { UpdatePanel } from "./UpdatePanel";
 import { BrowserSetupPanel } from "./BrowserSetupPanel";
+import { FullMigrationPanel } from "./migration/FullMigrationPanel";
 import { ProjectTransferPanel } from "./ProjectTransferPanel";
 const TaskArchivePanel = lazy(() =>
   import("./task-archive/TaskArchivePanel").then((module) => ({
@@ -22,6 +26,8 @@ export function WorkspaceSettings({
   onPreferences,
   onModels,
   onClose,
+  onOpenTask,
+  onMaintenance,
 }: {
   preferences: WorkspacePreferences;
   scheduler: SchedulerSettings;
@@ -29,6 +35,8 @@ export function WorkspaceSettings({
   onPreferences: (p: WorkspacePreferences) => Promise<void>;
   onModels: () => void;
   onClose: () => void;
+  onOpenTask: (id: string) => void;
+  onMaintenance: MaintenanceProgress;
 }) {
   const tr = useWords();
   const [draft, setDraft] = useState(preferences);
@@ -38,6 +46,7 @@ export function WorkspaceSettings({
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [archiveOpen, setArchiveOpen] = useState(false);
+  const [maintenanceOpen, setMaintenanceOpen] = useState(false);
   useEffect(() => {
     void executionCommand({ kind: "read", query: { kind: "tool_defaults" } })
       .then((r) => {
@@ -140,10 +149,14 @@ export function WorkspaceSettings({
           <p>{dataDir}</p>
           <small>
             {tr(
-              "记录保存在本机。文件与终端 → 修改历史可备份所选文件版本；完整资料迁移仍在开发，请保留原数据目录。",
-              "Records stay on this computer. File workspace → History can back up selected revisions. Full data migration is still in development; keep the original data directory.",
+              "记录保存在本机。可使用完整资料迁移选择项目、任务、扩展与文件；修改历史也可单独备份。导入前会显示路径和权限确认。",
+              "Records stay on this computer. Full migration lets you select projects, tasks, extensions and files; file history can also be backed up separately. Paths and permissions are shown before importing.",
             )}
           </small>
+        </details>
+        <details>
+          <summary>{tr("完整资料迁移", "Complete data migration")}</summary>
+          <FullMigrationPanel onOpen={onOpenTask} />
         </details>
         <details>
           <summary>{tr("项目设置与记忆迁移", "Project settings and memory transfer")}</summary>
@@ -153,7 +166,7 @@ export function WorkspaceSettings({
           <summary>{tr("任务与助手档案迁移", "Task and assistant archive transfer")}</summary>
           {archiveOpen && (
             <Suspense fallback={<p>{tr("正在打开任务档案…", "Opening task archives…")}</p>}>
-              <TaskArchivePanel />
+              <TaskArchivePanel onOpen={onOpenTask} />
             </Suspense>
           )}
         </details>
@@ -165,8 +178,8 @@ export function WorkspaceSettings({
           <summary>{tr("浏览器、技能与插件", "Browser, skills and plugins")}</summary>
           <p>
             {tr(
-              "工作台顶部可管理技能与插件，浏览器面板可启动独立的 Chrome/Edge 或连接日常浏览器。当前需要电脑已有 Chrome/Edge。第三方插件的额外依赖仍需按其说明配置。",
-              "Manage skills and plugins from the workspace toolbar. The browser panel starts an isolated Chrome/Edge or connects your daily browser. Chrome/Edge currently needs to be installed. Third-party plugins may need additional dependencies.",
+              "工作台顶部可管理技能与插件。浏览器面板可启动随软件提供的独立浏览器，或连接已有的 Chrome/Edge。第三方插件的额外依赖需按其说明配置。",
+              "Manage skills and plugins from the workspace toolbar. Start the bundled isolated browser or connect your existing Chrome/Edge. Third-party plugins may need additional dependencies.",
             )}
           </p>
         </details>
@@ -182,6 +195,14 @@ export function WorkspaceSettings({
         <details>
           <summary>{tr("环境检查与诊断", "Environment and diagnostics")}</summary>
           <InstallationPanel />
+        </details>
+        <details>
+          <summary>{tr("软件更新", "Software update")}</summary>
+          <UpdatePanel onMaintenance={onMaintenance} />
+        </details>
+        <details onToggle={(e) => setMaintenanceOpen(e.currentTarget.open)}>
+          <summary>{tr("数据清理与恢复初始状态", "Data maintenance and reset")}</summary>
+          {maintenanceOpen && <MaintenancePanel onMaintenance={onMaintenance} />}
         </details>
         {error && (
           <p className="error" role="alert">

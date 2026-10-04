@@ -106,6 +106,7 @@ async function launch(directory, fault) {
           command.kind === "file_transfer" ||
           command.kind === "media_transfer" ||
           command.kind === "task_archive" ||
+          command.kind === "migration" ||
           command.kind === "project_transfer" ||
           command.kind === "extension_transfer"
           ? 120000

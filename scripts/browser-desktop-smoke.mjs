@@ -19,10 +19,11 @@ const directory = await mkdtemp(join(output, "session-")),
 await mkdir(folder);
 const binary =
   process.env.WORKPILOT_DESKTOP_BINARY || join(root, "target/release/workpilot-desktop.exe");
+const channel = process.env.WORKPILOT_BROWSER_CHANNEL || "chrome";
 const report = {
   at: new Date().toISOString(),
   platform: process.platform,
-  service: "Native Windows WebView and actual installed Chrome; local fixture, no paid model",
+  service: "Native Windows WebView and actual " + channel + "; local fixture, no paid model",
   binary: {
     path: binary,
     sha256: createHash("sha256")
@@ -78,10 +79,11 @@ try {
   page.on("pageerror", (e) => errors.push(String(e)));
   await expect(page.getByText("引擎已连接", { exact: true })).toBeVisible({ timeout: 20000 });
   const b = await browserTask({ request }, folder, { permission: "request_approval" });
-  await browserScenario({ page, task: b.task, url: fixture.url, report, output });
+  await browserScenario({ page, task: b.task, url: fixture.url, report, output, channel });
   const sessions = await b.control({ kind: "sessions" });
   const owned = sessions.sessions.find((s) => s.kind === "dedicated" && s.state === "connected");
   assert(owned?.owned_pid);
+  assert.equal(owned.channel, channel);
   await page.evaluate(() => window.__TAURI_INTERNALS__.invoke("hide_window"));
   await delay(300);
   assert.doesNotThrow(() => process.kill(owned.owned_pid, 0));

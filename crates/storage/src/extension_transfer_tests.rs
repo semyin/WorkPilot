@@ -3,6 +3,9 @@ use serde_json::Value;
 
 fn candidate(name: &str, scope: Option<&str>) -> ExtensionImportCandidate {
     ExtensionImportCandidate {
+        earlier: vec![],
+        draft: false,
+        installed: true,
         source_id: format!("source-{name}"),
         scope: scope.map(str::to_owned),
         version: PluginVersion {
@@ -35,6 +38,57 @@ fn apply(s: &mut Store, items: &[ExtensionImportCandidate]) -> Result<Value> {
         items,
         &preview,
     )
+}
+#[test]
+fn extension_versions_and_drafts_are_atomic_inactive_and_keep_all_owned_versions() {
+    let dir = tempfile::tempdir().unwrap();
+    let mut s = Store::open(dir.path()).unwrap();
+    let mut item = candidate("history-package", None);
+    let mut old = item.version.clone();
+    old.digest = "b".repeat(64);
+    old.manifest.version = "0.9.0".into();
+    item.earlier.push(old.clone());
+    let mut draft = candidate("history-package", None);
+    draft.source_id = "draft-source".into();
+    draft.draft = true;
+    draft.installed = false;
+    draft.version.digest = "c".repeat(64);
+    draft.version.manifest.version = "2.0.0".into();
+    let mut uninstalled = candidate("removed-package", None);
+    uninstalled.installed = false;
+    let entries = vec![item, draft, uninstalled];
+    s.connection.execute_batch("CREATE TRIGGER fail_draft BEFORE INSERT ON extension_previews BEGIN SELECT RAISE(ABORT,'synthetic storage failure'); END;").unwrap();
+    assert!(apply(&mut s, &entries).is_err());
+    assert!(s.extension_installations().unwrap().is_empty());
+    assert!(s.extension_previews().unwrap().is_empty());
+    s.connection
+        .execute_batch("DROP TRIGGER fail_draft")
+        .unwrap();
+    let receipt = apply(&mut s, &entries).unwrap();
+    assert_eq!(receipt["drafts"].as_array().unwrap().len(), 1);
+    let rows = s.extension_installations().unwrap();
+    let installed = rows.iter().find(|i| i.slug == "history-package").unwrap();
+    assert!(!installed.enabled);
+    assert_eq!(s.extension_owned_versions(&installed.id).unwrap().len(), 2);
+    assert!(
+        !rows
+            .iter()
+            .find(|i| i.slug == "removed-package")
+            .unwrap()
+            .installed
+    );
+    let drafts = s.extension_previews().unwrap();
+    assert!(drafts[0].draft);
+    assert_eq!(
+        drafts[0].installed_id.as_deref(),
+        Some(installed.id.as_str())
+    );
+    assert_eq!(drafts[0].expected_revision, Some(1));
+    assert_eq!(apply(&mut s, &entries).unwrap(), receipt);
+    drop(s);
+    let s = Store::open(dir.path()).unwrap();
+    assert_eq!(s.extension_previews().unwrap().len(), 1);
+    assert_eq!(s.extension_owned_versions(&installed.id).unwrap().len(), 2);
 }
 #[test]
 fn extension_migration_disabled_scope_and_dedup_survive_restart() {

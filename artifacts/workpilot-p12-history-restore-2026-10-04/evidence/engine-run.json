@@ -1,0 +1,68 @@
+[
+  {
+    "name": "history-transfer",
+    "command": "node scripts/history-transfer-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-04T07:14:59.744Z",
+    "ended": "2026-10-04T07:15:05.905Z",
+    "binarySha256": "0d928ea43c0095e3ffcbde2bd27a583d96e7f7a4566af8f2f83ba3810c0450fc",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\history-restore-final-history-transfer\\report.json"
+  },
+  {
+    "name": "task-history-restore",
+    "command": "node scripts/task-history-restore-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-04T07:14:59.731Z",
+    "ended": "2026-10-04T07:15:07.323Z",
+    "binarySha256": "0d928ea43c0095e3ffcbde2bd27a583d96e7f7a4566af8f2f83ba3810c0450fc",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\history-restore-final-task-history-restore\\report.json"
+  },
+  {
+    "name": "team-restore",
+    "command": "node scripts/team-restore-test.mjs",
+    "status": "passed",
+    "checks": 7,
+    "exitCode": 0,
+    "began": "2026-10-04T07:15:07.325Z",
+    "ended": "2026-10-04T07:15:38.923Z",
+    "binarySha256": "0d928ea43c0095e3ffcbde2bd27a583d96e7f7a4566af8f2f83ba3810c0450fc",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\history-restore-final-team-restore\\report.json"
+  },
+  {
+    "name": "task-restore",
+    "command": "node scripts/task-restore-test.mjs",
+    "status": "passed",
+    "checks": 6,
+    "exitCode": 0,
+    "began": "2026-10-04T07:15:38.925Z",
+    "ended": "2026-10-04T07:15:46.278Z",
+    "binarySha256": "0d928ea43c0095e3ffcbde2bd27a583d96e7f7a4566af8f2f83ba3810c0450fc",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\history-restore-final-task-restore\\report.json"
+  },
+  {
+    "name": "task-archive",
+    "command": "node scripts/task-archive-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-04T07:15:46.279Z",
+    "ended": "2026-10-04T07:15:50.539Z",
+    "binarySha256": "0d928ea43c0095e3ffcbde2bd27a583d96e7f7a4566af8f2f83ba3810c0450fc",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\history-restore-final-task-archive\\report.json"
+  },
+  {
+    "name": "task-media-restore",
+    "command": "node scripts/task-media-restore-test.mjs",
+    "status": "passed",
+    "checks": 8,
+    "exitCode": 0,
+    "began": "2026-10-04T07:15:05.907Z",
+    "ended": "2026-10-04T07:17:15.946Z",
+    "binarySha256": "0d928ea43c0095e3ffcbde2bd27a583d96e7f7a4566af8f2f83ba3810c0450fc",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\history-restore-final-task-media-restore\\report.json"
+  }
+]

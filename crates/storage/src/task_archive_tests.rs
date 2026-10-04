@@ -10,7 +10,7 @@ fn req(command: Command) -> Request {
 fn sha(index: &TaskArchiveIndex) -> String {
     format!("{:x}", Sha256::digest(serde_json::to_vec(index).unwrap()))
 }
-fn stopped_team(s: &mut Store) -> String {
+pub(super) fn stopped_team(s: &mut Store) -> String {
     let (root, _) = execution_tests::setup(s);
     let settings = TeamSettings::default();
     s.configure_team(

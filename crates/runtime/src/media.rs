@@ -11,6 +11,8 @@ impl<B: ModelBackend + Send + Sync, F: FaultObserver> ExecutionEnvironment<B, F>
         let result:std::result::Result<Value,String>=async{
             let client=self.workbench.as_ref().ok_or("文件成果工作区不可用 / File workspace unavailable")?;
             let delivered=workpilot_workbench::media::model::references(&snapshot.context);
+            let (owner,text)=(task.clone(),delivered);
+            let delivered=self.storage.call(move|s|s.restored_media_references(&owner,&text)).await.map_err(|e|e.to_string())?;
             if call.name=="document_list" {
                 #[derive(serde::Deserialize)]#[serde(deny_unknown_fields)]struct Range{start:Option<usize>,limit:Option<usize>}
                 let range:Range=serde_json::from_value(call.arguments.clone()).map_err(|_|"Invalid attachment page")?;let start=range.start.unwrap_or(0);let limit=range.limit.unwrap_or(16);if !(1..=32).contains(&limit){return Err("Invalid attachment page size".into());}
@@ -21,7 +23,9 @@ impl<B: ModelBackend + Send + Sync, F: FaultObserver> ExecutionEnvironment<B, F>
             if call.name=="image_services" {return client.media(None,MediaAdmin::ImageServices).await;}
             if call.name=="document_read" {
                 #[derive(serde::Deserialize)]#[serde(deny_unknown_fields)]struct Input{asset_id:String,start:u32,limit:u32}
-                let i:Input=serde_json::from_value(call.arguments.clone()).map_err(|_|"Invalid document range")?;
+                let mut i:Input=serde_json::from_value(call.arguments.clone()).map_err(|_|"Invalid document range")?;
+                let (owner,asset)=(task.clone(),i.asset_id.clone());
+                i.asset_id=self.storage.call(move|s|s.restored_media_id(&owner,&asset)).await.map_err(|e|e.to_string())?;
                 let value=client.media(Some(task),MediaAdmin::Read{asset_id:i.asset_id.clone(),start:i.start,limit:i.limit}).await?;
                 if matches!(value["asset"]["source"].as_str(),Some("file"|"drop"|"paste"))&&!delivered.contains(&format!("[workpilot-file:{}]",i.asset_id)){return Err("此附件尚未随用户消息交付 / Attachment has not been delivered in a user message".into());}
                 return Ok(value);
@@ -45,7 +49,9 @@ impl<B: ModelBackend + Send + Sync, F: FaultObserver> ExecutionEnvironment<B, F>
                     MediaEffect::CreateDocument{path:i.path,format:i.format,expected,recipe:i.recipe}
                 } else {
                     #[derive(serde::Deserialize)]#[serde(deny_unknown_fields)]struct Input{service_id:String,service_revision:u32,prompt:String,size:String,quality:Option<String>,format:String,references:Vec<String>,paths:Vec<String>}
-                    let i:Input=serde_json::from_value(call.arguments.clone()).map_err(|_|"Invalid image request")?;
+                    let mut i:Input=serde_json::from_value(call.arguments.clone()).map_err(|_|"Invalid image request")?;
+                    let (owner,refs)=(task.clone(),i.references.clone());
+                    i.references=self.storage.call(move|s|refs.iter().map(|id|s.restored_media_id(&owner,id)).collect::<workpilot_storage::Result<Vec<_>>>()).await.map_err(|e|e.to_string())?;
                     let assets=client.media_assets(&task,&delivered).await?;
                     if i.references.iter().any(|id|!assets.iter().any(|a|&a.id==id)){return Err("参考图尚未交付给当前任务 / Reference image is not available in this task".into());}
                     let mut expected=vec![];for path in &i.paths{let file=client.request(task.clone(),format!("image-path-{action_id}-{}",expected.len()),WorkbenchAction::ReadFile{path:path.clone()}).await?;let version:FileVersion=serde_json::from_value(file["version"].clone()).map_err(|_|"Missing file version")?;if version.exists{return Err("图片输出路径已存在，请选择新名称 / Image output already exists; choose a new name".into());}expected.push(version);}

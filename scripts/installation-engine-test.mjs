@@ -21,7 +21,7 @@ const output = resolve(
 await mkdir(output, { recursive: true });
 const binary =
   process.env.WORKPILOT_ENGINE_BINARY ||
-  join(root, "artifacts/workpilot-p12-extensions-2026-10-04/preview/workpilot-sidecar.exe");
+  join(root, "artifacts/workpilot-p12-complete-2026-10-04/preview/workpilot-sidecar.exe");
 const bundle = dirname(binary),
   fixture = await startToolFixture();
 setFixture(fixture);
@@ -124,7 +124,7 @@ async function exercise(permission) {
       },
     },
   ];
-  fixture.recipes.set(name, permission === "full_access" ? actions : actions.slice(0, 3));
+  fixture.recipes.set(name, actions);
   const task = await create(engine, "responses", name, {
     controlled_tools: false,
     limits: {
@@ -158,37 +158,32 @@ async function exercise(permission) {
     }
     assert.equal(s.task.state, "completed", JSON.stringify(s.latest_run));
     const steps = s.steps.filter((s) => s.name === "run_command");
-    assert.equal(
-      steps.filter((s) => s.state === "completed").length,
-      permission === "full_access" ? 5 : 2,
-    );
+    assert.equal(steps.filter((s) => s.state === "completed").length, 5);
     if (permission !== "full_access") {
-      const failed = steps.at(-1);
-      assert.equal(failed.state, "failed");
-      const saved = JSON.parse(
-        (
-          await engine.request({
-            kind: "read",
-            query: { kind: "content", object_id: failed.output.object_id, offset: 0, limit: 32768 },
-          })
-        ).page.text,
+      for (const step of steps) {
+        const saved = JSON.parse(
+          (
+            await engine.request({
+              kind: "read",
+              query: {
+                kind: "content",
+                object_id: step.output.object_id,
+                offset: 0,
+                limit: 32768,
+              },
+            })
+          ).page.text,
+        );
+        const detail = JSON.parse(saved.output);
+        assert.equal(saved.is_error, false);
+        assert.equal(detail.containment, "windows_appcontainer_no_network");
+      }
+      const commit = execFileSync(
+        join(bundle, "git-runtime/cmd/git.exe"),
+        ["log", "--format=%s", "-1"],
+        { cwd: folder, windowsHide: true, encoding: "utf8" },
       );
-      const detail = JSON.parse(saved.output);
-      assert.equal(saved.is_error, true);
-      assert.equal(detail.containment, "windows_appcontainer_no_network");
-      assert.match(
-        detail.stderr_preview,
-        /unable to get current working directory: Permission denied/,
-      );
-      report.knownFailures = [
-        {
-          id: "T-P12-04",
-          component: "Git in AppContainer",
-          observed: detail.stderr_preview.trim(),
-          scope:
-            "Generic git init cannot resolve directory ancestors under restricted permissions; no broader permission fallback. Full-access commands and existing approved workbench Git operations work.",
-        },
-      ];
+      assert.equal(commit.trim(), "bundled-runtime-fixture");
     }
     break;
   }
@@ -258,7 +253,7 @@ async function exercise(permission) {
     permission +
       (permission === "full_access"
         ? "_bundled_python_unicode_node_git_commit_without_developer_PATH"
-        : "_bundled_python_unicode_node_work_and_git_compatibility_failure_is_recorded"),
+        : "_bundled_python_unicode_node_git_commit_keep_appcontainer_boundary"),
   );
   return task;
 }
@@ -270,6 +265,7 @@ try {
       "python-runtime/python.exe",
       "git-runtime",
       "git-runtime/cmd/git.exe",
+      "git-runtime/sandbox/bin/git.exe",
     ].map((p) => [p, acl(join(bundle, p))]),
   );
   engine = await launch(await mkdtemp(join(output, "data-")));
@@ -283,7 +279,7 @@ try {
   const inspected = await checking;
   assert.equal(inspected.kind, "installation", JSON.stringify(inspected));
   assert.equal(inspected.report.manifest_present, true);
-  assert.equal(inspected.report.components.length, 7);
+  assert.equal(inspected.report.components.length, 9);
   assert(
     inspected.report.components.every((c) => c.state === "verified" && c.files === c.checked_files),
     JSON.stringify(inspected.report),
@@ -365,7 +361,7 @@ try {
   );
   await engine.close();
   engine = null;
-  report.status = report.knownFailures?.length ? "passed_with_known_failure" : "passed";
+  report.status = "passed";
 } catch (e) {
   report.status = "failed";
   report.error = String(e.stack || e);

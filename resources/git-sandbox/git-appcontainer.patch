@@ -1,0 +1,103 @@
+diff --git a/compat/mingw.c b/compat/mingw.c
+index fd014ee..896a79a 100644
+--- a/compat/mingw.c
++++ b/compat/mingw.c
+@@ -167,6 +167,8 @@ int err_win_to_posix(DWORD winerr)
+ 	return error;
+ }
+ 
++extern DWORD workpilot_final_path(HANDLE, LPWSTR, DWORD, DWORD);
++
+ static inline int is_file_in_use_error(DWORD errcode)
+ {
+ 	switch (errcode) {
+@@ -1134,7 +1136,7 @@ ssize_t mingw_write(int fd, const void *buf, size_t len)
+ 		if (GetFileType(h) != FILE_TYPE_PIPE) {
+ 			if (orig == EINVAL) {
+ 				wchar_t path[MAX_LONG_PATH];
+-				DWORD ret = GetFinalPathNameByHandleW(h, path,
++				DWORD ret = workpilot_final_path(h, path,
+ 								ARRAY_SIZE(path), 0);
+ 				UINT drive_type = ret > 0 && ret < ARRAY_SIZE(path) ?
+ 					GetDriveTypeW(path) : DRIVE_UNKNOWN;
+@@ -1197,7 +1199,7 @@ int mingw_chdir(const char *dirname)
+ 			errno = err_win_to_posix(GetLastError());
+ 			return -1;
+ 		}
+-		if (!GetFinalPathNameByHandleW(hnd, wdirname, ARRAY_SIZE(wdirname), 0)) {
++		if (!workpilot_final_path(hnd, wdirname, ARRAY_SIZE(wdirname), 0)) {
+ 			errno = err_win_to_posix(GetLastError());
+ 			CloseHandle(hnd);
+ 			return -1;
+@@ -1712,7 +1714,7 @@ char *mingw_strbuf_realpath(struct strbuf *resolved, const char *path)
+ 		return NULL;
+ 	}
+ 
+-	ret = GetFinalPathNameByHandleW(h, wpath, ARRAY_SIZE(wpath), 0);
++	ret = workpilot_final_path(h, wpath, ARRAY_SIZE(wpath), 0);
+ 	CloseHandle(h);
+ 	if (!ret || ret >= ARRAY_SIZE(wpath))
+ 		goto realpath_failed;
+@@ -1749,7 +1751,7 @@ char *mingw_getcwd(char *pointer, int len)
+ 			  FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE, NULL,
+ 			  OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS, NULL);
+ 	if (hnd != INVALID_HANDLE_VALUE) {
+-		ret = GetFinalPathNameByHandleW(hnd, wpointer, ARRAY_SIZE(wpointer), 0);
++		ret = workpilot_final_path(hnd, wpointer, ARRAY_SIZE(wpointer), 0);
+ 		CloseHandle(hnd);
+ 		if (!ret || ret >= ARRAY_SIZE(wpointer)) {
+ 			ret = GetLongPathNameW(cwd, wpointer, ARRAY_SIZE(wpointer));
+diff --git a/path.c b/path.c
+index 08da7fb..3afd9ec 100644
+--- a/path.c
++++ b/path.c
+@@ -829,11 +829,37 @@ int safe_create_dir_in_gitdir(struct repository *repo, const char *path)
+ 	return adjust_shared_perm(repo, path);
+ }
+ 
++#ifdef _WIN32
++extern int workpilot_is_appcontainer(void);
++#endif
++
+ static enum scld_error safe_create_leading_directories_1(struct repository *repo,
+ 							 char *path)
+ {
+ 	char *next_component = path + offset_1st_component(path);
+ 	enum scld_error ret = SCLD_OK;
++#ifdef _WIN32
++	/* Existing parents need traversal, not permission to inspect every ancestor.
++	 * Find the nearest accessible directory, then retain the original creation
++	 * and shared-permission checks for every component still missing. */
++	if (workpilot_is_appcontainer()) {
++		char *cursor = path + strlen(path);
++		while (cursor > next_component) {
++			struct stat parent;
++			char saved;
++			cursor--;
++			if (!is_dir_sep(*cursor)) continue;
++			saved = *cursor;
++			*cursor = 0;
++			if (!stat(path, &parent) && S_ISDIR(parent.st_mode)) {
++				*cursor = saved;
++				next_component = cursor + 1;
++				break;
++			}
++			*cursor = saved;
++		}
++	}
++#endif
+ 
+ 	while (ret == SCLD_OK && next_component) {
+ 		struct stat st;
+diff --git a/contrib/buildsystems/CMakeLists.txt b/contrib/buildsystems/CMakeLists.txt
+index 524b3aa..46e3db2 100644
+--- a/contrib/buildsystems/CMakeLists.txt
++++ b/contrib/buildsystems/CMakeLists.txt
+@@ -292,6 +292,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+ 	endif()
+ 	list(APPEND compat_SOURCES
+ 		compat/mingw.c
++		compat/workpilot-path.c
+ 		compat/winansi.c
+ 		compat/win32/flush.c
+ 		compat/win32/path-utils.c

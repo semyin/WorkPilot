@@ -23,6 +23,8 @@ SilentUnInstall silent
 !include LogicLib.nsh
 !include FileFunc.nsh
 Var UpdateMode
+Var PassiveMode
+Var DeleteWorkPilotHistoryCheckboxState
 !define WP_NATIVE_ROOT "__PREFIX__"
 !include "__HOOK__"
 OutFile "__OUTPUT__"

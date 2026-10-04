@@ -1,5 +1,6 @@
 .installation-panel p,
-.installation-panel li {
+.installation-panel li,
+.installation-panel summary {
   overflow-wrap: anywhere;
 }
 .installation-panel details {
@@ -9,6 +10,16 @@
   display: block;
   margin-top: 12px;
   color: var(--muted);
+}
+.installation-panel .update-confirmation {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.installation-panel .update-confirmation input[type="checkbox"] {
+  width: auto;
+  flex: none;
+  margin: 4px 0 0;
 }
 .browser-setup-card {
   border: 1px solid var(--border, #d9dde5);
@@ -26,4 +37,12 @@
 }
 .browser-setup-panel li {
   margin-bottom: 8px;
+}
+.maintenance-status {
+  max-width: 640px;
+  margin: 12vh auto;
+  padding: 24px;
+}
+.update-recovery-entry p {
+  overflow-wrap: anywhere;
 }

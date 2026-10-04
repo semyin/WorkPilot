@@ -7,6 +7,7 @@ import type {
   ExtensionTransferAction,
   PluginInstallation,
   PluginVersion,
+  PluginPreview,
 } from "./generated/contracts";
 import "./transfer.css";
 
@@ -15,6 +16,14 @@ type PreviewEntry = Pick<PluginVersion, "manifest" | "files" | "permissions" | "
   source_id: string;
   project_scoped: boolean;
   was_enabled: boolean;
+  draft: boolean;
+  installed: boolean;
+  versions: {
+    digest: string;
+    version: string;
+    files: PluginVersion["files"];
+    permissions: string[];
+  }[];
 };
 type Preview = {
   fingerprint: string;
@@ -32,6 +41,10 @@ export function ExtensionTransferPanel({
   const tr = useWords();
   const [items, setItems] = useState<Item[]>([]);
   const [selection, setSelection] = useState<ExtensionSelection[]>([]);
+  const [drafts, setDrafts] = useState<PluginPreview[]>([]);
+  const [draftIds, setDraftIds] = useState<string[]>([]);
+  const [includeHistory, setIncludeHistory] = useState(true);
+  const selectedCount = selection.length + draftIds.length;
   const [destination, setDestination] = useState(""),
     [source, setSource] = useState("");
   const [exportPassword, setExportPassword] = useState(""),
@@ -45,12 +58,16 @@ export function ExtensionTransferPanel({
     alive = useRef(true);
   const load = async () => {
     const r = await executionCommand({
-      kind: "extensions",
+      kind: "extension_transfer",
       task_id: task,
-      action: { kind: "catalog", query: null },
+      action: { kind: "catalog" },
     });
     if (r.kind !== "workbench") throw new Error("Unexpected extension catalog response");
-    if (alive.current) setItems((r.data as unknown as { items: Item[] }).items);
+    if (alive.current) {
+      const data = r.data as unknown as { items: Item[]; drafts: PluginPreview[] };
+      setItems(data.items);
+      setDrafts(data.drafts);
+    }
   };
   useEffect(() => {
     alive.current = true;
@@ -98,14 +115,14 @@ export function ExtensionTransferPanel({
       <summary>{tr("技能与插件迁移", "Skill and plugin transfer")}</summary>
       <p>
         {tr(
-          "批量备份当前安装版本及配套文件。全局范围保留，项目扩展绑定当前选中任务的项目。导入后全部停用，凭据需重填，再逐项检查并启用。",
-          "Back up selected current versions and resources. Global scope is preserved; project packages map to the selected task’s project. Imports remain disabled. Reconfigure credentials, review and enable each package.",
+          "备份扩展、历史版本和待安装草稿。全局范围保留，项目扩展绑定所选任务的项目。导入的扩展先停用，已卸载项和草稿保留原状态；凭据重填后再检查启用。",
+          "Back up extensions, historical versions and pending drafts. Project packages map to the selected task's project. Imported extensions stay disabled; uninstalled items and drafts retain their state. Reconfigure credentials before activation.",
         )}
       </p>
       <p>
         {tr(
-          "最多 32 个扩展、2048 个文件、合计 64 MiB 原文。不包含旧安装版本、未安装草稿、登录信息和运行中的会话。",
-          "Up to 32 packages, 2048 files and 64 MiB of file content. Earlier installed versions, uninstalled drafts, sign-ins and running sessions are excluded.",
+          "最多选择 32 项，每个扩展最多 128 个版本，所有版本合计最多 2048 个文件、64 MiB 原文。登录信息和运行中的会话不迁移。",
+          "Select up to 32 items, with 128 versions per extension. All versions combined are limited to 2048 files and 64 MiB. Sign-ins and running sessions are excluded.",
         )}
       </p>
       <fieldset disabled={busy}>
@@ -115,11 +132,20 @@ export function ExtensionTransferPanel({
             void act(async () => {
               await load();
               setSelection([]);
+              setDraftIds([]);
             })
           }
         >
           {tr("刷新扩展列表", "Refresh extension list")}
         </button>
+        <label>
+          <input
+            type="checkbox"
+            checked={includeHistory}
+            onChange={(e) => setIncludeHistory(e.target.checked)}
+          />
+          {tr("包含所选扩展的历史版本", "Include earlier versions of selected extensions")}
+        </label>
         <div className="transfer-selection">
           {items.map(({ installation: i, version: v }) => (
             <label key={i.id}>
@@ -137,7 +163,29 @@ export function ExtensionTransferPanel({
               <span>
                 {v.manifest.name} · {v.manifest.version} ·{" "}
                 {i.scope ? tr("项目", "Project") : tr("全局", "Global")} ·{" "}
-                {i.enabled ? tr("已启用", "Enabled") : tr("已停用", "Disabled")}
+                {!i.installed
+                  ? tr("已卸载，保留历史", "Uninstalled; history retained")
+                  : i.enabled
+                    ? tr("已启用", "Enabled")
+                    : tr("已停用", "Disabled")}
+              </span>
+            </label>
+          ))}
+          {drafts.map((p) => (
+            <label key={p.id}>
+              <input
+                type="checkbox"
+                checked={draftIds.includes(p.id)}
+                onChange={(e) =>
+                  setDraftIds((old) =>
+                    e.target.checked ? [...old, p.id] : old.filter((id) => id !== p.id),
+                  )
+                }
+              />
+              <span>
+                {p.version.manifest.name} · {p.version.manifest.version} ·{" "}
+                {tr("待安装草稿", "Pending draft")} ·{" "}
+                {p.scope ? tr("项目", "Project") : tr("全局", "Global")}
               </span>
             </label>
           ))}
@@ -177,8 +225,8 @@ export function ExtensionTransferPanel({
         <button
           disabled={
             !destination ||
-            !selection.length ||
-            selection.length > 32 ||
+            !selectedCount ||
+            selectedCount > 32 ||
             !valid(exportPassword) ||
             repeat !== exportPassword
           }
@@ -187,6 +235,8 @@ export function ExtensionTransferPanel({
               await call({
                 kind: "export",
                 selections: selection,
+                include_history: includeHistory,
+                draft_ids: draftIds,
                 path: destination,
                 password: exportPassword,
               });
@@ -198,7 +248,7 @@ export function ExtensionTransferPanel({
             })
           }
         >
-          {tr("保存扩展备份", "Save extension archive")} ({selection.length})
+          {tr("保存扩展备份", "Save extension archive")} ({selectedCount})
         </button>
       </fieldset>
       <fieldset disabled={busy}>
@@ -272,9 +322,31 @@ export function ExtensionTransferPanel({
                 <p>{entry.manifest.description}</p>
                 <p>
                   {tr("原状态：", "Source state: ")}
-                  {entry.was_enabled ? tr("已启用", "Enabled") : tr("已停用", "Disabled")}
-                  {tr("；导入后：已停用", "; after import: disabled")}
+                  {entry.draft
+                    ? tr("待安装草稿", "Pending draft")
+                    : !entry.installed
+                      ? tr("已卸载", "Uninstalled")
+                      : entry.was_enabled
+                        ? tr("已启用", "Enabled")
+                        : tr("已停用", "Disabled")}
+                  {tr("；导入后不会自动启用", "; will not activate on import")}
                 </p>
+                {!!entry.versions?.length && (
+                  <details>
+                    <summary>
+                      {tr("一并保留的旧版本", "Earlier versions preserved")} ·{" "}
+                      {entry.versions.length}
+                    </summary>
+                    <ul>
+                      {entry.versions.map((v) => (
+                        <li key={v.digest}>
+                          {v.version} · {v.files.length} {tr("个文件", "files")} ·{" "}
+                          {v.permissions.join(" · ")}
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                )}
                 <p>
                   {tr("权限声明：", "Declared access: ")}
                   {entry.permissions.join(" · ") || tr("无额外声明", "No additional declarations")}

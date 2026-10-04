@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-04T09:38:50.342Z",
+  "platform": "win32",
+  "binarySha256": "c7b81dca8b21989ae2e8d9fcecf5a267adb83d9b4aad2a993f5f030ba99bcaf0",
+  "service": "Actual Windows desktop; isolated test data; PATH contains System32 only; network blocked at test browser context (not an OS firewall)",
+  "checks": [
+    "native_browser_setup_status_copy_folder_and_existing_registration_conflicts",
+    "native_offline_ui_quick_full_inspection_and_real_download_without_private_paths",
+    "english_browser_setup_and_current_daily_browser_registrations_preserved",
+    "english_settings_render_without_horizontal_overflow",
+    "native_application_exits_cleanly"
+  ],
+  "browserStates": [
+    {
+      "browser": "chrome",
+      "state": "conflict"
+    },
+    {
+      "browser": "edge",
+      "state": "conflict"
+    }
+  ],
+  "quickCheckMs": 1376,
+  "fullCheckMs": 3959,
+  "status": "passed"
+}

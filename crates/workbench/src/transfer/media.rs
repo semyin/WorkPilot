@@ -27,7 +27,7 @@ impl Drop for Owner<'_> {
     }
 }
 impl Manager {
-    async fn allowed_media_content(&self, bytes: &[u8]) -> Result<()> {
+    pub(super) async fn allowed_media_content(&self, bytes: &[u8]) -> Result<()> {
         let text = Zeroizing::new(String::from_utf8_lossy(bytes).into_owned());
         self.storage
             .call(move |s| s.extension_content_allowed(&text))

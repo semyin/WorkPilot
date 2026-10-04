@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-04T06:35:05.411Z",
+  "platform": "win32",
+  "binarySha256": "382c4740c38ce4e6cdebf0bec351d765e69b43047b872dfb6244d17d7bbf57ec",
+  "service": "Real attachment workers and separate engines; synthetic local three-protocol models",
+  "checks": [
+    {
+      "name": "wrong_passphrase_tamper_and_worker_cancellation_leave_archive_readable",
+      "passed": true
+    },
+    {
+      "name": "chat_completions_encrypted_originals_reparsed_old_ids_read_actual_images_sent_and_undelivered_removed_foreign_assets_denied",
+      "passed": true
+    },
+    {
+      "name": "chat_completions_second_migration_old_citations_restart_duplicate_and_saved_archive_reexport",
+      "passed": true
+    },
+    {
+      "name": "responses_encrypted_originals_reparsed_old_ids_read_actual_images_sent_and_undelivered_removed_foreign_assets_denied",
+      "passed": true
+    },
+    {
+      "name": "responses_second_migration_old_citations_restart_duplicate_and_saved_archive_reexport",
+      "passed": true
+    },
+    {
+      "name": "messages_encrypted_originals_reparsed_old_ids_read_actual_images_sent_and_undelivered_removed_foreign_assets_denied",
+      "passed": true
+    },
+    {
+      "name": "messages_second_migration_old_citations_restart_duplicate_and_saved_archive_reexport",
+      "passed": true
+    },
+    {
+      "name": "credentials_registered_after_upload_block_export_import_and_saved_archive_reexport",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,11 @@
+
+> workpilot@0.1.0-alpha.12.13 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+
+> workpilot@0.1.0-alpha.12.13 check:lines
+> node scripts/check-code-lines.mjs
+
+Code line check passed: 376 files, maximum 984/1000 lines.

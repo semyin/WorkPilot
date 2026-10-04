@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-04T05:02:54.209Z",
+  "platform": "win32",
+  "binarySha256": "193714931b0897d3341e44df7ca39dce496ba9c03e944d78939b9f2472a628e5",
+  "service": "Local synthetic three-protocol model; real engines, separate data roots and approved file writes",
+  "checks": [],
+  "passed": false,
+  "error": "AssertionError [ERR_ASSERTION]: {\"kind\":\"model_error\",\"diagnostic\":{\"code\":\"configuration\",\"message_zh\":\"服务配置不完整或参数不合适，请检查设置。\",\"message_en\":\"The service configuration or parameters are invalid.\",\"detail\":\"任务、模型配置或保存的内容不存在。\",\"http_status\":null,\"provider_request_id\":null,\"retryable\":false}}\n+ actual - expected\n\n+ 'model_error'\n- 'error'\n\n    at refused (file:///D:/workspace/kplocker/WorkPilot/scripts/task-restore-test.mjs:61:31)\n    at file:///D:/workspace/kplocker/WorkPilot/scripts/task-restore-test.mjs:241:5\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)"
+}

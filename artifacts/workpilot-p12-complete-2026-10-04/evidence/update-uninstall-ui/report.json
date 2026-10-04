@@ -1,0 +1,115 @@
+{
+    "at":  "2026-10-04T08:30:36.0882962Z",
+    "scope":  "Actual NSIS confirmation controls; only the isolated test uninstaller is inspected and terminated",
+    "checks":  [
+                   {
+                       "controls":  [
+                                        {
+                                            "bottom":  519,
+                                            "visible":  true,
+                                            "parent":  {
+                                                           "left":  597,
+                                                           "right":  1047,
+                                                           "bottom":  622,
+                                                           "top":  394
+                                                       },
+                                            "text":  "Remove desktop web-view cache",
+                                            "top":  494,
+                                            "checked":  0,
+                                            "left":  597,
+                                            "right":  997
+                                        },
+                                        {
+                                            "bottom":  563,
+                                            "visible":  true,
+                                            "parent":  {
+                                                           "left":  597,
+                                                           "right":  1047,
+                                                           "bottom":  622,
+                                                           "top":  394
+                                                       },
+                                            "text":  "Clear WorkPilot history, settings and saved credentials. Keep project files.",
+                                            "top":  521,
+                                            "checked":  0,
+                                            "left":  597,
+                                            "right":  997
+                                        }
+                                    ],
+                       "screenshot":  "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\uninstall-options-ui\\2a3649df49a94aa6b2a2530f5b016036\\English.png",
+                       "confirmationCallback":  "history-selected-cache-unselected",
+                       "language":  "English",
+                       "state":  "passed"
+                   },
+                   {
+                       "controls":  [
+                                        {
+                                            "bottom":  528,
+                                            "visible":  true,
+                                            "parent":  {
+                                                           "left":  597,
+                                                           "right":  1047,
+                                                           "bottom":  613,
+                                                           "top":  403
+                                                       },
+                                            "text":  "删除桌面网页缓存",
+                                            "top":  503,
+                                            "checked":  0,
+                                            "left":  597,
+                                            "right":  997
+                                        },
+                                        {
+                                            "bottom":  572,
+                                            "visible":  true,
+                                            "parent":  {
+                                                           "left":  597,
+                                                           "right":  1047,
+                                                           "bottom":  613,
+                                                           "top":  403
+                                                       },
+                                            "text":  "清空 WorkPilot 历史、设置与已保存的凭据；保留项目文件。",
+                                            "top":  530,
+                                            "checked":  0,
+                                            "left":  597,
+                                            "right":  997
+                                        }
+                                    ],
+                       "screenshot":  "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\uninstall-options-ui\\2a3649df49a94aa6b2a2530f5b016036\\SimpChinese.png",
+                       "confirmationCallback":  "history-selected-cache-unselected",
+                       "language":  "SimpChinese",
+                       "state":  "passed"
+                   }
+               ],
+    "state":  "passed",
+    "latestControls":  [
+                           {
+                               "bottom":  528,
+                               "visible":  true,
+                               "parent":  {
+                                              "left":  597,
+                                              "right":  1047,
+                                              "bottom":  613,
+                                              "top":  403
+                                          },
+                               "text":  "删除桌面网页缓存",
+                               "top":  503,
+                               "checked":  0,
+                               "left":  597,
+                               "right":  997
+                           },
+                           {
+                               "bottom":  572,
+                               "visible":  true,
+                               "parent":  {
+                                              "left":  597,
+                                              "right":  1047,
+                                              "bottom":  613,
+                                              "top":  403
+                                          },
+                               "text":  "清空 WorkPilot 历史、设置与已保存的凭据；保留项目文件。",
+                               "top":  530,
+                               "checked":  0,
+                               "left":  597,
+                               "right":  997
+                           }
+                       ]
+}

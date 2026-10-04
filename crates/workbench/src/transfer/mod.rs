@@ -2,7 +2,9 @@ mod codec;
 mod extensions;
 mod file_index;
 pub(crate) mod files;
+pub(crate) mod maintenance_backup;
 mod media;
+mod migration;
 mod project;
 mod task_archive;
 #[cfg(test)]
@@ -33,6 +35,7 @@ pub(crate) struct Manager {
     out: tokio::sync::mpsc::Sender<Wire>,
     stop: Arc<AtomicBool>,
     media_owner: Mutex<Option<String>>,
+    archive_active: Mutex<bool>,
     closing: AtomicBool,
     gate: tokio::sync::Mutex<()>,
 }
@@ -44,6 +47,7 @@ impl Manager {
             out,
             stop: Arc::new(AtomicBool::new(false)),
             media_owner: Mutex::new(None),
+            archive_active: Mutex::new(false),
             closing: AtomicBool::new(false),
             gate: tokio::sync::Mutex::new(()),
         }

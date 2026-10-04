@@ -4,8 +4,12 @@ import type { Task } from "../generated/contracts";
 import { useWords, workspaceQuery } from "../workspaceClient";
 import { taskArchive, type ArchiveEntry, type ArchivePreview } from "./client";
 import { ArchiveBrowser, ArchiveSummaryView } from "./ArchiveBrowser";
+import { MappedRestorePanel } from "./MappedRestorePanel";
+import { RestorePanel } from "./RestorePanel";
+import { TeamRestorePanel } from "./TeamRestorePanel";
+import { CancelArchive } from "./Attachments";
 import "../transfer.css";
-export function TaskArchivePanel() {
+export function TaskArchivePanel({ onOpen }: { onOpen: (id: string) => void }) {
   const tr = useWords();
   const [tasks, setTasks] = useState<Task[]>([]),
     [task, setTask] = useState("");
@@ -117,14 +121,14 @@ export function TaskArchivePanel() {
     >
       <p>
         {tr(
-          "把一个主任务及所有助手的已保存消息、上下文、交付、操作记录和关联正文一起备份。导入后可查阅，暂不能从档案继续执行。",
-          "Back up a main task and all assistants, including saved messages, context, reports, operations and linked content. Imported archives are available for reading; resuming execution from an archive is not supported yet.",
+          "把一个主任务及所有助手的已保存消息、上下文、交付、操作记录和关联正文一起备份。导入后可查阅；符合条件的单任务可在下方单独确认恢复。",
+          "Back up a main task and all assistants, including saved messages, context, reports, operations and linked content. Imported archives are readable; eligible single tasks can be restored with a separate confirmation below.",
         )}
       </p>
       <p>
         {tr(
-          "先停止本组任务再导出。此包不包含当前项目文件、附件原文件、加密文件历史、登录凭据、定时计划或扩展安装；请保留原数据目录。最多 33 个任务、5 万条记录、4096 份正文、256 MiB；超限会明确报错，不会截断。",
-          "Stop this task group before exporting. Current project files, attachment originals, encrypted file history, credentials, schedules and extension installations are excluded; keep the original data directory. Limits: 33 tasks, 50,000 records, 4,096 content objects and 256 MiB. Oversized archives fail explicitly without truncation.",
+          "先停止本组任务再导出。附件原文（包括已移除项）和本组文件修改前后版本会一起加密保存。当前项目文件、登录凭据、定时计划和扩展安装另行迁移；请保留原数据目录。最多 33 个任务、5 万条记录、4096 份正文、64 个附件（每个 32 MiB）、128 条文件历史（每个版本 64 MiB），合计 256 MiB；超限会报错，不会截断。",
+          "Stop this task group before exporting. Attachment originals (including removed items) and the group's before/after file versions are encrypted together. Transfer current project files, credentials, schedules and extension installations separately; keep the original data directory. Limits: 33 tasks, 50,000 records, 4,096 content objects, 64 attachments (32 MiB each), 128 file revisions (64 MiB per image), 256 MiB combined. Oversized archives fail without truncation.",
         )}
       </p>
       <fieldset disabled={busy}>
@@ -291,6 +295,7 @@ export function TaskArchivePanel() {
         )}
       </fieldset>
       {busy && <p role="status">{tr("正在处理档案…", "Processing archive…")}</p>}
+      {busy && <CancelArchive />}
       {message && <p role="status">{message}</p>}
       {error && (
         <p className="error" role="alert">
@@ -327,6 +332,12 @@ export function TaskArchivePanel() {
             )}
           </button>
           <ArchiveBrowser key={selected} archive={selected} />
+          <MappedRestorePanel key={"mapped-" + selected} archive={selected} onOpen={onOpen} />
+          {(archives.find((a) => a.archive_id === selected)?.tasks || 0) > 1 ? (
+            <TeamRestorePanel key={"team-restore-" + selected} archive={selected} onOpen={onOpen} />
+          ) : (
+            <RestorePanel key={"restore-" + selected} archive={selected} onOpen={onOpen} />
+          )}
         </>
       )}
     </section>

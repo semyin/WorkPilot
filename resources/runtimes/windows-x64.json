@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "target": "windows-x86_64",
-  "checkedAt": "2026-10-03",
+  "checkedAt": "2026-10-04",
   "assets": [
     {
       "id": "node",
@@ -37,7 +37,7 @@
       "entry": "cmd/git.exe"
     },
     {
-      "id": "chromium",
+      "id": "chromium-snapshot-rejected",
       "distribution": "blocked-missing-component-licenses",
       "version": "snapshot-1710726",
       "file": "chromium-1710726.zip",
@@ -47,6 +47,30 @@
       "source": "https://chromium.googlesource.com/chromium/src/+/cf098eeefcd5aca3361bba7216c1f704592acfd8",
       "license": "Research only: BSD root license; this snapshot ships sample credits, not complete component notices. Do not package.",
       "entry": "chrome-win/chrome.exe"
+    },
+    {
+      "id": "chromium",
+      "version": "154.0.8037.57-1.1",
+      "file": "ungoogled-chromium_154.0.8037.57-1.1_windows_x64.zip",
+      "url": "https://github.com/ungoogled-software/ungoogled-chromium-windows/releases/download/154.0.8037.57-1.1/ungoogled-chromium_154.0.8037.57-1.1_windows_x64.zip",
+      "sha256": "d4b8f53e8100e428a6ccea8070a1a909af3022c21070bfcd7dca102990d95d88",
+      "bytes": 198766792,
+      "source": "https://github.com/ungoogled-software/ungoogled-chromium-windows/tree/154.0.8037.57-1.1",
+      "upstreamSource": "https://chromium.googlesource.com/chromium/src/+/refs/tags/154.0.8037.57",
+      "license": "BSD-3-Clause and complete bundled chrome://credits third-party notices",
+      "entry": "ungoogled-chromium_154.0.8037.57-1.1_windows_x64/chrome.exe",
+      "licenses": [
+        {
+          "file": "UNGOOGLED_LICENSE.txt",
+          "url": "https://raw.githubusercontent.com/ungoogled-software/ungoogled-chromium-windows/154.0.8037.57-1.1/LICENSE",
+          "sha256": "9539b394e4179952698894bd62ef6566b6804ab0ff360dcf3a511cfaf7f78c4d"
+        },
+        {
+          "file": "CHROMIUM_LICENSE.txt",
+          "url": "https://raw.githubusercontent.com/chromium/chromium/154.0.8037.57/LICENSE",
+          "sha256": "368cca1106be99d39ecd32a38d8305585d802a475effb66380b91ffc9bcf709b"
+        }
+      ]
     }
   ]
 }

@@ -200,7 +200,8 @@ impl Store {
                 .last()
                 .ok_or(Error::Invalid("missing imported memory"))?
                 .0;
-            origins.push(json!({"source_id":source.id,"source_revision":source.revision,"source_task_id":source.source_task_id,"target_id":memory.memory.id,"history_versions":versions.len().saturating_sub(1)}));
+            origins.push(json!({"source_id":source.id,"source_revision":source.revision,"source_task_id":source.source_task_id,"target_id":memory.memory.id,"history_versions":versions.len().saturating_sub(1),
+                "version_sources":bundle.memory_history.iter().find(|h|h.memory_id==source.id).map(|h|h.versions.iter().map(|v|json!({"revision":v.revision,"source_task_id":v.source_task_id})).collect::<Vec<_>>()).unwrap_or_default()}));
             memories.extend(versions);
         }
         let receipt = json!({"project_id":project_id,"archive_id":bundle.archive_id,"source_project_id":bundle.project.id,"digest":digest,"profiles":profile_map,"memories":origins,"at_ms":now_ms()});

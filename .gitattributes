@@ -1,0 +1,3 @@
+resources/git-sandbox/*.patch text eol=lf
+# Unified patch context deliberately starts with one space, including blank lines.
+resources/git-sandbox/*.patch whitespace=-blank-at-eol,-space-before-tab

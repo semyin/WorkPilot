@@ -3,16 +3,18 @@ import assert from "node:assert/strict";
 import { join } from "node:path";
 const expect = baseExpect.configure({ timeout: 15000 });
 
-export async function browserScenario({ page, task, url, report, output }) {
+export async function browserScenario({ page, task, url, report, output, channel = "chrome" }) {
+  const label = { chrome: "Chrome", msedge: "Edge", chromium: "随包浏览器" }[channel];
+  assert(label, "Unsupported desktop test browser channel");
   page.setDefaultTimeout(15000);
   await page.evaluate((task) => localStorage.setItem("workpilot.execution", task), task);
   await page.reload();
   await page.getByRole("button", { name: "浏览器", exact: true }).click();
   const panel = page.locator("#inspector-browser");
-  await panel.getByRole("button", { name: "启动专用 Chrome", exact: true }).click();
+  await panel.getByRole("button", { name: "启动专用 " + label, exact: true }).click();
   await expect(panel.getByLabel("已授权标签页", { exact: true })).not.toHaveValue("");
   await expect(panel.getByRole("button", { name: "查看截图", exact: true })).toBeEnabled();
-  report.checks.push("browser_panel_starts_real_dedicated_chrome_and_identifies_tab");
+  report.checks.push("browser_panel_starts_real_dedicated_" + channel + "_and_identifies_tab");
   const approved = async (click) => {
     await click();
     const pending = panel.locator('[data-operation-state="awaiting_approval"]').first();

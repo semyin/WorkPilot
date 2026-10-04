@@ -35,14 +35,25 @@ impl Manager {
         action.validate().map_err(str::to_owned)?;
         let _guard = self.begin()?;
         let target = self.extension_target(task.as_deref()).await?;
+        if matches!(action, ExtensionTransferAction::Catalog) {
+            return extensions.transfer_catalog(target.0.as_deref()).await;
+        }
         if let ExtensionTransferAction::Export {
             selections,
+            include_history,
+            draft_ids,
             path,
             password,
         } = action
         {
             let bundle = extensions
-                .export_transfer(target.0.as_deref(), &selections, &self.stop)
+                .export_transfer_complete(
+                    target.0.as_deref(),
+                    &selections,
+                    include_history,
+                    &draft_ids,
+                    &self.stop,
+                )
                 .await?;
             let bytes = zeroize::Zeroizing::new(
                 serde_json::to_vec(&bundle).map_err(|_| "Cannot encode extension archive")?,

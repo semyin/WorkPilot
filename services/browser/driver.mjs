@@ -1,11 +1,12 @@
 import { spawn } from "node:child_process";
-import { mkdir, access } from "node:fs/promises";
+import { mkdir } from "node:fs/promises";
 import { join } from "node:path";
 import { createInterface } from "node:readline";
 import { createServer } from "node:net";
 import { randomUUID, randomBytes, timingSafeEqual } from "node:crypto";
 import { once } from "node:events";
 import { PageDriver, allowedUrl } from "../../extensions/companion/cdp-actions.js";
+import { browserExecutable } from "./executable.mjs";
 const sessions = new Map(),
   pendingPairs = new Map(),
   starting = new Set();
@@ -109,45 +110,6 @@ class PipeCdp {
     this.pending.clear();
   }
 }
-async function browserExecutable(channel) {
-  const names =
-    process.platform === "win32"
-      ? [
-          join(
-            process.env.PROGRAMFILES || "C:/Program Files",
-            channel === "chrome"
-              ? "Google/Chrome/Application/chrome.exe"
-              : "Microsoft/Edge/Application/msedge.exe",
-          ),
-          join(
-            process.env["PROGRAMFILES(X86)"] || "C:/Program Files (x86)",
-            channel === "chrome"
-              ? "Google/Chrome/Application/chrome.exe"
-              : "Microsoft/Edge/Application/msedge.exe",
-          ),
-          join(
-            process.env.LOCALAPPDATA || "",
-            channel === "chrome"
-              ? "Google/Chrome/Application/chrome.exe"
-              : "Microsoft/Edge/Application/msedge.exe",
-          ),
-        ]
-      : process.platform === "darwin"
-        ? [
-            channel === "chrome"
-              ? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-              : "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
-          ]
-        : channel === "chrome"
-          ? ["/usr/bin/google-chrome", "/usr/bin/chromium", "/usr/bin/chromium-browser"]
-          : ["/usr/bin/microsoft-edge"];
-  for (const p of names)
-    try {
-      await access(p);
-      return p;
-    } catch {}
-  throw new Error("The selected browser is not installed. Browser packaging is completed in P12.");
-}
 async function attachDedicated(s, targetId) {
   if (s.targets.has(targetId)) return s.targets.get(targetId);
   active(s);
@@ -163,7 +125,12 @@ async function attachDedicated(s, targetId) {
   return t;
 }
 function reserve(task, channel, ancestors, kind) {
-  if (!["chrome", "msedge"].includes(channel)) throw new Error("Unsupported browser.");
+  if (
+    !(kind === "dedicated" ? ["chromium", "chrome", "msedge"] : ["chrome", "msedge"]).includes(
+      channel,
+    )
+  )
+    throw new Error("Unsupported browser.");
   if (closing) throw new Error("Browser worker is shutting down.");
   for (const [id, s] of sessions) {
     if (s.pending && s.expires < Date.now()) {
@@ -194,7 +161,7 @@ async function startSession(task, channel, ancestors) {
   try {
     const profile = join(configuration.data, "browser-profiles", task, channel);
     await mkdir(profile, { recursive: true });
-    const executable = await browserExecutable(channel);
+    const executable = await browserExecutable(channel, configuration.installation_root);
     stillStarting(ticket);
     const child = spawn(
       executable,
@@ -543,7 +510,7 @@ async function handle(m) {
     throw new Error("Unknown browser control.");
   }
   if (m.action.kind === "start_dedicated") {
-    if (!["chrome", "msedge"].includes(m.action.channel))
+    if (!["chromium", "chrome", "msedge"].includes(m.action.channel))
       throw new Error("Unsupported browser channel.");
     if (m.kind === "validate") return { channel: m.action.channel, task: m.task };
     return startSession(m.task, m.action.channel, m.ancestors || []);

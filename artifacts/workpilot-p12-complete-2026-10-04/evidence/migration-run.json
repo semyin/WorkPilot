@@ -1,0 +1,51 @@
+[
+  {
+    "name": "migration-engine",
+    "status": "passed",
+    "checks": 7,
+    "command": "node scripts/migration-test.mjs",
+    "environment": {
+      "WORKPILOT_TEST_OUTPUT": ".test-results/p12-complete-final2-migration-engine",
+      "WORKPILOT_ENGINE_BINARY": "artifacts/workpilot-p12-complete-2026-10-04/preview/workpilot-sidecar.exe"
+    },
+    "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "report": "migration-engine-report.json",
+    "log": "migration-engine-log.txt",
+    "at": "2026-10-04T09:39:51.036Z"
+  },
+  {
+    "name": "migration-desktop",
+    "status": "passed",
+    "checks": 3,
+    "command": "node scripts/migration-desktop.mjs",
+    "environment": {
+      "WORKPILOT_TEST_OUTPUT": ".test-results/p12-complete-final2-migration-desktop",
+      "WORKPILOT_DESKTOP_BINARY": "artifacts/workpilot-p12-complete-2026-10-04/preview/workpilot-desktop.exe"
+    },
+    "binarySha256": "c7b81dca8b21989ae2e8d9fcecf5a267adb83d9b4aad2a993f5f030ba99bcaf0",
+    "report": "migration-desktop-report.json",
+    "log": "migration-desktop-log.txt",
+    "at": "2026-10-04T09:39:51.647Z",
+    "screenshots": [
+      "migration-preview-zh.png",
+      "migration-imported-zh.png",
+      "migration-review-zh.png",
+      "migration-summary-en.png"
+    ],
+    "visualInspection": "All four final screenshots viewed. Chinese preview, import and per-item review and English mappings are readable; no horizontal overflow or JavaScript errors."
+  },
+  {
+    "name": "migration-cleanup",
+    "status": "passed",
+    "checks": 4,
+    "command": "node scripts/migration-cleanup-test.mjs",
+    "environment": {
+      "WORKPILOT_TEST_OUTPUT": ".test-results/p12-complete-final2-migration-cleanup",
+      "WORKPILOT_ENGINE_BINARY": "artifacts/workpilot-p12-complete-2026-10-04/preview/workpilot-sidecar.exe"
+    },
+    "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "report": "migration-cleanup-report.json",
+    "log": "migration-cleanup-log.txt",
+    "at": "2026-10-04T09:39:51.06Z"
+  }
+]

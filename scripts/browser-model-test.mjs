@@ -5,7 +5,8 @@ import { launch, setFixture, start, terminal, until, snapshot } from "./tool-tes
 import { browserTask, element } from "./browser-test-support.mjs";
 import { startToolFixture } from "../services/execution-fixtures/tools.mjs";
 import { startBrowserFixture } from "../services/browser-fixtures/server.mjs";
-const output = ".test-results/browser-model";
+const output = process.env.WORKPILOT_TEST_OUTPUT || ".test-results/browser-model";
+const channel = process.env.WORKPILOT_BROWSER_CHANNEL || "chrome";
 await mkdir(output, { recursive: true });
 process.env.WORKPILOT_BROWSER_HEADLESS = "1";
 const site = await startBrowserFixture(),
@@ -14,6 +15,7 @@ setFixture(model);
 const report = {
   at: new Date().toISOString(),
   platform: process.platform,
+  channel,
   model: "local deterministic model fixture; no paid provider",
   checks: [],
 };
@@ -23,7 +25,7 @@ try {
   const folder = await mkdtemp(join(engine.directory, "model-browser-"));
   model.recipes.set("p08-start-browser", (results) => {
     if (!results.length)
-      return model.tool("browser", { action: { kind: "start_dedicated", channel: "chrome" } });
+      return model.tool("browser", { action: { kind: "start_dedicated", channel } });
     return model.done("Dedicated browser started by model with approval");
   });
   const launching = await browserTask(engine, folder, {
@@ -47,6 +49,7 @@ try {
   assert.equal((await terminal(engine, launching.task)).task.state, "completed");
   const opened = (await launching.control({ kind: "sessions" })).sessions;
   assert.equal(opened.length, 1, "resuming must not launch a second browser");
+  assert.equal(opened[0].channel, channel);
   await launching.control({ kind: "disconnect", session_id: opened[0].id });
   report.checks.push(
     "model_starts_dedicated_browser_only_after_approval_and_does_not_replay_on_resume",
@@ -101,7 +104,7 @@ try {
         "provider_saved",
       );
     }
-    const s = await b.control({ kind: "start", channel: "chrome" });
+    const s = await b.control({ kind: "start", channel });
     await b.navigate(s.id, s.tabs[0].id, site.url + "/page");
     await start(engine, b.task);
     let state = await terminal(engine, b.task);

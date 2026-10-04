@@ -1,6 +1,10 @@
 //! Immutable imported archives live outside tasks/runs/approvals. No scheduler
 //! or model can discover them as actionable state.
 mod export;
+mod file_history;
+mod media;
+mod restore;
+pub use restore::TaskRestoreMedia;
 mod validate;
 use super::*;
 use serde_json::{Value, json};
@@ -18,6 +22,8 @@ pub fn task_archive_summary(index: &TaskArchiveIndex) -> Value {
     json!({"archive_id":index.archive_id,"created_at_ms":index.created_at_ms,
         "root_task_id":index.root_task_id,"tasks":index.tasks,"counts":index.counts,
         "objects":index.objects.len(),"bytes":index.objects.iter().map(|r|r.bytes).sum::<u64>(),
+        "included_media":index.media.len(),"media_bytes":index.media.iter().map(|m|m.entry.bytes).sum::<u64>(),
+        "included_file_revisions":index.file_history.len(),"history_bytes":index.file_history.iter().flat_map(|h|[&h.revision.before,&h.revision.after]).filter_map(|i|i.sha256.as_ref().map(|sha|(sha,i.bytes))).collect::<BTreeMap<_,_>>().values().sum::<u64>(),
         "excluded_media":index.excluded_media,"excluded_file_revisions":index.excluded_file_revisions})
 }
 fn digest(bytes: &[u8]) -> String {
@@ -36,6 +42,10 @@ fn key(id: &str) -> String {
     format!("task-archive:{id}")
 }
 impl Store {
+    pub fn task_archive_recovery_preview(&self, bundle: &TaskArchiveBytes) -> Result<Value> {
+        self.validate_task_archive_bytes(bundle)?;
+        restore::recovery_preview(bundle)
+    }
     pub fn validate_task_archive_bytes(&self, bundle: &TaskArchiveBytes) -> Result<()> {
         validate_bundle(&bundle.index, &bundle.blobs)?;
         self.check_archive_secret(&serde_json::to_vec(&bundle.index)?)?;

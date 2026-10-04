@@ -238,6 +238,14 @@ impl Store {
             .collect::<std::result::Result<Vec<_>, _>>()?;
         drop(q);
         for (operation, task, path, before, after, old, new) in rows {
+            let pruned: bool = self.connection.query_row(
+                "SELECT EXISTS(SELECT 1 FROM settings WHERE key=?1)",
+                [format!("pruned-file-history:{operation}")],
+                |r| r.get(0),
+            )?;
+            if pruned {
+                continue;
+            }
             let at_ms=self.connection.query_row("SELECT at_ms FROM events WHERE task_id=?1 AND json_extract(payload_json,'$.change.action_id')=?2 ORDER BY sequence DESC LIMIT 1",params![task,operation],|r|r.get::<_,u64>(0)).optional()?.unwrap_or(0);
             let before: FileVersion = serde_json::from_str(&before)?;
             let revision = FileRevision {

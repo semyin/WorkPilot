@@ -1,0 +1,33 @@
+{
+  "version": "2.56.0.windows.1.workpilot.1",
+  "target": "windows-x86_64",
+  "buildInputs": [
+    "resources/git-sandbox/sources.json",
+    "resources/git-sandbox/path-compat.c",
+    "resources/git-sandbox/git-appcontainer.patch",
+    "resources/git-sandbox/README.md",
+    "scripts/prepare-git-sandbox.mjs",
+    "scripts/prepare-git-sandbox.cmd",
+    "scripts/extract-git-source.ps1"
+  ],
+  "assets": [
+    {
+      "id": "git",
+      "file": "git-2.56.0.windows.1-source.zip",
+      "url": "https://codeload.github.com/git-for-windows/git/zip/refs/tags/v2.56.0.windows.1",
+      "sha256": "5a8c6b770bc88f98cf8588567373dbf93c98b78872a9a13ef312d6482fa7a974",
+      "bytes": 15042991,
+      "folder": "git-2.56.0.windows.1",
+      "license": "GPL-2.0-only"
+    },
+    {
+      "id": "zlib",
+      "file": "zlib-1.3.2.tar.gz",
+      "url": "https://zlib.net/zlib-1.3.2.tar.gz",
+      "sha256": "bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16",
+      "bytes": 1502830,
+      "folder": "zlib-1.3.2",
+      "license": "Zlib"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+[
+  {
+    "name": "installation-engine",
+    "status": "passed",
+    "checks": 6,
+    "command": "node scripts/installation-engine-test.mjs",
+    "environment": {
+      "WORKPILOT_ENGINE_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "WORKPILOT_DESKTOP_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "WORKPILOT_BROWSER_BUNDLE": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview",
+      "WORKPILOT_BROWSER_CHANNEL": "chromium",
+      "WORKPILOT_BROWSER_CHANNELS": "chromium",
+      "WORKPILOT_TEST_OUTPUT": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-release\\environment\\installation-engine"
+    },
+    "program": "workpilot-sidecar.exe",
+    "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "report": "environment-installation-engine-report.json",
+    "coverage": "9组件核验、并行普通请求、System32-only PATH、Python/Node/Git两档权限、越界保护、损坏/缺失文件",
+    "screenshots": []
+  },
+  {
+    "name": "installation-desktop",
+    "status": "passed",
+    "checks": 5,
+    "command": "node scripts/installation-desktop-smoke.mjs",
+    "environment": {
+      "WORKPILOT_ENGINE_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "WORKPILOT_DESKTOP_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "WORKPILOT_BROWSER_BUNDLE": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview",
+      "WORKPILOT_BROWSER_CHANNEL": "chromium",
+      "WORKPILOT_BROWSER_CHANNELS": "chromium",
+      "WORKPILOT_TEST_OUTPUT": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-release\\environment\\installation-desktop"
+    },
+    "program": "workpilot-desktop.exe",
+    "binarySha256": "c7b81dca8b21989ae2e8d9fcecf5a267adb83d9b4aad2a993f5f030ba99bcaf0",
+    "report": "environment-installation-desktop-report.json",
+    "coverage": "真实WebView双语环境检查与诊断下载、浏览器登记保留；页面离线不等于整机断网",
+    "screenshots": [
+      "environment-installation-desktop-browser-setup-en.png",
+      "environment-installation-desktop-browser-setup-zh.png",
+      "environment-installation-desktop-environment-en.png",
+      "environment-installation-desktop-environment-zh.png"
+    ]
+  },
+  {
+    "name": "installation-stress",
+    "status": "passed",
+    "checks": 2,
+    "command": "node scripts/installation-stress-test.mjs",
+    "environment": {
+      "WORKPILOT_ENGINE_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "WORKPILOT_DESKTOP_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "WORKPILOT_BROWSER_BUNDLE": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview",
+      "WORKPILOT_BROWSER_CHANNEL": "chromium",
+      "WORKPILOT_BROWSER_CHANNELS": "chromium",
+      "WORKPILOT_TEST_OUTPUT": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-release\\environment\\installation-stress"
+    },
+    "program": "workpilot-sidecar.exe",
+    "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "report": "environment-installation-stress-report.json",
+    "coverage": "5次快速加5次完整核验，每轮所有清单文件；普通请求响应延迟。用例按2组计，10轮单列",
+    "rounds": 10,
+    "screenshots": []
+  },
+  {
+    "name": "offline-environment",
+    "status": "passed",
+    "checks": 4,
+    "command": "node scripts/offline-environment-test.mjs",
+    "environment": {
+      "WORKPILOT_ENGINE_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "WORKPILOT_DESKTOP_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "WORKPILOT_BROWSER_BUNDLE": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview",
+      "WORKPILOT_BROWSER_CHANNEL": "chromium",
+      "WORKPILOT_BROWSER_CHANNELS": "chromium",
+      "WORKPILOT_TEST_OUTPUT": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-release\\environment\\offline-environment"
+    },
+    "program": "workpilot-sidecar.exe",
+    "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "report": "environment-offline-environment-report.json",
+    "coverage": "三协议不可达本机端点，明确报错停止、无工具/自动换模型/重启重试；原历史和文件可读。不是OS断网",
+    "screenshots": []
+  },
+  {
+    "name": "git-sandbox",
+    "status": "passed",
+    "checks": 4,
+    "command": "node scripts/git-sandbox-test.mjs",
+    "environment": {
+      "WORKPILOT_ENGINE_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "WORKPILOT_DESKTOP_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "WORKPILOT_BROWSER_BUNDLE": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview",
+      "WORKPILOT_BROWSER_CHANNEL": "chromium",
+      "WORKPILOT_BROWSER_CHANNELS": "chromium",
+      "WORKPILOT_TEST_OUTPUT": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-release\\environment\\git-sandbox"
+    },
+    "program": "workpilot-sidecar.exe",
+    "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "report": "environment-git-sandbox-report.json",
+    "coverage": "AppContainer内真实Git审批/init/add/commit/中文路径/分支、越界与网络拒绝、ACL恢复",
+    "screenshots": []
+  },
+  {
+    "name": "bundled-browser",
+    "status": "passed",
+    "checks": 4,
+    "command": "node scripts/bundled-browser-test.mjs",
+    "environment": {
+      "WORKPILOT_ENGINE_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "WORKPILOT_DESKTOP_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "WORKPILOT_BROWSER_BUNDLE": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview",
+      "WORKPILOT_BROWSER_CHANNEL": "chromium",
+      "WORKPILOT_BROWSER_CHANNELS": "chromium",
+      "WORKPILOT_TEST_OUTPUT": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-release\\environment\\bundled-browser"
+    },
+    "program": "chromium-runtime/chrome.exe",
+    "binarySha256": "f061082b6400d27a0391c9f9d76506e65882f3f7dcbbbc313ba3749b2eee59ba",
+    "report": "environment-bundled-browser-report.json",
+    "coverage": "真实随包Node/浏览器、空个人浏览器位置、System32-only PATH、读填点/任务归属/资料留存/退出与缺失拒绝",
+    "screenshots": []
+  },
+  {
+    "name": "browser-engine",
+    "status": "passed",
+    "checks": 1,
+    "command": "node scripts/browser-engine-test.mjs",
+    "environment": {
+      "WORKPILOT_ENGINE_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "WORKPILOT_DESKTOP_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "WORKPILOT_BROWSER_BUNDLE": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview",
+      "WORKPILOT_BROWSER_CHANNEL": "chromium",
+      "WORKPILOT_BROWSER_CHANNELS": "chromium",
+      "WORKPILOT_TEST_OUTPUT": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-release\\environment\\browser-engine"
+    },
+    "program": "workpilot-sidecar.exe",
+    "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "report": "environment-browser-engine-report.json",
+    "coverage": "chromium通道真实页面读取、填写、点击、截图、下载和文件历史",
+    "screenshots": [
+      "environment-browser-engine-chromium-page.png"
+    ]
+  },
+  {
+    "name": "browser-model",
+    "status": "passed",
+    "checks": 4,
+    "command": "node scripts/browser-model-test.mjs",
+    "environment": {
+      "WORKPILOT_ENGINE_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "WORKPILOT_DESKTOP_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "WORKPILOT_BROWSER_BUNDLE": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview",
+      "WORKPILOT_BROWSER_CHANNEL": "chromium",
+      "WORKPILOT_BROWSER_CHANNELS": "chromium",
+      "WORKPILOT_TEST_OUTPUT": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-release\\environment\\browser-model"
+    },
+    "program": "workpilot-sidecar.exe",
+    "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "report": "environment-browser-model-report.json",
+    "coverage": "确定性本机模型驱动真实chromium，审批前不启动、恢复不重放、截图能力限制；非商业模型验收",
+    "screenshots": []
+  },
+  {
+    "name": "browser-desktop",
+    "status": "passed",
+    "checks": 7,
+    "command": "node scripts/browser-desktop-smoke.mjs",
+    "environment": {
+      "WORKPILOT_ENGINE_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "WORKPILOT_DESKTOP_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "WORKPILOT_BROWSER_BUNDLE": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview",
+      "WORKPILOT_BROWSER_CHANNEL": "chromium",
+      "WORKPILOT_BROWSER_CHANNELS": "chromium",
+      "WORKPILOT_TEST_OUTPUT": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-release\\environment\\browser-desktop"
+    },
+    "program": "workpilot-desktop.exe",
+    "binarySha256": "c7b81dca8b21989ae2e8d9fcecf5a267adb83d9b4aad2a993f5f030ba99bcaf0",
+    "report": "environment-browser-desktop-report.json",
+    "coverage": "真实桌面随包浏览器入口、审批、截图、接管/恢复、双语/暗色、隐藏保留与退出清理",
+    "screenshots": [
+      "environment-browser-desktop-browser-connection-en.png",
+      "environment-browser-desktop-browser-dark-en.png",
+      "environment-browser-desktop-browser-workspace-zh.png"
+    ]
+  },
+  {
+    "name": "extension-history",
+    "status": "passed",
+    "checks": 5,
+    "command": "node scripts/extension-history-test.mjs",
+    "environment": {
+      "WORKPILOT_ENGINE_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "WORKPILOT_DESKTOP_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "WORKPILOT_BROWSER_BUNDLE": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview",
+      "WORKPILOT_BROWSER_CHANNEL": "chromium",
+      "WORKPILOT_BROWSER_CHANNELS": "chromium",
+      "WORKPILOT_TEST_OUTPUT": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-release\\environment\\extension-history"
+    },
+    "program": "workpilot-sidecar.exe",
+    "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "report": "environment-extension-history-report.json",
+    "coverage": "70旧版本、草稿/卸载状态、旧源及缓存损坏整批拒绝、回滚最旧版本、AI另存草稿、重复/重启/第三处迁移",
+    "screenshots": []
+  },
+  {
+    "name": "extension-transfer",
+    "status": "passed",
+    "checks": 6,
+    "command": "node scripts/extension-transfer-test.mjs",
+    "environment": {
+      "WORKPILOT_ENGINE_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "WORKPILOT_DESKTOP_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "WORKPILOT_BROWSER_BUNDLE": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview",
+      "WORKPILOT_BROWSER_CHANNEL": "chromium",
+      "WORKPILOT_BROWSER_CHANNELS": "chromium",
+      "WORKPILOT_TEST_OUTPUT": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-release\\environment\\extension-transfer"
+    },
+    "program": "workpilot-sidecar.exe",
+    "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "report": "environment-extension-transfer-report.json",
+    "coverage": "原扩展加密迁移6组回归、凭据不迁移、作用范围及重复导入",
+    "screenshots": []
+  },
+  {
+    "name": "extension-history-desktop",
+    "status": "passed",
+    "checks": 5,
+    "command": "node scripts/extension-transfer-desktop.mjs",
+    "environment": {
+      "WORKPILOT_ENGINE_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "WORKPILOT_DESKTOP_BINARY": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "WORKPILOT_BROWSER_BUNDLE": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview",
+      "WORKPILOT_BROWSER_CHANNEL": "chromium",
+      "WORKPILOT_BROWSER_CHANNELS": "chromium",
+      "WORKPILOT_TEST_OUTPUT": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-release\\environment\\extension-history-desktop"
+    },
+    "program": "workpilot-desktop.exe",
+    "binarySha256": "c7b81dca8b21989ae2e8d9fcecf5a267adb83d9b4aad2a993f5f030ba99bcaf0",
+    "report": "environment-extension-history-desktop-report.json",
+    "coverage": "实际桌面历史勾选、草稿/卸载项、错误口令、停用导入、双语预览与重复导入",
+    "screenshots": [
+      "environment-extension-history-desktop-extension-history-selection-zh.png",
+      "environment-extension-history-desktop-extension-transfer-en.png",
+      "environment-extension-history-desktop-extension-transfer-zh.png"
+    ]
+  }
+]

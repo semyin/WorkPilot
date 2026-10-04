@@ -1,0 +1,58 @@
+{
+  "at": "2026-10-04T06:41:25.469Z",
+  "phase": "P12-attachment-restore",
+  "status": "task_and_team_attachments_restored_P12_not_accepted",
+  "appVersion": "0.1.0-alpha.12.13",
+  "schema": 11,
+  "platform": "Windows 11 Home x64 developer machine",
+  "baseCommit": "503662e00f80d81b85e8491e436ec20fa195265a",
+  "latestPushedCommit": "b116e0876a29b5174c6cc183ebbea697c44da094",
+  "newImplementationCommittedOrPushed": false,
+  "checks": {
+    "rust": 173,
+    "rustIgnored": 2,
+    "node": 14,
+    "newRestorationUnitTests": 4,
+    "engine": 33,
+    "desktop": 20,
+    "sourceFiles": 505,
+    "codeFiles": 376,
+    "maximumCodeLines": 984,
+    "localLinks": 687,
+    "deliveryFiles": 25123,
+    "deliveryBytes": 1990647096,
+    "credentialScannedTextFiles": 1183,
+    "credentialPatternMatches": 0,
+    "screenshotsViewed": [
+      "task-media-restore-desktop-attachment-preview-zh.png",
+      "task-media-restore-desktop-attachment-original-zh.png",
+      "task-media-restore-desktop-attachment-preview-en.png",
+      "task-media-restore-desktop-task-restore-preview-zh.png",
+      "task-media-restore-desktop-task-restore-conversation-zh.png",
+      "task-media-restore-desktop-task-restore-duplicate-en.png"
+    ]
+  },
+  "build": {
+    "command": "npm run build (Tauri build --no-bundle)",
+    "appVersion": "0.1.0-alpha.12.13",
+    "at": "2026-10-04T06:33:24.486Z",
+    "platform": "win32",
+    "desktop": "ae4f65c315442cb8265fa12b0e8310388b75694a231e363d81a2badd559d6246",
+    "engine": "382c4740c38ce4e6cdebf0bec351d765e69b43047b872dfb6244d17d7bbf57ec",
+    "runtimeCheck": "000f5b13460a6dbf7761ff0c901c566ac3290c9044beafe3dba77cb61bb3ff97",
+    "browserSetup": "c1783af5f6d3bdbd9dd95934473c6d5aa8962bc4dcec60f994be937e6bbdcc17",
+    "companion": "7864e648070ed62c3945a4a6631a6a65f8540ce8af76215440528d7d432fb757"
+  },
+  "originalUserProcessesPreserved": [
+    25624,
+    12372
+  ],
+  "remaining": [
+    "Migration of unresolved tool calls, team waiters and uncertain effects",
+    "Cross-package file/version/project associations and multi-project mapping",
+    "Historical command paging tool association; full results remain readable in the archive library",
+    "Old extension versions and drafts; data retention/deletion; signed updates",
+    "T-P12-06 system file-open blocking",
+    "Real model/Images API, user experience, browser authorization, clean Windows, physical cross-machine, macOS/Linux acceptance"
+  ]
+}

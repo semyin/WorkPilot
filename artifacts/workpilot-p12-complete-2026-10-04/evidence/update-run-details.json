@@ -1,0 +1,121 @@
+{
+  "at": "2026-10-04T09:53:14.977Z",
+  "platform": "Windows x64",
+  "status": "passed",
+  "binariesDirectory": "../preview",
+  "binarySha256": {
+    "workpilot-desktop.exe": "c7b81dca8b21989ae2e8d9fcecf5a267adb83d9b4aad2a993f5f030ba99bcaf0",
+    "workpilot-sidecar.exe": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "workpilot-update.exe": "23c53e23feb17011a2e090713d41a26ad2f6d657c82ce9f31dd9277166dd20c8"
+  },
+  "checks": [
+    {
+      "name": "signed-update-engine",
+      "status": "passed",
+      "checks": 6,
+      "command": "node scripts/update-engine-test.mjs",
+      "binarySha256": {
+        "workpilot-sidecar.exe": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+        "workpilot-update.exe": "23c53e23feb17011a2e090713d41a26ad2f6d657c82ce9f31dd9277166dd20c8"
+      },
+      "report": "update-engine.json",
+      "log": "update-engine.txt",
+      "at": "2026-10-04T09:40:19.863Z",
+      "scope": "Only test-created isolated program/data copies and test-created processes were operated on. Original user process exit cause is not established. "
+    },
+    {
+      "name": "signed-update-desktop",
+      "status": "passed",
+      "checks": 4,
+      "command": "node scripts/update-desktop-test.mjs",
+      "binarySha256": {
+        "workpilot-desktop.exe": "c7b81dca8b21989ae2e8d9fcecf5a267adb83d9b4aad2a993f5f030ba99bcaf0",
+        "workpilot-sidecar.exe": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+        "workpilot-update.exe": "23c53e23feb17011a2e090713d41a26ad2f6d657c82ce9f31dd9277166dd20c8"
+      },
+      "report": "update-desktop.json",
+      "log": "update-desktop.txt",
+      "at": "2026-10-04T09:40:21.306Z",
+      "scope": "Only test-created isolated program/data copies and test-created processes were operated on. Original user process exit cause is not established. "
+    },
+    {
+      "name": "uninstall-cleanup-hooks",
+      "status": "passed",
+      "checks": 5,
+      "command": "node scripts/uninstall-cleanup-hook-test.mjs",
+      "binarySha256": {
+        "workpilot-sidecar.exe": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4"
+      },
+      "report": "update-uninstall-hooks.json",
+      "log": "update-uninstall-hooks.txt",
+      "at": "2026-10-04T09:40:19.908Z",
+      "scope": "Only test-created isolated program/data copies and test-created processes were operated on. Original user process exit cause is not established. "
+    },
+    {
+      "name": "interrupted-process-and-native-recovery",
+      "status": "passed",
+      "checks": 5,
+      "command": "node scripts/update-recovery-process-test.mjs",
+      "binarySha256": {
+        "workpilot-sidecar.exe": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+        "workpilot-update.exe": "23c53e23feb17011a2e090713d41a26ad2f6d657c82ce9f31dd9277166dd20c8"
+      },
+      "report": "update-recovery-process.json",
+      "log": "update-recovery-process.txt",
+      "at": "2026-10-04T09:40:19.978Z",
+      "scope": "Only test-created isolated program/data copies and test-created processes were operated on. Original user process exit cause is not established. One cfg(test) child is forcibly terminated; the real recovery helper is then operated through its own native dialogs."
+    },
+    {
+      "name": "windows-update-permission",
+      "status": "passed",
+      "checks": 1,
+      "command": "node scripts/update-permission-test.mjs",
+      "binarySha256": {
+        "workpilot-sidecar.exe": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+        "workpilot-update.exe": "23c53e23feb17011a2e090713d41a26ad2f6d657c82ce9f31dd9277166dd20c8"
+      },
+      "report": "update-permission.json",
+      "log": "update-permission.txt",
+      "at": "2026-10-04T09:51:39.985Z",
+      "scope": "Only a test-created update journal receives the reversible Windows ReadOnly file attribute. No ACL, global runtime, user project, or installed application is modified. This checks initial journal replacement denial, not every possible ACL or disk failure."
+    }
+  ],
+  "screenshots": [
+    "update-desktop/update-confirmation-zh.png",
+    "update-desktop/update-failure-recovered-zh.png",
+    "update-desktop/update-en.png",
+    "update-desktop/update-backup-cleanup-preview-en.png",
+    "update-desktop/update-backup-cleanup-complete-en.png"
+  ],
+  "recoveryScreenshots": [
+    "update-recovery-process/unstarted/unstarted.png",
+    "update-recovery-process/cancel/cancel-confirmation.png",
+    "update-recovery-process/restore/restore-confirmation.png",
+    "update-recovery-process/restore/restore-complete.png",
+    "update-recovery-process/completed/completed.png",
+    "update-recovery-process/failed/failed.png"
+  ],
+  "screenshotsReviewed": true,
+  "earlierEvidence": [
+    {
+      "name": "native-nsis-uninstall-options-english-chinese",
+      "status": "passed",
+      "checks": 2,
+      "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/uninstall-options-ui-test.ps1",
+      "binarySha256": null,
+      "report": "update-uninstall-ui/report.json",
+      "log": "update-uninstall-ui/run.txt",
+      "screenshots": [
+        "update-uninstall-ui/English.png",
+        "update-uninstall-ui/SimpChinese.png"
+      ],
+      "at": "2026-10-04T08:30:36.0882962Z",
+      "scope": "Earlier isolated NSIS harness compiled with the production confirmation controls; actual visible default-unchecked controls and selection callback verified. No final WorkPilot application binary was executed by this UI-only check."
+    }
+  ],
+  "limits": [
+    "Local isolated Windows checks; not a clean-machine or physical-device test.",
+    "Real private Ed25519 signatures; no public update service or Windows publisher certificate.",
+    "Shutdown commands target only test-owned children. Original PIDs were last observed alive around 16:44:28 local and later absent; exit cause is not established. No credentials or signing private key included."
+  ]
+}

@@ -1,0 +1,41 @@
+   Compiling workpilot-contracts v0.1.0-alpha.12.12 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-policy v0.1.0-alpha.12.12 (D:\workspace\kplocker\WorkPilot\crates\policy)
+   Compiling workpilot-platform v0.1.0-alpha.12.12 (D:\workspace\kplocker\WorkPilot\crates\platform)
+   Compiling workpilot-storage v0.1.0-alpha.12.12 (D:\workspace\kplocker\WorkPilot\crates\storage)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 30.74s
+     Running unittests src\lib.rs (target\debug\deps\workpilot_storage-ac0fc3d2196229f7.exe)
+
+running 6 tests
+test team_restore_tests::team_restore_rolls_back_whole_tree_and_survives_restart_without_duplicates ... ok
+test team_restore_tests::team_restore_rejects_incomplete_mapping_stale_preview_wrong_models_and_cancellation ... ok
+test team_restore_tests::team_restore_keeps_tree_inherited_directions_and_starts_only_after_manual_resume ... ok
+test team_restore_tests::team_restore_retains_started_context_and_composes_identifiers_after_another_transfer ... ok
+test team_restore_tests::team_restore_preserves_failures_replacements_reviews_and_scoped_historical_reports ... ok
+test team_restore_tests::team_restore_rejects_corrupted_graphs_without_creating_partial_tasks ... FAILED
+
+failures:
+
+---- team_restore_tests::team_restore_rejects_corrupted_graphs_without_creating_partial_tasks stdout ----
+
+thread 'team_restore_tests::team_restore_rejects_corrupted_graphs_without_creating_partial_tasks' (24100) panicked at crates\storage\src\team_restore_tests.rs:87:50:
+called `Result::unwrap()` on an `Err` value: Invalid("archive contains unrelated task records")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    team_restore_tests::team_restore_rejects_corrupted_graphs_without_creating_partial_tasks
+
+test result: FAILED. 5 passed; 1 failed; 0 ignored; 0 measured; 81 filtered out; finished in 1.08s
+
+error: test failed, to rerun pass `-p workpilot-storage --lib`
+file:///D:/workspace/kplocker/WorkPilot/scripts/cargo.mjs:25
+      else reject(new Error(command + " exited with " + (code ?? signal)));
+                  ^
+
+Error: C:\Users\semyi\.cargo\bin\cargo.exe exited with 101
+    at ChildProcess.<anonymous> (file:///D:/workspace/kplocker/WorkPilot/scripts/cargo.mjs:25:19)
+    at Object.onceWrapper (node:events:634:26)
+    at ChildProcess.emit (node:events:519:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+
+Node.js v22.23.2

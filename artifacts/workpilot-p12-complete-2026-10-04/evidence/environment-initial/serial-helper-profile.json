@@ -1,0 +1,278 @@
+{
+  "at": "2026-10-04T08:44:27.974Z",
+  "purpose": "Read-only diagnostic helper invocation without production supervisor. This is not an installation pass; production still has the original 100-second budget.",
+  "mode": "verify",
+  "transitions": [
+    {
+      "component": "application",
+      "atMs": 38,
+      "files": 1
+    },
+    {
+      "component": "node",
+      "atMs": 136,
+      "files": 9
+    },
+    {
+      "component": "python",
+      "atMs": 348,
+      "files": 15
+    },
+    {
+      "component": "git",
+      "atMs": 409,
+      "files": 49
+    },
+    {
+      "component": "git_compat",
+      "atMs": 713,
+      "files": 422
+    },
+    {
+      "component": "chromium",
+      "atMs": 772,
+      "files": 455
+    },
+    {
+      "component": "documents",
+      "atMs": 1867,
+      "files": 535
+    },
+    {
+      "component": "office",
+      "atMs": 3321,
+      "files": 5779
+    },
+    {
+      "component": "companion",
+      "atMs": 94961,
+      "files": 25227
+    }
+  ],
+  "slowest": [
+    {
+      "path": "office-runtime/office/share/liblangtag/language-subtag-registry.xml",
+      "elapsedMs": 1572
+    },
+    {
+      "path": "office-runtime/office/share/liblangtag/common/supplemental/supplementalMetadata.xml",
+      "elapsedMs": 1078
+    },
+    {
+      "path": "chromium-runtime/chrome.dll",
+      "elapsedMs": 250
+    },
+    {
+      "path": "chromium-runtime/chrome.dll",
+      "elapsedMs": 250
+    },
+    {
+      "path": "office-runtime/office/program/mergedlo.dll",
+      "elapsedMs": 250
+    },
+    {
+      "path": "office-runtime/office/program/swlo.dll",
+      "elapsedMs": 250
+    },
+    {
+      "path": "chromium-runtime/chrome.dll",
+      "elapsedMs": 218
+    },
+    {
+      "path": "browser-runtime/node.exe",
+      "elapsedMs": 211
+    },
+    {
+      "path": "office-runtime/office/share/extensions/dict-de/th_de_CH_v2.dat",
+      "elapsedMs": 197
+    },
+    {
+      "path": "office-runtime/office/program/sclo.dll",
+      "elapsedMs": 194
+    },
+    {
+      "path": "office-runtime/office/share/extensions/dict-de/th_de_DE_v2.dat",
+      "elapsedMs": 189
+    },
+    {
+      "path": "office-runtime/office/share/extensions/nlpsolver/nlpsolver.jar",
+      "elapsedMs": 165
+    },
+    {
+      "path": "office-runtime/office/program/resource/ru/LC_MESSAGES/sd.mo",
+      "elapsedMs": 157
+    },
+    {
+      "path": "office-runtime/office/share/extensions/dict-en/th_en_US_v2.dat",
+      "elapsedMs": 135
+    },
+    {
+      "path": "office-runtime/office/share/basic/Access2Base/Database.xba",
+      "elapsedMs": 130
+    },
+    {
+      "path": "office-runtime/office/share/basic/Access2Base/PropertiesGet.xba",
+      "elapsedMs": 123
+    },
+    {
+      "path": "office-runtime/office/share/basic/Access2Base/Application.xba",
+      "elapsedMs": 122
+    },
+    {
+      "path": "office-runtime/office/share/extensions/nlpsolver/EvolutionarySolver.jar",
+      "elapsedMs": 122
+    },
+    {
+      "path": "office-runtime/office/share/extensions/dict-gl/gl_ES.dic",
+      "elapsedMs": 119
+    },
+    {
+      "path": "office-runtime/office/share/basic/SFDialogs/SF_Dialog.xba",
+      "elapsedMs": 114
+    },
+    {
+      "path": "office-runtime/office/program/mergedlo.dll",
+      "elapsedMs": 100
+    },
+    {
+      "path": "office-runtime/office/program/skialo.dll",
+      "elapsedMs": 97
+    },
+    {
+      "path": "office-runtime/office/program/sdlo.dll",
+      "elapsedMs": 94
+    },
+    {
+      "path": "office-runtime/office/share/extensions/dict-tr/tr_TR.dic",
+      "elapsedMs": 92
+    },
+    {
+      "path": "office-runtime/office/share/basic/SFDocuments/SF_Document.xba",
+      "elapsedMs": 90
+    },
+    {
+      "path": "office-runtime/office/share/basic/ScriptForge/SF_Session.xba",
+      "elapsedMs": 88
+    },
+    {
+      "path": "office-runtime/office/share/extensions/dict-de/th_de_DE_v2.idx",
+      "elapsedMs": 81
+    },
+    {
+      "path": "office-runtime/office/share/config/images_karasa_jaga_svg.zip",
+      "elapsedMs": 79
+    },
+    {
+      "path": "office-runtime/office/program/icudt78.dll",
+      "elapsedMs": 78
+    },
+    {
+      "path": "office-runtime/office/program/scfiltlo.dll",
+      "elapsedMs": 78
+    },
+    {
+      "path": "office-runtime/office/share/extensions/dict-gd/gd_GB.dic",
+      "elapsedMs": 74
+    },
+    {
+      "path": "office-runtime/office/share/gallery/diagrams.sdv",
+      "elapsedMs": 74
+    },
+    {
+      "path": "office-runtime/office/share/extensions/dict-en/th_en_US_v2.idx",
+      "elapsedMs": 73
+    },
+    {
+      "path": "office-runtime/office/share/basic/ScriptForge/SF_Exception.xba",
+      "elapsedMs": 72
+    },
+    {
+      "path": "document-runtime/node_modules/@napi-rs/canvas-win32-x64-msvc/skia.win32-x64-msvc.node",
+      "elapsedMs": 71
+    },
+    {
+      "path": "office-runtime/office/share/basic/ScriptForge/SF_UI.xba",
+      "elapsedMs": 70
+    },
+    {
+      "path": "office-runtime/office/share/extensions/dict-da/th_da_DK.dat",
+      "elapsedMs": 70
+    },
+    {
+      "path": "office-runtime/office/share/extensions/dict-de/th_de_CH_v2.idx",
+      "elapsedMs": 69
+    },
+    {
+      "path": "office-runtime/office/share/extensions/dict-da/da_DK.dic",
+      "elapsedMs": 66
+    },
+    {
+      "path": "office-runtime/office/program/swuilo.dll",
+      "elapsedMs": 65
+    }
+  ],
+  "components": [
+    {
+      "id": "application",
+      "state": "verified",
+      "files": 8,
+      "checked_files": 8
+    },
+    {
+      "id": "node",
+      "state": "verified",
+      "files": 6,
+      "checked_files": 6
+    },
+    {
+      "id": "python",
+      "state": "verified",
+      "files": 34,
+      "checked_files": 34
+    },
+    {
+      "id": "git",
+      "state": "verified",
+      "files": 373,
+      "checked_files": 373
+    },
+    {
+      "id": "git_compat",
+      "state": "verified",
+      "files": 33,
+      "checked_files": 33
+    },
+    {
+      "id": "chromium",
+      "state": "verified",
+      "files": 80,
+      "checked_files": 80
+    },
+    {
+      "id": "documents",
+      "state": "verified",
+      "files": 5244,
+      "checked_files": 5244
+    },
+    {
+      "id": "office",
+      "state": "verified",
+      "files": 19448,
+      "checked_files": 19448
+    },
+    {
+      "id": "companion",
+      "state": "verified",
+      "files": 12,
+      "checked_files": 12
+    }
+  ],
+  "elapsedMs": 94970,
+  "code": 0,
+  "signal": null,
+  "complete": true,
+  "files": 25238,
+  "progress": 25245,
+  "lastPath": "browser-companion/register.ps1",
+  "stderr": ""
+}

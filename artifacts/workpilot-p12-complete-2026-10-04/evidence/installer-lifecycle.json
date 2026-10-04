@@ -1,0 +1,17 @@
+{
+    "at":  "2026-10-04T09:48:22.0094467Z",
+    "environment":  "Windows Home developer machine; not a clean OS",
+    "installFolder":  "中文 安装-02895bf0dafa4668ad4ad8708ba74d82",
+    "checks":  [
+                   "current_user_silent_install_in_chinese_space_path_and_uninstall_registration",
+                   "installed_engine_inventory_supported_runtime_workflows_and_known_limits_recorded",
+                   "installed_office_renders_real_documents_without_external_image_fetches",
+                   "installed_native_desktop_checks_and_diagnostic_export",
+                   "uninstall_removes_only_owned_program_and_preserves_projects_and_unlisted_files",
+                   "existing_companion_and_probe_registrations_in_both_registry_views_preserved"
+               ],
+    "status":  "passed",
+    "preservedDatabaseFiles":  30,
+    "preexistingApplicationProcessesStillRunning":  1,
+    "controlledComparisonProcessPreserved":  29100
+}

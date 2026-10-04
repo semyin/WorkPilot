@@ -1,0 +1,45 @@
+{
+  "at": "2026-10-04T08:43:43.634Z",
+  "platform": "win32",
+  "binarySha256": "6c58ea0c2847fa7fabc46eefcf78a617bbb5afce2682bc140aa8ebc557ee4da4",
+  "service": "Local synthetic three-protocol model; real engines, separate data roots and approved file writes",
+  "checks": [
+    {
+      "name": "chat_completions_pending_archive_restores_as_inactive_history_with_mandatory_human_review",
+      "passed": true
+    },
+    {
+      "name": "chat_completions_full_context_messages_and_results_restored_project_mapped_old_approval_rejected_new_write_approved_once",
+      "passed": true
+    },
+    {
+      "name": "chat_completions_restart_idempotence_and_second_migration_preserve_history_without_restart",
+      "passed": true
+    },
+    {
+      "name": "responses_pending_archive_restores_as_inactive_history_with_mandatory_human_review",
+      "passed": true
+    },
+    {
+      "name": "responses_full_context_messages_and_results_restored_project_mapped_old_approval_rejected_new_write_approved_once",
+      "passed": true
+    },
+    {
+      "name": "responses_restart_idempotence_and_second_migration_preserve_history_without_restart",
+      "passed": true
+    },
+    {
+      "name": "messages_pending_archive_restores_as_inactive_history_with_mandatory_human_review",
+      "passed": true
+    },
+    {
+      "name": "messages_full_context_messages_and_results_restored_project_mapped_old_approval_rejected_new_write_approved_once",
+      "passed": true
+    },
+    {
+      "name": "messages_restart_idempotence_and_second_migration_preserve_history_without_restart",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

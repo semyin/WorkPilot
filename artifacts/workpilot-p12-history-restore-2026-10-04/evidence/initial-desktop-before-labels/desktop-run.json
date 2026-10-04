@@ -1,0 +1,46 @@
+[
+  {
+    "name": "task-history-restore-desktop",
+    "command": "node scripts/task-history-restore-desktop.mjs",
+    "status": "passed",
+    "checks": 3,
+    "exitCode": 0,
+    "began": "2026-10-04T07:14:59.268Z",
+    "ended": "2026-10-04T07:15:08.753Z",
+    "binarySha256": "20ef3db89be2f1a81d6860946fb8111be4a6337f72a14dc145dd8c435f51cbd1",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\history-restore-final-task-history-restore-desktop\\report.json"
+  },
+  {
+    "name": "task-media-restore-desktop",
+    "command": "node scripts/task-media-restore-desktop.mjs",
+    "status": "passed",
+    "checks": 4,
+    "exitCode": 0,
+    "began": "2026-10-04T07:15:08.760Z",
+    "ended": "2026-10-04T07:15:43.463Z",
+    "binarySha256": "20ef3db89be2f1a81d6860946fb8111be4a6337f72a14dc145dd8c435f51cbd1",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\history-restore-final-task-media-restore-desktop\\report.json"
+  },
+  {
+    "name": "team-restore-desktop",
+    "command": "node scripts/team-restore-desktop.mjs",
+    "status": "passed",
+    "checks": 3,
+    "exitCode": 0,
+    "began": "2026-10-04T07:15:43.472Z",
+    "ended": "2026-10-04T07:15:47.914Z",
+    "binarySha256": "20ef3db89be2f1a81d6860946fb8111be4a6337f72a14dc145dd8c435f51cbd1",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\history-restore-final-team-restore-desktop\\report.json"
+  },
+  {
+    "name": "workspace-desktop",
+    "command": "node scripts/workspace-desktop-smoke.mjs",
+    "status": "passed",
+    "checks": 10,
+    "exitCode": 0,
+    "began": "2026-10-04T07:15:47.920Z",
+    "ended": "2026-10-04T07:16:22.228Z",
+    "binarySha256": "20ef3db89be2f1a81d6860946fb8111be4a6337f72a14dc145dd8c435f51cbd1",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\workspace-desktop\\report.json"
+  }
+]

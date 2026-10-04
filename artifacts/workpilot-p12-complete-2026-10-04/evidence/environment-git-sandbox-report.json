@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-04T09:39:41.425Z",
+  "platform": "win32",
+  "checks": [
+    "version_init_add_commit_nested_refs_and_read_work_in_real_approved_appcontainer_commands",
+    "parent_and_junction_reads_and_parent_writes_remain_denied_without_expanding_project_permissions",
+    "git_native_protocol_cannot_connect_outside_no_network_container",
+    "project_ancestor_outside_and_runtime_acls_are_unchanged_after_commands"
+  ],
+  "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+  "gitSha256": "ba6fe5c0c06db06b190f43f32ee82bbae88d4687d8d64ad093bfb9ec5d1976a2",
+  "status": "passed"
+}

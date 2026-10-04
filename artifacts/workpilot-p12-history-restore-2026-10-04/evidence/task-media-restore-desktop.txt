@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-04T07:22:15.638Z",
+  "platform": "win32",
+  "binarySha256": "892f78028d26aaa56e7aa4dd6413c6b43d547d88b409b9cf6a02af99aa49d89f",
+  "service": "Native Windows WebView2 and local synthetic model",
+  "checks": [
+    "native_chinese_preview_retained_messages_manual_resume_and_permission_boundary",
+    "restored_attachment_original_readable_unsent_preserved_removed_hidden_in_native_panel",
+    "confirm_creates_new_task_without_network_open_conversation_and_click_continue_delivers_saved_queue",
+    "english_idempotent_receipt_no_overflow_and_no_javascript_errors"
+  ],
+  "status": "passed"
+}

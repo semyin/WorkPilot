@@ -11,6 +11,9 @@ fn fixture() -> ExtensionTransferBundle {
         archive_id: uuid::Uuid::new_v4().to_string(),
         created_at_ms: 1,
         entries: vec![PortableExtension {
+            earlier: vec![],
+            draft: false,
+            installed: true,
             source_id: "source-installation".into(),
             project_scoped: true,
             was_enabled: true,

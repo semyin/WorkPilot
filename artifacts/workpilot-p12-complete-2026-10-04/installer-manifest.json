@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-04T09:47:33.347Z",
+  "version": "0.1.0-alpha.12.15",
+  "platform": "windows-x86_64",
+  "file": "WorkPilot_0.1.0-alpha.12.15_x64-setup.exe",
+  "bytes": 1096104906,
+  "sha256": "4bd58e2054fc2974c6ec4a94391d95a01d800fb81e914dd050596b9cde4716c7",
+  "command": "npm run bundle:installer",
+  "signed": false,
+  "elapsedSeconds": 468.035,
+  "compression": "zlib",
+  "dataBlockOptimization": false,
+  "webview2": {
+    "source": "https://go.microsoft.com/fwlink/?linkid=2124701",
+    "installerFileVersion": "1.3.271.7",
+    "bytes": 212272848,
+    "sha256": "f6df8e4bc857786ff641cd01da1449169eaf8236c936ced485ea61685ba4da40",
+    "license": "Microsoft WebView2 Runtime redistribution terms; unmodified upstream offline installer",
+    "installation": "Offline asset embedded; existing system WebView2 is reused. This does not prove installation on a WebView2-free OS."
+  },
+  "uninstall": "Only enumerated application files are removed. Project folders and WorkPilot local data are retained by default."
+}

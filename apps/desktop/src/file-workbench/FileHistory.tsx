@@ -55,6 +55,13 @@ export function FileHistory({
   send: (action: WorkbenchAction) => Promise<void>;
 }) {
   const tr = useWords();
+  const sources: Record<string, string> = {
+    task_archive_restore: tr("任务恢复", "Task restoration"),
+    history_import: tr("历史导入", "History import"),
+    file: tr("文件操作", "File operation"),
+    editor: tr("编辑器", "Editor"),
+    write_file: tr("模型写入文件", "Model file write"),
+  };
   return (
     <section className="file-history">
       <HistoryTransferPanel
@@ -100,12 +107,12 @@ export function FileHistory({
                 · {new Date(r.at_ms).toLocaleString()}
               </small>
               <small>
-                {r.source} · {r.task_id.slice(0, 8)}
+                {sources[r.source] || r.source} · {r.task_id.slice(0, 8)}
               </small>
               {r.origin && (
                 <small>
                   {tr("导入来源任务：", "Imported from task: ")}
-                  {r.origin.task_id.slice(0, 8)} · {r.origin.source}
+                  {r.origin.task_id.slice(0, 8)} · {sources[r.origin.source] || r.origin.source}
                 </small>
               )}
               {r.previous_path && <small>← {r.previous_path}</small>}

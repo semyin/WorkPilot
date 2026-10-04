@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-04T08:47:19.402Z",
+  "platform": "win32",
+  "environment": "Windows developer machine; bundled Node/browser only; personal browser locations replaced by empty test directories, PATH System32 only. Not a clean OS.",
+  "browserSha256": "f061082b6400d27a0391c9f9d76506e65882f3f7dcbbbc313ba3749b2eee59ba",
+  "checks": [
+    "actual_browser_process_comes_from_verified_bundle_without_personal_browser_locations_or_developer_path",
+    "read_fill_click_use_existing_document_guards_and_task_ownership",
+    "dedicated_profile_persists_after_restart_and_shutdown_or_cancel_ends_owned_browser",
+    "missing_bundled_browser_fails_without_personal_browser_fallback"
+  ],
+  "version": "Chrome/154.0.8037.57",
+  "status": "passed"
+}

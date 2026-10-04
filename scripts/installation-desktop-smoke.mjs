@@ -18,7 +18,7 @@ await mkdir(output, { recursive: true });
 const directory = await mkdtemp(join(output, "data-"));
 const binary =
   process.env.WORKPILOT_DESKTOP_BINARY ||
-  join(root, "artifacts/workpilot-p12-extensions-2026-10-04/preview/workpilot-desktop.exe");
+  join(root, "artifacts/workpilot-p12-complete-2026-10-04/preview/workpilot-desktop.exe");
 const registrationsBefore = browserRegistrationSnapshot();
 const report = {
   at: new Date().toISOString(),
@@ -126,7 +126,7 @@ try {
   await panel.getByRole("button", { name: "完整核验文件", exact: true }).click();
   await expect(panel.locator("[data-runtime-id=office] summary")).toContainText("内容已核对");
   report.fullCheckMs = Date.now() - fullStarted;
-  assert.equal(await panel.locator("[data-runtime-id]").count(), 7);
+  assert.equal(await panel.locator("[data-runtime-id]").count(), 9);
   assert(await panel.evaluate((e) => e.scrollWidth <= e.clientWidth + 2));
   await panel.locator("[data-runtime-id=python] summary").click();
   await panel.locator("[data-runtime-id=python]").scrollIntoViewIfNeeded();

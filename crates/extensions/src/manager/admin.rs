@@ -376,7 +376,19 @@ impl Manager {
                 let history = self
                     .0
                     .storage
-                    .call(move |s| s.extension_history(Some(&installation_id)))
+                    .call(move |s| {
+                        let mut history = s.extension_history(Some(&installation_id))?;
+                        let current = s.extension_installation(&installation_id)?;
+                        for version in s.extension_owned_versions(&installation_id)? {
+                            if history.iter().any(|r| r["data"]["active_digest"] == version.digest) {
+                                continue;
+                            }
+                            let mut item = current.clone();
+                            item.active_digest = version.digest;
+                            history.push(json!({"at_ms":version.created_at_ms,"action":"retained_version","data":item}));
+                        }
+                        Ok(history)
+                    })
                     .await
                     .map_err(|e| e.to_string())?;
                 Ok(json!({"history":history}))
@@ -393,10 +405,10 @@ impl Manager {
                 let history = self
                     .0
                     .storage
-                    .call(move |s| s.extension_history(Some(&id)))
+                    .call(move |s| s.extension_owned_versions(&id))
                     .await
                     .map_err(|e| e.to_string())?;
-                if !history.iter().any(|v| v["data"]["active_digest"] == digest) {
+                if !history.iter().any(|v| v.digest == digest) {
                     return Err("回退版本不是该扩展的安装历史。".into());
                 }
                 let hash = digest.clone();

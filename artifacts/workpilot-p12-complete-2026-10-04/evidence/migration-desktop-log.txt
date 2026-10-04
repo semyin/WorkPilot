@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-04T09:39:51.647Z",
+  "platform": "win32",
+  "binarySha256": "c7b81dca8b21989ae2e8d9fcecf5a267adb83d9b4aad2a993f5f030ba99bcaf0",
+  "service": "Native Windows WebView2 and local synthetic model",
+  "checks": [
+    "Native unified import previews exact project location, restores both tasks and history without model calls, leaves current files awaiting separate approval",
+    "Native unresolved-action panel lists original records, requires one explanation per item and persists user review without starting the model",
+    "English unified migration renders project, model and history mapping without horizontal overflow or JavaScript errors"
+  ],
+  "status": "passed"
+}

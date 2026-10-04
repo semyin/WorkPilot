@@ -1,0 +1,14 @@
+[
+  {
+    "Id": 25624,
+    "ProcessName": "workpilot-desktop",
+    "StartTime": "/Date(1791040014543)/",
+    "Path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-install-2026-10-03\\preview\\workpilot-desktop.exe"
+  },
+  {
+    "Id": 12372,
+    "ProcessName": "workpilot-sidecar",
+    "StartTime": "/Date(1791040014581)/",
+    "Path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-install-2026-10-03\\preview\\workpilot-sidecar.exe"
+  }
+]

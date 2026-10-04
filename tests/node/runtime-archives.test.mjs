@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdir, mkdtemp, readFile, access, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, access, writeFile, lstat } from "node:fs/promises";
 import { execFileSync, spawnSync } from "node:child_process";
 import { join } from "node:path";
 import { root } from "../../scripts/cargo.mjs";
@@ -42,14 +42,14 @@ test(
           },
         },
       );
-    const extract = (file, target) =>
+    const extract = (file, target, script = "extract-runtime.ps1") =>
       spawnSync(
         "powershell.exe",
         [
           "-NoProfile",
           "-NonInteractive",
           "-File",
-          join(root, "scripts/extract-runtime.ps1"),
+          join(root, "scripts", script),
           "-Archive",
           file,
           "-Destination",
@@ -75,5 +75,17 @@ test(
     await writeFile(join(target, "keep.txt"), "keep");
     assert.notEqual(extract(file, target).status, 0);
     assert.equal(await readFile(join(target, "keep.txt"), "utf8"), "keep");
+    const source = join(folder, "source-link.zip"),
+      sourceTarget = join(folder, "source-link");
+    make(source, ["symlink"]);
+    assert.equal(extract(source, sourceTarget, "extract-git-source.ps1").status, 0);
+    assert.equal(await readFile(join(sourceTarget, "symlink"), "utf8"), "fixture");
+    assert.equal((await lstat(join(sourceTarget, "symlink"))).isSymbolicLink(), false);
+    assert.notEqual(
+      extract(join(folder, "bad-0.zip"), join(folder, "unsafe-source"), "extract-git-source.ps1")
+        .status,
+      0,
+    );
+    assert.notEqual(extract(source, sourceTarget, "extract-git-source.ps1").status, 0);
   },
 );

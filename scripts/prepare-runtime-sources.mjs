@@ -94,3 +94,6 @@ for (const asset of sources.assets) {
   );
 }
 await writeFile(join(cache, "prepared.json"), JSON.stringify(receipts, null, 2) + "\n");
+if (receipts.some((asset) => asset.id === "chromium" && !asset.distribution))
+  await run(process.execPath, [join(root, "scripts/capture-runtime-credits.mjs")]);
+await run(process.execPath, [join(root, "scripts/prepare-git-sandbox.mjs")]);

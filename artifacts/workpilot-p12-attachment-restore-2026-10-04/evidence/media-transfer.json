@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-04T06:35:54.322Z",
+  "platform": "win32",
+  "binarySha256": "382c4740c38ce4e6cdebf0bec351d765e69b43047b872dfb6244d17d7bbf57ec",
+  "checks": [
+    "encrypted_originals_include_uploaded_text_image_project_docx_generated_pdf_with_offline_source_and_no_cross_task_or_credential_export",
+    "authenticated_preview_reparses_formats_without_creating_rows_warns_same_names_and_refuses_changed_target",
+    "new_ids_and_original_provenance_chat_mode_import_exact_hashes_office_pdf_image_preview_no_live_path_or_project_file_changes",
+    "import_does_not_call_model_or_expose_snapshots_until_user_delivers_explicit_attachment_marker_then_document_read_works",
+    "restart_dedup_keeps_removed_items_removed_and_second_generation_archive_preserves_first_origin",
+    "owned_cancel_stops_transfer_before_commit_foreign_task_cannot_cancel_and_next_preview_works",
+    "separate_vault_keys_and_no_passphrase_or_test_credential_in_normal_databases_objects_logs"
+  ],
+  "pdfNumericTextPreserved": true,
+  "status": "passed"
+}

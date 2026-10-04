@@ -5,6 +5,8 @@ use std::{
     sync::{Arc, atomic::AtomicBool},
 };
 #[cfg(windows)]
+mod git_compat;
+#[cfg(windows)]
 mod windows;
 #[derive(Clone)]
 pub struct ProcessSpec {
@@ -75,6 +77,7 @@ pub fn run_interactive(
                     "PYTHONHOME",
                     "LD_PRELOAD",
                     "LD_LIBRARY_PATH",
+                    "WORKPILOT_GIT_DEVICE_MAP",
                 ]
                 .contains(&k.as_str())
         })

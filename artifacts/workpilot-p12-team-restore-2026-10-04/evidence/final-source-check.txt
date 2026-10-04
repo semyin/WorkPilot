@@ -1,0 +1,30 @@
+
+> workpilot@0.1.0-alpha.12.12 check:lines
+> node scripts/check-code-lines.mjs
+
+Code line check passed: 369 files, maximum 984/1000 lines.
+
+> workpilot@0.1.0-alpha.12.12 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+
+> workpilot@0.1.0-alpha.12.12 ui:typecheck
+> npm run typecheck --workspace @workpilot/desktop
+
+
+> @workpilot/desktop@0.1.0-alpha.12.12 typecheck
+> tsc --noEmit
+
+
+> workpilot@0.1.0-alpha.12.12 rust:fmt
+> node scripts/cargo.mjs fmt --all -- --check
+
+
+> workpilot@0.1.0-alpha.12.12 rust:check
+> node scripts/cargo.mjs clippy --workspace --all-targets --locked -- -D warnings
+
+   Compiling workpilot-desktop v0.1.0-alpha.12.12 (D:\workspace\kplocker\WorkPilot\apps\desktop\src-tauri)
+    Checking workpilot-storage v0.1.0-alpha.12.12 (D:\workspace\kplocker\WorkPilot\crates\storage)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.22s

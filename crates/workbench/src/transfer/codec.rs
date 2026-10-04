@@ -14,7 +14,9 @@ use std::{
     path::Path,
     sync::atomic::{AtomicBool, Ordering},
 };
-use workpilot_contracts::FileRevisionOrigin;
+pub(super) use workpilot_contracts::{
+    PortableFileImage as Image, PortableFileRevision as Revision,
+};
 use zeroize::Zeroizing;
 type Result<T> = std::result::Result<T, String>;
 const MAGIC: &[u8; 8] = b"WPHIST01";
@@ -22,28 +24,6 @@ pub(super) const MAX_TOTAL: u64 = 256 * 1024 * 1024;
 const MAX_FILE: u64 = 64 * 1024 * 1024;
 const MAX_META: usize = 1024 * 1024;
 
-#[derive(Clone, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
-pub(super) struct Image {
-    pub exists: bool,
-    pub bytes: u64,
-    pub sha256: Option<String>,
-}
-#[derive(Clone, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
-pub(super) struct Revision {
-    pub id: String,
-    pub task_id: String,
-    pub operation_id: String,
-    pub path: String,
-    pub previous_path: Option<String>,
-    pub change: String,
-    pub source: String,
-    pub at_ms: u64,
-    pub before: Image,
-    pub after: Image,
-    pub origin: Option<FileRevisionOrigin>,
-}
 #[derive(Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub(super) struct Manifest {

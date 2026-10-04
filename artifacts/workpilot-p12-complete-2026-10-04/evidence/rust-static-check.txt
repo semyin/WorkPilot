@@ -1,0 +1,10 @@
+    Checking workpilot-platform v0.1.0-alpha.12.15 (D:\workspace\kplocker\WorkPilot\crates\platform)
+    Checking workpilot-storage v0.1.0-alpha.12.15 (D:\workspace\kplocker\WorkPilot\crates\storage)
+    Checking workpilot-tools v0.1.0-alpha.12.15 (D:\workspace\kplocker\WorkPilot\crates\tools)
+    Checking workpilot-providers v0.1.0-alpha.12.15 (D:\workspace\kplocker\WorkPilot\crates\providers)
+    Checking workpilot-desktop v0.1.0-alpha.12.15 (D:\workspace\kplocker\WorkPilot\apps\desktop\src-tauri)
+    Checking workpilot-extensions v0.1.0-alpha.12.15 (D:\workspace\kplocker\WorkPilot\crates\extensions)
+    Checking workpilot-workbench v0.1.0-alpha.12.15 (D:\workspace\kplocker\WorkPilot\crates\workbench)
+    Checking workpilot-runtime v0.1.0-alpha.12.15 (D:\workspace\kplocker\WorkPilot\crates\runtime)
+    Checking workpilot-engine v0.1.0-alpha.12.15 (D:\workspace\kplocker\WorkPilot\crates\engine)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 17.58s

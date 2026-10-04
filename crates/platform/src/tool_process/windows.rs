@@ -406,7 +406,7 @@ fn capture(
     })
 }
 pub fn run(
-    spec: ProcessSpec,
+    mut spec: ProcessSpec,
     stop: Arc<AtomicBool>,
     observer: Option<ProcessObserver>,
     input: Option<ProcessInput>,
@@ -418,6 +418,7 @@ pub fn run(
         ));
     }
     let start = Instant::now();
+    let git_mapping = super::git_compat::prepare(&mut spec)?;
     let mut sandbox = if spec.sandboxed {
         Some(Sandbox::new(&spec, input.as_ref())?)
     } else {
@@ -522,6 +523,9 @@ pub fn run(
                 .iter()
                 .map(|(k, v)| format!("{k}={}", v.as_str())),
         );
+    }
+    if let Some(mapping) = git_mapping {
+        variables.push(format!("WORKPILOT_GIT_DEVICE_MAP={mapping}"));
     }
     variables.sort_by_key(|v| v.to_ascii_uppercase());
     let mut environment =

@@ -10,6 +10,7 @@ export function RecordEvent({ event }: { event: EngineEvent }) {
   if ("content" in event && event.content) refs.push(event.content);
   if (event.kind === "context_compacted") refs.push(event.archive);
   if (event.kind === "execution_created") refs.push(event.goal);
+  if (event.kind === "task_restored") refs.push(event.history);
   if (event.kind === "team_changed" && event.record) refs.push(event.record);
   if (event.kind === "execution_ended" && event.output) refs.push(event.output);
   if (event.kind === "execution_step_changed") {

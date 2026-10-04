@@ -1,4 +1,4 @@
-﻿param([Parameter(Mandatory=$true)][string]$Installer)
+﻿param([Parameter(Mandatory=$true)][string]$Installer, [int]$PreserveProcessId = 0)
 $ErrorActionPreference = 'Stop'
 $repo = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $testRoot = Join-Path $repo '.test-results/installer'
@@ -12,6 +12,7 @@ $runKey = 'HKCU:/Software/Microsoft/Windows/CurrentVersion/Run'
 if ((Test-Path -LiteralPath $uninstallKey) -or (Test-Path -LiteralPath $productKey)) { throw 'An existing WorkPilot installation owns the registration; do not overwrite it in a smoke test' }
 if ((Get-ItemProperty -LiteralPath $runKey -Name WorkPilot -ErrorAction SilentlyContinue)) { throw 'An existing WorkPilot startup entry must be preserved' }
 $otherApps = @(Get-CimInstance Win32_Process -Filter "Name='workpilot-desktop.exe' OR Name='WorkPilot.exe'")
+if ($PreserveProcessId -gt 0 -and -not ($otherApps | Where-Object { $_.ProcessId -eq $PreserveProcessId })) { throw 'The controlled comparison instance is not running' }
 if ($otherApps | Where-Object { -not $_.ExecutablePath -or $_.ExecutablePath.StartsWith($installRoot + [IO.Path]::DirectorySeparatorChar,[StringComparison]::OrdinalIgnoreCase) }) { throw 'Unable to confirm process ownership for the temporary install' }
 $node = @(Get-Command node -CommandType Application)[0].Source
 $browserRegistrationsBefore = & $node (Join-Path $repo 'scripts/browser-registration-snapshot.mjs')
@@ -76,6 +77,12 @@ finally {
       }
       $report.preservedDatabaseFiles = $savedDatabases.Count
       $report.preexistingApplicationProcessesStillRunning = @($otherApps | Where-Object { Get-Process -Id $_.ProcessId -ErrorAction SilentlyContinue }).Count
+      if ($PreserveProcessId -gt 0) {
+        $before = $otherApps | Where-Object { $_.ProcessId -eq $PreserveProcessId }
+        $after = Get-CimInstance Win32_Process -Filter "ProcessId=$PreserveProcessId"
+        if (-not $after -or $after.ExecutablePath -cne $before.ExecutablePath -or $after.CreationDate -ne $before.CreationDate) { throw 'Installation or uninstall stopped the controlled instance from another location' }
+        $report.controlledComparisonProcessPreserved = $PreserveProcessId
+      }
       if (Test-Path -LiteralPath $productKey) {
         $owner = (Get-Item -LiteralPath $productKey).GetValue('')
         if ($owner -ne $installRoot) { throw 'Unexpected product registration owner; retained for inspection' }

@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-04T07:15:07.410Z",
+  "platform": "win32",
+  "binarySha256": "0d928ea43c0095e3ffcbde2bd27a583d96e7f7a4566af8f2f83ba3810c0450fc",
+  "service": "Local synthetic three-protocol models; real engines, encrypted archives and separate data roots",
+  "checks": [
+    "fresh_tree_models_history_dependencies_replacements_reviews_and_no_automatic_execution_6_members",
+    "root_and_assistant_attachment_originals_remapped_without_cross_task_access",
+    "completed_failed_and_superseded_assistants_are_not_retried_when_main_task_continues",
+    "restart_duplicate_and_second_migration_keep_tree_and_history_without_rerunning_members",
+    "fresh_tree_models_history_dependencies_replacements_reviews_and_no_automatic_execution_4_members",
+    "manual_continuation_schedules_unstarted_nested_members_once_in_dependency_order",
+    "all_three_protocols_preserve_tool_call_pairing_and_unrelated_task_remains_unchanged"
+  ],
+  "passed": true
+}

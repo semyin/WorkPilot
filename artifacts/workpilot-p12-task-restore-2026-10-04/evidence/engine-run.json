@@ -1,0 +1,35 @@
+[
+  {
+    "name": "task-restore",
+    "command": "node scripts/task-restore-test.mjs",
+    "status": "passed",
+    "checks": 6,
+    "exitCode": 0,
+    "began": "2026-10-04T05:20:30.467Z",
+    "ended": "2026-10-04T05:20:40.899Z",
+    "binarySha256": "de0e185c713d98611ddf02a3088ee149ae799f7fa3048811136374582269a713",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\task-restore-final-task-restore\\report.json"
+  },
+  {
+    "name": "task-archive",
+    "command": "node scripts/task-archive-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-04T05:20:40.901Z",
+    "ended": "2026-10-04T05:20:44.937Z",
+    "binarySha256": "de0e185c713d98611ddf02a3088ee149ae799f7fa3048811136374582269a713",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\task-restore-final-task-archive\\report.json"
+  },
+  {
+    "name": "execution",
+    "command": "node scripts/execution-engine-test.mjs",
+    "status": "passed",
+    "checks": 9,
+    "exitCode": 0,
+    "began": "2026-10-04T05:20:44.938Z",
+    "ended": "2026-10-04T05:20:51.355Z",
+    "binarySha256": "de0e185c713d98611ddf02a3088ee149ae799f7fa3048811136374582269a713",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\execution-engine\\report.json"
+  }
+]

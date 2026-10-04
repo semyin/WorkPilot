@@ -1,4 +1,6 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+mod maintenance;
+mod update;
 
 use std::{
     collections::{HashMap, VecDeque},
@@ -170,6 +172,7 @@ fn set_desktop_locale(
 impl Bridge {
     fn start() -> Result<Self, Box<dyn std::error::Error>> {
         let executable = std::env::current_exe()?;
+        workpilot_platform::update::recover_for_install(&update::directory()?)?;
         let engine_path = executable
             .parent()
             .ok_or("application path has no parent")?
@@ -679,9 +682,21 @@ fn main() {
     let app = tauri::Builder::default()
         .plugin(tauri_plugin_dialog::init())
         .manage(bridge)
+        .manage(update::Updates::default())
+        .manage(maintenance::Maintenance::default())
         .invoke_handler(tauri::generate_handler![
             engine_snapshot,
+            maintenance::maintenance_apply,
+            maintenance::maintenance_restart,
             engine_command,
+            update::update_inspect,
+            update::update_prepare,
+            update::update_open_recovery_folder,
+            update::update_install,
+            update::update_status,
+            update::update_backups_preview,
+            update::update_backups_delete,
+            update::pick_update_package,
             pick_history_archive,
             pick_extension_archive,
             pick_file_archive,

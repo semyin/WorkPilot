@@ -1,0 +1,7 @@
+{
+  "at": "2026-10-04T08:54:05.662Z",
+  "purpose": "Isolated diagnostic package copy with debug four-reader helper and unchanged release engine; not a final distribution",
+  "source": "D:\\workspace\\kplocker\\WorkPilot\\target\\p12-environment\\debug\\workpilot-runtime-check.exe",
+  "sha256": "5537e0c8bb3dc64948f6f6cf85609dc942147cfe2df8803570cfe2a25389fd76",
+  "bytes": 5176320
+}

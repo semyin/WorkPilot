@@ -1,0 +1,18 @@
+{
+    "state":  "passed",
+    "expected":  "cancel",
+    "processId":  36688,
+    "executable":  "\\\\?\\D:\\workspace\\kplocker\\WorkPilot\\.test-results\\update-recovery-process-release-final\\独立恢复-tr07ex\\interrupted\\WorkPilot-Recover-30d7daeb-0139-4949-b392-193c5f07f8b4.exe",
+    "dialogs":  [
+                    {
+                        "name":  "cancel-confirmation",
+                        "text":  [
+                                     "是(\u0026Y)",
+                                     "否(\u0026N)",
+                                     "检测到未完成的更新。是否把原程序和原数据恢复到下列位置？\n不会关闭其它 WorkPilot 实例；请先退出它们。恢复后不会自动运行任务。\n\nRestore the original program and data from this interrupted update? Close other WorkPilot instances first. Tasks will not restart automatically.\n\n程序 / Program: D:\\workspace\\kplocker\\WorkPilot\\.test-results\\update-recovery-process-release-final\\独立恢复-tr07ex\\interrupted\\application\n资料 / Data: D:\\workspace\\kplocker\\WorkPilot\\.test-results\\update-recovery-process-release-final\\独立恢复-tr07ex\\interrupted\\data\\test"
+                                 ],
+                        "screenshot":  "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\update-recovery-process-release-final\\cancel\\cancel-confirmation.png"
+                    }
+                ],
+    "exitCode":  0
+}

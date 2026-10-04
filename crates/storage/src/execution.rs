@@ -292,6 +292,7 @@ impl Store {
             return Ok((receipt, vec![]));
         }
         self.schedule_can_start(task, profile)?;
+        self.restored_profile_guard(task, profile)?;
         if self.task_archived(task)? {
             return Err(Error::Invalid("restore archived task before continuing"));
         }

@@ -1,0 +1,86 @@
+[
+  {
+    "name": "maintenance",
+    "command": "node scripts/maintenance-engine-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-04T09:39:45.365Z",
+    "ended": "2026-10-04T09:39:47.688Z",
+    "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "report": "maintenance.json",
+    "rawReport": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-final-maintenance\\report.json"
+  },
+  {
+    "name": "task-history-restore",
+    "command": "node scripts/task-history-restore-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-04T09:39:45.386Z",
+    "ended": "2026-10-04T09:39:49.036Z",
+    "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "report": "task-history-restore.json",
+    "rawReport": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-final-task-history-restore\\report.json"
+  },
+  {
+    "name": "history-transfer",
+    "command": "node scripts/history-transfer-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-04T09:39:47.689Z",
+    "ended": "2026-10-04T09:39:49.280Z",
+    "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "report": "history-transfer.json",
+    "rawReport": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-final-history-transfer\\report.json"
+  },
+  {
+    "name": "team-restore",
+    "command": "node scripts/team-restore-test.mjs",
+    "status": "passed",
+    "checks": 7,
+    "exitCode": 0,
+    "began": "2026-10-04T09:39:49.281Z",
+    "ended": "2026-10-04T09:40:23.995Z",
+    "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "report": "team-restore.json",
+    "rawReport": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-final-team-restore\\report.json"
+  },
+  {
+    "name": "task-restore",
+    "command": "node scripts/task-restore-test.mjs",
+    "status": "passed",
+    "checks": 9,
+    "exitCode": 0,
+    "began": "2026-10-04T09:40:23.999Z",
+    "ended": "2026-10-04T09:40:32.837Z",
+    "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "report": "task-restore.json",
+    "rawReport": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-final-task-restore\\report.json"
+  },
+  {
+    "name": "task-archive",
+    "command": "node scripts/task-archive-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-04T09:40:32.839Z",
+    "ended": "2026-10-04T09:40:38.177Z",
+    "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "report": "task-archive.json",
+    "rawReport": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-final-task-archive\\report.json"
+  },
+  {
+    "name": "task-media-restore",
+    "command": "node scripts/task-media-restore-test.mjs",
+    "status": "passed",
+    "checks": 8,
+    "exitCode": 0,
+    "began": "2026-10-04T09:39:49.037Z",
+    "ended": "2026-10-04T09:42:38.048Z",
+    "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "report": "task-media-restore.json",
+    "rawReport": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-complete-final-task-media-restore\\report.json"
+  }
+]

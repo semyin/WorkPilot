@@ -92,7 +92,7 @@ impl BrowserAction {
     }
     pub fn validate(&self) -> Result<(), &'static str> {
         if let Self::StartDedicated { channel } = self
-            && !matches!(channel.as_str(), "chrome" | "msedge")
+            && !matches!(channel.as_str(), "chromium" | "chrome" | "msedge")
         {
             return Err("unsupported browser channel");
         }
@@ -115,5 +115,47 @@ impl BrowserAction {
             }
         }
         Ok(())
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn bundled_browser_is_a_dedicated_channel_and_cannot_be_paired_as_a_daily_browser() {
+        assert!(
+            BrowserAction::StartDedicated {
+                channel: "chromium".into()
+            }
+            .validate()
+            .is_ok()
+        );
+        assert!(
+            WorkbenchAction::BrowserControl {
+                control: BrowserControl::Start {
+                    channel: "chromium".into()
+                }
+            }
+            .validate()
+            .is_ok()
+        );
+        assert!(
+            WorkbenchAction::BrowserControl {
+                control: BrowserControl::Pair {
+                    channel: "chromium".into()
+                }
+            }
+            .validate()
+            .is_err()
+        );
+        assert!(
+            WorkbenchAction::BrowserControl {
+                control: BrowserControl::Pair {
+                    channel: "chrome".into()
+                }
+            }
+            .validate()
+            .is_ok()
+        );
     }
 }

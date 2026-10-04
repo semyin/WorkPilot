@@ -184,7 +184,7 @@ export function BrowserPanel({
         )}
       </p>
       <div className="browser-actions">
-        {(["chrome", "msedge"] as const).map((channel) => (
+        {(["chromium", "chrome", "msedge"] as const).map((channel) => (
           <button
             key={channel}
             disabled={busy}
@@ -197,7 +197,11 @@ export function BrowserPanel({
             }
           >
             {tr("启动专用 ", "Start dedicated ")}
-            {channel === "chrome" ? "Chrome" : "Edge"}
+            {channel === "chromium"
+              ? tr("随包浏览器", "bundled browser")
+              : channel === "chrome"
+                ? "Chrome"
+                : "Edge"}
           </button>
         ))}
       </div>
@@ -270,7 +274,12 @@ export function BrowserPanel({
           {sessions.map((s) => (
             <option key={s.id} value={s.id}>
               {s.kind === "dedicated" ? tr("专用", "Dedicated") : tr("日常", "Daily")}{" "}
-              {s.channel === "chrome" ? "Chrome" : "Edge"} · {state(s.state)}
+              {s.channel === "chromium"
+                ? tr("随包浏览器", "bundled browser")
+                : s.channel === "chrome"
+                  ? "Chrome"
+                  : "Edge"}{" "}
+              · {state(s.state)}
             </option>
           ))}
         </select>

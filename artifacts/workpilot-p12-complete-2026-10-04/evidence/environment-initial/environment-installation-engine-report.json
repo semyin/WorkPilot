@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-04T08:40:52.705Z",
+  "platform": "win32",
+  "binarySha256": "6c58ea0c2847fa7fabc46eefcf78a617bbb5afce2682bc140aa8ebc557ee4da4",
+  "environment": "Windows developer machine; engine PATH restricted to System32. This is not a clean-OS test.",
+  "checks": [],
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: {\"kind\":\"error\",\"code\":\"invalid_request\",\"message\":\"环境文件读取长时间未完成，已停止本次检查；尚未确认文件完整，可稍后重试 / Runtime inspection timed out and was stopped; integrity is unconfirmed; last component file: document-runtime/node_modules/sax/lib/sax.js\"}\n+ actual - expected\n\n+ 'error'\n- 'installation'\n\n    at file:///D:/workspace/kplocker/WorkPilot/scripts/installation-engine-test.mjs:280:10\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)"
+}

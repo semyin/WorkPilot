@@ -11,6 +11,12 @@ pub struct Request {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 pub enum Command {
+    Maintenance {
+        action: MaintenanceAction,
+    },
+    Migration {
+        action: MigrationAction,
+    },
     TaskArchive {
         action: TaskArchiveAction,
     },
@@ -232,7 +238,9 @@ impl Request {
             return Err("invalid request_id");
         }
         match &self.command {
+            Command::Maintenance { action } => action.validate()?,
             Command::TaskArchive { action } => action.validate()?,
+            Command::Migration { action } => action.validate()?,
             Command::MediaTransfer { task_id, action } => {
                 if !valid_id(task_id) {
                     return Err("invalid task id");

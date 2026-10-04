@@ -13,8 +13,13 @@ pub struct ExtensionSelection {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 pub enum ExtensionTransferAction {
+    Catalog,
     Export {
         selections: Vec<ExtensionSelection>,
+        #[serde(default)]
+        include_history: bool,
+        #[serde(default)]
+        draft_ids: Vec<String>,
         path: String,
         password: SecretInput,
     },
@@ -31,15 +36,24 @@ pub enum ExtensionTransferAction {
 impl ExtensionTransferAction {
     pub fn validate(&self) -> Result<(), &'static str> {
         let (path, password) = match self {
+            Self::Catalog => return Ok(()),
             Self::Export {
                 selections,
+                draft_ids,
                 path,
                 password,
+                ..
             } => {
                 let ids: std::collections::HashSet<_> =
                     selections.iter().map(|s| &s.installation_id).collect();
-                if selections.is_empty()
-                    || selections.len() > 32
+                if selections.len() + draft_ids.len() == 0
+                    || selections.len() + draft_ids.len() > 32
+                    || draft_ids.iter().any(|id| !valid_id(id))
+                    || draft_ids
+                        .iter()
+                        .collect::<std::collections::HashSet<_>>()
+                        .len()
+                        != draft_ids.len()
                     || ids.len() != selections.len()
                     || selections
                         .iter()
@@ -83,6 +97,22 @@ pub struct PortableExtension {
     pub was_enabled: bool,
     pub digest: String,
     pub files: Vec<ExtensionArchiveFile>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub earlier: Vec<PortableExtensionVersion>,
+    #[serde(default)]
+    pub draft: bool,
+    #[serde(default = "installed_default")]
+    pub installed: bool,
+}
+fn installed_default() -> bool {
+    true
+}
+#[derive(Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct PortableExtensionVersion {
+    pub digest: String,
+    pub files: Vec<ExtensionArchiveFile>,
+    pub created_at_ms: u64,
 }
 #[derive(Clone, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -99,4 +129,7 @@ pub struct ExtensionImportCandidate {
     pub source_id: String,
     pub scope: Option<String>,
     pub version: PluginVersion,
+    pub earlier: Vec<PluginVersion>,
+    pub draft: bool,
+    pub installed: bool,
 }

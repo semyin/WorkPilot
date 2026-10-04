@@ -1,9 +1,9 @@
 //! Application-local tools and bounded, read-only installation diagnostics.
 use serde::Deserialize;
+#[cfg(test)]
 use sha2::{Digest, Sha256};
 use std::{
-    fs,
-    io::{self, Read},
+    fs, io,
     path::{Component, Path, PathBuf},
     sync::{
         Arc,
@@ -13,6 +13,7 @@ use std::{
 use workpilot_contracts::{InstallationReport, RuntimeHealth, SCHEMA_VERSION};
 type Result<T> = io::Result<T>;
 const MANIFEST: &str = "runtime-catalog.json";
+mod scanner;
 mod worker;
 pub use worker::worker_main;
 pub fn app_root() -> Result<PathBuf> {
@@ -119,7 +120,13 @@ pub fn owned_read_root(program: &Path) -> Result<Option<PathBuf>> {
     let base = app_root()?;
     for (name, folder) in [("python", "python-runtime"), ("git", "git-runtime")] {
         let expected = base.join(relative_executable(name).unwrap_or("__not_available__"));
-        if expected.is_file() && canonical(&expected)? == canonical(program)? {
+        let compatible_git = base.join("git-runtime/sandbox/bin/git.exe");
+        let selected = expected.is_file() && canonical(&expected)? == canonical(program)?;
+        let selected_compat = cfg!(windows)
+            && name == "git"
+            && compatible_git.is_file()
+            && canonical(&compatible_git)? == canonical(program)?;
+        if selected || selected_compat {
             let root = base.join(folder).canonicalize()?;
             if root.starts_with(base.canonicalize()?) {
                 return Ok(Some(root));
@@ -192,15 +199,15 @@ pub fn inspect(verify: bool, stop: Arc<AtomicBool>) -> Result<InstallationReport
 }
 #[cfg(test)]
 fn inspect_at(base: &Path, verify: bool, stop: Arc<AtomicBool>) -> Result<InstallationReport> {
-    inspect_with_progress(base, verify, stop, || Ok(()))
+    inspect_with_progress(base, verify, stop, |_, _| Ok(()))
 }
 fn inspect_with_progress(
     base: &Path,
     verify: bool,
     stop: Arc<AtomicBool>,
-    mut progress: impl FnMut() -> Result<()>,
+    mut progress: impl FnMut(Option<&str>, bool) -> Result<()>,
 ) -> Result<InstallationReport> {
-    progress()?;
+    progress(None, true)?;
     let mut report = InstallationReport {
         report_version: 1,
         app_version: env!("CARGO_PKG_VERSION").into(),
@@ -263,7 +270,7 @@ fn inspect_with_progress(
             bytes: 0,
             issues: vec![],
         };
-        for file in package.files {
+        for file in &package.files {
             if stop.load(Ordering::Relaxed) {
                 return Err(io::Error::new(
                     io::ErrorKind::Interrupted,
@@ -278,44 +285,13 @@ fn inspect_with_progress(
             {
                 return Err(io::Error::other("Invalid runtime file declaration"));
             }
-            progress()?;
             h.bytes = h
                 .bytes
                 .checked_add(file.bytes)
                 .ok_or_else(|| io::Error::other("Runtime size overflow"))?;
-            let state = (|| -> Result<()> {
-                let p = checked_file(base, &file.path)?;
-                // A quick check reads metadata only. Opening file contents can
-                // block in OS filters even when only the length was requested.
-                if fs::metadata(&p)?.len() != file.bytes {
-                    return Err(io::Error::other("size mismatch"));
-                }
-                if verify {
-                    let mut input = fs::File::open(p)?;
-                    let mut hash = Sha256::new();
-                    let mut buffer = [0u8; 65536];
-                    let mut n = 0u64;
-                    loop {
-                        if stop.load(Ordering::Relaxed) {
-                            return Err(io::Error::new(io::ErrorKind::Interrupted, "cancelled"));
-                        }
-                        progress()?;
-                        let size = input.read(&mut buffer)?;
-                        if size == 0 {
-                            break;
-                        }
-                        n += size as u64;
-                        if n > file.bytes {
-                            return Err(io::Error::other("file grew during check"));
-                        }
-                        hash.update(&buffer[..size]);
-                    }
-                    if n != file.bytes || format!("{:x}", hash.finalize()) != file.sha256 {
-                        return Err(io::Error::other("content mismatch"));
-                    }
-                }
-                Ok(())
-            })();
+        }
+        let states = scanner::inspect_files(base, &package.files, verify, &stop, &mut progress)?;
+        for (file, state) in package.files.iter().zip(states) {
             match state {
                 Ok(()) => h.checked_files += 1,
                 Err(e) if e.kind() == io::ErrorKind::Interrupted => return Err(e),

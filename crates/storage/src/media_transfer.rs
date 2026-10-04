@@ -3,6 +3,7 @@ use super::*;
 use serde_json::{Value, json};
 use std::sync::atomic::{AtomicBool, Ordering};
 
+#[derive(Clone)]
 pub struct MediaImportCandidate {
     pub asset: MediaAsset,
     pub original_blob: String,

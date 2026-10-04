@@ -7,6 +7,7 @@ export function HistoryEvent({ event }: { event: EngineEvent }) {
   if ("content" in event && event.content) references.push(event.content);
   if (event.kind === "context_compacted") references.push(event.archive);
   if (event.kind === "execution_created") references.push(event.goal);
+  if (event.kind === "task_restored") references.push(event.history);
   if (event.kind === "execution_ended" && event.output) references.push(event.output);
   if (event.kind === "team_changed" && event.record) references.push(event.record);
   if (event.kind === "workbench_changed" && event.record) references.push(event.record);

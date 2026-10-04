@@ -3,11 +3,14 @@ mod commands;
 mod execution;
 #[cfg(test)]
 mod execution_tests;
+mod extension_history_transfer;
 mod extension_transfer;
 #[cfg(test)]
 mod extension_transfer_tests;
 mod extensions;
 mod history_transfer;
+mod maintenance;
+pub use maintenance::MaintenancePlan;
 mod media;
 mod media_transfer;
 pub use media_transfer::{MediaImportBatch, MediaImportCandidate};
@@ -18,10 +21,13 @@ mod memory;
 mod memory_tests;
 #[cfg(test)]
 mod memory_transfer_tests;
+mod migration;
+#[cfg(test)]
+mod migration_recovery_tests;
 mod objects;
 mod project_transfer;
 mod task_archive;
-pub use task_archive::{TaskArchiveBytes, task_archive_summary};
+pub use task_archive::{TaskArchiveBytes, TaskRestoreMedia, task_archive_summary};
 #[cfg(test)]
 mod provider_tests;
 mod providers;
@@ -32,7 +38,15 @@ mod schedule_tests;
 pub mod schedule_time;
 #[cfg(test)]
 mod task_archive_tests;
+#[cfg(test)]
+mod task_history_restore_tests;
+#[cfg(test)]
+mod task_media_restore_tests;
+#[cfg(test)]
+mod task_restore_tests;
 mod team;
+#[cfg(test)]
+mod team_restore_tests;
 #[cfg(test)]
 mod team_tests;
 mod tool;
@@ -117,14 +131,24 @@ pub struct Store {
     directory: PathBuf,
     redactor: Redactor,
     _lock: File,
+    _update_lock: File,
 }
 impl Store {
     pub fn open(directory: &Path) -> Result<Self> {
+        Self::open_mode(directory, false)
+    }
+    /// Offline administration holds exclusive upgrade access; normal engines hold shared access.
+    pub fn open_exclusive(directory: &Path) -> Result<Self> {
+        Self::open_mode(directory, true)
+    }
+    fn open_mode(directory: &Path, exclusive: bool) -> Result<Self> {
         if !directory.is_absolute() {
             return Err(Error::Invalid("data path must be absolute"));
         }
         std::fs::create_dir_all(directory)?;
         let directory = directory.canonicalize()?;
+        let update_lock = workpilot_platform::update::data_update_lock(&directory, exclusive)
+            .map_err(|_| Error::Busy)?;
         let lock = OpenOptions::new()
             .create(true)
             .truncate(false)
@@ -159,6 +183,7 @@ impl Store {
             directory,
             redactor: Redactor::default(),
             _lock: lock,
+            _update_lock: update_lock,
         };
         store.recover()?;
         store.recover_model_calls()?;
@@ -702,9 +727,13 @@ fn record(
         | Payload::ModelText { content, .. }
         | Payload::ModelReasoning { content, .. }
         | Payload::MessageQueued { content, .. }
+        | Payload::RestoredMessage { content, .. }
         | Payload::ArtifactCreated { content, .. } => Some(content),
         Payload::WorkspaceChanged { content, .. } => content.as_ref(),
         Payload::ExecutionCreated { goal: content, .. }
+        | Payload::TaskRestored {
+            history: content, ..
+        }
         | Payload::ExecutionText { content, .. }
         | Payload::ContextCompacted {
             archive: content, ..
