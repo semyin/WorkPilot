@@ -1,0 +1,6 @@
+﻿{
+    "status":  "bootstrap_failed",
+    "at":  "2026-10-04T13:31:27.8289089+00:00",
+    "error":  "所选目录不是这份工具包对应的待验收版本，或文件已损坏：workpilot-desktop.exe",
+    "selfTest":  true
+}

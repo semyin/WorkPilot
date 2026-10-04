@@ -1,0 +1,31 @@
+{
+  "test": "Actual NotificationSettings.tsx compiled with controlled pure hook/IPC mocks; no native app or provider calls",
+  "at": "2026-10-04T13:42:27.471Z",
+  "afterSave": {
+    "storedSystem": false,
+    "displayedSystem": false
+  },
+  "afterLateRead": {
+    "storedSystem": false,
+    "displayedSystem": false
+  },
+  "afterTrayToggle": {
+    "storedSystem": false,
+    "storedTray": false
+  },
+  "saves": [
+    {
+      "in_app": true,
+      "system": false,
+      "tray": true,
+      "foreground": false
+    },
+    {
+      "in_app": true,
+      "system": false,
+      "tray": false,
+      "foreground": false
+    }
+  ],
+  "outcome": "protected"
+}

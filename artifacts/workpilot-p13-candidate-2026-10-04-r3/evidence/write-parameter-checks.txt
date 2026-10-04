@@ -1,0 +1,15 @@
+    Blocking waiting for file lock on package cache
+   Compiling reqwest v0.13.5
+   Compiling workpilot-contracts v0.1.0-alpha.13.3 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-platform v0.1.0-alpha.13.3 (D:\workspace\kplocker\WorkPilot\crates\platform)
+   Compiling workpilot-tools v0.1.0-alpha.13.3 (D:\workspace\kplocker\WorkPilot\crates\tools)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 31.54s
+     Running unittests src\lib.rs (target\debug\deps\workpilot_tools-0dc3786a7b06c28c.exe)
+
+running 3 tests
+test registry::tests::actual_hash_and_real_json_null_prepare_bound_actions_without_writing ... ok
+test registry::tests::a_well_formed_but_stale_hash_or_null_for_an_existing_file_still_rejects ... ok
+test registry::tests::malformed_hash_is_parameter_error_without_creating_or_modifying_files ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 0.01s
+

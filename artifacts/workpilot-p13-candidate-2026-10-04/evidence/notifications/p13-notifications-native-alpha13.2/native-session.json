@@ -1,0 +1,167 @@
+{
+  "at": "2026-10-04T12:47:13.199Z",
+  "binary": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-7007ad4480ad4f9ba2bde12b60f545dc\\ä¸­æ–‡ å®‰è£…\\workpilot-desktop.exe",
+  "binarySha256": "e75ccf1f67206fe965997cf56facdb3572fb1943f085d38c27d366eda2c0adee",
+  "scope": "Own installed test process and fresh data only; GUI observations/clicks are recorded separately",
+  "operations": [
+    {
+      "operation": "approval",
+      "at": "2026-10-04T12:48:06.117Z",
+      "title": "Native notification approval 1",
+      "taskId": "a551d478-12fa-438d-a587-cca3fd70591a",
+      "projectId": "b1b30376-e763-4794-8a40-ca5821fca1cc",
+      "notification": {
+        "id": "5e838ba7-9ec7-4a98-a2d8-36628a5882c5",
+        "sequence": 35,
+        "task_id": "a551d478-12fa-438d-a587-cca3fd70591a",
+        "at_ms": 1791118086227,
+        "kind": "approval",
+        "read": false,
+        "delivery": "foreground"
+      },
+      "modelCalls": 1
+    },
+    {
+      "operation": "approval",
+      "at": "2026-10-04T12:48:58.127Z",
+      "title": "Native notification approval 2",
+      "taskId": "0732bb19-bde0-4654-9f71-926cd1768c48",
+      "projectId": "b1b30376-e763-4794-8a40-ca5821fca1cc",
+      "notification": {
+        "id": "a1d9e0f6-eefe-47d7-9a86-ce020a203d1e",
+        "sequence": 55,
+        "task_id": "0732bb19-bde0-4654-9f71-926cd1768c48",
+        "at_ms": 1791118138239,
+        "kind": "approval",
+        "read": false,
+        "delivery": "submitted"
+      },
+      "modelCalls": 2
+    },
+    {
+      "operation": "input",
+      "at": "2026-10-04T12:50:19.856Z",
+      "title": "Native notification input 3",
+      "taskId": "631a712c-4b01-43c4-8de8-7e76efe0ebf9",
+      "projectId": "b1b30376-e763-4794-8a40-ca5821fca1cc",
+      "notification": {
+        "id": "efe4e304-d0d3-4a8f-b713-81c9931a6144",
+        "sequence": 79,
+        "task_id": "631a712c-4b01-43c4-8de8-7e76efe0ebf9",
+        "at_ms": 1791118219992,
+        "kind": "input",
+        "read": false,
+        "delivery": "submitted"
+      },
+      "modelCalls": 3
+    },
+    {
+      "operation": "complete",
+      "at": "2026-10-04T12:53:53.036Z",
+      "title": "Native notification complete 4",
+      "taskId": "bb5e9279-c0eb-4e79-931a-0aa45703bbd9",
+      "projectId": "b1b30376-e763-4794-8a40-ca5821fca1cc",
+      "notification": {
+        "id": "a28747e6-87d3-4c1c-b161-a104d7e57371",
+        "sequence": 98,
+        "task_id": "bb5e9279-c0eb-4e79-931a-0aa45703bbd9",
+        "at_ms": 1791118433332,
+        "kind": "completed",
+        "read": false,
+        "delivery": "submitted"
+      },
+      "modelCalls": 4
+    },
+    {
+      "operation": "failed",
+      "at": "2026-10-04T12:54:10.156Z",
+      "title": "Native notification failed 5",
+      "taskId": "cdbbfd73-b5cc-4443-b6f0-a179d299d6c5",
+      "projectId": "b1b30376-e763-4794-8a40-ca5821fca1cc",
+      "notification": {
+        "id": "45fe12de-366a-4411-ad35-b5bdb1220542",
+        "sequence": 113,
+        "task_id": "cdbbfd73-b5cc-4443-b6f0-a179d299d6c5",
+        "at_ms": 1791118450225,
+        "kind": "failed",
+        "read": false,
+        "delivery": "submitted"
+      },
+      "modelCalls": 5
+    },
+    {
+      "operation": "snapshot",
+      "at": "2026-10-04T12:54:17.360Z",
+      "notifications": {
+        "preferences": {
+          "in_app": true,
+          "system": true,
+          "tray": true,
+          "foreground": false
+        },
+        "entries": [
+          {
+            "id": "45fe12de-366a-4411-ad35-b5bdb1220542",
+            "sequence": 113,
+            "task_id": "cdbbfd73-b5cc-4443-b6f0-a179d299d6c5",
+            "at_ms": 1791118450225,
+            "kind": "failed",
+            "read": false,
+            "delivery": "submitted"
+          },
+          {
+            "id": "a28747e6-87d3-4c1c-b161-a104d7e57371",
+            "sequence": 98,
+            "task_id": "bb5e9279-c0eb-4e79-931a-0aa45703bbd9",
+            "at_ms": 1791118433332,
+            "kind": "completed",
+            "read": false,
+            "delivery": "submitted"
+          },
+          {
+            "id": "efe4e304-d0d3-4a8f-b713-81c9931a6144",
+            "sequence": 79,
+            "task_id": "631a712c-4b01-43c4-8de8-7e76efe0ebf9",
+            "at_ms": 1791118219992,
+            "kind": "input",
+            "read": false,
+            "delivery": "submitted"
+          },
+          {
+            "id": "a1d9e0f6-eefe-47d7-9a86-ce020a203d1e",
+            "sequence": 55,
+            "task_id": "0732bb19-bde0-4654-9f71-926cd1768c48",
+            "at_ms": 1791118138239,
+            "kind": "approval",
+            "read": false,
+            "delivery": "submitted"
+          },
+          {
+            "id": "5e838ba7-9ec7-4a98-a2d8-36628a5882c5",
+            "sequence": 35,
+            "task_id": "a551d478-12fa-438d-a587-cca3fd70591a",
+            "at_ms": 1791118086227,
+            "kind": "approval",
+            "read": false,
+            "delivery": "foreground"
+          }
+        ],
+        "unread": 5,
+        "ready": true,
+        "active": true,
+        "storage_error": false,
+        "overflow": false,
+        "system_available": true,
+        "last_delivery": "submitted",
+        "open": null
+      },
+      "selected": {
+        "task": null,
+        "project": ""
+      },
+      "modelCalls": 5
+    }
+  ],
+  "processId": 43160,
+  "status": "stopped"
+}

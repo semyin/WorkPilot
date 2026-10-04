@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-04T13:31:00.918Z",
+  "kind": "agent_visual_review",
+  "status": "passed",
+  "userAcceptance": false,
+  "images": [
+    "desktop/browser-setup-zh.png",
+    "desktop/environment-zh.png",
+    "desktop/browser-setup-en.png",
+    "desktop/environment-en.png",
+    "office-path/short-docx.png",
+    "office-path/short-xlsx.png",
+    "office-path/short-pptx.png"
+  ],
+  "observations": [
+    "Chinese and English settings are readable, with vertical scrolling and disabled browser registration replacement controls.",
+    "The installed version is alpha.13.3; environment component rows and active verification results are visible.",
+    "Word preview has the expected Chinese heading and English 42; Excel lists 25/17/42; presentation shows total 42 and one slide."
+  ],
+  "boundary": "The six long-path images have equal bytes to these three format baselines according to the Office report. Only the three distinct format images were visually inspected. Native browser authorization, clean Windows and Microsoft Office pixel equivalence are not claimed."
+}

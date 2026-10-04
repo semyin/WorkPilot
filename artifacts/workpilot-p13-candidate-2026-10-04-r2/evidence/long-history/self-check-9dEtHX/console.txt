@@ -1,0 +1,3 @@
+(node:11344) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"status":"self_test_passed","elapsedMs":26491,"report":"D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-long-history-selfcheck\\self-check-9dEtHX\\report.json"}

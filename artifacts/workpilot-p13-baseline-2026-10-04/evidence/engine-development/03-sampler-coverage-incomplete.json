@@ -1,0 +1,1239 @@
+{
+  "at": "2026-10-04T10:28:40.925Z",
+  "binary": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+  "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+  "nodeBinarySha256": "0d0f5e39f9f3d9587bc19f73eab3c2c9c4903fd02d6dbf9c853dd81b3d95fad4",
+  "machine": {
+    "os": {
+      "Caption": "Microsoft Windows 11 家庭版",
+      "Version": "10.0.26200",
+      "BuildNumber": "26200"
+    },
+    "architecture": "x64",
+    "kernel": "10.0.26200",
+    "cpuModel": "AMD Ryzen 7 7840H w/ Radeon(TM) 780M Graphics  ",
+    "logicalProcessors": 16,
+    "memoryBytes": 33618710528,
+    "availableMemoryBeforeBytes": 7316828160,
+    "node": "v22.23.2"
+  },
+  "options": {
+    "windowMs": 1000,
+    "samples": 4,
+    "stopSamples": 2,
+    "modelDelayMs": 250
+  },
+  "output": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-engine\\smoke\\run-9JNKAL",
+  "scenarios": [
+    {
+      "name": "tasks-1",
+      "kind": "tasks",
+      "requested": 1,
+      "configuredGlobalLimit": 8,
+      "configuredTeamLimit": null,
+      "elapsedMs": 1013,
+      "waves": 3,
+      "completedRoots": 3,
+      "completedMembers": 0,
+      "modelRequests": 3,
+      "observedPeakRunning": 1,
+      "observedPeakAssistants": 0,
+      "samplesObservedDuringActiveWork": 4,
+      "metricsMs": {
+        "ping": {
+          "count": 4,
+          "min": 1.324,
+          "p50": 2.045,
+          "p95": 6.732,
+          "max": 6.732,
+          "mean": 3.195
+        },
+        "taskList": {
+          "count": 4,
+          "min": 0.721,
+          "p50": 0.786,
+          "p95": 0.944,
+          "max": 0.944,
+          "mean": 0.812
+        },
+        "executionRead": {
+          "count": 4,
+          "min": 0.991,
+          "p50": 1.139,
+          "p95": 1.36,
+          "max": 1.36,
+          "mean": 1.184
+        },
+        "teamRead": {
+          "count": 0,
+          "min": null,
+          "p50": null,
+          "p95": null,
+          "max": null,
+          "mean": null
+        },
+        "waveCompletion": {
+          "count": 3,
+          "min": 303.006,
+          "p50": 330.44,
+          "p95": 335.839,
+          "max": 335.839,
+          "mean": 323.095
+        }
+      },
+      "rawMs": {
+        "ping": [
+          1.3238000000001193,
+          6.732199999999921,
+          2.679200000000037,
+          2.0449000000003252
+        ],
+        "taskList": [
+          0.7860999999998057,
+          0.9436999999998079,
+          0.7211999999999534,
+          0.7970000000000255
+        ],
+        "executionRead": [
+          1.2451000000000931,
+          1.138999999999669,
+          1.360400000000027,
+          0.9913000000001375
+        ],
+        "teamRead": [],
+        "waveCompletion": [
+          330.44010000000026,
+          335.8391999999999,
+          303.0059000000001
+        ]
+      },
+      "observations": [
+        {
+          "sample": 0,
+          "atMs": 24,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 1,
+          "atMs": 271,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 2,
+          "atMs": 515,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 3,
+          "atMs": 765,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        }
+      ],
+      "timingBoundary": "Host IPC round-trip; wave completion includes configured fixture wait and is not Rust-only execution time. No DOM measurement."
+    },
+    {
+      "name": "tasks-4",
+      "kind": "tasks",
+      "requested": 4,
+      "configuredGlobalLimit": 8,
+      "configuredTeamLimit": null,
+      "elapsedMs": 1444,
+      "waves": 3,
+      "completedRoots": 12,
+      "completedMembers": 0,
+      "modelRequests": 12,
+      "observedPeakRunning": 4,
+      "observedPeakAssistants": 0,
+      "samplesObservedDuringActiveWork": 4,
+      "metricsMs": {
+        "ping": {
+          "count": 4,
+          "min": 2.75,
+          "p50": 2.963,
+          "p95": 39.85,
+          "max": 39.85,
+          "mean": 20.73
+        },
+        "taskList": {
+          "count": 4,
+          "min": 0.604,
+          "p50": 5.843,
+          "p95": 19.992,
+          "max": 19.992,
+          "mean": 10.499
+        },
+        "executionRead": {
+          "count": 4,
+          "min": 1.676,
+          "p50": 1.75,
+          "p95": 7.012,
+          "max": 7.012,
+          "mean": 3.329
+        },
+        "teamRead": {
+          "count": 0,
+          "min": null,
+          "p50": null,
+          "p95": null,
+          "max": null,
+          "mean": null
+        },
+        "waveCompletion": {
+          "count": 3,
+          "min": 420.082,
+          "p50": 421.786,
+          "p95": 425.774,
+          "max": 425.774,
+          "mean": 422.547
+        }
+      },
+      "rawMs": {
+        "ping": [
+          39.85010000000011,
+          2.9628999999999905,
+          37.35739999999987,
+          2.749800000000505
+        ],
+        "taskList": [
+          15.55659999999989,
+          5.8429000000001,
+          19.991700000000492,
+          0.6035000000001673
+        ],
+        "executionRead": [
+          2.876600000000053,
+          1.7503999999998996,
+          7.012499999999818,
+          1.6759000000001834
+        ],
+        "teamRead": [],
+        "waveCompletion": [
+          420.0817999999995,
+          421.78560000000016,
+          425.77430000000004
+        ]
+      },
+      "observations": [
+        {
+          "sample": 0,
+          "atMs": 137,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 1,
+          "atMs": 269,
+          "running": 4,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 2,
+          "atMs": 618,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 3,
+          "atMs": 754,
+          "running": 4,
+          "state": "running",
+          "workFinished": false
+        }
+      ],
+      "timingBoundary": "Host IPC round-trip; wave completion includes configured fixture wait and is not Rust-only execution time. No DOM measurement."
+    },
+    {
+      "name": "tasks-8",
+      "kind": "tasks",
+      "requested": 8,
+      "configuredGlobalLimit": 8,
+      "configuredTeamLimit": null,
+      "elapsedMs": 1245,
+      "waves": 2,
+      "completedRoots": 16,
+      "completedMembers": 0,
+      "modelRequests": 16,
+      "observedPeakRunning": 8,
+      "observedPeakAssistants": 0,
+      "samplesObservedDuringActiveWork": 4,
+      "metricsMs": {
+        "ping": {
+          "count": 4,
+          "min": 14.85,
+          "p50": 29.727,
+          "p95": 138.401,
+          "max": 138.401,
+          "mean": 79.043
+        },
+        "taskList": {
+          "count": 4,
+          "min": 8.141,
+          "p50": 19.887,
+          "p95": 29.005,
+          "max": 29.005,
+          "mean": 21.166
+        },
+        "executionRead": {
+          "count": 4,
+          "min": 3.532,
+          "p50": 11.797,
+          "p95": 15.679,
+          "max": 15.679,
+          "mean": 10.962
+        },
+        "teamRead": {
+          "count": 0,
+          "min": null,
+          "p50": null,
+          "p95": null,
+          "max": null,
+          "mean": null
+        },
+        "waveCompletion": {
+          "count": 2,
+          "min": 498.098,
+          "p50": 498.098,
+          "p95": 505.156,
+          "max": 505.156,
+          "mean": 501.627
+        }
+      },
+      "rawMs": {
+        "ping": [
+          133.1954999999998,
+          14.849699999999757,
+          29.72689999999966,
+          138.40050000000065
+        ],
+        "taskList": [
+          27.630699999999706,
+          8.140699999999924,
+          19.887000000000626,
+          29.004500000000007
+        ],
+        "executionRead": [
+          12.842399999999543,
+          3.5317000000004555,
+          15.678799999999683,
+          11.796500000000378
+        ],
+        "teamRead": [],
+        "waveCompletion": [
+          498.09810000000016,
+          505.15629999999965
+        ]
+      },
+      "observations": [
+        {
+          "sample": 0,
+          "atMs": 317,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 1,
+          "atMs": 344,
+          "running": 8,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 2,
+          "atMs": 564,
+          "running": 6,
+          "state": "completed",
+          "workFinished": false
+        },
+        {
+          "sample": 3,
+          "atMs": 940,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        }
+      ],
+      "timingBoundary": "Host IPC round-trip; wave completion includes configured fixture wait and is not Rust-only execution time. No DOM measurement."
+    },
+    {
+      "name": "assistants-1",
+      "kind": "assistants",
+      "requested": 1,
+      "configuredGlobalLimit": 8,
+      "configuredTeamLimit": 1,
+      "elapsedMs": 1598,
+      "waves": 2,
+      "completedRoots": 2,
+      "completedMembers": 2,
+      "modelRequests": 12,
+      "observedPeakRunning": 1,
+      "observedPeakAssistants": 1,
+      "samplesObservedDuringActiveWork": 4,
+      "metricsMs": {
+        "ping": {
+          "count": 4,
+          "min": 2.113,
+          "p50": 2.908,
+          "p95": 9.874,
+          "max": 9.874,
+          "mean": 4.708
+        },
+        "taskList": {
+          "count": 4,
+          "min": 0.69,
+          "p50": 1.572,
+          "p95": 14.996,
+          "max": 14.996,
+          "mean": 4.738
+        },
+        "executionRead": {
+          "count": 4,
+          "min": 1.69,
+          "p50": 2.076,
+          "p95": 7.837,
+          "max": 7.837,
+          "mean": 3.722
+        },
+        "teamRead": {
+          "count": 4,
+          "min": 0.517,
+          "p50": 1.657,
+          "p95": 3.508,
+          "max": 3.508,
+          "mean": 1.873
+        },
+        "waveCompletion": {
+          "count": 2,
+          "min": 752.204,
+          "p50": 752.204,
+          "p95": 794.97,
+          "max": 794.97,
+          "mean": 773.587
+        }
+      },
+      "rawMs": {
+        "ping": [
+          2.1130999999995765,
+          3.9375,
+          2.908300000000054,
+          9.874499999999898
+        ],
+        "taskList": [
+          1.5715000000000146,
+          0.6901000000007116,
+          14.9962000000005,
+          1.6958000000004176
+        ],
+        "executionRead": [
+          2.076299999999719,
+          1.690400000000409,
+          7.836800000000039,
+          3.2825000000002547
+        ],
+        "teamRead": [
+          0.5165999999999258,
+          1.810500000000502,
+          3.5084999999999127,
+          1.6572000000005573
+        ],
+        "waveCompletion": [
+          794.9703,
+          752.2041999999992
+        ]
+      },
+      "observations": [
+        {
+          "sample": 0,
+          "atMs": 53,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 1,
+          "atMs": 259,
+          "running": 1,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 2,
+          "atMs": 588,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 3,
+          "atMs": 766,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        }
+      ],
+      "timingBoundary": "Host IPC round-trip; wave completion includes configured fixture wait and is not Rust-only execution time. No DOM measurement."
+    },
+    {
+      "name": "assistants-3",
+      "kind": "assistants",
+      "requested": 3,
+      "configuredGlobalLimit": 8,
+      "configuredTeamLimit": 3,
+      "elapsedMs": 1219,
+      "waves": 1,
+      "completedRoots": 1,
+      "completedMembers": 3,
+      "modelRequests": 12,
+      "observedPeakRunning": 3,
+      "observedPeakAssistants": 3,
+      "samplesObservedDuringActiveWork": 4,
+      "metricsMs": {
+        "ping": {
+          "count": 4,
+          "min": 2.309,
+          "p50": 3.861,
+          "p95": 7.111,
+          "max": 7.111,
+          "mean": 4.427
+        },
+        "taskList": {
+          "count": 4,
+          "min": 1.467,
+          "p50": 1.491,
+          "p95": 11.095,
+          "max": 11.095,
+          "mean": 4.49
+        },
+        "executionRead": {
+          "count": 4,
+          "min": 1.642,
+          "p50": 1.773,
+          "p95": 22.091,
+          "max": 22.091,
+          "mean": 9.309
+        },
+        "teamRead": {
+          "count": 4,
+          "min": 0.398,
+          "p50": 3.972,
+          "p95": 44.445,
+          "max": 44.445,
+          "mean": 13.566
+        },
+        "waveCompletion": {
+          "count": 1,
+          "min": 1194.119,
+          "p50": 1194.119,
+          "p95": 1194.119,
+          "max": 1194.119,
+          "mean": 1194.119
+        }
+      },
+      "rawMs": {
+        "ping": [
+          7.110599999999977,
+          2.3092999999989843,
+          3.861399999999776,
+          4.426199999999881
+        ],
+        "taskList": [
+          1.466500000000451,
+          1.490799999999581,
+          11.095300000000861,
+          3.9056000000000495
+        ],
+        "executionRead": [
+          1.7732999999998356,
+          1.6415000000015425,
+          11.731700000000274,
+          22.09139999999934
+        ],
+        "teamRead": [
+          0.3981999999996333,
+          3.9715999999989435,
+          44.44520000000011,
+          5.447299999999814
+        ],
+        "waveCompletion": [
+          1194.1192
+        ]
+      },
+      "observations": [
+        {
+          "sample": 0,
+          "atMs": 48,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 1,
+          "atMs": 268,
+          "running": 3,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 2,
+          "atMs": 571,
+          "running": 2,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 3,
+          "atMs": 788,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        }
+      ],
+      "timingBoundary": "Host IPC round-trip; wave completion includes configured fixture wait and is not Rust-only execution time. No DOM measurement."
+    },
+    {
+      "name": "assistants-8",
+      "kind": "assistants",
+      "requested": 8,
+      "configuredGlobalLimit": 8,
+      "configuredTeamLimit": 8,
+      "elapsedMs": 2537,
+      "waves": 1,
+      "completedRoots": 1,
+      "completedMembers": 8,
+      "modelRequests": 27,
+      "observedPeakRunning": 8,
+      "observedPeakAssistants": 8,
+      "samplesObservedDuringActiveWork": 4,
+      "metricsMs": {
+        "ping": {
+          "count": 4,
+          "min": 2.789,
+          "p50": 3.046,
+          "p95": 76.336,
+          "max": 76.336,
+          "mean": 24.069
+        },
+        "taskList": {
+          "count": 4,
+          "min": 1.025,
+          "p50": 1.404,
+          "p95": 21.962,
+          "max": 21.962,
+          "mean": 10.035
+        },
+        "executionRead": {
+          "count": 4,
+          "min": 2.398,
+          "p50": 8.817,
+          "p95": 13.296,
+          "max": 13.296,
+          "mean": 8.923
+        },
+        "teamRead": {
+          "count": 4,
+          "min": 0.616,
+          "p50": 12.622,
+          "p95": 21.907,
+          "max": 21.907,
+          "mean": 12.768
+        },
+        "waveCompletion": {
+          "count": 1,
+          "min": 2502.744,
+          "p50": 2502.744,
+          "p95": 2502.744,
+          "max": 2502.744,
+          "mean": 2502.744
+        }
+      },
+      "rawMs": {
+        "ping": [
+          3.0460000000002765,
+          76.33599999999933,
+          2.7890000000006694,
+          14.104699999999866
+        ],
+        "taskList": [
+          1.0253000000011525,
+          21.961699999999837,
+          1.404000000000451,
+          15.750300000001516
+        ],
+        "executionRead": [
+          2.398299999998926,
+          8.816999999999098,
+          11.182699999999386,
+          13.295799999999872
+        ],
+        "teamRead": [
+          0.6157999999995809,
+          12.621600000000399,
+          15.929400000000896,
+          21.906800000000658
+        ],
+        "waveCompletion": [
+          2502.7438
+        ]
+      },
+      "observations": [
+        {
+          "sample": 0,
+          "atMs": 38,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 1,
+          "atMs": 372,
+          "running": 5,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 2,
+          "atMs": 541,
+          "running": 8,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 3,
+          "atMs": 841,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        }
+      ],
+      "timingBoundary": "Host IPC round-trip; wave completion includes configured fixture wait and is not Rust-only execution time. No DOM measurement."
+    }
+  ],
+  "checks": [
+    "six_synthetic_load_levels_complete_and_respect_configured_limits",
+    "actual_owned_parent_child_process_trees_stop_and_heartbeat_writes_cease",
+    "forced_owned_engine_exit_reaps_tools_restart_preserves_interruption_without_model_replay"
+  ],
+  "scope": {
+    "kind": "short synthetic benchmark",
+    "model": "Local deterministic HTTP Responses fixture; no paid model",
+    "browserEnabled": false,
+    "officeToolsEnabled": false,
+    "desktopEnabled": false,
+    "data": "Fresh isolated directory; generated tasks accumulate during this run. Not a 100,000-event historical-data scenario.",
+    "exclusions": "No four-hour soak, UI latency, cold-cache OS startup, real-provider performance, macOS/Linux or clean-Windows claim.",
+    "percentiles": "Nearest-rank p50/p95; all samples retained, no best-run selection.",
+    "resources": "250ms external process sampling; collector and Node fixture are excluded from engine measurements. CPU normalized over all logical processors."
+  },
+  "startupToEngineReadyMs": 66.90870000000007,
+  "databaseBefore": {
+    "workpilot.sqlite3": 614400,
+    "workpilot.sqlite3-wal": 24752,
+    "workpilot.sqlite3-shm": 32768
+  },
+  "originalScheduler": {
+    "max_running": 4,
+    "revision": 0
+  },
+  "stopping": {
+    "count": 2,
+    "raw": [
+      {
+        "task": "7f7c86f5-eaa7-4280-b742-0dc46e264c98",
+        "processIds": [
+          5760,
+          27944
+        ],
+        "acknowledgementMs": 10.731399999998757,
+        "processExitMs": 32.471300000001065,
+        "terminalStateMs": 66.25940000000082
+      },
+      {
+        "task": "456cf735-1254-4b10-8c2a-11c6de22e5e0",
+        "processIds": [
+          25872,
+          36344
+        ],
+        "acknowledgementMs": 9.753099999999904,
+        "processExitMs": 34.299300000000585,
+        "terminalStateMs": 65.10109999999986
+      }
+    ],
+    "metricsMs": {
+      "cancelAcknowledgement": {
+        "count": 2,
+        "min": 9.753,
+        "p50": 9.753,
+        "p95": 10.731,
+        "max": 10.731,
+        "mean": 10.242
+      },
+      "processTreeExit": {
+        "count": 2,
+        "min": 32.471,
+        "p50": 32.471,
+        "p95": 34.299,
+        "max": 34.299,
+        "mean": 33.385
+      },
+      "interruptedState": {
+        "count": 2,
+        "min": 65.101,
+        "p50": 65.101,
+        "p95": 66.259,
+        "max": 66.259,
+        "mean": 65.68
+      }
+    },
+    "toolStopInitialTargetMs": 2000,
+    "toolStopInitialTargetMet": true,
+    "allOwnedTreesExited": true,
+    "heartbeatWritesStopped": true,
+    "boundary": "Cancellation IPC acknowledgement is separate from a UI click-to-feedback measurement. Tree exit checks both actual PIDs; heartbeat verification is not included in exit timing."
+  },
+  "restart": {
+    "engineKilledByOwnedHandle": true,
+    "treeExitMs": 23.43760000000111,
+    "recoveredTaskState": "interrupted",
+    "modelRequestsAddedAfterRestart": 0,
+    "observationMs": 1000,
+    "controlAfterRestartMs": {
+      "count": 20,
+      "min": 1.897,
+      "p50": 2.477,
+      "p95": 3.625,
+      "max": 5.191,
+      "mean": 2.716
+    },
+    "manualResumeRequired": true
+  },
+  "databaseBeforeShutdown": {
+    "workpilot.sqlite3": 1941504,
+    "workpilot.sqlite3-wal": 1087712,
+    "workpilot.sqlite3-shm": 32768
+  },
+  "dataScale": {
+    "preexistingUserTasks": 0,
+    "createdRootTasks": 39,
+    "createdAssistantTasks": 13,
+    "fixedLeafResponseCharacters": 416
+  },
+  "status": "passed",
+  "elapsedMs": 18421,
+  "eventCounts": {
+    "ready": 2,
+    "command_accepted": 197,
+    "provider_saved": 13,
+    "command_finished": 196,
+    "execution_created": 39,
+    "team_changed": 121,
+    "tool_policy_changed": 39,
+    "execution_queued": 55,
+    "execution_started": 55,
+    "pong": 44,
+    "execution_step_changed": 241,
+    "execution_text": 48,
+    "usage_recorded": 85,
+    "checkpoint_saved": 119,
+    "execution_ended": 54,
+    "task_state_changed": 56,
+    "tool_started": 37,
+    "tool_finished": 34,
+    "tool_approval_requested": 3,
+    "tool_approval_decided": 3,
+    "cancel_requested": 2,
+    "workbench_changed": 3,
+    "bye": 1
+  },
+  "resources": [
+    {
+      "label": "engine:idle",
+      "samples": 7,
+      "processes": 1,
+      "workingSetBytes": {
+        "count": 7,
+        "min": 15929344,
+        "p50": 15933440,
+        "p95": 15933440,
+        "max": 15933440,
+        "mean": 15932854.857
+      },
+      "privateBytes": {
+        "count": 7,
+        "min": 3469312,
+        "p50": 3469312,
+        "p95": 3469312,
+        "max": 3469312,
+        "mean": 3469312
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 6,
+        "min": 0,
+        "p50": 0,
+        "p95": 0,
+        "max": 0,
+        "mean": 0
+      },
+      "handles": {
+        "count": 7,
+        "min": 164,
+        "p50": 164,
+        "p95": 164,
+        "max": 164,
+        "mean": 164
+      },
+      "threads": {
+        "count": 7,
+        "min": 24,
+        "p50": 24,
+        "p95": 24,
+        "max": 24,
+        "mean": 24
+      }
+    },
+    {
+      "label": "engine:tasks-1",
+      "samples": 4,
+      "processes": 1,
+      "workingSetBytes": {
+        "count": 4,
+        "min": 18018304,
+        "p50": 18305024,
+        "p95": 18747392,
+        "max": 18747392,
+        "mean": 18436096
+      },
+      "privateBytes": {
+        "count": 4,
+        "min": 4497408,
+        "p50": 4800512,
+        "p95": 5705728,
+        "max": 5705728,
+        "mean": 5070848
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 3,
+        "min": 0.363,
+        "p50": 0.734,
+        "p95": 1.815,
+        "max": 1.815,
+        "mean": 0.971
+      },
+      "handles": {
+        "count": 4,
+        "min": 178,
+        "p50": 181,
+        "p95": 182,
+        "max": 182,
+        "mean": 180.75
+      },
+      "threads": {
+        "count": 4,
+        "min": 25,
+        "p50": 25,
+        "p95": 25,
+        "max": 25,
+        "mean": 25
+      }
+    },
+    {
+      "label": "engine:tasks-4",
+      "samples": 6,
+      "processes": 1,
+      "workingSetBytes": {
+        "count": 6,
+        "min": 18628608,
+        "p50": 20889600,
+        "p95": 21897216,
+        "max": 21897216,
+        "mean": 20651349.333
+      },
+      "privateBytes": {
+        "count": 6,
+        "min": 5435392,
+        "p50": 7741440,
+        "p95": 8708096,
+        "max": 8708096,
+        "mean": 7504554.667
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 5,
+        "min": 2.993,
+        "p50": 4.083,
+        "p95": 6.658,
+        "max": 6.658,
+        "mean": 4.489
+      },
+      "handles": {
+        "count": 6,
+        "min": 180,
+        "p50": 186,
+        "p95": 188,
+        "max": 188,
+        "mean": 185.667
+      },
+      "threads": {
+        "count": 6,
+        "min": 25,
+        "p50": 25,
+        "p95": 25,
+        "max": 25,
+        "mean": 25
+      }
+    },
+    {
+      "label": "engine:tasks-8",
+      "samples": 4,
+      "processes": 1,
+      "workingSetBytes": {
+        "count": 4,
+        "min": 20963328,
+        "p50": 22716416,
+        "p95": 24403968,
+        "max": 24403968,
+        "mean": 22840320
+      },
+      "privateBytes": {
+        "count": 4,
+        "min": 7745536,
+        "p50": 9670656,
+        "p95": 11276288,
+        "max": 11276288,
+        "mean": 9814016
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 3,
+        "min": 6.265,
+        "p50": 6.949,
+        "p95": 7.028,
+        "max": 7.028,
+        "mean": 6.747
+      },
+      "handles": {
+        "count": 4,
+        "min": 187,
+        "p50": 188,
+        "p95": 191,
+        "max": 191,
+        "mean": 188.75
+      },
+      "threads": {
+        "count": 4,
+        "min": 25,
+        "p50": 25,
+        "p95": 25,
+        "max": 25,
+        "mean": 25
+      }
+    },
+    {
+      "label": "engine:assistants-1",
+      "samples": 6,
+      "processes": 1,
+      "workingSetBytes": {
+        "count": 6,
+        "min": 21143552,
+        "p50": 21405696,
+        "p95": 21716992,
+        "max": 21716992,
+        "mean": 21429589.333
+      },
+      "privateBytes": {
+        "count": 6,
+        "min": 7643136,
+        "p50": 8179712,
+        "p95": 8327168,
+        "max": 8327168,
+        "mean": 8138752
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 5,
+        "min": 1.822,
+        "p50": 2.599,
+        "p95": 5.14,
+        "max": 5.14,
+        "mean": 2.931
+      },
+      "handles": {
+        "count": 6,
+        "min": 184,
+        "p50": 186,
+        "p95": 191,
+        "max": 191,
+        "mean": 187
+      },
+      "threads": {
+        "count": 6,
+        "min": 25,
+        "p50": 25,
+        "p95": 25,
+        "max": 25,
+        "mean": 25
+      }
+    },
+    {
+      "label": "engine:assistants-3",
+      "samples": 5,
+      "processes": 1,
+      "workingSetBytes": {
+        "count": 5,
+        "min": 20914176,
+        "p50": 21131264,
+        "p95": 22126592,
+        "max": 22126592,
+        "mean": 21323776
+      },
+      "privateBytes": {
+        "count": 5,
+        "min": 7524352,
+        "p50": 7798784,
+        "p95": 8642560,
+        "max": 8642560,
+        "mean": 7873331.2
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 4,
+        "min": 3.671,
+        "p50": 3.949,
+        "p95": 4.773,
+        "max": 4.773,
+        "mean": 4.191
+      },
+      "handles": {
+        "count": 5,
+        "min": 182,
+        "p50": 183,
+        "p95": 186,
+        "max": 186,
+        "mean": 183.4
+      },
+      "threads": {
+        "count": 5,
+        "min": 25,
+        "p50": 25,
+        "p95": 25,
+        "max": 25,
+        "mean": 25
+      }
+    },
+    {
+      "label": "engine:assistants-8",
+      "samples": 18,
+      "processes": 1,
+      "workingSetBytes": {
+        "count": 18,
+        "min": 21860352,
+        "p50": 22765568,
+        "p95": 25899008,
+        "max": 25899008,
+        "mean": 22905742.222
+      },
+      "privateBytes": {
+        "count": 18,
+        "min": 8462336,
+        "p50": 8679424,
+        "p95": 12435456,
+        "max": 12435456,
+        "mean": 9074005.333
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 17,
+        "min": 0,
+        "p50": 3.304,
+        "p95": 6.149,
+        "max": 6.149,
+        "mean": 3.123
+      },
+      "handles": {
+        "count": 18,
+        "min": 182,
+        "p50": 191,
+        "p95": 207,
+        "max": 207,
+        "mean": 194.944
+      },
+      "threads": {
+        "count": 18,
+        "min": 25,
+        "p50": 25,
+        "p95": 25,
+        "max": 25,
+        "mean": 25
+      }
+    },
+    {
+      "label": "engine:startup-or-restart",
+      "samples": 5,
+      "processes": 1,
+      "workingSetBytes": {
+        "count": 5,
+        "min": 17240064,
+        "p50": 17379328,
+        "p95": 17383424,
+        "max": 17383424,
+        "mean": 17348198.4
+      },
+      "privateBytes": {
+        "count": 5,
+        "min": 3981312,
+        "p50": 4116480,
+        "p95": 4116480,
+        "max": 4116480,
+        "mean": 4089446.4
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 4,
+        "min": 0,
+        "p50": 0,
+        "p95": 0.732,
+        "max": 0.732,
+        "mean": 0.275
+      },
+      "handles": {
+        "count": 5,
+        "min": 179,
+        "p50": 179,
+        "p95": 179,
+        "max": 179,
+        "mean": 179
+      },
+      "threads": {
+        "count": 5,
+        "min": 25,
+        "p50": 25,
+        "p95": 25,
+        "max": 25,
+        "mean": 25
+      }
+    }
+  ],
+  "harness": {
+    "cpuMicroseconds": {
+      "user": 657000,
+      "system": 469000
+    },
+    "memoryAfter": {
+      "rss": 149176320,
+      "heapTotal": 17928192,
+      "heapUsed": 11690736,
+      "external": 91121365,
+      "arrayBuffers": 87326162
+    }
+  },
+  "databaseAfterShutdown": {
+    "workpilot.sqlite3": 1941504,
+    "workpilot.sqlite3-wal": 1087712,
+    "workpilot.sqlite3-shm": 32768
+  },
+  "command": "node scripts/p13-engine-benchmark.mjs --window-ms 1000 --samples 4 --stop-samples 2 --model-delay-ms 250"
+}

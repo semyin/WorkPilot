@@ -1,0 +1,96 @@
+{
+  "at": "2026-10-04T13:01:20.2024688Z",
+  "version": "0.1.0-alpha.13.2",
+  "status": "implementation_checks_passed_native_visual_pending",
+  "binarySha256": "e75ccf1f67206fe965997cf56facdb3572fb1943f085d38c27d366eda2c0adee",
+  "automatedGroups": 19,
+  "lintChecks": 1,
+  "nativeSubmissionKinds": 4,
+  "reviewedScreenshotCount": 8,
+  "countsDoNotIncludeUnverifiedNativeVisual": true,
+  "notVerified": [
+    "Actual Windows toast visibility",
+    "Actual tray red-dot and menu visibility",
+    "Native OS toast click-to-task callback"
+  ],
+  "reason": "Sky did not expose native shell surfaces; optional user question was unanswered. No product fault inferred.",
+  "scope": "Only whitelisted reports, console logs and synthetic-data screenshots; no test database or credential files copied",
+  "files": [
+    {
+      "path": "notifications-clippy.txt",
+      "sha256": "b751c24700af5f2e287bf98300f2844dfe696f177bf4026ebb55672c49759371"
+    },
+    {
+      "path": "notifications-run.json",
+      "sha256": "db97bfd4c3a4dbd8f663792e9469ac6495882c992579b33903eeeb04045cbeef"
+    },
+    {
+      "path": "notifications-unit.txt",
+      "sha256": "4e1418c9cf163f71cde527878e6282b4c1cd728fb3e26edc1dfea8ac35643c8f"
+    },
+    {
+      "path": "p13-notifications-installed-alpha13.2/console.txt",
+      "sha256": "609c7ad20c055178c566f86040c011f75ddb5800b22f79fc07ec5f25ca2a1806"
+    },
+    {
+      "path": "p13-notifications-installed-alpha13.2/notification-settings-en.png",
+      "sha256": "0721b4a53b214a1bf6bfd802bcba4312809a8a0b5d711d1a326d54026326e9a0"
+    },
+    {
+      "path": "p13-notifications-installed-alpha13.2/notification-settings-zh.png",
+      "sha256": "03480faa759f406e22bbd432cd6f009d51561103bc181a830ee4c3977a06c1eb"
+    },
+    {
+      "path": "p13-notifications-installed-alpha13.2/notifications-inbox-en.png",
+      "sha256": "b2a02e0691b2a9bc80272575434d36c429827d87c0349962f9af05e02713c258"
+    },
+    {
+      "path": "p13-notifications-installed-alpha13.2/notifications-inbox-zh.png",
+      "sha256": "4866b60c536abac6acb094f5558e4d41e31d9b660214ea33bc09f89781fd5a7c"
+    },
+    {
+      "path": "p13-notifications-installed-alpha13.2/report.json",
+      "sha256": "0bc8a3b4602c4185825775d5812e43c56e932d07f30cdb41befdd9bc9c7d32c5"
+    },
+    {
+      "path": "p13-notifications-native-alpha13.2/native-observations.json",
+      "sha256": "0d1b23b601be96a280fb3f923c0fba151ad71357756446583734029e577fcff4"
+    },
+    {
+      "path": "p13-notifications-native-alpha13.2/native-session.json",
+      "sha256": "4c8a381899a29993b0f5d51a3c6905fbabbc5565f0e73f584eadc58e9468d0fc"
+    },
+    {
+      "path": "p13-notifications-native-alpha13.2-user/native-observations.json",
+      "sha256": "d38ee9a22bac115487bae7bafac8f7a6364cb5be418bce9a93d2fbb132b51bee"
+    },
+    {
+      "path": "p13-notifications-native-alpha13.2-user/native-session.json",
+      "sha256": "011e8982472f366304946444a3606f7942b8fd1fbc6bf206fa2da05699fdba2c"
+    },
+    {
+      "path": "p13-notifications-portable-final/console.txt",
+      "sha256": "ca6f7b5df93aa7eccff6549a63469cb862ccf1fc56340bd307fddb8b64726d7c"
+    },
+    {
+      "path": "p13-notifications-portable-final/notification-settings-en.png",
+      "sha256": "5908a010e4b32f1918faa765ccd0c4d44ac43a5f7f378864104fd464e16086d3"
+    },
+    {
+      "path": "p13-notifications-portable-final/notification-settings-zh.png",
+      "sha256": "921d0f4d0d4c0b3cd1b15b8056854f5d882265b65c197ec5e09fc5440970fddd"
+    },
+    {
+      "path": "p13-notifications-portable-final/notifications-inbox-en.png",
+      "sha256": "e6dfc79d60d1bbae1ee5587ebbb02a1e4bad12daa5b6cf8dd6c7f1f9b9a46ef1"
+    },
+    {
+      "path": "p13-notifications-portable-final/notifications-inbox-zh.png",
+      "sha256": "5d2b0fb7ae586a78d37068b1fe65e20f97d5a8faa966d50d592dedd4202e464e"
+    },
+    {
+      "path": "p13-notifications-portable-final/report.json",
+      "sha256": "89be022cb0cfb7c6b759058e0d40e21cca032105de2fa2f2cd3bd8b698dadccb"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "name": "notifications-portable-alpha13.4-r3",
+    "status": "passed",
+    "checks": 7,
+    "binarySha256": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+    "binarySha256s": {
+      "desktop": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+      "engine": "a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb"
+    },
+    "report": "notifications/portable-alpha13.4-r3/report.json",
+    "command": "$env:WORKPILOT_DESKTOP_BINARY = 'D:/workspace/kplocker/WorkPilot/artifacts/workpilot-p13-candidate-2026-10-04-r3/preview/workpilot-desktop.exe'\n$env:WORKPILOT_TEST_OUTPUT = 'D:/workspace/kplocker/WorkPilot/.test-results/p13-notifications-portable-alpha13.4-r3'\nnode scripts/notifications-desktop-test.mjs",
+    "scope": "Final native portable package, own fresh data and local fixture; actual runtime team_waiting followed by automatic completion creates no Input notification; native OS visibility is not asserted"
+  },
+  {
+    "name": "notifications-rust-unit-alpha13.4",
+    "status": "passed",
+    "checks": 8,
+    "binarySha256": "19aac8cdbfc5e90b4f1e3a681516100b8b20bf4f7ec7e0904aba57a69db2ab65",
+    "report": "notifications/notifications-unit-alpha13.4.txt",
+    "command": "node scripts/cargo.mjs test -p workpilot-desktop notifications:: --locked",
+    "scope": "Current frozen source. 8 passed, 0 ignored, 1 unrelated filtered"
+  },
+  {
+    "name": "notifications-settings-controlled-races-alpha13.4",
+    "status": "passed",
+    "checks": 4,
+    "report": "notifications/settings-race/regression-report.json",
+    "command": "node --experimental-vm-modules scripts/notifications-settings-test.mjs",
+    "scope": "Actual TSX compiled with controlled pure hooks and IPC; no native UI or OS setting changes; late success/error, acknowledged save versus failed read, reentry, and unmount"
+  },
+  {
+    "name": "notifications-installed-alpha13.4-r3",
+    "status": "passed",
+    "checks": 7,
+    "binarySha256": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+    "binarySha256s": {
+      "desktop": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+      "engine": "a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb"
+    },
+    "report": "notifications/installed-alpha13.4-r3/report.json",
+    "command": "$env:WORKPILOT_DESKTOP_BINARY = 'D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-9d18967072c84d9994894b7cf535f15e\\中文 安装\\workpilot-desktop.exe'\n$env:WORKPILOT_TEST_OUTPUT = 'D:/workspace/kplocker/WorkPilot/.test-results/p13-notifications-installed-alpha13.4-r3'\nnode scripts/notifications-desktop-test.mjs --installed",
+    "scope": "Final registered installed binary; own fresh test data and local model; real automatic team wait produces no human-input notification; normal shutdown"
+  },
+  {
+    "name": "notifications-native-background-submission-alpha13.4-r3",
+    "status": "passed",
+    "checks": 4,
+    "binarySha256": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+    "binarySha256s": {
+      "desktop": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+      "engine": "a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb"
+    },
+    "report": "notifications/native-alpha13.4-r3/native-observations.json",
+    "command": "$env:WORKPILOT_DESKTOP_BINARY = 'D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-9d18967072c84d9994894b7cf535f15e\\中文 安装\\workpilot-desktop.exe'\n$env:WORKPILOT_TEST_OUTPUT = 'D:/workspace/kplocker/WorkPilot/.test-results/p13-notifications-native-alpha13.4-r3'\nnode scripts/notifications-native-session.mjs\n# Hide the owned test window through its observed button; stdin approval, input, complete, failed, snapshot, stop at intervals above 2 seconds",
+    "scope": "Four submission types only. Actual OS display, tray visibility and click navigation are not claimed"
+  }
+]

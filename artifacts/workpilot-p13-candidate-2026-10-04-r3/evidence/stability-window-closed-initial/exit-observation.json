@@ -1,0 +1,68 @@
+{
+  "at": "2026-10-04T14:17:02.115Z",
+  "status": "failed_not_four_hours",
+  "continuousMs": 887454,
+  "cycles": 15,
+  "samples": 4678,
+  "verifiedNoOwnedResidualIdentities": 82,
+  "lastObservedOwnProcesses": [
+    {
+      "role": "ui-webview",
+      "pid": 26212,
+      "startedAtMs": 1791122285686,
+      "lastObservedAt": "2026-10-04T14:12:58.265Z"
+    },
+    {
+      "role": "ui-webview",
+      "pid": 44808,
+      "startedAtMs": 1791122285681,
+      "lastObservedAt": "2026-10-04T14:12:58.279Z"
+    },
+    {
+      "role": "ui-webview",
+      "pid": 42308,
+      "startedAtMs": 1791122285718,
+      "lastObservedAt": "2026-10-04T14:12:58.3Z"
+    },
+    {
+      "role": "ui-webview",
+      "pid": 30864,
+      "startedAtMs": 1791122285536,
+      "lastObservedAt": "2026-10-04T14:12:58.31Z"
+    },
+    {
+      "role": "ui-webview",
+      "pid": 34944,
+      "startedAtMs": 1791122285502,
+      "lastObservedAt": "2026-10-04T14:12:58.32Z"
+    },
+    {
+      "role": "desktop",
+      "pid": 15240,
+      "startedAtMs": 1791122285363,
+      "lastObservedAt": "2026-10-04T14:12:58.331Z"
+    },
+    {
+      "role": "ui-webview",
+      "pid": 5912,
+      "startedAtMs": 1791122285843,
+      "lastObservedAt": "2026-10-04T14:12:58.342Z"
+    },
+    {
+      "role": "engine",
+      "pid": 26032,
+      "startedAtMs": 1791122285387,
+      "lastObservedAt": "2026-10-04T14:12:58.351Z"
+    }
+  ],
+  "installedSmoke": {
+    "start": "2026-10-04T14:12:08.64Z",
+    "reportWrittenAt": "2026-10-04T14:12:24.452Z",
+    "source": ".local/p13-installed-r3-desktop.txt"
+  },
+  "lastSuccessfulHeartbeat": "2026-10-04T14:12:55.28Z",
+  "observation": "Next native IPC heartbeat found page/context/browser closed; final cleanup observed every recorded owned identity gone. The desktop test had completed over30seconds earlier while this run was still responding. No uninstall had started. No relevant Windows Application Error event was found in the initial read-only event check.",
+  "cause": "unknown_pending_independent_investigation",
+  "boundary": "Do not infer global shutdown cause, user action, product fault or uninstall side effect from timing alone. No previous partial span will count toward a later continuous run. Original user PIDs34440/19464 were absent on subsequent query; no restart or kill was issued by this archive.",
+  "engineShutdownObservation": "Owned database ends with engine bye at 14:12:59.230Z, after ping14:12:54.536Z. Command::Shutdown and stdin EOF both bypass normal command persistence and share the orderly final bye path, so missing host-shutdown event cannot distinguish these causes. See database-tail-readonly.json."
+}

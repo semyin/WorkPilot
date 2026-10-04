@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-04T12:46:36.501Z",
+  "platform": "win32",
+  "binarySha256": "e75ccf1f67206fe965997cf56facdb3572fb1943f085d38c27d366eda2c0adee",
+  "service": "Real Windows desktop and sidecar; synthetic local model; only newly created data/project directories",
+  "systemScope": "Installed executable: Windows API submission checked; visible popup and activation require separate native shell evidence",
+  "checks": [
+    "four_real_terminal_task_events_foreground_suppression_and_metadata_only_records",
+    "notification_opens_exact_task_and_project_without_approval_or_resuming_execution",
+    "event_history_reads_and_webview_reload_do_not_duplicate_and_auto_approved_tool_does_not_request_human_attention",
+    "settings_switches_and_background_windows_api_submission",
+    "restart_preserves_read_state_without_resending_and_deleted_unknown_targets_do_not_run_work",
+    "real_readonly_settings_failure_preserves_bytes_and_bilingual_controls_and_test_notification_result"
+  ],
+  "screenshots": [
+    "notifications-inbox-zh.png",
+    "notification-settings-zh.png",
+    "notifications-inbox-en.png",
+    "notification-settings-en.png"
+  ],
+  "status": "passed"
+}

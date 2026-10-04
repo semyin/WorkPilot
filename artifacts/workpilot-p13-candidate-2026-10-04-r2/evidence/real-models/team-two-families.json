@@ -1,0 +1,1599 @@
+{
+  "at": "2026-10-04T13:07:41.636Z",
+  "synthetic": false,
+  "platform": "win32",
+  "binarySha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+  "service": "User-authorized Alibaba Cloud workspace",
+  "servicePaths": {
+    "chat_completions": "/compatible-mode/v1/chat/completions",
+    "responses": "/compatible-mode/v1/responses",
+    "messages": "/apps/anthropic/v1/messages"
+  },
+  "models": [
+    {
+      "id": "p13-qwen-chat",
+      "family": "Qwen",
+      "model": "qwen3.8-flash",
+      "protocol": "chat_completions",
+      "modes": [
+        "text",
+        "tools",
+        "image"
+      ]
+    },
+    {
+      "id": "p13-qwen-responses",
+      "family": "Qwen",
+      "model": "qwen3.8-flash",
+      "protocol": "responses",
+      "modes": [
+        "text",
+        "tools",
+        "image"
+      ]
+    },
+    {
+      "id": "p13-qwen-messages",
+      "family": "Qwen",
+      "model": "qwen3.8-flash",
+      "protocol": "messages",
+      "modes": [
+        "text",
+        "tools",
+        "image"
+      ]
+    },
+    {
+      "id": "p13-glm-chat",
+      "family": "GLM",
+      "model": "glm-5.3",
+      "protocol": "chat_completions",
+      "modes": [
+        "tools"
+      ]
+    },
+    {
+      "id": "p13-deepseek-chat",
+      "family": "DeepSeek",
+      "model": "deepseek-v4.1-flash",
+      "protocol": "chat_completions",
+      "modes": [
+        "tools"
+      ]
+    }
+  ],
+  "mode": "explicit_team_only_retest",
+  "expectedChecks": 1,
+  "previousEvidence": {
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-real-format-alpha13.3\\run-AasLey\\report.json",
+    "sha256": "52c73688db8995494ee76d42c41c9de521dfb54a4d4137678ad704b6e4e3b3dd",
+    "originalStatus": "failed",
+    "note": "Prior probe evidence only. This new workflow has new tasks, files and credentials; its result is not merged with the earlier sample.",
+    "capabilityConfiguration": "Tool capability is explicitly set with source=user based on the earlier recorded real probe. No probe timestamp or successful probe is fabricated in the new directory."
+  },
+  "checks": [
+    {
+      "id": "team:three_members_distinct_model_families",
+      "at": "2026-10-04T13:07:42.070Z",
+      "state": "passed",
+      "taskId": "52b11046-fb0c-4931-9c79-4a9e6f41e617",
+      "assignments": {
+        "alpha": {
+          "id": "p13-qwen-chat",
+          "family": "Qwen",
+          "model": "qwen3.8-flash",
+          "protocol": "chat_completions",
+          "modes": [
+            "text",
+            "tools",
+            "image"
+          ]
+        },
+        "beta": {
+          "id": "p13-deepseek-chat",
+          "family": "DeepSeek",
+          "model": "deepseek-v4.1-flash",
+          "protocol": "chat_completions",
+          "modes": [
+            "tools"
+          ]
+        },
+        "join": {
+          "id": "p13-qwen-responses",
+          "family": "Qwen",
+          "model": "qwen3.8-flash",
+          "protocol": "responses",
+          "modes": [
+            "text",
+            "tools",
+            "image"
+          ]
+        }
+      },
+      "permission": "full_access",
+      "commandsEnabled": false,
+      "promptRevision": "json-null-v2",
+      "alphaFileMode": "create_new",
+      "initialAlphaFile": null,
+      "midRunHumanInstructions": 0,
+      "automaticModelFallbacks": 0,
+      "taskState": "completed",
+      "parentCalls": [
+        {
+          "stepId": "e5954e66-baf9-4813-b515-7d166100c00c",
+          "state": "completed",
+          "startedAtMs": 1791119262218,
+          "endedAtMs": 1791119269821,
+          "requestedModel": "qwen3.8-flash",
+          "protocol": "responses",
+          "requestedFamily": "Qwen",
+          "actualModel": "qwen3.8-flash",
+          "finishReason": "tool_calls",
+          "usage": {
+            "cost_microunits": null,
+            "currency": null,
+            "input_tokens": 6028,
+            "output_tokens": 446
+          }
+        },
+        {
+          "stepId": "b0aea8f4-1a48-44c7-af91-d67d02a7c9ba",
+          "state": "completed",
+          "startedAtMs": 1791119269867,
+          "endedAtMs": 1791119287667,
+          "requestedModel": "qwen3.8-flash",
+          "protocol": "responses",
+          "requestedFamily": "Qwen",
+          "actualModel": "qwen3.8-flash",
+          "finishReason": "tool_calls",
+          "usage": {
+            "cost_microunits": null,
+            "currency": null,
+            "input_tokens": 6540,
+            "output_tokens": 1163
+          }
+        },
+        {
+          "stepId": "ed359f90-fea4-4d70-845d-6052c4b08552",
+          "state": "completed",
+          "startedAtMs": 1791119287746,
+          "endedAtMs": 1791119290972,
+          "requestedModel": "qwen3.8-flash",
+          "protocol": "responses",
+          "requestedFamily": "Qwen",
+          "actualModel": "qwen3.8-flash",
+          "finishReason": "tool_calls",
+          "usage": {
+            "cost_microunits": null,
+            "currency": null,
+            "input_tokens": 9758,
+            "output_tokens": 176
+          }
+        },
+        {
+          "stepId": "ea53d552-8adf-4288-bc8c-88232c53b3c3",
+          "state": "completed",
+          "startedAtMs": 1791119337300,
+          "endedAtMs": 1791119339538,
+          "requestedModel": "qwen3.8-flash",
+          "protocol": "responses",
+          "requestedFamily": "Qwen",
+          "actualModel": "qwen3.8-flash",
+          "finishReason": "tool_calls",
+          "usage": {
+            "cost_microunits": null,
+            "currency": null,
+            "input_tokens": 12098,
+            "output_tokens": 84
+          }
+        },
+        {
+          "stepId": "c05da770-3791-4caf-b174-33acce04fbe1",
+          "state": "completed",
+          "startedAtMs": 1791119339594,
+          "endedAtMs": 1791119344063,
+          "requestedModel": "qwen3.8-flash",
+          "protocol": "responses",
+          "requestedFamily": "Qwen",
+          "actualModel": "qwen3.8-flash",
+          "finishReason": "tool_calls",
+          "usage": {
+            "cost_microunits": null,
+            "currency": null,
+            "input_tokens": 13396,
+            "output_tokens": 172
+          }
+        },
+        {
+          "stepId": "18a35f6f-6efb-4c02-8d86-5c8e34e5c33b",
+          "state": "completed",
+          "startedAtMs": 1791119344117,
+          "endedAtMs": 1791119346576,
+          "requestedModel": "qwen3.8-flash",
+          "protocol": "responses",
+          "requestedFamily": "Qwen",
+          "actualModel": "qwen3.8-flash",
+          "finishReason": "tool_calls",
+          "usage": {
+            "cost_microunits": null,
+            "currency": null,
+            "input_tokens": 14593,
+            "output_tokens": 86
+          }
+        },
+        {
+          "stepId": "c6785461-db08-4706-97aa-8a7f5008b365",
+          "state": "completed",
+          "startedAtMs": 1791119346628,
+          "endedAtMs": 1791119351547,
+          "requestedModel": "qwen3.8-flash",
+          "protocol": "responses",
+          "requestedFamily": "Qwen",
+          "actualModel": "qwen3.8-flash",
+          "finishReason": "tool_calls",
+          "usage": {
+            "cost_microunits": null,
+            "currency": null,
+            "input_tokens": 16459,
+            "output_tokens": 262
+          }
+        },
+        {
+          "stepId": "feb29e51-972f-42ba-bcb2-fb6e30f4a9c9",
+          "state": "completed",
+          "startedAtMs": 1791119351601,
+          "endedAtMs": 1791119357258,
+          "requestedModel": "qwen3.8-flash",
+          "protocol": "responses",
+          "requestedFamily": "Qwen",
+          "actualModel": "qwen3.8-flash",
+          "finishReason": "tool_calls",
+          "usage": {
+            "cost_microunits": null,
+            "currency": null,
+            "input_tokens": 17176,
+            "output_tokens": 310
+          }
+        },
+        {
+          "stepId": "0c5ce126-64b3-45f5-bb14-ad23d4658c86",
+          "state": "completed",
+          "startedAtMs": 1791119357312,
+          "endedAtMs": 1791119361385,
+          "requestedModel": "qwen3.8-flash",
+          "protocol": "responses",
+          "requestedFamily": "Qwen",
+          "actualModel": "qwen3.8-flash",
+          "finishReason": "tool_calls",
+          "usage": {
+            "cost_microunits": null,
+            "currency": null,
+            "input_tokens": 17550,
+            "output_tokens": 211
+          }
+        },
+        {
+          "stepId": "a5cfcb63-ef94-4a31-9e3b-271412e01459",
+          "state": "completed",
+          "startedAtMs": 1791119361441,
+          "endedAtMs": 1791119365994,
+          "requestedModel": "qwen3.8-flash",
+          "protocol": "responses",
+          "requestedFamily": "Qwen",
+          "actualModel": "qwen3.8-flash",
+          "finishReason": "tool_calls",
+          "usage": {
+            "cost_microunits": null,
+            "currency": null,
+            "input_tokens": 17790,
+            "output_tokens": 284
+          }
+        },
+        {
+          "stepId": "b3d50148-d86e-4268-9689-5f874307acd5",
+          "state": "completed",
+          "startedAtMs": 1791119366064,
+          "endedAtMs": 1791119374705,
+          "requestedModel": "qwen3.8-flash",
+          "protocol": "responses",
+          "requestedFamily": "Qwen",
+          "actualModel": "qwen3.8-flash",
+          "finishReason": "tool_calls",
+          "usage": {
+            "cost_microunits": null,
+            "currency": null,
+            "input_tokens": 18134,
+            "output_tokens": 390
+          }
+        },
+        {
+          "stepId": "1e28cb19-9c6e-49dd-9011-0990f2ce285e",
+          "state": "completed",
+          "startedAtMs": 1791119374758,
+          "endedAtMs": 1791119379938,
+          "requestedModel": "qwen3.8-flash",
+          "protocol": "responses",
+          "requestedFamily": "Qwen",
+          "actualModel": "qwen3.8-flash",
+          "finishReason": "tool_calls",
+          "usage": {
+            "cost_microunits": null,
+            "currency": null,
+            "input_tokens": 18588,
+            "output_tokens": 307
+          }
+        },
+        {
+          "stepId": "909bb375-0fc7-47bb-860c-733abb32a405",
+          "state": "completed",
+          "startedAtMs": 1791119380107,
+          "endedAtMs": 1791119395467,
+          "requestedModel": "qwen3.8-flash",
+          "protocol": "responses",
+          "requestedFamily": "Qwen",
+          "actualModel": "qwen3.8-flash",
+          "finishReason": "stop",
+          "usage": {
+            "cost_microunits": null,
+            "currency": null,
+            "input_tokens": 19561,
+            "output_tokens": 1091
+          }
+        }
+      ],
+      "parentText": "真实三模型协作验收已完成，全部操作限定在授权测试目录，未使用命令、浏览器、扩展或 update_plan，未新建额外成员。\n\n## 团队结构（一次 delegate_agents 恰好三个成员）\n| 成员 | profile / 协议 | 模型 | 依赖 | 产出 | 复核 |\n|---|---|---|---|---|---|\n| alpha | p13-qwen-chat（chat_completions） | qwen3.8-flash | 无 | a.txt | accepted |\n| beta | p13-deepseek-chat（chat_completions） | deepseek-v4.1-flash | 无 | b.txt | accepted |\n| join | p13-qwen-responses（responses） | qwen3.8-flash | alpha、beta | answer.txt | accepted |\n\n三个 goal 均完整写入了各自职责，以及本轮澄清的参数规则：新文件的 `expected_sha256` 必须是 JSON 的 `null` 值，不能是字符串 `\"null\"`、不能是空字符串、不能是自算 hash；例子 `write_file({\"path\":\"example.txt\",\"text\":\"你的计算结果\",\"expected_sha256\":null})` 仅作参数说明，实际要写自己被分配的文件与真实结果；路径不带 `./`；失败须保留错误并停止，不得代写他人文件、不得声称成功；不得再派人。\n\n## 三个成果的真实来源（主任务亲自回读校验）\n- **来源 A — alpha（qwen chat_completions）**：`values-a.json` = `{\"values\":[13,29]}`（sha256 `838f47ea…dbb0b89`）→ 13+29=**42** → 新建 `a.txt`，内容 `42`，2 字节无换行，sha256 `73475cb4…1b3a8049`，已回读并 register_artifact。\n- **来源 B — beta（deepseek chat_completions）**：`values-b.json` = `{\"values\":[17,31]}`（sha256 `3e7ea419…7a276f3b`）→ 17+31=**48** → 新建 `b.txt`，内容 `48`，2 字节无换行，sha256 `98010bd9…c34ffd71`，已回读并登记。\n- **来源 C — join（qwen responses 协议）**：先 `list_directory` 确认 a.txt/b.txt 已落盘，读得 42 与 48 → 42+48=**90** → 新建 `answer.txt`，内容 `90`，2 字节无换行，sha256 `69f59c27…2ce63763`，已回读并登记。\n\n**主任务独立验证**：我自行 read_file 了 values-a.json、values-b.json、a.txt、b.txt、answer.txt，磁盘哈希与三个成员报告一致，数学链路 13+29=42、17+31=48、42+48=90 全部成立。\n\n## 需要如实记录的一次真实失败（未掩盖）\njoin 的第一次 write_file（step `399f589a`）被参数校验拒绝：`expected_sha256` 实际被传成空字符串，返回 `executed:false`、`no file was written`。我单独 inspect 该步骤确认了原始错误文本。成员按规则以不带引号的 JSON `null` 重试后成功创建 answer.txt，并在报告中保留了这次失败原文。alpha 与 beta 的写入一次成功，无失败步骤。\n\n## 结论\n最终答案：**answer.txt = 90**。三个成果分别来自 qwen chat_completions（a.txt=42）、deepseek chat_completions（b.txt=48）、qwen responses（answer.txt=90，依赖前两者交付），三种协议均完成真实工具调用与磁盘落盘。局限说明：平台未回报各成员的费用数据（cost_microunits 为 null），因此无法给出 token 成本结论；成员自述中未被文件证据覆盖的部分（如「未越界」）我通过磁盘现存文件清单与步骤链交叉核对，未发现任何多余文件。",
+      "members": [
+        {
+          "task_id": "996a778b-6a81-4554-acb7-c1746f11051a",
+          "agent_id": "a1cc7649-272b-4486-90ea-d3cab387d996",
+          "parent_task_id": "52b11046-fb0c-4931-9c79-4a9e6f41e617",
+          "root_task_id": "52b11046-fb0c-4931-9c79-4a9e6f41e617",
+          "key": "alpha",
+          "role": "sum a",
+          "goal": "Authorized test directory only; you are the member 'alpha'. 1) read_file values-a.json (bare relative file name, no \"./\") and add up all numbers in its \"values\" array. 2) Use write_file to CREATE a new file named a.txt containing ONLY the decimal total: digits (and minus sign/decimal point if needed), no newline, no spaces, no unit, no explanation. 3) Tool-parameter rule you must follow: for a brand-new file the expected_sha256 argument must be the JSON null value — NOT the string \"null\", NOT an empty string, NOT a hash you computed yourself. Illustrative example of the argument shape only (do not write example.txt): write_file({\"path\":\"example.txt\",\"text\":\"你的计算结果\",\"expected_sha256\":null}). In reality you must write your own assigned file a.txt with your real computed result. 4) read_file a.txt to verify what is on disk, then register_artifact for a.txt. 5) Report the exact sum and the exact file contents. Restrictions: do not create any other files, do not touch values-b.json/b.txt/answer.txt, do not delegate further (you must not call delegate_agents or any sub-agent tool), do not use commands, browser, extensions or update_plan. If write_file still fails, keep the exact error text, stop and report the failure honestly — do not write another member's file and do not claim success.",
+          "profile_id": "p13-qwen-chat",
+          "depth": 1,
+          "replaces_id": null,
+          "superseded_by": null,
+          "replacement_reason": null,
+          "attempt": 0,
+          "state": "completed",
+          "pending_start": false,
+          "depends_on": [],
+          "report": {
+            "object_id": "d3af66b1f5cc8339aaed6facaf68c2d5b560d7b8b1f1d5767167155f47f82225",
+            "bytes": 6962,
+            "media_type": "application/json"
+          },
+          "review": "accepted",
+          "review_reason": "alpha 真实交付验证通过：读 values-a.json {\"values\":[13,29]}，13+29=42；write_file 以 JSON null 新建 a.txt；回读 2 字节内容 \"42\" 无换行，sha256 73475cb4…8049；register_artifact 完成，且步骤链（read→write→read→register）齐全、无越界文件、未再派人。",
+          "diagnostic": null,
+          "calls": [
+            {
+              "stepId": "836559c4-63f3-4639-809d-20cdf7ee92d6",
+              "state": "completed",
+              "startedAtMs": 1791119287759,
+              "endedAtMs": 1791119290305,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "chat_completions",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 6800,
+                "output_tokens": 76
+              }
+            },
+            {
+              "stepId": "1e29d370-273e-4206-a20f-df4aac51ecd8",
+              "state": "completed",
+              "startedAtMs": 1791119290346,
+              "endedAtMs": 1791119292813,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "chat_completions",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 7022,
+                "output_tokens": 91
+              }
+            },
+            {
+              "stepId": "932b3e6a-fe3a-4ea1-9a0f-07c380da5395",
+              "state": "completed",
+              "startedAtMs": 1791119292872,
+              "endedAtMs": 1791119296173,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "chat_completions",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 7241,
+                "output_tokens": 81
+              }
+            },
+            {
+              "stepId": "5ab601f6-c093-4dc3-977c-27093789342c",
+              "state": "completed",
+              "startedAtMs": 1791119296232,
+              "endedAtMs": 1791119298212,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "chat_completions",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 7460,
+                "output_tokens": 38
+              }
+            },
+            {
+              "stepId": "56bcca86-3a39-4e47-a2cd-4b0de7f3b44a",
+              "state": "completed",
+              "startedAtMs": 1791119298267,
+              "endedAtMs": 1791119307489,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "chat_completions",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "stop",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 7625,
+                "output_tokens": 475
+              }
+            }
+          ],
+          "delivery": {
+            "agent_id": "a1cc7649-272b-4486-90ea-d3cab387d996",
+            "artifacts": [
+              {
+                "content": {
+                  "bytes": 2,
+                  "media_type": "text/plain; charset=utf-8",
+                  "object_id": "73475cb40a568e8da8a045ced110137e159f890ac4da883b6b17dc651b3a8049"
+                },
+                "path": "a.txt",
+                "revision_id": "0e9488a7-d670-4be8-9e2d-5678fc7314fe"
+              }
+            ],
+            "diagnostic": null,
+            "result": {
+              "bytes": 1385,
+              "media_type": "application/json",
+              "object_id": "1eb4261e952449a287a2268bb0e5c810b365ccadf8214a76dd31d37333cee92f"
+            },
+            "run_id": "a51eb26d-d459-4eea-94cd-cd2df350254b",
+            "state": "completed",
+            "steps": [
+              {
+                "ended_at_ms": 1791119290305,
+                "id": "836559c4-63f3-4639-809d-20cdf7ee92d6",
+                "input": {
+                  "bytes": 26119,
+                  "media_type": "application/json",
+                  "object_id": "78034f107dc8e1d6821a539951d2ddc5187894945107007bb7f95096fac57408"
+                },
+                "kind": "model",
+                "name": "model",
+                "ordinal": 1,
+                "output": {
+                  "bytes": 970,
+                  "media_type": "application/json",
+                  "object_id": "2e58b3d897209a60a348bd532d17af5e385fb993930d75f7a883e5cbc16021b8"
+                },
+                "provider_call_id": null,
+                "run_id": "a51eb26d-d459-4eea-94cd-cd2df350254b",
+                "started_at_ms": 1791119287759,
+                "state": "completed",
+                "tool_call_id": null
+              },
+              {
+                "ended_at_ms": 1791119290332,
+                "id": "397abec8-647d-48e8-8773-4cdf11849693",
+                "input": {
+                  "bytes": 143,
+                  "media_type": "application/json",
+                  "object_id": "f298ac0c55c78f9267b9535f444621e3d357740f8ac54d0b76efbb839282513f"
+                },
+                "kind": "tool",
+                "name": "read_file",
+                "ordinal": 2,
+                "output": {
+                  "bytes": 342,
+                  "media_type": "application/json",
+                  "object_id": "4ad4c12e1fa777a3ce1338d9b7efce1e52fd40ba4243ee7bf5f1090a6c3db08b"
+                },
+                "provider_call_id": "call_b0fd4003b2d746549eb34dca",
+                "run_id": "a51eb26d-d459-4eea-94cd-cd2df350254b",
+                "started_at_ms": 1791119290319,
+                "state": "completed",
+                "tool_call_id": "62852b8c-4875-4551-ac1f-6e82c8861ebf"
+              },
+              {
+                "ended_at_ms": 1791119292813,
+                "id": "1e29d370-273e-4206-a20f-df4aac51ecd8",
+                "input": {
+                  "bytes": 26940,
+                  "media_type": "application/json",
+                  "object_id": "451e0ee6dcc1d8bd493d63399b301fb97382c40b0f54c46b787e858ecd102121"
+                },
+                "kind": "model",
+                "name": "model",
+                "ordinal": 3,
+                "output": {
+                  "bytes": 992,
+                  "media_type": "application/json",
+                  "object_id": "ed7b0dc84063a3333b8e47eedf2dde70ba3c208126a13591224320abc68a4d48"
+                },
+                "provider_call_id": null,
+                "run_id": "a51eb26d-d459-4eea-94cd-cd2df350254b",
+                "started_at_ms": 1791119290346,
+                "state": "completed",
+                "tool_call_id": null
+              },
+              {
+                "ended_at_ms": 1791119292858,
+                "id": "d725d95a-0c43-41fd-83cd-3426b6da584d",
+                "input": {
+                  "bytes": 146,
+                  "media_type": "application/json",
+                  "object_id": "7b47b60e7ca2ae26a5654258de97107af86f4094a32934930ef417c3defa5e05"
+                },
+                "kind": "tool",
+                "name": "write_file",
+                "ordinal": 4,
+                "output": {
+                  "bytes": 280,
+                  "media_type": "application/json",
+                  "object_id": "3462a2a08d4496b8a3d2fb66a9467b134276d1fe8a51eeb571576c38e2b65667"
+                },
+                "provider_call_id": "call_9086caf598c44e92b6ad61bf",
+                "run_id": "a51eb26d-d459-4eea-94cd-cd2df350254b",
+                "started_at_ms": 1791119292835,
+                "state": "completed",
+                "tool_call_id": "ccbfad2b-dd3e-4b8e-a821-0af396b8fc50"
+              },
+              {
+                "ended_at_ms": 1791119296173,
+                "id": "932b3e6a-fe3a-4ea1-9a0f-07c380da5395",
+                "input": {
+                  "bytes": 27716,
+                  "media_type": "application/json",
+                  "object_id": "d9f563cb64e87dd01e21ecc02eaf4e694016b9858539523868d03b6a2c69047f"
+                },
+                "kind": "model",
+                "name": "model",
+                "ordinal": 5,
+                "output": {
+                  "bytes": 968,
+                  "media_type": "application/json",
+                  "object_id": "fda659c28563f20b2ec178a0bcafa098838da02c9f7a20a66934c5b6ff3039f5"
+                },
+                "provider_call_id": null,
+                "run_id": "a51eb26d-d459-4eea-94cd-cd2df350254b",
+                "started_at_ms": 1791119292872,
+                "state": "completed",
+                "tool_call_id": null
+              },
+              {
+                "ended_at_ms": 1791119296204,
+                "id": "fbeca164-299f-4130-9b95-41220891dab7",
+                "input": {
+                  "bytes": 135,
+                  "media_type": "application/json",
+                  "object_id": "7ab016a96a07bad05718e7993f28a2a95872d11fd17c0ef1768274b21ba10009"
+                },
+                "kind": "tool",
+                "name": "read_file",
+                "ordinal": 6,
+                "output": {
+                  "bytes": 310,
+                  "media_type": "application/json",
+                  "object_id": "ffa5853750a8451bdf14c52fba1fe6b4337a335a5bbda58340f00c6c0122880a"
+                },
+                "provider_call_id": "call_c9076c4b6ff04a8583f38fe7",
+                "run_id": "a51eb26d-d459-4eea-94cd-cd2df350254b",
+                "started_at_ms": 1791119296192,
+                "state": "completed",
+                "tool_call_id": "60c89eed-8e26-4655-bc4b-ab6bd977aa0a"
+              },
+              {
+                "ended_at_ms": 1791119298212,
+                "id": "5ab601f6-c093-4dc3-977c-27093789342c",
+                "input": {
+                  "bytes": 28509,
+                  "media_type": "application/json",
+                  "object_id": "54d908c3d2fe436fb64740143c7cd346cb41d5497b6d2ca521e489e0fcb2be6a"
+                },
+                "kind": "model",
+                "name": "model",
+                "ordinal": 7,
+                "output": {
+                  "bytes": 862,
+                  "media_type": "application/json",
+                  "object_id": "6d0b13e7894ac0af4e494d98bd9039a4b44deae11f841fca1a034c6832aac62f"
+                },
+                "provider_call_id": null,
+                "run_id": "a51eb26d-d459-4eea-94cd-cd2df350254b",
+                "started_at_ms": 1791119296232,
+                "state": "completed",
+                "tool_call_id": null
+              },
+              {
+                "ended_at_ms": 1791119298251,
+                "id": "fc11fde2-1d77-4134-bca6-5604b2a28e32",
+                "input": {
+                  "bytes": 118,
+                  "media_type": "application/json",
+                  "object_id": "aab931e3ea1b2a0cef867cb4736a1926ed422f0652701aaa9e09430b13e17523"
+                },
+                "kind": "tool",
+                "name": "register_artifact",
+                "ordinal": 8,
+                "output": {
+                  "bytes": 277,
+                  "media_type": "application/json",
+                  "object_id": "6f5d8c630d23f90ad93358888ba1db79005ccd922bd6c51c6212dd54cddda1b0"
+                },
+                "provider_call_id": "call_306dc7c26a6145d8a362c64d",
+                "run_id": "a51eb26d-d459-4eea-94cd-cd2df350254b",
+                "started_at_ms": 1791119298235,
+                "state": "completed",
+                "tool_call_id": "7f701954-3c9d-4b80-8281-444b030dffb2"
+              },
+              {
+                "ended_at_ms": 1791119307489,
+                "id": "56bcca86-3a39-4e47-a2cd-4b0de7f3b44a",
+                "input": {
+                  "bytes": 29181,
+                  "media_type": "application/json",
+                  "object_id": "a3c98e86fea58ac56ae6ee10f0888593d4da8ca89b56b537338d6b66224148d9"
+                },
+                "kind": "model",
+                "name": "model",
+                "ordinal": 9,
+                "output": {
+                  "bytes": 3289,
+                  "media_type": "application/json",
+                  "object_id": "6dff74b95547b2b424b2afef4f106bda6f73b3ed356e0209f116e40d267e6288"
+                },
+                "provider_call_id": null,
+                "run_id": "a51eb26d-d459-4eea-94cd-cd2df350254b",
+                "started_at_ms": 1791119298267,
+                "state": "completed",
+                "tool_call_id": null
+              }
+            ],
+            "summary": "成员 alpha 的任务已完成，全部在授权测试目录内。\n\n**1) 读取来源** — `values-a.json`（裸相对文件名，无 `./`）\n```json\n{\"values\":[13,29]}\n```\n`values` 数组内容：13、29\n\n**2) 求和**\n```\n13 + 29 = 42\n```\n\n**3) 新建文件** — `write_file` 使用 `expected_sha256: null`（JSON null，不是字符串 \"null\"、不是空串、不是自算 hash），成功创建 `a.txt`，写入文本为 `42`。\n\n**4) 回读验证磁盘实际内容** — `read_file a.txt` 返回：\n- `text`: `42`\n- `bytes`: 2（即仅字符 `4`、`2`，**无换行**、无空格、无单位、无说明）\n- `sha256`: `73475cb40a568e8da8a045ced110137e159f890ac4da883b6b17dc651b3a8049`\n\n**5) 登记产物** — `register_artifact` 已对 `a.txt` 执行成功。\n\n**报告结论**\n- 精确总和：**42**\n- `a.txt` 精确内容：**42**（2 字节，无尾部换行）\n\n**约束遵守情况**\n- 未创建任何其他文件；未读取或修改 `values-b.json`、`b.txt`、`answer.txt`。\n- 未调用 `delegate_agents` 或任何子代理工具（未再派人）。\n- 未使用命令、浏览器、扩展或 `update_plan`。\n- `write_file` 未失败，无需保留错误；结果均为上述真实工具返回值，无未验证内容。",
+            "summary_truncated": false,
+            "task_id": "996a778b-6a81-4554-acb7-c1746f11051a",
+            "usage": {
+              "cost_microunits": null,
+              "currency": null,
+              "input_tokens": 36148,
+              "output_tokens": 761
+            }
+          }
+        },
+        {
+          "task_id": "55e1d025-82cb-4dff-8e84-2dbe79efd044",
+          "agent_id": "93bce5ac-2c6b-4faa-9e56-1488e5263dd5",
+          "parent_task_id": "52b11046-fb0c-4931-9c79-4a9e6f41e617",
+          "root_task_id": "52b11046-fb0c-4931-9c79-4a9e6f41e617",
+          "key": "beta",
+          "role": "sum b",
+          "goal": "Authorized test directory only; you are the member 'beta'. 1) read_file values-b.json (bare relative file name, no \"./\") and add up all numbers in its \"values\" array. 2) Use write_file to CREATE a new file named b.txt containing ONLY the decimal total: digits (and minus sign/decimal point if needed), no newline, no spaces, no unit, no explanation. 3) Tool-parameter rule you must follow: for a brand-new file the expected_sha256 argument must be the JSON null value — NOT the string \"null\", NOT an empty string, NOT a hash you computed yourself. Illustrative example of the argument shape only (do not write example.txt): write_file({\"path\":\"example.txt\",\"text\":\"你的计算结果\",\"expected_sha256\":null}). In reality you must write your own assigned file b.txt with your real computed result. 4) read_file b.txt to verify what is on disk, then register_artifact for b.txt. 5) Report the exact sum and the exact file contents. Restrictions: do not create any other files, do not touch values-a.json/a.txt/answer.txt, do not delegate further (you must not call delegate_agents or any sub-agent tool), do not use commands, browser, extensions or update_plan. If write_file still fails, keep the exact error text, stop and report the failure honestly — do not write another member's file and do not claim success.",
+          "profile_id": "p13-deepseek-chat",
+          "depth": 1,
+          "replaces_id": null,
+          "superseded_by": null,
+          "replacement_reason": null,
+          "attempt": 0,
+          "state": "completed",
+          "pending_start": false,
+          "depends_on": [],
+          "report": {
+            "object_id": "b1af1a73e70be344f6f199ed8121ad84944f733b9f081297db197ef8da5cc435",
+            "bytes": 6405,
+            "media_type": "application/json"
+          },
+          "review": "accepted",
+          "review_reason": "beta 真实交付验证通过：读 values-b.json {\"values\":[17,31]}，17+31=48；write_file 以 JSON null 新建 b.txt；回读 2 字节内容 \"48\" 无换行，sha256 98010bd9…ffd71；register_artifact 完成，未越界、未再派人。",
+          "diagnostic": null,
+          "calls": [
+            {
+              "stepId": "99b8b2e0-2244-4b6d-8b6c-42cc42756635",
+              "state": "completed",
+              "startedAtMs": 1791119287766,
+              "endedAtMs": 1791119289691,
+              "requestedModel": "deepseek-v4.1-flash",
+              "protocol": "chat_completions",
+              "requestedFamily": "DeepSeek",
+              "actualModel": "deepseek-v4.1-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 6617,
+                "output_tokens": 82
+              }
+            },
+            {
+              "stepId": "e2c99ff0-7fdd-4372-9eb3-746e3580fe2f",
+              "state": "completed",
+              "startedAtMs": 1791119289738,
+              "endedAtMs": 1791119291345,
+              "requestedModel": "deepseek-v4.1-flash",
+              "protocol": "chat_completions",
+              "requestedFamily": "DeepSeek",
+              "actualModel": "deepseek-v4.1-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 6805,
+                "output_tokens": 89
+              }
+            },
+            {
+              "stepId": "157f1261-6937-44de-8860-62e82f2e2ef6",
+              "state": "completed",
+              "startedAtMs": 1791119291392,
+              "endedAtMs": 1791119292310,
+              "requestedModel": "deepseek-v4.1-flash",
+              "protocol": "chat_completions",
+              "requestedFamily": "DeepSeek",
+              "actualModel": "deepseek-v4.1-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 6985,
+                "output_tokens": 72
+              }
+            },
+            {
+              "stepId": "963229ad-e7e4-47fe-ac78-257eb2ca9957",
+              "state": "completed",
+              "startedAtMs": 1791119292349,
+              "endedAtMs": 1791119293592,
+              "requestedModel": "deepseek-v4.1-flash",
+              "protocol": "chat_completions",
+              "requestedFamily": "DeepSeek",
+              "actualModel": "deepseek-v4.1-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 7157,
+                "output_tokens": 40
+              }
+            },
+            {
+              "stepId": "fe8f87f1-d9eb-4298-be0e-d69de46c01a9",
+              "state": "completed",
+              "startedAtMs": 1791119293647,
+              "endedAtMs": 1791119296045,
+              "requestedModel": "deepseek-v4.1-flash",
+              "protocol": "chat_completions",
+              "requestedFamily": "DeepSeek",
+              "actualModel": "deepseek-v4.1-flash",
+              "finishReason": "stop",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 7286,
+                "output_tokens": 231
+              }
+            }
+          ],
+          "delivery": {
+            "agent_id": "93bce5ac-2c6b-4faa-9e56-1488e5263dd5",
+            "artifacts": [
+              {
+                "content": {
+                  "bytes": 2,
+                  "media_type": "text/plain; charset=utf-8",
+                  "object_id": "98010bd9270f9b100b6214a21754fd33bdc8d41b2bc9f9dd16ff54d3c34ffd71"
+                },
+                "path": "b.txt",
+                "revision_id": "20b17e6f-89db-4fb4-a2a0-81459c81399f"
+              }
+            ],
+            "diagnostic": null,
+            "result": {
+              "bytes": 829,
+              "media_type": "application/json",
+              "object_id": "b5be5ddbeb2c34c7e99e0921a0a73fa02cea91f3c0d230f087ac4da51ac12b46"
+            },
+            "run_id": "e3266cfd-227b-4d20-8604-5ccb8cacd704",
+            "state": "completed",
+            "steps": [
+              {
+                "ended_at_ms": 1791119289691,
+                "id": "99b8b2e0-2244-4b6d-8b6c-42cc42756635",
+                "input": {
+                  "bytes": 26117,
+                  "media_type": "application/json",
+                  "object_id": "459db1766cd127c86d491722464b19cc3d8cfb3189465ebcfad33985c072b601"
+                },
+                "kind": "model",
+                "name": "model",
+                "ordinal": 1,
+                "output": {
+                  "bytes": 922,
+                  "media_type": "application/json",
+                  "object_id": "504c4b21ae0b09e437e8ed12a7fad201f1b8befecae6bfc98915433d423ace82"
+                },
+                "provider_call_id": null,
+                "run_id": "e3266cfd-227b-4d20-8604-5ccb8cacd704",
+                "started_at_ms": 1791119287766,
+                "state": "completed",
+                "tool_call_id": null
+              },
+              {
+                "ended_at_ms": 1791119289724,
+                "id": "61087228-8e7f-423a-9c6d-5c145321dea7",
+                "input": {
+                  "bytes": 143,
+                  "media_type": "application/json",
+                  "object_id": "e8d400fb0a6be6e45affaa2079d4e50eb984ab007019dd6833abd47622d3c582"
+                },
+                "kind": "tool",
+                "name": "read_file",
+                "ordinal": 2,
+                "output": {
+                  "bytes": 342,
+                  "media_type": "application/json",
+                  "object_id": "4d2172bb2e4b9b52827fd6917bc31e22eaaf0739b34dd19dcba3856398bb51bf"
+                },
+                "provider_call_id": "call_f13a552dc0824bdf816dbb70",
+                "run_id": "e3266cfd-227b-4d20-8604-5ccb8cacd704",
+                "started_at_ms": 1791119289711,
+                "state": "completed",
+                "tool_call_id": "1349c6f7-8f34-4888-82e9-a99196fa5440"
+              },
+              {
+                "ended_at_ms": 1791119291345,
+                "id": "e2c99ff0-7fdd-4372-9eb3-746e3580fe2f",
+                "input": {
+                  "bytes": 26885,
+                  "media_type": "application/json",
+                  "object_id": "4ffd74356f51605a7bd57a5c40b2ba7cc8b728bd68ab391973c1df8afa075c92"
+                },
+                "kind": "model",
+                "name": "model",
+                "ordinal": 3,
+                "output": {
+                  "bytes": 952,
+                  "media_type": "application/json",
+                  "object_id": "b6b783e716988b145f2dda0ca05bd0b1cb74f13b7327c589b843cefd6e82b968"
+                },
+                "provider_call_id": null,
+                "run_id": "e3266cfd-227b-4d20-8604-5ccb8cacd704",
+                "started_at_ms": 1791119289738,
+                "state": "completed",
+                "tool_call_id": null
+              },
+              {
+                "ended_at_ms": 1791119291379,
+                "id": "e6c8007f-81b7-49ee-9e14-eb1664d7c221",
+                "input": {
+                  "bytes": 146,
+                  "media_type": "application/json",
+                  "object_id": "0a04eaff653189f10d980e7463c98d9347e3761e9b78fafda2358a199bb70410"
+                },
+                "kind": "tool",
+                "name": "write_file",
+                "ordinal": 4,
+                "output": {
+                  "bytes": 280,
+                  "media_type": "application/json",
+                  "object_id": "fbd35288564eba91076181fe01ba0474ad8189d1c46a8f9fa49efcbffe151596"
+                },
+                "provider_call_id": "call_67d28c1b215b4cbe9255df1d",
+                "run_id": "e3266cfd-227b-4d20-8604-5ccb8cacd704",
+                "started_at_ms": 1791119291359,
+                "state": "completed",
+                "tool_call_id": "e7fd80d0-ec1a-47e9-b68f-04caa3cf1860"
+              },
+              {
+                "ended_at_ms": 1791119292310,
+                "id": "157f1261-6937-44de-8860-62e82f2e2ef6",
+                "input": {
+                  "bytes": 27615,
+                  "media_type": "application/json",
+                  "object_id": "e0cc98cbe7ebc9cad7fcb6fddaf18b8d9ce9de7a6aae2424e9b55fb9297d2ce5"
+                },
+                "kind": "model",
+                "name": "model",
+                "ordinal": 5,
+                "output": {
+                  "bytes": 835,
+                  "media_type": "application/json",
+                  "object_id": "36f0bf6a2bcb2b7aa59ed18dec2261a135e13d7e627e5c7b51605a1a5768e055"
+                },
+                "provider_call_id": null,
+                "run_id": "e3266cfd-227b-4d20-8604-5ccb8cacd704",
+                "started_at_ms": 1791119291392,
+                "state": "completed",
+                "tool_call_id": null
+              },
+              {
+                "ended_at_ms": 1791119292338,
+                "id": "613c0ade-aa72-4e31-988c-aa54f840334a",
+                "input": {
+                  "bytes": 135,
+                  "media_type": "application/json",
+                  "object_id": "737b7664670e50d25057cdf3e59d0f78fc290bd8eada8c8b30474a35718edea1"
+                },
+                "kind": "tool",
+                "name": "read_file",
+                "ordinal": 6,
+                "output": {
+                  "bytes": 310,
+                  "media_type": "application/json",
+                  "object_id": "c10bcce9585547be4423e44a7ad9d6a0883151c7adb2955494e9420b4861eda2"
+                },
+                "provider_call_id": "call_69161b9160e84509864f3618",
+                "run_id": "e3266cfd-227b-4d20-8604-5ccb8cacd704",
+                "started_at_ms": 1791119292326,
+                "state": "completed",
+                "tool_call_id": "d9777930-c364-4d2d-bc26-4fd0295bf765"
+              },
+              {
+                "ended_at_ms": 1791119293592,
+                "id": "963229ad-e7e4-47fe-ac78-257eb2ca9957",
+                "input": {
+                  "bytes": 28291,
+                  "media_type": "application/json",
+                  "object_id": "7c0ddd937e748d4c8fd56caf311ae9641882d944d8a4864ba25e61343d4d71a9"
+                },
+                "kind": "model",
+                "name": "model",
+                "ordinal": 7,
+                "output": {
+                  "bytes": 793,
+                  "media_type": "application/json",
+                  "object_id": "8688084c4c2ad673d9ae210e248e800618d5f393c7d1f77ede19b9848edf075a"
+                },
+                "provider_call_id": null,
+                "run_id": "e3266cfd-227b-4d20-8604-5ccb8cacd704",
+                "started_at_ms": 1791119292349,
+                "state": "completed",
+                "tool_call_id": null
+              },
+              {
+                "ended_at_ms": 1791119293625,
+                "id": "d97c9157-10f9-49bf-b82f-2e10fbe77f06",
+                "input": {
+                  "bytes": 118,
+                  "media_type": "application/json",
+                  "object_id": "27863fbdc2aaa532b3ea91f78fa8bf7eb470a382c9aed7a981495441f0de287a"
+                },
+                "kind": "tool",
+                "name": "register_artifact",
+                "ordinal": 8,
+                "output": {
+                  "bytes": 277,
+                  "media_type": "application/json",
+                  "object_id": "7ea91c40f684f92dc354d2e8a6178659fb261bb4b4f239bf01e9f5e06e6c30e8"
+                },
+                "provider_call_id": "call_aded8851c3ed40968f51b964",
+                "run_id": "e3266cfd-227b-4d20-8604-5ccb8cacd704",
+                "started_at_ms": 1791119293610,
+                "state": "completed",
+                "tool_call_id": "60d629ec-e279-49f7-9800-a6dfa0e9dc65"
+              },
+              {
+                "ended_at_ms": 1791119296045,
+                "id": "fe8f87f1-d9eb-4298-be0e-d69de46c01a9",
+                "input": {
+                  "bytes": 28909,
+                  "media_type": "application/json",
+                  "object_id": "be09e546652f0ed5a08193d87350c35c5c1a0654be91b95363c017adc2239842"
+                },
+                "kind": "model",
+                "name": "model",
+                "ordinal": 9,
+                "output": {
+                  "bytes": 1960,
+                  "media_type": "application/json",
+                  "object_id": "4f880398f6c2651efdd3244de55650dbb0d476e2300256f02675bfda8ab9f30a"
+                },
+                "provider_call_id": null,
+                "run_id": "e3266cfd-227b-4d20-8604-5ccb8cacd704",
+                "started_at_ms": 1791119293647,
+                "state": "completed",
+                "tool_call_id": null
+              }
+            ],
+            "summary": "beta 完成。\n\n- 输入：`values-b.json` = `{\"values\":[17,31]}`（sha256 `3e7ea419...276f3b`）\n- 计算：17 + 31 = **48**\n- 写文件：`write_file({\"path\":\"b.txt\",\"text\":\"48\",\"expected_sha256\":null})` 成功（expected_sha256 使用 JSON null），文件 2 字节，sha256 `98010bd9270f9b100b6214a21754fd33bdc8d41b2bc9f9dd16ff54d3c34ffd71`\n- 回读校验：`read_file b.txt` 返回内容 `48`，无换行、无空格、无单位，哈希与写入一致\n- 登记：`register_artifact b.txt` → registered: true，版本哈希一致\n\n未创建其他文件，未触碰 values-a.json / a.txt / answer.txt，未调用任何命令、浏览器、扩展、update_plan 或子代理工具，无失败。",
+            "summary_truncated": false,
+            "task_id": "55e1d025-82cb-4dff-8e84-2dbe79efd044",
+            "usage": {
+              "cost_microunits": null,
+              "currency": null,
+              "input_tokens": 34850,
+              "output_tokens": 514
+            }
+          }
+        },
+        {
+          "task_id": "bec77099-b042-43a1-9d5c-43333f3f25b7",
+          "agent_id": "32e34d1e-ac4a-461e-835f-401b2fb8b88b",
+          "parent_task_id": "52b11046-fb0c-4931-9c79-4a9e6f41e617",
+          "root_task_id": "52b11046-fb0c-4931-9c79-4a9e6f41e617",
+          "key": "join",
+          "role": "final sum",
+          "goal": "Authorized test directory only; you are the member 'join' and you depend on members alpha and beta: wait until BOTH alpha and beta have delivered (you may only rely on files actually on disk). 1) read_file a.txt and read_file b.txt (bare relative file names, no \"./\"), each contains one decimal number. 2) Add the two numbers. 3) Use write_file to CREATE a new file named answer.txt containing ONLY that sum: digits (and minus sign/decimal point if needed), no newline, no spaces, no unit, no explanation. 4) Tool-parameter rule you must follow: for a brand-new file the expected_sha256 argument must be the JSON null value — NOT the string \"null\", NOT an empty string, NOT a hash you computed yourself. Illustrative example of the argument shape only (do not write example.txt): write_file({\"path\":\"example.txt\",\"text\":\"你的计算结果\",\"expected_sha256\":null}). In reality you must write your own assigned file answer.txt with your real computed result. 5) read_file answer.txt to verify what is on disk, then register_artifact for answer.txt. 6) Report the two addends you read, the exact sum and the exact file contents. Restrictions: do not create any other files, do not rewrite a.txt or b.txt, do not delegate further (you must not call delegate_agents or any sub-agent tool), do not use commands, browser, extensions or update_plan. If a.txt/b.txt is missing or write_file fails, keep the exact error text, stop and report the failure honestly — do not write another member's file and do not claim success.",
+          "profile_id": "p13-qwen-responses",
+          "depth": 1,
+          "replaces_id": null,
+          "superseded_by": null,
+          "replacement_reason": null,
+          "attempt": 0,
+          "state": "completed",
+          "pending_start": false,
+          "depends_on": [
+            "55e1d025-82cb-4dff-8e84-2dbe79efd044",
+            "996a778b-6a81-4554-acb7-c1746f11051a"
+          ],
+          "report": {
+            "object_id": "8b006139ac107496d80857a65516b6d37fe07eb4d7b7bce6f8947ceec13c47c7",
+            "bytes": 11380,
+            "media_type": "application/json"
+          },
+          "review": "accepted",
+          "review_reason": "join 交付验证通过：先 list_directory 确认 alpha/beta 已落盘，再读 a.txt=42、b.txt=48，求和 90。我已单独复查其第一次 write_file 失败步骤（step 399f589a，executed:false，原因为 expected_sha256 被传成字符串而非 JSON null，未写任何文件），成员如实保留该错误并以 JSON null 重试成功；回读 answer.txt 为 2 字节 \"90\" 无换行，sha256 69f59c27…63763，并已 register_artifact。未改写他人文件、未再派人、未用命令/浏览器/扩展/update_plan。",
+          "diagnostic": null,
+          "calls": [
+            {
+              "stepId": "cea2f7e7-b698-4013-afdc-a1b4d8e83216",
+              "state": "completed",
+              "startedAtMs": 1791119307577,
+              "endedAtMs": 1791119312512,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 9186,
+                "output_tokens": 259
+              }
+            },
+            {
+              "stepId": "3144db19-0e25-4846-a179-556281cab9ee",
+              "state": "completed",
+              "startedAtMs": 1791119312647,
+              "endedAtMs": 1791119315345,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 9798,
+                "output_tokens": 141
+              }
+            },
+            {
+              "stepId": "666dab54-fd0b-490e-9622-24c4f1ccf9cf",
+              "state": "completed",
+              "startedAtMs": 1791119315386,
+              "endedAtMs": 1791119319110,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 10048,
+                "output_tokens": 204
+              }
+            },
+            {
+              "stepId": "5520715d-2dbb-4197-bd92-2b8caf93e2e1",
+              "state": "completed",
+              "startedAtMs": 1791119319171,
+              "endedAtMs": 1791119321371,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 10382,
+                "output_tokens": 102
+              }
+            },
+            {
+              "stepId": "7018390f-4045-4c0b-b8aa-c2b91dec4816",
+              "state": "completed",
+              "startedAtMs": 1791119321444,
+              "endedAtMs": 1791119323385,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 10624,
+                "output_tokens": 51
+              }
+            },
+            {
+              "stepId": "87494284-ebff-4c73-92fb-fe380cc9bf3c",
+              "state": "completed",
+              "startedAtMs": 1791119323449,
+              "endedAtMs": 1791119325904,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 10804,
+                "output_tokens": 53
+              }
+            },
+            {
+              "stepId": "60378eec-5ec4-4b68-8c42-7101c7878da4",
+              "state": "completed",
+              "startedAtMs": 1791119325964,
+              "endedAtMs": 1791119337172,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "stop",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 10974,
+                "output_tokens": 908
+              }
+            }
+          ],
+          "delivery": {
+            "agent_id": "32e34d1e-ac4a-461e-835f-401b2fb8b88b",
+            "artifacts": [
+              {
+                "content": {
+                  "bytes": 2,
+                  "media_type": "text/plain; charset=utf-8",
+                  "object_id": "69f59c273b6e669ac32a6dd5e1b2cb63333d8b004f9696447aee2d422ce63763"
+                },
+                "path": "answer.txt",
+                "revision_id": "dda5eb38-388a-4c41-ad45-64d196723067"
+              }
+            ],
+            "diagnostic": null,
+            "result": {
+              "bytes": 2410,
+              "media_type": "application/json",
+              "object_id": "78e0a3a88dfcd0e33f4b263e569efee0dbca69ae6c25b1be68b3eb253ddb1dbd"
+            },
+            "run_id": "b8cda6a3-edb1-4954-a5cd-3545993c13aa",
+            "state": "completed",
+            "steps": [
+              {
+                "ended_at_ms": 1791119312512,
+                "id": "cea2f7e7-b698-4013-afdc-a1b4d8e83216",
+                "input": {
+                  "bytes": 32675,
+                  "media_type": "application/json",
+                  "object_id": "d07685ce48cdd90226a89e47f14c82824e445cbdfecbd52a6cf831b61959cfa1"
+                },
+                "kind": "model",
+                "name": "model",
+                "ordinal": 1,
+                "output": {
+                  "bytes": 2456,
+                  "media_type": "application/json",
+                  "object_id": "b61dfe01aefddc9c2d83e7da84070bf83f78be8071b4116331d26ef1a6016ae0"
+                },
+                "provider_call_id": null,
+                "run_id": "b8cda6a3-edb1-4954-a5cd-3545993c13aa",
+                "started_at_ms": 1791119307577,
+                "state": "completed",
+                "tool_call_id": null
+              },
+              {
+                "ended_at_ms": 1791119312551,
+                "id": "b730d81b-34e3-4fcf-a9c8-9a532e8a0ebd",
+                "input": {
+                  "bytes": 149,
+                  "media_type": "application/json",
+                  "object_id": "31c8aaae8263499529dc92e4974c6fbc1faeb8f2a440edba004ccd0b545f1fd8"
+                },
+                "kind": "tool",
+                "name": "list_directory",
+                "ordinal": 2,
+                "output": {
+                  "bytes": 420,
+                  "media_type": "application/json",
+                  "object_id": "0ab32338d679ed694bbffcd6d2c2b7c9565237b6983a8adc42ecdf326df4994d"
+                },
+                "provider_call_id": "call_ed663279b4d24e63b8aa4620",
+                "run_id": "b8cda6a3-edb1-4954-a5cd-3545993c13aa",
+                "started_at_ms": 1791119312535,
+                "state": "completed",
+                "tool_call_id": "b75c8419-917b-4300-83bc-24f9669f0751"
+              },
+              {
+                "ended_at_ms": 1791119312590,
+                "id": "f3b15ef5-b4ac-4f9b-8b70-8f147c2b1864",
+                "input": {
+                  "bytes": 173,
+                  "media_type": "application/json",
+                  "object_id": "390cedd7a25324690c6dccdd7369fc3f0a76194130224febfccad6a5accdef91"
+                },
+                "kind": "tool",
+                "name": "read_file",
+                "ordinal": 3,
+                "output": {
+                  "bytes": 310,
+                  "media_type": "application/json",
+                  "object_id": "da4c3c1d0568961fbfbbf095ae91773261b360e6f5ca16512e5956d6a3669b66"
+                },
+                "provider_call_id": "call_61a8b6d4bcfd477b993609ce",
+                "run_id": "b8cda6a3-edb1-4954-a5cd-3545993c13aa",
+                "started_at_ms": 1791119312573,
+                "state": "completed",
+                "tool_call_id": "7eda4a7a-3587-489c-9245-54f7501d228d"
+              },
+              {
+                "ended_at_ms": 1791119312632,
+                "id": "88ce8a1f-864c-4284-a68a-7cfe1e157159",
+                "input": {
+                  "bytes": 173,
+                  "media_type": "application/json",
+                  "object_id": "6063667c3e6904c6c3a31f1cd0ae74eb5b87c0b7369d4fa9e65991b43ec6870a"
+                },
+                "kind": "tool",
+                "name": "read_file",
+                "ordinal": 4,
+                "output": {
+                  "bytes": 310,
+                  "media_type": "application/json",
+                  "object_id": "329fa4aee1b2805ae8a701625732ab501c83de99ced0a2d2c6bcb9448fa07f62"
+                },
+                "provider_call_id": "call_1e135f3da9854a339e2af46e",
+                "run_id": "b8cda6a3-edb1-4954-a5cd-3545993c13aa",
+                "started_at_ms": 1791119312610,
+                "state": "completed",
+                "tool_call_id": "956abadc-9c19-459e-a626-670379a0e4d9"
+              },
+              {
+                "ended_at_ms": 1791119315345,
+                "id": "3144db19-0e25-4846-a179-556281cab9ee",
+                "input": {
+                  "bytes": 35164,
+                  "media_type": "application/json",
+                  "object_id": "02223536024fa4aabbfd25244f6e81aafb28ae01ff11186f1e02b74232e74c03"
+                },
+                "kind": "model",
+                "name": "model",
+                "ordinal": 5,
+                "output": {
+                  "bytes": 1818,
+                  "media_type": "application/json",
+                  "object_id": "1a3121d849b5111d2a5f1f84d61cca33c083e7024f2f38db0b227041f66c5302"
+                },
+                "provider_call_id": null,
+                "run_id": "b8cda6a3-edb1-4954-a5cd-3545993c13aa",
+                "started_at_ms": 1791119312647,
+                "state": "completed",
+                "tool_call_id": null
+              },
+              {
+                "ended_at_ms": 1791119315370,
+                "id": "399f589a-56e0-4315-8942-40f38bc78781",
+                "input": {
+                  "bytes": 187,
+                  "media_type": "application/json",
+                  "object_id": "842a098d5e796ae398d248b03b8246e422dec24cc563264a47d21a1226a4d8d1"
+                },
+                "kind": "tool",
+                "name": "write_file",
+                "ordinal": 6,
+                "output": {
+                  "bytes": 459,
+                  "media_type": "application/json",
+                  "object_id": "d5f4031e544b5593140a13307e15781d517b7fbdda72ea5a2b60624e7714ba87"
+                },
+                "provider_call_id": "call_a63dd608412a45718fcff4b9",
+                "run_id": "b8cda6a3-edb1-4954-a5cd-3545993c13aa",
+                "started_at_ms": null,
+                "state": "failed",
+                "tool_call_id": null
+              },
+              {
+                "ended_at_ms": 1791119319110,
+                "id": "666dab54-fd0b-490e-9622-24c4f1ccf9cf",
+                "input": {
+                  "bytes": 36638,
+                  "media_type": "application/json",
+                  "object_id": "2934ed9602167474316579b56a00733b712c452ad84d2256be8432d08286a0b8"
+                },
+                "kind": "model",
+                "name": "model",
+                "ordinal": 7,
+                "output": {
+                  "bytes": 1919,
+                  "media_type": "application/json",
+                  "object_id": "d8c4edc9e1768357d40f78da7fb551570d99a1f85563bcdbaf078217d405adb7"
+                },
+                "provider_call_id": null,
+                "run_id": "b8cda6a3-edb1-4954-a5cd-3545993c13aa",
+                "started_at_ms": 1791119315386,
+                "state": "completed",
+                "tool_call_id": null
+              },
+              {
+                "ended_at_ms": 1791119319155,
+                "id": "5d192577-d1f3-4a91-aec8-916964ce4c14",
+                "input": {
+                  "bytes": 189,
+                  "media_type": "application/json",
+                  "object_id": "ab279c8f643ab9b88551bee179c8cd08cdf4e6a10a05ab4bdaf89f14b8facb62"
+                },
+                "kind": "tool",
+                "name": "write_file",
+                "ordinal": 8,
+                "output": {
+                  "bytes": 285,
+                  "media_type": "application/json",
+                  "object_id": "0790939f257725fd04179cf2382c40a466f42bf0f5453cfec69366f32af08d4e"
+                },
+                "provider_call_id": "call_83c8fd7db1814d06be132923",
+                "run_id": "b8cda6a3-edb1-4954-a5cd-3545993c13aa",
+                "started_at_ms": 1791119319131,
+                "state": "completed",
+                "tool_call_id": "533cf7d1-9699-4672-b286-ec15650ea21f"
+              },
+              {
+                "ended_at_ms": 1791119321371,
+                "id": "5520715d-2dbb-4197-bd92-2b8caf93e2e1",
+                "input": {
+                  "bytes": 38137,
+                  "media_type": "application/json",
+                  "object_id": "55d1e55a9d204a9795b156b9e4a16c71ed38abd771f7651cdb230557a67983b2"
+                },
+                "kind": "model",
+                "name": "model",
+                "ordinal": 9,
+                "output": {
+                  "bytes": 1472,
+                  "media_type": "application/json",
+                  "object_id": "368bab4f2b313136b050d67451c2dd1a91235f935b8f5301a287c3f8a28997ea"
+                },
+                "provider_call_id": null,
+                "run_id": "b8cda6a3-edb1-4954-a5cd-3545993c13aa",
+                "started_at_ms": 1791119319171,
+                "state": "completed",
+                "tool_call_id": null
+              },
+              {
+                "ended_at_ms": 1791119321415,
+                "id": "04ef53dd-7742-4663-8cd1-b1e605cf5cfe",
+                "input": {
+                  "bytes": 178,
+                  "media_type": "application/json",
+                  "object_id": "5551f2e6a6c510ce000d07b3af10bf48843489b025785c267b26f9d31dcf19eb"
+                },
+                "kind": "tool",
+                "name": "read_file",
+                "ordinal": 10,
+                "output": {
+                  "bytes": 315,
+                  "media_type": "application/json",
+                  "object_id": "1847ef475ef06903d9c49b43d1d6609e1a24970e7a1eaeaa8b1ef5463a6c7106"
+                },
+                "provider_call_id": "call_cbfe3f552a5f4fca9c64e770",
+                "run_id": "b8cda6a3-edb1-4954-a5cd-3545993c13aa",
+                "started_at_ms": 1791119321399,
+                "state": "completed",
+                "tool_call_id": "6e027cc9-bd4e-4619-b9f1-da873a640787"
+              },
+              {
+                "ended_at_ms": 1791119323385,
+                "id": "7018390f-4045-4c0b-b8aa-c2b91dec4816",
+                "input": {
+                  "bytes": 39232,
+                  "media_type": "application/json",
+                  "object_id": "dafd0f508945c418363c0c38209aa736d223b83a677f377a68f15380f2175a8e"
+                },
+                "kind": "model",
+                "name": "model",
+                "ordinal": 11,
+                "output": {
+                  "bytes": 1274,
+                  "media_type": "application/json",
+                  "object_id": "190113c02712f202f70c27a8e01f0b27bb2528ee77f54bb039813e7f78318f23"
+                },
+                "provider_call_id": null,
+                "run_id": "b8cda6a3-edb1-4954-a5cd-3545993c13aa",
+                "started_at_ms": 1791119321444,
+                "state": "completed",
+                "tool_call_id": null
+              },
+              {
+                "ended_at_ms": 1791119323424,
+                "id": "0dba6d25-4650-4ea4-be51-e5d7163f1e61",
+                "input": {
+                  "bytes": 161,
+                  "media_type": "application/json",
+                  "object_id": "9377029a342827b4268ace645f115a83a69e606ad970397b6f78aa54bdcfdb88"
+                },
+                "kind": "tool",
+                "name": "register_artifact",
+                "ordinal": 12,
+                "output": {
+                  "bytes": 282,
+                  "media_type": "application/json",
+                  "object_id": "f18094c7c1e96894ea91b93adfcb6a2c84d70294a25256178bef6254ed1a80a8"
+                },
+                "provider_call_id": "call_c6677ccee31d4ddba22c31b5",
+                "run_id": "b8cda6a3-edb1-4954-a5cd-3545993c13aa",
+                "started_at_ms": 1791119323404,
+                "state": "completed",
+                "tool_call_id": "9f477ad3-11e3-471d-a559-d31ddb4caf04"
+              },
+              {
+                "ended_at_ms": 1791119325904,
+                "id": "87494284-ebff-4c73-92fb-fe380cc9bf3c",
+                "input": {
+                  "bytes": 40114,
+                  "media_type": "application/json",
+                  "object_id": "9bbfefc6bb438ca9cffe8750c46724c7430de5f142f17efca12d445d2c37bb54"
+                },
+                "kind": "model",
+                "name": "model",
+                "ordinal": 13,
+                "output": {
+                  "bytes": 1298,
+                  "media_type": "application/json",
+                  "object_id": "c3a31ffe95c4bea5d658457bbfbcb430054c5dae7513200a32d65f5447b43830"
+                },
+                "provider_call_id": null,
+                "run_id": "b8cda6a3-edb1-4954-a5cd-3545993c13aa",
+                "started_at_ms": 1791119323449,
+                "state": "completed",
+                "tool_call_id": null
+              },
+              {
+                "ended_at_ms": 1791119325946,
+                "id": "2f5663ea-2c42-4e6a-bc7f-68626cf5e82d",
+                "input": {
+                  "bytes": 149,
+                  "media_type": "application/json",
+                  "object_id": "04e30f1db7c5528d982f6b770515e0d01a5da459ab40824bb86e96dc0134327f"
+                },
+                "kind": "tool",
+                "name": "list_directory",
+                "ordinal": 14,
+                "output": {
+                  "bytes": 495,
+                  "media_type": "application/json",
+                  "object_id": "8f878fdf02a24d2d157558a750fdcbf629090af2e33d5380ed663a15ba06edcb"
+                },
+                "provider_call_id": "call_0a5b0bfc809c4c0e83bfe60a",
+                "run_id": "b8cda6a3-edb1-4954-a5cd-3545993c13aa",
+                "started_at_ms": 1791119325930,
+                "state": "completed",
+                "tool_call_id": "8c43f140-04d6-452c-9675-68da329ca133"
+              },
+              {
+                "ended_at_ms": 1791119337172,
+                "id": "60378eec-5ec4-4b68-8c42-7101c7878da4",
+                "input": {
+                  "bytes": 41245,
+                  "media_type": "application/json",
+                  "object_id": "161dbdcbad9767cbd1e8ecf98e24fe99f8db0fb7ff7584e7d8c8456e3e020baa"
+                },
+                "kind": "model",
+                "name": "model",
+                "ordinal": 15,
+                "output": {
+                  "bytes": 6283,
+                  "media_type": "application/json",
+                  "object_id": "3f385a73877fd32ed3ed2d9653d51494fed1e2447be47007603fc3c2fc552692"
+                },
+                "provider_call_id": null,
+                "run_id": "b8cda6a3-edb1-4954-a5cd-3545993c13aa",
+                "started_at_ms": 1791119325964,
+                "state": "completed",
+                "tool_call_id": null
+              }
+            ],
+            "summary": "成员 `join` 的任务已完成（仅授权测试目录）。\n\n**1) 等待依赖并确认磁盘事实**\n`list_directory .` → `a.txt`(2B)、`b.txt`(2B)、`values-a.json`、`values-b.json`；`answer.txt` 尚不存在。alpha 与 beta 均已交付，我只依赖磁盘上真实存在的文件。\n\n**2) 读到的两个加数（裸相对文件名，无 `./`）**\n| 文件 | 内容 | 字节 | sha256 |\n|---|---|---|---|\n| `a.txt` | `42` | 2（无换行） | `73475cb4…8049` |\n| `b.txt` | `48` | 2（无换行） | `98010bd9…ffd71` |\n\n**3) 计算**\n`42 + 48 = 90`\n\n**4) 新建 answer.txt —— 首次尝试失败（保留原始错误，未声称成功）**\n第一次 `write_file` 因 `expected_sha256` 实际被传成空字符串而失败，错误原文：\n\n> `expected_sha256 格式错误：新文件使用不带引号的 JSON null；已有文件使用 read_file 返回的完整 64 位十六进制摘要 / expected_sha256 must be JSON null (without quotes) for a new file, or the exact 64 hexadecimal characters returned by read_file. Strings such as \"null\" or \"None\" are invalid; no file was written.` （`executed: false`）\n\n第二次按规则以**不带引号的 JSON null** 作为该参数重试，成功创建：\n`write_file({\"path\":\"answer.txt\",\"text\":\"90\",\"expected_sha256\":null})`\n\n**5) 回读校验磁盘真实内容**\n`read_file answer.txt` → `text`: `90`，`bytes`: 2，`sha256`: `69f59c273b6e669ac32a6dd5e1b2cb63333d8b004f9696447aee2d422ce63763`，`has_more: false`。即仅两个数字字符 `9`、`0`，**无换行、无空格、无单位、无说明**。\n\n**6) 登记产物**\n`register_artifact answer.txt` → `registered: true`，版本哈希与回读一致。\n\n**结论**\n- 加数：42（来自 a.txt）、48（来自 b.txt）\n- 精确总和：**90**\n- `answer.txt` 精确内容：**90**（2 字节）\n\n**约束遵守**\n- 未创建除 `answer.txt` 外的任何文件；未改写、未删除 `a.txt`/`b.txt`，未触碰 `values-a.json`/`values-b.json`。\n- 未调用 `delegate_agents` 或任何子代理工具（未再派人）。\n- 未使用命令、浏览器、扩展或 `update_plan`；未操作任何外部业务。\n- 失败已如实报告（首次写入错误保留原文），成功项均为上述真实工具返回值。",
+            "summary_truncated": false,
+            "task_id": "bec77099-b042-43a1-9d5c-43333f3f25b7",
+            "usage": {
+              "cost_microunits": null,
+              "currency": null,
+              "input_tokens": 71816,
+              "output_tokens": 1718
+            }
+          }
+        }
+      ],
+      "outputs": {
+        "a.txt": "42",
+        "b.txt": "48",
+        "answer.txt": "90"
+      },
+      "actualReportedFamilies": [
+        "Qwen",
+        "DeepSeek"
+      ],
+      "dependencyTimes": {
+        "joinStarted": 1791119307577,
+        "aEnded": 1791119307489,
+        "bEnded": 1791119296045
+      },
+      "dependencyEvents": {
+        "aCompleted": 429,
+        "bCompleted": 251,
+        "joinStarted": 435
+      },
+      "finishedAt": "2026-10-04T13:09:55.652Z"
+    }
+  ],
+  "boundaries": [
+    "Different families are identified from model names actually returned by the service, not inferred from profile labels.",
+    "Image input uses the built-in 64x64 blue probe only, not image generation.",
+    "Every scenario starts explicitly once. No model fallback or automatic retry.",
+    "Real service calls use synthetic test data; no personal browser, user project, business document or production account operation."
+  ],
+  "scripts": {
+    "scripts/p13-real-model-check.mjs": "38b04b68a132996ad418c975467a9013c7492648c215e969a89d339b7810d68d",
+    "scripts/p13-real-model-files.mjs": "6b4f048556b2217266a0debc212cf61956862494e6405eeeaaa3b3481d804a85",
+    "scripts/p13-real-model-support.mjs": "9c5f550f6e893826b2e7454cb07cd4dc0241740916a88905de1c5042ee113cf7",
+    "scripts/p13-real-model-probes.mjs": "8f1b0984e9a68e97ba9a1508dac593a36f538c977a2473ff478a9d298b4b48de",
+    "scripts/p13-real-model-launch.mjs": "f245f628744d1d9d38e5a5728267fc7b92496415096b720ef9af9de6f30db120",
+    "scripts/p13-real-model-skills.mjs": "6927f27d173f2f0502dd688415ded6ddc6e0fe7f2ddd0d3e3e939b633ff53f11"
+  },
+  "appVersion": "0.1.0-alpha.13.3",
+  "cleanup": {
+    "profilesCleared": 5,
+    "credentialsRemoved": true,
+    "errors": [],
+    "scope": "Only this fresh data directory's test model credentials were removed. No image-service credential was created. The isolated database, file-version key and original test files remain available for fault review.",
+    "engineExited": true
+  },
+  "finishedAt": "2026-10-04T13:09:56.352Z",
+  "status": "passed",
+  "credentialScan": {
+    "filesChecked": 996,
+    "plaintextCredentialFound": false,
+    "findings": []
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "at": "2026-10-04T14:19:11.643726+00:00",
+  "source": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-r3\\run-gpstWh\\desktop-data\\test\\workpilot.sqlite3",
+  "mode": "SQLite URI mode=ro and PRAGMA query_only=ON",
+  "scope": "Only failed self-owned synthetic test database. No user data, writes, migrations or recovery triggered.",
+  "eventCount": 4989,
+  "recent": [
+    {
+      "sequence": 4989,
+      "event_id": "62cab92f-493d-4689-a9f3-147b4b427396",
+      "task_id": null,
+      "task_sequence": null,
+      "agent_id": null,
+      "source": "engine",
+      "at_ms": 1791123179230,
+      "request_id": null,
+      "at": "2026-10-04T14:12:59.230000+00:00",
+      "payload": {
+        "kind": "bye"
+      }
+    },
+    {
+      "sequence": 4988,
+      "event_id": "059cad0a-f283-43a5-8006-21d1145bf6bf",
+      "task_id": null,
+      "task_sequence": null,
+      "agent_id": null,
+      "source": "engine",
+      "at_ms": 1791123174536,
+      "request_id": "dd92ea6a-9471-467f-a5e9-816ba8e0d9e0",
+      "at": "2026-10-04T14:12:54.536000+00:00",
+      "payload": {
+        "kind": "command_finished",
+        "status": "completed"
+      }
+    },
+    {
+      "sequence": 4987,
+      "event_id": "366cbdd1-f6a7-490e-bcff-57e3b0101fe7",
+      "task_id": null,
+      "task_sequence": null,
+      "agent_id": null,
+      "source": "engine",
+      "at_ms": 1791123174536,
+      "request_id": "dd92ea6a-9471-467f-a5e9-816ba8e0d9e0",
+      "at": "2026-10-04T14:12:54.536000+00:00",
+      "payload": {
+        "kind": "pong"
+      }
+    },
+    {
+      "sequence": 4986,
+      "event_id": "f55e8a50-6260-42dc-8a5f-688db5ab5718",
+      "task_id": null,
+      "task_sequence": null,
+      "agent_id": null,
+      "source": "user",
+      "at_ms": 1791123174536,
+      "request_id": "dd92ea6a-9471-467f-a5e9-816ba8e0d9e0",
+      "at": "2026-10-04T14:12:54.536000+00:00",
+      "payload": {
+        "kind": "command_accepted",
+        "command_kind": "ping"
+      }
+    },
+    {
+      "sequence": 4985,
+      "event_id": "a66d0e8d-7d19-4af5-9a88-8a21757e70fe",
+      "task_id": null,
+      "task_sequence": null,
+      "agent_id": null,
+      "source": "engine",
+      "at_ms": 1791123169514,
+      "request_id": "92f60196-5d9c-43d6-8f3e-f3e5eaa8c21f",
+      "at": "2026-10-04T14:12:49.514000+00:00",
+      "payload": {
+        "kind": "command_finished",
+        "status": "completed"
+      }
+    },
+    {
+      "sequence": 4984,
+      "event_id": "67126933-bfe2-4d83-91d3-95129f6a91d3",
+      "task_id": null,
+      "task_sequence": null,
+      "agent_id": null,
+      "source": "engine",
+      "at_ms": 1791123169514,
+      "request_id": "92f60196-5d9c-43d6-8f3e-f3e5eaa8c21f",
+      "at": "2026-10-04T14:12:49.514000+00:00",
+      "payload": {
+        "kind": "pong"
+      }
+    },
+    {
+      "sequence": 4983,
+      "event_id": "4ec4b440-f699-48bc-8d24-7780346e132f",
+      "task_id": null,
+      "task_sequence": null,
+      "agent_id": null,
+      "source": "user",
+      "at_ms": 1791123169514,
+      "request_id": "92f60196-5d9c-43d6-8f3e-f3e5eaa8c21f",
+      "at": "2026-10-04T14:12:49.514000+00:00",
+      "payload": {
+        "kind": "command_accepted",
+        "command_kind": "ping"
+      }
+    },
+    {
+      "sequence": 4982,
+      "event_id": "aba26ae4-5cec-486d-8233-546e89e42b8f",
+      "task_id": null,
+      "task_sequence": null,
+      "agent_id": null,
+      "source": "engine",
+      "at_ms": 1791123163802,
+      "request_id": "94c79b1f-86e8-4da4-ab48-b2e0d680c5c0",
+      "at": "2026-10-04T14:12:43.802000+00:00",
+      "payload": {
+        "kind": "command_finished",
+        "status": "completed"
+      }
+    },
+    {
+      "sequence": 4981,
+      "event_id": "edacd1f2-a5d0-4151-bafa-9fbc3170a7ee",
+      "task_id": null,
+      "task_sequence": null,
+      "agent_id": null,
+      "source": "engine",
+      "at_ms": 1791123163802,
+      "request_id": "94c79b1f-86e8-4da4-ab48-b2e0d680c5c0",
+      "at": "2026-10-04T14:12:43.802000+00:00",
+      "payload": {
+        "kind": "pong"
+      }
+    },
+    {
+      "sequence": 4980,
+      "event_id": "674f65eb-ca81-4a86-a247-1b1b7e710c86",
+      "task_id": null,
+      "task_sequence": null,
+      "agent_id": null,
+      "source": "user",
+      "at_ms": 1791123163802,
+      "request_id": "94c79b1f-86e8-4da4-ab48-b2e0d680c5c0",
+      "at": "2026-10-04T14:12:43.802000+00:00",
+      "payload": {
+        "kind": "command_accepted",
+        "command_kind": "ping"
+      }
+    },
+    {
+      "sequence": 4979,
+      "event_id": "d06d5902-e7c1-4092-8993-6340c4252421",
+      "task_id": null,
+      "task_sequence": null,
+      "agent_id": null,
+      "source": "engine",
+      "at_ms": 1791123158775,
+      "request_id": "d6fd55f8-7360-49a6-b13e-179a08c19483",
+      "at": "2026-10-04T14:12:38.775000+00:00",
+      "payload": {
+        "kind": "command_finished",
+        "status": "completed"
+      }
+    },
+    {
+      "sequence": 4978,
+      "event_id": "a76dfbb8-0715-41e6-a6f9-42283ab6fb34",
+      "task_id": null,
+      "task_sequence": null,
+      "agent_id": null,
+      "source": "engine",
+      "at_ms": 1791123158775,
+      "request_id": "d6fd55f8-7360-49a6-b13e-179a08c19483",
+      "at": "2026-10-04T14:12:38.775000+00:00",
+      "payload": {
+        "kind": "pong"
+      }
+    },
+    {
+      "sequence": 4977,
+      "event_id": "e337cc04-883a-413c-84ef-b3135f5134b0",
+      "task_id": null,
+      "task_sequence": null,
+      "agent_id": null,
+      "source": "user",
+      "at_ms": 1791123158775,
+      "request_id": "d6fd55f8-7360-49a6-b13e-179a08c19483",
+      "at": "2026-10-04T14:12:38.775000+00:00",
+      "payload": {
+        "kind": "command_accepted",
+        "command_kind": "ping"
+      }
+    },
+    {
+      "sequence": 4976,
+      "event_id": "918a9d94-1f24-4bbe-9ad5-54da395a6f07",
+      "task_id": null,
+      "task_sequence": null,
+      "agent_id": null,
+      "source": "engine",
+      "at_ms": 1791123153106,
+      "request_id": "c3e9f896-1b0e-4bd4-bb28-e93b7060a438",
+      "at": "2026-10-04T14:12:33.106000+00:00",
+      "payload": {
+        "kind": "command_finished",
+        "status": "completed"
+      }
+    },
+    {
+      "sequence": 4975,
+      "event_id": "c2742c80-6e32-4b45-afe7-90068667e524",
+      "task_id": null,
+      "task_sequence": null,
+      "agent_id": null,
+      "source": "engine",
+      "at_ms": 1791123153106,
+      "request_id": "c3e9f896-1b0e-4bd4-bb28-e93b7060a438",
+      "at": "2026-10-04T14:12:33.106000+00:00",
+      "payload": {
+        "kind": "pong"
+      }
+    }
+  ],
+  "shutdownOrRecovery": []
+}

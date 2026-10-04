@@ -1,0 +1,178 @@
+{
+  "at": "2026-10-04T12:59:38.776Z",
+  "synthetic": false,
+  "platform": "win32",
+  "binarySha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+  "service": "User-authorized Alibaba Cloud workspace",
+  "servicePaths": {
+    "chat_completions": "/compatible-mode/v1/chat/completions",
+    "responses": "/compatible-mode/v1/responses",
+    "messages": "/apps/anthropic/v1/messages"
+  },
+  "models": [
+    {
+      "id": "p13-qwen-responses",
+      "family": "Qwen",
+      "model": "qwen3.8-flash",
+      "protocol": "responses",
+      "modes": [
+        "text",
+        "tools",
+        "image"
+      ]
+    }
+  ],
+  "mode": "explicit_skill_memory_workflow",
+  "expectedChecks": 7,
+  "previousEvidence": {
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-real-format-alpha13.3\\run-AasLey\\report.json",
+    "sha256": "52c73688db8995494ee76d42c41c9de521dfb54a4d4137678ad704b6e4e3b3dd",
+    "originalStatus": "failed",
+    "note": "Prior probe evidence only. This new workflow has new tasks, files and credentials; its result is not merged with the earlier sample.",
+    "capabilityConfiguration": "Tool capability is explicitly set with source=user based on the earlier recorded real probe. No probe timestamp or successful probe is fabricated in the new directory."
+  },
+  "checks": [
+    {
+      "id": "skills:real_creator_draft_stays_inactive",
+      "at": "2026-10-04T12:59:38.865Z",
+      "state": "failed",
+      "tasks": [
+        {
+          "taskId": "cd66701a-1f55-4fd2-baa4-7872b99b6af6",
+          "mode": "plan",
+          "requestedModel": "qwen3.8-flash",
+          "state": "awaiting_input",
+          "text": "",
+          "calls": [
+            {
+              "stepId": "7b277c88-110c-4f14-930d-0338ba9a37ce",
+              "state": "completed",
+              "startedAtMs": 1791118778979,
+              "endedAtMs": 1791118787747,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 3367,
+                "output_tokens": 419
+              }
+            },
+            {
+              "stepId": "d9c598b5-b146-4e93-87b1-23eb7bee556d",
+              "state": "completed",
+              "startedAtMs": 1791118787804,
+              "endedAtMs": 1791118790981,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 3970,
+                "output_tokens": 135
+              }
+            },
+            {
+              "stepId": "9adfc2f1-3ef6-492e-a041-cfb99d667eaa",
+              "state": "completed",
+              "startedAtMs": 1791118791032,
+              "endedAtMs": 1791118793096,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 4532,
+                "output_tokens": 73
+              }
+            },
+            {
+              "stepId": "0b1ff02d-e012-4984-8cc1-f96345046675",
+              "state": "completed",
+              "startedAtMs": 1791118793139,
+              "endedAtMs": 1791118802708,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 5380,
+                "output_tokens": 456
+              }
+            },
+            {
+              "stepId": "adfbd20f-6271-4dbc-987e-0a888be29294",
+              "state": "completed",
+              "startedAtMs": 1791118802759,
+              "endedAtMs": 1791118818295,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 5864,
+                "output_tokens": 902
+              }
+            }
+          ]
+        }
+      ],
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(search && creatorRead && created.length === 1)\n\n    at file:///D:/workspace/kplocker/WorkPilot/scripts/p13-real-model-skills.mjs:158:5\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async scenario (file:///D:/workspace/kplocker/WorkPilot/scripts/p13-real-model-check.mjs:246:5)\n    at async must (file:///D:/workspace/kplocker/WorkPilot/scripts/p13-real-model-skills.mjs:140:11)\n    at async skillsMemory (file:///D:/workspace/kplocker/WorkPilot/scripts/p13-real-model-skills.mjs:145:3)\n    at async file:///D:/workspace/kplocker/WorkPilot/scripts/p13-real-model-check.mjs:301:5",
+      "finishedAt": "2026-10-04T13:00:18.424Z"
+    }
+  ],
+  "boundaries": [
+    "Different families are identified from model names actually returned by the service, not inferred from profile labels.",
+    "Image input uses the built-in 64x64 blue probe only, not image generation.",
+    "Every scenario starts explicitly once. No model fallback or automatic retry.",
+    "Real service calls use synthetic test data; no personal browser, user project, business document or production account operation."
+  ],
+  "scripts": {
+    "scripts/p13-real-model-check.mjs": "38b04b68a132996ad418c975467a9013c7492648c215e969a89d339b7810d68d",
+    "scripts/p13-real-model-files.mjs": "6b4f048556b2217266a0debc212cf61956862494e6405eeeaaa3b3481d804a85",
+    "scripts/p13-real-model-support.mjs": "9c5f550f6e893826b2e7454cb07cd4dc0241740916a88905de1c5042ee113cf7",
+    "scripts/p13-real-model-probes.mjs": "8f1b0984e9a68e97ba9a1508dac593a36f538c977a2473ff478a9d298b4b48de",
+    "scripts/p13-real-model-launch.mjs": "f245f628744d1d9d38e5a5728267fc7b92496415096b720ef9af9de6f30db120",
+    "scripts/p13-real-model-skills.mjs": "a55d9f9861e805e0489bb2da207018262e4e655b125f344d8300ff90e8ecd9b1"
+  },
+  "appVersion": "0.1.0-alpha.13.3",
+  "workflowScope": {
+    "model": "qwen3.8-flash",
+    "protocol": "responses",
+    "projectA": "cc307579-0075-4b54-a717-a80c71b29b6e",
+    "projectB": "ee7246d4-b061-4997-b0de-347b97554fec",
+    "inputFiles": "Synthetic values only; no user project, account, scripts or external extension.",
+    "confirmations": "Independent test-driver management commands, not AI self-approval or real user acceptance."
+  },
+  "managementActions": [],
+  "fatalError": "Error: Dependent workflow stopped after skills:real_creator_draft_stays_inactive; later cases were not attempted\n    at must (file:///D:/workspace/kplocker/WorkPilot/scripts/p13-real-model-skills.mjs:141:13)\n    at async skillsMemory (file:///D:/workspace/kplocker/WorkPilot/scripts/p13-real-model-skills.mjs:145:3)\n    at async file:///D:/workspace/kplocker/WorkPilot/scripts/p13-real-model-check.mjs:301:5",
+  "cleanup": {
+    "profilesCleared": 1,
+    "credentialsRemoved": true,
+    "errors": [],
+    "scope": "Only this fresh data directory's test model credentials were removed. No image-service credential was created. The isolated database, file-version key and original test files remain available for fault review.",
+    "engineExited": true
+  },
+  "finishedAt": "2026-10-04T13:00:18.645Z",
+  "status": "failed",
+  "credentialScan": {
+    "filesChecked": 58,
+    "plaintextCredentialFound": false,
+    "findings": []
+  }
+}

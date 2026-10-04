@@ -1,0 +1,440 @@
+{
+  "operation": {
+    "at_ms": 1791122509946,
+    "error": null,
+    "fingerprint": "b274375bd90e98660c72937bf3d9ab801ba280fa5f6e78f8316a45ef2cec515a",
+    "id": "c87acc17-9ee8-4209-8395-e1d0edf495e8",
+    "input": {
+      "bytes": 2859,
+      "media_type": "application/json",
+      "object_id": "55841c2f48e2278d85baf52e41b01c6a39c223cbbbaff7c28428e040147c7a1f"
+    },
+    "kind": "extension",
+    "output": null,
+    "pid": null,
+    "preview_port": null,
+    "state": "awaiting_approval",
+    "stderr": null,
+    "stdout": null,
+    "summary": "扩展操作 / Extension · microsoft-learn / microsoft_docs_search",
+    "task_id": "8e8c275e-61e5-452b-b9c6-cec720423011"
+  },
+  "state": {
+    "task": {
+      "id": "8e8c275e-61e5-452b-b9c6-cec720423011",
+      "project_id": null,
+      "title": "p13-real-microsoft-learn",
+      "state": "awaiting_approval",
+      "mode": "execute",
+      "permission": "request_approval",
+      "profile_id": "b862fb4a-0434-4453-8013-d2f84bdd7acf",
+      "created_at_ms": 1791122507523,
+      "updated_at_ms": 1791122509956,
+      "last_sequence": 51
+    },
+    "session_id": "33e5f502-226e-4779-94b8-8e7a29d7ed3c",
+    "agent_id": "50017e1f-39fe-4e53-a706-01f2350602a4",
+    "config": {
+      "title": "p13-real-microsoft-learn",
+      "goal": "Query public Microsoft Learn documentation about Windows App SDK app notifications registration and activation; use one search call only.",
+      "constraints": [
+        "Preserve original requirements"
+      ],
+      "project_rules": "",
+      "project_id": null,
+      "profile_id": "b862fb4a-0434-4453-8013-d2f84bdd7acf",
+      "mode": "execute",
+      "controlled_tools": false,
+      "limits": {
+        "max_steps": 8,
+        "max_duration_ms": 180000,
+        "context_bytes": 131072,
+        "max_result_bytes": 65536
+      }
+    },
+    "latest_run": {
+      "run": {
+        "id": "fdd23667-831a-49f7-b812-a2a75c73b1ac",
+        "task_id": "8e8c275e-61e5-452b-b9c6-cec720423011",
+        "agent_id": "50017e1f-39fe-4e53-a706-01f2350602a4",
+        "state": "awaiting_approval",
+        "started_at_ms": 1791122509854,
+        "ended_at_ms": 1791122509956,
+        "result": {
+          "object_id": "db7d8b8691886bbde9946b3d8a60e04d0770222e6bcc05e688c74ef74cdf0049",
+          "bytes": 128,
+          "media_type": "application/json"
+        },
+        "failure_code": "awaiting_extension_approval"
+      },
+      "session_id": "33e5f502-226e-4779-94b8-8e7a29d7ed3c",
+      "request_id": "4fc74a42-afd4-4eea-9d5e-99d789dcd09b",
+      "predecessor_id": "a5817164-e98d-45d9-8e81-9e1f6d341f40",
+      "profile": {
+        "id": "b862fb4a-0434-4453-8013-d2f84bdd7acf",
+        "label": "p13-real-microsoft-learn",
+        "protocol": "responses",
+        "base_url": "http://127.0.0.1:52371",
+        "model": "p13-real-microsoft-learn",
+        "credential": null,
+        "supports_tools": true,
+        "supports_images": null,
+        "revision": 1,
+        "auth": "none",
+        "capabilities": {
+          "text": {
+            "supported": null,
+            "source": "unknown",
+            "checked_at_ms": null
+          },
+          "streaming": {
+            "supported": null,
+            "source": "unknown",
+            "checked_at_ms": null
+          },
+          "tools": {
+            "supported": true,
+            "source": "user",
+            "checked_at_ms": null
+          },
+          "images": {
+            "supported": null,
+            "source": "unknown",
+            "checked_at_ms": null
+          },
+          "usage": {
+            "supported": null,
+            "source": "unknown",
+            "checked_at_ms": null
+          }
+        },
+        "options": {
+          "max_output_tokens": 1024,
+          "temperature": null,
+          "reasoning_effort": null,
+          "chat_token_parameter": "max_completion_tokens",
+          "timeout_ms": 20000,
+          "idle_timeout_ms": 10000,
+          "anthropic_version": "2023-06-01"
+        },
+        "pricing": null
+      },
+      "mode": "execute",
+      "limits": {
+        "max_steps": 8,
+        "max_duration_ms": 180000,
+        "context_bytes": 131072,
+        "max_result_bytes": 65536
+      },
+      "steps": 1,
+      "reason": "awaiting_extension_approval",
+      "diagnostic": null
+    },
+    "checkpoint_id": "96bf4f95-5d39-48ec-a044-3b7f98138a1f",
+    "context": {
+      "version": 1,
+      "goal": "Query public Microsoft Learn documentation about Windows App SDK app notifications registration and activation; use one search call only.",
+      "constraints": [
+        "Preserve original requirements"
+      ],
+      "project_rules": "",
+      "directions": [],
+      "history": [
+        {
+          "kind": "exchange",
+          "continuation": {
+            "protocol": "responses",
+            "response_id": "runtime-response",
+            "items": [
+              {
+                "arguments": "{\"query\":\"p13-microsoft-learn\"}",
+                "call_id": "runtime-call-0-0",
+                "id": "runtime-item-0-0",
+                "name": "skill_search",
+                "status": "completed",
+                "type": "function_call"
+              }
+            ]
+          },
+          "tool_results": [
+            {
+              "call_id": "runtime-call-0-0",
+              "output": "{\"items\":[{\"installation\":{\"active_digest\":\"b78418eb778db526dcbfe0e77ef15e386173b120fd314093dc0e77aaf68e1927\",\"at_ms\":1791122507558,\"enabled\":true,\"id\":\"e3a37a2c-2dea-47b9-b683-af2fffaae964\",\"installed\":true,\"revision\":1,\"scope\":\"1246989071:65536:3332715\",\"slug\":\"p13-microsoft-learn\",\"source\":\"D:\\\\workspace\\\\kplocker\\\\WorkPilot\\\\.test-results\\\\p13-real-mcp\\\\run-x72hI6\\\\microsoft-learn-package\"},\"servers\":[{\"catalog\":null,\"credential_configured\":false,\"spec\":{\"id\":\"microsoft-learn\",\"name\":\"Microsoft Learn\",\"transport\":{\"auth\":\"none\",\"kind\":\"http\",\"url\":\"https://learn.microsoft.com/api/mcp\"}}}],\"version\":{\"created_at_ms\":1791122507539,\"digest\":\"b78418eb778db526dcbfe0e77ef15e386173b120fd314093dc0e77aaf68e1927\",\"manifest\":{\"dependencies\":[],\"description\":\"Isolated acceptance of public Microsoft documentation\",\"format\":1,\"id\":\"p13-microsoft-learn\",\"name\":\"P13 Microsoft Learn public MCP\",\"servers\":[{\"id\":\"microsoft-learn\",\"name\":\"Microsoft Learn\",\"transport\":{\"auth\":\"none\",\"kind\":\"http\",\"url\":\"https://learn.microsoft.com/api/mcp\"}}],\"skills\":[],\"version\":\"1.0.0\"},\"permissions\":[\"读取已启用技能的说明与包内资源 / Read enabled skill resources\",\"连接远程工具服务 / Network: https://learn.microsoft.com/api/mcp\"],\"skills\":[],\"warnings\":[\"安装不运行脚本、不自动下载依赖；MCP 描述与网页一样不能提升任务权限。\"]}}]}",
+              "is_error": false
+            }
+          ]
+        },
+        {
+          "kind": "exchange",
+          "continuation": {
+            "protocol": "responses",
+            "response_id": "runtime-response",
+            "items": [
+              {
+                "arguments": "{\"effect\":{\"kind\":\"discover\",\"installation_id\":\"e3a37a2c-2dea-47b9-b683-af2fffaae964\",\"revision\":1,\"server_id\":\"microsoft-learn\"}}",
+                "call_id": "runtime-call-1-0",
+                "id": "runtime-item-1-0",
+                "name": "extension_action",
+                "status": "completed",
+                "type": "function_call"
+              }
+            ]
+          },
+          "tool_results": [
+            {
+              "call_id": "runtime-call-1-0",
+              "output": "{\"at_ms\":1791122509584,\"note\":\"A fresh task-scoped session is opened for each approved operation.\",\"protocol_version\":\"2025-06-18\",\"server_info\":{\"name\":\"Microsoft Learn MCP Server\",\"version\":\"1.0.0\"},\"state\":\"checked\",\"tool_digests\":{\"microsoft_code_sample_search\":\"d4886260c3c25d496ebafbe145d113829dff6fbec40025560b188432238a4880\",\"microsoft_docs_fetch\":\"7b9a414f1d7326040ba98acd713e448e4c6cde57e649585818ab20a4849fa0c6\",\"microsoft_docs_search\":\"c51097b359ca6a9b39062c180113fca83e5ac40f33014b9ddb37f267d59fe172\"},\"tools\":[{\"annotations\":{\"destructiveHint\":false,\"idempotentHint\":true,\"readOnlyHint\":true,\"title\":\"Microsoft Docs Search\"},\"description\":\"Search official Microsoft/Azure documentation to find the most relevant and trustworthy content for a user's query. This tool returns up to 10 high-quality content chunks (each max 500 tokens), extracted from Microsoft Learn and other official sources. Each result includes the article title, URL, and a self-contained content excerpt optimized for fast retrieval and reasoning. Always use this tool to quickly ground your answers in accurate, first-party Microsoft/Azure knowledge.\\n\\n## Follow-up Pattern\\nTo ensure completeness, use microsoft_docs_fetch when high-value pages are identified by search. The fetch tool complements search by providing the full detail. This is a required step for comprehensive results.\",\"inputSchema\":{\"properties\":{\"query\":{\"default\":null,\"description\":\"a query or topic about Microsoft/Azure products, services, platforms, developer tools, frameworks, or APIs\",\"type\":\"string\"}},\"type\":\"object\"},\"name\":\"microsoft_docs_search\",\"outputSchema\":{\"properties\":{\"results\":{\"items\":{\"properties\":{\"content\":{\"type\":[\"string\",\"null\"]},\"contentUrl\":{\"type\":\"string\"},\"content_omitted\":{\"type\":\"boolean\"},\"extensionData\":{\"type\":[\"object\",\"null\"]},\"id\":{\"type\":[\"string\",\"null\"]},\"title\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"title\":\"Microsoft Docs Search\"},{\"annotations\":{\"destructiveHint\":false,\"idempotentHint\":true,\"readOnlyHint\":true,\"title\":\"Microsoft Code Sample Search\"},\"description\":\"Search for code snippets and examples in official Microsoft Learn documentation. This tool retrieves relevant code samples from Microsoft documentation pages providing developers with practical implementation examples and best practices for Microsoft/Azure products and services related coding tasks. This tool will help you use the **LATEST OFFICIAL** code snippets to empower coding capabilities.\\n\\n## When to Use This Tool\\n- When you are going to provide sample Microsoft/Azure related code snippets in your answers.\\n- When you are **generating any Microsoft/Azure related code**.\\n\\n## Usage Pattern\\nInput a descriptive query, or SDK/class/method name to retrieve related code samples. The optional parameter `language` can help to filter results.\\n\\nEligible values for `language` parameter include: csharp javascript typescript python powershell azurecli al sql java kusto cpp go rust ruby php\",\"inputSchema\":{\"properties\":{\"language\":{\"default\":null,\"description\":\"Optional parameter specifying the programming language of code snippets to retrieve. Can significantly improve search quality if provided. Eligible values: csharp javascript typescript python powershell azurecli al sql java kusto cpp go rust ruby php\",\"type\":\"string\"},\"query\":{\"description\":\"a descriptive query, SDK name, method name or code snippet related to Microsoft/Azure products, services, platforms, developer tools, frameworks, APIs or SDKs\",\"type\":\"string\"}},\"required\":[\"query\"],\"type\":\"object\"},\"name\":\"microsoft_code_sample_search\",\"outputSchema\":{\"properties\":{\"results\":{\"items\":{\"properties\":{\"codeSnippet\":{\"type\":[\"string\",\"null\"]},\"content_omitted\":{\"type\":\"boolean\"},\"description\":{\"type\":\"string\"},\"language\":{\"type\":\"string\"},\"link\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"title\":\"Microsoft Code Sample Search\"},{\"annotations\":{\"destructiveHint\":false,\"idempotentHint\":true,\"readOnlyHint\":true,\"title\":\"Microsoft Docs Fetch\"},\"description\":\"Fetch and convert a Microsoft Learn documentation webpage to markdown format. This tool retrieves the latest complete content of Microsoft documentation webpages including Azure, .NET, Microsoft 365, and other Microsoft technologies.\\n\\n## When to Use This Tool\\n- When search results provide incomplete information or truncated content\\n- When you need complete step-by-step procedures or tutorials\\n- When you need troubleshooting sections, prerequisites, or detailed explanations\\n- When search results reference a specific page that seems highly relevant\\n- For comprehensive guides that require full context\\n\\n## Usage Pattern\\nUse this tool AFTER microsoft_docs_search when you identify specific high-value pages that need complete content. The search tool gives you an overview; this tool gives you the complete picture.\\n\\n## URL Requirements\\n- The URL must be a valid HTML documentation webpage from the microsoft.com domain\\n- Binary files (PDF, DOCX, images, etc.) are not supported\\n\\n## Output Format\\nmarkdown with headings, code blocks, tables, and links preserved.\",\"inputSchema\":{\"properties\":{\"url\":{\"description\":\"URL of the Microsoft documentation page to read\",\"type\":\"string\"}},\"required\":[\"url\"],\"type\":\"object\"},\"name\":\"microsoft_docs_fetch\",\"title\":\"Microsoft Docs Fetch\"}]}",
+              "is_error": false
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "step_id": "1808cd54-3bd5-45a8-8b7a-b3e7fc5ea902",
+          "summary": "",
+          "output": {
+            "object_id": "1047dc4238b8d0d810ba03e1cdfa249eccaad30fe32b5edf6f1a6d4142ab67c7",
+            "bytes": 618,
+            "media_type": "application/json"
+          },
+          "tool_call_ids": [
+            "runtime-call-0-0"
+          ]
+        },
+        {
+          "step_id": "7afaaf68-8079-4636-838e-a3628190d3c7",
+          "summary": "skill_search: {\"items\":[{\"installation\":{\"active_digest\":\"b78418eb778db526dcbfe0e77ef15e386173b120fd314093dc0e77aaf68e1927\",\"at_ms\":1791122507558,\"enabled\":true,\"id\":\"e3a37a2",
+          "output": {
+            "object_id": "590510d780457345a4e4fa8f74894e7788194763d51213e8da79f3031f5bc9df",
+            "bytes": 1577,
+            "media_type": "application/json"
+          },
+          "tool_call_ids": [
+            "runtime-call-0-0"
+          ]
+        },
+        {
+          "step_id": "17226fa6-b9d4-4732-85e5-34730ff49236",
+          "summary": "",
+          "output": {
+            "object_id": "29926fa5cb1cb927f1109bb74f00ac702004320dc17151fc6dfd50febb8ef331",
+            "bytes": 836,
+            "media_type": "application/json"
+          },
+          "tool_call_ids": [
+            "runtime-call-1-0"
+          ]
+        },
+        {
+          "step_id": "fd00b442-686f-4263-acc5-e4338821af7b",
+          "summary": "extension_action: {\"at_ms\":1791122509584,\"note\":\"A fresh task-scoped session is opened for each approved operation.\",\"protocol_version\":\"2025-06-18\",\"server_info\":{\"name\":\"Micros",
+          "output": {
+            "object_id": "9b7e975736da0af6d2f063aa4bed3001ef65a43b250af4dea65d44da5000ba53",
+            "bytes": 5776,
+            "media_type": "application/json"
+          },
+          "tool_call_ids": [
+            "runtime-call-1-0"
+          ]
+        },
+        {
+          "step_id": "d9781798-fd42-4728-8e0b-3c2b39a60f07",
+          "summary": "",
+          "output": {
+            "object_id": "5352c1641d7386b37e18e84740238a6f2fbdb60da19b571b14b66ffc2a3763bf",
+            "bytes": 750,
+            "media_type": "application/json"
+          },
+          "tool_call_ids": [
+            "runtime-call-2-0"
+          ]
+        }
+      ],
+      "digest": null,
+      "plan": [],
+      "question": null,
+      "pending": {
+        "model_step_id": "d9781798-fd42-4728-8e0b-3c2b39a60f07",
+        "response": {
+          "text": "",
+          "tool_calls": [
+            {
+              "id": "runtime-call-2-0",
+              "name": "mcp_a41f46081fe909ea001e973ff2e290ad",
+              "arguments": {
+                "query": "Windows App SDK app notifications registration and activation"
+              },
+              "provider_item_id": "runtime-item-2-0"
+            }
+          ],
+          "continuation": {
+            "protocol": "responses",
+            "response_id": "runtime-response",
+            "items": [
+              {
+                "arguments": "{\"query\":\"Windows App SDK app notifications registration and activation\"}",
+                "call_id": "runtime-call-2-0",
+                "id": "runtime-item-2-0",
+                "name": "mcp_a41f46081fe909ea001e973ff2e290ad",
+                "status": "completed",
+                "type": "function_call"
+              }
+            ]
+          },
+          "finish_reason": "tool_calls",
+          "actual_model": "p13-real-microsoft-learn",
+          "usage": {
+            "input_tokens": 20,
+            "output_tokens": 10,
+            "cost_microunits": null,
+            "currency": null
+          },
+          "raw_usage": {
+            "input_tokens": 20,
+            "output_tokens": 10
+          }
+        },
+        "action_ids": [
+          "c87acc17-9ee8-4209-8395-e1d0edf495e8"
+        ],
+        "next": 0,
+        "results": []
+      },
+      "last_text": ""
+    },
+    "messages": [],
+    "steps": [
+      {
+        "id": "1808cd54-3bd5-45a8-8b7a-b3e7fc5ea902",
+        "run_id": "a5817164-e98d-45d9-8e81-9e1f6d341f40",
+        "ordinal": 1,
+        "kind": "model",
+        "name": "model",
+        "state": "completed",
+        "provider_call_id": null,
+        "input": {
+          "object_id": "b4c20c1adaba581815a426cfe0000137e36c708fecd4b67510b2d405752f2d2e",
+          "bytes": 19430,
+          "media_type": "application/json"
+        },
+        "output": {
+          "object_id": "1047dc4238b8d0d810ba03e1cdfa249eccaad30fe32b5edf6f1a6d4142ab67c7",
+          "bytes": 618,
+          "media_type": "application/json"
+        },
+        "tool_call_id": null,
+        "started_at_ms": 1791122507575,
+        "ended_at_ms": 1791122507630
+      },
+      {
+        "id": "7afaaf68-8079-4636-838e-a3628190d3c7",
+        "run_id": "a5817164-e98d-45d9-8e81-9e1f6d341f40",
+        "ordinal": 2,
+        "kind": "tool",
+        "name": "skill_search",
+        "state": "completed",
+        "provider_call_id": "runtime-call-0-0",
+        "input": {
+          "object_id": "a3e719e0f6f33413501d19342b66510296af3abe194ee533c0f3aea2fb3cf7b8",
+          "bytes": 129,
+          "media_type": "application/json"
+        },
+        "output": {
+          "object_id": "590510d780457345a4e4fa8f74894e7788194763d51213e8da79f3031f5bc9df",
+          "bytes": 1577,
+          "media_type": "application/json"
+        },
+        "tool_call_id": null,
+        "started_at_ms": null,
+        "ended_at_ms": 1791122507647
+      },
+      {
+        "id": "17226fa6-b9d4-4732-85e5-34730ff49236",
+        "run_id": "a5817164-e98d-45d9-8e81-9e1f6d341f40",
+        "ordinal": 3,
+        "kind": "model",
+        "name": "model",
+        "state": "completed",
+        "provider_call_id": null,
+        "input": {
+          "object_id": "df59ba0bb247c82c1adcdd7816503086eee0bd9502aeb44c446ab2825ff75996",
+          "bytes": 21298,
+          "media_type": "application/json"
+        },
+        "output": {
+          "object_id": "29926fa5cb1cb927f1109bb74f00ac702004320dc17151fc6dfd50febb8ef331",
+          "bytes": 836,
+          "media_type": "application/json"
+        },
+        "tool_call_id": null,
+        "started_at_ms": 1791122507665,
+        "ended_at_ms": 1791122507716
+      },
+      {
+        "id": "fd00b442-686f-4263-acc5-e4338821af7b",
+        "run_id": "a5817164-e98d-45d9-8e81-9e1f6d341f40",
+        "ordinal": 4,
+        "kind": "tool",
+        "name": "extension_action",
+        "state": "completed",
+        "provider_call_id": "runtime-call-1-0",
+        "input": {
+          "object_id": "c2c7acef9eeb893edd49e644f78d5c283faec5881518ad1811cfd3a1cf3a0013",
+          "bytes": 232,
+          "media_type": "application/json"
+        },
+        "output": {
+          "object_id": "9b7e975736da0af6d2f063aa4bed3001ef65a43b250af4dea65d44da5000ba53",
+          "bytes": 5776,
+          "media_type": "application/json"
+        },
+        "tool_call_id": null,
+        "started_at_ms": null,
+        "ended_at_ms": 1791122509867
+      },
+      {
+        "id": "d9781798-fd42-4728-8e0b-3c2b39a60f07",
+        "run_id": "fdd23667-831a-49f7-b812-a2a75c73b1ac",
+        "ordinal": 1,
+        "kind": "model",
+        "name": "model",
+        "state": "completed",
+        "provider_call_id": null,
+        "input": {
+          "object_id": "7aa5bb8d1eca6b4f2b387d2313fa975dacab6b751bc851349006ed606ab41518",
+          "bytes": 31592,
+          "media_type": "application/json"
+        },
+        "output": {
+          "object_id": "5352c1641d7386b37e18e84740238a6f2fbdb60da19b571b14b66ffc2a3763bf",
+          "bytes": 750,
+          "media_type": "application/json"
+        },
+        "tool_call_id": null,
+        "started_at_ms": 1791122509886,
+        "ended_at_ms": 1791122509935
+      },
+      {
+        "id": "c87acc17-9ee8-4209-8395-e1d0edf495e8",
+        "run_id": "fdd23667-831a-49f7-b812-a2a75c73b1ac",
+        "ordinal": 2,
+        "kind": "tool",
+        "name": "mcp_a41f46081fe909ea001e973ff2e290ad",
+        "state": "prepared",
+        "provider_call_id": "runtime-call-2-0",
+        "input": {
+          "object_id": "03c1cfa87aa64666b6ace713c720d40a06134ebc3d1506d3337336dcf0acc514",
+          "bytes": 195,
+          "media_type": "application/json"
+        },
+        "output": null,
+        "tool_call_id": null,
+        "started_at_ms": null,
+        "ended_at_ms": null
+      }
+    ]
+  },
+  "connectionsBefore": 1,
+  "connectionsAfter": 1
+}

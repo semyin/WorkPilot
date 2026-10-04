@@ -1,0 +1,101 @@
+{
+  "at": "2026-10-04T11:08:12.923Z",
+  "status": "implementation_and_local_checks_complete_for_this_slice_formal_acceptance_pending",
+  "version": "0.1.0-alpha.13.1",
+  "baseCommit": "d20c5b25e2d92ee7e3758d4b3d21e55b489ff96b",
+  "build": {
+    "command": "npm run build (Tauri build --no-bundle)",
+    "appVersion": "0.1.0-alpha.13.1",
+    "at": "2026-10-04T10:45:26.636Z",
+    "platform": "win32",
+    "desktop": "15d6774f56d3719517e5fae676b773923c1b5c21477cfb6a41d945d6af0a7fd3",
+    "engine": "30402ca80845394178da104ef683ee47cab735bd12d85790a4d6c914826a38f7",
+    "runtimeCheck": "734b5490b1f93e881483767e1172501594879ddd6cf7c9d5c9c4b8c7533a7c2f",
+    "browserSetup": "8d003c4b6281c774357ad27a531813af77926f1f6894d478241dfe091fb9ddc5",
+    "updateHelper": "9b3cf5438035a211b86f05942595cb7753e9fabe7bf9f9e7fbf821dc448b772f",
+    "companion": "19c77b62485793e62d092a94b017b0fd184b131f69a86d03e1e2ad4f519f488d"
+  },
+  "suites": [
+    {
+      "name": "desktop-benchmark.json",
+      "status": "passed",
+      "checks": 4,
+      "binarySha256": "15d6774f56d3719517e5fae676b773923c1b5c21477cfb6a41d945d6af0a7fd3",
+      "targetMisses": []
+    },
+    {
+      "name": "engine-final.json",
+      "status": "passed",
+      "checks": 3,
+      "binarySha256": "30402ca80845394178da104ef683ee47cab735bd12d85790a4d6c914826a38f7",
+      "targetMisses": []
+    },
+    {
+      "name": "desktop-resources.json",
+      "status": "passed",
+      "checks": 3,
+      "binarySha256": "15d6774f56d3719517e5fae676b773923c1b5c21477cfb6a41d945d6af0a7fd3",
+      "targetMisses": []
+    },
+    {
+      "name": "workspace-desktop.json",
+      "status": "passed",
+      "checks": 10,
+      "binarySha256": "15d6774f56d3719517e5fae676b773923c1b5c21477cfb6a41d945d6af0a7fd3",
+      "targetMisses": []
+    },
+    {
+      "name": "team-restore-desktop.json",
+      "status": "passed",
+      "checks": 3,
+      "binarySha256": "15d6774f56d3719517e5fae676b773923c1b5c21477cfb6a41d945d6af0a7fd3",
+      "targetMisses": []
+    }
+  ],
+  "checks": {
+    "standardCommand": "npm run check",
+    "rustPassed": 206,
+    "rustIgnored": 3,
+    "nodeFixtureAndPdfPassed": [
+      11,
+      3
+    ],
+    "codeFiles": 480,
+    "maximumCodeLines": 964,
+    "sourceFiles": 619,
+    "localLinks": 928,
+    "credentialScannedTextFiles": 1534,
+    "credentialPatternMatches": 0,
+    "deliveryFiles": 25239,
+    "deliveryBytes": 2468866841,
+    "binaryVerification": {
+      "at": "2026-10-04T11:08:05.245Z",
+      "files": 25239,
+      "manifestSha256": "a2845e1cee76ea79613e1e28c57813dcb3c72510a044ad866f1a5b3909fbe77d",
+      "evidenceLog": "artifacts/workpilot-p13-baseline-2026-10-04/evidence/audit-initial-whitespace.txt",
+      "evidenceLogSha256": "e5f56e71a89daefc6e646243c83f76aa7f3a91f378ad3f3936a47ff3db6c67ad",
+      "basis": "Initial audit completed every binary byte length and SHA-256 assertion, report-version checks and source checks, then stopped at git diff --check (line 40) for one Markdown trailing whitespace. Only documentation whitespace was changed afterward; no executable/resource was rebuilt or changed. The final audit reruns document/source checks without repeating the completed full file hashing."
+    },
+    "p12SealedManifestsAndExecutablesUnchanged": true,
+    "screenshotsViewed": [
+      "desktop-timing-zh.png",
+      "desktop-timing-en.png",
+      "regression-workbench-zh.png",
+      "regression-workbench-en-dark.png",
+      "regression-hundred-thousand-events.png",
+      "team-restore-preview-zh.png",
+      "team-restore-delivery-zh.png",
+      "team-restore-duplicate-en.png",
+      "desktop-resources-idle.png",
+      "desktop-resources-model-wait.png"
+    ]
+  },
+  "remaining": [
+    "Four-hour stability and true cold-cache startup",
+    "Dedicated browser and Office combined resources/stop",
+    "Real different-model collaboration and real image service",
+    "Daily Chrome/Edge authorization, native picker and human UX",
+    "Clean Windows, physical second-machine migration, real sleep/timezone, notification choice",
+    "macOS/Linux real-device validation and Windows formal release"
+  ]
+}

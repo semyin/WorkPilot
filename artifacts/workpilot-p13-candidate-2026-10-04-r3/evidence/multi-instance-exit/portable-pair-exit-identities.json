@@ -1,0 +1,74 @@
+[
+  {
+    "pid": 37892,
+    "parentPid": 20504,
+    "startedAtMs": 1791123568228,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 29492,
+    "parentPid": 18908,
+    "startedAtMs": 1791123567961,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+    "role": "desktop",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 20504,
+    "parentPid": 29492,
+    "startedAtMs": 1791123568069,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 20392,
+    "parentPid": 20504,
+    "startedAtMs": 1791123568225,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 40008,
+    "parentPid": 22936,
+    "startedAtMs": 1791123567992,
+    "path": "C:\\Windows\\system32\\conhost.exe",
+    "role": "other-owned",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 24316,
+    "parentPid": 20504,
+    "startedAtMs": 1791123568260,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 43524,
+    "parentPid": 20504,
+    "startedAtMs": 1791123568378,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 22936,
+    "parentPid": 29492,
+    "startedAtMs": 1791123567983,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+    "role": "engine",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 33028,
+    "parentPid": 20504,
+    "startedAtMs": 1791123568098,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  }
+]

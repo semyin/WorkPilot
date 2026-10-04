@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-04T14:05:15.803Z",
+  "status": "passed",
+  "scope": "Offline comparison only; no process, network or model request",
+  "workbenchRecord": {
+    "bytes": 53607,
+    "media_type": "text/plain; charset=utf-8",
+    "object_id": "9d8849c6aac67843e15ee004351ef5cfba03bf1ba36bfcef277be49eab7ab6dd"
+  },
+  "runtimeRecord": {
+    "bytes": 52968,
+    "media_type": "application/json",
+    "object_id": "f6bd6e5ed62688eb59f33d708f854e8cecbc9fefd65e5769964be7249aaa3091"
+  },
+  "assertion": "Different serialized references contain semantically identical full JSON result"
+}

@@ -1,0 +1,17 @@
+   Compiling workpilot-contracts v0.1.0-alpha.13.3 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-desktop v0.1.0-alpha.13.3 (D:\workspace\kplocker\WorkPilot\apps\desktop\src-tauri)
+   Compiling workpilot-platform v0.1.0-alpha.13.3 (D:\workspace\kplocker\WorkPilot\crates\platform)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 46.76s
+     Running unittests src\main.rs (target\debug\deps\workpilot_desktop-fa782bd85b15548e.exe)
+
+running 7 tests
+test notifications::tests::channel_preferences_focus_and_bursts_are_predictable ... ok
+test notifications::tests::only_real_task_transitions_create_notices_without_content ... ok
+test notifications::tests::replay_poll_restart_and_out_of_order_delivery_do_not_duplicate ... ok
+test notifications::tests::inbox_is_bounded_and_keeps_state_when_system_delivery_fails ... ok
+test notifications::tests::readonly_notification_file_preserves_previous_settings ... ok
+test notifications::tests::notification_storage_roundtrips_and_refuses_invalid_records ... ok
+test notifications::tests::worker_replays_no_history_and_releases_data_lock_before_maintenance ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 1 filtered out; finished in 0.03s
+

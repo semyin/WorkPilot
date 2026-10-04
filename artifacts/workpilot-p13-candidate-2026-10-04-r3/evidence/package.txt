@@ -1,0 +1,5 @@
+
+> workpilot@0.1.0-alpha.13.4 package:p13
+> node scripts/package-p12.mjs --p13-r3
+
+{"phase":"P13","files":25239,"bytes":2469117721,"components":9}

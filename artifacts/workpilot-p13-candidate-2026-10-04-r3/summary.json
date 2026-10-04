@@ -1,0 +1,120 @@
+{
+  "at": "2026-10-04T14:58:06.529Z",
+  "version": "0.1.0-alpha.13.4",
+  "dataVersion": 11,
+  "status": "implementation_and_this_round_short_checks_complete_pending_external_and_user_acceptance",
+  "formallyAccepted": false,
+  "build": {
+    "command": "npm run build (Tauri build --no-bundle)",
+    "appVersion": "0.1.0-alpha.13.4",
+    "at": "2026-10-04T13:49:31.822Z",
+    "platform": "win32",
+    "desktop": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+    "engine": "a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb",
+    "runtimeCheck": "2e3cd4003ff578501ad002064a0eba9851904cb18c6d57d87d84ee463e131d6e",
+    "browserSetup": "d80ecb907e00fa41d2955263c967fd187a2adf8ecceafd28fd2c7b2cf8a827e4",
+    "updateHelper": "428055af1c70059c425feb6f5bf7d96ac8560c4fe42955068b69a43db81fe2f6",
+    "companion": "ae72e607b2129086e2297e746bdeefda9dd4089f6ac52e44a5210db3eb82e232"
+  },
+  "standard": {
+    "command": "npm run check",
+    "status": "passed",
+    "rust": {
+      "passed": 211,
+      "failed": 0,
+      "ignored": 3
+    },
+    "nodePassed": [
+      11,
+      3
+    ],
+    "note": "8 desktop notification unit checks and 4 settings tests are separate, not included in npm check"
+  },
+  "currentCandidate": {
+    "targetedRegression": {
+      "suites": 6,
+      "groups": 46,
+      "report": "evidence/regression-summary.json"
+    },
+    "notifications": {
+      "groupsWithoutSubmission": 26,
+      "windowsSubmissionTypes": 4,
+      "report": "evidence/notifications/notifications-run.json",
+      "actualWindowsDisplayAndClick": "not_verified"
+    },
+    "performance": {
+      "suites": 4,
+      "groups": 11,
+      "report": "evidence/performance/summary.json"
+    },
+    "toolStops": {
+      "groups": 2,
+      "browserSamples": 20,
+      "officeSamples": 20,
+      "allProcessExitsUnderTwoSeconds": true,
+      "officeCleanupP95Ms": 2258.469,
+      "report": "evidence/tool-stop/summary.json"
+    },
+    "longHistory": {
+      "suites": 1,
+      "groups": 6,
+      "report": "evidence/long-history/long-history-run.json"
+    },
+    "realExternalTool": {
+      "groups": 4,
+      "report": "evidence/real-mcp/run.json",
+      "scope": "Fixed local model plus real public Microsoft Learn search; no OAuth, personal data or paid model"
+    },
+    "installation": {
+      "lifecycleGroups": 2,
+      "desktopGroups": 5,
+      "report": "evidence/installation/lifecycle.json",
+      "limits": "Current development Windows; no databases within lifecycle session; original four processes already absent at uninstall. See scope-notes.json."
+    },
+    "externalKit": {
+      "groups": 9,
+      "report": "evidence/acceptance-kit-run.json",
+      "cleanWindows": false
+    },
+    "normalExitIsolation": {
+      "groups": 4,
+      "report": "evidence/multi-instance-exit/run.json"
+    }
+  },
+  "previousVersionEvidence": {
+    "version": "0.1.0-alpha.13.3",
+    "engineSha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+    "sourceScopeComparison": "evidence/source-change-scope.json",
+    "regression": "../workpilot-p13-candidate-2026-10-04-r2/evidence/regression-summary.json",
+    "realModels": "../workpilot-p13-candidate-2026-10-04-r2/evidence/real-models/summary.md",
+    "realImages": "../workpilot-p13-candidate-2026-10-04-r2/evidence/real-images.json",
+    "meaning": "Original reports retain their version and hashes; paid calls were not rerun on alpha.13.4"
+  },
+  "fourHourTest": {
+    "decision": "Cancelled by explicit user instruction on 2026-10-04",
+    "completed": false,
+    "active": false,
+    "automaticallyRescheduled": false,
+    "earlierAttempts": "Partial failed/paused segments retained; never combined to claim four hours"
+  },
+  "exitObservations": {
+    "at2212": "Original r3 partial soak closed for unconfirmed reason; retained failed",
+    "at2243": "User explicitly confirmed manual exit; source observation preserved with separate correction",
+    "report": "evidence/delayed-exit/README.md",
+    "originalUserProgramRestarted": false
+  },
+  "remainingAcceptance": [
+    "Clean Windows and no-WebView2 installation",
+    "Physical second-computer migration",
+    "Daily Chrome and Edge authorization and revocation experience",
+    "Actual Windows toast/tray visual display and native click",
+    "Real OS sleep/wake/timezone and whole-machine network transitions",
+    "True cold-cache startup",
+    "User workflow and output-quality acceptance",
+    "macOS/Linux are later phases, not verified here"
+  ],
+  "knownCompatibilityLimit": "GLM with the tested service Chat interface repeatedly supplied invalid file version parameters; that file-team combination is not passed",
+  "deliveryAudit": "evidence/delivery-audit.json",
+  "latestPushedCommit": "d20c5b25e2d92ee7e3758d4b3d21e55b489ff96b",
+  "newCommitOrPush": false
+}

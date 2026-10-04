@@ -1,0 +1,849 @@
+{
+  "at": "2026-10-04T13:01:41.385Z",
+  "synthetic": false,
+  "platform": "win32",
+  "binarySha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+  "service": "User-authorized Alibaba Cloud workspace",
+  "servicePaths": {
+    "chat_completions": "/compatible-mode/v1/chat/completions",
+    "responses": "/compatible-mode/v1/responses",
+    "messages": "/apps/anthropic/v1/messages"
+  },
+  "models": [
+    {
+      "id": "p13-qwen-responses",
+      "family": "Qwen",
+      "model": "qwen3.8-flash",
+      "protocol": "responses",
+      "modes": [
+        "text",
+        "tools",
+        "image"
+      ]
+    }
+  ],
+  "mode": "explicit_skill_memory_workflow",
+  "expectedChecks": 7,
+  "previousEvidence": {
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-real-format-alpha13.3\\run-AasLey\\report.json",
+    "sha256": "52c73688db8995494ee76d42c41c9de521dfb54a4d4137678ad704b6e4e3b3dd",
+    "originalStatus": "failed",
+    "note": "Prior probe evidence only. This new workflow has new tasks, files and credentials; its result is not merged with the earlier sample.",
+    "capabilityConfiguration": "Tool capability is explicitly set with source=user based on the earlier recorded real probe. No probe timestamp or successful probe is fabricated in the new directory."
+  },
+  "checks": [
+    {
+      "id": "skills:real_creator_draft_stays_inactive",
+      "at": "2026-10-04T13:01:41.536Z",
+      "state": "passed",
+      "tasks": [
+        {
+          "taskId": "71b71df1-471a-4647-8535-0f2ed440974f",
+          "mode": "execute",
+          "requestedModel": "qwen3.8-flash",
+          "state": "completed",
+          "text": "已完成。实际流程与结果如下：\n\n**1. 先做发现，再动手（均按工具返回的真实内容）**\n- `skill_search(\"skill-creator\")` → 命中内置技能 `builtin-skill-creator`（revision 1，digest `2d2471c1…`）。\n- `skill_read` 读取它的 `SKILL.md`（并按需读了 `workpilot-plugin.json`），按其要求执行：YAML 头含小写短横线 `name` + 说明能力与时机的 `description`；只在确有需要时加 `references/`；不写凭据；保存后明确告知用户草稿须由本人确认才启用。\n- `memory_search(\"汇报标题\")` → 当前无任何已确认条目；`list_directory(\".\")` → 项目为空。因此技能必须保持通用、不能内置本次结果，且“无偏好先询问”这条路径是真实需要的。\n\n**2. 已用 `skill_draft` 保存项目范围草稿**（未启用、未安装）\n- 草稿 ID：`7826fe44-4586-4be3-ac69-2d4371a40141`，scope 为当前项目，状态 `draft: true`，`installed_id: null`。\n- 我提供的文件只有两份 Markdown：\n  - `SKILL.md`（3520 B，sha256 `b35d18b3…`）：`name: p13-reusable-summary`；description 说明用途（按项目已确认汇报偏好汇总 JSON 数字）、触发时机（用户要求按项目偏好/汇报标题给合计/生成数字汇总报告，或任何含 `values` 数字数组的指定 JSON）、并要求**使用时先读 `references/format.md`**。正文为 8 步：读格式 → `memory_search` 取“汇报标题”前缀（无结果或不明确就 `ask_user`，不编造、不写记忆）→ `read_file` 读用户指定 JSON 并校验 `values` 全为数字（异常则问用户，不静默过滤）→ 按原顺序精确累加 → `write_file` 写报告（新文件 `expected_sha256=null`，覆盖前先读版本哈希并确认）→ `read_file` 回读核对 → `register_artifact` 登记 → 汇报来源、路径、元素个数、总和、核对结论与未验证项。\n  - `references/format.md`（3146 B，sha256 `3c611c4c…`）：规定输出严格为 `{标题前缀}|合计={总和}`，**只一行、无末尾换行**、`|` 与 `=` 两侧不加空格；前缀原样使用；求和与精度规则（空数组=0 并提醒、小数按十进制精确累加、不四舍五入不补零）；默认文件名 `summary-report.txt`（以用户指定为准）；回读逐项核对清单；示例 `月度数据汇报|合计=6`、`Q3 汇总|合计=1.75` 明确标注**仅示意格式，非任何一次实际结果**。\n- 清单中另有 `workpilot-plugin.json`（575 B，`servers: []`、`dependencies: []`）是平台自动生成的包清单，不是我写的文件——**未生成脚本、未生成插件/MCP 服务器、未写入任何凭据**。\n\n**3. 边界与未验证项（如实说明）**\n- 项目目录仍为空：我没有创建或修改任何项目文件。\n- 技能内容未经运行验证：`values` 求和与单行输出格式只能在用户确认启用、并给出一个含 `values` 的真实 JSON 后，通过实际执行（写报告 → 回读核对）来验证。\n- 当前项目尚无已确认的“汇报标题”记忆，因此首次使用会走到 `ask_user` 询问前缀的分支。\n\n**下一步（需你本人操作）**：草稿处于**等待人工确认**状态，请在“技能与插件”面板查看并确认启用；我不会自行启用、编辑或删除它。启用后，给我一个含 `values` 的 JSON 文件路径即可按该技能跑一次小样本验证。",
+          "calls": [
+            {
+              "stepId": "aae198d6-5a10-4485-9fc6-0dcdb1be0710",
+              "state": "completed",
+              "startedAtMs": 1791118901650,
+              "endedAtMs": 1791118903867,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 5561,
+                "output_tokens": 48
+              }
+            },
+            {
+              "stepId": "c659e266-8236-479c-b7c6-acd3a80a33bd",
+              "state": "completed",
+              "startedAtMs": 1791118903896,
+              "endedAtMs": 1791118906605,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 6027,
+                "output_tokens": 70
+              }
+            },
+            {
+              "stepId": "25c33b9b-5cbe-4e8e-b3fb-02616448a8f0",
+              "state": "completed",
+              "startedAtMs": 1791118906646,
+              "endedAtMs": 1791118910982,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 6872,
+                "output_tokens": 244
+              }
+            },
+            {
+              "stepId": "376d3a14-5499-4c98-a66b-1cb1c06eab37",
+              "state": "completed",
+              "startedAtMs": 1791118911055,
+              "endedAtMs": 1791118915787,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 7298,
+                "output_tokens": 209
+              }
+            },
+            {
+              "stepId": "23fd3899-e872-4816-82cb-b0a611add640",
+              "state": "completed",
+              "startedAtMs": 1791118915828,
+              "endedAtMs": 1791118967653,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 7847,
+                "output_tokens": 3196
+              }
+            },
+            {
+              "stepId": "3681a70e-928b-45fb-807f-adca72e298fc",
+              "state": "completed",
+              "startedAtMs": 1791118967707,
+              "endedAtMs": 1791118971722,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 11740,
+                "output_tokens": 141
+              }
+            },
+            {
+              "stepId": "ce930ce1-63e0-47f2-be28-f5247779b2cc",
+              "state": "completed",
+              "startedAtMs": 1791118971771,
+              "endedAtMs": 1791118987048,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "stop",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 11909,
+                "output_tokens": 1018
+              }
+            }
+          ]
+        }
+      ],
+      "draft": {
+        "draft": true,
+        "expected_revision": null,
+        "id": "7826fe44-4586-4be3-ac69-2d4371a40141",
+        "installed_id": null,
+        "scope": "1246989071:65536:3283174",
+        "source": "AI skill draft / 待确认技能草稿",
+        "version": {
+          "created_at_ms": 1791118967663,
+          "digest": "0a8b06887458444a786b23b3412463dca8c93e092f5e70234f4bcabe5f08e44e",
+          "files": [
+            {
+              "bytes": 3520,
+              "path": "SKILL.md",
+              "sha256": "b35d18b34dbf9112616fe500a2262025d36e9c75610023b54ed6bdbe938799bd"
+            },
+            {
+              "bytes": 3146,
+              "path": "references/format.md",
+              "sha256": "3c611c4cd6bae34bf9f84bdc4bacece3a7344de864b496fad2ff75c777861f2a"
+            },
+            {
+              "bytes": 575,
+              "path": "workpilot-plugin.json",
+              "sha256": "8351ac3df174e5779d3fb09f26e08c22134d209e6a7d798fa02926b6639622d6"
+            }
+          ],
+          "manifest": {
+            "dependencies": [],
+            "description": "按项目已确认的汇报偏好生成数字汇总。用于用户要求“按项目偏好汇总某个 JSON 文件的数字”“用汇报标题给出合计”“生成数字汇总报告”这类请求；也适用于任何被指定的、含 values 数字数组的 JSON 文件。使用本技能时必须先读包内 references/format.md，再按其中的格式与取值规则执行。",
+            "format": 1,
+            "id": "p13-reusable-summary",
+            "name": "p13-reusable-summary",
+            "servers": [],
+            "skills": [
+              "."
+            ],
+            "version": "1.0.0"
+          },
+          "permissions": [
+            "读取已启用技能的说明与包内资源 / Read enabled skill resources"
+          ],
+          "skills": [
+            {
+              "allowed_tools": null,
+              "compatibility": null,
+              "description": "按项目已确认的汇报偏好生成数字汇总。用于用户要求“按项目偏好汇总某个 JSON 文件的数字”“用汇报标题给出合计”“生成数字汇总报告”这类请求；也适用于任何被指定的、含 values 数字数组的 JSON 文件。使用本技能时必须先读包内 references/format.md，再按其中的格式与取值规则执行。",
+              "license": null,
+              "name": "p13-reusable-summary",
+              "path": "SKILL.md"
+            }
+          ],
+          "warnings": [
+            "安装不运行脚本、不自动下载依赖；MCP 描述与网页一样不能提升任务权限。"
+          ]
+        }
+      },
+      "resources": {
+        "SKILL.md": "---\nname: p13-reusable-summary\ndescription: 按项目已确认的汇报偏好生成数字汇总。用于用户要求“按项目偏好汇总某个 JSON 文件的数字”“用汇报标题给出合计”“生成数字汇总报告”这类请求；也适用于任何被指定的、含 values 数字数组的 JSON 文件。使用本技能时必须先读包内 references/format.md，再按其中的格式与取值规则执行。\n---\n\n# 可复用数字汇总（汇报标题 + 合计）\n\n开始前先读 `references/format.md`：标题前缀来源、求和细则和最终输出的严格格式全部以该文件为准。不要用记忆里的格式或本正文的概述代替它。\n\n本技能面向任意输入数字，不预设、不内置任何一次的具体结果；正文与参考文件中的示例只用于说明格式。\n\n## 需要的输入\n\n- 用户指定的 JSON 文件（项目内相对路径），其中 `values` 是数字数组。路径缺失或含糊时先问用户，不要猜测文件。\n- 已确认的项目记忆“汇报标题”提供标题前缀。\n\n## 执行步骤\n\n1. 读 `references/format.md`。\n2. 用 `memory_search` 查询已确认的“汇报标题”项目记忆，取得标题前缀。\n   - 只有工具明确返回的、用户已确认的条目可当作前缀来源。\n   - 若没有任何已确认条目，或条目里没有明确的前缀：用 `ask_user` 询问用户本次要用的标题前缀。在得到答复前不要写报告、不要编造或沿用示例中的前缀。\n   - 用户在本轮临时给出的前缀只用于本轮，不据此推断新的长期偏好，也不自行写入记忆。\n3. 用 `read_file` 读取用户指定的 JSON 文件，解析 `values`，确认该字段存在且每个元素都是 JSON 数字。\n   - 文件不存在、`values` 缺失、含非数字元素等情况：说明具体原因并询问用户如何处理；不静默跳过元素、不按 0 代替。\n4. 对 `values` 全部元素求和：按数组原顺序逐项累加，保留精确结果，不四舍五入、不补零格式化。求和规则的细节见 `references/format.md`。\n5. 用 `write_file` 写出报告文件，内容严格等于 `references/format.md` 规定的单行文本。目标为新文件时 `expected_sha256=null`；若目标已存在，先 `read_file` 取得当前版本哈希，并向用户确认后再覆盖。\n6. 用 `read_file` 回读写出的文件，核对：只有一行、无末尾换行、前缀与来源一致、合计与 `values` 求和一致。核对不通过就修正后重新写入并再回读，不要把未核对的内容当成完成。\n7. 用 `register_artifact` 登记该报告文件。\n8. 回复用户：使用的标题前缀及其来源（记忆条目或用户本轮答复）、JSON 文件路径、参与求和的元素个数与总和、报告文件路径与回读核对结果、以及未验证项。\n\n## 配套资源\n\n- `references/format.md`：输出格式、前缀取值、数字与异常处理、文件命名与登记核对规则。每次使用本技能都先读它；不需要读其他文件。\n\n## 边界\n\n- 只使用当前任务确实提供的工具：`memory_search`、`read_file`、`write_file`、`register_artifact`、`ask_user`。\n- 本技能包只含上述两份 Markdown，不含脚本、不含插件/MCP 服务器、不含凭据；凭据一律由用户在扩展认证设置里配置。\n- 草稿需用户在“技能与插件”中确认后才启用；技能的执行仍受任务模式与审批约束，编写技能本身不扩大任何授权。\n",
+        "references/format.md": "# 汇总输出格式说明\n\n本文件是 `p13-reusable-summary` 的唯一格式权威。每次使用技能先读它。\n\n## 1. 最终输出（严格）\n\n报告文件的全部内容严格为一行：\n\n`{标题前缀}|合计={总和}`\n\n- 单行，仅此一行；无空行、无标题、无 Markdown 代码块、无前后空格。\n- 无末尾换行符（结尾不写 `\\n`）。\n- 分隔符固定为一个半角竖线 `|`，等号固定为半角 `=`，中间不加空格。\n- `{标题前缀}` 原样使用来源字符串：不翻译、不改标点、不加减空格。\n- `{总和}` 是 `values` 数组全部元素累加的结果，不带单位、不带千分位、不做四舍五入。\n\n格式示例（仅示意，不是任何一次的实际结果）：\n\n- 前缀 `月度数据汇报`，`values` 为 `[1, 2, 3]` → `月度数据汇报|合计=6`\n- 前缀 `Q3 汇总`，`values` 为 `[0.5, 1.25]` → `Q3 汇总|合计=1.75`\n\n这些数字只演示排版；任何前缀或合计都必须来自当次记忆与当次文件。\n\n## 2. 标题前缀的取值\n\n1. 用 `memory_search` 查询“汇报标题”，取用户已确认条目中记录的标题前缀。\n2. 若查询无结果、结果中没有明确前缀，或存在互相冲突的条目：用 `ask_user` 询问用户要用哪个前缀，冲突时以用户答复为准。\n3. 绝不编造、绝不沿用示例前缀、绝不把本轮临时答复当成永久偏好；技能不写入或修改记忆（新的长期偏好需用户自行在记忆面板确认）。\n\n## 3. 数字与求和\n\n- 只接受 JSON 数字字面量（整数、小数、负数）。`values` 中的字符串（如 `\"3\"`）、`null`、布尔值、嵌套数组或对象都视为异常：停下来问用户，不静默过滤、不隐式转换。\n- 求和按数组原顺序逐项累加；空数组的总和记为 `0`，输出 `{前缀}|合计=0`，并在回复中提醒用户 `values` 为空。\n- 保持原始精度：整数结果输出为整数（`6`，不是 `6.0`）；小数结果按精确十进制值输出，不补零、不截位。\n- 含小数时按十进制精确累加（先按各元素的小数位数对齐再相加），避免出现 `0.1 + 0.2` 这类浮点表示误差；若无法保证精确，如实说明并按可验证的结果输出，不伪造。\n- 极长或科学计数法数字：用 JSON 中可读回的十进制形式输出，并在回复中说明元素数量与原始值范围。\n\n## 4. 文件与登记\n\n- 默认文件名 `summary-report.txt`（UTF-8）；用户指定文件名或位置时一律以用户为准，保持用户选择的路径。\n- 写入用 `write_file`：新文件 `expected_sha256=null`；覆盖已存在文件必须先 `read_file` 拿到当前哈希并向用户确认。\n- 写入后必须 `read_file` 回读并逐项核对：\n  - 恰好一行，末尾无换行；\n  - 前缀与记忆条目（或用户本轮明确答复）逐字符一致；\n  - 合计等于当次 `values` 的累加结果，元素个数与文件内容一致；\n  - 无多余空白、引号或代码块标记。\n- 核对通过后用 `register_artifact` 登记该文件；把元素个数、总和与核对结论一并告知用户。\n"
+      },
+      "creatorReadBeforeDraft": true,
+      "activeBeforeConfirmation": false,
+      "finishedAt": "2026-10-04T13:03:07.136Z"
+    },
+    {
+      "id": "memory:real_proposal_stays_unconfirmed",
+      "at": "2026-10-04T13:03:07.144Z",
+      "state": "passed",
+      "tasks": [
+        {
+          "taskId": "e389e497-bda5-4693-bbda-fb5909b54bd0",
+          "mode": "chat",
+          "requestedModel": "qwen3.8-flash",
+          "state": "completed",
+          "text": "已保存为**项目范围的记忆候选**，未自行确认，也未创建技能或写入任何文件。\n\n- 候选内容：本项目的演示汇报标题统一以“青禾验收”开头（适用于所有演示/汇报类文档与幻灯片的标题命名）。\n- 依据（你的原话）：“我希望这个项目的演示汇报标题统一以“青禾验收”开头。”\n- 范围：project（project_id: 3586bbba-ab5f-4f81-b527-c73702119c2c）\n- 状态：`active: false` —— 待确认的记忆条目，memory_id: dd678886-28cd-4718-a676-8e1901d75bc6，revision 1\n\n下一步由你决定：请在 Memory 面板中确认该条目，确认后它才会成为生效的长期偏好；在确认之前我不会把它当作已生效的规则使用。检索时也未发现与“演示汇报标题/青禾验收”相关的既有记忆，因此不存在重复条目。",
+          "calls": [
+            {
+              "stepId": "e07e0042-4e4b-4164-a1aa-ba6008673f18",
+              "state": "completed",
+              "startedAtMs": 1791118987173,
+              "endedAtMs": 1791118992994,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 2855,
+                "output_tokens": 335
+              }
+            },
+            {
+              "stepId": "0cb45817-e1fe-49ec-98da-af92d9d130a2",
+              "state": "completed",
+              "startedAtMs": 1791118993052,
+              "endedAtMs": 1791118995306,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 3372,
+                "output_tokens": 116
+              }
+            },
+            {
+              "stepId": "e1d6aa3e-f080-4a68-9d45-4a46ce81b661",
+              "state": "completed",
+              "startedAtMs": 1791118995346,
+              "endedAtMs": 1791119001217,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "stop",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 3600,
+                "output_tokens": 263
+              }
+            }
+          ]
+        }
+      ],
+      "candidate": {
+        "id": "dd678886-28cd-4718-a676-8e1901d75bc6",
+        "project_id": "3586bbba-ab5f-4f81-b527-c73702119c2c",
+        "source_task_id": "e389e497-bda5-4693-bbda-fb5909b54bd0",
+        "text": "本项目的演示汇报标题统一以“青禾验收”开头（适用于所有演示/汇报类文档与幻灯片的标题命名）。",
+        "state": "suggested",
+        "revision": 1,
+        "deleted": false,
+        "source_label": "P13 real memory candidate",
+        "source_quote": "我希望这个项目的演示汇报标题统一以“青禾验收”开头。",
+        "created_at_ms": 1791118995314,
+        "updated_at_ms": 1791118995314,
+        "confirmed_at_ms": null,
+        "change": "suggested"
+      },
+      "finishedAt": "2026-10-04T13:03:21.267Z"
+    },
+    {
+      "id": "scope:unconfirmed_skill_and_memory_are_not_model_context",
+      "at": "2026-10-04T13:03:21.275Z",
+      "state": "passed",
+      "tasks": [
+        {
+          "taskId": "9835efdf-074c-4aa0-a5ad-f6040c89dd0a",
+          "mode": "chat",
+          "requestedModel": "qwen3.8-flash",
+          "state": "completed",
+          "text": "两次只读查询都已实际调用，结果如下：\n\n**1. skill_search — 查询 \"p13-reusable-summary\"**\n- 返回：`{\"items\": []}`\n- 结论：**没有匹配的技能或 MCP 条目**。既没有 SKILL.md 可读取，也没有 installation_id / revision 可供后续 skill_read 使用。\n\n**2. memory_search — 查询 \"汇报标题\"**\n- 返回：`{\"items\": []}`（`truncated: false`，即不是被截断，而是本身无结果）\n- 结论：**当前没有任何与\"汇报标题\"相关的有效记忆内容**。可对照的参考信息：本次会话开始时的用户已确认记忆视图（`workpilot_memory_view: 1`，project_id `3586bbba-…19c2c`）也是 `items: []`，即空。两次独立来源一致，说明该项目范围内确实不存在关于汇报标题的已确认偏好。\n\n**未做的事（按你的要求）**\n- 没有创建、确认、恢复或删除任何技能/记忆条目；未调用 `memory_propose`、`skill_read` 之外的写入类工具。\n- 只查询了当前项目（project_id 见上），未访问其它项目。\n- 未读取任何文件、未使用 shell/浏览器/外部服务。\n\n如果你希望进一步确认技能是否已安装，我可以再换关键词做一次只读 skill_search（例如 \"summary\" 或 \"reusable\"）；若要新建\"汇报标题\"偏好，那需要你在 Memory 面板中另行确认，我这里最多只能提交一个不生效的候选。",
+          "calls": [
+            {
+              "stepId": "773cfffa-6597-4838-b10c-f39b8771d4a2",
+              "state": "completed",
+              "startedAtMs": 1791119001307,
+              "endedAtMs": 1791119003241,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 2867,
+                "output_tokens": 113
+              }
+            },
+            {
+              "stepId": "70d2ea5f-d25d-4ded-9bac-d755760ceba0",
+              "state": "completed",
+              "startedAtMs": 1791119003284,
+              "endedAtMs": 1791119010308,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "stop",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 3154,
+                "output_tokens": 381
+              }
+            }
+          ]
+        }
+      ],
+      "skillAbsent": true,
+      "memoryAbsentFromSearchAndModelInput": true,
+      "finishedAt": "2026-10-04T13:03:30.364Z"
+    },
+    {
+      "id": "management:explicit_confirmation_enable_and_memory_decision",
+      "at": "2026-10-04T13:03:30.374Z",
+      "state": "passed",
+      "installation": {
+        "active_digest": "0a8b06887458444a786b23b3412463dca8c93e092f5e70234f4bcabe5f08e44e",
+        "at_ms": 1791119010376,
+        "enabled": true,
+        "id": "16978dc2-98d6-4c8f-b63f-8ed4ede6319b",
+        "installed": true,
+        "revision": 1,
+        "scope": "1246989071:65536:3283174",
+        "slug": "p13-reusable-summary",
+        "source": "AI skill draft / 待确认技能草稿"
+      },
+      "confirmedMemory": {
+        "id": "dd678886-28cd-4718-a676-8e1901d75bc6",
+        "project_id": "3586bbba-ab5f-4f81-b527-c73702119c2c",
+        "source_task_id": "e389e497-bda5-4693-bbda-fb5909b54bd0",
+        "text": "本项目的演示汇报标题统一以“青禾验收”开头（适用于所有演示/汇报类文档与幻灯片的标题命名）。",
+        "state": "confirmed",
+        "revision": 2,
+        "deleted": false,
+        "source_label": "P13 real memory candidate",
+        "source_quote": "我希望这个项目的演示汇报标题统一以“青禾验收”开头。",
+        "created_at_ms": 1791118995314,
+        "updated_at_ms": 1791119010379,
+        "confirmed_at_ms": 1791119010379,
+        "change": "confirmed"
+      },
+      "actor": "Test driver; no model confirmation tool was invoked",
+      "finishedAt": "2026-10-04T13:03:30.382Z"
+    },
+    {
+      "id": "reuse:new_task_reads_skill_memory_and_produces_verified_file",
+      "at": "2026-10-04T13:03:30.392Z",
+      "state": "passed",
+      "tasks": [
+        {
+          "taskId": "ebb6a4a3-5653-4959-837b-59948df6f25f",
+          "mode": "execute",
+          "requestedModel": "qwen3.8-flash",
+          "state": "completed",
+          "text": "按技能规则已完成，逐项汇报：\n\n**1. 实际找到并使用的技能**\n- `p13-reusable-summary`（安装 ID `16978dc2-98d6-4c8f-b63f-8ed4ede6319b`，revision 1，已启用，digest `0a8b0688…e44e`）\n- 已先读 `SKILL.md`（sha256 `b35d18b3…99bd`），再按它的强制要求读唯一格式权威 `references/format.md`（sha256 `3c611c4c…1f2a`）。未读其它资源，未运行脚本、未用浏览器、未涉及其它项目。\n\n**2. 标题前缀来源（非猜测）**\n- `memory_search(\"汇报标题\")` 命中 1 条用户已确认的项目记忆（ID `dd678886-28cd-4718-a676-8e1901d75bc6`，revision 2）：「本项目的演示汇报标题统一以\"青禾验收\"开头」。\n- 补充检索（\"汇报标题 前缀\"、\"标题 命名 前缀 演示\"）无其它条目，无冲突，因此前缀取 **`青禾验收`**，未编造、未沿用示例中的 `月度数据汇报`/`Q3 汇总`。本任务未创建或修改任何记忆。\n\n**3. 数据与计算**\n- 输入文件：`values.json`，内容 `{\"values\":[3,7,13]}`（sha256 `a6a83410…5fa7`），`values` 存在且 3 个元素全为 JSON 数字，无字符串/null/布尔/嵌套异常。\n- 按数组原顺序累加：3 + 7 = 10，10 + 13 = **23**（整数结果输出为 `23`，未补 `.0`、未做四舍五入或千分位）。\n\n**4. 写入、回读核对与登记**\n- 新文件 `summary.txt`（`expected_sha256=null`），内容严格单行：`青禾验收|合计=23`\n- 回读核对全部通过：恰一行；`bytes=22` 且 `next_offset=22` 与预期字节数（12+1+6+1+2）完全吻合 → 结尾无 `\\n`；单个半角 `|` 与半角 `=`，中间无空格；前缀与记忆条目逐字符一致；合计与求和一致；无引号、Markdown 代码块或多余空白。\n- 已用 `register_artifact` 登记 `summary.txt`（版本 sha256 `d894e4aeb2e79be36030f8622853156066e534bfc39e825843f60799b11df0e8`）。\n\n**说明与未验证项**\n- 技能默认文件名为 `summary-report.txt`，本次按你的明确指定写为 `summary.txt`（`format.md` 规定用户指定路径优先）。\n- 无未能验证的项目；仅一点边界提醒：该记忆的表述面向\"演示/汇报类文档与幻灯片标题命名\"，本汇总报告的标题前缀直接采用其中的 `青禾验收`，如需用于其它类型的文档请告知。",
+          "calls": [
+            {
+              "stepId": "43bed05a-93a6-41af-b866-869a21d3d3ab",
+              "state": "completed",
+              "startedAtMs": 1791119010423,
+              "endedAtMs": 1791119013119,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 5477,
+                "output_tokens": 105
+              }
+            },
+            {
+              "stepId": "b19480e5-4d2c-4d95-b220-db001036d20b",
+              "state": "completed",
+              "startedAtMs": 1791119013168,
+              "endedAtMs": 1791119016204,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 6179,
+                "output_tokens": 149
+              }
+            },
+            {
+              "stepId": "ae1429ff-d3af-4b94-a53d-de61d5e7abc0",
+              "state": "completed",
+              "startedAtMs": 1791119016233,
+              "endedAtMs": 1791119020272,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 7441,
+                "output_tokens": 175
+              }
+            },
+            {
+              "stepId": "8a08d418-d99c-415a-ad47-b048a2077b27",
+              "state": "completed",
+              "startedAtMs": 1791119020330,
+              "endedAtMs": 1791119025085,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 8890,
+                "output_tokens": 282
+              }
+            },
+            {
+              "stepId": "d5a77d56-6aef-40bc-b492-cf39617eec71",
+              "state": "completed",
+              "startedAtMs": 1791119025117,
+              "endedAtMs": 1791119027897,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 9340,
+                "output_tokens": 56
+              }
+            },
+            {
+              "stepId": "c81d6a29-8cdd-4fe7-9275-2726a54d5aa7",
+              "state": "completed",
+              "startedAtMs": 1791119027930,
+              "endedAtMs": 1791119035342,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 9727,
+                "output_tokens": 429
+              }
+            },
+            {
+              "stepId": "add8e6e7-9fcf-49db-b99b-2d7aba61ce27",
+              "state": "completed",
+              "startedAtMs": 1791119035375,
+              "endedAtMs": 1791119041291,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 10327,
+                "output_tokens": 345
+              }
+            },
+            {
+              "stepId": "d1bdf955-347f-47f6-b732-ae126c889b4a",
+              "state": "completed",
+              "startedAtMs": 1791119041607,
+              "endedAtMs": 1791119044569,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 10803,
+                "output_tokens": 147
+              }
+            },
+            {
+              "stepId": "ed8c0a39-7a5e-44b1-b778-5add4379cd0f",
+              "state": "completed",
+              "startedAtMs": 1791119044611,
+              "endedAtMs": 1791119048239,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 11098,
+                "output_tokens": 193
+              }
+            },
+            {
+              "stepId": "d747eade-c621-405a-8253-ea4a4a55ad36",
+              "state": "completed",
+              "startedAtMs": 1791119048285,
+              "endedAtMs": 1791119064553,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "stop",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 11421,
+                "output_tokens": 910
+              }
+            }
+          ]
+        }
+      ],
+      "fileApprovals": 1,
+      "actualFile": "青禾验收|合计=23",
+      "confirmedMemorySourceTask": "e389e497-bda5-4693-bbda-fb5909b54bd0",
+      "installedSkill": "16978dc2-98d6-4c8f-b63f-8ed4ede6319b",
+      "finishedAt": "2026-10-04T13:04:24.722Z"
+    },
+    {
+      "id": "scope:other_project_does_not_receive_skill_or_memory",
+      "at": "2026-10-04T13:04:24.737Z",
+      "state": "passed",
+      "tasks": [
+        {
+          "taskId": "ee19d58a-0311-43fc-91e5-5fde167ab7c0",
+          "mode": "chat",
+          "requestedModel": "qwen3.8-flash",
+          "state": "completed",
+          "text": "两次只读查询均已实际执行，结果如下：\n\n**1. skill_search — 查询词 `p13-reusable-summary`**\n- 返回：`{\"items\": []}`\n- 结论：**没有**匹配的技能或 MCP 条目。既没有该名称的已启用技能，也没有安装记录，因此不存在可读取的 SKILL.md 或资源路径。\n\n**2. memory_search — 查询词「汇报标题」**\n- 返回：`items: []`，`truncated: false`，`workpilot_memory_view: 1`，作用域为本项目 `project_id: 57dbcb96-0af3-4405-babe-fe0ceb93a81b`\n- 结论：**没有**当前有效的（用户已确认的）相关记忆。结果未被截断，所以这不是分页遗漏，而是确实为空。会话开头的记忆视图快照同样是 `items: []`，与本次新鲜查询一致。\n\n**边界与未做的事**\n- 全程只用了上述两个只读发现工具；未调用 `skill_read`（没有可读取的目标 ID/revision）、未读取任何项目文件、未访问其它项目。\n- 未创建、未确认、未恢复、未修改任何技能、记忆候选或文件。没有调用 `memory_propose`，也没有产生任何待你在 Memory 面板确认的候选条目。\n\n如果你之后需要这类内容存在，需要你自己在扩展/记忆管理界面里安装或确认；我只能建议候选，且在你确认前不会生效。",
+          "calls": [
+            {
+              "stepId": "69cc133a-09d7-47d6-9038-daa0c012bd04",
+              "state": "completed",
+              "startedAtMs": 1791119064771,
+              "endedAtMs": 1791119066465,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 2863,
+                "output_tokens": 77
+              }
+            },
+            {
+              "stepId": "e7a9dbf4-025f-46a3-9b18-eb984b8b0369",
+              "state": "completed",
+              "startedAtMs": 1791119066491,
+              "endedAtMs": 1791119068670,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 2960,
+                "output_tokens": 81
+              }
+            },
+            {
+              "stepId": "9e14f761-447e-4b72-9077-e35fe9e1e4e7",
+              "state": "completed",
+              "startedAtMs": 1791119068698,
+              "endedAtMs": 1791119077343,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "stop",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 3202,
+                "output_tokens": 451
+              }
+            }
+          ]
+        }
+      ],
+      "skillAbsent": true,
+      "memoryAbsentFromSearchAndModelInput": true,
+      "finishedAt": "2026-10-04T13:04:37.514Z"
+    },
+    {
+      "id": "deletion:new_task_cannot_reuse_deleted_memory_or_uninstalled_skill",
+      "at": "2026-10-04T13:04:37.532Z",
+      "state": "passed",
+      "tasks": [
+        {
+          "taskId": "52a6349c-3e75-48f3-983b-4fa050e8e449",
+          "mode": "chat",
+          "requestedModel": "qwen3.8-flash",
+          "state": "completed",
+          "text": "两次查询都已实际执行，结果如下（均只用只读工具，未创建、确认、恢复或修改任何内容）：\n\n**1. skill_search — 查询词 `p13-reusable-summary`**\n- 返回：`{\"items\": []}`\n- 结论：当前**没有**任何已启用的、与该名称匹配的 skill 或 MCP 服务器条目。因此不存在可读取的 SKILL.md 或资源文件，也没有对应的 installation_id / revision 可供后续 skill_read 使用。\n\n**2. memory_search — 查询词 “汇报标题”**\n- 返回：`{\"items\": [], \"truncated\": false}`\n- 结论：当前**没有**用户已确认的、与“汇报标题”相关的有效记忆（全局与本project_id `3586bbba-…19c2c` 均无命中）。`truncated: false` 说明不是被截断导致结果为空，而确实是零命中。\n\n**补充说明**\n- 本次会话开始时的记忆视图同样是空的（`items: []`），与 fresh memory_search 一致。\n- 按你的要求，我没有使用 `memory_propose` 提出任何候选记忆，也没有读取其它项目的文件或记忆。\n- 若后续希望创建可复用内容（例如新的汇报标题偏好候选，或某个 skill 的说明），需要你明确指示；候选记忆仍必须在 Memory 面板中由你确认后才可能生效。",
+          "calls": [
+            {
+              "stepId": "67fcd3f1-2879-4e54-8469-1f8bc21ad8c4",
+              "state": "completed",
+              "startedAtMs": 1791119077566,
+              "endedAtMs": 1791119079983,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 2867,
+                "output_tokens": 96
+              }
+            },
+            {
+              "stepId": "c41e7e27-4910-41f3-8375-d5b3a3d04635",
+              "state": "completed",
+              "startedAtMs": 1791119080010,
+              "endedAtMs": 1791119081240,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "tool_calls",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 2983,
+                "output_tokens": 39
+              }
+            },
+            {
+              "stepId": "ce93f761-079b-49ec-a943-d42e0ecbb8d1",
+              "state": "completed",
+              "startedAtMs": 1791119081267,
+              "endedAtMs": 1791119087332,
+              "requestedModel": "qwen3.8-flash",
+              "protocol": "responses",
+              "requestedFamily": "Qwen",
+              "actualModel": "qwen3.8-flash",
+              "finishReason": "stop",
+              "usage": {
+                "cost_microunits": null,
+                "currency": null,
+                "input_tokens": 3187,
+                "output_tokens": 361
+              }
+            }
+          ]
+        }
+      ],
+      "skillAbsent": true,
+      "memoryAbsentFromSearchAndModelInput": true,
+      "existingFilePreserved": true,
+      "deletedMemory": {
+        "id": "dd678886-28cd-4718-a676-8e1901d75bc6",
+        "project_id": "3586bbba-ab5f-4f81-b527-c73702119c2c",
+        "source_task_id": "e389e497-bda5-4693-bbda-fb5909b54bd0",
+        "text": "本项目的演示汇报标题统一以“青禾验收”开头（适用于所有演示/汇报类文档与幻灯片的标题命名）。",
+        "state": "confirmed",
+        "revision": 3,
+        "deleted": true,
+        "source_label": "P13 real memory candidate",
+        "source_quote": "我希望这个项目的演示汇报标题统一以“青禾验收”开头。",
+        "created_at_ms": 1791118995314,
+        "updated_at_ms": 1791119077533,
+        "confirmed_at_ms": 1791119010379,
+        "change": "deleted"
+      },
+      "finishedAt": "2026-10-04T13:04:47.480Z"
+    }
+  ],
+  "boundaries": [
+    "Different families are identified from model names actually returned by the service, not inferred from profile labels.",
+    "Image input uses the built-in 64x64 blue probe only, not image generation.",
+    "Every scenario starts explicitly once. No model fallback or automatic retry.",
+    "Real service calls use synthetic test data; no personal browser, user project, business document or production account operation."
+  ],
+  "scripts": {
+    "scripts/p13-real-model-check.mjs": "38b04b68a132996ad418c975467a9013c7492648c215e969a89d339b7810d68d",
+    "scripts/p13-real-model-files.mjs": "6b4f048556b2217266a0debc212cf61956862494e6405eeeaaa3b3481d804a85",
+    "scripts/p13-real-model-support.mjs": "9c5f550f6e893826b2e7454cb07cd4dc0241740916a88905de1c5042ee113cf7",
+    "scripts/p13-real-model-probes.mjs": "8f1b0984e9a68e97ba9a1508dac593a36f538c977a2473ff478a9d298b4b48de",
+    "scripts/p13-real-model-launch.mjs": "f245f628744d1d9d38e5a5728267fc7b92496415096b720ef9af9de6f30db120",
+    "scripts/p13-real-model-skills.mjs": "6927f27d173f2f0502dd688415ded6ddc6e0fe7f2ddd0d3e3e939b633ff53f11"
+  },
+  "appVersion": "0.1.0-alpha.13.3",
+  "workflowScope": {
+    "model": "qwen3.8-flash",
+    "protocol": "responses",
+    "projectA": "3586bbba-ab5f-4f81-b527-c73702119c2c",
+    "projectB": "57dbcb96-0af3-4405-babe-fe0ceb93a81b",
+    "inputFiles": "Synthetic values only; no user project, account, scripts or external extension.",
+    "confirmations": "Independent test-driver management commands, not AI self-approval or real user acceptance."
+  },
+  "managementActions": [
+    {
+      "at": "2026-10-04T13:03:30.374Z",
+      "actor": "explicit_test_driver_management",
+      "description": "Confirm the inspected Markdown-only project skill and enable it",
+      "action": {
+        "kind": "confirm",
+        "draft_id": "7826fe44-4586-4be3-ac69-2d4371a40141",
+        "digest": "0a8b06887458444a786b23b3412463dca8c93e092f5e70234f4bcabe5f08e44e",
+        "enable": true
+      },
+      "completed": true
+    },
+    {
+      "at": "2026-10-04T13:03:30.378Z",
+      "actor": "explicit_test_driver_management",
+      "description": "Confirm this exact synthetic project memory candidate",
+      "action": {
+        "kind": "decide",
+        "memory_id": "dd678886-28cd-4718-a676-8e1901d75bc6",
+        "revision": 1,
+        "confirm": true
+      },
+      "completed": true
+    },
+    {
+      "at": "2026-10-04T13:04:01.548Z",
+      "actor": "explicit_test_driver_management",
+      "description": "Approve only the reviewed synthetic summary.txt creation",
+      "action": {
+        "kind": "decide_tool_approval",
+        "task_id": "ebb6a4a3-5653-4959-837b-59948df6f25f",
+        "approval_id": "77a4d509-d2ea-4f23-bacf-3d81735c1320",
+        "fingerprint": "a2e1114e274659ac6c6bf0a8820de41ee30689e67f277f0a5d37218abf5b18c6",
+        "approve": true
+      },
+      "completed": true
+    },
+    {
+      "at": "2026-10-04T13:04:37.532Z",
+      "actor": "explicit_test_driver_management",
+      "description": "Delete only this confirmed synthetic memory",
+      "action": {
+        "kind": "delete",
+        "memory_id": "dd678886-28cd-4718-a676-8e1901d75bc6",
+        "revision": 2
+      },
+      "completed": true
+    },
+    {
+      "at": "2026-10-04T13:04:37.534Z",
+      "actor": "explicit_test_driver_management",
+      "description": "Uninstall only the skill created by this workflow",
+      "action": {
+        "kind": "uninstall",
+        "installation_id": "16978dc2-98d6-4c8f-b63f-8ed4ede6319b",
+        "revision": 1
+      },
+      "completed": true
+    }
+  ],
+  "cleanup": {
+    "profilesCleared": 1,
+    "credentialsRemoved": true,
+    "errors": [],
+    "scope": "Only this fresh data directory's test model credentials were removed. No image-service credential was created. The isolated database, file-version key and original test files remain available for fault review.",
+    "engineExited": true
+  },
+  "finishedAt": "2026-10-04T13:04:47.774Z",
+  "status": "passed",
+  "credentialScan": {
+    "filesChecked": 1107,
+    "plaintextCredentialFound": false,
+    "findings": []
+  }
+}

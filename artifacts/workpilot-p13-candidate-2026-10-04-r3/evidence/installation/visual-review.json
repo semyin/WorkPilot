@@ -1,0 +1,27 @@
+{
+  "at": "2026-10-04T14:18:44.001Z",
+  "version": "0.1.0-alpha.13.4",
+  "images": [
+    {
+      "path": "desktop/browser-setup-zh.png",
+      "sha256": "b7aee09fea305def2d92fd984a037e51366d8c72c7f7778c8ef1b76360bda05f",
+      "review": "Viewed actual screenshot; Chinese/English browser conflict and component verification panels readable, no horizontal overflow; scroll clipping is within the panel"
+    },
+    {
+      "path": "desktop/browser-setup-en.png",
+      "sha256": "bfa9b908c805c17515d6b0a12f8d085b6a655744688fb5f8973ee787fe590b32",
+      "review": "Viewed actual screenshot; Chinese/English browser conflict and component verification panels readable, no horizontal overflow; scroll clipping is within the panel"
+    },
+    {
+      "path": "desktop/environment-zh.png",
+      "sha256": "ef92e974cbf296a4d0e606b2f541eb04eb38e4f8d39e894e158e23b35f7b0803",
+      "review": "Viewed actual screenshot; Chinese/English browser conflict and component verification panels readable, no horizontal overflow; scroll clipping is within the panel"
+    },
+    {
+      "path": "desktop/environment-en.png",
+      "sha256": "2065965c94c4e620766d20a12aca2db81f05b0ed324984f9e01096f3a951b44b",
+      "review": "Viewed actual screenshot; Chinese/English browser conflict and component verification panels readable, no horizontal overflow; scroll clipping is within the panel"
+    }
+  ],
+  "humanAcceptance": false
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "pid": 25992,
+    "parentPid": 37992,
+    "startedAtMs": 1791124854360,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 27572,
+    "parentPid": 40668,
+    "startedAtMs": 1791124854122,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+    "role": "engine",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 37992,
+    "parentPid": 40668,
+    "startedAtMs": 1791124854199,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 44696,
+    "parentPid": 37992,
+    "startedAtMs": 1791124854470,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 35048,
+    "parentPid": 37992,
+    "startedAtMs": 1791124854331,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 42340,
+    "parentPid": 27572,
+    "startedAtMs": 1791124854128,
+    "path": "C:\\Windows\\system32\\conhost.exe",
+    "role": "other-owned",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 41620,
+    "parentPid": 37992,
+    "startedAtMs": 1791124854219,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 44164,
+    "parentPid": 37992,
+    "startedAtMs": 1791124854334,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 40668,
+    "parentPid": 42548,
+    "startedAtMs": 1791124854098,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+    "role": "desktop",
+    "uiProfileVerified": false
+  }
+]

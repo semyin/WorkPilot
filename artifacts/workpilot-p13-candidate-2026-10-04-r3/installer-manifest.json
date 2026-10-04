@@ -1,0 +1,27 @@
+{
+  "at": "2026-10-04T14:01:26.764Z",
+  "version": "0.1.0-alpha.13.4",
+  "packagedBuild": {
+    "desktopSha256": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+    "engineSha256": "a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb",
+    "updaterSha256": "428055af1c70059c425feb6f5bf7d96ac8560c4fe42955068b69a43db81fe2f6"
+  },
+  "platform": "windows-x86_64",
+  "file": "WorkPilot_0.1.0-alpha.13.4_x64-setup.exe",
+  "bytes": 1096195874,
+  "sha256": "3a87818d62a3e5925b77aaa5eef1992c3360b2f8e3a88df4ab1fb9a4ee99ff4e",
+  "command": "node scripts/installer-p12.mjs --p13-r3",
+  "signed": false,
+  "elapsedSeconds": 610.38,
+  "compression": "zlib",
+  "dataBlockOptimization": false,
+  "webview2": {
+    "source": "https://go.microsoft.com/fwlink/?linkid=2124701",
+    "installerFileVersion": "1.3.271.7",
+    "bytes": 212272848,
+    "sha256": "f6df8e4bc857786ff641cd01da1449169eaf8236c936ced485ea61685ba4da40",
+    "license": "Microsoft WebView2 Runtime redistribution terms; unmodified upstream offline installer",
+    "installation": "Offline asset embedded; existing system WebView2 is reused. This does not prove installation on a WebView2-free OS."
+  },
+  "uninstall": "Only enumerated application files are removed. Project folders and WorkPilot local data are retained by default."
+}

@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-04T13:11:05.0579565Z",
+  "type": "agent_visual_review",
+  "userAcceptance": false,
+  "source": "real-images.json",
+  "images": [
+    "real-image-blue.png",
+    "real-image-green.png"
+  ],
+  "observations": [
+    "First image shows one blue mug with a handle on the right on a pale wooden table and plain light background.",
+    "Edited image shows a green mug including its handle; framing, shape, tabletop, background and illumination are retained.",
+    "Both images have no visible text, people or added objects."
+  ],
+  "status": "passed",
+  "scope": "Only this simple generation and reference-edit sample; file and original-preservation checks are separate."
+}

@@ -1,0 +1,45 @@
+{
+  "name": "P13 multi-instance normal-exit isolation",
+  "status": "passed",
+  "checks": 4,
+  "command": "node scripts/p13-multi-instance-exit-test.mjs",
+  "binarySha256": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+  "installedBinarySha256": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+  "oldP12BinarySha256": "c7b81dca8b21989ae2e8d9fcecf5a267adb83d9b4aad2a993f5f030ba99bcaf0",
+  "at": "2026-10-04T14:19:27.954Z",
+  "finishedAt": "2026-10-04T14:19:56.726Z",
+  "report": "report.json",
+  "ownedDesktops": 9,
+  "allOwnedDesktopsNormalExit": true,
+  "allRecordedDescendantsExited": true,
+  "cases": [
+    {
+      "name": "portable-pair",
+      "status": "passed",
+      "report": "portable-pair.json"
+    },
+    {
+      "name": "installed-exits",
+      "status": "passed",
+      "report": "installed-exits.json"
+    },
+    {
+      "name": "portable-exits",
+      "status": "passed",
+      "report": "portable-exits.json"
+    },
+    {
+      "name": "three-generations",
+      "status": "passed",
+      "report": "three-generations.json"
+    }
+  ],
+  "limitations": [
+    "Fresh isolated data and WebView profiles; idle task workspaces with explicit engine pings",
+    "Normal exit_app tested before and after closing only the target CDP connection",
+    "No replay of the prior user data, stability load, hidden task history, or exact interrupted installed smoke sequence",
+    "Does not establish the cause of the 14:12:55Z cross-window disappearance",
+    "No installer, uninstaller, model calls, global process-name kill, or user-instance restart"
+  ],
+  "preflightFailure": "preflight-encoding-failure.json"
+}

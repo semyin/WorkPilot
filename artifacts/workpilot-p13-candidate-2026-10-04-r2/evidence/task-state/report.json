@@ -1,0 +1,135 @@
+{
+  "at": "2026-10-04T13:07:31.716Z",
+  "platform": "win32",
+  "native": true,
+  "binarySha256": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+  "scope": "Native Windows desktop and engine; synthetic local model and delayed IPC replies",
+  "checks": [
+    "cancel_intent_and_actual_completion_shared_with_sidebar_late_running_list_rejected_independent_task_kept",
+    "actual_completion_and_model_error_share_task_state_english_no_automatic_retry",
+    "switch_tasks_rejects_old_detail_team_and_error_replies_without_cross_task_content",
+    "message_refresh_and_poll_race_cannot_restore_running_after_completion",
+    "cancel_error_clears_only_its_own_intent_and_does_not_leak_to_new_selection",
+    "parent_stop_and_failed_running_members_use_actual_states_child_navigation_stays_scoped"
+  ],
+  "screenshots": [
+    "stop-and-sidebar-zh.png",
+    "failed-and-sidebar-en.png",
+    "team-stopped-en.png"
+  ],
+  "responseGateTransport": "native_ipc_fetch",
+  "observations": [
+    {
+      "task": "adc204ec-47b7-4355-98e5-80516423fb0e",
+      "title": "running",
+      "sidebar": "running"
+    },
+    {
+      "task": "adc204ec-47b7-4355-98e5-80516423fb0e",
+      "title": "stopping",
+      "sidebar": "stopping"
+    },
+    {
+      "task": "adc204ec-47b7-4355-98e5-80516423fb0e",
+      "title": "interrupted",
+      "sidebar": "interrupted"
+    },
+    {
+      "task": "1aaae0aa-ed23-4b58-875e-693c09f25033",
+      "title": "queued",
+      "sidebar": "queued"
+    },
+    {
+      "task": "1aaae0aa-ed23-4b58-875e-693c09f25033",
+      "title": "running",
+      "sidebar": "running"
+    },
+    {
+      "task": "1aaae0aa-ed23-4b58-875e-693c09f25033",
+      "title": "completed",
+      "sidebar": "completed"
+    },
+    {
+      "task": "94c0252c-c37b-49d8-b47c-a4cdcfcb162e",
+      "title": "queued",
+      "sidebar": "queued"
+    },
+    {
+      "task": "94c0252c-c37b-49d8-b47c-a4cdcfcb162e",
+      "title": "failed",
+      "sidebar": "failed"
+    },
+    {
+      "task": "1aaae0aa-ed23-4b58-875e-693c09f25033",
+      "title": "completed",
+      "sidebar": "completed"
+    },
+    {
+      "task": "94c0252c-c37b-49d8-b47c-a4cdcfcb162e",
+      "title": "failed",
+      "sidebar": "failed"
+    },
+    {
+      "task": "1aaae0aa-ed23-4b58-875e-693c09f25033",
+      "title": "completed",
+      "sidebar": "completed"
+    },
+    {
+      "task": "73c34041-e29c-4141-a46d-adcd63b4d56b",
+      "title": "queued",
+      "sidebar": "queued"
+    },
+    {
+      "task": "73c34041-e29c-4141-a46d-adcd63b4d56b",
+      "title": "running",
+      "sidebar": "running"
+    },
+    {
+      "task": "73c34041-e29c-4141-a46d-adcd63b4d56b",
+      "title": "completed",
+      "sidebar": "completed"
+    },
+    {
+      "task": "75bc4837-7f35-48a9-84e2-c9dc4ab541c3",
+      "title": "running",
+      "sidebar": "running"
+    },
+    {
+      "task": "75bc4837-7f35-48a9-84e2-c9dc4ab541c3",
+      "title": "stopping",
+      "sidebar": "stopping"
+    },
+    {
+      "task": "1aaae0aa-ed23-4b58-875e-693c09f25033",
+      "title": "completed",
+      "sidebar": "completed"
+    },
+    {
+      "task": "75bc4837-7f35-48a9-84e2-c9dc4ab541c3",
+      "title": "running",
+      "sidebar": "running"
+    },
+    {
+      "task": "75bc4837-7f35-48a9-84e2-c9dc4ab541c3",
+      "title": "interrupted",
+      "sidebar": "interrupted"
+    },
+    {
+      "task": "62a5d33c-4ef1-40ae-a8a3-5b3116acf165",
+      "title": "running",
+      "sidebar": "running"
+    },
+    {
+      "task": "62a5d33c-4ef1-40ae-a8a3-5b3116acf165",
+      "title": "stopping",
+      "sidebar": "stopping"
+    },
+    {
+      "task": "62a5d33c-4ef1-40ae-a8a3-5b3116acf165",
+      "title": "interrupted",
+      "sidebar": "interrupted"
+    }
+  ],
+  "mismatches": [],
+  "status": "passed"
+}

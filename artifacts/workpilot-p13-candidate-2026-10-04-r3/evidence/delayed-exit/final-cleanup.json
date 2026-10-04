@@ -1,0 +1,115 @@
+{
+  "at": "2026-10-04T14:49:48.5138056Z",
+  "scope": "Read-only final verification of recorded owned identities and the owned installation",
+  "status": "passed",
+  "identities": [
+    {
+      "label": "p12-observer",
+      "processes": [
+        {
+          "pid": 29800,
+          "startedAtMs": 1791124852709,
+          "status": "exited"
+        },
+        {
+          "pid": 9076,
+          "startedAtMs": 1791124852631,
+          "status": "exited"
+        },
+        {
+          "pid": 15288,
+          "startedAtMs": 1791124852963,
+          "status": "exited"
+        },
+        {
+          "pid": 43616,
+          "startedAtMs": 1791124852830,
+          "status": "exited"
+        },
+        {
+          "pid": 38528,
+          "startedAtMs": 1791124852860,
+          "status": "exited"
+        },
+        {
+          "pid": 41536,
+          "startedAtMs": 1791124852834,
+          "status": "exited"
+        },
+        {
+          "pid": 17508,
+          "startedAtMs": 1791124852642,
+          "status": "exited"
+        },
+        {
+          "pid": 32064,
+          "startedAtMs": 1791124852729,
+          "status": "exited"
+        },
+        {
+          "pid": 39456,
+          "startedAtMs": 1791124852611,
+          "status": "exited"
+        }
+      ]
+    },
+    {
+      "label": "r3-observer",
+      "processes": [
+        {
+          "pid": 25992,
+          "startedAtMs": 1791124854360,
+          "status": "exited"
+        },
+        {
+          "pid": 27572,
+          "startedAtMs": 1791124854122,
+          "status": "exited"
+        },
+        {
+          "pid": 37992,
+          "startedAtMs": 1791124854199,
+          "status": "exited"
+        },
+        {
+          "pid": 44696,
+          "startedAtMs": 1791124854470,
+          "status": "exited"
+        },
+        {
+          "pid": 35048,
+          "startedAtMs": 1791124854331,
+          "status": "exited"
+        },
+        {
+          "pid": 42340,
+          "startedAtMs": 1791124854128,
+          "status": "exited"
+        },
+        {
+          "pid": 41620,
+          "startedAtMs": 1791124854219,
+          "status": "exited"
+        },
+        {
+          "pid": 44164,
+          "startedAtMs": 1791124854334,
+          "status": "exited"
+        },
+        {
+          "pid": 40668,
+          "startedAtMs": 1791124854098,
+          "status": "exited"
+        }
+      ]
+    }
+  ],
+  "allRecordedProcessesExited": true,
+  "watcherExitCode": 0,
+  "protectedUninstallStatus": "passed",
+  "installedDesktopPresent": false,
+  "uninstallRegistrationPresent": false,
+  "productRegistrationPresent": false,
+  "preservedProjectText": "preserve-test-project",
+  "preservedUnlistedFile": "preserve-unlisted-test-file"
+}

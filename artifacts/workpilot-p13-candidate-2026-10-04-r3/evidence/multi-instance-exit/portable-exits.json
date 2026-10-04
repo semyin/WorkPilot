@@ -1,0 +1,696 @@
+{
+  "name": "portable-exits",
+  "at": "2026-10-04T14:19:39.913Z",
+  "instances": [
+    {
+      "label": "portable-exits-exit",
+      "binary": "r3Portable",
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "data": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\portable-exits-exit",
+      "pid": 22384,
+      "startedAt": "2026-10-04T14:19:39.913Z",
+      "ready": {
+        "protocol": "workpilot.v1",
+        "event_id": "d2115e5b-1f71-4e0d-a704-fc0de07aacc6",
+        "sequence": 1,
+        "task_id": null,
+        "task_sequence": null,
+        "agent_id": null,
+        "source": "engine",
+        "at_ms": 1791123579996,
+        "request_id": null,
+        "kind": "ready",
+        "pid": 23628,
+        "version": "0.1.0-alpha.13.4",
+        "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\portable-exits-exit\\test"
+      },
+      "identities": [
+        {
+          "pid": 23628,
+          "parentPid": 22384,
+          "startedAtMs": 1791123579928,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+          "role": "engine",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 20040,
+          "parentPid": 22384,
+          "startedAtMs": 1791123580011,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 22384,
+          "parentPid": 18908,
+          "startedAtMs": 1791123579916,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+          "role": "desktop",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 41660,
+          "parentPid": 20040,
+          "startedAtMs": 1791123580032,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 22744,
+          "parentPid": 20040,
+          "startedAtMs": 1791123580150,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 44580,
+          "parentPid": 20040,
+          "startedAtMs": 1791123580300,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 4048,
+          "parentPid": 23628,
+          "startedAtMs": 1791123579942,
+          "path": "C:\\Windows\\system32\\conhost.exe",
+          "role": "other-owned",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 15556,
+          "parentPid": 20040,
+          "startedAtMs": 1791123580146,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 17716,
+          "parentPid": 20040,
+          "startedAtMs": 1791123580181,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        }
+      ]
+    },
+    {
+      "label": "portable-exits-survive",
+      "binary": "r3Installed",
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-9d18967072c84d9994894b7cf535f15e\\中文 安装\\workpilot-desktop.exe",
+      "data": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\portable-exits-survive",
+      "pid": 41328,
+      "startedAt": "2026-10-04T14:19:41.416Z",
+      "ready": {
+        "protocol": "workpilot.v1",
+        "event_id": "7143d30a-c52f-4d11-aa50-3c7e373ed649",
+        "sequence": 1,
+        "task_id": null,
+        "task_sequence": null,
+        "agent_id": null,
+        "source": "engine",
+        "at_ms": 1791123581486,
+        "request_id": null,
+        "kind": "ready",
+        "pid": 21796,
+        "version": "0.1.0-alpha.13.4",
+        "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\portable-exits-survive\\test"
+      },
+      "identities": [
+        {
+          "pid": 8652,
+          "parentPid": 42844,
+          "startedAtMs": 1791123581526,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 15944,
+          "parentPid": 42844,
+          "startedAtMs": 1791123581649,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 25392,
+          "parentPid": 42844,
+          "startedAtMs": 1791123581644,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 14960,
+          "parentPid": 42844,
+          "startedAtMs": 1791123581833,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 42844,
+          "parentPid": 41328,
+          "startedAtMs": 1791123581506,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 15660,
+          "parentPid": 21796,
+          "startedAtMs": 1791123581437,
+          "path": "C:\\Windows\\system32\\conhost.exe",
+          "role": "other-owned",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 21796,
+          "parentPid": 41328,
+          "startedAtMs": 1791123581430,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-9d18967072c84d9994894b7cf535f15e\\中文 安装\\workpilot-sidecar.exe",
+          "role": "engine",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 41328,
+          "parentPid": 18908,
+          "startedAtMs": 1791123581418,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-9d18967072c84d9994894b7cf535f15e\\中文 安装\\workpilot-desktop.exe",
+          "role": "desktop",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 42296,
+          "parentPid": 42844,
+          "startedAtMs": 1791123581688,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        }
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "stage": "before-exit",
+      "at": "2026-10-04T14:19:44.204Z",
+      "label": "portable-exits-exit",
+      "desktopPid": 22384,
+      "exitCode": null,
+      "signalCode": null,
+      "identities": [
+        {
+          "pid": 23628,
+          "startedAtMs": 1791123579928,
+          "status": "alive"
+        },
+        {
+          "pid": 20040,
+          "startedAtMs": 1791123580011,
+          "status": "alive"
+        },
+        {
+          "pid": 22384,
+          "startedAtMs": 1791123579916,
+          "status": "alive"
+        },
+        {
+          "pid": 41660,
+          "startedAtMs": 1791123580032,
+          "status": "alive"
+        },
+        {
+          "pid": 22744,
+          "startedAtMs": 1791123580150,
+          "status": "alive"
+        },
+        {
+          "pid": 44580,
+          "startedAtMs": 1791123580300,
+          "status": "alive"
+        },
+        {
+          "pid": 4048,
+          "startedAtMs": 1791123579942,
+          "status": "alive"
+        },
+        {
+          "pid": 15556,
+          "startedAtMs": 1791123580146,
+          "status": "alive"
+        },
+        {
+          "pid": 17716,
+          "startedAtMs": 1791123580181,
+          "status": "alive"
+        }
+      ],
+      "ping": {
+        "receiptKind": "receipt",
+        "alive": true,
+        "pong": true,
+        "ready": {
+          "protocol": "workpilot.v1",
+          "event_id": "d2115e5b-1f71-4e0d-a704-fc0de07aacc6",
+          "sequence": 1,
+          "task_id": null,
+          "task_sequence": null,
+          "agent_id": null,
+          "source": "engine",
+          "at_ms": 1791123579996,
+          "request_id": null,
+          "kind": "ready",
+          "pid": 23628,
+          "version": "0.1.0-alpha.13.4",
+          "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\portable-exits-exit\\test"
+        }
+      },
+      "healthy": true
+    },
+    {
+      "stage": "before-exit",
+      "at": "2026-10-04T14:19:44.889Z",
+      "label": "portable-exits-survive",
+      "desktopPid": 41328,
+      "exitCode": null,
+      "signalCode": null,
+      "identities": [
+        {
+          "pid": 8652,
+          "startedAtMs": 1791123581526,
+          "status": "alive"
+        },
+        {
+          "pid": 15944,
+          "startedAtMs": 1791123581649,
+          "status": "alive"
+        },
+        {
+          "pid": 25392,
+          "startedAtMs": 1791123581644,
+          "status": "alive"
+        },
+        {
+          "pid": 14960,
+          "startedAtMs": 1791123581833,
+          "status": "alive"
+        },
+        {
+          "pid": 42844,
+          "startedAtMs": 1791123581506,
+          "status": "alive"
+        },
+        {
+          "pid": 15660,
+          "startedAtMs": 1791123581437,
+          "status": "alive"
+        },
+        {
+          "pid": 21796,
+          "startedAtMs": 1791123581430,
+          "status": "alive"
+        },
+        {
+          "pid": 41328,
+          "startedAtMs": 1791123581418,
+          "status": "alive"
+        },
+        {
+          "pid": 42296,
+          "startedAtMs": 1791123581688,
+          "status": "alive"
+        }
+      ],
+      "ping": {
+        "receiptKind": "receipt",
+        "alive": true,
+        "pong": true,
+        "ready": {
+          "protocol": "workpilot.v1",
+          "event_id": "7143d30a-c52f-4d11-aa50-3c7e373ed649",
+          "sequence": 1,
+          "task_id": null,
+          "task_sequence": null,
+          "agent_id": null,
+          "source": "engine",
+          "at_ms": 1791123581486,
+          "request_id": null,
+          "kind": "ready",
+          "pid": 21796,
+          "version": "0.1.0-alpha.13.4",
+          "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\portable-exits-survive\\test"
+        }
+      },
+      "healthy": true
+    },
+    {
+      "stage": "after-exit-app-before-cdp-close",
+      "at": "2026-10-04T14:19:46.440Z",
+      "label": "portable-exits-survive",
+      "desktopPid": 41328,
+      "exitCode": null,
+      "signalCode": null,
+      "identities": [
+        {
+          "pid": 8652,
+          "startedAtMs": 1791123581526,
+          "status": "alive"
+        },
+        {
+          "pid": 15944,
+          "startedAtMs": 1791123581649,
+          "status": "alive"
+        },
+        {
+          "pid": 25392,
+          "startedAtMs": 1791123581644,
+          "status": "alive"
+        },
+        {
+          "pid": 14960,
+          "startedAtMs": 1791123581833,
+          "status": "alive"
+        },
+        {
+          "pid": 42844,
+          "startedAtMs": 1791123581506,
+          "status": "alive"
+        },
+        {
+          "pid": 15660,
+          "startedAtMs": 1791123581437,
+          "status": "alive"
+        },
+        {
+          "pid": 21796,
+          "startedAtMs": 1791123581430,
+          "status": "alive"
+        },
+        {
+          "pid": 41328,
+          "startedAtMs": 1791123581418,
+          "status": "alive"
+        },
+        {
+          "pid": 42296,
+          "startedAtMs": 1791123581688,
+          "status": "alive"
+        }
+      ],
+      "ping": {
+        "receiptKind": "receipt",
+        "alive": true,
+        "pong": true,
+        "ready": {
+          "protocol": "workpilot.v1",
+          "event_id": "7143d30a-c52f-4d11-aa50-3c7e373ed649",
+          "sequence": 1,
+          "task_id": null,
+          "task_sequence": null,
+          "agent_id": null,
+          "source": "engine",
+          "at_ms": 1791123581486,
+          "request_id": null,
+          "kind": "ready",
+          "pid": 21796,
+          "version": "0.1.0-alpha.13.4",
+          "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\portable-exits-survive\\test"
+        }
+      },
+      "healthy": true
+    },
+    {
+      "stage": "after-target-cdp-close",
+      "at": "2026-10-04T14:19:47.054Z",
+      "label": "portable-exits-survive",
+      "desktopPid": 41328,
+      "exitCode": null,
+      "signalCode": null,
+      "identities": [
+        {
+          "pid": 8652,
+          "startedAtMs": 1791123581526,
+          "status": "alive"
+        },
+        {
+          "pid": 15944,
+          "startedAtMs": 1791123581649,
+          "status": "alive"
+        },
+        {
+          "pid": 25392,
+          "startedAtMs": 1791123581644,
+          "status": "alive"
+        },
+        {
+          "pid": 14960,
+          "startedAtMs": 1791123581833,
+          "status": "alive"
+        },
+        {
+          "pid": 42844,
+          "startedAtMs": 1791123581506,
+          "status": "alive"
+        },
+        {
+          "pid": 15660,
+          "startedAtMs": 1791123581437,
+          "status": "alive"
+        },
+        {
+          "pid": 21796,
+          "startedAtMs": 1791123581430,
+          "status": "alive"
+        },
+        {
+          "pid": 41328,
+          "startedAtMs": 1791123581418,
+          "status": "alive"
+        },
+        {
+          "pid": 42296,
+          "startedAtMs": 1791123581688,
+          "status": "alive"
+        }
+      ],
+      "ping": {
+        "receiptKind": "receipt",
+        "alive": true,
+        "pong": true,
+        "ready": {
+          "protocol": "workpilot.v1",
+          "event_id": "7143d30a-c52f-4d11-aa50-3c7e373ed649",
+          "sequence": 1,
+          "task_id": null,
+          "task_sequence": null,
+          "agent_id": null,
+          "source": "engine",
+          "at_ms": 1791123581486,
+          "request_id": null,
+          "kind": "ready",
+          "pid": 21796,
+          "version": "0.1.0-alpha.13.4",
+          "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\portable-exits-survive\\test"
+        }
+      },
+      "healthy": true
+    }
+  ],
+  "exitAction": {
+    "at": "2026-10-04T14:19:45.591Z",
+    "kind": "exit_app",
+    "label": "portable-exits-exit",
+    "pid": 22384,
+    "invoke": "resolved",
+    "finishedAt": "2026-10-04T14:19:45.653Z",
+    "exitCode": 0,
+    "signalCode": null
+  },
+  "targetAfterExit": [
+    {
+      "pid": 23628,
+      "startedAtMs": 1791123579928,
+      "status": "exited"
+    },
+    {
+      "pid": 20040,
+      "startedAtMs": 1791123580011,
+      "status": "exited"
+    },
+    {
+      "pid": 22384,
+      "startedAtMs": 1791123579916,
+      "status": "exited"
+    },
+    {
+      "pid": 41660,
+      "startedAtMs": 1791123580032,
+      "status": "exited"
+    },
+    {
+      "pid": 22744,
+      "startedAtMs": 1791123580150,
+      "status": "exited"
+    },
+    {
+      "pid": 44580,
+      "startedAtMs": 1791123580300,
+      "status": "exited"
+    },
+    {
+      "pid": 4048,
+      "startedAtMs": 1791123579942,
+      "status": "exited"
+    },
+    {
+      "pid": 15556,
+      "startedAtMs": 1791123580146,
+      "status": "exited"
+    },
+    {
+      "pid": 17716,
+      "startedAtMs": 1791123580181,
+      "status": "exited"
+    }
+  ],
+  "status": "passed",
+  "cleanup": [
+    {
+      "label": "portable-exits-exit",
+      "exit": {
+        "at": "2026-10-04T14:19:47.350Z",
+        "alreadyExited": true,
+        "exitCode": 0
+      },
+      "identities": [
+        {
+          "pid": 23628,
+          "startedAtMs": 1791123579928,
+          "status": "exited"
+        },
+        {
+          "pid": 20040,
+          "startedAtMs": 1791123580011,
+          "status": "exited"
+        },
+        {
+          "pid": 22384,
+          "startedAtMs": 1791123579916,
+          "status": "exited"
+        },
+        {
+          "pid": 41660,
+          "startedAtMs": 1791123580032,
+          "status": "exited"
+        },
+        {
+          "pid": 22744,
+          "startedAtMs": 1791123580150,
+          "status": "exited"
+        },
+        {
+          "pid": 44580,
+          "startedAtMs": 1791123580300,
+          "status": "exited"
+        },
+        {
+          "pid": 4048,
+          "startedAtMs": 1791123579942,
+          "status": "exited"
+        },
+        {
+          "pid": 15556,
+          "startedAtMs": 1791123580146,
+          "status": "exited"
+        },
+        {
+          "pid": 17716,
+          "startedAtMs": 1791123580181,
+          "status": "exited"
+        }
+      ],
+      "exitEvents": [
+        {
+          "at": "2026-10-04T14:19:45.653Z",
+          "code": 0,
+          "signal": null
+        }
+      ]
+    },
+    {
+      "label": "portable-exits-survive",
+      "exit": {
+        "at": "2026-10-04T14:19:47.638Z",
+        "kind": "exit_app",
+        "label": "portable-exits-survive",
+        "pid": 41328,
+        "invoke": "resolved",
+        "finishedAt": "2026-10-04T14:19:47.690Z",
+        "exitCode": 0,
+        "signalCode": null
+      },
+      "identities": [
+        {
+          "pid": 8652,
+          "startedAtMs": 1791123581526,
+          "status": "exited"
+        },
+        {
+          "pid": 15944,
+          "startedAtMs": 1791123581649,
+          "status": "exited"
+        },
+        {
+          "pid": 25392,
+          "startedAtMs": 1791123581644,
+          "status": "exited"
+        },
+        {
+          "pid": 14960,
+          "startedAtMs": 1791123581833,
+          "status": "exited"
+        },
+        {
+          "pid": 42844,
+          "startedAtMs": 1791123581506,
+          "status": "exited"
+        },
+        {
+          "pid": 15660,
+          "startedAtMs": 1791123581437,
+          "status": "exited"
+        },
+        {
+          "pid": 21796,
+          "startedAtMs": 1791123581430,
+          "status": "exited"
+        },
+        {
+          "pid": 41328,
+          "startedAtMs": 1791123581418,
+          "status": "exited"
+        },
+        {
+          "pid": 42296,
+          "startedAtMs": 1791123581688,
+          "status": "exited"
+        }
+      ],
+      "exitEvents": [
+        {
+          "at": "2026-10-04T14:19:47.689Z",
+          "code": 0,
+          "signal": null
+        }
+      ]
+    }
+  ],
+  "finishedAt": "2026-10-04T14:19:48.042Z"
+}

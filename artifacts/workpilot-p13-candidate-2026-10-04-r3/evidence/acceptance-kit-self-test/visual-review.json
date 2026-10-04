@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-04T14:02:38.684Z",
+  "viewed": [
+    "验收结果.png",
+    "browser-0.png",
+    "office-0-docx.png",
+    "office-1-xlsx.png",
+    "office-2-pptx.png"
+  ],
+  "result": "All five images were opened and viewed. Chinese self-test boundary is visible; browser greeting and each document synthetic value 42 are readable. No visible clipping of test content.",
+  "scope": "Development-machine kit self-test; no clean-OS, physical-migration or OS-offline claim. ZIP was extracted and launched outside repository; entry and working directory recorded in report."
+}

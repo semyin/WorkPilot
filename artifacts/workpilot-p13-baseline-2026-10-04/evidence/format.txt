@@ -1,0 +1,6 @@
+
+> workpilot@0.1.0-alpha.13.1 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!

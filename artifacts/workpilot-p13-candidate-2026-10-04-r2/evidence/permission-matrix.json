@@ -1,0 +1,233 @@
+{
+  "at": "2026-10-04T13:07:02.911Z",
+  "binarySha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+  "service": "Fixed local model deliberately requests a write; real engine and isolated files",
+  "rows": [
+    {
+      "protocol": "chat_completions",
+      "mode": "chat",
+      "permission": "request_approval",
+      "taskId": "3519506d-c0ae-4b76-9540-7cdce159b3b1",
+      "initialState": "failed",
+      "result": "no_write_despite_model_request_and_permission_setting"
+    },
+    {
+      "protocol": "chat_completions",
+      "mode": "chat",
+      "permission": "auto_review",
+      "taskId": "23523c1f-abb6-4f77-b7d0-1b6d85fe1f09",
+      "initialState": "failed",
+      "result": "no_write_despite_model_request_and_permission_setting"
+    },
+    {
+      "protocol": "chat_completions",
+      "mode": "chat",
+      "permission": "full_access",
+      "taskId": "6eabba9f-2c82-44cf-a99a-70bbd11b016b",
+      "initialState": "failed",
+      "result": "no_write_despite_model_request_and_permission_setting"
+    },
+    {
+      "protocol": "chat_completions",
+      "mode": "plan",
+      "permission": "request_approval",
+      "taskId": "38666add-4e38-4a70-bcc0-5b10d9c45577",
+      "initialState": "failed",
+      "result": "no_write_despite_model_request_and_permission_setting"
+    },
+    {
+      "protocol": "chat_completions",
+      "mode": "plan",
+      "permission": "auto_review",
+      "taskId": "101078aa-a8dc-4b5b-846b-bd5020be4c6e",
+      "initialState": "failed",
+      "result": "no_write_despite_model_request_and_permission_setting"
+    },
+    {
+      "protocol": "chat_completions",
+      "mode": "plan",
+      "permission": "full_access",
+      "taskId": "94e6ea3e-fad3-483d-a027-8fbe41878105",
+      "initialState": "failed",
+      "result": "no_write_despite_model_request_and_permission_setting"
+    },
+    {
+      "protocol": "chat_completions",
+      "mode": "execute",
+      "permission": "request_approval",
+      "taskId": "b876f456-24f4-439a-883b-92a81ada093c",
+      "initialState": "awaiting_approval",
+      "result": "waits_for_concrete_approval_then_writes_once",
+      "finalState": "completed"
+    },
+    {
+      "protocol": "chat_completions",
+      "mode": "execute",
+      "permission": "auto_review",
+      "taskId": "00e9401e-fa61-44ec-8d75-a6f989b0704e",
+      "initialState": "completed",
+      "result": "independent_review_approves",
+      "finalState": "completed"
+    },
+    {
+      "protocol": "chat_completions",
+      "mode": "execute",
+      "permission": "full_access",
+      "taskId": "f3187271-19ee-4bbd-a792-cbd7d1e94fe1",
+      "initialState": "completed",
+      "result": "explicit_full_access",
+      "finalState": "completed"
+    },
+    {
+      "protocol": "responses",
+      "mode": "chat",
+      "permission": "request_approval",
+      "taskId": "1067df95-1dda-46de-9071-3f5d74226d14",
+      "initialState": "failed",
+      "result": "no_write_despite_model_request_and_permission_setting"
+    },
+    {
+      "protocol": "responses",
+      "mode": "chat",
+      "permission": "auto_review",
+      "taskId": "c54b1ec7-9480-4325-b9ae-ac8584e26fbf",
+      "initialState": "failed",
+      "result": "no_write_despite_model_request_and_permission_setting"
+    },
+    {
+      "protocol": "responses",
+      "mode": "chat",
+      "permission": "full_access",
+      "taskId": "fdd81443-2d07-4150-82c3-942e09284762",
+      "initialState": "failed",
+      "result": "no_write_despite_model_request_and_permission_setting"
+    },
+    {
+      "protocol": "responses",
+      "mode": "plan",
+      "permission": "request_approval",
+      "taskId": "f5d4b674-1887-4b64-9998-fba99dae514d",
+      "initialState": "failed",
+      "result": "no_write_despite_model_request_and_permission_setting"
+    },
+    {
+      "protocol": "responses",
+      "mode": "plan",
+      "permission": "auto_review",
+      "taskId": "5ccc151c-493b-456b-9158-d56aceb69baf",
+      "initialState": "failed",
+      "result": "no_write_despite_model_request_and_permission_setting"
+    },
+    {
+      "protocol": "responses",
+      "mode": "plan",
+      "permission": "full_access",
+      "taskId": "9b57fac3-5de0-4920-b3bb-c3a0269dc5b7",
+      "initialState": "failed",
+      "result": "no_write_despite_model_request_and_permission_setting"
+    },
+    {
+      "protocol": "responses",
+      "mode": "execute",
+      "permission": "request_approval",
+      "taskId": "0e81d2b0-7491-4612-9cc1-78198b49f126",
+      "initialState": "awaiting_approval",
+      "result": "waits_for_concrete_approval_then_writes_once",
+      "finalState": "completed"
+    },
+    {
+      "protocol": "responses",
+      "mode": "execute",
+      "permission": "auto_review",
+      "taskId": "a53043b4-bb33-4f41-8351-a3c93112cdfb",
+      "initialState": "completed",
+      "result": "independent_review_approves",
+      "finalState": "completed"
+    },
+    {
+      "protocol": "responses",
+      "mode": "execute",
+      "permission": "full_access",
+      "taskId": "7b931950-5bd3-4538-a54a-5743f5271443",
+      "initialState": "completed",
+      "result": "explicit_full_access",
+      "finalState": "completed"
+    },
+    {
+      "protocol": "messages",
+      "mode": "chat",
+      "permission": "request_approval",
+      "taskId": "76b86000-478c-4555-8d73-81f736861bcb",
+      "initialState": "failed",
+      "result": "no_write_despite_model_request_and_permission_setting"
+    },
+    {
+      "protocol": "messages",
+      "mode": "chat",
+      "permission": "auto_review",
+      "taskId": "a757a698-03a8-4db4-8256-49344506b66a",
+      "initialState": "failed",
+      "result": "no_write_despite_model_request_and_permission_setting"
+    },
+    {
+      "protocol": "messages",
+      "mode": "chat",
+      "permission": "full_access",
+      "taskId": "1970ed61-8c04-4474-9d3b-673281f7fd8c",
+      "initialState": "failed",
+      "result": "no_write_despite_model_request_and_permission_setting"
+    },
+    {
+      "protocol": "messages",
+      "mode": "plan",
+      "permission": "request_approval",
+      "taskId": "6835f076-d4d5-4eb5-bc8a-b2e3f09d1708",
+      "initialState": "failed",
+      "result": "no_write_despite_model_request_and_permission_setting"
+    },
+    {
+      "protocol": "messages",
+      "mode": "plan",
+      "permission": "auto_review",
+      "taskId": "27b4ab67-ef01-4304-9556-68acbe5bcbfa",
+      "initialState": "failed",
+      "result": "no_write_despite_model_request_and_permission_setting"
+    },
+    {
+      "protocol": "messages",
+      "mode": "plan",
+      "permission": "full_access",
+      "taskId": "c99aa7cc-7be8-4815-925a-eb415c998ec1",
+      "initialState": "failed",
+      "result": "no_write_despite_model_request_and_permission_setting"
+    },
+    {
+      "protocol": "messages",
+      "mode": "execute",
+      "permission": "request_approval",
+      "taskId": "e986af12-cbb2-4144-9028-547a33206acf",
+      "initialState": "awaiting_approval",
+      "result": "waits_for_concrete_approval_then_writes_once",
+      "finalState": "completed"
+    },
+    {
+      "protocol": "messages",
+      "mode": "execute",
+      "permission": "auto_review",
+      "taskId": "e98f640d-4b65-49f8-a961-412ddcfeb009",
+      "initialState": "completed",
+      "result": "independent_review_approves",
+      "finalState": "completed"
+    },
+    {
+      "protocol": "messages",
+      "mode": "execute",
+      "permission": "full_access",
+      "taskId": "ba70fa1d-2d70-4b13-9dd5-0ddc35224a11",
+      "initialState": "completed",
+      "result": "explicit_full_access",
+      "finalState": "completed"
+    }
+  ],
+  "status": "passed"
+}

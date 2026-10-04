@@ -1,0 +1,403 @@
+{
+  "at": "2026-10-04T14:35:24.940Z",
+  "kind": "twenty_sample_visible_event_benchmark",
+  "binarySha256": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+  "conditions": "Separate short tasks. The normal output panel is scrolled into the viewport before the delayed fixed model returns. Measures an unoccluded complete text range across two renderer animation frames, not physical monitor scan-out. No historical scroll-follow claim.",
+  "samples": [
+    {
+      "marker": "P13_VISIBLE_0000",
+      "taskId": "aa17392c-3f2a-46e5-8f4d-631e9e118bd2",
+      "eventId": "74ba5cb7-d6e0-4008-86f1-82895de89cd4",
+      "eventAtMs": 1791124526742,
+      "domAtMs": 1791124526819,
+      "presentedAtMs": 1791124526836,
+      "frameChecks": 58,
+      "frame": 112,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 94
+    },
+    {
+      "marker": "P13_VISIBLE_0001",
+      "taskId": "fc68b205-89bb-430a-8af9-53735b0cb36c",
+      "eventId": "526717a2-5d4e-43f4-85be-711c9a5b327d",
+      "eventAtMs": 1791124527945,
+      "domAtMs": 1791124528036,
+      "presentedAtMs": 1791124528053,
+      "frameChecks": 58,
+      "frame": 113,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 108
+    },
+    {
+      "marker": "P13_VISIBLE_0002",
+      "taskId": "9dbaa34d-f4fe-430f-bdd3-c7d30892e846",
+      "eventId": "0d4eaf5e-23e8-4bed-80ed-bdabe5f198ea",
+      "eventAtMs": 1791124528988,
+      "domAtMs": 1791124529120,
+      "presentedAtMs": 1791124529136,
+      "frameChecks": 59,
+      "frame": 115,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 148
+    },
+    {
+      "marker": "P13_VISIBLE_0003",
+      "taskId": "92dc87b3-52a1-4fde-a90e-c8384818f1e8",
+      "eventId": "c7cbbb87-2735-47b5-bd18-cbf2f23428b1",
+      "eventAtMs": 1791124530072,
+      "domAtMs": 1791124530202,
+      "presentedAtMs": 1791124530219,
+      "frameChecks": 59,
+      "frame": 114,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 147
+    },
+    {
+      "marker": "P13_VISIBLE_0004",
+      "taskId": "348489b7-a1b3-4dea-9193-0a1f46d30cca",
+      "eventId": "e398018c-8c73-4ac0-a92d-b5609d3fd09e",
+      "eventAtMs": 1791124531152,
+      "domAtMs": 1791124531285,
+      "presentedAtMs": 1791124531302,
+      "frameChecks": 60,
+      "frame": 116,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 150
+    },
+    {
+      "marker": "P13_VISIBLE_0005",
+      "taskId": "3149a84f-0e7d-4c94-8f3f-ac0aca2efc4a",
+      "eventId": "9ac01b1d-71e2-47a1-a03a-6e470b9feac7",
+      "eventAtMs": 1791124532253,
+      "domAtMs": 1791124532352,
+      "presentedAtMs": 1791124532368,
+      "frameChecks": 58,
+      "frame": 113,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 115
+    },
+    {
+      "marker": "P13_VISIBLE_0006",
+      "taskId": "66736244-77c1-4ff8-acd5-95564d93f7b0",
+      "eventId": "bd04c678-e7eb-4bb9-b77f-4f7d5938f6ff",
+      "eventAtMs": 1791124533325,
+      "domAtMs": 1791124533418,
+      "presentedAtMs": 1791124533435,
+      "frameChecks": 58,
+      "frame": 112,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 110
+    },
+    {
+      "marker": "P13_VISIBLE_0007",
+      "taskId": "434bf718-2d82-4218-849e-0442bd2104e9",
+      "eventId": "54e7013d-07dd-487a-b56f-f0be4d88e90a",
+      "eventAtMs": 1791124534359,
+      "domAtMs": 1791124534484,
+      "presentedAtMs": 1791124534501,
+      "frameChecks": 58,
+      "frame": 113,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 142
+    },
+    {
+      "marker": "P13_VISIBLE_0008",
+      "taskId": "ed5be615-5cbb-445e-9e32-cec211d33c00",
+      "eventId": "80f591c0-2f98-4c6e-bd9e-6f51408cca3e",
+      "eventAtMs": 1791124535443,
+      "domAtMs": 1791124535551,
+      "presentedAtMs": 1791124535567,
+      "frameChecks": 59,
+      "frame": 113,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 124
+    },
+    {
+      "marker": "P13_VISIBLE_0009",
+      "taskId": "08dc7b47-e206-4380-b237-539834865e27",
+      "eventId": "df93ccd5-bf4d-49b8-b7ef-24f52f91b43c",
+      "eventAtMs": 1791124536509,
+      "domAtMs": 1791124536635,
+      "presentedAtMs": 1791124536651,
+      "frameChecks": 59,
+      "frame": 115,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 142
+    },
+    {
+      "marker": "P13_VISIBLE_0010",
+      "taskId": "245338e3-8413-43a3-8594-f630bbcacc38",
+      "eventId": "e03abfa4-b089-4796-a1b2-a23edb65fd91",
+      "eventAtMs": 1791124537605,
+      "domAtMs": 1791124537734,
+      "presentedAtMs": 1791124537750,
+      "frameChecks": 61,
+      "frame": 118,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 145
+    },
+    {
+      "marker": "P13_VISIBLE_0011",
+      "taskId": "a0e857a2-26fe-4504-98a3-4a141dba15bf",
+      "eventId": "89ba5b27-e280-493a-8ede-45b023f4522f",
+      "eventAtMs": 1791124538722,
+      "domAtMs": 1791124538817,
+      "presentedAtMs": 1791124538834,
+      "frameChecks": 59,
+      "frame": 113,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 112
+    },
+    {
+      "marker": "P13_VISIBLE_0012",
+      "taskId": "5f7aa3c9-4818-4528-b027-d2388c1eb448",
+      "eventId": "8018ff5f-fceb-448c-a51d-75b801079009",
+      "eventAtMs": 1791124539770,
+      "domAtMs": 1791124539900,
+      "presentedAtMs": 1791124539916,
+      "frameChecks": 60,
+      "frame": 116,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 146
+    },
+    {
+      "marker": "P13_VISIBLE_0013",
+      "taskId": "1a313a84-60ca-4b09-997a-e3ece7bc8a73",
+      "eventId": "ef65d962-04e7-449e-a5d5-7467ab125f23",
+      "eventAtMs": 1791124540872,
+      "domAtMs": 1791124540983,
+      "presentedAtMs": 1791124540999,
+      "frameChecks": 59,
+      "frame": 113,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 127
+    },
+    {
+      "marker": "P13_VISIBLE_0014",
+      "taskId": "9891953b-1c8d-486d-857e-f335c6c948a7",
+      "eventId": "c3e01de6-37cd-4bde-bdc8-dd42598c7b44",
+      "eventAtMs": 1791124541993,
+      "domAtMs": 1791124542082,
+      "presentedAtMs": 1791124542099,
+      "frameChecks": 58,
+      "frame": 111,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 106
+    },
+    {
+      "marker": "P13_VISIBLE_0015",
+      "taskId": "bdb1eca4-6b03-44c1-8dbd-2079dfe7973b",
+      "eventId": "754aab8e-9990-47c1-9247-edba429e756e",
+      "eventAtMs": 1791124543068,
+      "domAtMs": 1791124543183,
+      "presentedAtMs": 1791124543199,
+      "frameChecks": 60,
+      "frame": 116,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 131
+    },
+    {
+      "marker": "P13_VISIBLE_0016",
+      "taskId": "a7dd1235-303c-4efb-ae99-8f2523a70747",
+      "eventId": "87bc57dc-eba1-48c0-869a-f73584f86006",
+      "eventAtMs": 1791124544172,
+      "domAtMs": 1791124544282,
+      "presentedAtMs": 1791124544299,
+      "frameChecks": 60,
+      "frame": 115,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 127
+    },
+    {
+      "marker": "P13_VISIBLE_0017",
+      "taskId": "ece5a2a4-85c7-46c6-bf38-fad24961fff4",
+      "eventId": "e6fc73af-796c-4ccf-a665-9191ee7f77a3",
+      "eventAtMs": 1791124545225,
+      "domAtMs": 1791124545366,
+      "presentedAtMs": 1791124545382,
+      "frameChecks": 60,
+      "frame": 116,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 157
+    },
+    {
+      "marker": "P13_VISIBLE_0018",
+      "taskId": "5e93882b-1837-4676-bcd8-d20732b06cea",
+      "eventId": "c768decd-811d-4a94-b313-1e09631c29cf",
+      "eventAtMs": 1791124546363,
+      "domAtMs": 1791124546465,
+      "presentedAtMs": 1791124546481,
+      "frameChecks": 59,
+      "frame": 113,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 118
+    },
+    {
+      "marker": "P13_VISIBLE_0019",
+      "taskId": "f496bf86-3dfc-4af0-8358-4c61fdbbcc29",
+      "eventId": "7e20872a-5428-4f9e-adf0-3bc45f498042",
+      "eventAtMs": 1791124547463,
+      "domAtMs": 1791124547548,
+      "presentedAtMs": 1791124547564,
+      "frameChecks": 58,
+      "frame": 111,
+      "box": {
+        "left": 292.1964416503906,
+        "top": 513.5982666015625,
+        "right": 402.2232360839844,
+        "bottom": 531.8839721679688
+      },
+      "focused": true,
+      "elapsedMs": 101
+    }
+  ],
+  "checks": [
+    "real_native_renderer_visible_text_samples_correlated_to_saved_engine_events"
+  ],
+  "measurement": {
+    "scope": "Engine saved text event to complete unoccluded foreground viewport text over two animation frames",
+    "samples": [
+      94,
+      108,
+      148,
+      147,
+      150,
+      115,
+      110,
+      142,
+      124,
+      142,
+      145,
+      112,
+      146,
+      127,
+      106,
+      131,
+      127,
+      157,
+      118,
+      101
+    ],
+    "count": 20,
+    "p50Ms": 127,
+    "p95Ms": 150,
+    "maximumMs": 157,
+    "targetMs": 250,
+    "withinTarget": true
+  },
+  "status": "passed"
+}

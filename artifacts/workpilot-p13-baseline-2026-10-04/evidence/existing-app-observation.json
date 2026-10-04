@@ -1,0 +1,18 @@
+{
+  "observedAt": "2026-10-04T11:06:49.1543243Z",
+  "processes": [
+    {
+      "Id": 34440,
+      "ProcessName": "workpilot-desktop",
+      "StartTime": "2026-10-04T18:03:34.6798313+08:00",
+      "Path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe"
+    },
+    {
+      "Id": 19464,
+      "ProcessName": "workpilot-sidecar",
+      "StartTime": "2026-10-04T18:03:34.7126241+08:00",
+      "Path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe"
+    }
+  ],
+  "treatment": "Read-only observation. Existing P12 application processes predate P13 measurements and were left untouched. Isolated P13 tests only manage their own children."
+}

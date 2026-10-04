@@ -1,0 +1,114 @@
+{
+  "name": "P13 targeted delayed exit observation",
+  "status": "failed_cause_unknown",
+  "at": "2026-10-04T14:40:52.113Z",
+  "finishedAt": "2026-10-04T14:43:45.069Z",
+  "command": "node scripts/p13-delayed-exit-repro.mjs --run",
+  "binarySha256": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+  "oldP12BinarySha256": "c7b81dca8b21989ae2e8d9fcecf5a267adb83d9b4aad2a993f5f030ba99bcaf0",
+  "report": "report.json",
+  "observationMilliseconds": 90006.3935,
+  "observerExitEvents": [
+    {
+      "kind": "observer_desktop_exit",
+      "at": "2026-10-04T14:43:01.468Z",
+      "phase": "post-smoke-observation-started",
+      "label": "r3-observer",
+      "pid": 40668,
+      "code": 0,
+      "signal": null
+    },
+    {
+      "kind": "observer_desktop_exit",
+      "at": "2026-10-04T14:43:02.805Z",
+      "phase": "post-smoke-observation-started",
+      "label": "p12-observer",
+      "pid": 39456,
+      "code": 0,
+      "signal": null
+    }
+  ],
+  "engineFinalEvents": [
+    {
+      "label": "p12-observer",
+      "file": "p12-observer-engine-events.jsonl",
+      "ready": {
+        "protocol": "workpilot.v1",
+        "event_id": "cf3b0acb-672d-4607-a54e-b68dab6bb440",
+        "sequence": 1,
+        "task_id": null,
+        "task_sequence": null,
+        "agent_id": null,
+        "source": "engine",
+        "at_ms": 1791124852698,
+        "request_id": null,
+        "kind": "ready",
+        "pid": 9076,
+        "version": "0.1.0-alpha.12.15",
+        "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf\\p12-observer\\test"
+      },
+      "last": {
+        "protocol": "workpilot.v1",
+        "event_id": "ed6b4bfb-eec0-4a6c-8463-408914c926f8",
+        "sequence": 86,
+        "task_id": null,
+        "task_sequence": null,
+        "agent_id": null,
+        "source": "engine",
+        "at_ms": 1791124982767,
+        "request_id": null,
+        "kind": "bye"
+      }
+    },
+    {
+      "label": "r3-observer",
+      "file": "r3-observer-engine-events.jsonl",
+      "ready": {
+        "protocol": "workpilot.v1",
+        "event_id": "d02f0d45-92e1-423f-9049-cad5f6a8343d",
+        "sequence": 1,
+        "task_id": null,
+        "task_sequence": null,
+        "agent_id": null,
+        "source": "engine",
+        "at_ms": 1791124854173,
+        "request_id": null,
+        "kind": "ready",
+        "pid": 27572,
+        "version": "0.1.0-alpha.13.4",
+        "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf\\r3-observer\\test"
+      },
+      "last": {
+        "protocol": "workpilot.v1",
+        "event_id": "380892e0-bd34-4060-864a-d7801ccf0df8",
+        "sequence": 83,
+        "task_id": null,
+        "task_sequence": null,
+        "agent_id": null,
+        "source": "engine",
+        "at_ms": 1791124981426,
+        "request_id": null,
+        "kind": "bye"
+      }
+    }
+  ],
+  "uninstallStartedAt": "2026-10-04T14:43:19.622Z",
+  "ownObserverCleanupAt": "2026-10-04T14:43:42.341Z",
+  "knownConditions": {
+    "realInstallCompleted": true,
+    "originalSmokeDesktopStarted": false,
+    "smokePreflightFailure": "The lifecycle stdout encoded the Chinese installation path as question marks; ENOENT occurred before desktop launch.",
+    "observersExitedBeforeUninstall": true,
+    "watcherWasReadOnly": true,
+    "observerPingsOnly": true,
+    "protectedUninstallCompleted": true,
+    "allOwnedProcessesGone": true
+  },
+  "limits": [
+    "This sample does not complete full installed-desktop-smoke acceptance",
+    "An exit code of 0 and engine bye indicate orderly cleanup, not who initiated the exit",
+    "No conclusion that either WorkPilot or external interaction caused the earlier 14:12:55 event",
+    "No user data or original user desktop was restarted",
+    "Four-hour testing was cancelled by the user and is not a next step"
+  ]
+}

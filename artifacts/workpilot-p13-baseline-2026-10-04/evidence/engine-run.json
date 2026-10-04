@@ -1,0 +1,11 @@
+[
+  {
+    "name": "p13-engine-short-baseline-p12-final",
+    "status": "passed",
+    "checks": 3,
+    "command": "node scripts/p13-engine-benchmark.mjs --window-ms 10000 --samples 20 --stop-samples 20 --model-delay-ms 250",
+    "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+    "report": "evidence/engine-baseline-report.json",
+    "coverage": "93.932 seconds; six 1/4/8 tasks and 1/3/8 assistants load levels, 20 active-work control samples per metric per level, 20 actual process-tree cancellations, one forced engine exit and one-second non-replay observation. 42 tool processes sampled. No four-hour or UI claim."
+  }
+]

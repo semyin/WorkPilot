@@ -1,0 +1,22 @@
+[
+  {
+    "at": "2026-10-04T14:01:48.602Z",
+    "target": "learn.microsoft.com:443",
+    "phase": "discover",
+    "allowed": true,
+    "sentBytes": 2118,
+    "receivedBytes": 17827,
+    "connectedAt": "2026-10-04T14:01:48.676Z",
+    "closedAt": "2026-10-04T14:01:49.813Z"
+  },
+  {
+    "at": "2026-10-04T14:01:50.727Z",
+    "target": "learn.microsoft.com:443",
+    "phase": "search",
+    "allowed": true,
+    "sentBytes": 2729,
+    "receivedBytes": 74300,
+    "connectedAt": "2026-10-04T14:01:50.728Z",
+    "closedAt": "2026-10-04T14:01:52.875Z"
+  }
+]

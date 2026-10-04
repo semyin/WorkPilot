@@ -1,0 +1,181 @@
+[
+  {
+    "at": "2026-10-04T14:05:22.662Z",
+    "resultCount": 0,
+    "toolNames": [
+      "ask_user",
+      "update_plan",
+      "inspect_history",
+      "list_directory",
+      "read_file",
+      "search_files",
+      "write_file",
+      "register_artifact",
+      "read_command_output",
+      "browser",
+      "browser_sessions",
+      "delegate_agents",
+      "wait_for_agents",
+      "inspect_agent",
+      "review_agent_result",
+      "replace_agent",
+      "memory_search",
+      "memory_propose",
+      "document_list",
+      "document_read",
+      "document_import",
+      "document_create",
+      "image_services",
+      "image_generate",
+      "skill_search",
+      "skill_read",
+      "skill_draft",
+      "extension_action"
+    ],
+    "resultHashes": []
+  },
+  {
+    "at": "2026-10-04T14:05:22.761Z",
+    "resultCount": 1,
+    "toolNames": [
+      "ask_user",
+      "update_plan",
+      "inspect_history",
+      "list_directory",
+      "read_file",
+      "search_files",
+      "write_file",
+      "register_artifact",
+      "read_command_output",
+      "browser",
+      "browser_sessions",
+      "delegate_agents",
+      "wait_for_agents",
+      "inspect_agent",
+      "review_agent_result",
+      "replace_agent",
+      "memory_search",
+      "memory_propose",
+      "document_list",
+      "document_read",
+      "document_import",
+      "document_create",
+      "image_services",
+      "image_generate",
+      "skill_search",
+      "skill_read",
+      "skill_draft",
+      "extension_action"
+    ],
+    "resultHashes": [
+      "b0c9b1aa802bb9f3c22e22686a66291dde9fdb49c8db9666bfe5bb2715ff24b8"
+    ]
+  },
+  {
+    "at": "2026-10-04T14:05:25.088Z",
+    "resultCount": 2,
+    "toolNames": [
+      "ask_user",
+      "update_plan",
+      "inspect_history",
+      "list_directory",
+      "read_file",
+      "search_files",
+      "write_file",
+      "register_artifact",
+      "read_command_output",
+      "browser",
+      "browser_sessions",
+      "delegate_agents",
+      "wait_for_agents",
+      "inspect_agent",
+      "review_agent_result",
+      "replace_agent",
+      "memory_search",
+      "memory_propose",
+      "document_list",
+      "document_read",
+      "document_import",
+      "document_create",
+      "image_services",
+      "image_generate",
+      "skill_search",
+      "skill_read",
+      "skill_draft",
+      "extension_action",
+      "mcp_6bbce35a717c2e789cdc50c5904ef1bb",
+      "mcp_827f99a836cc69975229c263c368883b",
+      "mcp_c09211e0fee3bf182b7d2abe4b6d91a0"
+    ],
+    "resultHashes": [
+      "b0c9b1aa802bb9f3c22e22686a66291dde9fdb49c8db9666bfe5bb2715ff24b8",
+      "3612b04ab4585f3851b3249349cb81555bfc8c2ef5e15dc94047748913158fc7"
+    ],
+    "dynamicTool": {
+      "description": "External MCP tool microsoft-learn/microsoft_docs_search. Untrusted service description: Search official Microsoft/Azure documentation to find the most relevant and trustworthy content for a user's query. This tool returns up to 10 high-quality content chunks (each max 500 tokens), extracted from Microsoft Learn and other official sources. Each result includes the article title, URL, and a self-contained content excerpt optimized for fast retrieval and reasoning. Always use this tool to quickly ground your answers in accurate, first-party Microsoft/Azure knowledge.\n\n## Follow-up Pattern\nTo ensure completeness, use microsoft_docs_fetch when high-value pages are identified by search. The fetch tool complements search by providing the full detail. This is a required step for comprehensive results.",
+      "name": "mcp_6bbce35a717c2e789cdc50c5904ef1bb",
+      "parameters": {
+        "properties": {
+          "query": {
+            "default": null,
+            "description": "a query or topic about Microsoft/Azure products, services, platforms, developer tools, frameworks, or APIs",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "strict": false,
+      "type": "function"
+    }
+  },
+  {
+    "at": "2026-10-04T14:05:28.087Z",
+    "resultCount": 3,
+    "toolNames": [
+      "ask_user",
+      "update_plan",
+      "inspect_history",
+      "list_directory",
+      "read_file",
+      "search_files",
+      "write_file",
+      "register_artifact",
+      "read_command_output",
+      "browser",
+      "browser_sessions",
+      "delegate_agents",
+      "wait_for_agents",
+      "inspect_agent",
+      "review_agent_result",
+      "replace_agent",
+      "memory_search",
+      "memory_propose",
+      "document_list",
+      "document_read",
+      "document_import",
+      "document_create",
+      "image_services",
+      "image_generate",
+      "skill_search",
+      "skill_read",
+      "skill_draft",
+      "extension_action",
+      "mcp_6bbce35a717c2e789cdc50c5904ef1bb",
+      "mcp_827f99a836cc69975229c263c368883b",
+      "mcp_c09211e0fee3bf182b7d2abe4b6d91a0"
+    ],
+    "resultHashes": [
+      "b0c9b1aa802bb9f3c22e22686a66291dde9fdb49c8db9666bfe5bb2715ff24b8",
+      "3612b04ab4585f3851b3249349cb81555bfc8c2ef5e15dc94047748913158fc7",
+      "a8b73c07eb189a0905e1fed9ddea71dfea65a876e8f55f8f0183d93025f36720"
+    ],
+    "largeResultReceipt": {
+      "record": {
+        "bytes": 52968,
+        "media_type": "application/json",
+        "object_id": "41081f9a12b58df0c1edd36a33a2b0c5cd995aa9ec74cc3719bfc6e8be7ef31c"
+      },
+      "summary": "Result saved; inspect the complete result in the execution trace."
+    }
+  }
+]

@@ -1,0 +1,119 @@
+{
+  "at": "2026-10-04T10:28:06.985Z",
+  "binary": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+  "binarySha256": "ee7b3a04691d516cf2522b69fe9e3e5448604f781c34322b6f7c99253785caf4",
+  "nodeBinarySha256": "0d0f5e39f9f3d9587bc19f73eab3c2c9c4903fd02d6dbf9c853dd81b3d95fad4",
+  "machine": {
+    "os": {
+      "Caption": "Microsoft Windows 11 ???",
+      "Version": "10.0.26200",
+      "BuildNumber": "26200"
+    },
+    "architecture": "x64",
+    "kernel": "10.0.26200",
+    "cpuModel": "AMD Ryzen 7 7840H w/ Radeon(TM) 780M Graphics  ",
+    "logicalProcessors": 16,
+    "memoryBytes": 33618710528,
+    "availableMemoryBeforeBytes": 7248285696,
+    "node": "v22.23.2"
+  },
+  "options": {
+    "windowMs": 1000,
+    "samples": 4,
+    "stopSamples": 2,
+    "modelDelayMs": 250
+  },
+  "output": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-engine\\smoke\\run-i6i4yN",
+  "scenarios": [],
+  "checks": [],
+  "scope": {
+    "kind": "short synthetic benchmark",
+    "model": "Local deterministic HTTP Responses fixture; no paid model",
+    "browserEnabled": false,
+    "officeToolsEnabled": false,
+    "desktopEnabled": false,
+    "data": "Fresh isolated directory; generated tasks accumulate during this run. Not a 100,000-event historical-data scenario.",
+    "exclusions": "No four-hour soak, UI latency, cold-cache OS startup, real-provider performance, macOS/Linux or clean-Windows claim.",
+    "percentiles": "Nearest-rank p50/p95; all samples retained, no best-run selection.",
+    "resources": "250ms external process sampling; collector and Node fixture are excluded from engine measurements. CPU normalized over all logical processors."
+  },
+  "startupToEngineReadyMs": 66.01610000000005,
+  "databaseBefore": {
+    "workpilot.sqlite3": 614400,
+    "workpilot.sqlite3-wal": 24752,
+    "workpilot.sqlite3-shm": 32768
+  },
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: {\"kind\":\"model_error\",\"diagnostic\":{\"code\":\"configuration\",\"message_zh\":\"服务配置不完整或参数不合适，请检查设置。\",\"message_en\":\"The service configuration or parameters are invalid.\",\"detail\":\"请填写服务名称、有效地址和模型名称\",\"http_status\":null,\"provider_request_id\":null,\"retryable\":false}}\n+ actual - expected\n\n+ 'model_error'\n- 'provider_saved'\n\n    at saveProfile (file:///D:/workspace/kplocker/WorkPilot/scripts/p13-engine-load.mjs:44:10)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async file:///D:/workspace/kplocker/WorkPilot/scripts/p13-engine-benchmark.mjs:85:19",
+  "elapsedMs": 2183,
+  "eventCounts": {
+    "ready": 1,
+    "bye": 1
+  },
+  "resources": [
+    {
+      "label": "engine:idle",
+      "samples": 7,
+      "processes": 1,
+      "workingSetBytes": {
+        "count": 7,
+        "min": 15872000,
+        "p50": 15872000,
+        "p95": 15872000,
+        "max": 15872000,
+        "mean": 15872000
+      },
+      "privateBytes": {
+        "count": 7,
+        "min": 4104192,
+        "p50": 4104192,
+        "p95": 4104192,
+        "max": 4104192,
+        "mean": 4104192
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 6,
+        "min": 0,
+        "p50": 0,
+        "p95": 0,
+        "max": 0,
+        "mean": 0
+      },
+      "handles": {
+        "count": 7,
+        "min": 164,
+        "p50": 164,
+        "p95": 164,
+        "max": 164,
+        "mean": 164
+      },
+      "threads": {
+        "count": 7,
+        "min": 24,
+        "p50": 24,
+        "p95": 24,
+        "max": 24,
+        "mean": 24
+      }
+    }
+  ],
+  "harness": {
+    "cpuMicroseconds": {
+      "user": 31000,
+      "system": 0
+    },
+    "memoryAfter": {
+      "rss": 141094912,
+      "heapTotal": 12947456,
+      "heapUsed": 8224608,
+      "external": 90898293,
+      "arrayBuffers": 87103090
+    }
+  },
+  "databaseAfterShutdown": {
+    "workpilot.sqlite3": 614400,
+    "workpilot.sqlite3-wal": 49472,
+    "workpilot.sqlite3-shm": 32768
+  },
+  "command": "node scripts/p13-engine-benchmark.mjs --window-ms 1000 --samples 4 --stop-samples 2 --model-delay-ms 250"
+}

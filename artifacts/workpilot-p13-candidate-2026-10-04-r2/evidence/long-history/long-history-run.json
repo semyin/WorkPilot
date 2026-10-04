@@ -1,0 +1,21 @@
+[
+  {
+    "name": "long-history-harness-self-check-alpha13.3-r2",
+    "status": "self_test_passed",
+    "checks": 6,
+    "formalPerformanceEligible": false,
+    "binarySha256": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+    "binarySha256s": {
+      "desktop": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+      "engine": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7"
+    },
+    "report": "long-history/self-check-9dEtHX/report.json",
+    "command": "$env:WORKPILOT_DESKTOP_BINARY = 'D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-desktop.exe'\n$env:WORKPILOT_TEST_OUTPUT = 'D:/workspace/kplocker/WorkPilot/.test-results/p13-long-history-selfcheck'\n$env:WORKPILOT_BENCHMARK_CONDITIONS = 'Short harness self-check on live workstation during unrelated alpha13.4 release build. Four input/button samples only; no formal p95 or isolated performance claim.'\nnode scripts/p13-long-history-benchmark.mjs --self-test",
+    "notes": "26.491 second bounded harness self-check with 4 input and 4 button samples. Full 100000-event/2100034-byte scenario, no formal p95, no four-hour or cold-start claim",
+    "screenshotsReviewed": [
+      "long-history/self-check-9dEtHX/history-four-streams.png",
+      "long-history/self-check-9dEtHX/history-long-body-page.png",
+      "long-history/self-check-9dEtHX/history-three-after-stop.png"
+    ]
+  }
+]

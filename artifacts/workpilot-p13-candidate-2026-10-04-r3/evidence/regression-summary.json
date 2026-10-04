@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-04T14:03:39.554Z",
+  "version": "0.1.0-alpha.13.4",
+  "scope": "Fixed local model and actual local files, tools, browser and desktop; separate from paid real-service or human acceptance.",
+  "suites": [
+    {
+      "mode": "engine",
+      "count": 3,
+      "checks": 30,
+      "report": "regression/engine/summary.json",
+      "identities": {
+        "engine": "a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb",
+        "desktop": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+        "updater": "428055af1c70059c425feb6f5bf7d96ac8560c4fe42955068b69a43db81fe2f6"
+      }
+    },
+    {
+      "mode": "desktop",
+      "count": 3,
+      "checks": 16,
+      "report": "regression/desktop/summary.json",
+      "identities": {
+        "engine": "a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb",
+        "desktop": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+        "updater": "428055af1c70059c425feb6f5bf7d96ac8560c4fe42955068b69a43db81fe2f6"
+      }
+    }
+  ],
+  "checks": 46,
+  "status": "passed"
+}

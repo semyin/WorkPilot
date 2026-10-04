@@ -1,0 +1,12 @@
+[
+  {
+    "name": "p13-native-desktop-resource-baseline",
+    "status": "passed",
+    "checks": 3,
+    "command": "node scripts/p13-desktop-resources.mjs",
+    "binarySha256": "15d6774f56d3719517e5fae676b773923c1b5c21477cfb6a41d945d6af0a7fd3",
+    "engineSha256": "30402ca80845394178da104ef683ee47cab735bd12d85790a4d6c914826a38f7",
+    "report": "evidence/desktop-resources.json",
+    "coverage": "One Windows native run, idle and local model-wait; 21 and 24 complete cycles for desktop/engine/UI WebView/console host. One partial idle boundary cycle excluded from summary and retained in raw data. All nine identity-attributed processes exited normally. No dedicated browser or Office tool measurement."
+  }
+]

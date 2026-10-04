@@ -1,0 +1,1088 @@
+{
+  "name": "three-generations",
+  "at": "2026-10-04T14:19:48.045Z",
+  "instances": [
+    {
+      "label": "three-generations-exit",
+      "binary": "r3Installed",
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-9d18967072c84d9994894b7cf535f15e\\中文 安装\\workpilot-desktop.exe",
+      "data": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\three-generations-exit",
+      "pid": 26456,
+      "startedAt": "2026-10-04T14:19:48.045Z",
+      "ready": {
+        "protocol": "workpilot.v1",
+        "event_id": "bb5bb6fa-3912-42ae-93d7-db0da4c3a433",
+        "sequence": 1,
+        "task_id": null,
+        "task_sequence": null,
+        "agent_id": null,
+        "source": "engine",
+        "at_ms": 1791123588123,
+        "request_id": null,
+        "kind": "ready",
+        "pid": 44992,
+        "version": "0.1.0-alpha.13.4",
+        "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\three-generations-exit\\test"
+      },
+      "identities": [
+        {
+          "pid": 1920,
+          "parentPid": 41524,
+          "startedAtMs": 1791123588284,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 16392,
+          "parentPid": 44992,
+          "startedAtMs": 1791123588069,
+          "path": "C:\\Windows\\system32\\conhost.exe",
+          "role": "other-owned",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 44992,
+          "parentPid": 26456,
+          "startedAtMs": 1791123588062,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-9d18967072c84d9994894b7cf535f15e\\中文 安装\\workpilot-sidecar.exe",
+          "role": "engine",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 41524,
+          "parentPid": 26456,
+          "startedAtMs": 1791123588145,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 42436,
+          "parentPid": 41524,
+          "startedAtMs": 1791123588317,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 10344,
+          "parentPid": 41524,
+          "startedAtMs": 1791123588166,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 6024,
+          "parentPid": 41524,
+          "startedAtMs": 1791123588279,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 26456,
+          "parentPid": 18908,
+          "startedAtMs": 1791123588048,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-9d18967072c84d9994894b7cf535f15e\\中文 安装\\workpilot-desktop.exe",
+          "role": "desktop",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 22800,
+          "parentPid": 41524,
+          "startedAtMs": 1791123588426,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        }
+      ]
+    },
+    {
+      "label": "three-generations-survive-r3",
+      "binary": "r3Portable",
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "data": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\three-generations-survive-r3",
+      "pid": 42176,
+      "startedAt": "2026-10-04T14:19:49.395Z",
+      "ready": {
+        "protocol": "workpilot.v1",
+        "event_id": "c7c6e178-caf4-4d15-a5fe-b0a48c4469f3",
+        "sequence": 1,
+        "task_id": null,
+        "task_sequence": null,
+        "agent_id": null,
+        "source": "engine",
+        "at_ms": 1791123589462,
+        "request_id": null,
+        "kind": "ready",
+        "pid": 42664,
+        "version": "0.1.0-alpha.13.4",
+        "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\three-generations-survive-r3\\test"
+      },
+      "identities": [
+        {
+          "pid": 42176,
+          "parentPid": 18908,
+          "startedAtMs": 1791123589398,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+          "role": "desktop",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 3464,
+          "parentPid": 39460,
+          "startedAtMs": 1791123589505,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 40336,
+          "parentPid": 39460,
+          "startedAtMs": 1791123589641,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 42664,
+          "parentPid": 42176,
+          "startedAtMs": 1791123589410,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+          "role": "engine",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 18924,
+          "parentPid": 39460,
+          "startedAtMs": 1791123589756,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 41504,
+          "parentPid": 42664,
+          "startedAtMs": 1791123589416,
+          "path": "C:\\Windows\\system32\\conhost.exe",
+          "role": "other-owned",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 30164,
+          "parentPid": 39460,
+          "startedAtMs": 1791123589615,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 39460,
+          "parentPid": 42176,
+          "startedAtMs": 1791123589486,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 40596,
+          "parentPid": 39460,
+          "startedAtMs": 1791123589609,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        }
+      ]
+    },
+    {
+      "label": "three-generations-survive-p12",
+      "binary": "p12Portable",
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "data": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\three-generations-survive-p12",
+      "pid": 13540,
+      "startedAt": "2026-10-04T14:19:50.766Z",
+      "ready": {
+        "protocol": "workpilot.v1",
+        "event_id": "85fe975a-b89a-4809-a255-d5e3cc903497",
+        "sequence": 1,
+        "task_id": null,
+        "task_sequence": null,
+        "agent_id": null,
+        "source": "engine",
+        "at_ms": 1791123590850,
+        "request_id": null,
+        "kind": "ready",
+        "pid": 4664,
+        "version": "0.1.0-alpha.12.15",
+        "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\three-generations-survive-p12\\test"
+      },
+      "identities": [
+        {
+          "pid": 35392,
+          "parentPid": 41092,
+          "startedAtMs": 1791123591035,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 28488,
+          "parentPid": 41092,
+          "startedAtMs": 1791123591004,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 10940,
+          "parentPid": 41092,
+          "startedAtMs": 1791123591000,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 13540,
+          "parentPid": 18908,
+          "startedAtMs": 1791123590769,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+          "role": "desktop",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 4664,
+          "parentPid": 13540,
+          "startedAtMs": 1791123590794,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+          "role": "engine",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 35892,
+          "parentPid": 4664,
+          "startedAtMs": 1791123590801,
+          "path": "C:\\Windows\\system32\\conhost.exe",
+          "role": "other-owned",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 43868,
+          "parentPid": 41092,
+          "startedAtMs": 1791123591148,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 41092,
+          "parentPid": 13540,
+          "startedAtMs": 1791123590870,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 41108,
+          "parentPid": 41092,
+          "startedAtMs": 1791123590890,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        }
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "stage": "before-exit",
+      "at": "2026-10-04T14:19:52.200Z",
+      "label": "three-generations-exit",
+      "desktopPid": 26456,
+      "exitCode": null,
+      "signalCode": null,
+      "identities": [
+        {
+          "pid": 1920,
+          "startedAtMs": 1791123588284,
+          "status": "alive"
+        },
+        {
+          "pid": 16392,
+          "startedAtMs": 1791123588069,
+          "status": "alive"
+        },
+        {
+          "pid": 44992,
+          "startedAtMs": 1791123588062,
+          "status": "alive"
+        },
+        {
+          "pid": 41524,
+          "startedAtMs": 1791123588145,
+          "status": "alive"
+        },
+        {
+          "pid": 42436,
+          "startedAtMs": 1791123588317,
+          "status": "alive"
+        },
+        {
+          "pid": 10344,
+          "startedAtMs": 1791123588166,
+          "status": "alive"
+        },
+        {
+          "pid": 6024,
+          "startedAtMs": 1791123588279,
+          "status": "alive"
+        },
+        {
+          "pid": 26456,
+          "startedAtMs": 1791123588048,
+          "status": "alive"
+        },
+        {
+          "pid": 22800,
+          "startedAtMs": 1791123588426,
+          "status": "alive"
+        }
+      ],
+      "ping": {
+        "receiptKind": "receipt",
+        "alive": true,
+        "pong": true,
+        "ready": {
+          "protocol": "workpilot.v1",
+          "event_id": "bb5bb6fa-3912-42ae-93d7-db0da4c3a433",
+          "sequence": 1,
+          "task_id": null,
+          "task_sequence": null,
+          "agent_id": null,
+          "source": "engine",
+          "at_ms": 1791123588123,
+          "request_id": null,
+          "kind": "ready",
+          "pid": 44992,
+          "version": "0.1.0-alpha.13.4",
+          "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\three-generations-exit\\test"
+        }
+      },
+      "healthy": true
+    },
+    {
+      "stage": "before-exit",
+      "at": "2026-10-04T14:19:52.517Z",
+      "label": "three-generations-survive-r3",
+      "desktopPid": 42176,
+      "exitCode": null,
+      "signalCode": null,
+      "identities": [
+        {
+          "pid": 42176,
+          "startedAtMs": 1791123589398,
+          "status": "alive"
+        },
+        {
+          "pid": 3464,
+          "startedAtMs": 1791123589505,
+          "status": "alive"
+        },
+        {
+          "pid": 40336,
+          "startedAtMs": 1791123589641,
+          "status": "alive"
+        },
+        {
+          "pid": 42664,
+          "startedAtMs": 1791123589410,
+          "status": "alive"
+        },
+        {
+          "pid": 18924,
+          "startedAtMs": 1791123589756,
+          "status": "alive"
+        },
+        {
+          "pid": 41504,
+          "startedAtMs": 1791123589416,
+          "status": "alive"
+        },
+        {
+          "pid": 30164,
+          "startedAtMs": 1791123589615,
+          "status": "alive"
+        },
+        {
+          "pid": 39460,
+          "startedAtMs": 1791123589486,
+          "status": "alive"
+        },
+        {
+          "pid": 40596,
+          "startedAtMs": 1791123589609,
+          "status": "alive"
+        }
+      ],
+      "ping": {
+        "receiptKind": "receipt",
+        "alive": true,
+        "pong": true,
+        "ready": {
+          "protocol": "workpilot.v1",
+          "event_id": "c7c6e178-caf4-4d15-a5fe-b0a48c4469f3",
+          "sequence": 1,
+          "task_id": null,
+          "task_sequence": null,
+          "agent_id": null,
+          "source": "engine",
+          "at_ms": 1791123589462,
+          "request_id": null,
+          "kind": "ready",
+          "pid": 42664,
+          "version": "0.1.0-alpha.13.4",
+          "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\three-generations-survive-r3\\test"
+        }
+      },
+      "healthy": true
+    },
+    {
+      "stage": "before-exit",
+      "at": "2026-10-04T14:19:52.829Z",
+      "label": "three-generations-survive-p12",
+      "desktopPid": 13540,
+      "exitCode": null,
+      "signalCode": null,
+      "identities": [
+        {
+          "pid": 35392,
+          "startedAtMs": 1791123591035,
+          "status": "alive"
+        },
+        {
+          "pid": 28488,
+          "startedAtMs": 1791123591004,
+          "status": "alive"
+        },
+        {
+          "pid": 10940,
+          "startedAtMs": 1791123591000,
+          "status": "alive"
+        },
+        {
+          "pid": 13540,
+          "startedAtMs": 1791123590769,
+          "status": "alive"
+        },
+        {
+          "pid": 4664,
+          "startedAtMs": 1791123590794,
+          "status": "alive"
+        },
+        {
+          "pid": 35892,
+          "startedAtMs": 1791123590801,
+          "status": "alive"
+        },
+        {
+          "pid": 43868,
+          "startedAtMs": 1791123591148,
+          "status": "alive"
+        },
+        {
+          "pid": 41092,
+          "startedAtMs": 1791123590870,
+          "status": "alive"
+        },
+        {
+          "pid": 41108,
+          "startedAtMs": 1791123590890,
+          "status": "alive"
+        }
+      ],
+      "ping": {
+        "receiptKind": "receipt",
+        "alive": true,
+        "pong": true,
+        "ready": {
+          "protocol": "workpilot.v1",
+          "event_id": "85fe975a-b89a-4809-a255-d5e3cc903497",
+          "sequence": 1,
+          "task_id": null,
+          "task_sequence": null,
+          "agent_id": null,
+          "source": "engine",
+          "at_ms": 1791123590850,
+          "request_id": null,
+          "kind": "ready",
+          "pid": 4664,
+          "version": "0.1.0-alpha.12.15",
+          "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\three-generations-survive-p12\\test"
+        }
+      },
+      "healthy": true
+    },
+    {
+      "stage": "after-exit-app-before-cdp-close",
+      "at": "2026-10-04T14:19:53.979Z",
+      "label": "three-generations-survive-r3",
+      "desktopPid": 42176,
+      "exitCode": null,
+      "signalCode": null,
+      "identities": [
+        {
+          "pid": 42176,
+          "startedAtMs": 1791123589398,
+          "status": "alive"
+        },
+        {
+          "pid": 3464,
+          "startedAtMs": 1791123589505,
+          "status": "alive"
+        },
+        {
+          "pid": 40336,
+          "startedAtMs": 1791123589641,
+          "status": "alive"
+        },
+        {
+          "pid": 42664,
+          "startedAtMs": 1791123589410,
+          "status": "alive"
+        },
+        {
+          "pid": 18924,
+          "startedAtMs": 1791123589756,
+          "status": "alive"
+        },
+        {
+          "pid": 41504,
+          "startedAtMs": 1791123589416,
+          "status": "alive"
+        },
+        {
+          "pid": 30164,
+          "startedAtMs": 1791123589615,
+          "status": "alive"
+        },
+        {
+          "pid": 39460,
+          "startedAtMs": 1791123589486,
+          "status": "alive"
+        },
+        {
+          "pid": 40596,
+          "startedAtMs": 1791123589609,
+          "status": "alive"
+        }
+      ],
+      "ping": {
+        "receiptKind": "receipt",
+        "alive": true,
+        "pong": true,
+        "ready": {
+          "protocol": "workpilot.v1",
+          "event_id": "c7c6e178-caf4-4d15-a5fe-b0a48c4469f3",
+          "sequence": 1,
+          "task_id": null,
+          "task_sequence": null,
+          "agent_id": null,
+          "source": "engine",
+          "at_ms": 1791123589462,
+          "request_id": null,
+          "kind": "ready",
+          "pid": 42664,
+          "version": "0.1.0-alpha.13.4",
+          "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\three-generations-survive-r3\\test"
+        }
+      },
+      "healthy": true
+    },
+    {
+      "stage": "after-exit-app-before-cdp-close",
+      "at": "2026-10-04T14:19:54.284Z",
+      "label": "three-generations-survive-p12",
+      "desktopPid": 13540,
+      "exitCode": null,
+      "signalCode": null,
+      "identities": [
+        {
+          "pid": 35392,
+          "startedAtMs": 1791123591035,
+          "status": "alive"
+        },
+        {
+          "pid": 28488,
+          "startedAtMs": 1791123591004,
+          "status": "alive"
+        },
+        {
+          "pid": 10940,
+          "startedAtMs": 1791123591000,
+          "status": "alive"
+        },
+        {
+          "pid": 13540,
+          "startedAtMs": 1791123590769,
+          "status": "alive"
+        },
+        {
+          "pid": 4664,
+          "startedAtMs": 1791123590794,
+          "status": "alive"
+        },
+        {
+          "pid": 35892,
+          "startedAtMs": 1791123590801,
+          "status": "alive"
+        },
+        {
+          "pid": 43868,
+          "startedAtMs": 1791123591148,
+          "status": "alive"
+        },
+        {
+          "pid": 41092,
+          "startedAtMs": 1791123590870,
+          "status": "alive"
+        },
+        {
+          "pid": 41108,
+          "startedAtMs": 1791123590890,
+          "status": "alive"
+        }
+      ],
+      "ping": {
+        "receiptKind": "receipt",
+        "alive": true,
+        "pong": true,
+        "ready": {
+          "protocol": "workpilot.v1",
+          "event_id": "85fe975a-b89a-4809-a255-d5e3cc903497",
+          "sequence": 1,
+          "task_id": null,
+          "task_sequence": null,
+          "agent_id": null,
+          "source": "engine",
+          "at_ms": 1791123590850,
+          "request_id": null,
+          "kind": "ready",
+          "pid": 4664,
+          "version": "0.1.0-alpha.12.15",
+          "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\three-generations-survive-p12\\test"
+        }
+      },
+      "healthy": true
+    },
+    {
+      "stage": "after-target-cdp-close",
+      "at": "2026-10-04T14:19:54.921Z",
+      "label": "three-generations-survive-r3",
+      "desktopPid": 42176,
+      "exitCode": null,
+      "signalCode": null,
+      "identities": [
+        {
+          "pid": 42176,
+          "startedAtMs": 1791123589398,
+          "status": "alive"
+        },
+        {
+          "pid": 3464,
+          "startedAtMs": 1791123589505,
+          "status": "alive"
+        },
+        {
+          "pid": 40336,
+          "startedAtMs": 1791123589641,
+          "status": "alive"
+        },
+        {
+          "pid": 42664,
+          "startedAtMs": 1791123589410,
+          "status": "alive"
+        },
+        {
+          "pid": 18924,
+          "startedAtMs": 1791123589756,
+          "status": "alive"
+        },
+        {
+          "pid": 41504,
+          "startedAtMs": 1791123589416,
+          "status": "alive"
+        },
+        {
+          "pid": 30164,
+          "startedAtMs": 1791123589615,
+          "status": "alive"
+        },
+        {
+          "pid": 39460,
+          "startedAtMs": 1791123589486,
+          "status": "alive"
+        },
+        {
+          "pid": 40596,
+          "startedAtMs": 1791123589609,
+          "status": "alive"
+        }
+      ],
+      "ping": {
+        "receiptKind": "receipt",
+        "alive": true,
+        "pong": true,
+        "ready": {
+          "protocol": "workpilot.v1",
+          "event_id": "c7c6e178-caf4-4d15-a5fe-b0a48c4469f3",
+          "sequence": 1,
+          "task_id": null,
+          "task_sequence": null,
+          "agent_id": null,
+          "source": "engine",
+          "at_ms": 1791123589462,
+          "request_id": null,
+          "kind": "ready",
+          "pid": 42664,
+          "version": "0.1.0-alpha.13.4",
+          "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\three-generations-survive-r3\\test"
+        }
+      },
+      "healthy": true
+    },
+    {
+      "stage": "after-target-cdp-close",
+      "at": "2026-10-04T14:19:55.267Z",
+      "label": "three-generations-survive-p12",
+      "desktopPid": 13540,
+      "exitCode": null,
+      "signalCode": null,
+      "identities": [
+        {
+          "pid": 35392,
+          "startedAtMs": 1791123591035,
+          "status": "alive"
+        },
+        {
+          "pid": 28488,
+          "startedAtMs": 1791123591004,
+          "status": "alive"
+        },
+        {
+          "pid": 10940,
+          "startedAtMs": 1791123591000,
+          "status": "alive"
+        },
+        {
+          "pid": 13540,
+          "startedAtMs": 1791123590769,
+          "status": "alive"
+        },
+        {
+          "pid": 4664,
+          "startedAtMs": 1791123590794,
+          "status": "alive"
+        },
+        {
+          "pid": 35892,
+          "startedAtMs": 1791123590801,
+          "status": "alive"
+        },
+        {
+          "pid": 43868,
+          "startedAtMs": 1791123591148,
+          "status": "alive"
+        },
+        {
+          "pid": 41092,
+          "startedAtMs": 1791123590870,
+          "status": "alive"
+        },
+        {
+          "pid": 41108,
+          "startedAtMs": 1791123590890,
+          "status": "alive"
+        }
+      ],
+      "ping": {
+        "receiptKind": "receipt",
+        "alive": true,
+        "pong": true,
+        "ready": {
+          "protocol": "workpilot.v1",
+          "event_id": "85fe975a-b89a-4809-a255-d5e3cc903497",
+          "sequence": 1,
+          "task_id": null,
+          "task_sequence": null,
+          "agent_id": null,
+          "source": "engine",
+          "at_ms": 1791123590850,
+          "request_id": null,
+          "kind": "ready",
+          "pid": 4664,
+          "version": "0.1.0-alpha.12.15",
+          "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-multi-instance-exit\\run-g0Yiij\\three-generations-survive-p12\\test"
+        }
+      },
+      "healthy": true
+    }
+  ],
+  "exitAction": {
+    "at": "2026-10-04T14:19:53.142Z",
+    "kind": "exit_app",
+    "label": "three-generations-exit",
+    "pid": 26456,
+    "invoke": "resolved",
+    "finishedAt": "2026-10-04T14:19:53.183Z",
+    "exitCode": 0,
+    "signalCode": null
+  },
+  "targetAfterExit": [
+    {
+      "pid": 1920,
+      "startedAtMs": 1791123588284,
+      "status": "exited"
+    },
+    {
+      "pid": 16392,
+      "startedAtMs": 1791123588069,
+      "status": "exited"
+    },
+    {
+      "pid": 44992,
+      "startedAtMs": 1791123588062,
+      "status": "exited"
+    },
+    {
+      "pid": 41524,
+      "startedAtMs": 1791123588145,
+      "status": "exited"
+    },
+    {
+      "pid": 42436,
+      "startedAtMs": 1791123588317,
+      "status": "exited"
+    },
+    {
+      "pid": 10344,
+      "startedAtMs": 1791123588166,
+      "status": "exited"
+    },
+    {
+      "pid": 6024,
+      "startedAtMs": 1791123588279,
+      "status": "exited"
+    },
+    {
+      "pid": 26456,
+      "startedAtMs": 1791123588048,
+      "status": "exited"
+    },
+    {
+      "pid": 22800,
+      "startedAtMs": 1791123588426,
+      "status": "exited"
+    }
+  ],
+  "status": "passed",
+  "cleanup": [
+    {
+      "label": "three-generations-exit",
+      "exit": {
+        "at": "2026-10-04T14:19:55.605Z",
+        "alreadyExited": true,
+        "exitCode": 0
+      },
+      "identities": [
+        {
+          "pid": 1920,
+          "startedAtMs": 1791123588284,
+          "status": "exited"
+        },
+        {
+          "pid": 16392,
+          "startedAtMs": 1791123588069,
+          "status": "exited"
+        },
+        {
+          "pid": 44992,
+          "startedAtMs": 1791123588062,
+          "status": "exited"
+        },
+        {
+          "pid": 41524,
+          "startedAtMs": 1791123588145,
+          "status": "exited"
+        },
+        {
+          "pid": 42436,
+          "startedAtMs": 1791123588317,
+          "status": "exited"
+        },
+        {
+          "pid": 10344,
+          "startedAtMs": 1791123588166,
+          "status": "exited"
+        },
+        {
+          "pid": 6024,
+          "startedAtMs": 1791123588279,
+          "status": "exited"
+        },
+        {
+          "pid": 26456,
+          "startedAtMs": 1791123588048,
+          "status": "exited"
+        },
+        {
+          "pid": 22800,
+          "startedAtMs": 1791123588426,
+          "status": "exited"
+        }
+      ],
+      "exitEvents": [
+        {
+          "at": "2026-10-04T14:19:53.183Z",
+          "code": 0,
+          "signal": null
+        }
+      ]
+    },
+    {
+      "label": "three-generations-survive-r3",
+      "exit": {
+        "at": "2026-10-04T14:19:55.931Z",
+        "kind": "exit_app",
+        "label": "three-generations-survive-r3",
+        "pid": 42176,
+        "invoke": "resolved",
+        "finishedAt": "2026-10-04T14:19:55.972Z",
+        "exitCode": 0,
+        "signalCode": null
+      },
+      "identities": [
+        {
+          "pid": 42176,
+          "startedAtMs": 1791123589398,
+          "status": "exited"
+        },
+        {
+          "pid": 3464,
+          "startedAtMs": 1791123589505,
+          "status": "exited"
+        },
+        {
+          "pid": 40336,
+          "startedAtMs": 1791123589641,
+          "status": "exited"
+        },
+        {
+          "pid": 42664,
+          "startedAtMs": 1791123589410,
+          "status": "exited"
+        },
+        {
+          "pid": 18924,
+          "startedAtMs": 1791123589756,
+          "status": "exited"
+        },
+        {
+          "pid": 41504,
+          "startedAtMs": 1791123589416,
+          "status": "exited"
+        },
+        {
+          "pid": 30164,
+          "startedAtMs": 1791123589615,
+          "status": "exited"
+        },
+        {
+          "pid": 39460,
+          "startedAtMs": 1791123589486,
+          "status": "exited"
+        },
+        {
+          "pid": 40596,
+          "startedAtMs": 1791123589609,
+          "status": "exited"
+        }
+      ],
+      "exitEvents": [
+        {
+          "at": "2026-10-04T14:19:55.972Z",
+          "code": 0,
+          "signal": null
+        }
+      ]
+    },
+    {
+      "label": "three-generations-survive-p12",
+      "exit": {
+        "at": "2026-10-04T14:19:56.309Z",
+        "kind": "exit_app",
+        "label": "three-generations-survive-p12",
+        "pid": 13540,
+        "invoke": "resolved",
+        "finishedAt": "2026-10-04T14:19:56.357Z",
+        "exitCode": 0,
+        "signalCode": null
+      },
+      "identities": [
+        {
+          "pid": 35392,
+          "startedAtMs": 1791123591035,
+          "status": "exited"
+        },
+        {
+          "pid": 28488,
+          "startedAtMs": 1791123591004,
+          "status": "exited"
+        },
+        {
+          "pid": 10940,
+          "startedAtMs": 1791123591000,
+          "status": "exited"
+        },
+        {
+          "pid": 13540,
+          "startedAtMs": 1791123590769,
+          "status": "exited"
+        },
+        {
+          "pid": 4664,
+          "startedAtMs": 1791123590794,
+          "status": "exited"
+        },
+        {
+          "pid": 35892,
+          "startedAtMs": 1791123590801,
+          "status": "exited"
+        },
+        {
+          "pid": 43868,
+          "startedAtMs": 1791123591148,
+          "status": "exited"
+        },
+        {
+          "pid": 41092,
+          "startedAtMs": 1791123590870,
+          "status": "exited"
+        },
+        {
+          "pid": 41108,
+          "startedAtMs": 1791123590890,
+          "status": "exited"
+        }
+      ],
+      "exitEvents": [
+        {
+          "at": "2026-10-04T14:19:56.357Z",
+          "code": 0,
+          "signal": null
+        }
+      ]
+    }
+  ],
+  "finishedAt": "2026-10-04T14:19:56.722Z"
+}

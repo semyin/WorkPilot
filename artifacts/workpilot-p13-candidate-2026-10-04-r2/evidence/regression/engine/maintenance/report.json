@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-04T13:10:25.009Z",
+  "platform": "win32",
+  "binarySha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+  "checks": [
+    "preview_is_read_only_and_offline_helper_refuses_active_engine",
+    "stale_preview_and_backup_failure_preserve_every_revision",
+    "encrypted_verified_backup_precedes_retention_and_current_project_file_is_untouched",
+    "permanent_task_deletion_keeps_archive_copy_until_explicit_archive_cleanup",
+    "explicit_reset_removes_owned_history_and_vault_key_preserves_projects_and_unknown_files_then_restarts"
+  ],
+  "passed": true
+}

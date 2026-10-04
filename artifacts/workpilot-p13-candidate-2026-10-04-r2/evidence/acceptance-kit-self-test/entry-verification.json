@@ -1,0 +1,28 @@
+﻿{
+    "status":  "passed",
+    "kitManifestSha256":  "88f4f53456d1c2157f6b773aca024554bd58ce503acf987cca4285d2d7ec7aec",
+    "installationFiles":  [
+                              {
+                                  "path":  "workpilot-desktop.exe",
+                                  "bytes":  15184896,
+                                  "sha256":  "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9"
+                              },
+                              {
+                                  "path":  "workpilot-sidecar.exe",
+                                  "bytes":  21629952,
+                                  "sha256":  "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7"
+                              },
+                              {
+                                  "path":  "browser-runtime/node.exe",
+                                  "bytes":  86997320,
+                                  "sha256":  "0d0f5e39f9f3d9587bc19f73eab3c2c9c4903fd02d6dbf9c853dd81b3d95fad4"
+                              },
+                              {
+                                  "path":  "runtime-catalog.json",
+                                  "bytes":  5621370,
+                                  "sha256":  "d61b9ec65c3644a9fa185f5f1978ee78f4c38abd386facee207f4762f8004b23"
+                              }
+                          ],
+    "powershellVersion":  "5.1.26100.9444",
+    "selfTest":  true
+}

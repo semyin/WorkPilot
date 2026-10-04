@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-04T13:20:28.8578760Z",
+  "status": "submission_passed_visual_not_verified",
+  "binary": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-ec22c11ef07d473496684869f673b0a4\\中文 安装\\workpilot-desktop.exe",
+  "binarySha256": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+  "processId": 43036,
+  "checks": 4,
+  "deliveries": [
+    {
+      "kind": "approval",
+      "delivery": "submitted",
+      "taskId": "7d981fcc-7599-4f85-bea1-d35f6253240a",
+      "at": "2026-10-04T13:17:56.154Z"
+    },
+    {
+      "kind": "input",
+      "delivery": "submitted",
+      "taskId": "ccbe0168-61f3-4fec-8b6c-927b64b18ed7",
+      "at": "2026-10-04T13:18:12.038Z"
+    },
+    {
+      "kind": "completed",
+      "delivery": "submitted",
+      "taskId": "f77dfef7-b65d-40e5-95bd-036d78584f54",
+      "at": "2026-10-04T13:18:31.132Z"
+    },
+    {
+      "kind": "failed",
+      "delivery": "submitted",
+      "taskId": "b88d7013-eba8-4eac-a18d-e15ade1b70e7",
+      "at": "2026-10-04T13:18:40.628Z"
+    }
+  ],
+  "isolation": "Fresh test data; own installed process selected by exact install-session path in Computer Use; only its hide button used",
+  "finalSnapshot": {
+    "at": "2026-10-04T13:18:56.166Z",
+    "unread": 4,
+    "openRequest": null,
+    "selectedTask": null,
+    "modelCalls": 4
+  },
+  "shutdown": "Normal own-process exit, no approval or continue action",
+  "notVerified": [
+    "Actual Windows toast display",
+    "Actual tray badge/menu display",
+    "Actual native OS click callback"
+  ],
+  "notes": "Submitted means Windows API accepted the notification. No new user question was asked. No OS notification or Do Not Disturb settings were changed. Earlier Sky surface limitation and unanswered optional user observation remain a validation gap, not an asserted product defect."
+}

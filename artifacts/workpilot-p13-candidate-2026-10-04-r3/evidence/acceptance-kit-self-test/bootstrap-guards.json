@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "checks": 2,
+  "at": "2026-10-04T14:01:22.5091016+00:00",
+  "wrongInstallation": "C:\\Users\\semyi\\AppData\\Local\\WorkPilotAcceptance-KitSelfTest-5cab98f742e6424d910cda46d339171f\\wrong-installation-result",
+  "tamperedKit": "C:\\Users\\semyi\\AppData\\Local\\WorkPilotAcceptance-KitSelfTest-5cab98f742e6424d910cda46d339171f\\tampered-kit-result",
+  "powershellSha256": "8bb6fa8c283b4d92120b1ef249a9b311b0f804d4cabbe9981159976c8be76a5e",
+  "launcherSha256": "fe15229f87929cdbc95455931ef825b4a66da5b2fac49f8229ab784c768def38",
+  "kitManifestSha256": "a1ef569f3dfcbe593d3a50487f70aa8455744f19fc945b36d13a68bea41ac9ec",
+  "scope": "Both checks refused before bundled Node/engine launch. Only newly created external kit self-test folders were written.",
+  "preEngineRefusalVerified": true
+}

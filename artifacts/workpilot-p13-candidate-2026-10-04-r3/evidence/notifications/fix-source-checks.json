@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-04T13:41:23.3916139Z",
+  "version": "0.1.0-alpha.13.4",
+  "productFrozen": true,
+  "unitChecks": 8,
+  "unitReport": "p13-notifications-unit-alpha13.4.txt",
+  "settingsRaceChecks": 4,
+  "settingsRaceReport": "p13-notification-settings-race/report.json",
+  "earlierRaceFailure": "p13-readonly-review/notification-settings-race.json",
+  "nativeTeamRegression": "prepared_not_run_until_r3",
+  "unitBinarySha256": "19aac8cdbfc5e90b4f1e3a681516100b8b20bf4f7ec7e0904aba57a69db2ab65",
+  "files": [
+    {
+      "path": "apps/desktop/src-tauri/src/notifications/model.rs",
+      "sha256": "05c5f1abec447d96ca03951d65b81794e9f645858ab4c4264c2f166330dc15bd"
+    },
+    {
+      "path": "apps/desktop/src-tauri/src/notifications/tests.rs",
+      "sha256": "59572563e884b4f01ff0c6b821ecc2e39b934a69979f9a4cf1b10088a48f9d51"
+    },
+    {
+      "path": "apps/desktop/src/notifications/NotificationSettings.tsx",
+      "sha256": "ecd90dc8230eb002b8566e94e4ea5396a51522ec53e1032cad4e858ca3d2de04"
+    },
+    {
+      "path": "scripts/notifications-team-test.mjs",
+      "sha256": "aba4619cc892e34bac018728c0eabcd8bc9721956c9310a569111f277a189b2e"
+    },
+    {
+      "path": "scripts/notifications-desktop-test.mjs",
+      "sha256": "8d88509ac2d5aa91d480ef0723ae6a64b20ddcd0f8e12ad2561393d888bddb6f"
+    },
+    {
+      "path": "scripts/notifications-settings-harness.mjs",
+      "sha256": "eb59178c803f9fcfe784e7b3228d2e4b52961e3abcb910aefdfd062748269aea"
+    },
+    {
+      "path": "scripts/notifications-settings-test.mjs",
+      "sha256": "99095044a325368b703d8c5f628780eb6e49b225e98d090ca0acae70b84ba06f"
+    }
+  ]
+}

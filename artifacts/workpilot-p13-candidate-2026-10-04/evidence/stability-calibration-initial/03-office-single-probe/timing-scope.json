@@ -1,0 +1,6 @@
+{
+  "processExit": "38.1015ms measured from cancellation request through fast PID absence; identity check excluded afterward.",
+  "cleanup": "4348.0055ms is observation of the matching sandbox ledger disappearing; staging removal observed separately at 4348.1271ms.",
+  "scope": "Initial single Office calibration only, not formal p95 acceptance.",
+  "reply": "4805.3967ms in this initial probe includes completion of an in-flight process-discovery observation. Later script revisions measure the original preview request directly; do not treat this old value as pure product reply latency."
+}

@@ -1,0 +1,8 @@
+{
+  "allObservedOwnedProcessesExited": 20,
+  "nextRunStartsAtZero": true,
+  "cause": "Test sampler attempted to assign the read-only CIM ExecutablePath property when a path was temporarily missing. Fixed to use a local variable; forced branch validated on actual Windows PowerShell 5.1 and current PowerShell.",
+  "fourHourGate": false,
+  "status": "failed",
+  "continuousMs": 10032
+}

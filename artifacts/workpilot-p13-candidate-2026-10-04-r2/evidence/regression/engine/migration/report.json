@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-04T13:10:20.921Z",
+  "platform": "win32",
+  "binarySha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+  "service": "Real engines, isolated data roots and localhost synthetic model",
+  "checks": [
+    "Single encrypted selection includes two projects, three conversations, all task history and selected files; wrong password/tampering create no projects",
+    "The unified archive includes installed skill history and an uninstalled draft; target skills stay disabled and project scope changes to the mapped folder",
+    "Injected database failure retains project receipts but exposes no half task; restart resumes the same migration without duplicate projects and maps memory provenance to the new task",
+    "Explicit destination mapping preserves distinct projects, model credentials stay absent, history and memory restore without model calls or project-file writes",
+    "Unresolved original actions require explicit per-item human review; old queued messages and restart cannot bypass review; saving review runs no model or tool",
+    "Selected current files require fresh approval, then write exact bytes in their mapped project; unrelated existing files remain intact",
+    "Repeated import after restart uses durable component receipts and never re-creates tasks/projects; changing bound destination mapping is rejected"
+  ],
+  "status": "passed"
+}

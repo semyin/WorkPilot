@@ -1,0 +1,114 @@
+{
+  "name": "P13 real model acceptance",
+  "status": "mixed",
+  "at": "2026-10-04T12:41:11.612Z",
+  "checks": 19,
+  "passed": 15,
+  "failed": 4,
+  "binarySha256": "6b8e19ef43fcc0a9c9fcce28229ff955a554c23e3954c05878195482b4f2f740",
+  "environment": "Windows; user-authorized Alibaba Cloud workspace; actual external models; synthetic local input files only",
+  "suites": [
+    {
+      "name": "original",
+      "status": "failed",
+      "checks": 15,
+      "passed": 14,
+      "failed": 1,
+      "binarySha256": "6b8e19ef43fcc0a9c9fcce28229ff955a554c23e3954c05878195482b4f2f740",
+      "report": "original.json",
+      "credentialCleanup": true,
+      "plaintextCredentialFound": false,
+      "command": "node scripts/p13-real-model-launch.mjs"
+    },
+    {
+      "name": "team-config-preflight",
+      "status": "failed",
+      "checks": 1,
+      "passed": 0,
+      "failed": 1,
+      "binarySha256": "6b8e19ef43fcc0a9c9fcce28229ff955a554c23e3954c05878195482b4f2f740",
+      "report": "team-config-preflight.json",
+      "credentialCleanup": true,
+      "plaintextCredentialFound": false,
+      "command": "node scripts/p13-real-model-launch.mjs --team-only-from <original-report.json>"
+    },
+    {
+      "name": "team-three-clarified",
+      "status": "failed",
+      "checks": 1,
+      "passed": 0,
+      "failed": 1,
+      "binarySha256": "6b8e19ef43fcc0a9c9fcce28229ff955a554c23e3954c05878195482b4f2f740",
+      "report": "team-three-clarified.json",
+      "credentialCleanup": true,
+      "plaintextCredentialFound": false,
+      "command": "node scripts/p13-real-model-launch.mjs --team-only-from <original-report.json>"
+    },
+    {
+      "name": "team-two-families",
+      "status": "passed",
+      "checks": 1,
+      "passed": 1,
+      "failed": 0,
+      "binarySha256": "6b8e19ef43fcc0a9c9fcce28229ff955a554c23e3954c05878195482b4f2f740",
+      "report": "team-two-families.json",
+      "credentialCleanup": true,
+      "plaintextCredentialFound": false,
+      "command": "node scripts/p13-real-model-launch.mjs --team-only-from <original-report.json> --two-families"
+    },
+    {
+      "name": "team-three-existing",
+      "status": "failed",
+      "checks": 1,
+      "passed": 0,
+      "failed": 1,
+      "binarySha256": "6b8e19ef43fcc0a9c9fcce28229ff955a554c23e3954c05878195482b4f2f740",
+      "report": "team-three-existing.json",
+      "credentialCleanup": true,
+      "plaintextCredentialFound": false,
+      "command": "node scripts/p13-real-model-launch.mjs --team-only-from <original-report.json> --existing-alpha"
+    }
+  ],
+  "acceptedEvidence": {
+    "protocolProbes": {
+      "report": "original.json",
+      "checks": 11,
+      "passed": 11,
+      "scope": "Qwen text/tools/vision across Chat Completions, Responses, Messages; GLM and DeepSeek Chat tool proposals."
+    },
+    "actualFiles": {
+      "report": "original.json",
+      "checks": 3,
+      "passed": 3,
+      "scope": "Read, write, read back and register actual answer.txt=37 through each protocol. Chat/Messages exact test write approval by harness; Responses independent model review."
+    },
+    "distinctFamilyTeam": {
+      "report": "team-two-families.json",
+      "checks": 1,
+      "passed": 1,
+      "actualFamilies": [
+        "Qwen",
+        "DeepSeek"
+      ],
+      "outputs": {
+        "a.txt": "42",
+        "b.txt": "48",
+        "answer.txt": "90"
+      },
+      "scope": "Three members independently produce files, dependency waits, parent inspect/accept/readback. No mid-run human message, automatic model retry or switch."
+    },
+    "glmExistingFile": {
+      "report": "existing-file-observations.json",
+      "scope": "Only a read/hash/replace/readback/artifact sub-result in a FAILED three-family team, not a passing team or proof of GLM new-file capability."
+    }
+  },
+  "limitations": [
+    "Original three-family new-file team failed. Clearer JSON-null instructions did not establish GLM new-file compatibility through this service Chat endpoint. Returned string \"null\" was refused without execution.",
+    "The supplementary existing-file team also failed: Qwen Responses join returned string \"None\" for a new-file version condition; refused without execution. Origin could be model output or upstream conversion; this evidence cannot distinguish.",
+    "Two-family success is one successful actual sample, not a guarantee that every request or every tool call will succeed.",
+    "The parent model inspected and abandoned missing or incorrect deliverables, preserving user-visible errors rather than claiming a complete result.",
+    "No credentials or database were copied into the delivery. All new test provider credentials were cleared; original isolated DBs remain for review.",
+    "The launcher DPAPI preflight and the fresh-profile capability preflight failures made no external model requests."
+  ],
+  "rawEvidence": "Each matching *-task-traces.json.gz and *-events.json.gz is losslessly gzip-compressed original sanitized evidence. Reports are plain JSON. Original outputs remain in the distinct .test-results directories listed by their reports."
+}

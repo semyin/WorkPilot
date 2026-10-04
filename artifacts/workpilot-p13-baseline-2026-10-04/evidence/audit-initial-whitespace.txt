@@ -1,0 +1,26 @@
+node:internal/errors:983
+  const err = new Error(message);
+              ^
+
+Error: Command failed: git -c core.safecrlf=false diff --check
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at checkExecSyncError (node:child_process:916:11)
+    at execFileSync (node:child_process:952:15)
+    at command (file:///D:/workspace/kplocker/WorkPilot/.local/finalize-p13.mjs:10:28)
+    at file:///D:/workspace/kplocker/WorkPilot/.local/finalize-p13.mjs:40:1 {
+  status: 2,
+  signal: null,
+  output: [
+    null,
+    'docs/plans/13-Windows首版验收.md:3: trailing whitespace.\n' +
+      '+状态：进行中（先做可独立运行的集成检查；正式验收仍待真实服务、环境和用户体验）  \n',
+    ''
+  ],
+  pid: 38544,
+  stdout: 'docs/plans/13-Windows首版验收.md:3: trailing whitespace.\n' +
+    '+状态：进行中（先做可独立运行的集成检查；正式验收仍待真实服务、环境和用户体验）  \n',
+  stderr: ''
+}
+
+Node.js v22.23.2

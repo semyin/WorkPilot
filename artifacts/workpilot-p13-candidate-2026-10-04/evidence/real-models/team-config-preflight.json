@@ -1,0 +1,156 @@
+{
+  "at": "2026-10-04T12:24:53.519Z",
+  "synthetic": false,
+  "platform": "win32",
+  "binarySha256": "6b8e19ef43fcc0a9c9fcce28229ff955a554c23e3954c05878195482b4f2f740",
+  "service": "User-authorized Alibaba Cloud workspace",
+  "servicePaths": {
+    "chat_completions": "/compatible-mode/v1/chat/completions",
+    "responses": "/compatible-mode/v1/responses",
+    "messages": "/apps/anthropic/v1/messages"
+  },
+  "models": [
+    {
+      "id": "p13-qwen-chat",
+      "family": "Qwen",
+      "model": "qwen3.8-flash",
+      "protocol": "chat_completions",
+      "modes": [
+        "text",
+        "tools",
+        "image"
+      ]
+    },
+    {
+      "id": "p13-qwen-responses",
+      "family": "Qwen",
+      "model": "qwen3.8-flash",
+      "protocol": "responses",
+      "modes": [
+        "text",
+        "tools",
+        "image"
+      ]
+    },
+    {
+      "id": "p13-qwen-messages",
+      "family": "Qwen",
+      "model": "qwen3.8-flash",
+      "protocol": "messages",
+      "modes": [
+        "text",
+        "tools",
+        "image"
+      ]
+    },
+    {
+      "id": "p13-glm-chat",
+      "family": "GLM",
+      "model": "glm-5.3",
+      "protocol": "chat_completions",
+      "modes": [
+        "tools"
+      ]
+    },
+    {
+      "id": "p13-deepseek-chat",
+      "family": "DeepSeek",
+      "model": "deepseek-v4.1-flash",
+      "protocol": "chat_completions",
+      "modes": [
+        "tools"
+      ]
+    }
+  ],
+  "mode": "explicit_team_only_retest",
+  "expectedChecks": 1,
+  "previousEvidence": {
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-real-models-alpha13.2\\run-er6o2Q\\report.json",
+    "sha256": "164d5bd9d186f07a71be6575848a70d5048eae5c74bac23dccca625837340ab6",
+    "originalStatus": "failed",
+    "note": "Prior probe evidence only. The new team has new tasks, files and credentials; its result is separate from the original failed team."
+  },
+  "checks": [
+    {
+      "id": "team:three_members_distinct_model_families",
+      "at": "2026-10-04T12:24:53.952Z",
+      "state": "failed",
+      "taskId": "29cac984-15f2-4b01-a55a-62adc7ccdedc",
+      "assignments": {
+        "alpha": {
+          "id": "p13-glm-chat",
+          "family": "GLM",
+          "model": "glm-5.3",
+          "protocol": "chat_completions",
+          "modes": [
+            "tools"
+          ]
+        },
+        "beta": {
+          "id": "p13-deepseek-chat",
+          "family": "DeepSeek",
+          "model": "deepseek-v4.1-flash",
+          "protocol": "chat_completions",
+          "modes": [
+            "tools"
+          ]
+        },
+        "join": {
+          "id": "p13-qwen-responses",
+          "family": "Qwen",
+          "model": "qwen3.8-flash",
+          "protocol": "responses",
+          "modes": [
+            "text",
+            "tools",
+            "image"
+          ]
+        }
+      },
+      "permission": "full_access",
+      "commandsEnabled": false,
+      "promptRevision": "json-null-v2",
+      "midRunHumanInstructions": 0,
+      "automaticModelFallbacks": 0,
+      "taskState": "failed",
+      "parentCalls": [],
+      "parentText": "",
+      "members": [],
+      "outputs": {
+        "a.txt": null,
+        "b.txt": null,
+        "answer.txt": null
+      },
+      "error": "AssertionError [ERR_ASSERTION]: {\n  \"code\": \"capability\",\n  \"message_zh\": \"该模型尚未确认支持此能力，或已标记为不支持。请先测试或修改能力设置。\",\n  \"message_en\": \"This capability is unsupported or unverified. Test it or update its setting first.\",\n  \"detail\": null,\n  \"http_status\": null,\n  \"provider_request_id\": null,\n  \"retryable\": false\n}\n+ actual - expected\n\n+ 'failed'\n- 'completed'\n\n    at distinctModelTeam (file:///D:/workspace/kplocker/WorkPilot/scripts/p13-real-model-files.mjs:164:10)\n    at async file:///D:/workspace/kplocker/WorkPilot/scripts/p13-real-model-check.mjs:236:5\n    at async scenario (file:///D:/workspace/kplocker/WorkPilot/scripts/p13-real-model-check.mjs:159:5)\n    at async file:///D:/workspace/kplocker/WorkPilot/scripts/p13-real-model-check.mjs:230:3",
+      "finishedAt": "2026-10-04T12:24:54.245Z"
+    }
+  ],
+  "boundaries": [
+    "Different families are identified from model names actually returned by the service, not inferred from profile labels.",
+    "Image input uses the built-in 64x64 blue probe only, not image generation.",
+    "Every scenario starts explicitly once. No model fallback or automatic retry.",
+    "Real service calls use synthetic test data; no personal browser, user project, business document or production account operation."
+  ],
+  "scripts": {
+    "scripts/p13-real-model-check.mjs": "dfb7650078b8fed9ce59bf43ace06eb8f1d3a1012d5e8db329b3f1af6af3c0aa",
+    "scripts/p13-real-model-files.mjs": "578b2f2d2fd7fbc58da90706867705ea9efec603ceaf80ba302d50768bad4f41",
+    "scripts/p13-real-model-support.mjs": "b2f538b031160ec8a7ec2847cd1db3a85a2a6f4f61cfd28725e5b017618360ac",
+    "scripts/p13-real-model-probes.mjs": "40cf67a1b5d7b0cbdfd45c55931a49934f6e6347e7d17cf5dfb9325735460a26",
+    "scripts/p13-real-model-launch.mjs": "f245f628744d1d9d38e5a5728267fc7b92496415096b720ef9af9de6f30db120"
+  },
+  "appVersion": "0.1.0-alpha.13.2",
+  "cleanup": {
+    "profilesCleared": 5,
+    "credentialsRemoved": true,
+    "errors": [],
+    "scope": "Only this fresh data directory's test model credentials were removed. No image-service credential was created. The isolated database, file-version key and original test files remain available for fault review.",
+    "engineExited": true
+  },
+  "finishedAt": "2026-10-04T12:24:54.737Z",
+  "status": "failed",
+  "credentialScan": {
+    "filesChecked": 16,
+    "plaintextCredentialFound": false,
+    "findings": []
+  }
+}

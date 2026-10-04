@@ -1,0 +1,6 @@
+﻿{
+    "status":  "bootstrap_failed",
+    "at":  "2026-10-04T13:28:08.9735171+00:00",
+    "error":  "工具包文件缺失或校验不符：scripts/p13-acceptance-kit-engine.mjs",
+    "selfTest":  true
+}

@@ -1,0 +1,731 @@
+{
+  "at": "2026-10-04T12:15:05.279Z",
+  "binary": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\workpilot-desktop.exe",
+  "binarySha256": "5333f4fd6d4de13e6098062241ee36f7cfadda9ff23727c92d5cb4fc3a1bf4c1",
+  "engineSha256": "6b8e19ef43fcc0a9c9fcce28229ff955a554c23e3954c05878195482b4f2f740",
+  "machine": {
+    "os": {
+      "Caption": "Microsoft Windows 11 家庭版",
+      "Version": "10.0.26200",
+      "BuildNumber": "26200"
+    },
+    "architecture": "x64",
+    "kernel": "10.0.26200",
+    "cpuModel": "AMD Ryzen 7 7840H w/ Radeon(TM) 780M Graphics  ",
+    "logicalProcessors": 16,
+    "memoryBytes": 33618710528,
+    "availableMemoryBeforeBytes": 8243187712,
+    "node": "v22.23.2"
+  },
+  "count": 1,
+  "only": "browser",
+  "checks": [],
+  "browser": [],
+  "office": [],
+  "deliveries": [],
+  "conditions": "Test harness calibration only, root build/functional regression can overlap, no formal percentile acceptance.",
+  "scope": "Real bundled dedicated Chromium and AppContainer Office renderer, fixed local fixtures; actual process exit separate from request/ACL/staging cleanup. Short probes with fewer than20 samples are not formal percentile acceptance.",
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: Dedicated-browser resource observation requires 20 complete cycles\n    at Object.closeBrowser (file:///D:/workspace/kplocker/WorkPilot/scripts/p13-tool-stop-scenarios.mjs:88:7)\n    at async browserCycle (file:///D:/workspace/kplocker/WorkPilot/scripts/p13-soak-workbench.mjs:133:7)\n    at async file:///D:/workspace/kplocker/WorkPilot/scripts/p13-tool-stop-benchmark.mjs:79:30",
+  "exitVerification": [
+    {
+      "pid": 6000,
+      "startedAtMs": 1791116106086,
+      "status": "exited"
+    },
+    {
+      "pid": 41988,
+      "startedAtMs": 1791116106278,
+      "status": "exited"
+    },
+    {
+      "pid": 43296,
+      "startedAtMs": 1791116105965,
+      "status": "exited"
+    },
+    {
+      "pid": 3464,
+      "startedAtMs": 1791116106419,
+      "status": "exited"
+    },
+    {
+      "pid": 18236,
+      "startedAtMs": 1791116105987,
+      "status": "exited"
+    },
+    {
+      "pid": 43948,
+      "startedAtMs": 1791116106283,
+      "status": "exited"
+    },
+    {
+      "pid": 43848,
+      "startedAtMs": 1791116105998,
+      "status": "exited"
+    },
+    {
+      "pid": 43336,
+      "startedAtMs": 1791116106112,
+      "status": "exited"
+    },
+    {
+      "pid": 25964,
+      "startedAtMs": 1791116106310,
+      "status": "exited"
+    },
+    {
+      "pid": 41412,
+      "startedAtMs": 1791116112184,
+      "status": "exited"
+    },
+    {
+      "pid": 17492,
+      "startedAtMs": 1791116109107,
+      "status": "exited"
+    },
+    {
+      "pid": 43280,
+      "startedAtMs": 1791116112231,
+      "status": "exited"
+    },
+    {
+      "pid": 42312,
+      "startedAtMs": 1791116108725,
+      "status": "exited"
+    },
+    {
+      "pid": 23288,
+      "startedAtMs": 1791116108710,
+      "status": "exited"
+    },
+    {
+      "pid": 43124,
+      "startedAtMs": 1791116112230,
+      "status": "exited"
+    },
+    {
+      "pid": 13660,
+      "startedAtMs": 1791116112096,
+      "status": "exited"
+    },
+    {
+      "pid": 3556,
+      "startedAtMs": 1791116112103,
+      "status": "exited"
+    },
+    {
+      "pid": 5292,
+      "startedAtMs": 1791116112128,
+      "status": "exited"
+    }
+  ],
+  "metrics": {
+    "browser": {
+      "acknowledgementMs": {
+        "count": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null,
+        "mean": null
+      },
+      "processExitMs": {
+        "count": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null,
+        "mean": null
+      }
+    },
+    "office": {
+      "acknowledgementMs": {
+        "count": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null,
+        "mean": null
+      },
+      "processExitMs": {
+        "count": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null,
+        "mean": null
+      },
+      "cleanupMs": {
+        "count": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null,
+        "mean": null
+      },
+      "workspaceCleanupMs": {
+        "count": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null,
+        "mean": null
+      },
+      "replyMs": {
+        "count": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null,
+        "mean": null
+      }
+    }
+  },
+  "resources": {
+    "records": 517,
+    "observedProcessIdentities": 18,
+    "firstAtMs": 1791116107568,
+    "lastAtMs": 1791116118037,
+    "reusedPids": [],
+    "scope": "Per-cycle sums of identity-verified observed processes; discovery/sampling may miss very short-lived processes and transition cycles can be partial. Dedicated-browser stop cases separately require complete snapshots. Working-set sums include shared pages; private bytes are committed private memory. Five-minute buckets describe this run, not a leak diagnosis.",
+    "groups": [
+      {
+        "role": "ui-webview",
+        "cycles": 45,
+        "workingSetBytes": {
+          "count": 45,
+          "min": 276246528,
+          "p50": 511561728,
+          "p95": 516407296,
+          "max": 517201920,
+          "mean": 506146724.978
+        },
+        "privateBytes": {
+          "count": 45,
+          "min": 221388800,
+          "p50": 317734912,
+          "p95": 322576384,
+          "max": 322826240,
+          "mean": 315608450.844
+        },
+        "cpuPercentOfWholeMachine": {
+          "count": 44,
+          "min": 0,
+          "p50": 0,
+          "p95": 1.951,
+          "max": 4.777,
+          "mean": 0.441
+        },
+        "processCounts": {
+          "count": 45,
+          "min": 3,
+          "p50": 6,
+          "p95": 6,
+          "max": 6,
+          "mean": 5.933
+        },
+        "fiveMinuteBuckets": [
+          {
+            "index": 0,
+            "workingSetBytes": {
+              "count": 45,
+              "min": 276246528,
+              "p50": 511561728,
+              "p95": 516407296,
+              "max": 517201920,
+              "mean": 506146724.978
+            },
+            "privateBytes": {
+              "count": 45,
+              "min": 221388800,
+              "p50": 317734912,
+              "p95": 322576384,
+              "max": 322826240,
+              "mean": 315608450.844
+            },
+            "cpuPercentOfWholeMachine": {
+              "count": 44,
+              "min": 0,
+              "p50": 0,
+              "p95": 1.951,
+              "max": 4.777,
+              "mean": 0.441
+            }
+          }
+        ]
+      },
+      {
+        "role": "desktop",
+        "cycles": 44,
+        "workingSetBytes": {
+          "count": 44,
+          "min": 29966336,
+          "p50": 29995008,
+          "p95": 30261248,
+          "max": 30261248,
+          "mean": 30091357.091
+        },
+        "privateBytes": {
+          "count": 44,
+          "min": 5844992,
+          "p50": 5849088,
+          "p95": 6193152,
+          "max": 6193152,
+          "mean": 5979322.182
+        },
+        "cpuPercentOfWholeMachine": {
+          "count": 43,
+          "min": 0,
+          "p50": 0,
+          "p95": 0.481,
+          "max": 0.917,
+          "mean": 0.062
+        },
+        "processCounts": {
+          "count": 44,
+          "min": 1,
+          "p50": 1,
+          "p95": 1,
+          "max": 1,
+          "mean": 1
+        },
+        "fiveMinuteBuckets": [
+          {
+            "index": 0,
+            "workingSetBytes": {
+              "count": 44,
+              "min": 29966336,
+              "p50": 29995008,
+              "p95": 30261248,
+              "max": 30261248,
+              "mean": 30091357.091
+            },
+            "privateBytes": {
+              "count": 44,
+              "min": 5844992,
+              "p50": 5849088,
+              "p95": 6193152,
+              "max": 6193152,
+              "mean": 5979322.182
+            },
+            "cpuPercentOfWholeMachine": {
+              "count": 43,
+              "min": 0,
+              "p50": 0,
+              "p95": 0.481,
+              "max": 0.917,
+              "mean": 0.062
+            }
+          }
+        ]
+      },
+      {
+        "role": "engine",
+        "cycles": 44,
+        "workingSetBytes": {
+          "count": 44,
+          "min": 15470592,
+          "p50": 15716352,
+          "p95": 17190912,
+          "max": 17326080,
+          "mean": 16330752
+        },
+        "privateBytes": {
+          "count": 44,
+          "min": 3756032,
+          "p50": 4141056,
+          "p95": 4300800,
+          "max": 4415488,
+          "mean": 4118900.364
+        },
+        "cpuPercentOfWholeMachine": {
+          "count": 43,
+          "min": 0,
+          "p50": 0,
+          "p95": 0.835,
+          "max": 2.959,
+          "mean": 0.197
+        },
+        "processCounts": {
+          "count": 44,
+          "min": 1,
+          "p50": 1,
+          "p95": 1,
+          "max": 1,
+          "mean": 1
+        },
+        "fiveMinuteBuckets": [
+          {
+            "index": 0,
+            "workingSetBytes": {
+              "count": 44,
+              "min": 15470592,
+              "p50": 15716352,
+              "p95": 17190912,
+              "max": 17326080,
+              "mean": 16330752
+            },
+            "privateBytes": {
+              "count": 44,
+              "min": 3756032,
+              "p50": 4141056,
+              "p95": 4300800,
+              "max": 4415488,
+              "mean": 4118900.364
+            },
+            "cpuPercentOfWholeMachine": {
+              "count": 43,
+              "min": 0,
+              "p50": 0,
+              "p95": 0.835,
+              "max": 2.959,
+              "mean": 0.197
+            }
+          }
+        ]
+      },
+      {
+        "role": "other-owned",
+        "cycles": 44,
+        "workingSetBytes": {
+          "count": 44,
+          "min": 7831552,
+          "p50": 7831552,
+          "p95": 15831040,
+          "max": 15831040,
+          "mean": 10195037.091
+        },
+        "privateBytes": {
+          "count": 44,
+          "min": 1261568,
+          "p50": 1261568,
+          "p95": 2523136,
+          "max": 2523136,
+          "mean": 1634304
+        },
+        "cpuPercentOfWholeMachine": {
+          "count": 42,
+          "min": 0,
+          "p50": 0,
+          "p95": 0,
+          "max": 0,
+          "mean": 0
+        },
+        "processCounts": {
+          "count": 44,
+          "min": 1,
+          "p50": 1,
+          "p95": 2,
+          "max": 2,
+          "mean": 1.295
+        },
+        "fiveMinuteBuckets": [
+          {
+            "index": 0,
+            "workingSetBytes": {
+              "count": 44,
+              "min": 7831552,
+              "p50": 7831552,
+              "p95": 15831040,
+              "max": 15831040,
+              "mean": 10195037.091
+            },
+            "privateBytes": {
+              "count": 44,
+              "min": 1261568,
+              "p50": 1261568,
+              "p95": 2523136,
+              "max": 2523136,
+              "mean": 1634304
+            },
+            "cpuPercentOfWholeMachine": {
+              "count": 42,
+              "min": 0,
+              "p50": 0,
+              "p95": 0,
+              "max": 0,
+              "mean": 0
+            }
+          }
+        ]
+      },
+      {
+        "role": "dedicated-browser",
+        "cycles": 14,
+        "workingSetBytes": {
+          "count": 14,
+          "min": 138809344,
+          "p50": 516046848,
+          "p95": 516579328,
+          "max": 516579328,
+          "mean": 485119707.429
+        },
+        "privateBytes": {
+          "count": 14,
+          "min": 46153728,
+          "p50": 283541504,
+          "p95": 283652096,
+          "max": 283652096,
+          "mean": 265285339.429
+        },
+        "cpuPercentOfWholeMachine": {
+          "count": 13,
+          "min": 0,
+          "p50": 0.304,
+          "p95": 9.546,
+          "max": 9.546,
+          "mean": 1.201
+        },
+        "processCounts": {
+          "count": 14,
+          "min": 1,
+          "p50": 7,
+          "p95": 7,
+          "max": 7,
+          "mean": 6.571
+        },
+        "fiveMinuteBuckets": [
+          {
+            "index": 0,
+            "workingSetBytes": {
+              "count": 14,
+              "min": 138809344,
+              "p50": 516046848,
+              "p95": 516579328,
+              "max": 516579328,
+              "mean": 485119707.429
+            },
+            "privateBytes": {
+              "count": 14,
+              "min": 46153728,
+              "p50": 283541504,
+              "p95": 283652096,
+              "max": 283652096,
+              "mean": 265285339.429
+            },
+            "cpuPercentOfWholeMachine": {
+              "count": 13,
+              "min": 0,
+              "p50": 0.304,
+              "p95": 9.546,
+              "max": 9.546,
+              "mean": 1.201
+            }
+          }
+        ]
+      },
+      {
+        "role": "node-tool",
+        "cycles": 13,
+        "workingSetBytes": {
+          "count": 13,
+          "min": 35119104,
+          "p50": 37122048,
+          "p95": 37122048,
+          "max": 37122048,
+          "mean": 36832492.308
+        },
+        "privateBytes": {
+          "count": 13,
+          "min": 51736576,
+          "p50": 52891648,
+          "p95": 52891648,
+          "max": 52891648,
+          "mean": 52639901.538
+        },
+        "cpuPercentOfWholeMachine": {
+          "count": 12,
+          "min": 0,
+          "p50": 0,
+          "p95": 0,
+          "max": 0,
+          "mean": 0
+        },
+        "processCounts": {
+          "count": 13,
+          "min": 1,
+          "p50": 1,
+          "p95": 1,
+          "max": 1,
+          "mean": 1
+        },
+        "fiveMinuteBuckets": [
+          {
+            "index": 0,
+            "workingSetBytes": {
+              "count": 13,
+              "min": 35119104,
+              "p50": 37122048,
+              "p95": 37122048,
+              "max": 37122048,
+              "mean": 36832492.308
+            },
+            "privateBytes": {
+              "count": 13,
+              "min": 51736576,
+              "p50": 52891648,
+              "p95": 52891648,
+              "max": 52891648,
+              "mean": 52639901.538
+            },
+            "cpuPercentOfWholeMachine": {
+              "count": 12,
+              "min": 0,
+              "p50": 0,
+              "p95": 0,
+              "max": 0,
+              "mean": 0
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "processes": [
+    {
+      "pid": 6000,
+      "parentPid": 43296,
+      "startedAtMs": 1791116106086,
+      "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+      "role": "ui-webview",
+      "uiProfileVerified": true
+    },
+    {
+      "pid": 41988,
+      "parentPid": 6000,
+      "startedAtMs": 1791116106278,
+      "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+      "role": "ui-webview",
+      "uiProfileVerified": true
+    },
+    {
+      "pid": 43296,
+      "parentPid": 43304,
+      "startedAtMs": 1791116105965,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "desktop",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 3464,
+      "parentPid": 6000,
+      "startedAtMs": 1791116106419,
+      "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+      "role": "ui-webview",
+      "uiProfileVerified": true
+    },
+    {
+      "pid": 18236,
+      "parentPid": 43296,
+      "startedAtMs": 1791116105987,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "engine",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 43948,
+      "parentPid": 6000,
+      "startedAtMs": 1791116106283,
+      "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+      "role": "ui-webview",
+      "uiProfileVerified": true
+    },
+    {
+      "pid": 43848,
+      "parentPid": 18236,
+      "startedAtMs": 1791116105998,
+      "path": "C:\\Windows\\system32\\conhost.exe",
+      "role": "other-owned",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 43336,
+      "parentPid": 6000,
+      "startedAtMs": 1791116106112,
+      "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+      "role": "ui-webview",
+      "uiProfileVerified": true
+    },
+    {
+      "pid": 25964,
+      "parentPid": 6000,
+      "startedAtMs": 1791116106310,
+      "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+      "role": "ui-webview",
+      "uiProfileVerified": true
+    },
+    {
+      "pid": 41412,
+      "parentPid": 17492,
+      "startedAtMs": 1791116112184,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+      "role": "dedicated-browser",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 17492,
+      "parentPid": 23288,
+      "startedAtMs": 1791116109107,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+      "role": "dedicated-browser",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 43280,
+      "parentPid": 17492,
+      "startedAtMs": 1791116112231,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+      "role": "dedicated-browser",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 42312,
+      "parentPid": 23288,
+      "startedAtMs": 1791116108725,
+      "path": "C:\\Windows\\system32\\conhost.exe",
+      "role": "other-owned",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 23288,
+      "parentPid": 18236,
+      "startedAtMs": 1791116108710,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+      "role": "node-tool",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 43124,
+      "parentPid": 17492,
+      "startedAtMs": 1791116112230,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+      "role": "dedicated-browser",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 13660,
+      "parentPid": 17492,
+      "startedAtMs": 1791116112096,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+      "role": "dedicated-browser",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 3556,
+      "parentPid": 17492,
+      "startedAtMs": 1791116112103,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+      "role": "dedicated-browser",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 5292,
+      "parentPid": 17492,
+      "startedAtMs": 1791116112128,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+      "role": "dedicated-browser",
+      "uiProfileVerified": false
+    }
+  ],
+  "command": "node scripts/p13-tool-stop-benchmark.mjs --samples 1 --only browser"
+}

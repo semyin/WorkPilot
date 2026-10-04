@@ -1,0 +1,3173 @@
+{
+  "at": "2026-10-04T10:59:28.772Z",
+  "binary": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\workpilot-sidecar.exe",
+  "binarySha256": "30402ca80845394178da104ef683ee47cab735bd12d85790a4d6c914826a38f7",
+  "nodeBinarySha256": "0d0f5e39f9f3d9587bc19f73eab3c2c9c4903fd02d6dbf9c853dd81b3d95fad4",
+  "machine": {
+    "os": {
+      "Caption": "Microsoft Windows 11 家庭版",
+      "Version": "10.0.26200",
+      "BuildNumber": "26200"
+    },
+    "architecture": "x64",
+    "kernel": "10.0.26200",
+    "cpuModel": "AMD Ryzen 7 7840H w/ Radeon(TM) 780M Graphics  ",
+    "logicalProcessors": 16,
+    "memoryBytes": 33618710528,
+    "availableMemoryBeforeBytes": 6865965056,
+    "node": "v22.23.2"
+  },
+  "options": {
+    "windowMs": 10000,
+    "samples": 20,
+    "stopSamples": 20,
+    "modelDelayMs": 250
+  },
+  "output": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-engine-final\\run-GgvZwX",
+  "runConditions": "Other project builds and performance tests paused; normal user software and Windows services remained running.",
+  "scenarios": [
+    {
+      "name": "tasks-1",
+      "kind": "tasks",
+      "requested": 1,
+      "configuredGlobalLimit": 8,
+      "configuredTeamLimit": null,
+      "elapsedMs": 10056,
+      "waves": 31,
+      "completedRoots": 31,
+      "completedMembers": 0,
+      "modelRequests": 31,
+      "observedPeakRunning": 1,
+      "observedPeakAssistants": 0,
+      "samplesObservedDuringActiveWork": 20,
+      "metricsMs": {
+        "ping": {
+          "count": 20,
+          "min": 1.768,
+          "p50": 2.859,
+          "p95": 6.736,
+          "max": 7.175,
+          "mean": 3.497
+        },
+        "taskList": {
+          "count": 20,
+          "min": 0.497,
+          "p50": 0.929,
+          "p95": 1.504,
+          "max": 6.906,
+          "mean": 1.226
+        },
+        "executionRead": {
+          "count": 20,
+          "min": 0.938,
+          "p50": 1.146,
+          "p95": 1.734,
+          "max": 6.404,
+          "mean": 1.476
+        },
+        "teamRead": {
+          "count": 0,
+          "min": null,
+          "p50": null,
+          "p95": null,
+          "max": null,
+          "mean": null
+        },
+        "waveCompletion": {
+          "count": 31,
+          "min": 288.083,
+          "p50": 304.672,
+          "p95": 334.299,
+          "max": 337.176,
+          "mean": 310.013
+        }
+      },
+      "rawMs": {
+        "ping": [
+          6.692599999999402,
+          2.1575999999995474,
+          1.7676999999994223,
+          2.814100000000508,
+          2.205500000000029,
+          3.8708999999998923,
+          3.3495999999995547,
+          4.730199999999968,
+          4.556899999999587,
+          2.2426999999988766,
+          2.8594999999986612,
+          1.9724000000005617,
+          3.4478999999992084,
+          2.664199999999255,
+          7.1754000000000815,
+          1.9501000000000204,
+          6.736000000000786,
+          2.1052999999992608,
+          3.459600000000137,
+          3.191100000000006
+        ],
+        "taskList": [
+          0.5212000000001353,
+          0.8176999999996042,
+          1.2124000000003434,
+          0.7929999999996653,
+          1.0389000000013766,
+          6.9056000000000495,
+          0.8209000000006199,
+          0.9413999999997031,
+          1.504399999999805,
+          0.5812000000005355,
+          1.41859999999906,
+          1.4838999999992666,
+          0.6134999999994761,
+          0.9493000000002212,
+          1.1458000000002357,
+          1.0514000000002852,
+          0.92870000000039,
+          0.7103000000006432,
+          0.4969999999993888,
+          0.5891000000010536
+        ],
+        "executionRead": [
+          1.255500000000211,
+          1.0733000000000175,
+          1.0140000000001237,
+          1.0011999999996988,
+          0.9666999999990367,
+          6.403899999999339,
+          1.1123000000006869,
+          0.938399999999092,
+          1.2322000000003754,
+          1.1455000000005384,
+          1.5834999999988213,
+          1.2515000000003056,
+          1.5830000000005384,
+          1.7335999999995693,
+          0.9776000000001659,
+          1.4246000000002823,
+          1.4010999999991327,
+          1.2422999999998865,
+          1.0731999999989057,
+          1.105199999999968
+        ],
+        "teamRead": [],
+        "waveCompletion": [
+          308.4399999999996,
+          304.6720999999998,
+          304.66809999999987,
+          301.3738000000003,
+          300.3055999999997,
+          292.0479999999998,
+          302.58110000000033,
+          315.76970000000074,
+          301.14940000000024,
+          306.98489999999947,
+          303.40639999999985,
+          301.8680000000004,
+          302.1334000000006,
+          317.77679999999964,
+          294.52600000000166,
+          321.33320000000094,
+          334.2988000000005,
+          320.6795999999995,
+          314.71630000000005,
+          320.7572,
+          299.0190999999995,
+          303.9871000000003,
+          337.17609999999877,
+          288.08309999999983,
+          318.6741000000002,
+          334.08410000000003,
+          302.20390000000043,
+          303.34959999999955,
+          315.34979999999996,
+          318.6746999999996,
+          320.3158999999996
+        ]
+      },
+      "observations": [
+        {
+          "sample": 0,
+          "atMs": 46,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 1,
+          "atMs": 511,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 2,
+          "atMs": 1008,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 3,
+          "atMs": 1508,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 4,
+          "atMs": 2013,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 5,
+          "atMs": 2523,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 6,
+          "atMs": 3011,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 7,
+          "atMs": 3531,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 8,
+          "atMs": 4014,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 9,
+          "atMs": 4504,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 10,
+          "atMs": 5011,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 11,
+          "atMs": 5510,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 12,
+          "atMs": 6012,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 13,
+          "atMs": 6510,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 14,
+          "atMs": 7016,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 15,
+          "atMs": 7510,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 16,
+          "atMs": 8015,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 17,
+          "atMs": 8509,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 18,
+          "atMs": 9010,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 19,
+          "atMs": 9504,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        }
+      ],
+      "timingBoundary": "Host IPC round-trip; wave completion includes configured fixture wait and is not Rust-only execution time. No DOM measurement."
+    },
+    {
+      "name": "tasks-4",
+      "kind": "tasks",
+      "requested": 4,
+      "configuredGlobalLimit": 8,
+      "configuredTeamLimit": null,
+      "elapsedMs": 10311,
+      "waves": 25,
+      "completedRoots": 100,
+      "completedMembers": 0,
+      "modelRequests": 100,
+      "observedPeakRunning": 4,
+      "observedPeakAssistants": 0,
+      "samplesObservedDuringActiveWork": 20,
+      "metricsMs": {
+        "ping": {
+          "count": 20,
+          "min": 2.026,
+          "p50": 6.738,
+          "p95": 28.96,
+          "max": 31.665,
+          "mean": 12.524
+        },
+        "taskList": {
+          "count": 20,
+          "min": 0.442,
+          "p50": 4.635,
+          "p95": 13.085,
+          "max": 28.441,
+          "mean": 7.275
+        },
+        "executionRead": {
+          "count": 20,
+          "min": 0.983,
+          "p50": 1.481,
+          "p95": 4.917,
+          "max": 20.804,
+          "mean": 2.775
+        },
+        "teamRead": {
+          "count": 0,
+          "min": null,
+          "p50": null,
+          "p95": null,
+          "max": null,
+          "mean": null
+        },
+        "waveCompletion": {
+          "count": 25,
+          "min": 352.131,
+          "p50": 362.057,
+          "p95": 376.402,
+          "max": 381.758,
+          "mean": 363.14
+        }
+      },
+      "rawMs": {
+        "ping": [
+          28.959999999999127,
+          2.713400000000547,
+          2.471300000001065,
+          3.013699999999517,
+          21.462899999998626,
+          31.66489999999976,
+          5.443999999999505,
+          2.8619999999973516,
+          2.481899999998859,
+          20.64730000000054,
+          27.970099999998638,
+          2.2254999999968277,
+          7.605100000000675,
+          6.738099999998667,
+          26.826900000000023,
+          2.0262000000002445,
+          7.677100000000792,
+          2.3156999999991967,
+          18.07129999999961,
+          27.310199999999895
+        ],
+        "taskList": [
+          10.127400000001217,
+          10.125,
+          4.130800000002637,
+          4.558600000000297,
+          13.084500000000844,
+          9.650299999997515,
+          1.1951000000008207,
+          3.8201000000008207,
+          5.281200000001263,
+          3.6428000000014435,
+          9.895100000001548,
+          4.63459999999759,
+          0.8077999999986787,
+          28.440699999999197,
+          9.743200000000797,
+          0.4415000000008149,
+          0.7615999999979977,
+          3.8704000000034284,
+          10.201099999998405,
+          11.083800000000338
+        ],
+        "executionRead": [
+          2.8404000000009546,
+          2.3616999999976542,
+          1.4808000000011816,
+          1.8447000000014668,
+          4.917199999999866,
+          1.4439999999995052,
+          1.2950999999993655,
+          0.9833999999973457,
+          1.1186000000016065,
+          2.395199999999022,
+          3.048500000000786,
+          1.1385000000009313,
+          1.272400000001653,
+          20.8038000000015,
+          1.577499999999418,
+          1.4099000000023807,
+          1.5460999999995693,
+          1.1984000000011292,
+          1.5495999999984633,
+          1.2668999999987136
+        ],
+        "teamRead": [],
+        "waveCompletion": [
+          364.46959999999854,
+          365.77449999999953,
+          353.7684999999983,
+          362.6846000000005,
+          355.0629000000008,
+          367.08759999999893,
+          367.76950000000215,
+          365.9298000000017,
+          357.8597000000009,
+          358.3045999999995,
+          369.8143000000018,
+          362.0569000000032,
+          365.5023000000001,
+          359.69970000000103,
+          356.47290000000066,
+          352.1314999999995,
+          360.05539999999746,
+          357.14990000000034,
+          381.7579000000005,
+          361.28770000000077,
+          359.08780000000115,
+          360.58640000000014,
+          374.29019999999946,
+          376.40230000000156,
+          363.5043000000005
+        ]
+      },
+      "observations": [
+        {
+          "sample": 0,
+          "atMs": 101,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 1,
+          "atMs": 516,
+          "running": 3,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 2,
+          "atMs": 1017,
+          "running": 4,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 3,
+          "atMs": 1519,
+          "running": 4,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 4,
+          "atMs": 2040,
+          "running": 3,
+          "state": "completed",
+          "workFinished": false
+        },
+        {
+          "sample": 5,
+          "atMs": 2563,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 6,
+          "atMs": 3014,
+          "running": 4,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 7,
+          "atMs": 3517,
+          "running": 4,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 8,
+          "atMs": 4016,
+          "running": 4,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 9,
+          "atMs": 4528,
+          "running": 3,
+          "state": "completed",
+          "workFinished": false
+        },
+        {
+          "sample": 10,
+          "atMs": 5041,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 11,
+          "atMs": 5510,
+          "running": 4,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 12,
+          "atMs": 6018,
+          "running": 4,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 13,
+          "atMs": 6564,
+          "running": 4,
+          "state": "completed",
+          "workFinished": false
+        },
+        {
+          "sample": 14,
+          "atMs": 7078,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 15,
+          "atMs": 7503,
+          "running": 4,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 16,
+          "atMs": 8013,
+          "running": 4,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 17,
+          "atMs": 8514,
+          "running": 4,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 18,
+          "atMs": 9029,
+          "running": 4,
+          "state": "completed",
+          "workFinished": false
+        },
+        {
+          "sample": 19,
+          "atMs": 9573,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        }
+      ],
+      "timingBoundary": "Host IPC round-trip; wave completion includes configured fixture wait and is not Rust-only execution time. No DOM measurement."
+    },
+    {
+      "name": "tasks-8",
+      "kind": "tasks",
+      "requested": 8,
+      "configuredGlobalLimit": 8,
+      "configuredTeamLimit": null,
+      "elapsedMs": 10526,
+      "waves": 20,
+      "completedRoots": 160,
+      "completedMembers": 0,
+      "modelRequests": 160,
+      "observedPeakRunning": 8,
+      "observedPeakAssistants": 0,
+      "samplesObservedDuringActiveWork": 20,
+      "metricsMs": {
+        "ping": {
+          "count": 20,
+          "min": 1.591,
+          "p50": 9.198,
+          "p95": 89.418,
+          "max": 93.393,
+          "mean": 28.553
+        },
+        "taskList": {
+          "count": 20,
+          "min": 0.417,
+          "p50": 5.376,
+          "p95": 23.964,
+          "max": 31.108,
+          "mean": 10.122
+        },
+        "executionRead": {
+          "count": 20,
+          "min": 0.831,
+          "p50": 2.282,
+          "p95": 23.023,
+          "max": 47.117,
+          "mean": 7.499
+        },
+        "teamRead": {
+          "count": 0,
+          "min": null,
+          "p50": null,
+          "p95": null,
+          "max": null,
+          "mean": null
+        },
+        "waveCompletion": {
+          "count": 20,
+          "min": 411.815,
+          "p50": 422.24,
+          "p95": 434.605,
+          "max": 443.902,
+          "mean": 424.617
+        }
+      },
+      "rawMs": {
+        "ping": [
+          78.49199999999837,
+          17.26510000000053,
+          36.36160000000018,
+          34.539700000001176,
+          9.197799999998097,
+          1.5905000000020664,
+          2.2422000000005937,
+          2.4893000000010943,
+          3.7181000000018685,
+          3.6383999999998196,
+          2.363600000000588,
+          1.9192000000002736,
+          7.834100000000035,
+          3.8467000000018743,
+          11.07340000000113,
+          15.275399999998626,
+          67.58929999999964,
+          93.39329999999609,
+          88.81409999999596,
+          89.41839999999502
+        ],
+        "taskList": [
+          22.44930000000022,
+          1.2343000000000757,
+          10.539400000001478,
+          31.108299999999872,
+          23.964099999997416,
+          5.283900000002177,
+          1.2730000000010477,
+          0.41740000000208966,
+          1.2602000000006228,
+          0.5428000000028987,
+          5.3760999999976775,
+          7.30619999999908,
+          1.1951000000008207,
+          3.5201000000015483,
+          1.897900000003574,
+          19.574000000000524,
+          16.685199999999895,
+          16.806799999998475,
+          15.109399999993911,
+          16.90610000000015
+        ],
+        "executionRead": [
+          8.75879999999961,
+          1.2786999999989348,
+          1.5067999999992026,
+          3.056700000001001,
+          23.02299999999741,
+          47.116799999999785,
+          0.8306000000011409,
+          0.9266000000025088,
+          2.282100000000355,
+          1.1885000000002037,
+          2.1107999999985623,
+          0.9442999999992026,
+          1.2569000000003143,
+          1.9868999999962398,
+          9.66990000000078,
+          8.366800000003423,
+          12.941700000003038,
+          6.985200000002806,
+          7.443399999996473,
+          8.302700000000186
+        ],
+        "teamRead": [],
+        "waveCompletion": [
+          431.7504000000008,
+          425.9278999999988,
+          431.84100000000035,
+          419.2243000000017,
+          421.1192999999985,
+          411.8181000000004,
+          422.2400999999991,
+          430.5279999999984,
+          431.3305999999975,
+          411.8148000000001,
+          412.7491999999984,
+          421.1038000000008,
+          416.2546999999977,
+          415.76059999999416,
+          443.90230000000156,
+          425.3804000000018,
+          430.744200000001,
+          420.04069999999774,
+          434.2008999999962,
+          434.6050000000032
+        ]
+      },
+      "observations": [
+        {
+          "sample": 0,
+          "atMs": 231,
+          "running": 2,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 1,
+          "atMs": 522,
+          "running": 3,
+          "state": "completed",
+          "workFinished": false
+        },
+        {
+          "sample": 2,
+          "atMs": 1050,
+          "running": 4,
+          "state": "completed",
+          "workFinished": false
+        },
+        {
+          "sample": 3,
+          "atMs": 1574,
+          "running": 6,
+          "state": "completed",
+          "workFinished": false
+        },
+        {
+          "sample": 4,
+          "atMs": 2059,
+          "running": 7,
+          "state": "completed",
+          "workFinished": false
+        },
+        {
+          "sample": 5,
+          "atMs": 2554,
+          "running": 8,
+          "state": "completed",
+          "workFinished": false
+        },
+        {
+          "sample": 6,
+          "atMs": 3004,
+          "running": 8,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 7,
+          "atMs": 3504,
+          "running": 8,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 8,
+          "atMs": 4007,
+          "running": 8,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 9,
+          "atMs": 4504,
+          "running": 8,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 10,
+          "atMs": 5016,
+          "running": 8,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 11,
+          "atMs": 5517,
+          "running": 8,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 12,
+          "atMs": 6011,
+          "running": 8,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 13,
+          "atMs": 6513,
+          "running": 8,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 14,
+          "atMs": 7023,
+          "running": 8,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 15,
+          "atMs": 7545,
+          "running": 7,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 16,
+          "atMs": 8098,
+          "running": 3,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 17,
+          "atMs": 8618,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 18,
+          "atMs": 9157,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 19,
+          "atMs": 9679,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        }
+      ],
+      "timingBoundary": "Host IPC round-trip; wave completion includes configured fixture wait and is not Rust-only execution time. No DOM measurement."
+    },
+    {
+      "name": "assistants-1",
+      "kind": "assistants",
+      "requested": 1,
+      "configuredGlobalLimit": 8,
+      "configuredTeamLimit": 1,
+      "elapsedMs": 10356,
+      "waves": 14,
+      "completedRoots": 14,
+      "completedMembers": 14,
+      "modelRequests": 84,
+      "observedPeakRunning": 1,
+      "observedPeakAssistants": 1,
+      "samplesObservedDuringActiveWork": 20,
+      "metricsMs": {
+        "ping": {
+          "count": 20,
+          "min": 1.738,
+          "p50": 4.548,
+          "p95": 14.74,
+          "max": 16.721,
+          "mean": 6.371
+        },
+        "taskList": {
+          "count": 20,
+          "min": 0.546,
+          "p50": 1.131,
+          "p95": 5.787,
+          "max": 14.258,
+          "mean": 2.753
+        },
+        "executionRead": {
+          "count": 20,
+          "min": 1.069,
+          "p50": 2.19,
+          "p95": 11.034,
+          "max": 11.255,
+          "mean": 3.352
+        },
+        "teamRead": {
+          "count": 20,
+          "min": 0.365,
+          "p50": 1.897,
+          "p95": 5.959,
+          "max": 12.575,
+          "mean": 2.735
+        },
+        "waveCompletion": {
+          "count": 14,
+          "min": 658.821,
+          "p50": 695.103,
+          "p95": 812.233,
+          "max": 812.233,
+          "mean": 720.158
+        }
+      },
+      "rawMs": {
+        "ping": [
+          2.8153000000020256,
+          7.388299999998708,
+          2.2226000000009662,
+          7.6819999999934225,
+          3.1138999999966472,
+          2.5437000000019907,
+          7.624700000000303,
+          10.296399999999267,
+          2.272499999999127,
+          1.7380000000048312,
+          8.389600000002247,
+          16.721099999995204,
+          5.253100000001723,
+          2.1209000000017113,
+          1.9052999999985332,
+          7.861100000001898,
+          14.740499999999884,
+          4.547999999995227,
+          3.6251000000047497,
+          14.55510000000504
+        ],
+        "taskList": [
+          0.6531000000031781,
+          0.5792999999976018,
+          1.5601000000024214,
+          1.4796999999962281,
+          2.1054000000003725,
+          1.0443000000013853,
+          1.1309999999939464,
+          5.152799999996205,
+          1.034299999999348,
+          5.78689999999915,
+          0.6363000000055763,
+          1.6806999999971595,
+          5.5931000000055064,
+          14.257799999999406,
+          0.5463999999992666,
+          1.0090999999956694,
+          4.536200000002282,
+          0.7220999999990454,
+          0.7731000000057975,
+          4.781399999999849
+        ],
+        "executionRead": [
+          1.0685999999986961,
+          1.4665999999997439,
+          1.6360999999960768,
+          2.4130999999979394,
+          6.630300000004354,
+          1.1285999999963678,
+          2.7135999999954947,
+          8.059500000003027,
+          1.201600000000326,
+          3.354800000000978,
+          1.2220000000015716,
+          1.8166000000055647,
+          2.4059999999954016,
+          2.190499999996973,
+          1.4127999999982421,
+          11.254500000002736,
+          1.324800000002142,
+          2.2524000000048545,
+          11.0341000000044,
+          2.446299999995972
+        ],
+        "teamRead": [
+          0.36520000000018626,
+          2.1454000000012456,
+          1.127599999999802,
+          1.452000000004773,
+          4.235200000002806,
+          1.5663999999960652,
+          3.591199999995297,
+          3.229699999996228,
+          1.3865999999979977,
+          12.575199999999313,
+          0.9121999999988475,
+          3.3148999999975786,
+          2.2326000000030035,
+          2.3597999999983585,
+          1.1727000000028056,
+          1.897000000004482,
+          5.959100000000035,
+          1.5426000000006752,
+          1.3627999999953317,
+          2.2655000000013388
+        ],
+        "waveCompletion": [
+          756.8148000000001,
+          759.0011999999988,
+          702.3614999999991,
+          781.7969000000012,
+          658.821100000001,
+          812.2325000000055,
+          732.0377999999982,
+          695.1030000000028,
+          683.1925999999949,
+          673.418700000002,
+          687.0616000000009,
+          764.7726000000039,
+          693.1333999999988,
+          682.4617999999973
+        ]
+      },
+      "observations": [
+        {
+          "sample": 0,
+          "atMs": 40,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 1,
+          "atMs": 579,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 2,
+          "atMs": 1012,
+          "running": 1,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 3,
+          "atMs": 1513,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 4,
+          "atMs": 2018,
+          "running": 1,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 5,
+          "atMs": 2511,
+          "running": 1,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 6,
+          "atMs": 3015,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 7,
+          "atMs": 3532,
+          "running": 1,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 8,
+          "atMs": 4015,
+          "running": 1,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 9,
+          "atMs": 4524,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 10,
+          "atMs": 5013,
+          "running": 1,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 11,
+          "atMs": 5524,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 12,
+          "atMs": 6016,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 13,
+          "atMs": 6576,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 14,
+          "atMs": 7005,
+          "running": 1,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 15,
+          "atMs": 7524,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 16,
+          "atMs": 8026,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 17,
+          "atMs": 8513,
+          "running": 1,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 18,
+          "atMs": 9019,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 19,
+          "atMs": 9528,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        }
+      ],
+      "timingBoundary": "Host IPC round-trip; wave completion includes configured fixture wait and is not Rust-only execution time. No DOM measurement."
+    },
+    {
+      "name": "assistants-3",
+      "kind": "assistants",
+      "requested": 3,
+      "configuredGlobalLimit": 8,
+      "configuredTeamLimit": 3,
+      "elapsedMs": 10671,
+      "waves": 10,
+      "completedRoots": 10,
+      "completedMembers": 30,
+      "modelRequests": 120,
+      "observedPeakRunning": 3,
+      "observedPeakAssistants": 3,
+      "samplesObservedDuringActiveWork": 20,
+      "metricsMs": {
+        "ping": {
+          "count": 20,
+          "min": 1.581,
+          "p50": 3.126,
+          "p95": 8.914,
+          "max": 15.408,
+          "mean": 4.292
+        },
+        "taskList": {
+          "count": 20,
+          "min": 0.521,
+          "p50": 1.619,
+          "p95": 5.983,
+          "max": 13.654,
+          "mean": 2.967
+        },
+        "executionRead": {
+          "count": 20,
+          "min": 1.066,
+          "p50": 2.628,
+          "p95": 16.557,
+          "max": 18.886,
+          "mean": 5.35
+        },
+        "teamRead": {
+          "count": 20,
+          "min": 0.229,
+          "p50": 3.345,
+          "p95": 12.276,
+          "max": 15.271,
+          "mean": 5.081
+        },
+        "waveCompletion": {
+          "count": 10,
+          "min": 967.625,
+          "p50": 1037.204,
+          "p95": 1106.753,
+          "max": 1106.753,
+          "mean": 1046.18
+        }
+      },
+      "rawMs": {
+        "ping": [
+          1.580599999993865,
+          7.445599999999104,
+          4.4548999999969965,
+          1.941900000005262,
+          2.0692999999955646,
+          3.3690000000060536,
+          1.8764999999984866,
+          4.392699999996694,
+          3.125800000001618,
+          1.8433999999979278,
+          3.457699999999022,
+          15.408100000000559,
+          8.913800000002084,
+          5.71310000000085,
+          1.7928000000028987,
+          1.9639999999999418,
+          2.7005000000062864,
+          7.215700000000652,
+          4.741200000004028,
+          1.8241999999954714
+        ],
+        "taskList": [
+          0.9056999999957043,
+          5.977200000001176,
+          1.5590999999985797,
+          5.622100000000501,
+          13.653599999997823,
+          2.9497000000046683,
+          1.2846999999965192,
+          1.0071000000025379,
+          5.07839999999851,
+          1.75619999999617,
+          1.0835000000006403,
+          1.8627999999953317,
+          1.6185000000041327,
+          0.8924999999944703,
+          3.1394000000000233,
+          0.5207999999984168,
+          5.983100000004924,
+          1.423399999999674,
+          1.3159000000014203,
+          1.7065999999977066
+        ],
+        "executionRead": [
+          1.7276000000056229,
+          2.628499999998894,
+          4.497699999999895,
+          5.293499999999767,
+          5.2413999999989755,
+          11.334999999999127,
+          2.186099999998987,
+          1.5391000000017812,
+          4.288800000002084,
+          1.5019000000029337,
+          16.557099999998172,
+          2.39429999999993,
+          4.609599999996135,
+          1.9554999999963911,
+          18.88590000000113,
+          1.0660999999963678,
+          12.627099999997881,
+          4.756099999998696,
+          1.8464999999996508,
+          2.0579999999972642
+        ],
+        "teamRead": [
+          0.36929999999847496,
+          5.6163999999989755,
+          12.08690000000206,
+          3.1481000000057975,
+          3.3448999999964144,
+          6.5789999999979045,
+          12.276399999995192,
+          2.434500000003027,
+          15.270799999998417,
+          3.096799999999348,
+          4.977700000003097,
+          2.8761000000013155,
+          2.9478000000017346,
+          6.104800000000978,
+          3.4259000000020023,
+          0.2286999999996624,
+          3.8721000000005006,
+          2.5289000000047963,
+          7.884300000005169,
+          2.5460999999995693
+        ],
+        "waveCompletion": [
+          991.4717000000019,
+          1075.1477999999988,
+          967.6252999999997,
+          1106.7525999999998,
+          1083.6239999999962,
+          1060.1561000000002,
+          1075.3222000000023,
+          1029.2076000000015,
+          1037.204399999995,
+          1035.2920000000013
+        ]
+      },
+      "observations": [
+        {
+          "sample": 0,
+          "atMs": 39,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 1,
+          "atMs": 538,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 2,
+          "atMs": 1025,
+          "running": 1,
+          "state": "completed",
+          "workFinished": false
+        },
+        {
+          "sample": 3,
+          "atMs": 1518,
+          "running": 2,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 4,
+          "atMs": 2025,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 5,
+          "atMs": 2527,
+          "running": 3,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 6,
+          "atMs": 3020,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 7,
+          "atMs": 3510,
+          "running": 3,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 8,
+          "atMs": 4031,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 9,
+          "atMs": 4510,
+          "running": 3,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 10,
+          "atMs": 5029,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 11,
+          "atMs": 5525,
+          "running": 2,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 12,
+          "atMs": 6020,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 13,
+          "atMs": 6523,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 14,
+          "atMs": 7028,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 15,
+          "atMs": 7548,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 16,
+          "atMs": 8029,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 17,
+          "atMs": 8519,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 18,
+          "atMs": 9017,
+          "running": 3,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 19,
+          "atMs": 9513,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        }
+      ],
+      "timingBoundary": "Host IPC round-trip; wave completion includes configured fixture wait and is not Rust-only execution time. No DOM measurement."
+    },
+    {
+      "name": "assistants-8",
+      "kind": "assistants",
+      "requested": 8,
+      "configuredGlobalLimit": 8,
+      "configuredTeamLimit": 8,
+      "elapsedMs": 10272,
+      "waves": 5,
+      "completedRoots": 5,
+      "completedMembers": 40,
+      "modelRequests": 135,
+      "observedPeakRunning": 8,
+      "observedPeakAssistants": 8,
+      "samplesObservedDuringActiveWork": 20,
+      "metricsMs": {
+        "ping": {
+          "count": 20,
+          "min": 1.611,
+          "p50": 3.668,
+          "p95": 37.221,
+          "max": 48.785,
+          "mean": 8.653
+        },
+        "taskList": {
+          "count": 20,
+          "min": 0.605,
+          "p50": 2.179,
+          "p95": 11.326,
+          "max": 11.598,
+          "mean": 4.513
+        },
+        "executionRead": {
+          "count": 20,
+          "min": 0.987,
+          "p50": 2.491,
+          "p95": 10.384,
+          "max": 11.937,
+          "mean": 3.959
+        },
+        "teamRead": {
+          "count": 20,
+          "min": 0.197,
+          "p50": 8.341,
+          "p95": 18.014,
+          "max": 19.795,
+          "mean": 10.695
+        },
+        "waveCompletion": {
+          "count": 5,
+          "min": 1950.124,
+          "p50": 2019.456,
+          "p95": 2110.092,
+          "max": 2110.092,
+          "mean": 2028.689
+        }
+      },
+      "rawMs": {
+        "ping": [
+          1.6192000000010012,
+          37.220900000000256,
+          9.788899999999558,
+          1.6105999999999767,
+          5.488900000003923,
+          3.6684000000022934,
+          2.305899999999383,
+          1.7022999999971944,
+          3.486000000004424,
+          4.341899999999441,
+          7.063699999998789,
+          7.003599999996368,
+          3.144000000000233,
+          8.58980000000156,
+          4.166900000003807,
+          2.6281999999919208,
+          15.798099999999977,
+          48.78540000000794,
+          2.209400000007008,
+          2.447100000004866
+        ],
+        "taskList": [
+          1.109199999998964,
+          11.597600000000966,
+          2.050600000002305,
+          0.6048999999984517,
+          2.1788000000015018,
+          2.7696999999971013,
+          7.423800000004121,
+          0.6602999999959138,
+          0.6121999999959371,
+          0.810299999997369,
+          1.2485999999989872,
+          5.191500000000815,
+          6.882400000002235,
+          9.62380000000121,
+          1.6184999999968568,
+          6.8540999999968335,
+          6.136100000003353,
+          11.32620000001043,
+          0.8678000000072643,
+          10.690400000006775
+        ],
+        "executionRead": [
+          0.9870999999984633,
+          2.4913000000015018,
+          3.131600000000617,
+          2.1033000000024913,
+          10.216400000004796,
+          6.261500000000524,
+          2.478900000001886,
+          2.060299999997369,
+          2.7088000000003376,
+          1.6067000000039116,
+          2.1190000000060536,
+          3.8197999999974854,
+          3.4567000000024564,
+          11.936699999998382,
+          1.4372000000003027,
+          4.525399999998626,
+          3.7436000000016065,
+          10.383600000001024,
+          1.52029999998922,
+          2.201699999990524
+        ],
+        "teamRead": [
+          0.1966000000029453,
+          17.101999999998952,
+          12.690300000002026,
+          8.326000000000931,
+          16.31420000000071,
+          10.77610000000277,
+          6.297400000003108,
+          18.013599999998405,
+          19.794999999998254,
+          6.577299999997194,
+          7.183700000001409,
+          16.213199999998324,
+          8.341300000000047,
+          9.426799999993818,
+          6.821499999998196,
+          11.743900000001304,
+          6.619299999991199,
+          6.504300000000512,
+          17.29110000000219,
+          7.672700000010082
+        ],
+        "waveCompletion": [
+          1997.357799999998,
+          2066.4145999999964,
+          2110.0920999999944,
+          2019.4556999999986,
+          1950.1242999999959
+        ]
+      },
+      "observations": [
+        {
+          "sample": 0,
+          "atMs": 41,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 1,
+          "atMs": 570,
+          "running": 6,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 2,
+          "atMs": 1033,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 3,
+          "atMs": 1512,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 4,
+          "atMs": 2040,
+          "running": 1,
+          "state": "completed",
+          "workFinished": false
+        },
+        {
+          "sample": 5,
+          "atMs": 2538,
+          "running": 8,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 6,
+          "atMs": 3018,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 7,
+          "atMs": 3522,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 8,
+          "atMs": 4030,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 9,
+          "atMs": 4514,
+          "running": 8,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 10,
+          "atMs": 5019,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 11,
+          "atMs": 5535,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 12,
+          "atMs": 6024,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 13,
+          "atMs": 6540,
+          "running": 7,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 14,
+          "atMs": 7021,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 15,
+          "atMs": 7532,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 16,
+          "atMs": 8034,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 17,
+          "atMs": 8577,
+          "running": 5,
+          "state": "awaiting_input",
+          "workFinished": false
+        },
+        {
+          "sample": 18,
+          "atMs": 9026,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        },
+        {
+          "sample": 19,
+          "atMs": 9528,
+          "running": 1,
+          "state": "running",
+          "workFinished": false
+        }
+      ],
+      "timingBoundary": "Host IPC round-trip; wave completion includes configured fixture wait and is not Rust-only execution time. No DOM measurement."
+    }
+  ],
+  "checks": [
+    "six_synthetic_load_levels_complete_and_respect_configured_limits",
+    "actual_owned_parent_child_process_trees_stop_and_heartbeat_writes_cease",
+    "forced_owned_engine_exit_reaps_tools_restart_preserves_interruption_without_model_replay"
+  ],
+  "scope": {
+    "kind": "short synthetic benchmark",
+    "model": "Local deterministic HTTP Responses fixture; no paid model",
+    "browserEnabled": false,
+    "officeToolsEnabled": false,
+    "desktopEnabled": false,
+    "data": "Fresh isolated directory; generated tasks accumulate during this run. Not a 100,000-event historical-data scenario.",
+    "exclusions": "No four-hour soak, UI latency, cold-cache OS startup, real-provider performance, macOS/Linux or clean-Windows claim.",
+    "percentiles": "Nearest-rank p50/p95; all samples retained, no best-run selection.",
+    "resources": "250ms external process sampling; collector and Node fixture are excluded from engine measurements. CPU normalized over all logical processors."
+  },
+  "startupToEngineReadyMs": 3083.8886,
+  "databaseBefore": {
+    "workpilot.sqlite3": 614400,
+    "workpilot.sqlite3-wal": 24752,
+    "workpilot.sqlite3-shm": 32768
+  },
+  "originalScheduler": {
+    "max_running": 4,
+    "revision": 0
+  },
+  "stopping": {
+    "count": 20,
+    "raw": [
+      {
+        "task": "0277b289-8e73-4880-827a-021abc1c483c",
+        "processIds": [
+          15252,
+          2816
+        ],
+        "processIdentities": [
+          {
+            "pid": 15252,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111639047
+          },
+          {
+            "pid": 2816,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111639124
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 15252,
+            "startedAtMs": 1791111639047,
+            "status": "exited"
+          },
+          {
+            "pid": 2816,
+            "startedAtMs": 1791111639124,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 4.390099999989616,
+        "processExitMs": 32.473299999997835,
+        "terminalStateMs": 65.14719999999215
+      },
+      {
+        "task": "ab054136-ff69-4872-abee-158742947c3f",
+        "processIds": [
+          33572,
+          34916
+        ],
+        "processIdentities": [
+          {
+            "pid": 33572,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111641031
+          },
+          {
+            "pid": 34916,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111641096
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 33572,
+            "startedAtMs": 1791111641031,
+            "status": "exited"
+          },
+          {
+            "pid": 34916,
+            "startedAtMs": 1791111641096,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 9.280899999997928,
+        "processExitMs": 32.001799999998184,
+        "terminalStateMs": 64.74069999999483
+      },
+      {
+        "task": "04a8335b-c48f-41a2-8b28-da85d6a5cd11",
+        "processIds": [
+          26380,
+          21120
+        ],
+        "processIdentities": [
+          {
+            "pid": 26380,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111642801
+          },
+          {
+            "pid": 21120,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111642866
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 26380,
+            "startedAtMs": 1791111642801,
+            "status": "exited"
+          },
+          {
+            "pid": 21120,
+            "startedAtMs": 1791111642866,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 3.7958999999973457,
+        "processExitMs": 15.499400000000605,
+        "terminalStateMs": 34.53630000000703
+      },
+      {
+        "task": "cd4a34d7-01df-4c65-92c5-09dabf5e70df",
+        "processIds": [
+          8584,
+          10888
+        ],
+        "processIdentities": [
+          {
+            "pid": 8584,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111644507
+          },
+          {
+            "pid": 10888,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111644572
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 8584,
+            "startedAtMs": 1791111644507,
+            "status": "exited"
+          },
+          {
+            "pid": 10888,
+            "startedAtMs": 1791111644572,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 9.164199999999255,
+        "processExitMs": 30.663300000000163,
+        "terminalStateMs": 48.054899999988265
+      },
+      {
+        "task": "a906863c-e9cd-40b9-82cf-0029daf98893",
+        "processIds": [
+          30536,
+          30864
+        ],
+        "processIdentities": [
+          {
+            "pid": 30536,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111646225
+          },
+          {
+            "pid": 30864,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111646298
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 30536,
+            "startedAtMs": 1791111646225,
+            "status": "exited"
+          },
+          {
+            "pid": 30864,
+            "startedAtMs": 1791111646298,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 4.561300000001211,
+        "processExitMs": 15.289499999998952,
+        "terminalStateMs": 53.33079999999609
+      },
+      {
+        "task": "1d43ea6a-2d45-47e8-b70e-945638cf9c6c",
+        "processIds": [
+          11720,
+          34656
+        ],
+        "processIdentities": [
+          {
+            "pid": 11720,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111647997
+          },
+          {
+            "pid": 34656,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111648063
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 11720,
+            "startedAtMs": 1791111647997,
+            "status": "exited"
+          },
+          {
+            "pid": 34656,
+            "startedAtMs": 1791111648063,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 8.568700000003446,
+        "processExitMs": 21.429900000002817,
+        "terminalStateMs": 60.04200000000128
+      },
+      {
+        "task": "14200e9d-697a-4392-9d00-96dd0d4c84b5",
+        "processIds": [
+          5912,
+          3828
+        ],
+        "processIdentities": [
+          {
+            "pid": 5912,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111649758
+          },
+          {
+            "pid": 3828,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111649823
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 5912,
+            "startedAtMs": 1791111649758,
+            "status": "exited"
+          },
+          {
+            "pid": 3828,
+            "startedAtMs": 1791111649823,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 3.817399999999907,
+        "processExitMs": 46.65869999999995,
+        "terminalStateMs": 69.21820000000298
+      },
+      {
+        "task": "30e56294-80b6-445f-b9d2-7bf3a0572254",
+        "processIds": [
+          21744,
+          36948
+        ],
+        "processIdentities": [
+          {
+            "pid": 21744,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111651549
+          },
+          {
+            "pid": 36948,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111651612
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 21744,
+            "startedAtMs": 1791111651549,
+            "status": "exited"
+          },
+          {
+            "pid": 36948,
+            "startedAtMs": 1791111651612,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 9.577499999999418,
+        "processExitMs": 16.28839999999036,
+        "terminalStateMs": 48.78280000000086
+      },
+      {
+        "task": "f538591b-ca9a-4f8c-a0c4-d2d0223e958a",
+        "processIds": [
+          37316,
+          5760
+        ],
+        "processIdentities": [
+          {
+            "pid": 37316,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111653257
+          },
+          {
+            "pid": 5760,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111653320
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 37316,
+            "startedAtMs": 1791111653257,
+            "status": "exited"
+          },
+          {
+            "pid": 5760,
+            "startedAtMs": 1791111653320,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 9.247199999997974,
+        "processExitMs": 15.640500000008615,
+        "terminalStateMs": 53.017500000001746
+      },
+      {
+        "task": "ab3a2c52-220e-45a9-ab6e-10d9880b58ca",
+        "processIds": [
+          19840,
+          34748
+        ],
+        "processIdentities": [
+          {
+            "pid": 19840,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111654993
+          },
+          {
+            "pid": 34748,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111655060
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 19840,
+            "startedAtMs": 1791111654993,
+            "status": "exited"
+          },
+          {
+            "pid": 34748,
+            "startedAtMs": 1791111655060,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 5.261900000012247,
+        "processExitMs": 16.10590000000957,
+        "terminalStateMs": 52.97650000000431
+      },
+      {
+        "task": "289a3993-6f3b-4196-89b4-5bc7bcc91f35",
+        "processIds": [
+          16564,
+          36040
+        ],
+        "processIdentities": [
+          {
+            "pid": 16564,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111656763
+          },
+          {
+            "pid": 36040,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111656828
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 16564,
+            "startedAtMs": 1791111656763,
+            "status": "exited"
+          },
+          {
+            "pid": 36040,
+            "startedAtMs": 1791111656828,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 7.601399999999558,
+        "processExitMs": 35.75409999999101,
+        "terminalStateMs": 70.07519999999204
+      },
+      {
+        "task": "14c8f301-93c7-43ed-93ae-974daf910ca1",
+        "processIds": [
+          39300,
+          36128
+        ],
+        "processIdentities": [
+          {
+            "pid": 39300,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111658514
+          },
+          {
+            "pid": 36128,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111658579
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 39300,
+            "startedAtMs": 1791111658514,
+            "status": "exited"
+          },
+          {
+            "pid": 36128,
+            "startedAtMs": 1791111658579,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 8.55460000000312,
+        "processExitMs": 31.84649999999965,
+        "terminalStateMs": 69.4204000000027
+      },
+      {
+        "task": "925d65cf-ce91-4b6b-8618-cd158a18013d",
+        "processIds": [
+          40268,
+          38156
+        ],
+        "processIdentities": [
+          {
+            "pid": 40268,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111660271
+          },
+          {
+            "pid": 38156,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111660347
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 40268,
+            "startedAtMs": 1791111660271,
+            "status": "exited"
+          },
+          {
+            "pid": 38156,
+            "startedAtMs": 1791111660347,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 8.693500000008498,
+        "processExitMs": 15.360499999995227,
+        "terminalStateMs": 49.25
+      },
+      {
+        "task": "3e6522e6-9b51-4a2d-8620-96d06e80ece5",
+        "processIds": [
+          24536,
+          14344
+        ],
+        "processIdentities": [
+          {
+            "pid": 24536,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111662048
+          },
+          {
+            "pid": 14344,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111662112
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 24536,
+            "startedAtMs": 1791111662048,
+            "status": "exited"
+          },
+          {
+            "pid": 14344,
+            "startedAtMs": 1791111662112,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 5.132500000006985,
+        "processExitMs": 33.20690000000468,
+        "terminalStateMs": 52.61040000000503
+      },
+      {
+        "task": "14303e57-efc7-4263-8ae0-46c4d3ddf11d",
+        "processIds": [
+          34216,
+          8840
+        ],
+        "processIdentities": [
+          {
+            "pid": 34216,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111663774
+          },
+          {
+            "pid": 8840,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111663838
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 34216,
+            "startedAtMs": 1791111663774,
+            "status": "exited"
+          },
+          {
+            "pid": 8840,
+            "startedAtMs": 1791111663838,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 12.729300000006333,
+        "processExitMs": 20.553700000004028,
+        "terminalStateMs": 40.698300000003655
+      },
+      {
+        "task": "f974c4c2-cb7f-42b1-a4a1-1e8baf63841e",
+        "processIds": [
+          27540,
+          5104
+        ],
+        "processIdentities": [
+          {
+            "pid": 27540,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111665503
+          },
+          {
+            "pid": 5104,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111665570
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 27540,
+            "startedAtMs": 1791111665503,
+            "status": "exited"
+          },
+          {
+            "pid": 5104,
+            "startedAtMs": 1791111665570,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 13.16689999999653,
+        "processExitMs": 42.2098999999871,
+        "terminalStateMs": 74.35749999999825
+      },
+      {
+        "task": "5902d647-2a3a-4162-bc4c-27d62c8bb4b4",
+        "processIds": [
+          36236,
+          34596
+        ],
+        "processIdentities": [
+          {
+            "pid": 36236,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111667283
+          },
+          {
+            "pid": 34596,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111667344
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 36236,
+            "startedAtMs": 1791111667283,
+            "status": "exited"
+          },
+          {
+            "pid": 34596,
+            "startedAtMs": 1791111667344,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 4.441500000000815,
+        "processExitMs": 35.22629999999481,
+        "terminalStateMs": 70.98619999999937
+      },
+      {
+        "task": "d938919c-b0a0-4de5-a7a4-37c28a1fd818",
+        "processIds": [
+          41388,
+          41584
+        ],
+        "processIdentities": [
+          {
+            "pid": 41388,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111669021
+          },
+          {
+            "pid": 41584,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111669093
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 41388,
+            "startedAtMs": 1791111669021,
+            "status": "exited"
+          },
+          {
+            "pid": 41584,
+            "startedAtMs": 1791111669093,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 5.931899999995949,
+        "processExitMs": 19.012100000007194,
+        "terminalStateMs": 52.424499999993714
+      },
+      {
+        "task": "75d1d663-3460-4fb3-bc47-61a8b9226f8d",
+        "processIds": [
+          30452,
+          30216
+        ],
+        "processIdentities": [
+          {
+            "pid": 30452,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111670739
+          },
+          {
+            "pid": 30216,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111670807
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 30452,
+            "startedAtMs": 1791111670739,
+            "status": "exited"
+          },
+          {
+            "pid": 30216,
+            "startedAtMs": 1791111670807,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 4.605200000005425,
+        "processExitMs": 16.179000000003725,
+        "terminalStateMs": 56.48829999999725
+      },
+      {
+        "task": "0703b4f9-4296-49ed-aefe-05baa75eb5ad",
+        "processIds": [
+          24588,
+          25368
+        ],
+        "processIdentities": [
+          {
+            "pid": 24588,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111672516
+          },
+          {
+            "pid": 25368,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+            "startedAtMs": 1791111672579
+          }
+        ],
+        "exitVerification": [
+          {
+            "pid": 24588,
+            "startedAtMs": 1791111672516,
+            "status": "exited"
+          },
+          {
+            "pid": 25368,
+            "startedAtMs": 1791111672579,
+            "status": "exited"
+          }
+        ],
+        "acknowledgementMs": 8.754799999995157,
+        "processExitMs": 35.9716000000044,
+        "terminalStateMs": 68.45079999999143
+      }
+    ],
+    "metricsMs": {
+      "cancelAcknowledgement": {
+        "count": 20,
+        "min": 3.796,
+        "p50": 7.601,
+        "p95": 12.729,
+        "max": 13.167,
+        "mean": 7.364
+      },
+      "processTreeExit": {
+        "count": 20,
+        "min": 15.289,
+        "p50": 21.43,
+        "p95": 42.21,
+        "max": 46.659,
+        "mean": 26.369
+      },
+      "interruptedState": {
+        "count": 20,
+        "min": 34.536,
+        "p50": 53.331,
+        "p95": 70.986,
+        "max": 74.357,
+        "mean": 57.73
+      }
+    },
+    "toolStopInitialTargetMs": 2000,
+    "toolStopInitialTargetMet": true,
+    "allOwnedTreesExited": true,
+    "heartbeatWritesStopped": true,
+    "boundary": "Cancellation IPC acknowledgement is separate from a UI click-to-feedback measurement. Actual PID/start-time/path identity is captured before timing. Fast PID absence checks define the exit timing endpoint; identity and heartbeat checks occur afterward and are excluded. No external PowerShell startup is counted as tool-stop latency."
+  },
+  "restart": {
+    "engineKilledByOwnedHandle": true,
+    "processIds": [
+      39848,
+      41668
+    ],
+    "processIdentities": [
+      {
+        "pid": 39848,
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+        "startedAtMs": 1791111674292
+      },
+      {
+        "pid": 41668,
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\browser-runtime\\node.exe",
+        "startedAtMs": 1791111674358
+      }
+    ],
+    "exitVerification": [
+      {
+        "pid": 39848,
+        "startedAtMs": 1791111674292,
+        "status": "exited"
+      },
+      {
+        "pid": 41668,
+        "startedAtMs": 1791111674358,
+        "status": "exited"
+      }
+    ],
+    "treeExitMs": 22.327000000004773,
+    "recoveredTaskState": "interrupted",
+    "modelRequestsAddedAfterRestart": 0,
+    "observationMs": 1000,
+    "controlAfterRestartMs": {
+      "count": 20,
+      "min": 1.905,
+      "p50": 2.377,
+      "p95": 3.434,
+      "max": 6.478,
+      "mean": 2.656
+    },
+    "manualResumeRequired": true
+  },
+  "databaseBeforeShutdown": {
+    "workpilot.sqlite3": 10559488,
+    "workpilot.sqlite3-wal": 1079472,
+    "workpilot.sqlite3-shm": 32768
+  },
+  "dataScale": {
+    "preexistingUserTasks": 0,
+    "createdRootTasks": 342,
+    "createdAssistantTasks": 84,
+    "fixedLeafResponseCharacters": 416
+  },
+  "status": "passed",
+  "elapsedMs": 108051,
+  "eventCounts": {
+    "ready": 2,
+    "command_accepted": 1359,
+    "provider_saved": 31,
+    "command_finished": 1358,
+    "execution_created": 342,
+    "team_changed": 965,
+    "tool_policy_changed": 342,
+    "execution_queued": 454,
+    "execution_started": 454,
+    "execution_step_changed": 1775,
+    "pong": 140,
+    "execution_text": 404,
+    "usage_recorded": 651,
+    "checkpoint_saved": 877,
+    "execution_ended": 453,
+    "task_state_changed": 473,
+    "tool_started": 247,
+    "tool_finished": 226,
+    "tool_approval_requested": 21,
+    "tool_approval_decided": 21,
+    "cancel_requested": 20,
+    "workbench_changed": 21,
+    "bye": 1
+  },
+  "resources": [
+    {
+      "label": "engine:idle",
+      "samples": 7,
+      "processes": 1,
+      "workingSetBytes": {
+        "count": 7,
+        "min": 11821056,
+        "p50": 11821056,
+        "p95": 11821056,
+        "max": 11821056,
+        "mean": 11821056
+      },
+      "privateBytes": {
+        "count": 7,
+        "min": 3928064,
+        "p50": 3928064,
+        "p95": 3928064,
+        "max": 3928064,
+        "mean": 3928064
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 6,
+        "min": 0,
+        "p50": 0,
+        "p95": 0,
+        "max": 0,
+        "mean": 0
+      },
+      "handles": {
+        "count": 7,
+        "min": 166,
+        "p50": 166,
+        "p95": 166,
+        "max": 166,
+        "mean": 166
+      },
+      "threads": {
+        "count": 7,
+        "min": 24,
+        "p50": 24,
+        "p95": 24,
+        "max": 24,
+        "mean": 24
+      }
+    },
+    {
+      "label": "engine:tasks-1",
+      "samples": 38,
+      "processes": 1,
+      "workingSetBytes": {
+        "count": 38,
+        "min": 16543744,
+        "p50": 17854464,
+        "p95": 18444288,
+        "max": 18522112,
+        "mean": 17804018.526
+      },
+      "privateBytes": {
+        "count": 38,
+        "min": 4788224,
+        "p50": 6205440,
+        "p95": 6815744,
+        "max": 6885376,
+        "mean": 6163617.684
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 37,
+        "min": 0.364,
+        "p50": 1.458,
+        "p95": 2.926,
+        "max": 2.926,
+        "mean": 1.473
+      },
+      "handles": {
+        "count": 38,
+        "min": 180,
+        "p50": 186,
+        "p95": 186,
+        "max": 188,
+        "mean": 185.632
+      },
+      "threads": {
+        "count": 38,
+        "min": 25,
+        "p50": 25,
+        "p95": 25,
+        "max": 25,
+        "mean": 25
+      }
+    },
+    {
+      "label": "engine:tasks-4",
+      "samples": 38,
+      "processes": 1,
+      "workingSetBytes": {
+        "count": 38,
+        "min": 19472384,
+        "p50": 21491712,
+        "p95": 23023616,
+        "max": 23027712,
+        "mean": 21478346.105
+      },
+      "privateBytes": {
+        "count": 38,
+        "min": 7741440,
+        "p50": 9863168,
+        "p95": 11399168,
+        "max": 11399168,
+        "mean": 9919649.684
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 37,
+        "min": 0.713,
+        "p50": 3.304,
+        "p95": 5.528,
+        "max": 5.591,
+        "mean": 3.254
+      },
+      "handles": {
+        "count": 38,
+        "min": 189,
+        "p50": 191,
+        "p95": 191,
+        "max": 192,
+        "mean": 190.526
+      },
+      "threads": {
+        "count": 38,
+        "min": 25,
+        "p50": 25,
+        "p95": 25,
+        "max": 25,
+        "mean": 25
+      }
+    },
+    {
+      "label": "engine:tasks-8",
+      "samples": 40,
+      "processes": 1,
+      "workingSetBytes": {
+        "count": 40,
+        "min": 21860352,
+        "p50": 26705920,
+        "p95": 28033024,
+        "max": 28168192,
+        "mean": 26209484.8
+      },
+      "privateBytes": {
+        "count": 40,
+        "min": 10436608,
+        "p50": 15151104,
+        "p95": 16719872,
+        "max": 16814080,
+        "mean": 14789734.4
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 39,
+        "min": 2.211,
+        "p50": 5.082,
+        "p95": 6.608,
+        "max": 6.975,
+        "mean": 4.838
+      },
+      "handles": {
+        "count": 40,
+        "min": 189,
+        "p50": 194,
+        "p95": 195,
+        "max": 196,
+        "mean": 193.45
+      },
+      "threads": {
+        "count": 40,
+        "min": 22,
+        "p50": 25,
+        "p95": 25,
+        "max": 25,
+        "mean": 24.025
+      }
+    },
+    {
+      "label": "engine:assistants-1",
+      "samples": 39,
+      "processes": 1,
+      "workingSetBytes": {
+        "count": 39,
+        "min": 23719936,
+        "p50": 24928256,
+        "p95": 26066944,
+        "max": 26071040,
+        "mean": 24815668.513
+      },
+      "privateBytes": {
+        "count": 39,
+        "min": 11649024,
+        "p50": 14299136,
+        "p95": 15151104,
+        "max": 15151104,
+        "mean": 13753107.692
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 38,
+        "min": 0,
+        "p50": 2.58,
+        "p95": 4.456,
+        "max": 4.737,
+        "mean": 2.503
+      },
+      "handles": {
+        "count": 39,
+        "min": 186,
+        "p50": 188,
+        "p95": 191,
+        "max": 192,
+        "mean": 187.667
+      },
+      "threads": {
+        "count": 39,
+        "min": 22,
+        "p50": 22,
+        "p95": 22,
+        "max": 22,
+        "mean": 22
+      }
+    },
+    {
+      "label": "engine:assistants-3",
+      "samples": 40,
+      "processes": 1,
+      "workingSetBytes": {
+        "count": 40,
+        "min": 23724032,
+        "p50": 25305088,
+        "p95": 25554944,
+        "max": 25554944,
+        "mean": 25102438.4
+      },
+      "privateBytes": {
+        "count": 40,
+        "min": 11591680,
+        "p50": 13135872,
+        "p95": 13987840,
+        "max": 14327808,
+        "mean": 13159936
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 39,
+        "min": 1.458,
+        "p50": 3.63,
+        "p95": 5.703,
+        "max": 5.809,
+        "mean": 3.631
+      },
+      "handles": {
+        "count": 40,
+        "min": 186,
+        "p50": 188,
+        "p95": 190,
+        "max": 190,
+        "mean": 188.125
+      },
+      "threads": {
+        "count": 40,
+        "min": 22,
+        "p50": 22,
+        "p95": 22,
+        "max": 22,
+        "mean": 22
+      }
+    },
+    {
+      "label": "engine:assistants-8",
+      "samples": 38,
+      "processes": 1,
+      "workingSetBytes": {
+        "count": 38,
+        "min": 23904256,
+        "p50": 25251840,
+        "p95": 27992064,
+        "max": 28139520,
+        "mean": 25604311.579
+      },
+      "privateBytes": {
+        "count": 38,
+        "min": 11743232,
+        "p50": 13971456,
+        "p95": 16728064,
+        "max": 16728064,
+        "mean": 14073317.053
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 37,
+        "min": 1.871,
+        "p50": 4.34,
+        "p95": 5.919,
+        "max": 6.608,
+        "mean": 4.261
+      },
+      "handles": {
+        "count": 38,
+        "min": 186,
+        "p50": 188,
+        "p95": 195,
+        "max": 195,
+        "mean": 189.342
+      },
+      "threads": {
+        "count": 38,
+        "min": 22,
+        "p50": 22,
+        "p95": 22,
+        "max": 22,
+        "mean": 22
+      }
+    },
+    {
+      "label": "engine:process-lifecycle",
+      "samples": 140,
+      "processes": 1,
+      "workingSetBytes": {
+        "count": 140,
+        "min": 24690688,
+        "p50": 26619904,
+        "p95": 26902528,
+        "max": 26988544,
+        "mean": 26599189.943
+      },
+      "privateBytes": {
+        "count": 140,
+        "min": 12832768,
+        "p50": 14479360,
+        "p95": 14954496,
+        "max": 14954496,
+        "mean": 14422279.314
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 139,
+        "min": 0,
+        "p50": 0.348,
+        "p95": 4.755,
+        "max": 6.059,
+        "mean": 1.058
+      },
+      "handles": {
+        "count": 140,
+        "min": 188,
+        "p50": 217,
+        "p95": 221,
+        "max": 221,
+        "mean": 214.136
+      },
+      "threads": {
+        "count": 140,
+        "min": 22,
+        "p50": 25,
+        "p95": 27,
+        "max": 27,
+        "mean": 24.45
+      }
+    },
+    {
+      "label": "tool-parent:process-lifecycle",
+      "samples": 42,
+      "processes": 21,
+      "workingSetBytes": {
+        "count": 42,
+        "min": 32817152,
+        "p50": 32841728,
+        "p95": 32894976,
+        "max": 32960512,
+        "mean": 32851090.286
+      },
+      "privateBytes": {
+        "count": 42,
+        "min": 16592896,
+        "p50": 16703488,
+        "p95": 16965632,
+        "max": 17002496,
+        "mean": 16745033.143
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 21,
+        "min": 0,
+        "p50": 0,
+        "p95": 0.345,
+        "max": 0.349,
+        "mean": 0.097
+      },
+      "handles": {
+        "count": 42,
+        "min": 176,
+        "p50": 176,
+        "p95": 176,
+        "max": 176,
+        "mean": 176
+      },
+      "threads": {
+        "count": 42,
+        "min": 13,
+        "p50": 13,
+        "p95": 13,
+        "max": 13,
+        "mean": 13
+      }
+    },
+    {
+      "label": "tool-child:process-lifecycle",
+      "samples": 42,
+      "processes": 21,
+      "workingSetBytes": {
+        "count": 42,
+        "min": 32423936,
+        "p50": 32464896,
+        "p95": 32665600,
+        "max": 32690176,
+        "mean": 32494835.81
+      },
+      "privateBytes": {
+        "count": 42,
+        "min": 16293888,
+        "p50": 16494592,
+        "p95": 16949248,
+        "max": 17039360,
+        "mean": 16567539.81
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 21,
+        "min": 0,
+        "p50": 0,
+        "p95": 0.341,
+        "max": 0.344,
+        "mean": 0.033
+      },
+      "handles": {
+        "count": 42,
+        "min": 165,
+        "p50": 165,
+        "p95": 165,
+        "max": 165,
+        "mean": 165
+      },
+      "threads": {
+        "count": 42,
+        "min": 12,
+        "p50": 12,
+        "p95": 12,
+        "max": 12,
+        "mean": 12
+      }
+    },
+    {
+      "label": "engine:startup-or-restart",
+      "samples": 6,
+      "processes": 1,
+      "workingSetBytes": {
+        "count": 6,
+        "min": 16154624,
+        "p50": 16412672,
+        "p95": 16424960,
+        "max": 16424960,
+        "mean": 16373077.333
+      },
+      "privateBytes": {
+        "count": 6,
+        "min": 6025216,
+        "p50": 6299648,
+        "p95": 6299648,
+        "max": 6299648,
+        "mean": 6253909.333
+      },
+      "cpuPercentOfWholeMachine": {
+        "count": 5,
+        "min": 0,
+        "p50": 0,
+        "p95": 0.355,
+        "max": 0.355,
+        "mean": 0.071
+      },
+      "handles": {
+        "count": 6,
+        "min": 181,
+        "p50": 181,
+        "p95": 181,
+        "max": 181,
+        "mean": 181
+      },
+      "threads": {
+        "count": 6,
+        "min": 25,
+        "p50": 25,
+        "p95": 25,
+        "max": 25,
+        "mean": 25
+      }
+    }
+  ],
+  "resourceCoverage": {
+    "identityBoundary": "PID + actual process start time; executable paths are verified before sampling",
+    "expectedOwnedToolProcesses": 42,
+    "reusedToolPids": [],
+    "duplicateToolIdentities": [],
+    "sampledOwnedToolProcesses": 42,
+    "missingToolProcesses": [],
+    "missingLoadPhases": []
+  },
+  "harness": {
+    "cpuMicroseconds": {
+      "user": 3844000,
+      "system": 2125000
+    },
+    "memoryAfter": {
+      "rss": 88281088,
+      "heapTotal": 14520320,
+      "heapUsed": 12790920,
+      "external": 3941535,
+      "arrayBuffers": 85251
+    }
+  },
+  "databaseAfterShutdown": {
+    "workpilot.sqlite3": 10559488,
+    "workpilot.sqlite3-wal": 1079472,
+    "workpilot.sqlite3-shm": 32768
+  },
+  "command": "node scripts/p13-engine-benchmark.mjs --window-ms 10000 --samples 20 --stop-samples 20 --model-delay-ms 250"
+}

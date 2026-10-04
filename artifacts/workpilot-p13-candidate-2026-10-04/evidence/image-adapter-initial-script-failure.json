@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-04T11:57:03.766Z",
+  "binarySha256": "14da86268e573aaf2b546e4c2dd9248a3fc88d89efe94173b4e17bae3151a5ab",
+  "service": "Local synthetic Bailian JSON + same-origin result download; not a real image service",
+  "checks": [
+    "approved_json_generation_and_reference_edit_download_without_forwarding_key_preserve_original",
+    "quota_foreign_url_redirect_oversize_corruption_disconnect_wrong_dimensions_fail_without_retry_or_file"
+  ],
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: {\"kind\":\"error\",\"code\":\"invalid_request\",\"message\":\"invalid command format\"}\n+ actual - expected\n\n+ 'error'\n- 'workbench'\n\n    at work (file:///D:/workspace/kplocker/WorkPilot/scripts/p13-image-adapter-test.mjs:51:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async file:///D:/workspace/kplocker/WorkPilot/scripts/p13-image-adapter-test.mjs:160:3"
+}

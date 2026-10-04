@@ -1,0 +1,67 @@
+.notification-launcher {
+  position: fixed;
+  left: 14px;
+  bottom: 14px;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 12px #0002;
+}
+.notification-launcher b,
+.notification-unread {
+  background: #bb2638;
+  color: white;
+  border-radius: 16px;
+  padding: 2px 7px;
+  font-size: 12px;
+}
+.workspace-modal.notification-modal {
+  z-index: 250;
+}
+.notification-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.notification-list {
+  list-style: none;
+  padding: 0;
+}
+.notification-list li {
+  border-top: 1px solid #8885;
+  padding: 16px 0;
+}
+.notification-list li > strong {
+  margin-right: 12px;
+}
+.notification-list li > p {
+  margin: 8px 0;
+  overflow-wrap: anywhere;
+}
+.notification-list time,
+.notification-list small {
+  display: block;
+  margin: 5px 0;
+}
+.notification-list time,
+.notification-list small,
+.notification-settings small {
+  color: var(--muted, #657181);
+  font-size: 13px;
+}
+.workspace-modal .notification-settings label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 10px 0;
+}
+.workspace-modal .notification-settings label input {
+  width: auto;
+  margin: 0;
+}
+.notification-settings small {
+  display: block;
+  margin-top: 8px;
+}

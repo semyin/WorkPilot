@@ -1,0 +1,86 @@
+{
+  "at": "2026-10-04T14:53:05.060Z",
+  "version": "0.1.0-alpha.13.4",
+  "build": {
+    "command": "npm run build (Tauri build --no-bundle)",
+    "appVersion": "0.1.0-alpha.13.4",
+    "at": "2026-10-04T13:49:31.822Z",
+    "platform": "win32",
+    "desktop": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+    "engine": "a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb",
+    "runtimeCheck": "2e3cd4003ff578501ad002064a0eba9851904cb18c6d57d87d84ee463e131d6e",
+    "browserSetup": "d80ecb907e00fa41d2955263c967fd187a2adf8ecceafd28fd2c7b2cf8a827e4",
+    "updateHelper": "428055af1c70059c425feb6f5bf7d96ac8560c4fe42955068b69a43db81fe2f6",
+    "companion": "ae72e607b2129086e2297e746bdeefda9dd4089f6ac52e44a5210db3eb82e232"
+  },
+  "checks": [
+    "every_preview_file_matches_manifest_and_no_unlisted_file_exists",
+    "installer_version_bytes_and_packaged_binary_identities_match",
+    "four_predecessor_manifests_and_desktop_engine_pairs_are_unchanged",
+    "compiled_product_sources_unchanged_after_frozen_build",
+    "exact_test_credential_absent_from_unignored_sources_and_evidence_including_gzip"
+  ],
+  "sourceSnapshotRefreshed": true,
+  "binaryInventory": {
+    "files": 25239,
+    "bytes": 2469117721,
+    "unexpectedFiles": 0
+  },
+  "installer": {
+    "file": "WorkPilot_0.1.0-alpha.13.4_x64-setup.exe",
+    "sha256": "3a87818d62a3e5925b77aaa5eef1992c3360b2f8e3a88df4ab1fb9a4ee99ff4e",
+    "bytes": 1096195874
+  },
+  "sealedPredecessors": [
+    {
+      "path": "artifacts/workpilot-p13-candidate-2026-10-04-r2/source-and-binary-manifest.json",
+      "sha256": "2a8ebec9131f02cec1c20b2fda96e54c8b6be60241bbf533cde51e17340ec839",
+      "version": "0.1.0-alpha.13.3"
+    },
+    {
+      "path": "artifacts/workpilot-p13-candidate-2026-10-04/source-and-binary-manifest.json",
+      "sha256": "64638912b5caa57e12d0cd1748bed2ca338fb11a92293ea65e2c9c55e2ef17df",
+      "version": "0.1.0-alpha.13.2"
+    },
+    {
+      "path": "artifacts/workpilot-p13-baseline-2026-10-04/source-and-binary-manifest.json",
+      "sha256": "6266272eb055fe7ce7e3a9686b9ee7684a90aceddcc59d3df1d26d352dab28f6",
+      "version": "0.1.0-alpha.13.1"
+    },
+    {
+      "path": "artifacts/workpilot-p12-complete-2026-10-04/source-and-binary-manifest.json",
+      "sha256": "9585125e11c46908a5e2000830bca6531682b920ac88a2e3364f1de025a126cf",
+      "version": "0.1.0-alpha.12.15"
+    }
+  ],
+  "postBuildDocumentationAndTestChanges": [
+    ".gitignore",
+    "README.md",
+    "docs/00-需求基线.md",
+    "docs/02-路线图与依赖.md",
+    "docs/04-验收与质量标准.md",
+    "docs/05-决策与待办.md",
+    "docs/README.md",
+    "docs/development/P13-用户体验清单.md",
+    "docs/development/P13-验收矩阵.md",
+    "docs/development/P13-验证记录.md",
+    "docs/plans/13-Windows首版验收.md",
+    "scripts/p13-delayed-exit-repro.mjs",
+    "scripts/p13-delayed-exit-support.mjs",
+    "scripts/p13-delayed-exit-watch.ps1",
+    "scripts/p13-delivery-audit.mjs",
+    "scripts/p13-long-history-benchmark.mjs",
+    "scripts/p13-multi-instance-exit-test.mjs",
+    "scripts/p13-real-mcp-support.mjs",
+    "scripts/p13-real-mcp-test.mjs",
+    "scripts/p13-soak-native.mjs",
+    "scripts/p13-soak-runner.mjs",
+    "scripts/p13-tool-stop-benchmark.mjs"
+  ],
+  "credentialScan": {
+    "performed": true,
+    "files": 2711,
+    "matches": 0
+  },
+  "status": "passed"
+}

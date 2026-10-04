@@ -1,0 +1,13 @@
+{
+  "status": "archive_extracted_verified",
+  "at": "2026-10-04T13:59:11.7254012+00:00",
+  "archive": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\WorkPilot-Acceptance-Kit-alpha.13.4.zip",
+  "sha256": "246fe1dad4a5eea77a274af9aaa04f8011664bc2ee0fad64fdf2c1f8f98c3abd",
+  "bytes": 34288,
+  "manifestFiles": 16,
+  "outside": "C:\\Users\\semyi\\AppData\\Local\\WorkPilotAcceptance-KitSelfTest-5cab98f742e6424d910cda46d339171f",
+  "toolkit": "C:\\Users\\semyi\\AppData\\Local\\WorkPilotAcceptance-KitSelfTest-5cab98f742e6424d910cda46d339171f\\toolkit",
+  "result": "C:\\Users\\semyi\\AppData\\Local\\WorkPilotAcceptance-KitSelfTest-5cab98f742e6424d910cda46d339171f\\results",
+  "installation": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview",
+  "kitManifestSha256": "a1ef569f3dfcbe593d3a50487f70aa8455744f19fc945b36d13a68bea41ac9ec"
+}

@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-04T13:20:41.677Z",
+  "version": "0.1.0-alpha.13.3",
+  "build": {
+    "command": "npm run build (Tauri build --no-bundle)",
+    "appVersion": "0.1.0-alpha.13.3",
+    "at": "2026-10-04T12:59:05.611Z",
+    "platform": "win32",
+    "desktop": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+    "engine": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+    "runtimeCheck": "09e4fa8c7bfcf5115363e1f7158675a5ff19a7c3b94f895181f430078af7194e",
+    "browserSetup": "8354be205da97eda2a0fe3d6277b1d7b007f3c6aa1f770782bd921a0acd243a5",
+    "updateHelper": "b0e2fbdf872cacc71eeec897de06dac14fd58b14fcdb65eb996f900b339b5ae0",
+    "companion": "4d3a1dd74b03aade866c9ac0c95bbf3b9dcf2e9f4ad1831c1335037c45abae56"
+  },
+  "checks": [
+    "every_preview_file_matches_manifest_and_no_unlisted_file_exists",
+    "installer_version_bytes_and_packaged_binary_identities_match",
+    "three_predecessor_manifests_and_desktop_engine_pairs_are_unchanged",
+    "compiled_product_sources_unchanged_after_frozen_build"
+  ],
+  "sourceSnapshotRefreshed": false,
+  "binaryInventory": {
+    "files": 25239,
+    "bytes": 2469120281,
+    "unexpectedFiles": 0
+  },
+  "installer": {
+    "file": "WorkPilot_0.1.0-alpha.13.3_x64-setup.exe",
+    "sha256": "3913494ec9786988999cec3ec86163315212fcadf3457393e1afc39e82b98205",
+    "bytes": 1096198153
+  },
+  "sealedPredecessors": [
+    {
+      "path": "artifacts/workpilot-p13-candidate-2026-10-04/source-and-binary-manifest.json",
+      "sha256": "64638912b5caa57e12d0cd1748bed2ca338fb11a92293ea65e2c9c55e2ef17df",
+      "version": "0.1.0-alpha.13.2"
+    },
+    {
+      "path": "artifacts/workpilot-p13-baseline-2026-10-04/source-and-binary-manifest.json",
+      "sha256": "6266272eb055fe7ce7e3a9686b9ee7684a90aceddcc59d3df1d26d352dab28f6",
+      "version": "0.1.0-alpha.13.1"
+    },
+    {
+      "path": "artifacts/workpilot-p12-complete-2026-10-04/source-and-binary-manifest.json",
+      "sha256": "9585125e11c46908a5e2000830bca6531682b920ac88a2e3364f1de025a126cf",
+      "version": "0.1.0-alpha.12.15"
+    }
+  ],
+  "postBuildDocumentationAndTestChanges": [
+    "README.md",
+    "docs/README.md",
+    "docs/development/P10-文件与图片设计.md",
+    "docs/plans/13-Windows首版验收.md",
+    "scripts/p13-acceptance-kit-build.mjs",
+    "scripts/p13-acceptance-kit-checks.mjs",
+    "scripts/p13-acceptance-kit-engine.mjs",
+    "scripts/p13-acceptance-kit-report.mjs",
+    "scripts/p13-acceptance-kit-runner.mjs",
+    "scripts/p13-acceptance-kit.ps1",
+    "scripts/p13-delivery-audit.mjs",
+    "scripts/p13-desktop-processes.ps1",
+    "scripts/p13-installation.ps1",
+    "scripts/p13-real-model-export-trace.mjs",
+    "scripts/p13-real-model-skills.mjs"
+  ],
+  "credentialScan": {
+    "performed": false,
+    "files": 0,
+    "matches": 0
+  },
+  "status": "passed"
+}

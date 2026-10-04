@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-04T13:11:33.074Z",
+  "status": "passed",
+  "actualModel": "qwen3.8-flash",
+  "protocol": "responses",
+  "fileCalls": [
+    {
+      "id": "399f589a-56e0-4315-8942-40f38bc78781",
+      "ordinal": 6,
+      "state": "failed",
+      "arguments": {
+        "expected_sha256": "",
+        "path": "answer.txt",
+        "text": "90"
+      },
+      "result": {
+        "call_id": "call_a63dd608412a45718fcff4b9",
+        "is_error": true,
+        "output": "{\"error\":\"expected_sha256 格式错误：新文件使用不带引号的 JSON null；已有文件使用 read_file 返回的完整 64 位十六进制摘要 / expected_sha256 must be JSON null (without quotes) for a new file, or the exact 64 hexadecimal characters returned by read_file. Strings such as \\\"null\\\" or \\\"None\\\" are invalid; no file was written.\",\"executed\":false}"
+      }
+    },
+    {
+      "id": "5d192577-d1f3-4a91-aec8-916964ce4c14",
+      "ordinal": 8,
+      "state": "completed",
+      "arguments": {
+        "expected_sha256": null,
+        "path": "answer.txt",
+        "text": "90"
+      },
+      "result": {
+        "call_id": "call_83c8fd7db1814d06be132923",
+        "is_error": false,
+        "output": "{\"path\":\"answer.txt\",\"version\":{\"bytes\":2,\"exists\":true,\"identity\":\"1246989071:131072:3229564\",\"sha256\":\"69f59c273b6e669ac32a6dd5e1b2cb63333d8b004f9696447aee2d422ce63763\"},\"version_saved\":true}"
+      }
+    }
+  ],
+  "midRunHumanInstructions": 0,
+  "automaticModelFallbacks": 0,
+  "note": "The parent and all three members still completed and were independently verified. The dependent Qwen member first returned malformed version data; the engine refused execution with the new explicit diagnostic. A later model-authored call used the valid value and completed. This is an observed response to a tool error within one run, not the harness retrying a failed model request or switching models."
+}

@@ -1,0 +1,47 @@
+{
+  "draft": false,
+  "expected_revision": null,
+  "id": "69e75fc5-0edd-43d4-85f8-86cd35ddf139",
+  "installed_id": null,
+  "scope": "1246989071:65536:3333369",
+  "source": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-real-mcp\\run-QIc2xy\\microsoft-learn-package",
+  "version": {
+    "created_at_ms": 1791122639406,
+    "digest": "b78418eb778db526dcbfe0e77ef15e386173b120fd314093dc0e77aaf68e1927",
+    "files": [
+      {
+        "bytes": 452,
+        "path": "workpilot-plugin.json",
+        "sha256": "2227be0ea429f7f3e8d81b1a94823b01ba5c3340e5d2e2bc9086f5ba3f3b1f43"
+      }
+    ],
+    "manifest": {
+      "dependencies": [],
+      "description": "Isolated acceptance of public Microsoft documentation",
+      "format": 1,
+      "id": "p13-microsoft-learn",
+      "name": "P13 Microsoft Learn public MCP",
+      "servers": [
+        {
+          "id": "microsoft-learn",
+          "name": "Microsoft Learn",
+          "transport": {
+            "auth": "none",
+            "kind": "http",
+            "url": "https://learn.microsoft.com/api/mcp"
+          }
+        }
+      ],
+      "skills": [],
+      "version": "1.0.0"
+    },
+    "permissions": [
+      "读取已启用技能的说明与包内资源 / Read enabled skill resources",
+      "连接远程工具服务 / Network: https://learn.microsoft.com/api/mcp"
+    ],
+    "skills": [],
+    "warnings": [
+      "安装不运行脚本、不自动下载依赖；MCP 描述与网页一样不能提升任务权限。"
+    ]
+  }
+}

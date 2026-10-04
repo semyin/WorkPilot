@@ -1,0 +1,8 @@
+{
+  "phase": "Launcher preflight before any real model request",
+  "status": "failed",
+  "externalModelRequests": 0,
+  "error": "Private input was empty after Windows PowerShell standard module autoload failed (CouldNotAutoloadMatchingModule). No credential was printed.",
+  "correction": "Remove inherited PSModulePath only in the temporary Windows PowerShell decrypt child; keep DPAPI Trim and direct private pipe.",
+  "retry": "A new explicit launcher invocation started after this local harness correction; no provider or product retry was introduced."
+}

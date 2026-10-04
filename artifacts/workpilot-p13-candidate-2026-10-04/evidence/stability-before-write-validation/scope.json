@@ -1,0 +1,12 @@
+{
+  "status": "paused_not_passed",
+  "reason": "Root requested normal pause after an independent real-model test found misleading malformed expected_sha256 validation. New engine binary must start a fresh continuous four-hour run. This span never counts toward the replacement run.",
+  "actualContinuousMs": 598848,
+  "completeCycles": 10,
+  "observedProcessesAllExited": 60,
+  "viewedImages": [
+    "office-0-docx.png",
+    "office-5-xlsx.png"
+  ],
+  "rawSource": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-final\\run-017Rec"
+}

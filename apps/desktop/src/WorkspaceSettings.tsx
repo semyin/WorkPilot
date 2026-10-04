@@ -14,6 +14,7 @@ import { UpdatePanel } from "./UpdatePanel";
 import { BrowserSetupPanel } from "./BrowserSetupPanel";
 import { FullMigrationPanel } from "./migration/FullMigrationPanel";
 import { ProjectTransferPanel } from "./ProjectTransferPanel";
+import { NotificationSettings } from "./notifications/NotificationSettings";
 const TaskArchivePanel = lazy(() =>
   import("./task-archive/TaskArchivePanel").then((module) => ({
     default: module.TaskArchivePanel,
@@ -185,12 +186,7 @@ export function WorkspaceSettings({
         </details>
         <details>
           <summary>{tr("通知", "Notifications")}</summary>
-          <p>
-            {tr(
-              "当前在软件内显示需要输入、审批和错误。系统通知暂未提供。",
-              "Input requests, approvals and errors are shown in the app. System notifications are not available yet.",
-            )}
-          </p>
+          <NotificationSettings />
         </details>
         <details>
           <summary>{tr("环境检查与诊断", "Environment and diagnostics")}</summary>

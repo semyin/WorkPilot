@@ -1,0 +1,15 @@
+node:internal/fs/promises:639
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open 'D:\workspace\kplocker\WorkPilot\.test-results\p13-installation\session-ec5c92a5296f4c29914e7dbdfe216574\?? ??\workpilot-desktop.exe'
+    at async open (node:internal/fs/promises:639:25)
+    at async readFile (node:internal/fs/promises:1252:14)
+    at async file:///D:/workspace/kplocker/WorkPilot/scripts/installation-desktop-smoke.mjs:27:13 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-ec5c92a5296f4c29914e7dbdfe216574\\?? ??\\workpilot-desktop.exe'
+}
+
+Node.js v22.23.2

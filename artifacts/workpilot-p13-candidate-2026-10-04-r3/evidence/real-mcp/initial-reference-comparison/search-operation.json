@@ -1,0 +1,24 @@
+{
+  "at_ms": 1791122641989,
+  "error": null,
+  "fingerprint": "6519a058c397ec960b9691c2ba9c935e6e445db01400332ac79365e99025a8b8",
+  "id": "1ff98797-89e8-444e-96d7-e4f01d0a5c95",
+  "input": {
+    "bytes": 2859,
+    "media_type": "application/json",
+    "object_id": "7883ecc7b7f82fb8583b13801d1e24e56866f67ddf9a439e5e69a8d0fe834ef6"
+  },
+  "kind": "extension",
+  "output": {
+    "bytes": 53607,
+    "media_type": "text/plain; charset=utf-8",
+    "object_id": "9d8849c6aac67843e15ee004351ef5cfba03bf1ba36bfcef277be49eab7ab6dd"
+  },
+  "pid": null,
+  "preview_port": null,
+  "state": "completed",
+  "stderr": null,
+  "stdout": null,
+  "summary": "扩展操作 / Extension · microsoft-learn / microsoft_docs_search",
+  "task_id": "d7a29353-ae92-4106-95fb-2de671bfde1d"
+}

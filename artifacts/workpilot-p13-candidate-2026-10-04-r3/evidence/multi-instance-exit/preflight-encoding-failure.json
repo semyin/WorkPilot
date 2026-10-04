@@ -1,0 +1,7 @@
+{
+  "at": "2026-10-04T14:19:26.3548636Z",
+  "status": "failed_preflight",
+  "scope": "No desktop or engine process was launched",
+  "reason": "PowerShell inline registry query emitted the Chinese installation path using the legacy console encoding. The test resolved question-mark bytes and failed ENOENT before launch.",
+  "correction": "The inline read-only query now explicitly emits UTF-8, as the existing identity scripts already do."
+}

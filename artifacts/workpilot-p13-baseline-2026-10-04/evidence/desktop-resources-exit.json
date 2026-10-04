@@ -1,0 +1,127 @@
+{
+  "at": "2026-10-04T10:47:36.805Z",
+  "desktopSha256": "15d6774f56d3719517e5fae676b773923c1b5c21477cfb6a41d945d6af0a7fd3",
+  "engineSha256": "30402ca80845394178da104ef683ee47cab735bd12d85790a4d6c914826a38f7",
+  "identities": [
+    {
+      "pid": 36520,
+      "parentPid": 22376,
+      "startedAtMs": 1791110857915,
+      "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+      "role": "ui-webview",
+      "uiProfileVerified": true
+    },
+    {
+      "pid": 7440,
+      "parentPid": 33928,
+      "startedAtMs": 1791110857714,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "desktop",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 9860,
+      "parentPid": 22376,
+      "startedAtMs": 1791110858030,
+      "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+      "role": "ui-webview",
+      "uiProfileVerified": true
+    },
+    {
+      "pid": 20188,
+      "parentPid": 22376,
+      "startedAtMs": 1791110857815,
+      "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+      "role": "ui-webview",
+      "uiProfileVerified": true
+    },
+    {
+      "pid": 15556,
+      "parentPid": 20656,
+      "startedAtMs": 1791110857736,
+      "path": "C:\\Windows\\system32\\conhost.exe",
+      "role": "other-owned",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 36860,
+      "parentPid": 22376,
+      "startedAtMs": 1791110857940,
+      "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+      "role": "ui-webview",
+      "uiProfileVerified": true
+    },
+    {
+      "pid": 22376,
+      "parentPid": 7440,
+      "startedAtMs": 1791110857795,
+      "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+      "role": "ui-webview",
+      "uiProfileVerified": true
+    },
+    {
+      "pid": 20656,
+      "parentPid": 7440,
+      "startedAtMs": 1791110857728,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-baseline-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "engine",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 25024,
+      "parentPid": 22376,
+      "startedAtMs": 1791110857911,
+      "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+      "role": "ui-webview",
+      "uiProfileVerified": true
+    }
+  ],
+  "normalExitVerification": [
+    {
+      "pid": 36520,
+      "startedAtMs": 1791110857915,
+      "status": "exited"
+    },
+    {
+      "pid": 7440,
+      "startedAtMs": 1791110857714,
+      "status": "exited"
+    },
+    {
+      "pid": 9860,
+      "startedAtMs": 1791110858030,
+      "status": "exited"
+    },
+    {
+      "pid": 20188,
+      "startedAtMs": 1791110857815,
+      "status": "exited"
+    },
+    {
+      "pid": 15556,
+      "startedAtMs": 1791110857736,
+      "status": "exited"
+    },
+    {
+      "pid": 36860,
+      "startedAtMs": 1791110857940,
+      "status": "exited"
+    },
+    {
+      "pid": 22376,
+      "startedAtMs": 1791110857795,
+      "status": "exited"
+    },
+    {
+      "pid": 20656,
+      "startedAtMs": 1791110857728,
+      "status": "exited"
+    },
+    {
+      "pid": 25024,
+      "startedAtMs": 1791110857911,
+      "status": "exited"
+    }
+  ],
+  "scope": "Normal application exit; exact PID/start-time/path verification. All nine observed processes exited. No process-name based termination or unrelated process changes."
+}

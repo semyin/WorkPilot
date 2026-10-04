@@ -1,0 +1,13 @@
+{
+  "status": "manual_user_exit_confirmed",
+  "recordedAt": "2026-10-04T14:49:49.078Z",
+  "userStatement": "我手动退出或结束了它",
+  "source": "Explicit user reply relayed by the root task",
+  "confirmedIncidentLocalTime": "2026-10-04 22:43 Asia/Shanghai",
+  "confirmedIncidentUtc": "2026-10-04 14:43 UTC",
+  "scope": "Only the two newly created observer instances in initial-observation, which exited at 14:43:01.468Z and 14:43:02.805Z",
+  "doesNotConfirm": "The earlier 2026-10-04 22:12 Asia/Shanghai (14:12:55Z) incident remains outside this confirmation",
+  "rawReportPreserved": "initial-observation/report.json",
+  "originalSmokeStatus": "Not started: test-driver console path encoding caused ENOENT before installed desktop launch",
+  "followup": "No further test, installation or NSIS investigation after the user confirmation. Four-hour testing cancelled by user."
+}

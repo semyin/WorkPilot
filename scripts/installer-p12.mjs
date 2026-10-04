@@ -3,7 +3,22 @@ import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { join } from "node:path";
 import { root, run } from "./cargo.mjs";
-const destination = join(root, "artifacts/workpilot-p12-complete-2026-10-04");
+import { deliveryFor } from "./delivery-phase.mjs";
+const version = JSON.parse(await readFile(join(root, "package.json"), "utf8")).version;
+const args = process.argv.slice(2);
+const delivery = deliveryFor(root, args, version);
+const { destination } = delivery;
+const manifest = JSON.parse(
+  await readFile(join(destination, "source-and-binary-manifest.json"), "utf8"),
+);
+const build = JSON.parse(await readFile(join(root, ".local/desktop-release-receipt.json"), "utf8"));
+if (
+  manifest.versions.app !== version ||
+  build.appVersion !== version ||
+  manifest.build.desktop !== build.desktop ||
+  manifest.build.engine !== build.engine
+)
+  throw new Error("Build and package this exact version before bundling its installer");
 const started = Date.now();
 await run(
   process.execPath,
@@ -13,14 +28,13 @@ await run(
     "--bundles",
     "nsis",
     "--config",
-    join(root, ".local/p12-bundle.json"),
+    delivery.config,
     "--ci",
     "--no-sign",
     "--no-binary-patching",
   ],
   { cwd: join(root, "apps/desktop") },
 );
-const version = JSON.parse(await readFile(join(root, "package.json"), "utf8")).version;
 const folder = join(root, "target/release/bundle/nsis");
 const names = (await readdir(folder)).filter(
   (f) => f.startsWith("WorkPilot_" + version + "_") && f.endsWith("-setup.exe"),
@@ -53,11 +67,16 @@ await writeFile(
     {
       at: new Date().toISOString(),
       version,
+      packagedBuild: {
+        desktopSha256: build.desktop,
+        engineSha256: build.engine,
+        updaterSha256: build.updateHelper,
+      },
       platform: "windows-x86_64",
       file: names[0],
       bytes: (await stat(path)).size,
       sha256: createHash("sha256").update(bytes).digest("hex"),
-      command: "npm run bundle:installer",
+      command: "node scripts/installer-p12.mjs" + (args.length ? " " + args[0] : ""),
       signed: false,
       elapsedSeconds: (Date.now() - started) / 1000,
       compression: nsis.match(/^SetCompressor "(\w+)"/m)?.[1] || "unknown",

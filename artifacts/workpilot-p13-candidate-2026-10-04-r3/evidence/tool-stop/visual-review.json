@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-04T14:34:24.814Z",
+  "viewed": [
+    "browser-0.png",
+    "office-0-docx.png",
+    "office-1-xlsx.png",
+    "office-2-pptx.png",
+    "browser-19.png",
+    "office-17-pptx.png",
+    "office-18-docx.png",
+    "office-19-xlsx.png"
+  ],
+  "result": "All eight screenshots opened and viewed. Browser greeting and three actual Office formats show the matching synthetic marker. Office pages are original-format previews, not rebuilt substitutes; spreadsheet rows paginate according to content width."
+}

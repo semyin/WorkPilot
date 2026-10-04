@@ -1,6 +1,6 @@
 {
   "name": "workpilot",
-  "version": "0.1.0-alpha.12.15",
+  "version": "0.1.0-alpha.13.4",
   "private": true,
   "type": "module",
   "engines": {
@@ -96,7 +96,13 @@
     "test:task-history-restore-desktop": "node scripts/task-history-restore-desktop.mjs",
     "test:migration": "node scripts/migration-test.mjs",
     "test:migration-cleanup": "node scripts/migration-cleanup-test.mjs",
-    "test:migration-desktop": "node scripts/migration-desktop.mjs"
+    "test:migration-desktop": "node scripts/migration-desktop.mjs",
+    "package:p13": "node scripts/package-p12.mjs --p13-r3",
+    "bundle:p13": "node scripts/installer-p12.mjs --p13-r3",
+    "test:p13-images": "node scripts/p13-image-adapter-test.mjs",
+    "test:p13-desktop": "node scripts/p13-desktop-benchmark.mjs",
+    "test:p13-engine": "node scripts/p13-engine-benchmark.mjs",
+    "test:p13-resources": "node scripts/p13-desktop-resources.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",

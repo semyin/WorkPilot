@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-04T13:10:48.106Z",
+  "platform": "win32",
+  "binarySha256": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+  "boundary": "Real native desktop, isolated install/data, genuine signed future-version package deliberately incompatible with actual engine; shutdown targets only the spawned test child, not user app processes",
+  "checks": [
+    "native_signed_preview_full_prepare_requires_separate_explicit_confirmation",
+    "confirmed_update_stops_real_active_task_and_failed_migration_restores_original_install_data_without_auto_resume",
+    "english_update_controls_recovery_result_and_no_horizontal_overflow",
+    "explicit_backup_cleanup_stops_engine_removes_only_old_copies_pauses_polling_offers_restart_and_current_task_data_still_opens_without_auto_resume"
+  ],
+  "state": "passed"
+}

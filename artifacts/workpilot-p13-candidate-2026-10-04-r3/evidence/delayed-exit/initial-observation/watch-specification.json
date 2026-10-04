@@ -1,0 +1,48 @@
+{
+  "phase": "normal-observer-cleanup",
+  "requireObserversAlive": false,
+  "observers": [
+    {
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "uiProfileVerified": false,
+      "label": "p12-observer"
+    },
+    {
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "uiProfileVerified": false,
+      "label": "p12-observer"
+    },
+    {
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "uiProfileVerified": false,
+      "label": "r3-observer"
+    },
+    {
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "uiProfileVerified": false,
+      "label": "r3-observer"
+    }
+  ],
+  "smokeRunner": {
+    "pid": 17596,
+    "path": "D:\\nodejs\\node.exe",
+    "startedAtMs": 1791124908570
+  },
+  "installedDesktop": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-ec5c92a5296f4c29914e7dbdfe216574\\?? ??\\workpilot-desktop.exe"
+}

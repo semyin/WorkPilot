@@ -296,6 +296,13 @@ pub fn prepare(
                 ));
             }
             let a: WriteArg = decode(&call.arguments)?;
+            if a.expected_sha256.as_ref().is_some_and(|hash| {
+                hash.len() != 64 || !hash.bytes().all(|byte| byte.is_ascii_hexdigit())
+            }) {
+                return Err(Error::Rejected(
+                    "expected_sha256 格式错误：新文件使用不带引号的 JSON null；已有文件使用 read_file 返回的完整 64 位十六进制摘要 / expected_sha256 must be JSON null (without quotes) for a new file, or the exact 64 hexadecimal characters returned by read_file. Strings such as \"null\" or \"None\" are invalid; no file was written.",
+                ));
+            }
             if a.text.len() > 65536 {
                 return Err(Error::Rejected("write argument exceeds 64 KiB"));
             }
@@ -461,3 +468,7 @@ pub fn prepare(
         intent,
     })
 }
+
+#[cfg(test)]
+#[path = "registry_tests.rs"]
+mod tests;

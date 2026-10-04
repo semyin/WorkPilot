@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-04T12:39:37.780Z",
+  "reviewed": true,
+  "method": "Each of the three final native screenshots was opened using view_image and visually checked.",
+  "checks": [
+    "Chinese stopped header and selected sidebar show Interrupted; independent task remains Running.",
+    "English model-error message and failed sidebar match; prior completion remains Completed.",
+    "Interrupted team header, sidebar and member card agree. The script also verified retained Failed state on the failed member and navigation back from child."
+  ],
+  "boundaries": [
+    "Synthetic local model and controlled IPC delays; not real model quality or human user acceptance.",
+    "English interface native file picker follows the Windows OS language."
+  ],
+  "screenshots": [
+    "stop-and-sidebar-zh.png",
+    "failed-and-sidebar-en.png",
+    "team-stopped-en.png"
+  ]
+}

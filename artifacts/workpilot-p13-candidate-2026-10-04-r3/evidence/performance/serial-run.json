@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-04T14:34:42.4376198Z",
+  "run": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-short-r3-final\\run-04e160ce82d549d0b40bf612294fb8cb",
+  "status": "finished",
+  "steps": [
+    {
+      "name": "desktop",
+      "output": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-short-r3-final\\run-04e160ce82d549d0b40bf612294fb8cb\\desktop",
+      "started": "2026-10-04T14:34:42.4874228Z",
+      "finished": "2026-10-04T14:35:24.5063880Z",
+      "exitCode": 0,
+      "script": "scripts/p13-desktop-benchmark.mjs"
+    },
+    {
+      "name": "visible-event",
+      "output": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-short-r3-final\\run-04e160ce82d549d0b40bf612294fb8cb\\visible-event",
+      "started": "2026-10-04T14:35:24.5224275Z",
+      "finished": "2026-10-04T14:35:47.7871401Z",
+      "exitCode": 0,
+      "script": "scripts/p13-visible-event-benchmark.mjs"
+    },
+    {
+      "name": "engine",
+      "output": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-short-r3-final\\run-04e160ce82d549d0b40bf612294fb8cb\\engine",
+      "started": "2026-10-04T14:35:47.7930240Z",
+      "finished": "2026-10-04T14:37:33.3088518Z",
+      "exitCode": 0,
+      "script": "scripts/p13-engine-benchmark.mjs"
+    },
+    {
+      "name": "desktop-resources",
+      "output": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-short-r3-final\\run-04e160ce82d549d0b40bf612294fb8cb\\desktop-resources",
+      "started": "2026-10-04T14:37:33.3110323Z",
+      "finished": "2026-10-04T14:38:03.9313516Z",
+      "exitCode": 0,
+      "script": "scripts/p13-desktop-resources.mjs"
+    }
+  ]
+}

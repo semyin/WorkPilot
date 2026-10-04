@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-04T12:05:31.411Z",
+  "directory": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-real-images\\session-cnO5B6",
+  "synthetic": false,
+  "service": "User-provided Alibaba Cloud workspace",
+  "origin": "https://ws-ky8utskqnjn8b091.cn-beijing.maas.aliyuncs.com",
+  "protocol": "aliyun_images",
+  "model": "qwen-image-3.0",
+  "binarySha256": "6b8e19ef43fcc0a9c9fcce28229ff955a554c23e3954c05878195482b4f2f740",
+  "images": [
+    {
+      "name": "blue-cup.png",
+      "file": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-real-images\\session-cnO5B6\\project\\blue-cup.png",
+      "sha256": "3783878f99cbf1cdf7025051f8482aebabf76aa64cf42be4c1cab3b4ffa8d55e",
+      "bytes": 751100,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "elapsedMs": 42904,
+      "operationId": "6e896328-d19c-494a-be67-8c3d7b6345a3",
+      "assetId": "461b3044-59cb-4230-9a6a-a9c4826c4ba4",
+      "referenceAssetIds": [],
+      "prompt": "一张清晰的简洁产品照片：一只纯蓝色陶瓷马克杯，杯把在右侧，放在浅木色桌面上，背景纯白，柔和自然光。只有一只杯子，没有文字、人物或商标，正方形构图。"
+    },
+    {
+      "name": "green-cup.png",
+      "file": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-real-images\\session-cnO5B6\\project\\green-cup.png",
+      "sha256": "bc99cbc9eaa8972efe9e8ba1c78056675cea987801528703f63026c4d61a3b79",
+      "bytes": 765738,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "elapsedMs": 30933,
+      "operationId": "6f7f44cf-6cda-4efd-8a46-68f716dbf9a5",
+      "assetId": "ed93ecb3-ff22-49ec-8fbc-5cbf3078be0f",
+      "referenceAssetIds": [
+        "461b3044-59cb-4230-9a6a-a9c4826c4ba4"
+      ],
+      "prompt": "编辑参考图：仅把蓝色马克杯的杯身和把手改为鲜明的绿色，保持杯子形状、右侧把手、位置、浅木色桌面、白色背景和光照不变，不增加文字或其它物体。"
+    }
+  ],
+  "checks": [
+    "real_generation_after_approval_produces_decodable_1024px_png_asset",
+    "real_reference_edit_new_file_preserves_original_and_has_distinct_bytes"
+  ],
+  "taskId": "97fd31bb-2d06-4167-a01e-4eb2a5afef30",
+  "visualReview": "Pending separate human/agent image inspection; file checks alone do not prove prompt quality",
+  "status": "passed_file_checks",
+  "credentialRemoved": true,
+  "finishedAt": "2026-10-04T12:06:49.191Z"
+}

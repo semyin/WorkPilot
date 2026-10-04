@@ -1,0 +1,7 @@
+{"scenario":"tasks-1","waves":31,"elapsedMs":10210,"controlP95Ms":6.727,"peak":1}
+{"scenario":"tasks-4","waves":25,"elapsedMs":10408,"controlP95Ms":31.141,"peak":4}
+{"scenario":"tasks-8","waves":19,"elapsedMs":10160,"controlP95Ms":90.508,"peak":8}
+{"scenario":"assistants-1","waves":14,"elapsedMs":10759,"controlP95Ms":7.398,"peak":1}
+{"scenario":"assistants-3","waves":10,"elapsedMs":11023,"controlP95Ms":14.114,"peak":3}
+{"scenario":"assistants-8","waves":5,"elapsedMs":10512,"controlP95Ms":16.965,"peak":8}
+{"status":"passed","elapsedMs":104704,"report":"D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-short-r3-final\\run-04e160ce82d549d0b40bf612294fb8cb\\engine\\run-4QYRiy\\report.json"}

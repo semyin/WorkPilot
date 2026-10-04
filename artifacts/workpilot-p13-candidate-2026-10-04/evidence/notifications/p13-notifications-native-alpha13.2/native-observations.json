@@ -1,0 +1,44 @@
+{
+  "at": "2026-10-04T12:54:56.1239194Z",
+  "binary": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-7007ad4480ad4f9ba2bde12b60f545dc\\ä¸­æ–‡ å®‰è£…\\workpilot-desktop.exe",
+  "binarySha256": "e75ccf1f67206fe965997cf56facdb3572fb1943f085d38c27d366eda2c0adee",
+  "processId": 43160,
+  "status": "partial",
+  "scope": "Only the separately installed test process and synthetic local tasks were operated",
+  "automatedReport": "../p13-notifications-installed-alpha13.2/report.json",
+  "observations": [
+    {
+      "name": "Installed binary automated acceptance",
+      "status": "passed",
+      "checks": 6
+    },
+    {
+      "name": "Computer Use visible app and hide-window button",
+      "status": "passed",
+      "notes": "Selected exact own installed window; hide action succeeded after re-observing geometry"
+    },
+    {
+      "name": "Background delivery for completion, error, input and approval",
+      "status": "passed",
+      "checks": 4,
+      "notes": "Windows API returned submitted; this proves accepted submission only"
+    },
+    {
+      "name": "System toast display, tray red dot and actual OS click-to-task",
+      "status": "not_verified",
+      "notes": "Computer Use listed no targetable notification, notification-center or taskbar surface. No actual native click was performed. No OS settings were changed. Submitted does not prove visible delivery."
+    },
+    {
+      "name": "Independent native fixture shutdown",
+      "status": "stopped",
+      "notes": "Normal own-process exit, fixture modelCalls=5. No task approval or resume operation."
+    }
+  ],
+  "screenshotsReviewed": [
+    "../p13-notifications-installed-alpha13.2/notifications-inbox-zh.png",
+    "../p13-notifications-installed-alpha13.2/notification-settings-zh.png",
+    "../p13-notifications-installed-alpha13.2/notifications-inbox-en.png",
+    "../p13-notifications-installed-alpha13.2/notification-settings-en.png"
+  ],
+  "systemSettingFollowup": "../p13-notifications-native-alpha13.2-user/native-observations.json"
+}

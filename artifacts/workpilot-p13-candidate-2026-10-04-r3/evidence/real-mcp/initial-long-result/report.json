@@ -1,0 +1,137 @@
+{
+  "at": "2026-10-04T14:01:47.405Z",
+  "version": "0.1.0-alpha.13.4",
+  "binary": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+  "binarySha256": "a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb",
+  "directory": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-real-mcp\\run-x72hI6",
+  "model": "Fixed local Responses model; not a real LLM and no paid model calls",
+  "service": "Real public Microsoft Learn MCP over certificate-validated HTTPS, no authentication",
+  "endpoint": "https://learn.microsoft.com/api/mcp",
+  "topic": "Windows App SDK app notifications registration and activation",
+  "sources": [
+    "https://learn.microsoft.com/en-us/training/support/mcp-developer-reference",
+    "https://learn.microsoft.com/en-us/training/support/mcp"
+  ],
+  "checks": [
+    {
+      "name": "local_preview_and_explicit_enable_without_remote_connection",
+      "status": "passed"
+    },
+    {
+      "name": "first_approval_opens_real_tls_initializes_and_discovers_current_tools",
+      "status": "passed"
+    },
+    {
+      "name": "actual_schema_becomes_dynamic_model_tool_and_query_waits_for_separate_approval",
+      "status": "passed"
+    }
+  ],
+  "approvals": [
+    {
+      "actor": "independent test driver, not the model",
+      "kind": "discover",
+      "operationId": "fd00b442-686f-4263-acc5-e4338821af7b",
+      "fingerprint": "2e9d4be71480b8dd7e43e876eaa35a1abdca334446f8f2e7a10c99ecdbff0112",
+      "at": "2026-10-04T14:01:48.512Z",
+      "connectionsBefore": 0,
+      "finishedAt": "2026-10-04T14:01:49.843Z",
+      "state": "completed",
+      "connectionsAfter": 1
+    },
+    {
+      "actor": "independent test driver, not the model",
+      "kind": "search",
+      "operationId": "c87acc17-9ee8-4209-8395-e1d0edf495e8",
+      "fingerprint": "b274375bd90e98660c72937bf3d9ab801ba280fa5f6e78f8316a45ef2cec515a",
+      "at": "2026-10-04T14:01:50.711Z",
+      "connectionsBefore": 1,
+      "finishedAt": "2026-10-04T14:01:52.887Z",
+      "state": "completed",
+      "connectionsAfter": 2
+    }
+  ],
+  "managementActions": [
+    {
+      "kind": "confirm_plugin",
+      "actor": "independent test driver",
+      "at": "2026-10-04T14:01:47.558Z",
+      "draftId": "d17f0f3e-3ecf-45c7-962c-3566a2d1cd4f",
+      "digest": "b78418eb778db526dcbfe0e77ef15e386173b120fd314093dc0e77aaf68e1927",
+      "installationId": "e3a37a2c-2dea-47b9-b683-af2fffaae964",
+      "enabled": true
+    }
+  ],
+  "limitations": [
+    "One public stateless Streamable HTTP service only; no OAuth or commercial-server acceptance claim",
+    "Fixed model drives actual WorkPilot extension tools; this is not real-model reasoning or human UX acceptance",
+    "A private CONNECT counting tunnel passes TLS bytes unchanged; it does not inspect or rewrite MCP messages",
+    "The test runs alongside a separate stability run and is not a formal performance measurement",
+    "Remote failures are recorded without automatic tool retries or schema guessing"
+  ],
+  "enginePid": 43780,
+  "taskId": "8e8c275e-61e5-452b-b9c6-cec720423011",
+  "negotiatedProtocol": "2025-06-18",
+  "serverInfo": {
+    "name": "Microsoft Learn MCP Server",
+    "version": "1.0.0"
+  },
+  "toolNames": [
+    "microsoft_docs_search",
+    "microsoft_code_sample_search",
+    "microsoft_docs_fetch"
+  ],
+  "result": {
+    "protocolVersion": "2025-06-18",
+    "contentBlocks": [
+      {
+        "type": "text",
+        "bytes": 27443,
+        "sha256": "99fdcd4ec71f791c91a98c1b3093deec82c58778c7b5196976da4707ea3679ee"
+      }
+    ],
+    "textCharacters": 26784,
+    "textSha256": "298e4cbc06d128981150451a39ce08b9341124a7559de9cf3b19fce462891f04",
+    "citationUrls": [
+      "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.windows.appnotifications.appnotificationmanager.notificationinvoked",
+      "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.windows.appnotifications.appnotificationmanager.register",
+      "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.windows.applifecycle.appinstance.getactivatedeventargs",
+      "https://learn.microsoft.com/windows/apps/develop/notifications/app-notifications/app-notifications-quickstart#handle-activation-from-an-app-notification",
+      "https://learn.microsoft.com/windows/apps/develop/notifications/app-notifications/images/toast-notification.png",
+      "https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/",
+      "https://learn.microsoft.com/windows/apps/develop/notifications/app-notifications/",
+      "https://learn.microsoft.com/windows/apps/develop/notifications/push-notifications/",
+      "https://learn.microsoft.com/windows/apps/develop/notifications/app-notifications/app-notifications-console",
+      "https://learn.microsoft.com/en-us/uwp/schemas/appxpackage/appx-package-manifest",
+      "https://learn.microsoft.com/windows/apps/develop/notifications/app-notifications/app-notifications-quickstart#update-the-app-package-manifest-file",
+      "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.windows.pushnotifications.pushnotificationmanager.register",
+      "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.windows.pushnotifications.pushnotificationmanager.pushreceived",
+      "https://learn.microsoft.com/windows/apps/develop/notifications/push-notifications/push-quickstart#configure-your-app-to-receive-push-notifications",
+      "https://learn.microsoft.com/en-us/entra/identity-platform/single-multi-account#who-can-sign-in-to-your-app",
+      "https://learn.microsoft.com/windows/apps/develop/notifications/push-notifications/images/push-notification-aad-app-registration-app-id.png",
+      "https://learn.microsoft.com/windows/apps/develop/notifications/push-notifications/images/push-notification-essentials-ui.png",
+      "https://learn.microsoft.com/windows/apps/develop/notifications/push-notifications/images/push-notification-object-id-field.png",
+      "https://learn.microsoft.com/windows/apps/develop/notifications/push-notifications/images/push-notification-aad-app-registration-secret.png",
+      "https://learn.microsoft.com/windows/apps/develop/notifications/push-notifications/push-quickstart#configure-your-app",
+      "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.windows.appnotifications.builder.appnotificationbuilder",
+      "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.windows.appnotifications.appnotificationmanager.show",
+      "https://learn.microsoft.com/windows/apps/develop/notifications/app-notifications/app-notifications-content",
+      "https://learn.microsoft.com/windows/apps/develop/notifications/app-notifications/app-notifications-dotnet#register-for-app-notifications",
+      "https://learn.microsoft.com/en-us/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification#create-an-app-in-windows-store",
+      "https://learn.microsoft.com/windows/apps/develop/notifications/push-notifications/push-quickstart#configure-your-apps-identity-in-microsoft-entra-id",
+      "https://learn.microsoft.com/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/guides/notifications#identity-setup",
+      "https://learn.microsoft.com/windows/apps/desktop/modernize/winrt-apis-desktop-apps",
+      "https://learn.microsoft.com/windows/apps/windows-app-sdk/use-windows-app-sdk-in-existing-project",
+      "https://learn.microsoft.com/windows/apps/develop/notifications/app-notifications/app-notifications-dotnet#packaged-app-setup",
+      "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.windows.appnotifications.appnotificationmanager",
+      "https://learn.microsoft.com/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/guides/toast-notifications#migration-for-c-apps"
+    ],
+    "rawResultBytes": 52795,
+    "rawResultSha256": "b1fc6bb1b1ed4a0445b5be787beb5786171cfc4834a85c560c5c748a004adf63",
+    "scope": "Public document search excerpts received; body remains in the isolated task history. No article body is copied into this summary."
+  },
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: {\"run\":{\"id\":\"dbf267e1-7f56-4302-a5a2-523059c9bc59\",\"task_id\":\"8e8c275e-61e5-452b-b9c6-cec720423011\",\"agent_id\":\"50017e1f-39fe-4e53-a706-01f2350602a4\",\"state\":\"failed\",\"started_at_ms\":1791122512928,\"ended_at_ms\":1791122512976,\"result\":{\"object_id\":\"b120bd58eb7660d991bf979f2e2cfe0b42064beab5df9aa7033177b675bd658f\",\"bytes\":116,\"media_type\":\"application/json\"},\"failure_code\":\"execution_error\"},\"session_id\":\"33e5f502-226e-4779-94b8-8e7a29d7ed3c\",\"request_id\":\"ccc640f8-5302-411d-a09a-ff1bcdc7f443\",\"predecessor_id\":\"fdd23667-831a-49f7-b812-a2a75c73b1ac\",\"profile\":{\"id\":\"b862fb4a-0434-4453-8013-d2f84bdd7acf\",\"label\":\"p13-real-microsoft-learn\",\"protocol\":\"responses\",\"base_url\":\"http://127.0.0.1:52371\",\"model\":\"p13-real-microsoft-learn\",\"credential\":null,\"supports_tools\":true,\"supports_images\":null,\"revision\":1,\"auth\":\"none\",\"capabilities\":{\"text\":{\"supported\":null,\"source\":\"unknown\",\"checked_at_ms\":null},\"streaming\":{\"supported\":null,\"source\":\"unknown\",\"checked_at_ms\":null},\"tools\":{\"supported\":true,\"source\":\"user\",\"checked_at_ms\":null},\"images\":{\"supported\":null,\"source\":\"unknown\",\"checked_at_ms\":null},\"usage\":{\"supported\":null,\"source\":\"unknown\",\"checked_at_ms\":null}},\"options\":{\"max_output_tokens\":1024,\"temperature\":null,\"reasoning_effort\":null,\"chat_token_parameter\":\"max_completion_tokens\",\"timeout_ms\":20000,\"idle_timeout_ms\":10000,\"anthropic_version\":\"2023-06-01\"},\"pricing\":null},\"mode\":\"execute\",\"limits\":{\"max_steps\":8,\"max_duration_ms\":180000,\"context_bytes\":131072,\"max_result_bytes\":65536},\"steps\":1,\"reason\":\"execution_error\",\"diagnostic\":{\"code\":\"network\",\"message_zh\":\"无法连接模型服务，或连接中途断开。\",\"message_en\":\"The model service could not be reached or the connection broke.\",\"detail\":null,\"http_status\":null,\"provider_request_id\":null,\"retryable\":false}}\n+ actual - expected\n\n+ 'failed'\n- 'completed'\n\n    at file:///D:/workspace/kplocker/WorkPilot/scripts/p13-real-mcp-test.mjs:298:10\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+  "finishedAt": "2026-10-04T14:01:53.013Z",
+  "credentials": "No credentials created, read, configured or sent",
+  "engineExitCode": 0
+}

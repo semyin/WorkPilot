@@ -1,0 +1,97 @@
+[
+  {
+    "file": "original.json",
+    "sha256": "164d5bd9d186f07a71be6575848a70d5048eae5c74bac23dccca625837340ab6",
+    "bytes": 123536
+  },
+  {
+    "file": "original-task-traces.json.gz",
+    "sha256": "3da5025227f9b15e56ded326d98796275278976ea4f8a6ec308f999a4ad2e394",
+    "bytes": 859894
+  },
+  {
+    "file": "original-events.json.gz",
+    "sha256": "eb5b38abcbe5e9e19931244e14e598d171707baffdcdec89cb627ab6a502b642",
+    "bytes": 1162150
+  },
+  {
+    "file": "team-config-preflight.json",
+    "sha256": "3f474f685226efb8a02bacc2b315abf996bf4a4c86850cef263e687f459b24b9",
+    "bytes": 5704
+  },
+  {
+    "file": "team-config-preflight-task-traces.json.gz",
+    "sha256": "ec97834adc70d69f4f011077ae47f7659c6e70b26fcd70ca1eebe629037c6671",
+    "bytes": 1222
+  },
+  {
+    "file": "team-config-preflight-events.json.gz",
+    "sha256": "309d1511e2c8ce91cd4529d6c9e00f600a5ad2955a155a622724aa42b375b1a1",
+    "bytes": 3267
+  },
+  {
+    "file": "team-three-clarified.json",
+    "sha256": "8f87f84bc4f114fd209b1007eeed4404eceea381679233e1a38710676b22d0c2",
+    "bytes": 65593
+  },
+  {
+    "file": "team-three-clarified-task-traces.json.gz",
+    "sha256": "42f48ce62171eb5df1ed1131ab68501823f1affb8725d1df986eec9d40b1ac07",
+    "bytes": 338010
+  },
+  {
+    "file": "team-three-clarified-events.json.gz",
+    "sha256": "5936f82c29ca443fbc893b87a2c5f73a2b0afe876272dd475a0445038504090e",
+    "bytes": 348049
+  },
+  {
+    "file": "team-two-families.json",
+    "sha256": "365a2607fa76a6885b63ef45b049545ecdb957d8548691ba713c41cef3cd9d5f",
+    "bytes": 66727
+  },
+  {
+    "file": "team-two-families-task-traces.json.gz",
+    "sha256": "4dc6fe67f795b007e4cd08861f7fcd7468b08a0138cf2713d4092497ebc56093",
+    "bytes": 262868
+  },
+  {
+    "file": "team-two-families-events.json.gz",
+    "sha256": "42da67df24aa5ba2bfbce82f9268aa7244c26de278193a08a438564b3b6d7b86",
+    "bytes": 97937
+  },
+  {
+    "file": "team-three-existing.json",
+    "sha256": "466963877c31ea7136abdebafa91d38800ee6256faca366d6d4ab9a518c9b7f6",
+    "bytes": 79716
+  },
+  {
+    "file": "team-three-existing-task-traces.json.gz",
+    "sha256": "253ca30138d09c11c885956350fc9ef8a7dc1d08f6cfe54a13284f12aff13738",
+    "bytes": 534551
+  },
+  {
+    "file": "team-three-existing-events.json.gz",
+    "sha256": "ebd65497de6910e9ed497b54b8eaa33631f969fa9d932608bb8189ac20bb6502",
+    "bytes": 176343
+  },
+  {
+    "file": "launcher-preflight-failure.json",
+    "sha256": "4a8663d9f115c8111e2d488d0160bdf7568a9f631c186c0c355589e760d3a5bc",
+    "bytes": 559
+  },
+  {
+    "file": "original-team-analysis.json",
+    "sha256": "af8c4c26415c3878861ed1e6c000edc5edaa536ba77a639e919223b54054dc9d",
+    "bytes": 5289
+  },
+  {
+    "file": "existing-file-observations.json",
+    "sha256": "0daa0ed45788366f1f4572420f992e788d44c9dbe7eb442a159017cd0583db13",
+    "bytes": 2146
+  },
+  {
+    "file": "run.json",
+    "sha256": "0393aa0f34ea5c4e2a09d32c47c586922c0c11467515f4f0531bf64b8a3acb8d",
+    "bytes": 5081
+  }
+]

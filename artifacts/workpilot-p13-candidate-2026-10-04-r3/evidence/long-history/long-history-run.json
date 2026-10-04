@@ -1,0 +1,22 @@
+[
+  {
+    "name": "long-history-native-measurement-alpha13.4-r3",
+    "status": "passed",
+    "checks": 6,
+    "formalPerformanceEligible": true,
+    "binarySha256": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+    "binarySha256s": {
+      "desktop": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+      "engine": "a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb"
+    },
+    "report": "long-history/measurement-CjjvbV/report.json",
+    "command": "$env:WORKPILOT_DESKTOP_BINARY = 'D:/workspace/kplocker/WorkPilot/artifacts/workpilot-p13-candidate-2026-10-04-r3/preview/workpilot-desktop.exe'\n$env:WORKPILOT_TEST_OUTPUT = 'D:/workspace/kplocker/WorkPilot/.test-results/p13-long-history-alpha13.4-r3'\n$env:WORKPILOT_BENCHMARK_CONDITIONS = 'Dedicated measurement slot; no other WorkPilot tests, builds or large copy jobs. Live workstation; unrelated OS/user background work is not excluded.'\nnode scripts/p13-long-history-benchmark.mjs --measure",
+    "elapsedMs": 43627,
+    "notes": "100000 seeded historical progress events and 2100034-byte body; four native-engine concurrent local HTTP streams; twenty input and twenty button DOM-response samples; six functional groups passed. Not a four-hour soak, true cold startup, real model latency or tool-tree stop p95.",
+    "screenshotsReviewed": [
+      "long-history/measurement-CjjvbV/history-four-streams.png",
+      "long-history/measurement-CjjvbV/history-long-body-page.png",
+      "long-history/measurement-CjjvbV/history-three-after-stop.png"
+    ]
+  }
+]

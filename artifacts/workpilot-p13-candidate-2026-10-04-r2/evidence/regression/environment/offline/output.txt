@@ -1,0 +1,27 @@
+{
+  "at": "2026-10-04T13:10:54.029Z",
+  "platform": "win32",
+  "binarySha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+  "environment": "Configured model endpoints use a closed local TCP port. Another local provider remains reachable to detect fallback. This does not disconnect Windows networking or verify a clean OS.",
+  "failures": [
+    {
+      "protocol": "chat_completions",
+      "code": "network"
+    },
+    {
+      "protocol": "responses",
+      "code": "network"
+    },
+    {
+      "protocol": "messages",
+      "code": "network"
+    }
+  ],
+  "checks": [
+    "chat_completions_unreachable_endpoint_stops_once_with_explicit_network_error",
+    "responses_unreachable_endpoint_stops_once_with_explicit_network_error",
+    "messages_unreachable_endpoint_stops_once_with_explicit_network_error",
+    "restart_reads_existing_history_and_project_file_without_retry_or_provider_fallback"
+  ],
+  "status": "passed"
+}

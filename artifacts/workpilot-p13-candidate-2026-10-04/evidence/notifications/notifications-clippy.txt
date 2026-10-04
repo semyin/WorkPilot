@@ -1,0 +1,2 @@
+   Compiling workpilot-desktop v0.1.0-alpha.13.2 (D:\workspace\kplocker\WorkPilot\apps\desktop\src-tauri)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.72s

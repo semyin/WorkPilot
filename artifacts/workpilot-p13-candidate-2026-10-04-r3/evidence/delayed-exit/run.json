@@ -1,0 +1,18 @@
+{
+  "name": "P13 delayed-exit observation, user-confirmed correction",
+  "status": "manual_user_exit_confirmed",
+  "at": "2026-10-04T14:49:49.080Z",
+  "binarySha256": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+  "report": "initial-observation/report.json",
+  "confirmation": "manual-user-exit-confirmation.json",
+  "cleanup": "final-cleanup.json",
+  "fullSmokeInThisAttempt": "not_run_due_to_test_path_encoding_failure",
+  "separateExistingSmoke": {
+    "report": "../installation/desktop/report.json",
+    "status": "passed",
+    "checks": 5,
+    "binarySha256": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d"
+  },
+  "earlier2212Incident": "not_resolved_by_this_confirmation",
+  "additionalRuns": false
+}

@@ -1,0 +1,1 @@
+{"at":"2026-10-04T13:10:37.649Z","platform":"win32","binarySha256":"0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9","checks":["native_retention_preview_password_confirmation_stops_engine_and_keeps_project_file","restart_retains_latest_history_english_reset_preview_needs_explicit_confirmation"],"passed":true}

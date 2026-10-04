@@ -1,0 +1,34 @@
+{
+  "name": "P13 native task status synchronization",
+  "status": "passed",
+  "checks": 6,
+  "command": "WORKPILOT_DESKTOP_BINARY=<candidate>/preview/workpilot-desktop.exe WORKPILOT_TEST_OUTPUT=<new isolated directory> node scripts/p13-status-ui-test.mjs",
+  "binarySha256": "e75ccf1f67206fe965997cf56facdb3572fb1943f085d38c27d366eda2c0adee",
+  "report": "report.json",
+  "initialHarnessFailure": "initial-harness-failure.json",
+  "visualReview": "visual-review.json",
+  "observations": 22,
+  "mismatches": 0,
+  "files": [
+    {
+      "path": "report.json",
+      "sha256": "54de4381a4d5958b0507034191f51eddafe4cbbdb7a38d3ba1d562842a143606",
+      "bytes": 3725
+    },
+    {
+      "path": "stop-and-sidebar-zh.png",
+      "sha256": "5b3258331bf623ce9093b71fa979e6ede5cfe2b52bdd50ce263f5d9aabdbbcba",
+      "bytes": 192121
+    },
+    {
+      "path": "failed-and-sidebar-en.png",
+      "sha256": "fbbeefb268778dbdef446f0a07179ee2493877439ea09b50c2787b7fa4e615e3",
+      "bytes": 220719
+    },
+    {
+      "path": "team-stopped-en.png",
+      "sha256": "7eb98397508c117e99e582a46f7104d1e7d6a8caef994830699e7aeab862147c",
+      "bytes": 225204
+    }
+  ]
+}

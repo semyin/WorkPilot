@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-04T13:10:29.068Z",
+  "platform": "win32",
+  "boundary": "Isolated local directories, actual signed updater and actual engine; original running user app untouched",
+  "checks": [
+    {
+      "name": "签名检查拒绝内容篡改和不安全地址，断网保留原数据",
+      "state": "passed",
+      "ms": 4148.7073
+    },
+    {
+      "name": "下载截断与文件损坏在准备阶段拒绝",
+      "state": "passed",
+      "ms": 480.54259999999977
+    },
+    {
+      "name": "运行中的数据锁阻止安装，不擅自关闭其它实例",
+      "state": "passed",
+      "ms": 549.0513000000001
+    },
+    {
+      "name": "真实新版数据版本不匹配时保留原程序与原数据",
+      "state": "passed",
+      "ms": 3041.7878999999994
+    },
+    {
+      "name": "真实签名助手成功切换安装与数据，保存旧副本且禁止重放",
+      "state": "passed",
+      "ms": 2494.597600000001
+    },
+    {
+      "name": "更新卸载按签名清单清理，保留额外文件、修改后的内容和本机卸载入口",
+      "state": "passed",
+      "ms": 1486.7650000000012
+    }
+  ],
+  "desktop_launch_tested": false,
+  "state": "passed"
+}

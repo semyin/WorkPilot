@@ -1,0 +1,88 @@
+{
+  "at": "2026-10-04T13:20:28.9945723Z",
+  "version": "0.1.0-alpha.13.3",
+  "binarySha256s": {
+    "desktop": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+    "engine": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7"
+  },
+  "finalPortableGroups": 6,
+  "finalInstalledGroups": 6,
+  "installedStatus": "passed",
+  "screenshotsReviewed": 8,
+  "earlierSourceAndNativeEvidence": "../../../workpilot-p13-candidate-2026-10-04/evidence/notifications/notifications-run-details.json",
+  "pending": [
+    "Actual Windows toast visibility",
+    "Actual tray badge visibility",
+    "Actual native click callback"
+  ],
+  "pendingReason": "Earlier alpha13.2 native test had API submitted and read-only Setting=Enabled, but Sky exposed no shell surface and user did not answer; not a product failure assertion",
+  "files": [
+    {
+      "path": "notifications-run.json",
+      "sha256": "b4c063969dbb3ac7be9911052973e3805cf4efc6d9cc7b04686bd03508e77d4a"
+    },
+    {
+      "path": "notifications-unit-alpha13.3-r2.txt",
+      "sha256": "fd5282e4b79373a64950232a07cb115c0afaa81f685b8bcfff42b0f2e222bd7f"
+    },
+    {
+      "path": "installed-alpha13.3-r2/console.txt",
+      "sha256": "7b1e6957de6a9251208c2d3001a85e20b548895a75205944dc37ddcfa0e6f585"
+    },
+    {
+      "path": "installed-alpha13.3-r2/notification-settings-en.png",
+      "sha256": "1ef4816095f141adeab39a317b90aed5e7487d7003f518f99432e59e57e2b747"
+    },
+    {
+      "path": "installed-alpha13.3-r2/notification-settings-zh.png",
+      "sha256": "e4cc7bdbebda0f8dbcd38304868b9a751d3fe151a02c5601e53265ea52551e68"
+    },
+    {
+      "path": "installed-alpha13.3-r2/notifications-inbox-en.png",
+      "sha256": "ef8c22c7814cd633c27ec537c3efe8e5cddf023bdf8253cf1e288dcae4cde6a7"
+    },
+    {
+      "path": "installed-alpha13.3-r2/notifications-inbox-zh.png",
+      "sha256": "09d82661e09994c7d6b3ac2cbc890d66ae236bbe04492787be51181e00df2251"
+    },
+    {
+      "path": "installed-alpha13.3-r2/report.json",
+      "sha256": "3e73c1b312ad19c26e4c361988f44e9a30949205c89ae3f39ba134614a6198cd"
+    },
+    {
+      "path": "native-alpha13.3-r2/native-observations.json",
+      "sha256": "5c3b2affc95961a8919f96a45fcbeaadd4df406f9c4f71a60e2466d5ea222504"
+    },
+    {
+      "path": "native-alpha13.3-r2/native-session.json",
+      "sha256": "39d3e9279e97f634c6225d9e2d6c59237650f2f053f6eb7ab21432ceb98e69f9"
+    },
+    {
+      "path": "portable-alpha13.3-r2/console.txt",
+      "sha256": "747f152ba19fadb0e5fc2b7eeb0799c26db86a14cd6a9ffd18b2eca88496d747"
+    },
+    {
+      "path": "portable-alpha13.3-r2/notification-settings-en.png",
+      "sha256": "15d899d2990cb5e6c05412e480f1664ff52ba7e9b7ec945586135e14240591b3"
+    },
+    {
+      "path": "portable-alpha13.3-r2/notification-settings-zh.png",
+      "sha256": "04f3f512dad4635295b4ab68fe7de3dac4042efbcb6dd68ccff64c59fa905e96"
+    },
+    {
+      "path": "portable-alpha13.3-r2/notifications-inbox-en.png",
+      "sha256": "280e1167919e2eff01dffa4a0707d4da9abe17bf55f0b812d0b860407d13c7eb"
+    },
+    {
+      "path": "portable-alpha13.3-r2/notifications-inbox-zh.png",
+      "sha256": "9ca29f629edae2ce90fe58198f7c89946b6e45a9380742afc8986cdb67bbb9c5"
+    },
+    {
+      "path": "portable-alpha13.3-r2/report.json",
+      "sha256": "7b2c82811f13c7e45aa994d1825f8a21b6f4f8fe1a4edde1d50e08f36afd20f8"
+    }
+  ],
+  "finalRustUnitGroups": 7,
+  "finalBackgroundSubmissionKinds": 4,
+  "nativeVisualStatus": "not_verified"
+}

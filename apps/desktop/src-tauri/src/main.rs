@@ -1,5 +1,6 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 mod maintenance;
+mod notifications;
 mod update;
 
 use std::{
@@ -27,6 +28,7 @@ struct History {
     error: Option<String>,
 }
 struct Bridge {
+    notifications: notifications::Notifications,
     engine: Mutex<Option<ManagedEngine>>,
     history: Arc<Mutex<History>>,
     pending: Arc<Mutex<HashMap<String, oneshot::Sender<Response>>>>,
@@ -34,6 +36,7 @@ struct Bridge {
 struct TrayLabels {
     open: MenuItem<tauri::Wry>,
     quit: MenuItem<tauri::Wry>,
+    notifications: MenuItem<tauri::Wry>,
 }
 #[tauri::command]
 async fn pick_project_folder(
@@ -149,9 +152,11 @@ async fn pick_transfer_archive(
 fn set_desktop_locale(
     view: Webview,
     labels: State<'_, TrayLabels>,
+    notifications: State<'_, notifications::Notifications>,
     language: String,
 ) -> Result<(), String> {
     main_only(&view)?;
+    notifications.locale(language == "en");
     labels
         .open
         .set_text(if language == "en" {
@@ -170,7 +175,9 @@ fn set_desktop_locale(
         .map_err(|e| e.to_string())
 }
 impl Bridge {
-    fn start() -> Result<Self, Box<dyn std::error::Error>> {
+    fn start(
+        notifications: notifications::Notifications,
+    ) -> Result<Self, Box<dyn std::error::Error>> {
         let executable = std::env::current_exe()?;
         workpilot_platform::update::recover_for_install(&update::directory()?)?;
         let engine_path = executable
@@ -206,6 +213,7 @@ impl Bridge {
             HashMap::<String, oneshot::Sender<Response>>::new(),
         ));
         let replies = pending.clone();
+        let notify = notifications.clone();
         std::thread::spawn(move || {
             for line in BufReader::new(output).lines() {
                 let event = line.map_err(|e| e.to_string()).and_then(|line| {
@@ -215,6 +223,7 @@ impl Bridge {
                 let mut state = target.lock().unwrap_or_else(|e| e.into_inner());
                 match event {
                     Ok(Wire::Event { event }) => {
+                        notify.event(&event);
                         state.events.push_back(*event);
                         if state.events.len() > 512 {
                             state.events.pop_front();
@@ -241,6 +250,7 @@ impl Bridge {
             replies.lock().unwrap_or_else(|e| e.into_inner()).clear();
         });
         Ok(Self {
+            notifications,
             engine: Mutex::new(Some(engine)),
             history,
             pending,
@@ -328,6 +338,7 @@ impl Bridge {
             .map_err(|e| e.to_string())
     }
     fn shutdown(&self) {
+        self.notifications.suspend();
         let _ = self.send(&Request {
             request_id: "host-shutdown".into(),
             command: Command::Shutdown,
@@ -659,17 +670,20 @@ fn show_main(app: &tauri::AppHandle) {
     // Once a child webview exists, this is a multi-webview Window rather
     // than a single WebviewWindow. Always address the owning window.
     if let Some(window) = app.get_window("main") {
+        let _ = window.unminimize();
         let _ = window.show();
         let _ = window.set_focus();
     }
 }
 fn main() {
-    let bridge = match Bridge::start() {
+    let notifications = notifications::Notifications::new();
+    let bridge = match Bridge::start(notifications.clone()) {
         Ok(bridge) => bridge,
         Err(error) => {
             let message = error.to_string();
             eprintln!("{message}");
             Bridge {
+                notifications: notifications.clone(),
                 engine: Mutex::new(None),
                 pending: Arc::new(Mutex::new(HashMap::new())),
                 history: Arc::new(Mutex::new(History {
@@ -682,9 +696,16 @@ fn main() {
     let app = tauri::Builder::default()
         .plugin(tauri_plugin_dialog::init())
         .manage(bridge)
+        .manage(notifications)
         .manage(update::Updates::default())
         .manage(maintenance::Maintenance::default())
         .invoke_handler(tauri::generate_handler![
+            notifications::notifications_snapshot,
+            notifications::notifications_save,
+            notifications::notifications_read,
+            notifications::notifications_take_open,
+            notifications::notifications_open,
+            notifications::notifications_test,
             engine_snapshot,
             maintenance::maintenance_apply,
             maintenance::maintenance_restart,
@@ -720,8 +741,19 @@ fn main() {
             let open = MenuItem::with_id(app, "open", "打开 / Open WorkPilot", true, None::<&str>)?;
             let quit =
                 MenuItem::with_id(app, "quit", "彻底退出 / Quit WorkPilot", true, None::<&str>)?;
-            let menu = Menu::with_items(app, &[&open, &quit])?;
-            app.manage(TrayLabels { open, quit });
+            let notifications = MenuItem::with_id(
+                app,
+                "notifications",
+                "通知 / Notifications",
+                true,
+                None::<&str>,
+            )?;
+            let menu = Menu::with_items(app, &[&open, &notifications, &quit])?;
+            app.manage(TrayLabels {
+                open,
+                quit,
+                notifications,
+            });
             TrayIconBuilder::with_id("workpilot")
                 .icon(
                     app.default_window_icon()
@@ -733,6 +765,7 @@ fn main() {
                 .show_menu_on_left_click(false)
                 .on_menu_event(|app, event| match event.id.as_ref() {
                     "open" => show_main(app),
+                    "notifications" => notifications::activate(app, None),
                     "quit" => app.exit(0),
                     _ => {}
                 })
@@ -742,9 +775,19 @@ fn main() {
                     }
                 })
                 .build(app)?;
+            app.state::<notifications::Notifications>()
+                .attach(app.handle());
             Ok(())
         })
         .on_window_event(|window, event| {
+            if window.label() == "main"
+                && let tauri::WindowEvent::Focused(focused) = event
+            {
+                window
+                    .app_handle()
+                    .state::<notifications::Notifications>()
+                    .focus(*focused);
+            }
             if window.label() == "main"
                 && let tauri::WindowEvent::CloseRequested { api, .. } = event
             {

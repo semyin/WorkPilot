@@ -1,0 +1,53 @@
+[
+  {
+    "name": "notifications-rust-unit-alpha13.2",
+    "status": "passed",
+    "checks": 7,
+    "command": "node scripts/cargo.mjs test -p workpilot-desktop notifications:: --locked",
+    "binarySha256": "0211740ab12643e65aad595abd6ee2d6b0ab716db36c0462cc4f5515894c9e5f",
+    "report": "notifications/notifications-unit.txt",
+    "notes": "7 passed, 0 ignored, 1 unrelated test filtered"
+  },
+  {
+    "name": "notifications-host-clippy-alpha13.2",
+    "status": "passed",
+    "checks": 1,
+    "command": "node scripts/cargo.mjs clippy -p workpilot-desktop --all-targets --locked -- -D warnings",
+    "report": "notifications/notifications-clippy.txt"
+  },
+  {
+    "name": "notifications-portable-alpha13.2",
+    "status": "passed",
+    "checks": 6,
+    "command": "WORKPILOT_DESKTOP_BINARY=<alpha13.2 portable exe> WORKPILOT_TEST_OUTPUT=<new output> node scripts/notifications-desktop-test.mjs",
+    "binarySha256": "e75ccf1f67206fe965997cf56facdb3572fb1943f085d38c27d366eda2c0adee",
+    "report": "notifications/p13-notifications-portable-final/report.json",
+    "notes": "Explicit unavailable system fallback; no native popup claim"
+  },
+  {
+    "name": "notifications-installed-alpha13.2",
+    "status": "passed",
+    "checks": 6,
+    "command": "WORKPILOT_DESKTOP_BINARY=<registered isolated installed exe> WORKPILOT_TEST_OUTPUT=<new output> node scripts/notifications-desktop-test.mjs --installed",
+    "binarySha256": "e75ccf1f67206fe965997cf56facdb3572fb1943f085d38c27d366eda2c0adee",
+    "report": "notifications/p13-notifications-installed-alpha13.2/report.json",
+    "notes": "Windows API submitted; OS visible display/activation not proven"
+  },
+  {
+    "name": "notifications-native-submission-alpha13.2",
+    "status": "partial",
+    "checks": 4,
+    "command": "WORKPILOT_DESKTOP_BINARY=<registered isolated installed exe> WORKPILOT_TEST_OUTPUT=<new output> node scripts/notifications-native-session.mjs; stdin: approval,input,complete,failed,snapshot,stop",
+    "binarySha256": "e75ccf1f67206fe965997cf56facdb3572fb1943f085d38c27d366eda2c0adee",
+    "report": "notifications/p13-notifications-native-alpha13.2/native-observations.json",
+    "notes": "Four background task-state submissions accepted; native visual/click/tray checks not verified"
+  },
+  {
+    "name": "notifications-optional-user-observation-alpha13.2",
+    "status": "not_verified",
+    "checks": 0,
+    "binarySha256": "e75ccf1f67206fe965997cf56facdb3572fb1943f085d38c27d366eda2c0adee",
+    "report": "notifications/p13-notifications-native-alpha13.2-user/native-observations.json",
+    "notes": "No user answer or activation before normal shutdown. Official Setting=Enabled is read-only diagnostic, not visible delivery proof"
+  }
+]

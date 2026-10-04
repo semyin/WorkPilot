@@ -1,0 +1,52 @@
+{
+  "at": "2026-10-04T13:48:40.5792707Z",
+  "sourceFiles": [
+    {
+      "path": "scripts/p13-long-history-benchmark.mjs",
+      "sha256": "7a02ac262fad1db71996e0304d38632d9783595af437397a2fec092eb239f744"
+    },
+    {
+      "path": "scripts/p13-long-history-fixture.mjs",
+      "sha256": "8fbcd4b2900f8d7b94da0cfbc1e9ebb7c3369be9731f9f83f13a00f6b63739b6"
+    },
+    {
+      "path": "scripts/p13-long-history-data.mjs",
+      "sha256": "de8f20da7bd5ddc75ddf1c2bcada65285c6abfed92f621584aaa31159dee5ef1"
+    },
+    {
+      "path": "scripts/p13-long-history-scenario.mjs",
+      "sha256": "718bad3663923db192d070275de6f52e76f0c7924483b4b2c2d3642d88ba0ddb"
+    }
+  ],
+  "archivedFiles": [
+    {
+      "path": "console.txt",
+      "sha256": "6811759ca15268ab7099cd01be6ef1ac87e7cef9b9c7081537ccccdb56e05af7"
+    },
+    {
+      "path": "history-four-streams.png",
+      "sha256": "5956f7e21940cb0e08e6fc54574d7388b783ba2edce5ad838a34e228b162a44e"
+    },
+    {
+      "path": "history-long-body-page.png",
+      "sha256": "851e445b35f952593ab2351a35bebd86c1f940bf827827a69d0c006661157cd6"
+    },
+    {
+      "path": "history-three-after-stop.png",
+      "sha256": "991e6e75b3db6c3a4a16d2c1b95f3de06864ea6bf1c16054395c416719efd30b"
+    },
+    {
+      "path": "owned-process-identities.json",
+      "sha256": "07a3bda7a9f14d3dfc3981855f70f4dcdf67288f40af405edb822246998b3378"
+    },
+    {
+      "path": "report.json",
+      "sha256": "fa0dab5bafc4e18be389c59ad284d534f629ca6246a6faa7d520bbceba3cf92a"
+    },
+    {
+      "path": "resources.jsonl",
+      "sha256": "03fa64f0d8c62ca378132e57d924bf385faa95bdd9061627c835155b67a0f5df"
+    }
+  ],
+  "formalMeasurement": "Not run. Wait for root-assigned serial slot after final four-hour run; use --measure against final package."
+}

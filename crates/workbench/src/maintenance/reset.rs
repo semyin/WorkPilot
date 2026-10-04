@@ -11,6 +11,7 @@ const OWNED: &[&str] = &[
     "tool-sandboxes",
     "backups",
     "diagnostics",
+    "desktop-notifications",
 ];
 pub(super) fn plain_tree(path: &Path, data: &Path) -> Result<()> {
     let meta = fs::symlink_metadata(path).map_err(|e| e.to_string())?;

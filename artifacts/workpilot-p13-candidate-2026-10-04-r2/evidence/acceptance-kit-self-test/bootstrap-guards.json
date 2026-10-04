@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "checks": 2,
+  "wrongInstallation": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\rejection-final-289fde4b496c4798836d51f751e4ff5f",
+  "tamperedKit": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\tampered-result-276f364edb0a4e08ad3479184de6b32a",
+  "powershellPath": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "powershellSha256": "8bb6fa8c283b4d92120b1ef249a9b311b0f804d4cabbe9981159976c8be76a5e",
+  "launcherSha256": "db855a328a46d39831abfb7be26c78421daddd4e83276faa8335a9cd8dbc22b7",
+  "manifestSha256": "88f4f53456d1c2157f6b773aca024554bd58ce503acf987cca4285d2d7ec7aec",
+  "scope": "Both final-kit preflight rejections happen before bundled Node or engine launch; test-owned wrong directory and tampered kit copy only"
+}

@@ -1,0 +1,7 @@
+{
+  "viewed": [
+    "evidence/desktop-resources-idle.png",
+    "evidence/desktop-resources-model-wait.png"
+  ],
+  "observation": "Both native screenshots inspected: idle created task with no model call; running task visibly waiting for the local model, Stop enabled. No console error or false connection error shown."
+}

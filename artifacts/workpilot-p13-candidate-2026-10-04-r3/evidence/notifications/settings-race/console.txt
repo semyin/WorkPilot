@@ -1,0 +1,43 @@
+(node:13156) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{
+  "at": "2026-10-04T13:39:20.235Z",
+  "scope": "Actual NotificationSettings.tsx compiled with pure hooks and controlled delayed IPC; no native window, model or OS-setting changes",
+  "checks": [
+    {
+      "name": "late_old_success_and_error_cannot_revert_saved_preferences_or_the_next_toggle",
+      "status": "passed",
+      "result": {
+        "storedSystem": false,
+        "storedTray": false,
+        "saves": 2
+      }
+    },
+    {
+      "name": "successful_save_followed_by_failed_refresh_keeps_saved_value_and_reports_read_failure",
+      "status": "passed",
+      "result": {
+        "savedValueRetained": true,
+        "nextSaveKeepsSystemOff": true
+      }
+    },
+    {
+      "name": "synchronous_reentry_is_blocked_and_test_delivery_survives_its_refresh_failure",
+      "status": "passed",
+      "result": {
+        "saveCalls": 1,
+        "testCalls": 1,
+        "deliveryResultRetained": true
+      }
+    },
+    {
+      "name": "unmount_invalidates_in_flight_read_and_save_without_late_ui_updates",
+      "status": "passed",
+      "result": {
+        "lateUiUpdates": 0,
+        "postUnmountReads": 0
+      }
+    }
+  ],
+  "status": "passed"
+}

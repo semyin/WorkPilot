@@ -1,0 +1,430 @@
+{
+  "startedAt": "2026-10-04T13:24:15.821Z",
+  "selfTest": true,
+  "installation": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview",
+  "output": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\self-final-fed7e7b76bce4570a4e4bdfc2177b632",
+  "checks": [
+    {
+      "name": "软件自带的 9 类组件完整性",
+      "status": "passed",
+      "elapsedMs": 29387.2731,
+      "detail": {
+        "elapsedMs": 29386.7778,
+        "report": {
+          "report_version": 1,
+          "app_version": "0.1.0-alpha.13.3",
+          "schema_version": 11,
+          "platform": "windows",
+          "architecture": "x86_64",
+          "checked_at_ms": 1791120256856,
+          "manifest_present": true,
+          "verified_hashes": true,
+          "components": [
+            {
+              "id": "application",
+              "version": "0.1.0-alpha.13.3",
+              "source": "WorkPilot source workspace",
+              "license": "Private WorkPilot development preview",
+              "state": "verified",
+              "files": 8,
+              "checked_files": 8,
+              "bytes": 41824461,
+              "issues": []
+            },
+            {
+              "id": "node",
+              "version": "22.23.2",
+              "source": "https://github.com/nodejs/node/tree/v22.23.2",
+              "license": "MIT and bundled third-party notices",
+              "state": "verified",
+              "files": 6,
+              "checked_files": 6,
+              "bytes": 87181693,
+              "issues": []
+            },
+            {
+              "id": "python",
+              "version": "3.13.16",
+              "source": "https://github.com/python/cpython/tree/v3.13.16",
+              "license": "PSF and bundled third-party notices",
+              "state": "verified",
+              "files": 34,
+              "checked_files": 34,
+              "bytes": 22640669,
+              "issues": []
+            },
+            {
+              "id": "git",
+              "version": "2.56.0.windows.1",
+              "source": "https://github.com/git-for-windows/git/tree/v2.56.0.windows.1",
+              "license": "GPL-2.0 and bundled component notices",
+              "state": "verified",
+              "files": 373,
+              "checked_files": 373,
+              "bytes": 95772593,
+              "issues": []
+            },
+            {
+              "id": "git_compat",
+              "version": "2.56.0.windows.1.workpilot.1",
+              "source": "Git for Windows 2.56.0.windows.1 + WorkPilot resources/git-sandbox; complete corresponding source is bundled",
+              "license": "GPL-2.0-only and Zlib; bundled GIT_COPYING.txt, ZLIB_LICENSE.txt and source archives",
+              "state": "verified",
+              "files": 33,
+              "checked_files": 33,
+              "bytes": 21082215,
+              "issues": []
+            },
+            {
+              "id": "chromium",
+              "version": "154.0.8037.57-1.1",
+              "source": "https://github.com/ungoogled-software/ungoogled-chromium-windows/tree/154.0.8037.57-1.1",
+              "license": "BSD-3-Clause and complete bundled chrome://credits third-party notices",
+              "state": "verified",
+              "files": 80,
+              "checked_files": 80,
+              "bytes": 447153998,
+              "issues": []
+            },
+            {
+              "id": "documents",
+              "version": "P10-locked",
+              "source": "services/documents/package-lock.json; Noto Sans CJK SC 2.004",
+              "license": "Bundled npm package licenses; font OFL-1.1",
+              "state": "verified",
+              "files": 5244,
+              "checked_files": 5244,
+              "bytes": 167872685,
+              "issues": []
+            },
+            {
+              "id": "office",
+              "version": "26.8.0",
+              "source": "https://github.com/LibreOffice/core/tree/bce0998afefdbc355585ca324285661a2170ba77",
+              "license": "MPL-2.0 and bundled LICENSE.html, NOTICE and component licenses",
+              "state": "verified",
+              "files": 19448,
+              "checked_files": 19448,
+              "bytes": 1579736503,
+              "issues": []
+            },
+            {
+              "id": "companion",
+              "version": "0.1.0-alpha.13.3",
+              "source": "WorkPilot extensions/companion and browser-bridge",
+              "license": "Private WorkPilot development preview",
+              "state": "verified",
+              "files": 12,
+              "checked_files": 12,
+              "bytes": 234094,
+              "issues": []
+            }
+          ],
+          "notices": [
+            "专用浏览器随包提供，使用独立资料；连接日常 Chrome/Edge 仍由用户主动授权 / The bundled browser uses a dedicated profile. Connecting daily Chrome/Edge still requires user authorization.",
+            "Python 仅含标准库，MinGit 不含 Git Bash；其他插件依赖需单独核对 / Python includes its standard library; MinGit does not include Git Bash. Additional plugin dependencies are separate.",
+            "受限命令使用同版本源码构建的 Git 路径兼容版，保持项目边界与禁网；完全访问继续使用 MinGit / Restricted commands use source-built Git path compatibility inside the existing AppContainer. Full access keeps MinGit.",
+            "检查依据本机随包清单，不代替更新签名验证；报告不包含项目正文、用户路径或凭据 / Local inventory checks do not verify update signatures; project content, user paths and credentials are excluded"
+          ]
+        }
+      }
+    },
+    {
+      "name": "受限 Python、Node 和 Git 操作测试文件",
+      "status": "passed",
+      "elapsedMs": 6013.542100000002,
+      "detail": {
+        "task": "f72011d9-b70f-491f-89b0-bf918179a97d",
+        "commands": 5,
+        "containment": "windows_appcontainer_no_network",
+        "files": [
+          "python.txt",
+          "node.txt",
+          "中文.txt"
+        ],
+        "verifiedGitCommit": "acceptance-synthetic-files"
+      }
+    },
+    {
+      "name": "三种模型接口不可达时停止，并保留本地资料",
+      "status": "passed",
+      "elapsedMs": 6784.854800000001,
+      "detail": {
+        "failures": [
+          {
+            "task": "efc13a6e-f8c0-4077-a30a-1ae6c94ca886",
+            "protocol": "chat_completions",
+            "run": "985cd28a-ec03-47f4-869c-681c4afac170",
+            "diagnostic": {
+              "code": "network",
+              "message_zh": "无法连接模型服务，或连接中途断开。",
+              "message_en": "The model service could not be reached or the connection broke.",
+              "detail": null,
+              "http_status": null,
+              "provider_request_id": null,
+              "retryable": false
+            }
+          },
+          {
+            "task": "e593b392-94cc-4d9b-a6a7-6dd57b28779d",
+            "protocol": "responses",
+            "run": "cfca0873-9260-447f-b219-f36c9e55edb1",
+            "diagnostic": {
+              "code": "network",
+              "message_zh": "无法连接模型服务，或连接中途断开。",
+              "message_en": "The model service could not be reached or the connection broke.",
+              "detail": null,
+              "http_status": null,
+              "provider_request_id": null,
+              "retryable": false
+            }
+          },
+          {
+            "task": "b7501f14-dc4a-40a3-9e8d-950b094264f6",
+            "protocol": "messages",
+            "run": "d47840fa-0ffc-4fa8-9bc0-1792ad683fd3",
+            "diagnostic": {
+              "code": "network",
+              "message_zh": "无法连接模型服务，或连接中途断开。",
+              "message_en": "The model service could not be reached or the connection broke.",
+              "detail": null,
+              "http_status": null,
+              "provider_request_id": null,
+              "retryable": false
+            }
+          }
+        ],
+        "historyAndFileRetained": true,
+        "automaticRetryOrFallback": false,
+        "scope": "仅不可达本机端点；不是整机断网"
+      }
+    },
+    {
+      "name": "随包专用浏览器、真实下载和截图",
+      "status": "passed",
+      "elapsedMs": 2367.460300000006,
+      "detail": {
+        "task": "651884f2-d640-4aee-85e0-405013b60e71",
+        "session": "7fe9f702-02d7-4086-be20-86e5068e3165",
+        "ownedPid": 14772,
+        "closure": {
+          "state": {
+            "channel": "chromium",
+            "error": null,
+            "id": "7fe9f702-02d7-4086-be20-86e5068e3165",
+            "kind": "dedicated",
+            "owned_pid": 14772,
+            "state": "disconnected",
+            "tabs": [],
+            "task_id": "651884f2-d640-4aee-85e0-405013b60e71",
+            "version": "Chrome/154.0.8037.57"
+          },
+          "identities": [
+            {
+              "pid": 14772,
+              "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\chromium-runtime\\chrome.exe",
+              "startedAtMs": 1791120299042
+            }
+          ],
+          "verification": [
+            {
+              "pid": 14772,
+              "startedAtMs": 1791120299042,
+              "status": "exited"
+            }
+          ]
+        },
+        "screenshot": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\self-final-fed7e7b76bce4570a4e4bdfc2177b632\\browser-0.png",
+        "download": {
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\self-final-fed7e7b76bce4570a4e4bdfc2177b632\\测试项目\\browser-0\\result.csv",
+          "sha256": "f7154e3f98374db3d4f63165e434bba2c3e6aef971e2d2e837620633ccb0ac31",
+          "bytes": 24
+        }
+      }
+    },
+    {
+      "name": "DOCX 生成、读取与原版式预览",
+      "status": "passed",
+      "elapsedMs": 16455.335300000006,
+      "detail": {
+        "task": "0fc43dcb-b427-4096-b5cc-9786a368c31f",
+        "format": "docx",
+        "asset": "141923c1-beae-4bbd-a6d9-1c90e892fb95",
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\self-final-fed7e7b76bce4570a4e4bdfc2177b632\\测试项目\\office-0\\result.docx",
+        "sha256": "996a632723a9fd451647e393b2300019ea34ebb5285373d9e6c4b5833b25e51b",
+        "preview": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\self-final-fed7e7b76bce4570a4e4bdfc2177b632\\office-0-docx.png",
+        "pages": 1,
+        "renderer": "LibreOfficeKit 26.8.0 · d96afcf7d670"
+      }
+    },
+    {
+      "name": "XLSX 生成、读取与原版式预览",
+      "status": "passed",
+      "elapsedMs": 14050.4712,
+      "detail": {
+        "task": "fe5fc795-37c4-4f73-9b94-833ecd3de9a9",
+        "format": "xlsx",
+        "asset": "1c900ad5-2b8c-4e42-9c14-dd986e3813ed",
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\self-final-fed7e7b76bce4570a4e4bdfc2177b632\\测试项目\\office-1\\result.xlsx",
+        "sha256": "c1989dcaabb7708c8a9359f48a1f48c0d5b644a0d94f51787cba82787b9a551f",
+        "preview": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\self-final-fed7e7b76bce4570a4e4bdfc2177b632\\office-1-xlsx.png",
+        "pages": 1,
+        "renderer": "LibreOfficeKit 26.8.0 · d96afcf7d670"
+      }
+    },
+    {
+      "name": "PPTX 生成、读取与原版式预览",
+      "status": "passed",
+      "elapsedMs": 14311.694499999998,
+      "detail": {
+        "task": "2f5d59fc-c2e3-4ed6-891f-a84d03995c94",
+        "format": "pptx",
+        "asset": "7f20bc41-86d9-4d4e-80c5-6bf1b6bd0689",
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\self-final-fed7e7b76bce4570a4e4bdfc2177b632\\测试项目\\office-2\\result.pptx",
+        "sha256": "5e6f6bdce2e53dbde13b437aab109c4d045605b386c5aa3f6bd53ba53d92f2a4",
+        "preview": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\self-final-fed7e7b76bce4570a4e4bdfc2177b632\\office-2-pptx.png",
+        "pages": 1,
+        "renderer": "LibreOfficeKit 26.8.0 · d96afcf7d670"
+      }
+    }
+  ],
+  "deliveries": [
+    {
+      "task": "651884f2-d640-4aee-85e0-405013b60e71",
+      "session": "7fe9f702-02d7-4086-be20-86e5068e3165",
+      "ownedPid": 14772,
+      "closure": {
+        "state": {
+          "channel": "chromium",
+          "error": null,
+          "id": "7fe9f702-02d7-4086-be20-86e5068e3165",
+          "kind": "dedicated",
+          "owned_pid": 14772,
+          "state": "disconnected",
+          "tabs": [],
+          "task_id": "651884f2-d640-4aee-85e0-405013b60e71",
+          "version": "Chrome/154.0.8037.57"
+        },
+        "identities": [
+          {
+            "pid": 14772,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\chromium-runtime\\chrome.exe",
+            "startedAtMs": 1791120299042
+          }
+        ],
+        "verification": [
+          {
+            "pid": 14772,
+            "startedAtMs": 1791120299042,
+            "status": "exited"
+          }
+        ]
+      },
+      "screenshot": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\self-final-fed7e7b76bce4570a4e4bdfc2177b632\\browser-0.png",
+      "download": {
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\self-final-fed7e7b76bce4570a4e4bdfc2177b632\\测试项目\\browser-0\\result.csv",
+        "sha256": "f7154e3f98374db3d4f63165e434bba2c3e6aef971e2d2e837620633ccb0ac31",
+        "bytes": 24
+      }
+    },
+    {
+      "task": "0fc43dcb-b427-4096-b5cc-9786a368c31f",
+      "format": "docx",
+      "asset": "141923c1-beae-4bbd-a6d9-1c90e892fb95",
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\self-final-fed7e7b76bce4570a4e4bdfc2177b632\\测试项目\\office-0\\result.docx",
+      "sha256": "996a632723a9fd451647e393b2300019ea34ebb5285373d9e6c4b5833b25e51b",
+      "preview": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\self-final-fed7e7b76bce4570a4e4bdfc2177b632\\office-0-docx.png",
+      "pages": 1,
+      "renderer": "LibreOfficeKit 26.8.0 · d96afcf7d670"
+    },
+    {
+      "task": "fe5fc795-37c4-4f73-9b94-833ecd3de9a9",
+      "format": "xlsx",
+      "asset": "1c900ad5-2b8c-4e42-9c14-dd986e3813ed",
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\self-final-fed7e7b76bce4570a4e4bdfc2177b632\\测试项目\\office-1\\result.xlsx",
+      "sha256": "c1989dcaabb7708c8a9359f48a1f48c0d5b644a0d94f51787cba82787b9a551f",
+      "preview": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\self-final-fed7e7b76bce4570a4e4bdfc2177b632\\office-1-xlsx.png",
+      "pages": 1,
+      "renderer": "LibreOfficeKit 26.8.0 · d96afcf7d670"
+    },
+    {
+      "task": "2f5d59fc-c2e3-4ed6-891f-a84d03995c94",
+      "format": "pptx",
+      "asset": "7f20bc41-86d9-4d4e-80c5-6bf1b6bd0689",
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\self-final-fed7e7b76bce4570a4e4bdfc2177b632\\测试项目\\office-2\\result.pptx",
+      "sha256": "5e6f6bdce2e53dbde13b437aab109c4d045605b386c5aa3f6bd53ba53d92f2a4",
+      "preview": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\self-final-fed7e7b76bce4570a4e4bdfc2177b632\\office-2-pptx.png",
+      "pages": 1,
+      "renderer": "LibreOfficeKit 26.8.0 · d96afcf7d670"
+    }
+  ],
+  "engineExits": [
+    {
+      "pid": 32140,
+      "exitCode": 0,
+      "normal": true
+    },
+    {
+      "pid": 11272,
+      "exitCode": 0,
+      "normal": true
+    }
+  ],
+  "entryVerification": {
+    "status": "passed",
+    "kitManifestSha256": "88f4f53456d1c2157f6b773aca024554bd58ce503acf987cca4285d2d7ec7aec",
+    "installationFiles": [
+      {
+        "path": "workpilot-desktop.exe",
+        "bytes": 15184896,
+        "sha256": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9"
+      },
+      {
+        "path": "workpilot-sidecar.exe",
+        "bytes": 21629952,
+        "sha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7"
+      },
+      {
+        "path": "browser-runtime/node.exe",
+        "bytes": 86997320,
+        "sha256": "0d0f5e39f9f3d9587bc19f73eab3c2c9c4903fd02d6dbf9c853dd81b3d95fad4"
+      },
+      {
+        "path": "runtime-catalog.json",
+        "bytes": 5621370,
+        "sha256": "d61b9ec65c3644a9fa185f5f1978ee78f4c38abd386facee207f4762f8004b23"
+      }
+    ],
+    "powershellVersion": "5.1.26100.9444",
+    "selfTest": true
+  },
+  "identity": {
+    "workpilot-desktop.exe": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+    "workpilot-sidecar.exe": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+    "browser-runtime/node.exe": "0d0f5e39f9f3d9587bc19f73eab3c2c9c4903fd02d6dbf9c853dd81b3d95fad4",
+    "runtime-catalog.json": "d61b9ec65c3644a9fa185f5f1978ee78f4c38abd386facee207f4762f8004b23"
+  },
+  "machine": {
+    "os": {
+      "Caption": "Microsoft Windows 11 家庭版",
+      "Version": "10.0.26200",
+      "BuildNumber": "26200"
+    },
+    "architecture": "x64",
+    "kernel": "10.0.26200",
+    "cpuModel": "AMD Ryzen 7 7840H w/ Radeon(TM) 780M Graphics  ",
+    "logicalProcessors": 16,
+    "memoryBytes": 33618710528,
+    "availableMemoryBeforeBytes": 7812370432,
+    "node": "v22.23.2"
+  },
+  "status": "passed",
+  "finalIdentity": {
+    "workpilot-desktop.exe": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+    "workpilot-sidecar.exe": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+    "browser-runtime/node.exe": "0d0f5e39f9f3d9587bc19f73eab3c2c9c4903fd02d6dbf9c853dd81b3d95fad4",
+    "runtime-catalog.json": "d61b9ec65c3644a9fa185f5f1978ee78f4c38abd386facee207f4762f8004b23"
+  },
+  "endedAt": "2026-10-04T13:25:46.273Z",
+  "scope": "Windows 自动检查；本机固定响应模型及不可达端点。没有修改系统 PATH、网络、电源或浏览器注册。未认定干净系统、物理换机、整机断网或完整桌面体验已验收。"
+}

@@ -1,0 +1,462 @@
+[
+  {
+    "pid": 29528,
+    "parentPid": 35324,
+    "startedAtMs": 1791117111019,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\workpilot-sidecar.exe",
+    "role": "engine",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 35324,
+    "parentPid": 11164,
+    "startedAtMs": 1791117111000,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\workpilot-desktop.exe",
+    "role": "desktop",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 15148,
+    "parentPid": 43304,
+    "startedAtMs": 1791117111274,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 22384,
+    "parentPid": 43304,
+    "startedAtMs": 1791117111242,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 12144,
+    "parentPid": 43304,
+    "startedAtMs": 1791117111138,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 43304,
+    "parentPid": 35324,
+    "startedAtMs": 1791117111113,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 29600,
+    "parentPid": 43304,
+    "startedAtMs": 1791117111391,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 42824,
+    "parentPid": 29528,
+    "startedAtMs": 1791117111028,
+    "path": "C:\\Windows\\system32\\conhost.exe",
+    "role": "other-owned",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 26400,
+    "parentPid": 43304,
+    "startedAtMs": 1791117111245,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 43084,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117113118,
+    "role": "tool-parent",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 21452,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117113201,
+    "role": "tool-child",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 42792,
+    "parentPid": 22336,
+    "startedAtMs": 1791117118854,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+    "role": "dedicated-browser",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 22336,
+    "parentPid": 32656,
+    "startedAtMs": 1791117118581,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+    "role": "dedicated-browser",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 32656,
+    "parentPid": 29528,
+    "startedAtMs": 1791117118485,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "role": "browser-driver",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 17596,
+    "parentPid": 32656,
+    "startedAtMs": 1791117118497,
+    "path": "C:\\Windows\\system32\\conhost.exe",
+    "role": "other-owned",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 27212,
+    "parentPid": 22336,
+    "startedAtMs": 1791117118747,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+    "role": "dedicated-browser",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 30536,
+    "parentPid": 22336,
+    "startedAtMs": 1791117118907,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+    "role": "dedicated-browser",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 35344,
+    "parentPid": 22336,
+    "startedAtMs": 1791117118741,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+    "role": "dedicated-browser",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 42904,
+    "parentPid": 22336,
+    "startedAtMs": 1791117118778,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+    "role": "dedicated-browser",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 24828,
+    "parentPid": 22336,
+    "startedAtMs": 1791117118906,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+    "role": "dedicated-browser",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 1544,
+    "parentPid": 29528,
+    "startedAtMs": 1791117127455,
+    "path": "\\\\?\\D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-final\\run-017Rec\\desktop-data\\test\\media\\runtime\\0d0f5e39f9f3d9587bc19f73eab3c2c9c4903fd02d6dbf9c853dd81b3d95fad4\\node.exe",
+    "role": "document-worker",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 18916,
+    "parentPid": 1544,
+    "startedAtMs": 1791117127470,
+    "path": "C:\\Windows\\system32\\conhost.exe",
+    "role": "other-owned",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 1304,
+    "parentPid": 29528,
+    "startedAtMs": 1791117134508,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\office-runtime\\office\\program\\workpilot-office.exe",
+    "role": "office-converter",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 18176,
+    "parentPid": 1304,
+    "startedAtMs": 1791117134588,
+    "path": "C:\\Windows\\system32\\conhost.exe",
+    "role": "other-owned",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 42216,
+    "parentPid": 29528,
+    "startedAtMs": 1791117145250,
+    "path": "\\\\?\\D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-final\\run-017Rec\\desktop-data\\test\\media\\runtime\\0d0f5e39f9f3d9587bc19f73eab3c2c9c4903fd02d6dbf9c853dd81b3d95fad4\\node.exe",
+    "role": "document-worker",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 43944,
+    "parentPid": 42216,
+    "startedAtMs": 1791117145258,
+    "path": "C:\\Windows\\system32\\conhost.exe",
+    "role": "other-owned",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 27132,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117173894,
+    "role": "tool-parent",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 40468,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117173962,
+    "role": "tool-child",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 41552,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117234145,
+    "role": "tool-parent",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 30512,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117234219,
+    "role": "tool-child",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 25560,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117294477,
+    "role": "tool-child",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 41604,
+    "parentPid": 31048,
+    "startedAtMs": 1791117294411,
+    "path": "C:\\Windows\\system32\\conhost.exe",
+    "role": "other-owned",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 42080,
+    "parentPid": 25560,
+    "startedAtMs": 1791117294486,
+    "path": "C:\\Windows\\system32\\conhost.exe",
+    "role": "other-owned",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 31048,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117294391,
+    "role": "tool-parent",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 43180,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117354468,
+    "role": "tool-parent",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 1304,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117354540,
+    "role": "tool-child",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 44336,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117416191,
+    "role": "tool-parent",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 44648,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117416278,
+    "role": "tool-child",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 11128,
+    "parentPid": 32656,
+    "startedAtMs": 1791117422324,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+    "role": "dedicated-browser",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 44620,
+    "parentPid": 11128,
+    "startedAtMs": 1791117425453,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+    "role": "dedicated-browser",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 43472,
+    "parentPid": 11128,
+    "startedAtMs": 1791117425423,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+    "role": "dedicated-browser",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 44576,
+    "parentPid": 11128,
+    "startedAtMs": 1791117425423,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+    "role": "dedicated-browser",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 33460,
+    "parentPid": 11128,
+    "startedAtMs": 1791117425602,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+    "role": "dedicated-browser",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 24764,
+    "parentPid": 11128,
+    "startedAtMs": 1791117425538,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+    "role": "dedicated-browser",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 6004,
+    "parentPid": 11128,
+    "startedAtMs": 1791117425603,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+    "role": "dedicated-browser",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 18748,
+    "parentPid": 29528,
+    "startedAtMs": 1791117432745,
+    "path": "\\\\?\\D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-final\\run-017Rec\\desktop-data\\test\\media\\runtime\\0d0f5e39f9f3d9587bc19f73eab3c2c9c4903fd02d6dbf9c853dd81b3d95fad4\\node.exe",
+    "role": "document-worker",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 33384,
+    "parentPid": 18748,
+    "startedAtMs": 1791117432798,
+    "path": "C:\\Windows\\system32\\conhost.exe",
+    "role": "other-owned",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 44624,
+    "parentPid": 29528,
+    "startedAtMs": 1791117436190,
+    "path": "\\\\?\\D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-final\\run-017Rec\\desktop-data\\test\\media\\runtime\\0d0f5e39f9f3d9587bc19f73eab3c2c9c4903fd02d6dbf9c853dd81b3d95fad4\\node.exe",
+    "role": "document-worker",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 12552,
+    "parentPid": 29528,
+    "startedAtMs": 1791117438903,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\office-runtime\\office\\program\\workpilot-office.exe",
+    "role": "office-converter",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 23940,
+    "parentPid": 12552,
+    "startedAtMs": 1791117438993,
+    "path": "C:\\Windows\\system32\\conhost.exe",
+    "role": "other-owned",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 42652,
+    "parentPid": 29528,
+    "startedAtMs": 1791117453561,
+    "path": "\\\\?\\D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-final\\run-017Rec\\desktop-data\\test\\media\\runtime\\0d0f5e39f9f3d9587bc19f73eab3c2c9c4903fd02d6dbf9c853dd81b3d95fad4\\node.exe",
+    "role": "document-worker",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 42088,
+    "parentPid": 42652,
+    "startedAtMs": 1791117453577,
+    "path": "C:\\Windows\\system32\\conhost.exe",
+    "role": "other-owned",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 29968,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117475726,
+    "role": "tool-parent",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 43528,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117475803,
+    "role": "tool-child",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 8316,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117535963,
+    "role": "tool-parent",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 43624,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117536027,
+    "role": "tool-child",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 42212,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117596193,
+    "role": "tool-parent",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 11408,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117596254,
+    "role": "tool-child",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 5372,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117656344,
+    "role": "tool-parent",
+    "phase": "process-lifecycle"
+  },
+  {
+    "pid": 41504,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+    "startedAtMs": 1791117656410,
+    "role": "tool-child",
+    "phase": "process-lifecycle"
+  }
+]

@@ -1,0 +1,129 @@
+{
+  "at": "2026-10-04T14:12:24.3702510Z",
+  "version": "0.1.0-alpha.13.4",
+  "binarySha256s": {
+    "desktop": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+    "engine": "a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb"
+  },
+  "portableGroups": 7,
+  "unitGroups": 8,
+  "settingsRaceGroups": 4,
+  "installedStatus": "passed",
+  "nativeVisualStatus": "not_verified",
+  "screenshotsReviewed": [
+    "portable-alpha13.4-r3/notifications-inbox-zh.png",
+    "portable-alpha13.4-r3/notification-settings-zh.png",
+    "portable-alpha13.4-r3/notifications-inbox-en.png",
+    "portable-alpha13.4-r3/notification-settings-en.png",
+    "installed-alpha13.4-r3/notifications-inbox-zh.png",
+    "installed-alpha13.4-r3/notification-settings-zh.png",
+    "installed-alpha13.4-r3/notifications-inbox-en.png",
+    "installed-alpha13.4-r3/notification-settings-en.png"
+  ],
+  "independentReview": {
+    "before": "settings-race/notification-settings-race-before.json",
+    "after": "settings-race/notification-settings-race-after.json",
+    "reproduction": "settings-race/notification-settings-race.mjs",
+    "outcome": "protected",
+    "scope": "Pure actual-component hook/IPC reproduction, independently rerun by review agent; historical before failure retained, not a current failed regression"
+  },
+  "pending": [
+    "Actual Windows toast display",
+    "Actual tray badge/menu visibility",
+    "Actual native OS click-to-task callback"
+  ],
+  "previousNativeObservation": "../../../workpilot-p13-candidate-2026-10-04/evidence/notifications/notifications-run-details.json",
+  "files": [
+    {
+      "path": "fix-source-checks.json",
+      "sha256": "2b7ac6c8c27c7f0f7f1c5c63cdaea7e49e5ed83d0ed8b9f68931a01a92e88872"
+    },
+    {
+      "path": "notifications-run.json",
+      "sha256": "2c1b51ecea2d6fe534375b8bf5d3ac860fd0d76521f7cd56743cd3ba749b7d29"
+    },
+    {
+      "path": "notifications-unit-alpha13.4.txt",
+      "sha256": "66fb049052253001f02d9fc73733bd76cac22d00e0dd54c80b89fd514b999888"
+    },
+    {
+      "path": "installed-alpha13.4-r3/console.txt",
+      "sha256": "14c73ca1ff2fd489c37963a6416dc5951b4e1f6f2da077d1e0c795d3421e8ba3"
+    },
+    {
+      "path": "installed-alpha13.4-r3/notification-settings-en.png",
+      "sha256": "0721b4a53b214a1bf6bfd802bcba4312809a8a0b5d711d1a326d54026326e9a0"
+    },
+    {
+      "path": "installed-alpha13.4-r3/notification-settings-zh.png",
+      "sha256": "8265abc7709ab3a4aef29a8165a3d0517c015489acc8cdaaa72fef921bf058df"
+    },
+    {
+      "path": "installed-alpha13.4-r3/notifications-inbox-en.png",
+      "sha256": "62c65e1abb52da0810576a734010e41b1fbd9d7920a15ca8f004857fd370bca3"
+    },
+    {
+      "path": "installed-alpha13.4-r3/notifications-inbox-zh.png",
+      "sha256": "7d9b7f8c569b0b5241d9b51ad10ceb059331456327f1560e062a41716acbdadf"
+    },
+    {
+      "path": "installed-alpha13.4-r3/report.json",
+      "sha256": "fe4e6934de99fc3ba5de7da37e6cfa566979d6b9057d89a24475f30b1b128e7f"
+    },
+    {
+      "path": "native-alpha13.4-r3/native-observations.json",
+      "sha256": "56e8fee85a23ae15a5c61aba2f1a68b83b3de8432044b293fb2e15a84f88e0fe"
+    },
+    {
+      "path": "native-alpha13.4-r3/native-session.json",
+      "sha256": "c110dd2ba59a51ba23bfd527628ffb422de88cf256008a4bbee955d92b9507eb"
+    },
+    {
+      "path": "portable-alpha13.4-r3/console.txt",
+      "sha256": "f1a73c99ec1441f1b9bed957b1d15d2de1656e613d0ab83ac12038c939d9f480"
+    },
+    {
+      "path": "portable-alpha13.4-r3/notification-settings-en.png",
+      "sha256": "5908a010e4b32f1918faa765ccd0c4d44ac43a5f7f378864104fd464e16086d3"
+    },
+    {
+      "path": "portable-alpha13.4-r3/notification-settings-zh.png",
+      "sha256": "7af9bf074fc3763d4d7fd403e4a902599b458d133fdbe1f61e3367d563debf1f"
+    },
+    {
+      "path": "portable-alpha13.4-r3/notifications-inbox-en.png",
+      "sha256": "f39af7ca6c1893c1a0c7bf4791893d906c24a5b722649e4e73e0131a4aa482fc"
+    },
+    {
+      "path": "portable-alpha13.4-r3/notifications-inbox-zh.png",
+      "sha256": "6caf6827d50210b14b946168db6a851eccb724e77fdcb41d1bcb57dfbf20aefa"
+    },
+    {
+      "path": "portable-alpha13.4-r3/report.json",
+      "sha256": "f7a1d9167a0c6d00a2a40324de8d0a36ea237e47c399e885f38cd49e3a7eb168"
+    },
+    {
+      "path": "settings-race/console.txt",
+      "sha256": "562ca4a5bbf813da69b20beac2daff83d1a554b51f22728e2f4867d1f8d6c1b0"
+    },
+    {
+      "path": "settings-race/notification-settings-race-after.json",
+      "sha256": "8c2ff4c198134bc3fbcdab1b2514e8172efce8795c4c315eb872fb4312749558"
+    },
+    {
+      "path": "settings-race/notification-settings-race-before.json",
+      "sha256": "61e6b874eb662c6087227369746e1b8058c90aa29f4244c2d9ebba323161be15"
+    },
+    {
+      "path": "settings-race/notification-settings-race.mjs",
+      "sha256": "c4a5885a27ace46dafa5484f56590a7997ab21230a0ec62b3dc15c7fd3027607"
+    },
+    {
+      "path": "settings-race/regression-report.json",
+      "sha256": "f3ec8747ad5e06406f4e15149bd91ee379dbc5494b3c8dd122723acc1c671146"
+    }
+  ],
+  "installedGroups": 7,
+  "nativeSubmissionKinds": 4,
+  "validationGroupsWithoutSubmissionOnly": 26
+}

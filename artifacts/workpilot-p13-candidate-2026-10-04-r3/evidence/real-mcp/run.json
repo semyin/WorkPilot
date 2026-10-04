@@ -1,0 +1,64 @@
+{
+  "name": "P13 real Microsoft Learn MCP acceptance",
+  "status": "passed_with_preserved_test_driver_failures",
+  "at": "2026-10-04T14:07:26.997Z",
+  "command": "node scripts/p13-real-mcp-test.mjs",
+  "version": "0.1.0-alpha.13.4",
+  "binarySha256": "a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb",
+  "checks": 4,
+  "service": "Fixed local Responses model + real Microsoft Learn Streamable HTTP MCP; no authentication",
+  "protocolVersion": "2025-06-18",
+  "toolNames": [
+    "microsoft_docs_search",
+    "microsoft_code_sample_search",
+    "microsoft_docs_fetch"
+  ],
+  "remoteOperationCount": 2,
+  "independentApprovals": 2,
+  "tlsConnections": 2,
+  "report": "final/report.json",
+  "toolCatalog": "final/remote-tool-catalog.json",
+  "resultSummary": "final/remote-result-summary.json",
+  "networkEvidence": "final/connect-audit.json",
+  "initialFailures": [
+    {
+      "label": "initial-long-result",
+      "source": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-real-mcp\\run-x72hI6",
+      "report": "initial-long-result/report.json",
+      "status": "failed",
+      "checks": 3,
+      "approvals": 2,
+      "engineExitCode": 0
+    },
+    {
+      "label": "initial-reference-comparison",
+      "source": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-real-mcp\\run-QIc2xy",
+      "report": "initial-reference-comparison/report.json",
+      "status": "failed",
+      "checks": 3,
+      "approvals": 2,
+      "engineExitCode": 0
+    }
+  ],
+  "finalAttempt": {
+    "label": "final",
+    "source": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-real-mcp\\run-8zk974",
+    "report": "final/report.json",
+    "status": "passed",
+    "checks": 4,
+    "approvals": 2,
+    "engineExitCode": 0
+  },
+  "clarifications": "scope-corrections.json",
+  "sources": [
+    "https://learn.microsoft.com/en-us/training/support/mcp-developer-reference",
+    "https://learn.microsoft.com/en-us/training/support/mcp"
+  ],
+  "limits": [
+    "One public stateless Streamable HTTP service only; no OAuth or commercial-server acceptance claim",
+    "Fixed model drives actual WorkPilot extension tools; this is not real-model reasoning or human UX acceptance",
+    "A private CONNECT counting tunnel passes TLS bytes unchanged; it does not inspect or rewrite MCP messages",
+    "The test runs alongside a separate stability run and is not a formal performance measurement",
+    "Remote failures are recorded without automatic tool retries or schema guessing"
+  ]
+}

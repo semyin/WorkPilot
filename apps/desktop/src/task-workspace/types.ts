@@ -7,4 +7,6 @@ export type TaskDesktop = {
   onRefresh: () => void;
   onPreferences: (preferences: WorkspacePreferences) => void;
   onSettings: () => void;
+  onNotifications?: () => void;
+  unreadNotifications?: number;
 };

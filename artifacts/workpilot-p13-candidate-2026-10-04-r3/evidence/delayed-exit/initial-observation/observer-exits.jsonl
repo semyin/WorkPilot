@@ -1,0 +1,2 @@
+{"kind":"observer_desktop_exit","at":"2026-10-04T14:43:01.468Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"code":0,"signal":null}
+{"kind":"observer_desktop_exit","at":"2026-10-04T14:43:02.805Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"code":0,"signal":null}

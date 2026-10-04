@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-04T10:40:53.102Z",
+  "status": "passed",
+  "checks": [
+    {
+      "script": "scripts/package-p12.mjs",
+      "status": 1,
+      "guard": "rejected before writes"
+    },
+    {
+      "script": "scripts/installer-p12.mjs",
+      "status": 1,
+      "guard": "rejected before writes"
+    }
+  ],
+  "p12ManifestsUnchanged": [
+    {
+      "path": "artifacts/workpilot-p12-complete-2026-10-04/source-and-binary-manifest.json",
+      "sha256": "9585125e11c46908a5e2000830bca6531682b920ac88a2e3364f1de025a126cf"
+    },
+    {
+      "path": "artifacts/workpilot-p12-complete-2026-10-04/installer-manifest.json",
+      "sha256": "00aad75fdf4d5813374b74e8adbcab69f851037eeffc5925a3060f50701ffec3"
+    }
+  ]
+}

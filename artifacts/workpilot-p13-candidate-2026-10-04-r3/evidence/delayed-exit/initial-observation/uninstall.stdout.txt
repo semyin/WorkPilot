@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "checks": [
+    "exact_installer_current_user_chinese_space_path_binary_hash_and_registration",
+    "uninstall_only_owned_files_keeps_project_unknown_file_databases_existing_processes_and_browser_registrations"
+  ],
+  "preservedDatabaseFiles": 0
+}

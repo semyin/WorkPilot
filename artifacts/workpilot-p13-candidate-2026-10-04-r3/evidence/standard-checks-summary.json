@@ -1,0 +1,14 @@
+{
+  "command": "npm run check",
+  "status": "passed",
+  "rust": {
+    "passed": 211,
+    "failed": 0,
+    "ignored": 3
+  },
+  "nodePassed": [
+    11,
+    3
+  ],
+  "note": "8 desktop notification unit checks and 4 settings tests are separate, not included in npm check"
+}

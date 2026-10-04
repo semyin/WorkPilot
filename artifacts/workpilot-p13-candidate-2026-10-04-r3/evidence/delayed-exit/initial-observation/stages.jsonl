@@ -1,0 +1,9 @@
+{"name":"observers-ready","at":"2026-10-04T14:40:55.731Z"}
+{"name":"install-started","at":"2026-10-04T14:40:57.275Z","runnerPid":20276}
+{"name":"installed-before-smoke","at":"2026-10-04T14:41:48.529Z","installRoot":"D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-ec5c92a5296f4c29914e7dbdfe216574\\?? ??"}
+{"name":"installed-smoke-running","at":"2026-10-04T14:41:49.379Z","runner":{"pid":17596,"path":"D:\\nodejs\\node.exe","startedAtMs":1791124908570}}
+{"name":"post-smoke-observation-started","at":"2026-10-04T14:41:49.594Z","minimumMilliseconds":90000,"smokeExitAt":"2026-10-04T14:41:49.593Z"}
+{"name":"post-smoke-observation-ended","at":"2026-10-04T14:43:19.601Z","observedMs":90006.3935}
+{"name":"uninstall-started","at":"2026-10-04T14:43:19.622Z","runnerPid":37364}
+{"name":"post-uninstall-observation","at":"2026-10-04T14:43:35.298Z"}
+{"name":"normal-observer-cleanup","at":"2026-10-04T14:43:42.341Z"}

@@ -1,0 +1,122 @@
+[
+  {
+    "pid": 24376,
+    "parentPid": 32068,
+    "startedAtMs": 1791116060783,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 39164,
+    "parentPid": 42340,
+    "startedAtMs": 1791116060079,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\workpilot-sidecar.exe",
+    "role": "engine",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 43328,
+    "parentPid": 32068,
+    "startedAtMs": 1791116060640,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 42340,
+    "parentPid": 5280,
+    "startedAtMs": 1791116060057,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\workpilot-desktop.exe",
+    "role": "desktop",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 43204,
+    "parentPid": 32068,
+    "startedAtMs": 1791116060645,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 32068,
+    "parentPid": 42340,
+    "startedAtMs": 1791116060176,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 8300,
+    "parentPid": 32068,
+    "startedAtMs": 1791116060212,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 43628,
+    "parentPid": 39164,
+    "startedAtMs": 1791116060089,
+    "path": "C:\\Windows\\system32\\conhost.exe",
+    "role": "other-owned",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 22180,
+    "parentPid": 32068,
+    "startedAtMs": 1791116060677,
+    "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+    "role": "ui-webview",
+    "uiProfileVerified": true
+  },
+  {
+    "pid": 36528,
+    "parentPid": 39164,
+    "startedAtMs": 1791116072741,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\office-runtime\\office\\program\\workpilot-office.exe",
+    "role": "office-converter",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 35704,
+    "parentPid": 36528,
+    "startedAtMs": 1791116072796,
+    "path": "C:\\Windows\\system32\\conhost.exe",
+    "role": "other-owned",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 42312,
+    "parentPid": 39164,
+    "startedAtMs": 1791116081176,
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\office-runtime\\office\\program\\workpilot-office.exe",
+    "role": "office-converter",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 24504,
+    "parentPid": 42312,
+    "startedAtMs": 1791116081283,
+    "path": "C:\\Windows\\system32\\conhost.exe",
+    "role": "other-owned",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 42148,
+    "parentPid": 39164,
+    "startedAtMs": 1791116093131,
+    "path": "\\\\?\\D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-tool-stop\\run-P4m8PW\\desktop-data\\test\\media\\runtime\\0d0f5e39f9f3d9587bc19f73eab3c2c9c4903fd02d6dbf9c853dd81b3d95fad4\\node.exe",
+    "role": "document-worker",
+    "uiProfileVerified": false
+  },
+  {
+    "pid": 38204,
+    "parentPid": 42148,
+    "startedAtMs": 1791116093142,
+    "path": "C:\\Windows\\system32\\conhost.exe",
+    "role": "other-owned",
+    "uiProfileVerified": false
+  }
+]

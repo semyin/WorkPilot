@@ -1,0 +1,69 @@
+{
+  "at": "2026-10-04T12:40:13.406Z",
+  "scope": "Read-only review of the original failed team evidence. This verifies only the GLM existing-file sub-result, not a passing team or new-file capability.",
+  "overallTeamStatus": "failed",
+  "teamState": "awaiting_input",
+  "alpha": {
+    "profileId": "p13-glm-chat",
+    "actualModels": [
+      "glm-5.3"
+    ],
+    "state": "completed",
+    "review": "accepted",
+    "initialFile": "P13_PENDING_NOT_AN_OUTPUT\n",
+    "originalSha256": "0e797fc56881ad1e169c6bc319fc06e59caff151aa02dfceb7358f0d7917b102",
+    "readBeforeWrite": true,
+    "usedActualOriginalSha256": true,
+    "finalText": "42",
+    "readAfterWrite": true,
+    "artifactRegistered": true
+  },
+  "join": {
+    "profileId": "p13-qwen-responses",
+    "actualModels": [
+      "qwen3.8-flash"
+    ],
+    "state": "completed",
+    "review": "abandoned",
+    "failedWrites": [
+      {
+        "arguments": {
+          "expected_sha256": "None",
+          "path": "answer.txt",
+          "text": "90"
+        },
+        "result": {
+          "call_id": "call_8efc3984050e404399593a68",
+          "is_error": true,
+          "output": "{\"error\":\"file changed; read it before requesting an overwrite\",\"executed\":false}"
+        }
+      },
+      {
+        "arguments": {
+          "expected_sha256": "None",
+          "path": "answer.txt",
+          "text": "90"
+        },
+        "result": {
+          "call_id": "call_5700164d22dc4b7cb7bbca30",
+          "is_error": true,
+          "output": "{\"error\":\"file changed; read it before requesting an overwrite\",\"executed\":false}"
+        }
+      }
+    ]
+  },
+  "midRunHumanInstructions": 0,
+  "automaticModelFallbacks": 0,
+  "cleanup": {
+    "profilesCleared": 5,
+    "credentialsRemoved": true,
+    "errors": [],
+    "scope": "Only this fresh data directory's test model credentials were removed. No image-service credential was created. The isolated database, file-version key and original test files remain available for fault review.",
+    "engineExited": true
+  },
+  "credentialScan": {
+    "filesChecked": 1736,
+    "plaintextCredentialFound": false,
+    "findings": []
+  }
+}

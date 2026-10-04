@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "identity": {
+    "desktopSha256": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+    "engineSha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7"
+  },
+  "segments": [
+    {
+      "id": "40620ea9-c7f1-4e6d-ac79-d9276b7bdffb",
+      "startedAt": "2026-10-04T13:10:49.686Z",
+      "activeMs": 10032,
+      "status": "failed",
+      "events": 5,
+      "previousSegmentsDoNotCountTowardContinuousGate": true,
+      "desktop": {
+        "pid": 5708,
+        "parentPid": 44204,
+        "startedAtMs": 1791119449707,
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-desktop.exe",
+        "role": "desktop",
+        "uiProfileVerified": false
+      },
+      "engine": {
+        "pid": 10392,
+        "parentPid": 5708,
+        "startedAtMs": 1791119449731,
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-sidecar.exe",
+        "role": "engine",
+        "uiProfileVerified": false
+      },
+      "lastHeartbeat": {
+        "at": "2026-10-04T13:11:03.110Z",
+        "cycle": 0,
+        "runningCycle": 0,
+        "phase": "browser",
+        "samples": 47,
+        "freeMemoryBytes": 7261425664,
+        "harness": {
+          "rss": 143908864,
+          "heapTotal": 95956992,
+          "heapUsed": 68049896,
+          "external": 5625351,
+          "arrayBuffers": 1618009
+        }
+      },
+      "endedAt": "2026-10-04T13:11:09.067Z"
+    }
+  ],
+  "cycles": [],
+  "status": "failed"
+}

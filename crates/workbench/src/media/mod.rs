@@ -1,3 +1,4 @@
+mod image_download;
 mod images;
 pub mod model;
 mod office;

@@ -1,0 +1,34 @@
+{
+  "at": "2026-10-04T12:59:12.3532812Z",
+  "status": "not_verified",
+  "binary": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-7007ad4480ad4f9ba2bde12b60f545dc\\ä¸­æ–‡ å®‰è£…\\workpilot-desktop.exe",
+  "binarySha256": "e75ccf1f67206fe965997cf56facdb3572fb1943f085d38c27d366eda2c0adee",
+  "processId": 44680,
+  "nativeReport": "native-session.json",
+  "scope": "Own isolated installation and new synthetic data only",
+  "submittedAt": "2026-10-04T12:55:47.923Z",
+  "taskId": "9c9fb3ca-7768-425a-9a8c-b9030c378d13",
+  "userObservation": "Optional user check offered by parent; no answer received before normal own-session shutdown. Lack of answer is neither pass nor failure.",
+  "osSetting": {
+    "observedBy": "root",
+    "observedAt": "2026-10-04T12:57:45Z",
+    "api": "Windows.UI.Notifications.ToastNotificationManager.CreateToastNotifier('com.workpilot.desktop').Setting",
+    "result": "Enabled",
+    "readOnly": true,
+    "meaning": "API does not report the application disabled; not evidence of a visible popup, absence of Do Not Disturb, or successful click activation",
+    "officialReference": "https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications.toastnotifier.setting"
+  },
+  "lastSnapshot": {
+    "at": "2026-10-04T12:58:50.470Z",
+    "selectedTask": null,
+    "openRequest": null,
+    "unread": 1,
+    "modelCalls": 1
+  },
+  "shutdown": "Normal exit; no approval/continue action performed",
+  "limitations": [
+    "Sky exposed no targetable OS toast, taskbar or notification center",
+    "Actual Windows toast display, tray red dot and OS activation remain unverified",
+    "No OS notification settings were changed"
+  ]
+}

@@ -1,0 +1,74 @@
+{"at":"2026-10-04T14:40:55.748Z","phase":"observers-ready","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":7,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:40:55.762Z","phase":"observers-ready","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":7,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:00.775Z","phase":"install-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":10,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:00.791Z","phase":"install-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":10,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:05.814Z","phase":"install-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":13,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:05.830Z","phase":"install-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":13,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:10.858Z","phase":"install-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":16,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:11.002Z","phase":"install-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":16,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:16.170Z","phase":"install-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":19,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:16.190Z","phase":"install-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":19,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:21.215Z","phase":"install-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":22,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:21.262Z","phase":"install-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":22,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:26.298Z","phase":"install-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":25,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:26.357Z","phase":"install-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":25,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:31.405Z","phase":"install-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":28,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:31.427Z","phase":"install-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":28,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:36.451Z","phase":"install-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":31,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:36.517Z","phase":"install-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":31,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:41.569Z","phase":"install-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":34,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:41.585Z","phase":"install-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":34,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:46.608Z","phase":"install-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":37,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:46.669Z","phase":"install-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":37,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:48.532Z","phase":"installed-before-smoke","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":40,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:48.549Z","phase":"installed-before-smoke","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":40,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:51.715Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":43,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:51.728Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":43,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:56.747Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":46,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:41:56.763Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":46,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:01.789Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":49,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:01.802Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":49,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:06.814Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":52,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:06.828Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":52,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:11.848Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":55,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:11.866Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":55,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:16.893Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":58,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:16.907Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":58,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:21.929Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":61,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:21.942Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":61,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:26.968Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":64,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:26.987Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":64,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:32.003Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":67,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:32.022Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":67,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:37.048Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":70,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:37.067Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":70,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:42.089Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":73,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:42.109Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":73,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:47.139Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":76,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:47.156Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":76,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:52.176Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":79,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:52.188Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":79,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:57.202Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":82,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:42:57.212Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":82,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:43:02.228Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"reply":{"receiptKind":"receipt","alive":true,"nextAfter":85,"pong":true},"healthy":true}
+{"at":"2026-10-04T14:43:02.241Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:07.257Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:07.258Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:12.270Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:12.271Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:17.287Z","phase":"post-smoke-observation-started","label":"p12-observer","pid":39456,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:17.288Z","phase":"post-smoke-observation-started","label":"r3-observer","pid":40668,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:19.604Z","phase":"before-uninstall","label":"p12-observer","pid":39456,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:19.605Z","phase":"before-uninstall","label":"r3-observer","pid":40668,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:22.303Z","phase":"uninstall-started","label":"p12-observer","pid":39456,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:22.304Z","phase":"uninstall-started","label":"r3-observer","pid":40668,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:27.316Z","phase":"uninstall-started","label":"p12-observer","pid":39456,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:27.317Z","phase":"uninstall-started","label":"r3-observer","pid":40668,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:32.318Z","phase":"uninstall-started","label":"p12-observer","pid":39456,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:32.321Z","phase":"uninstall-started","label":"r3-observer","pid":40668,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:35.300Z","phase":"after-uninstall","label":"p12-observer","pid":39456,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:35.301Z","phase":"after-uninstall","label":"r3-observer","pid":40668,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:37.323Z","phase":"post-uninstall-observation","label":"p12-observer","pid":39456,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:37.325Z","phase":"post-uninstall-observation","label":"r3-observer","pid":40668,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:40.309Z","phase":"five-seconds-after-uninstall","label":"p12-observer","pid":39456,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}
+{"at":"2026-10-04T14:43:40.310Z","phase":"five-seconds-after-uninstall","label":"r3-observer","pid":40668,"healthy":false,"error":"Error: page.evaluate: Target page, context or browser has been closed"}

@@ -1,0 +1,141 @@
+{
+  "at": "2026-10-04T13:17:17.106Z",
+  "binary": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-ec22c11ef07d473496684869f673b0a4\\中文 安装\\workpilot-desktop.exe",
+  "binarySha256": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+  "scope": "Own installed test process and fresh data only; GUI observations/clicks are recorded separately",
+  "operations": [
+    {
+      "operation": "approval",
+      "at": "2026-10-04T13:17:56.154Z",
+      "title": "Native notification approval 1",
+      "taskId": "7d981fcc-7599-4f85-bea1-d35f6253240a",
+      "projectId": "c5dabaa8-3308-4fa6-83a1-dd27daf68d80",
+      "notification": {
+        "id": "c2651de8-35a5-484f-94eb-284bb993c523",
+        "sequence": 35,
+        "task_id": "7d981fcc-7599-4f85-bea1-d35f6253240a",
+        "at_ms": 1791119876295,
+        "kind": "approval",
+        "read": false,
+        "delivery": "submitted"
+      },
+      "modelCalls": 1
+    },
+    {
+      "operation": "input",
+      "at": "2026-10-04T13:18:12.038Z",
+      "title": "Native notification input 2",
+      "taskId": "ccbe0168-61f3-4fec-8b6c-927b64b18ed7",
+      "projectId": "c5dabaa8-3308-4fa6-83a1-dd27daf68d80",
+      "notification": {
+        "id": "65c9f425-4497-481e-b396-89c715ba9aa0",
+        "sequence": 59,
+        "task_id": "ccbe0168-61f3-4fec-8b6c-927b64b18ed7",
+        "at_ms": 1791119892166,
+        "kind": "input",
+        "read": false,
+        "delivery": "submitted"
+      },
+      "modelCalls": 2
+    },
+    {
+      "operation": "complete",
+      "at": "2026-10-04T13:18:31.132Z",
+      "title": "Native notification complete 3",
+      "taskId": "f77dfef7-b65d-40e5-95bd-036d78584f54",
+      "projectId": "c5dabaa8-3308-4fa6-83a1-dd27daf68d80",
+      "notification": {
+        "id": "ab0c53be-6cab-48d5-b347-292cd4a5c7a0",
+        "sequence": 78,
+        "task_id": "f77dfef7-b65d-40e5-95bd-036d78584f54",
+        "at_ms": 1791119911421,
+        "kind": "completed",
+        "read": false,
+        "delivery": "submitted"
+      },
+      "modelCalls": 3
+    },
+    {
+      "operation": "failed",
+      "at": "2026-10-04T13:18:40.628Z",
+      "title": "Native notification failed 4",
+      "taskId": "b88d7013-eba8-4eac-a18d-e15ade1b70e7",
+      "projectId": "c5dabaa8-3308-4fa6-83a1-dd27daf68d80",
+      "notification": {
+        "id": "73a650e7-a13b-4136-9dc2-2738e033f0ab",
+        "sequence": 93,
+        "task_id": "b88d7013-eba8-4eac-a18d-e15ade1b70e7",
+        "at_ms": 1791119920679,
+        "kind": "failed",
+        "read": false,
+        "delivery": "submitted"
+      },
+      "modelCalls": 4
+    },
+    {
+      "operation": "snapshot",
+      "at": "2026-10-04T13:18:56.166Z",
+      "notifications": {
+        "preferences": {
+          "in_app": true,
+          "system": true,
+          "tray": true,
+          "foreground": false
+        },
+        "entries": [
+          {
+            "id": "73a650e7-a13b-4136-9dc2-2738e033f0ab",
+            "sequence": 93,
+            "task_id": "b88d7013-eba8-4eac-a18d-e15ade1b70e7",
+            "at_ms": 1791119920679,
+            "kind": "failed",
+            "read": false,
+            "delivery": "submitted"
+          },
+          {
+            "id": "ab0c53be-6cab-48d5-b347-292cd4a5c7a0",
+            "sequence": 78,
+            "task_id": "f77dfef7-b65d-40e5-95bd-036d78584f54",
+            "at_ms": 1791119911421,
+            "kind": "completed",
+            "read": false,
+            "delivery": "submitted"
+          },
+          {
+            "id": "65c9f425-4497-481e-b396-89c715ba9aa0",
+            "sequence": 59,
+            "task_id": "ccbe0168-61f3-4fec-8b6c-927b64b18ed7",
+            "at_ms": 1791119892166,
+            "kind": "input",
+            "read": false,
+            "delivery": "submitted"
+          },
+          {
+            "id": "c2651de8-35a5-484f-94eb-284bb993c523",
+            "sequence": 35,
+            "task_id": "7d981fcc-7599-4f85-bea1-d35f6253240a",
+            "at_ms": 1791119876295,
+            "kind": "approval",
+            "read": false,
+            "delivery": "submitted"
+          }
+        ],
+        "unread": 4,
+        "ready": true,
+        "active": true,
+        "storage_error": false,
+        "overflow": false,
+        "system_available": true,
+        "last_delivery": "submitted",
+        "open": null
+      },
+      "selected": {
+        "task": null,
+        "project": ""
+      },
+      "modelCalls": 4
+    }
+  ],
+  "processId": 43036,
+  "status": "stopped"
+}

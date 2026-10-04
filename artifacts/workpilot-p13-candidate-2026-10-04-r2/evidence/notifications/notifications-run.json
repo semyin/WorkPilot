@@ -1,0 +1,62 @@
+[
+  {
+    "name": "notifications-portable-alpha13.3-r2",
+    "status": "passed",
+    "checks": 6,
+    "command": "$env:WORKPILOT_DESKTOP_BINARY = 'D:/workspace/kplocker/WorkPilot/artifacts/workpilot-p13-candidate-2026-10-04-r2/preview/workpilot-desktop.exe'\n$env:WORKPILOT_TEST_OUTPUT = 'D:/workspace/kplocker/WorkPilot/.test-results/p13-notifications-portable-alpha13.3-r2'\nnode scripts/notifications-desktop-test.mjs",
+    "binarySha256": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+    "binarySha256s": {
+      "desktop": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+      "engine": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7"
+    },
+    "report": "notifications/portable-alpha13.3-r2/report.json",
+    "screenshotsReviewed": [
+      "notifications/portable-alpha13.3-r2/notifications-inbox-zh.png",
+      "notifications/portable-alpha13.3-r2/notification-settings-zh.png",
+      "notifications/portable-alpha13.3-r2/notifications-inbox-en.png",
+      "notifications/portable-alpha13.3-r2/notification-settings-en.png"
+    ],
+    "scope": "Final r2 portable executable, synthetic local model and own fresh data; normal exit; explicit system fallback, not native popup evidence"
+  },
+  {
+    "name": "notifications-installed-alpha13.3-r2",
+    "status": "passed",
+    "checks": 6,
+    "command": "$env:WORKPILOT_DESKTOP_BINARY = 'D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-ec22c11ef07d473496684869f673b0a4\\中文 安装\\workpilot-desktop.exe'\n$env:WORKPILOT_TEST_OUTPUT = 'D:/workspace/kplocker/WorkPilot/.test-results/p13-notifications-installed-alpha13.3-r2'\nnode scripts/notifications-desktop-test.mjs --installed",
+    "binarySha256": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+    "binarySha256s": {
+      "desktop": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+      "engine": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7"
+    },
+    "report": "notifications/installed-alpha13.3-r2/report.json",
+    "screenshotsReviewed": [
+      "notifications/installed-alpha13.3-r2/notifications-inbox-zh.png",
+      "notifications/installed-alpha13.3-r2/notification-settings-zh.png",
+      "notifications/installed-alpha13.3-r2/notifications-inbox-en.png",
+      "notifications/installed-alpha13.3-r2/notification-settings-en.png"
+    ],
+    "scope": "Final r2 registered installation in real Chinese/space path; normal exit; synthetic local tasks and own data"
+  },
+  {
+    "name": "notifications-native-background-submission-alpha13.3-r2",
+    "status": "passed",
+    "checks": 4,
+    "command": "$env:WORKPILOT_DESKTOP_BINARY = 'D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-ec22c11ef07d473496684869f673b0a4\\中文 安装\\workpilot-desktop.exe'\n$env:WORKPILOT_TEST_OUTPUT = 'D:/workspace/kplocker/WorkPilot/.test-results/p13-notifications-native-alpha13.3-r2'\nnode scripts/notifications-native-session.mjs\n# Hide own test window using its observed button; then stdin approval, input, complete, failed, snapshot, stop at intervals above 2 seconds",
+    "binarySha256": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+    "binarySha256s": {
+      "desktop": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+      "engine": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7"
+    },
+    "report": "notifications/native-alpha13.3-r2/native-observations.json",
+    "scope": "Submission only; native display and activation are not verified"
+  },
+  {
+    "name": "notifications-rust-unit-alpha13.3-r2",
+    "status": "passed",
+    "checks": 7,
+    "command": "node scripts/cargo.mjs test -p workpilot-desktop notifications:: --locked",
+    "binarySha256": "c8137359e18aee94d54c3888e1855be2108fcd79a9d70ea811fbc73acaeecca1",
+    "report": "notifications/notifications-unit-alpha13.3-r2.txt",
+    "scope": "Current frozen alpha13.3 source, 7 passed, 0 ignored, 1 unrelated filtered"
+  }
+]

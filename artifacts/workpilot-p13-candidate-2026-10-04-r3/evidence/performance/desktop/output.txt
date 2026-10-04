@@ -1,0 +1,374 @@
+START normal workbench timing
+START 20 fresh-profile app startups; OS cache retained
+{
+  "at": "2026-10-04T14:34:42.870Z",
+  "platform": "win32",
+  "os": "10.0.26200",
+  "cpu": "AMD Ryzen 7 7840H w/ Radeon(TM) 780M Graphics  ",
+  "logicalProcessors": 16,
+  "memoryBytes": 33618710528,
+  "binarySha256": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+  "service": "Synthetic local Responses model, real Windows desktop and engine; no external model or personal data",
+  "conditions": "Fresh app and WebView data for each startup. OS file cache is not cleared. UI tests run in the normal workbench, not P00 diagnostics. Observer timestamps are DOM updates, not physical screen pixels.",
+  "checks": [
+    "20_button_input_and_correlated_engine_text_samples_in_normal_workbench",
+    "completed_task_requires_new_instruction_and_queued_messages_can_continue",
+    "20_stop_samples_and_actual_model_connections_closed_without_retry",
+    "20_fresh_profile_startups_normal_shutdown_and_no_browser_console_errors"
+  ],
+  "measurements": {
+    "sidebar": {
+      "scope": "Native click event to saved sidebar aria-pressed change",
+      "samples": [
+        18.1,
+        16.7,
+        17.9,
+        18.2,
+        16.7,
+        19,
+        16,
+        17.1,
+        16.6,
+        15.7,
+        17.3,
+        16.4,
+        17.6,
+        17,
+        16.8,
+        16.6,
+        19.2,
+        17.5,
+        17,
+        17.1
+      ],
+      "count": 20,
+      "p50Ms": 17,
+      "p95Ms": 19,
+      "maximumMs": 19.200000047683716,
+      "targetMs": 150,
+      "withinTarget": true
+    },
+    "input": {
+      "scope": "Native textarea input event to enabled message button",
+      "samples": [
+        0.7,
+        0.6,
+        0.7,
+        0.6,
+        0.7,
+        0.6,
+        0.6,
+        0.7,
+        0.6,
+        0.7,
+        0.7,
+        0.7,
+        0.5,
+        0.6,
+        0.7,
+        0.6,
+        0.7,
+        0.5,
+        0.5,
+        0.6
+      ],
+      "count": 20,
+      "p50Ms": 0.6,
+      "p95Ms": 0.7,
+      "maximumMs": 0.7000000476837158,
+      "targetMs": 150,
+      "withinTarget": true
+    },
+    "eventDisplay": {
+      "scope": "Persisted execution_text engine timestamp to first corresponding DOM text; same OS clock",
+      "samples": [
+        32,
+        81,
+        92,
+        153,
+        118,
+        78,
+        31,
+        45,
+        49,
+        85,
+        120,
+        65,
+        37,
+        54,
+        60,
+        27,
+        58,
+        37,
+        83,
+        31
+      ],
+      "count": 20,
+      "p50Ms": 58,
+      "p95Ms": 120,
+      "maximumMs": 153,
+      "targetMs": 250,
+      "withinTarget": true
+    },
+    "stopFeedback": {
+      "scope": "Native Stop click to stopping or interrupted DOM status",
+      "samples": [
+        1.5,
+        1.3,
+        1.2,
+        1.5,
+        1.2,
+        1.2,
+        1.3,
+        1.2,
+        1.3,
+        1.3,
+        1.2,
+        1.1,
+        1.1,
+        1.3,
+        1.3,
+        1.2,
+        1.3,
+        1.4,
+        1.3,
+        1.3
+      ],
+      "count": 20,
+      "p50Ms": 1.3,
+      "p95Ms": 1.5,
+      "maximumMs": 1.5,
+      "targetMs": 200,
+      "withinTarget": true
+    },
+    "stopFinished": {
+      "scope": "Native Stop click to actual interrupted task displayed; HTTP model wait, no local tool",
+      "samples": [
+        101.2,
+        120.4,
+        117.1,
+        100.2,
+        102.6,
+        94.2,
+        18.5,
+        86.6,
+        39.4,
+        184.5,
+        184.7,
+        33.3,
+        33.4,
+        100.4,
+        98.7,
+        103,
+        76.4,
+        124.9,
+        61.6,
+        149.7
+      ],
+      "count": 20,
+      "p50Ms": 100.2,
+      "p95Ms": 184.5,
+      "maximumMs": 184.69999998807907,
+      "targetMs": null,
+      "withinTarget": null
+    },
+    "startup": {
+      "scope": "Fresh app/WebView profiles, process creation to automation observing connected engine and enabled input; includes CDP connection overhead and is not a true cold-start claim",
+      "samples": [
+        742.58,
+        812.53,
+        820.49,
+        751.62,
+        737.69,
+        743,
+        732.31,
+        798.99,
+        921.71,
+        818.44,
+        821.85,
+        823.32,
+        824.25,
+        783.15,
+        837.56,
+        809.17,
+        787.72,
+        769.95,
+        824.35,
+        776.32
+      ],
+      "count": 20,
+      "p50Ms": 798.99,
+      "p95Ms": 837.56,
+      "maximumMs": 921.7115999999987,
+      "targetMs": null,
+      "withinTarget": null
+    }
+  },
+  "eventSamples": [
+    {
+      "marker": "P13_EVENT_0001",
+      "eventId": "c4b61467-fbea-4b3c-8288-9023764df451",
+      "eventAtMs": 1791124485942,
+      "visibleAtMs": 1791124485974,
+      "elapsedMs": 32
+    },
+    {
+      "marker": "P13_EVENT_0002",
+      "eventId": "992d7e07-95f3-419c-aef2-3ce1a7b64027",
+      "eventAtMs": 1791124486495,
+      "visibleAtMs": 1791124486576,
+      "elapsedMs": 81
+    },
+    {
+      "marker": "P13_EVENT_0003",
+      "eventId": "a6f9e074-48c7-443d-8fbb-80a4da305c2c",
+      "eventAtMs": 1791124487277,
+      "visibleAtMs": 1791124487369,
+      "elapsedMs": 92
+    },
+    {
+      "marker": "P13_EVENT_0004",
+      "eventId": "22afc109-73c0-45d5-bdf1-c6eee2999e04",
+      "eventAtMs": 1791124488035,
+      "visibleAtMs": 1791124488188,
+      "elapsedMs": 153
+    },
+    {
+      "marker": "P13_EVENT_0005",
+      "eventId": "f6e3fcf4-1d89-48de-9249-8fb6a912bbde",
+      "eventAtMs": 1791124488872,
+      "visibleAtMs": 1791124488990,
+      "elapsedMs": 118
+    },
+    {
+      "marker": "P13_EVENT_0006",
+      "eventId": "8e60a7af-d40c-4679-b8cd-96e944feed4a",
+      "eventAtMs": 1791124489666,
+      "visibleAtMs": 1791124489744,
+      "elapsedMs": 78
+    },
+    {
+      "marker": "P13_EVENT_0007",
+      "eventId": "f1f64486-d3b9-4729-96f4-c992e2bf0d15",
+      "eventAtMs": 1791124490434,
+      "visibleAtMs": 1791124490465,
+      "elapsedMs": 31
+    },
+    {
+      "marker": "P13_EVENT_0008",
+      "eventId": "79a66d20-d771-4bb1-94fa-25ec637de9ba",
+      "eventAtMs": 1791124491076,
+      "visibleAtMs": 1791124491121,
+      "elapsedMs": 45
+    },
+    {
+      "marker": "P13_EVENT_0009",
+      "eventId": "83e7557b-aa90-483b-a63a-116405654895",
+      "eventAtMs": 1791124491716,
+      "visibleAtMs": 1791124491765,
+      "elapsedMs": 49
+    },
+    {
+      "marker": "P13_EVENT_0010",
+      "eventId": "276c0845-94e6-4f67-a951-a6a80fcf0c5a",
+      "eventAtMs": 1791124492342,
+      "visibleAtMs": 1791124492427,
+      "elapsedMs": 85
+    },
+    {
+      "marker": "P13_EVENT_0011",
+      "eventId": "22d2ed2b-80de-4eef-85fd-ad19079a06f0",
+      "eventAtMs": 1791124493139,
+      "visibleAtMs": 1791124493259,
+      "elapsedMs": 120
+    },
+    {
+      "marker": "P13_EVENT_0012",
+      "eventId": "3b9ea8c8-005b-42b2-8ade-399aca85480e",
+      "eventAtMs": 1791124493839,
+      "visibleAtMs": 1791124493904,
+      "elapsedMs": 65
+    },
+    {
+      "marker": "P13_EVENT_0013",
+      "eventId": "2ef113b8-2f0d-4aa9-9134-baec7ab7908a",
+      "eventAtMs": 1791124494523,
+      "visibleAtMs": 1791124494560,
+      "elapsedMs": 37
+    },
+    {
+      "marker": "P13_EVENT_0014",
+      "eventId": "4807071e-53f5-4b31-8757-3e5f3f817719",
+      "eventAtMs": 1791124495330,
+      "visibleAtMs": 1791124495384,
+      "elapsedMs": 54
+    },
+    {
+      "marker": "P13_EVENT_0015",
+      "eventId": "03a8587a-0e7a-4e6d-9b3e-01658a652bb4",
+      "eventAtMs": 1791124495971,
+      "visibleAtMs": 1791124496031,
+      "elapsedMs": 60
+    },
+    {
+      "marker": "P13_EVENT_0016",
+      "eventId": "b91c470d-b28b-42da-af63-abb2093f41bc",
+      "eventAtMs": 1791124496664,
+      "visibleAtMs": 1791124496691,
+      "elapsedMs": 27
+    },
+    {
+      "marker": "P13_EVENT_0017",
+      "eventId": "61bf901a-7195-4ff9-b36f-5e1eb965c86d",
+      "eventAtMs": 1791124497441,
+      "visibleAtMs": 1791124497499,
+      "elapsedMs": 58
+    },
+    {
+      "marker": "P13_EVENT_0018",
+      "eventId": "e0caae28-42a5-4144-a3ed-5b69daff98c3",
+      "eventAtMs": 1791124498108,
+      "visibleAtMs": 1791124498145,
+      "elapsedMs": 37
+    },
+    {
+      "marker": "P13_EVENT_0019",
+      "eventId": "fbb6a686-fa3d-425e-8833-474f5012450c",
+      "eventAtMs": 1791124498892,
+      "visibleAtMs": 1791124498975,
+      "elapsedMs": 83
+    },
+    {
+      "marker": "P13_EVENT_0020",
+      "eventId": "d1ae642f-1beb-468b-8743-9d2b084ea3e2",
+      "eventAtMs": 1791124499612,
+      "visibleAtMs": 1791124499643,
+      "elapsedMs": 31
+    }
+  ],
+  "startupSamples": [
+    742.579099999999,
+    812.5270999999993,
+    820.4912000000004,
+    751.6222999999991,
+    737.6886000000013,
+    743.0002999999997,
+    732.3120999999992,
+    798.9920999999995,
+    921.7115999999987,
+    818.4380000000019,
+    821.8508999999976,
+    823.3176999999996,
+    824.2476999999999,
+    783.1548999999941,
+    837.5558999999994,
+    809.1696999999986,
+    787.7220000000016,
+    769.9465999999957,
+    824.3485000000001,
+    776.3202999999994
+  ],
+  "httpCalls": 40,
+  "targetMisses": [],
+  "status": "passed"
+}

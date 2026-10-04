@@ -1,0 +1,7 @@
+{"scenario":"tasks-1","waves":31,"elapsedMs":10056,"controlP95Ms":6.736,"peak":1}
+{"scenario":"tasks-4","waves":25,"elapsedMs":10311,"controlP95Ms":28.96,"peak":4}
+{"scenario":"tasks-8","waves":20,"elapsedMs":10526,"controlP95Ms":89.418,"peak":8}
+{"scenario":"assistants-1","waves":14,"elapsedMs":10356,"controlP95Ms":14.74,"peak":1}
+{"scenario":"assistants-3","waves":10,"elapsedMs":10671,"controlP95Ms":8.914,"peak":3}
+{"scenario":"assistants-8","waves":5,"elapsedMs":10272,"controlP95Ms":37.221,"peak":8}
+{"status":"passed","elapsedMs":108051,"report":"D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-engine-final\\run-GgvZwX\\report.json"}

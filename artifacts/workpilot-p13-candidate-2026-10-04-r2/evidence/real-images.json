@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-04T13:07:57.207Z",
+  "directory": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-real-images-r2\\session-in3omx",
+  "synthetic": false,
+  "service": "User-provided Alibaba Cloud workspace",
+  "origin": "https://ws-ky8utskqnjn8b091.cn-beijing.maas.aliyuncs.com",
+  "protocol": "aliyun_images",
+  "model": "qwen-image-3.0",
+  "binarySha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+  "images": [
+    {
+      "name": "blue-cup.png",
+      "file": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-real-images-r2\\session-in3omx\\project\\blue-cup.png",
+      "sha256": "d17cf6d203835ae6abc93558b0eb214c6b54b632244da5024726da6faad99665",
+      "bytes": 771737,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "elapsedMs": 47471,
+      "operationId": "4a82d96c-966f-405f-bb9d-b8b6ccc9a2e2",
+      "assetId": "cbcaeefb-d567-4847-aa36-7ba4c80da844",
+      "referenceAssetIds": [],
+      "prompt": "一张清晰的简洁产品照片：一只纯蓝色陶瓷马克杯，杯把在右侧，放在浅木色桌面上，背景纯白，柔和自然光。只有一只杯子，没有文字、人物或商标，正方形构图。"
+    },
+    {
+      "name": "green-cup.png",
+      "file": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-real-images-r2\\session-in3omx\\project\\green-cup.png",
+      "sha256": "ce7d77ddb0eb5e8d6318a77c2c73732c0e2ef44a61227c58dda0ffe8be31ee1d",
+      "bytes": 723240,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "elapsedMs": 19580,
+      "operationId": "480989fe-ad91-47bb-9819-f2e5cd4fd4e6",
+      "assetId": "3104bc63-d3cf-4961-93da-da438de1a7fc",
+      "referenceAssetIds": [
+        "cbcaeefb-d567-4847-aa36-7ba4c80da844"
+      ],
+      "prompt": "编辑参考图：仅把蓝色马克杯的杯身和把手改为鲜明的绿色，保持杯子形状、右侧把手、位置、浅木色桌面、白色背景和光照不变，不增加文字或其它物体。"
+    }
+  ],
+  "checks": [
+    "real_generation_after_approval_produces_decodable_1024px_png_asset",
+    "real_reference_edit_new_file_preserves_original_and_has_distinct_bytes"
+  ],
+  "taskId": "88b246c3-4e0b-4dc5-aada-8801a71ccc1d",
+  "visualReview": "Pending separate human/agent image inspection; file checks alone do not prove prompt quality",
+  "status": "passed_file_checks",
+  "credentialRemoved": true,
+  "finishedAt": "2026-10-04T13:09:04.553Z"
+}

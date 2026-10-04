@@ -1,0 +1,63 @@
+{
+  "at": "2026-10-04T13:19:43.745Z",
+  "platform": "win32",
+  "binarySha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+  "environment": "Windows developer machine; engine PATH restricted to System32. This is not a clean-OS test.",
+  "checks": [
+    "full_installed_inventory_verified_and_engine_responsive",
+    "request_approval_workbench_git_commit_uses_bundled_git_and_explicit_approval",
+    "full_access_bundled_python_unicode_node_git_commit_without_developer_PATH",
+    "request_approval_bundled_python_unicode_node_git_commit_keep_appcontainer_boundary",
+    "sandbox_uses_only_owned_runtime_roots_and_restores_their_permissions",
+    "damaged_missing_traversal_and_missing_checker_rejected_no_global_python_fallback"
+  ],
+  "verificationMs": 74468,
+  "components": [
+    {
+      "id": "application",
+      "files": 8,
+      "bytes": 41824461
+    },
+    {
+      "id": "node",
+      "files": 6,
+      "bytes": 87181693
+    },
+    {
+      "id": "python",
+      "files": 34,
+      "bytes": 22640669
+    },
+    {
+      "id": "git",
+      "files": 373,
+      "bytes": 95772593
+    },
+    {
+      "id": "git_compat",
+      "files": 33,
+      "bytes": 21082215
+    },
+    {
+      "id": "chromium",
+      "files": 80,
+      "bytes": 447153998
+    },
+    {
+      "id": "documents",
+      "files": 5244,
+      "bytes": 167872685
+    },
+    {
+      "id": "office",
+      "files": 19448,
+      "bytes": 1579736503
+    },
+    {
+      "id": "companion",
+      "files": 12,
+      "bytes": 234094
+    }
+  ],
+  "status": "passed"
+}

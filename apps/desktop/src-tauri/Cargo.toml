@@ -19,3 +19,8 @@ uuid.workspace = true
 zeroize.workspace = true
 workpilot-contracts = { path = "../../../crates/contracts" }
 workpilot-platform = { path = "../../../crates/platform" }
+tempfile.workspace = true
+
+[target.'cfg(windows)'.dependencies]
+tauri-winrt-notification = "=0.8.1"
+windows-sys = { version = "=0.61.2", features = ["Win32_Foundation", "Win32_System_Registry"] }

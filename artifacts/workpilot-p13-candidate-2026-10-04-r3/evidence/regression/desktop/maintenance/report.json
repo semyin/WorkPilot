@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-04T13:54:38.769Z",
+  "platform": "win32",
+  "binarySha256": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+  "checks": [
+    "native_retention_preview_password_confirmation_stops_engine_and_keeps_project_file",
+    "restart_retains_latest_history_english_reset_preview_needs_explicit_confirmation"
+  ],
+  "passed": true
+}

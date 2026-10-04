@@ -31,6 +31,13 @@ pub struct DocumentUnit {
     pub locator: String,
     pub text: String,
 }
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize, TS)]
+#[serde(rename_all = "snake_case")]
+pub enum ImageProtocol {
+    #[default]
+    OpenaiImages,
+    AliyunImages,
+}
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 pub struct ImageService {
     pub id: String,
@@ -46,6 +53,8 @@ pub struct ImageService {
     pub max_count: u32,
     pub request_base64: bool,
     pub auth_required: bool,
+    #[serde(default)]
+    pub protocol: ImageProtocol,
 }
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]

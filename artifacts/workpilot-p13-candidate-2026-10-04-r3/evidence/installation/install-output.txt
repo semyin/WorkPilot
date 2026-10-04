@@ -1,0 +1,5 @@
+{
+    "installRoot":  "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-9d18967072c84d9994894b7cf535f15e\\中文 安装",
+    "status":  "installed_pending_native_and_uninstall_checks",
+    "session":  "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-9d18967072c84d9994894b7cf535f15e"
+}

@@ -184,6 +184,7 @@ pub fn typescript() -> String {
         MediaAdmin,
         MediaAsset,
         DocumentUnit,
+        ImageProtocol,
         ImageService,
         ImageRequest,
         MediaEffect,

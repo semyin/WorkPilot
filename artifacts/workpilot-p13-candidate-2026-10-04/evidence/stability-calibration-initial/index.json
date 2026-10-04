@@ -1,0 +1,90 @@
+{
+  "scope": "Initial alpha.13.2 test-harness calibration, not final desktop or four-hour acceptance. Failed assumptions and raw values preserved. Formal stops require twenty samples.",
+  "viewedImages": [
+    "03-office-single-probe/office-0-docx.png",
+    "05-browser-single-probe/browser-0.png"
+  ],
+  "records": [
+    {
+      "name": "01-queue-script-assumption",
+      "source": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak\\run-xhPxmc\\642331d8-dfd6-4b7d-836e-08c7938d149d",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: New request must remain queued until explicit continuation\n\n0 !== 1\n\n    at taskCycle (file:///D:/workspace/kplocker/WorkPilot/scripts/p13-soak-workloads.mjs:92:10)\n    at async Promise.allSettled (index 0)\n    at async file:///D:/workspace/kplocker/WorkPilot/scripts/p13-soak-runner.mjs:163:24",
+      "report": "01-queue-script-assumption/report.json",
+      "files": [
+        "identity-identify-fe005607-b03c-4bf4-98e6-393477f948de.json",
+        "identity-verify-49f8bb0f-17c9-4f48-82fc-5113f65bab96.json",
+        "owned-process-identities.json",
+        "process-discovery.jsonl",
+        "report.json",
+        "resource-targets.json",
+        "resources.jsonl"
+      ]
+    },
+    {
+      "name": "02-document-range-script-error",
+      "source": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak\\run-cfbDVj\\68d889c6-a665-44c8-91ed-0bf5f710a530",
+      "status": "failed",
+      "error": "page.evaluate: invalid document range\n    at request (D:\\workspace\\kplocker\\WorkPilot\\scripts\\p13-desktop-support.mjs:20:8)\n    at Object.request (D:\\workspace\\kplocker\\WorkPilot\\scripts\\p13-soak-native.mjs:10:11)\n    at Object.media (D:\\workspace\\kplocker\\WorkPilot\\scripts\\p13-soak-workbench.mjs:71:36)\n    at officeCycle (D:\\workspace\\kplocker\\WorkPilot\\scripts\\p13-soak-workbench.mjs:195:24)",
+      "report": "02-document-range-script-error/report.json",
+      "files": [
+        "browser-0.png",
+        "identity-identify-1b7509d0-3276-482a-b747-f5b1c836c274.json",
+        "identity-verify-dc54cb0b-042b-4f60-93fd-fd3885352f74.json",
+        "office-0-docx.png",
+        "owned-process-identities.json",
+        "process-discovery.jsonl",
+        "report.json",
+        "resource-targets.json",
+        "resources.jsonl"
+      ]
+    },
+    {
+      "name": "03-office-single-probe",
+      "source": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-tool-stop\\run-P4m8PW",
+      "status": "probe_passed_not_twenty_samples",
+      "report": "03-office-single-probe/report.json",
+      "files": [
+        "identity-verify-67c9ab87-5a48-4a99-b1e7-5162ed3b73f8.json",
+        "office-0-docx.png",
+        "owned-process-identities.json",
+        "process-discovery.jsonl",
+        "progress.json",
+        "report.json",
+        "resource-targets.json",
+        "resources.jsonl"
+      ]
+    },
+    {
+      "name": "04-browser-insufficient-samples",
+      "source": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-tool-stop\\run-SDWX2j",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Dedicated-browser resource observation requires 20 complete cycles\n    at Object.closeBrowser (file:///D:/workspace/kplocker/WorkPilot/scripts/p13-tool-stop-scenarios.mjs:88:7)\n    at async browserCycle (file:///D:/workspace/kplocker/WorkPilot/scripts/p13-soak-workbench.mjs:133:7)\n    at async file:///D:/workspace/kplocker/WorkPilot/scripts/p13-tool-stop-benchmark.mjs:79:30",
+      "report": "04-browser-insufficient-samples/report.json",
+      "files": [
+        "browser-0.png",
+        "owned-process-identities.json",
+        "process-discovery.jsonl",
+        "report.json",
+        "resource-targets.json",
+        "resources.jsonl"
+      ]
+    },
+    {
+      "name": "05-browser-single-probe",
+      "source": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-tool-stop\\run-vXGh4F",
+      "status": "probe_passed_not_twenty_samples",
+      "report": "05-browser-single-probe/report.json",
+      "files": [
+        "browser-0.png",
+        "identity-verify-b52661af-083b-4170-ac4e-f1a1d7f18535.json",
+        "owned-process-identities.json",
+        "process-discovery.jsonl",
+        "progress.json",
+        "report.json",
+        "resource-targets.json",
+        "resources.jsonl"
+      ]
+    }
+  ]
+}

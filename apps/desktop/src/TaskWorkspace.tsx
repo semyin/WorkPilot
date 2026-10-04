@@ -5,16 +5,16 @@ import { TaskCreateForm } from "./task-workspace/TaskCreateForm";
 import { TaskInspector } from "./task-workspace/TaskInspector";
 import { TaskWorkspaceHeader } from "./task-workspace/TaskWorkspaceHeader";
 import { taskLabels } from "./task-workspace/taskLabels";
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore, type CSSProperties } from "react";
+import { TaskReadStore } from "./task-workspace/taskReadStore";
+import { readTaskDetail, useTaskSelection } from "./task-workspace/useTaskSelection";
 import type {
   ExecutionConfig,
   ExecutionLimits,
-  ExecutionSnapshot,
   ProfileCatalog,
   Task,
   WorkMode,
   EventPage,
-  TeamView,
   WorkspaceProject,
 } from "./generated/contracts";
 import { executionCommand as command } from "./executionClient";
@@ -30,7 +30,7 @@ import type { MediaAsset } from "./generated/contracts";
 import { ResizeHandle } from "./ResizeHandle";
 import { FileWorkbench } from "./FileWorkbench";
 import { ExtensionPanel } from "./ExtensionPanel";
-import { workspaceAction, workspaceQuery } from "./workspaceClient";
+import { workspaceAction } from "./workspaceClient";
 import type { TaskDesktop } from "./task-workspace/types";
 const limitsDefault: ExecutionLimits = {
   max_steps: 32,
@@ -56,8 +56,12 @@ export function TaskWorkspace({
   const [selected, setSelected] = useState<string | null>(
     localStorage.getItem("workpilot.execution"),
   );
-  const [snapshot, setSnapshot] = useState<ExecutionSnapshot | null>(null);
-  const [team, setTeam] = useState<TeamView | null>(null);
+  const [taskReads] = useState(() => new TaskReadStore());
+  useSyncExternalStore(taskReads.subscribe, taskReads.version);
+  const { detail, team, error: readError, selection } = useTaskSelection(selected, taskReads);
+  const snapshot = detail
+    ? { ...detail.snapshot, task: taskReads.task(detail.snapshot.task) }
+    : null;
   const [creating, setCreating] = useState(!selected);
   const [browserOpen, setBrowserOpen] = useState(false);
   const [config, setConfig] = useState<ExecutionConfig>({
@@ -77,17 +81,19 @@ export function TaskWorkspace({
   const [profile, setProfile] = useState("");
   const [limits, setLimits] = useState(limitsDefault);
   const [message, setMessage] = useState("");
-  const [live, setLive] = useState("");
-  const [reasoning, setReasoning] = useState("");
+  const live = detail?.live_text || "";
+  const reasoning = detail?.live_reasoning || "";
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
-  const [stopping, setStopping] = useState(false);
+  const stopping = !!selected && taskReads.stopping(selected);
   const [history, setHistory] = useState<EventPage | null>(null);
   const [showHistory, setShowHistory] = useState(false);
   const [reviewResults, setReviewResults] = useState<Record<string, string>>({});
-  const [archived, setArchived] = useState(false);
-  const [effectiveModel, setEffectiveModel] = useState("");
-  const [effectivePermission, setEffectivePermission] = useState("request_approval");
+  const archived = detail?.archived || false;
+  const effectiveModel = detail?.effective_profile
+    ? `${detail.effective_profile.label} · ${detail.effective_profile.model}`
+    : tr("尚未选择模型", "No model selected");
+  const effectivePermission = detail?.effective_permission || "request_approval";
   const [renaming, setRenaming] = useState<string | null>(null);
   const [fileWorkspace, setFileWorkspace] = useState(false);
   const [extensionsOpen, setExtensionsOpen] = useState(false);
@@ -101,27 +107,36 @@ export function TaskWorkspace({
     setMessageAttachments([]);
     setAttachmentBusy(false);
   }, [selected, creating]);
-  const selectionGeneration = useRef(0);
   const settingsTask = useRef("");
   const active =
-    !!snapshot?.latest_run && ["queued", "running", "stopping"].includes(snapshot.task.state);
+    stopping ||
+    (!!snapshot &&
+      (["running", "stopping"].includes(snapshot.task.state) ||
+        (snapshot.task.state === "queued" && !!snapshot.latest_run)));
+  const completedWithoutMessages =
+    snapshot?.task.state === "completed" &&
+    !snapshot.messages.some((m) => ["queued", "steer_requested"].includes(m.state));
   const { status, reasonLabel } = taskLabels(english);
-  const refresh = async (task: string) => {
-    const result = await workspaceQuery({ kind: "detail", task_id: task });
-    if (result.kind === "detail") return result;
-    throw new Error(tr("无法读取任务。", "Could not read this task."));
+  const chooseTask = (task: string | null) => {
+    if (selection.current.task !== task)
+      selection.current = { task, generation: selection.current.generation + 1 };
+    setSelected(task);
   };
   useEffect(() => {
     let disposed = false;
     let timer: ReturnType<typeof setTimeout>;
     const poll = async () => {
       try {
+        const read = taskReads.beginRead();
         const [list, profiles] = await Promise.all([
           command({ kind: "read", query: { kind: "executions", limit: 64 } }),
           command({ kind: "read", query: { kind: "profiles" } }),
         ]);
         if (!disposed) {
-          if (list.kind === "executions") setTasks(list.tasks);
+          if (list.kind === "executions") {
+            taskReads.observe(list.tasks, read);
+            setTasks(list.tasks);
+          }
           if (profiles.kind === "profiles") setCatalog(profiles.catalog);
         }
       } catch (e) {
@@ -134,71 +149,43 @@ export function TaskWorkspace({
       disposed = true;
       clearTimeout(timer);
     };
-  }, []);
+  }, [taskReads]);
   useEffect(() => {
-    const generation = ++selectionGeneration.current;
-    setSnapshot(null);
     setError("");
-    setTeam(null);
-    setLive("");
-    setReasoning("");
     setHistory(null);
-    setStopping(false);
-    if (!selected) return;
-    localStorage.setItem("workpilot.execution", selected);
-    let disposed = false;
-    let timer: ReturnType<typeof setTimeout>;
-    const poll = async () => {
-      try {
-        const [view, teamResult] = await Promise.all([
-          refresh(selected),
-          command({ kind: "read", query: { kind: "team", task_id: selected } }),
-        ]);
-        if (disposed || generation !== selectionGeneration.current) return;
-        const detail = view.snapshot;
-        setSnapshot(detail);
-        setArchived(view.archived);
-        setEffectivePermission(view.effective_permission);
-        setEffectiveModel(
-          view.effective_profile
-            ? `${view.effective_profile.label} · ${view.effective_profile.model}`
-            : tr("尚未选择模型", "No model selected"),
-        );
-        setLive(view.live_text);
-        setReasoning(view.live_reasoning);
-        if (teamResult.kind === "team") setTeam(teamResult.view);
-        if (!["running", "stopping", "queued"].includes(detail.task.state)) setStopping(false);
-        if (settingsTask.current !== selected) {
-          settingsTask.current = selected;
-          setMode(detail.task.mode);
-          setProfile(detail.task.profile_id || "");
-          setLimits(detail.config.limits);
-        }
-        if (!disposed) timer = setTimeout(poll, 150);
-      } catch (e) {
-        if (!disposed) {
-          setError(e instanceof Error ? e.message : String(e));
-          timer = setTimeout(poll, 1000);
-        }
-      }
-    };
-    void poll();
-    return () => {
-      disposed = true;
-      clearTimeout(timer);
-    };
-  }, [selected, english]);
+    setShowHistory(false);
+  }, [selected]);
+  useEffect(() => {
+    if (detail && settingsTask.current !== selected) {
+      settingsTask.current = selected || "";
+      setMode(detail.snapshot.task.mode);
+      setProfile(detail.snapshot.task.profile_id || "");
+      setLimits(detail.snapshot.config.limits);
+    }
+  }, [detail, selected]);
   const act = async (work: () => Promise<void>) => {
+    const origin = selection.current;
     setBusy(true);
     setError("");
     try {
       await work();
     } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
-      setStopping(false);
+      if (selection.current === origin) setError(e instanceof Error ? e.message : String(e));
     } finally {
       setBusy(false);
     }
+  };
+  const stopTask = (task: string) => {
+    const token = taskReads.requestStop(task);
+    return act(async () => {
+      try {
+        await command({ kind: "cancel", task_id: task }, english);
+        taskReads.acknowledgeStop(task, token);
+      } catch (e) {
+        taskReads.rejectStop(task, token);
+        throw e;
+      }
+    });
   };
   const start = (task: string) => command({ kind: "start_execution", task_id: task }, english);
   const create = (startNow = true) =>
@@ -215,7 +202,7 @@ export function TaskWorkspace({
         if (initialAttachments.length)
           await media(task, { kind: "bind", asset_ids: initialAttachments.map((a) => a.id) });
         setInitialAttachments([]);
-        setSelected(task);
+        chooseTask(task);
         setCreating(false);
         settingsTask.current = "";
         if (
@@ -243,7 +230,7 @@ export function TaskWorkspace({
   const sendMessage = () =>
     act(async () => {
       if (!selected || !message.trim()) return;
-      const generation = selectionGeneration.current;
+      const origin = selection.current;
       if (messageAttachments.length)
         await media(selected, { kind: "bind", asset_ids: messageAttachments.map((a) => a.id) });
       await command(
@@ -254,10 +241,11 @@ export function TaskWorkspace({
         },
         english,
       );
-      setMessageAttachments([]);
-      setMessage("");
-      const current = await refresh(selected);
-      if (generation === selectionGeneration.current) setSnapshot(current.snapshot);
+      if (selection.current === origin) {
+        setMessageAttachments([]);
+        setMessage("");
+      }
+      const current = await readTaskDetail(selected, taskReads);
       // A user send to a completed/waiting task explicitly starts a new turn.
       // Interrupted/failed tasks always retain the separate Continue control.
       if (["completed", "awaiting_input"].includes(current.snapshot.task.state))
@@ -266,11 +254,12 @@ export function TaskWorkspace({
   const readHistory = (after = 0) =>
     act(async () => {
       if (!selected) return;
+      const origin = selection.current;
       const r = await command(
         { kind: "read", query: { kind: "events", task_id: selected, after, limit: 128 } },
         english,
       );
-      if (r.kind === "events") {
+      if (selection.current === origin && r.kind === "events") {
         setHistory(r.page);
         setShowHistory(true);
       }
@@ -295,7 +284,7 @@ export function TaskWorkspace({
   const needsReview = snapshot?.steps.filter((s) => s.state === "needs_review") || [];
   const newTask = (project: WorkspaceProject | null) => {
     setCreating(true);
-    setSelected(null);
+    chooseTask(null);
     localStorage.removeItem("workpilot.execution");
     setError("");
     setMessage("");
@@ -322,7 +311,7 @@ export function TaskWorkspace({
     setConstraints("");
   };
   const selectTask = (id: string) => {
-    setSelected(id);
+    chooseTask(id);
     setCreating(false);
     setError("");
     setMessage("");
@@ -330,7 +319,7 @@ export function TaskWorkspace({
   };
   const toolPanel = snapshot && (
     <ToolPanel
-      key={snapshot.task.id}
+      key={`tools-${snapshot.task.id}`}
       task={snapshot.task.id}
       english={english}
       catalog={catalog}
@@ -343,7 +332,7 @@ export function TaskWorkspace({
     team &&
     (snapshot.task.mode === "execute" || team.members.length > 0) && (
       <TeamPanel
-        key={snapshot.task.id}
+        key={`team-${snapshot.task.id}`}
         task={snapshot.task.id}
         view={team}
         mode={snapshot.task.mode}
@@ -400,6 +389,7 @@ export function TaskWorkspace({
                 onNew={newTask}
                 onProjectsChanged={desktop.onRefresh}
                 english={english}
+                taskReads={taskReads}
               />
             </div>
             {prefs && !prefs.sidebar_closed ? (
@@ -434,21 +424,22 @@ export function TaskWorkspace({
             >
               {tr("+ 新建任务", "+ New task")}
             </button>
-            {tasks.map((task) => (
-              <button
-                key={task.id}
-                data-execution-id={task.id}
-                className={!creating && selected === task.id ? "chosen" : ""}
-                onClick={() => {
-                  setSelected(task.id);
-                  setCreating(false);
-                  setError("");
-                }}
-              >
-                <strong>{task.title}</strong>
-                <small>{status(task.state)}</small>
-              </button>
-            ))}
+            {tasks.map((row) => {
+              const task = taskReads.task(row);
+              return (
+                <button
+                  key={task.id}
+                  data-execution-id={task.id}
+                  className={!creating && selected === task.id ? "chosen" : ""}
+                  onClick={() => {
+                    selectTask(task.id);
+                  }}
+                >
+                  <strong>{task.title}</strong>
+                  <small>{status(taskReads.state(task))}</small>
+                </button>
+              );
+            })}
             <small>
               {tr(
                 "关闭此页面或隐藏窗口后，任务继续运行。",
@@ -470,9 +461,9 @@ export function TaskWorkspace({
               ))}
             </details>
           )}
-          {error && (
+          {(error || readError) && (
             <div className="error" role="alert">
-              {error}
+              {error || readError}
             </div>
           )}
           {creating ? (
@@ -502,6 +493,7 @@ export function TaskWorkspace({
                   <h2>{snapshot.task.title}</h2>
                   <span
                     data-testid="execution-status"
+                    data-task-id={snapshot.task.id}
                     data-state={stopping ? "stopping" : snapshot.task.state}
                   >
                     {stopping ? tr("正在停止", "Stopping") : status(snapshot.task.state)}
@@ -538,7 +530,6 @@ export function TaskWorkspace({
                                   task_id: snapshot.task.id,
                                   archived: !archived,
                                 });
-                                setArchived(!archived);
                               })
                             }
                           >
@@ -584,7 +575,7 @@ export function TaskWorkspace({
                     )}
                   </>
                 )}
-                <MigrationRecovery key={snapshot.task.id} task={snapshot.task.id} />
+                <MigrationRecovery key={`recovery-${snapshot.task.id}`} task={snapshot.task.id} />
                 {!desktop && toolPanel}
                 <details className="execution-goal">
                   <summary>{tr("任务目标和限制", "Goal and constraints")}</summary>
@@ -595,7 +586,12 @@ export function TaskWorkspace({
                 </details>
                 <div className="model-actions">
                   <button
-                    disabled={busy || active || archived}
+                    disabled={busy || active || archived || completedWithoutMessages}
+                    title={
+                      completedWithoutMessages
+                        ? tr("发送新的要求后再继续。", "Send a new instruction to continue.")
+                        : undefined
+                    }
                     onClick={() =>
                       void act(async () => {
                         await configure(mode);
@@ -617,12 +613,7 @@ export function TaskWorkspace({
                           ),
                         ))
                     }
-                    onClick={() => {
-                      setStopping(true);
-                      void act(async () => {
-                        await command({ kind: "cancel", task_id: snapshot.task.id }, english);
-                      });
-                    }}
+                    onClick={() => void stopTask(snapshot.task.id)}
                   >
                     {tr("停止任务", "Stop task")}
                   </button>
@@ -701,7 +692,7 @@ export function TaskWorkspace({
                 )}
                 {desktop && (
                   <Conversation
-                    key={snapshot.task.id}
+                    key={`conversation-${snapshot.task.id}`}
                     task={snapshot.task.id}
                     sequence={snapshot.task.last_sequence}
                   />
@@ -886,7 +877,7 @@ export function TaskWorkspace({
       </div>
       {mediaOpen && (
         <MediaPanel
-          key={creating ? "global-media" : selected || "global-media"}
+          key={`media-${creating ? "global" : selected || "global"}`}
           task={creating ? null : selected}
           onClose={() => setMediaOpen(false)}
           onAttach={(asset) => {
@@ -926,11 +917,15 @@ export function TaskWorkspace({
         />
       )}
       {fileWorkspace && selected && (
-        <FileWorkbench key={selected} task={selected} onClose={() => setFileWorkspace(false)} />
+        <FileWorkbench
+          key={`files-${selected}`}
+          task={selected}
+          onClose={() => setFileWorkspace(false)}
+        />
       )}
       {extensionsOpen && (
         <ExtensionPanel
-          key={selected || "global"}
+          key={`extensions-${selected || "global"}`}
           task={selected}
           onClose={() => setExtensionsOpen(false)}
           onDraft={(goal) => {

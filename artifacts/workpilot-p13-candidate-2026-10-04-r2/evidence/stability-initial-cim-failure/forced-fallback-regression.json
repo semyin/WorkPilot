@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "scope": "Actual owned PowerShell process with all CIM output paths forced missing",
+  "rows": {
+    "pid": 43756,
+    "parentPid": 12184,
+    "startedAtMs": 1791119710791,
+    "path": "C:\\Users\\semyi\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+    "role": "desktop",
+    "uiProfileVerified": false
+  }
+}

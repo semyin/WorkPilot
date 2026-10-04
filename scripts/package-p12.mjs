@@ -3,10 +3,14 @@ import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { join, dirname, relative, resolve, isAbsolute } from "node:path";
 import { root } from "./cargo.mjs";
+import { deliveryFor } from "./delivery-phase.mjs";
 
-export const destination = join(root, "artifacts/workpilot-p12-complete-2026-10-04");
+const args = process.argv.slice(2);
+const version = JSON.parse(await readFile(join(root, "package.json"), "utf8")).version;
+const delivery = deliveryFor(root, args, version);
+const { p13, previous } = delivery;
+export const destination = delivery.destination;
 const preview = join(destination, "preview");
-const previous = join(root, "artifacts/workpilot-p12-history-restore-2026-10-04");
 const hash = (b) => createHash("sha256").update(b).digest("hex");
 const build = JSON.parse(await readFile(join(root, ".local/desktop-release-receipt.json"), "utf8"));
 const sources = JSON.parse(
@@ -15,7 +19,6 @@ const sources = JSON.parse(
 const prepared = JSON.parse(
   await readFile(join(root, ".local/p12-runtime-downloads/prepared.json"), "utf8"),
 );
-const version = JSON.parse(await readFile(join(root, "package.json"), "utf8")).version;
 if (build.appVersion !== version)
   throw new Error("Run npm run build for the current app version before packaging");
 function checked(base, path) {
@@ -207,7 +210,8 @@ for (const browser of ["chrome", "edge"])
   );
 await text(
   "使用说明.txt",
-  "WorkPilot P12 整合开发预览\r\n运行 workpilot-desktop.exe，请保留整个 preview 文件夹。\r\n设置 → 完整资料迁移：选择项目、任务与助手、模型配置、记忆、扩展和当前文件，保存为一份口令加密包；目标逐项映射位置，先预览冲突，再确认导入。模型密钥重新填写，扩展保持停用，当前文件独立审批。未决操作需要用户逐项核对，不能用旧审批重放；恢复后手动继续。\r\n设置 → 数据清理与恢复初始状态：可回收未引用内容、按保留数量和天数备份清理文件版本、删除归档任务组/只读档案，或清空当前数据目录和已登记凭据。所有操作先预览范围并输入确认文字；版本清理先生成并解密核验备份。项目原文件保留，处理完成后重新启动软件。\r\n技能与插件 → 技能与插件迁移：可包含当前与旧版本、已卸载扩展和未安装草稿；导入保持停用并重新核对权限和依赖。原各类独立备份/导入入口继续保留。\r\n设置 → 软件更新：输入受控 HTTPS 更新源或选择签名更新包，检查版本与影响，准备后由用户确认安装。更新先停止任务、备份数据并在副本验证迁移，失败恢复原应用与数据；不自动升级第三方插件。发布签名与 Windows 安装器代码签名是两件事，本预览安装器仍未进行 Windows 代码签名。\r\n随包包含 Node、Python 标准库、专用 Chromium、MinGit、受限 Git 兼容程序、文档工具与 Office 预览环境，不修改全局 PATH。Python 不含 pip 和任意第三方依赖，MinGit 不含 Git Bash；第三方插件依其说明准备额外依赖。\r\n浏览器面板可启动随包专用浏览器；连接日常 Chrome/Edge 需要现有浏览器和用户主动授权。设置 → 环境检查与诊断可核验文件并主动导出本机报告，不自动上传。\r\n关闭窗口保留后台任务，托盘“退出”彻底停止。卸载默认保留资料；只有用户明确勾选才清理本机 WorkPilot 历史和凭据，静默卸载和更新卸载不清理数据。\r\n数据版本仍为 11。加密迁移包的口令请单独保管，系统密钥不随包迁移。\r\n这是 Windows 私有开发预览，尚未完成干净 Windows、物理换机和 macOS/Linux 实机验收；实际检查与待体验项见上一级 README 和 evidence。\r\n",
+  (p13 ? "WorkPilot P13 集成验证预览" : "WorkPilot P12 整合开发预览") +
+    "\r\n运行 workpilot-desktop.exe，请保留整个 preview 文件夹。\r\n设置 → 完整资料迁移：选择项目、任务与助手、模型配置、记忆、扩展和当前文件，保存为一份口令加密包；目标逐项映射位置，先预览冲突，再确认导入。模型密钥重新填写，扩展保持停用，当前文件独立审批。未决操作需要用户逐项核对，不能用旧审批重放；恢复后手动继续。\r\n设置 → 数据清理与恢复初始状态：可回收未引用内容、按保留数量和天数备份清理文件版本、删除归档任务组/只读档案，或清空当前数据目录和已登记凭据。所有操作先预览范围并输入确认文字；版本清理先生成并解密核验备份。项目原文件保留，处理完成后重新启动软件。\r\n技能与插件 → 技能与插件迁移：可包含当前与旧版本、已卸载扩展和未安装草稿；导入保持停用并重新核对权限和依赖。原各类独立备份/导入入口继续保留。\r\n设置 → 软件更新：输入受控 HTTPS 更新源或选择签名更新包，检查版本与影响，准备后由用户确认安装。更新先停止任务、备份数据并在副本验证迁移，失败恢复原应用与数据；不自动升级第三方插件。发布签名与 Windows 安装器代码签名是两件事，本预览安装器仍未进行 Windows 代码签名。\r\n随包包含 Node、Python 标准库、专用 Chromium、MinGit、受限 Git 兼容程序、文档工具与 Office 预览环境，不修改全局 PATH。Python 不含 pip 和任意第三方依赖，MinGit 不含 Git Bash；第三方插件依其说明准备额外依赖。\r\n浏览器面板可启动随包专用浏览器；连接日常 Chrome/Edge 需要现有浏览器和用户主动授权。设置 → 环境检查与诊断可核验文件并主动导出本机报告，不自动上传。\r\n关闭窗口保留后台任务，托盘“退出”彻底停止。卸载默认保留资料；只有用户明确勾选才清理本机 WorkPilot 历史和凭据，静默卸载和更新卸载不清理数据。\r\n数据版本仍为 11。加密迁移包的口令请单独保管，系统密钥不随包迁移。\r\n这是 Windows 私有开发预览，尚未完成干净 Windows、物理换机和 macOS/Linux 实机验收；实际检查与待体验项见上一级 README 和 evidence。\r\n",
 );
 await text(
   "RUNTIME-SOURCES.json",
@@ -333,7 +337,7 @@ for (const f of [...files.values()].sort((a, b) => a.path.localeCompare(b.path))
     resources[join(preview, f.path).replaceAll("\\", "/")] = f.path;
 await mkdir(join(root, ".local"), { recursive: true });
 await writeFile(
-  join(root, ".local/p12-bundle.json"),
+  delivery.config,
   JSON.stringify(
     {
       bundle: {
@@ -371,7 +375,7 @@ await writeFile(
   join(destination, "source-and-binary-manifest.json"),
   JSON.stringify(
     {
-      phase: "P12-complete",
+      phase: delivery.phase,
       at: new Date().toISOString(),
       build,
       baseCommit: execFileSync("git", ["rev-parse", "HEAD"], {
@@ -401,7 +405,7 @@ await writeFile(
 );
 console.log(
   JSON.stringify({
-    phase: "P12",
+    phase: p13 ? "P13" : "P12",
     files: files.size,
     bytes: [...files.values()].reduce((n, f) => n + f.bytes, 0),
     components: catalog.components.length,

@@ -1,0 +1,8 @@
+{
+  "archive": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\WorkPilot-Acceptance-Kit-alpha.13.3.zip",
+  "archiveBytes": 34173,
+  "archiveSha256": "e2e5d86818471bae7d4366f0529c21c8a7949af7070ff74ae19b66fa594228a3",
+  "filesVerified": 16,
+  "status": "passed",
+  "extracted": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-acceptance-kit\\zip-verification-72db9c749dc146768e26129dbceb004f"
+}

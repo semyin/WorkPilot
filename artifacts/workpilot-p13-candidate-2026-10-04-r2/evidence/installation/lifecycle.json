@@ -1,0 +1,34 @@
+{
+    "at":  "2026-10-04T13:13:42.9103286Z",
+    "version":  "0.1.0-alpha.13.3",
+    "installerSha256":  "3913494ec9786988999cec3ec86163315212fcadf3457393e1afc39e82b98205",
+    "session":  "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-ec22c11ef07d473496684869f673b0a4",
+    "installRoot":  "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-ec22c11ef07d473496684869f673b0a4\\中文 安装",
+    "environment":  "Current Windows development machine, not a clean OS",
+    "preexistingProcesses":  [
+                                 {
+                                     "ProcessId":  34440,
+                                     "ExecutablePath":  "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+                                     "CreatedUtcTicks":  "639267050146798310"
+                                 },
+                                 {
+                                     "ProcessId":  19464,
+                                     "ExecutablePath":  "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+                                     "CreatedUtcTicks":  "639267050147126240"
+                                 }
+                             ],
+    "browserRegistrationsBefore":  "5c08e81d4ce5cf2921bf1833c1cc9f618958cc77d9b21df83b5782d8e2bb9270",
+    "shortcuts":  [
+                      "C:\\Users\\semyi\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\WorkPilot.lnk",
+                      "C:\\Users\\semyi\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\WorkPilot\\WorkPilot.lnk",
+                      "C:\\Users\\semyi\\Desktop\\WorkPilot.lnk"
+                  ],
+    "status":  "passed",
+    "checks":  [
+                   "exact_installer_current_user_chinese_space_path_binary_hash_and_registration",
+                   "uninstall_only_owned_files_keeps_project_unknown_file_databases_existing_processes_and_browser_registrations"
+               ],
+    "preservedDatabaseFiles":  0,
+    "existingProcessesPreservedAtUninstall":  2,
+    "finishedAt":  "2026-10-04T13:26:32.7399385Z"
+}

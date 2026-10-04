@@ -1,0 +1,55 @@
+
+> workpilot@0.1.0-alpha.13.4 build
+> node scripts/desktop.mjs build
+
+    Finished `release` profile [optimized] target(s) in 0.38s
+   Compiling workpilot-contracts v0.1.0-alpha.13.4 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-platform v0.1.0-alpha.13.4 (D:\workspace\kplocker\WorkPilot\crates\platform)
+    Finished `release` profile [optimized] target(s) in 22.47s
+   Compiling workpilot-platform v0.1.0-alpha.13.4 (D:\workspace\kplocker\WorkPilot\crates\platform)
+    Finished `release` profile [optimized] target(s) in 13.56s
+   Compiling workpilot-platform v0.1.0-alpha.13.4 (D:\workspace\kplocker\WorkPilot\crates\platform)
+    Finished `release` profile [optimized] target(s) in 4.65s
+   Compiling workpilot-browser-bridge v0.1.0-alpha.13.4 (D:\workspace\kplocker\WorkPilot\crates\browser-bridge)
+    Finished `release` profile [optimized] target(s) in 2.15s
+   Compiling workpilot-office v0.1.0-alpha.13.4 (D:\workspace\kplocker\WorkPilot\crates\office)
+    Finished `release` profile [optimized] target(s) in 1.81s
+Office runtime verified 2000/19442 files
+Office runtime verified 4000/19442 files
+Office runtime verified 6000/19442 files
+Office runtime verified 8000/19442 files
+Office runtime verified 10000/19442 files
+Office runtime verified 12000/19442 files
+Office runtime verified 14000/19442 files
+Office runtime verified 16000/19442 files
+Office runtime verified 18000/19442 files
+{"officeRuntime":"target\\release\\office-runtime","version":"26.8.0","files":19447,"bytes":1576066913}
+{"runtime":"target\\release\\document-runtime","files":5244,"fontVerified":true}
+        Info Looking up installed tauri packages to check mismatched versions...
+     Running beforeBuildCommand `npm run build`
+
+> @workpilot/desktop@0.1.0-alpha.13.4 build
+> tsc --noEmit && vite build
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 90 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                             0.39 kB │ gzip:   0.27 kB
+dist/assets/128-kkOeCthX.png               10.43 kB
+dist/assets/index-BnzJ2t6J.css             39.52 kB │ gzip:   8.29 kB
+dist/assets/TaskArchivePanel-CoWFFDdI.js   32.84 kB │ gzip:  10.30 kB
+dist/assets/index-CbBDVTam.js             545.79 kB │ gzip: 166.50 kB
+
+✓ built in 569ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+   Compiling workpilot-contracts v0.1.0-alpha.13.4 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-desktop v0.1.0-alpha.13.4 (D:\workspace\kplocker\WorkPilot\apps\desktop\src-tauri)
+   Compiling workpilot-platform v0.1.0-alpha.13.4 (D:\workspace\kplocker\WorkPilot\crates\platform)
+    Finished `release` profile [optimized] target(s) in 3m 00s
+       Built application at: D:\workspace\kplocker\WorkPilot\target\release\workpilot-desktop.exe

@@ -1,0 +1,22 @@
+[
+  {
+    "path": "final-cleanup.json",
+    "bytes": 2822,
+    "sha256": "b90e9f133f98ed96d5756d412fff7f3412f1d80de514dd0b974e151ddef086e6"
+  },
+  {
+    "path": "manual-user-exit-confirmation.json",
+    "bytes": 886,
+    "sha256": "2181026ec85e9a6681a6546cbf3d82f818121be3b45a6a35366f89a7d0b14afd"
+  },
+  {
+    "path": "README.md",
+    "bytes": 1091,
+    "sha256": "fc583589bc4007a6517cab9bd892e7d57696bfbe9296dfb62fad62ec9f39ae5d"
+  },
+  {
+    "path": "run.json",
+    "bytes": 751,
+    "sha256": "deed5eed379dd3eddb377a8db9e4c8c704654fb0caceed6d167771d1d58af517"
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-04T13:53:14.933Z",
+  "from": "0.1.0-alpha.13.3",
+  "to": "0.1.0-alpha.13.4",
+  "previousEngineSha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+  "currentEngineSha256": "a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb",
+  "engineRustSourceChanges": [],
+  "productChanges": [
+    "Cargo.lock",
+    "Cargo.toml",
+    "apps/desktop/package.json",
+    "apps/desktop/src-tauri/src/notifications/model.rs",
+    "apps/desktop/src-tauri/src/notifications/tests.rs",
+    "apps/desktop/src-tauri/tauri.conf.json",
+    "apps/desktop/src/notifications/NotificationSettings.tsx",
+    "package-lock.json",
+    "package.json"
+  ],
+  "meaning": "Real service evidence stays on alpha13.3 with its original binary SHA. All crate Rust source is unchanged; alpha13.4 adds notification UI/state fixes and updates version metadata. This source comparison is not a claim that real paid calls were rerun on alpha13.4."
+}

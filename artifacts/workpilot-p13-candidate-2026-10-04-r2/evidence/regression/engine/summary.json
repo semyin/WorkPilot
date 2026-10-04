@@ -1,0 +1,144 @@
+{
+  "at": "2026-10-04T13:07:03.405Z",
+  "mode": "engine",
+  "preview": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview",
+  "identities": {
+    "engine": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+    "desktop": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+    "updater": "b0e2fbdf872cacc71eeec897de06dac14fd58b14fcdb65eb996f900b339b5ae0"
+  },
+  "suites": [
+    {
+      "name": "execution",
+      "command": "node scripts/execution-engine-test.mjs",
+      "began": "2026-10-04T13:07:03.408Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 9,
+      "elapsedSeconds": 6.42,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\engine-1CuiPs\\execution\\report.json"
+    },
+    {
+      "name": "tools",
+      "command": "node scripts/tools-engine-test.mjs",
+      "began": "2026-10-04T13:07:09.832Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 10,
+      "elapsedSeconds": 5.1,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\engine-1CuiPs\\tools\\report.json"
+    },
+    {
+      "name": "teams",
+      "command": "node scripts/teams-engine-test.mjs",
+      "began": "2026-10-04T13:07:14.934Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 11,
+      "elapsedSeconds": 15.92,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\engine-1CuiPs\\teams\\report.json"
+    },
+    {
+      "name": "browser-model",
+      "command": "node scripts/browser-model-test.mjs",
+      "began": "2026-10-04T13:07:30.858Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 4,
+      "elapsedSeconds": 9.4,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\engine-1CuiPs\\browser-model\\report.json"
+    },
+    {
+      "name": "extensions",
+      "command": "node scripts/extensions-engine-test.mjs",
+      "began": "2026-10-04T13:07:40.258Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 12,
+      "elapsedSeconds": 9.07,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\engine-1CuiPs\\extensions\\report.json"
+    },
+    {
+      "name": "extensions-model",
+      "command": "node scripts/extensions-model-test.mjs",
+      "began": "2026-10-04T13:07:49.329Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 4,
+      "elapsedSeconds": 5.54,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\engine-1CuiPs\\extensions-model\\report.json"
+    },
+    {
+      "name": "media",
+      "command": "node scripts/media-engine-test.mjs",
+      "began": "2026-10-04T13:07:54.872Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 10,
+      "elapsedSeconds": 67.72,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\engine-1CuiPs\\media\\report.json"
+    },
+    {
+      "name": "media-model",
+      "command": "node scripts/media-model-test.mjs",
+      "began": "2026-10-04T13:09:02.599Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 5,
+      "elapsedSeconds": 30.7,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\engine-1CuiPs\\media-model\\report.json"
+    },
+    {
+      "name": "memory",
+      "command": "node scripts/memory-engine-test.mjs",
+      "began": "2026-10-04T13:09:33.295Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 9,
+      "elapsedSeconds": 2.58,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\engine-1CuiPs\\memory\\report.json"
+    },
+    {
+      "name": "schedules",
+      "command": "node scripts/schedules-engine-test.mjs",
+      "began": "2026-10-04T13:09:35.879Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 14,
+      "elapsedSeconds": 44.88,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\engine-1CuiPs\\schedules\\report.json"
+    },
+    {
+      "name": "migration",
+      "command": "node scripts/migration-test.mjs",
+      "began": "2026-10-04T13:10:20.761Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 7,
+      "elapsedSeconds": 4.09,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\engine-1CuiPs\\migration\\report.json"
+    },
+    {
+      "name": "maintenance",
+      "command": "node scripts/maintenance-engine-test.mjs",
+      "began": "2026-10-04T13:10:24.854Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 5,
+      "elapsedSeconds": 4.04,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\engine-1CuiPs\\maintenance\\report.json"
+    },
+    {
+      "name": "update",
+      "command": "node scripts/update-engine-test.mjs",
+      "began": "2026-10-04T13:10:28.898Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 6,
+      "elapsedSeconds": 13.32,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\engine-1CuiPs\\update\\report.json"
+    }
+  ],
+  "status": "passed",
+  "finishedAt": "2026-10-04T13:10:42.250Z"
+}

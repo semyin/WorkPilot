@@ -44,6 +44,11 @@ const report = {
   checks: [],
 };
 const errors = [];
+const binary =
+  process.env.WORKPILOT_DESKTOP_BINARY || join(root, "target/release/workpilot-desktop.exe");
+report.binarySha256 = createHash("sha256")
+  .update(await readFile(binary))
+  .digest("hex");
 async function until(check) {
   for (let n = 0; n < 400; n++) {
     const result = await check().catch(() => false);
@@ -57,23 +62,19 @@ async function launch() {
   await once(server, "listening");
   const port = server.address().port;
   await new Promise((r) => server.close(r));
-  const child = spawn(
-    process.env.WORKPILOT_DESKTOP_BINARY || join(root, "target/release/workpilot-desktop.exe"),
-    [],
-    {
-      cwd: root,
-      windowsHide: true,
-      stdio: "ignore",
-      env: {
-        ...process.env,
-        WORKPILOT_CHANNEL: "test",
-        WORKPILOT_DATA_DIR: directory,
-        WEBVIEW2_USER_DATA_FOLDER: join(directory, "webview"),
-        WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS:
-          "--remote-debugging-address=127.0.0.1 --remote-debugging-port=" + port,
-      },
+  const child = spawn(binary, [], {
+    cwd: root,
+    windowsHide: true,
+    stdio: "ignore",
+    env: {
+      ...process.env,
+      WORKPILOT_CHANNEL: "test",
+      WORKPILOT_DATA_DIR: directory,
+      WEBVIEW2_USER_DATA_FOLDER: join(directory, "webview"),
+      WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS:
+        "--remote-debugging-address=127.0.0.1 --remote-debugging-port=" + port,
     },
-  );
+  });
   try {
     await until(async () => (await fetch(`http://127.0.0.1:${port}/json/version`)).ok);
     const browser = await chromium.connectOverCDP(`http://127.0.0.1:${port}`);

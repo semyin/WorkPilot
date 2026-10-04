@@ -1,0 +1,96 @@
+{
+  "at": "2026-10-04T10:36:54.902Z",
+  "formalReport": "evidence/engine-baseline-report.json",
+  "sourceScripts": [
+    {
+      "path": "scripts/p13-engine-benchmark.mjs",
+      "sha256": "7e869eafc4378ec844735fbf3130927249bbb182331e4140375bd288b31e05b5"
+    },
+    {
+      "path": "scripts/p13-engine-client.mjs",
+      "sha256": "4959424413bd9dc983988a3189262abd26c3a6511df9f3a0ca74166053310dec"
+    },
+    {
+      "path": "scripts/p13-engine-load.mjs",
+      "sha256": "fec8cc0d86f2fc5911e6284fd3134de94a927886e2411b8174081c64c7ef7554"
+    },
+    {
+      "path": "scripts/p13-engine-lifecycle.mjs",
+      "sha256": "5aae83574e9e4fc67bafb3c6fa1b644ee95f3e23d9f7bb539332444b1f3d58cf"
+    },
+    {
+      "path": "scripts/p13-benchmark-metrics.mjs",
+      "sha256": "a275e4a57f29ffc9f32ac757c98a8b5536d3b59857ab8ebab5c1c0f930ea5259"
+    },
+    {
+      "path": "scripts/p13-process-fixture.mjs",
+      "sha256": "116d0d2a3994c4d6bd641f7ad8b5baae42c1ab76c615a5385b1e3d42533ee28a"
+    },
+    {
+      "path": "scripts/p13-process-sampler.ps1",
+      "sha256": "b64aaad1b7e81153718f728f80bc4facabb33ff157b4e10ca4b1c46888a2b574"
+    }
+  ],
+  "processVerification": {
+    "knownPids": [
+      13216,
+      34944,
+      12516,
+      31628,
+      31344,
+      12376,
+      30216,
+      11744,
+      19080,
+      32632,
+      23680,
+      15584,
+      8696,
+      3448,
+      12556,
+      38896,
+      2036,
+      38204,
+      23872,
+      36688,
+      30044,
+      33112,
+      8392,
+      41176,
+      732,
+      3464,
+      30688,
+      35192,
+      14712,
+      7372,
+      18572,
+      14736,
+      26460,
+      16732,
+      13480,
+      40624,
+      11128,
+      11288,
+      13772,
+      34780,
+      38728,
+      19676,
+      37076,
+      41868
+    ],
+    "aliveBenchmarkPids": [],
+    "reusedPids": [],
+    "earlierImmediateLivenessCheck": {
+      "observedPids": 44,
+      "alivePids": [],
+      "scope": "Checked immediately after inspecting the completed report; exact separate check timestamp was not captured."
+    },
+    "scope": "Read-only PID plus executable/start-time check distinguishes PID reuse after normal benchmark shutdown. Engine/sampler owned child handles had already exited. No unrelated processes were stopped."
+  },
+  "checks": [
+    "Scoped Prettier check passed",
+    "Node entry and support syntax checks passed",
+    "PowerShell sampler parsed without errors",
+    "npm run check:lines passed: 474 files, largest 957 lines"
+  ]
+}

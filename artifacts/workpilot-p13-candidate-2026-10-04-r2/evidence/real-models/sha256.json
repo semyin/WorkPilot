@@ -1,0 +1,142 @@
+[
+  {
+    "file": "created-format.md",
+    "sha256": "3c611c4cd6bae34bf9f84bdc4bacece3a7344de864b496fad2ff75c777861f2a",
+    "bytes": 3146
+  },
+  {
+    "file": "created-SKILL.md",
+    "sha256": "b35d18b34dbf9112616fe500a2262025d36e9c75610023b54ed6bdbe938799bd",
+    "bytes": 3520
+  },
+  {
+    "file": "format-initial-all-steps.json.gz",
+    "sha256": "31eb08a0e42bdec0808602f16ad24793e20199c99057a9a630e565628bc30c4d",
+    "bytes": 122282
+  },
+  {
+    "file": "format-initial-events.json.gz",
+    "sha256": "f7064c5362be3ccb9737beb95ba771d15d2b518bf552f3b567230160f7e0913f",
+    "bytes": 73995
+  },
+  {
+    "file": "format-initial-task-traces.json.gz",
+    "sha256": "19b91401f87c28696b537b6d50e352f9623f543278994d7de7bf63bcdbfeaccc",
+    "bytes": 123249
+  },
+  {
+    "file": "format-initial.json",
+    "sha256": "52c73688db8995494ee76d42c41c9de521dfb54a4d4137678ad704b6e4e3b3dd",
+    "bytes": 28973
+  },
+  {
+    "file": "format-recovery-observation.json",
+    "sha256": "4b90946710777e08550b6e7ac1534f1c8988838490dc8164a6ece45dd5258947",
+    "bytes": 1925
+  },
+  {
+    "file": "generated-summary.txt",
+    "sha256": "d894e4aeb2e79be36030f8622853156066e534bfc39e825843f60799b11df0e8",
+    "bytes": 22
+  },
+  {
+    "file": "glm-proposal-followup-all-steps.json.gz",
+    "sha256": "7665ba70531c73a759969e4472b17e02ffacf23d7afeeb82a7976be3f4e9206c",
+    "bytes": 1007960
+  },
+  {
+    "file": "glm-proposal-followup-events.json.gz",
+    "sha256": "10241b812615017ad5ee9fa96a99c4e41fa811964f7af96210defd1a0952efa0",
+    "bytes": 2516424
+  },
+  {
+    "file": "glm-proposal-followup-task-traces.json.gz",
+    "sha256": "4a1fe222f63d8db26f0ed11aee1650007e16b5c2ec58fda960b7e1c1ebfabf6a",
+    "bytes": 1000829
+  },
+  {
+    "file": "glm-proposal-followup.json",
+    "sha256": "25123f5e043d805f032bfdc811682d541b433bc0af194459a52be42c419fc905",
+    "bytes": 97082
+  },
+  {
+    "file": "parent-summary-correction.json",
+    "sha256": "e0485bd7b41b89df3dc2d485726b83cd7f36f2585e6730b3d717ae2c554c3608",
+    "bytes": 2096
+  },
+  {
+    "file": "run.json",
+    "sha256": "2b81ad38bd3616729f4178428d4f8c698c0049c07b4a55f10fb592aa9b119fb3",
+    "bytes": 7205
+  },
+  {
+    "file": "skills-memory-all-steps.json.gz",
+    "sha256": "8ad3c8c1d2ee9148d0dc40301bd030108f8b0415bafe228e4b98fa5e10be8870",
+    "bytes": 247029
+  },
+  {
+    "file": "skills-memory-events.json.gz",
+    "sha256": "90cc9ebfd932e831dedba2fb412ea21a59f209e81edbdab879c3e14ce0b9c704",
+    "bytes": 103308
+  },
+  {
+    "file": "skills-memory-task-traces.json.gz",
+    "sha256": "09b34dfb2f794cbd5a54a1d11468850a05c847c6be181f8cef499a4d719fda75",
+    "bytes": 251390
+  },
+  {
+    "file": "skills-memory.json",
+    "sha256": "f8e157e384591b344c260cc0266526341e32540fc64ecc8b7d82d259855758a4",
+    "bytes": 49421
+  },
+  {
+    "file": "skills-planning-initial-all-steps.json.gz",
+    "sha256": "1c14f1bedc5afdc3aa8037268ff67bf0aeb33b087d7a2dd1d6d5e49007d0af49",
+    "bytes": 36146
+  },
+  {
+    "file": "skills-planning-initial-events.json.gz",
+    "sha256": "fb208e73b00ff3574f185c6a746471fe883e0391f93921ed62672c41a3cf37d5",
+    "bytes": 8060
+  },
+  {
+    "file": "skills-planning-initial-task-traces.json.gz",
+    "sha256": "860ada4a5e5cc7dec922d9431dcc4082afcb3ebf237d6031f4db061ee80fabce",
+    "bytes": 34527
+  },
+  {
+    "file": "skills-planning-initial.json",
+    "sha256": "a5aeb7dc0251896cc380aad24d2dc82fc1adaf1bf064ac506e81c61d4740d558",
+    "bytes": 8190
+  },
+  {
+    "file": "skills-review.json",
+    "sha256": "07b58f1d96d5f61b67edd1a37b2cb588e8f9e0b3f044e4b2d7ef50b1f970b3d8",
+    "bytes": 1347
+  },
+  {
+    "file": "summary.md",
+    "sha256": "0205a9913f448aadaf5a3fac06985eb2cfb986f5781395a0f75774b11521c6ae",
+    "bytes": 2533
+  },
+  {
+    "file": "team-two-families-all-steps.json.gz",
+    "sha256": "af99935074f125610ddf9620a2da3e892e16f99af282b31313c108c81dfe32ec",
+    "bytes": 384321
+  },
+  {
+    "file": "team-two-families-events.json.gz",
+    "sha256": "9f6c493c5a25545a367a244f3dc8590f559fe5b583cce76029e4faada477ee4e",
+    "bytes": 92263
+  },
+  {
+    "file": "team-two-families-task-traces.json.gz",
+    "sha256": "df76a5264e7774db31a3b0fe39af21791e9ebd2dbf390154dc05037e60afe745",
+    "bytes": 383281
+  },
+  {
+    "file": "team-two-families.json",
+    "sha256": "d001be1d5e49d6542214f703289f0c8c16c59928f278a3b66120c65fe334729a",
+    "bytes": 74634
+  }
+]

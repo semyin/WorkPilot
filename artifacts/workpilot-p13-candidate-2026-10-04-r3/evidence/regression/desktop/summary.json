@@ -1,0 +1,44 @@
+{
+  "at": "2026-10-04T13:53:57.078Z",
+  "mode": "desktop",
+  "preview": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview",
+  "identities": {
+    "engine": "a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb",
+    "desktop": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+    "updater": "428055af1c70059c425feb6f5bf7d96ac8560c4fe42955068b69a43db81fe2f6"
+  },
+  "suites": [
+    {
+      "name": "workspace",
+      "command": "node scripts/workspace-desktop-smoke.mjs",
+      "began": "2026-10-04T13:53:57.082Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 10,
+      "elapsedSeconds": 41.3,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\desktop-3YOzGi\\workspace\\report.json"
+    },
+    {
+      "name": "maintenance",
+      "command": "node scripts/maintenance-desktop-test.mjs",
+      "began": "2026-10-04T13:54:38.386Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 2,
+      "elapsedSeconds": 8.24,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\desktop-3YOzGi\\maintenance\\report.json"
+    },
+    {
+      "name": "update",
+      "command": "node scripts/update-desktop-test.mjs",
+      "began": "2026-10-04T13:54:46.632Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 4,
+      "elapsedSeconds": 65.5,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\desktop-3YOzGi\\update\\report.json"
+    }
+  ],
+  "status": "passed",
+  "finishedAt": "2026-10-04T13:55:52.161Z"
+}

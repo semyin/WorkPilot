@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-04T13:11:19.880Z",
+  "platform": "win32",
+  "checks": [
+    "chromium_real_dedicated_snapshot_fill_click_screenshot_download_history"
+  ],
+  "browsers": [
+    {
+      "channel": "chromium",
+      "error": null,
+      "id": "83652b53-8010-4e16-afab-f4b2468febf3",
+      "kind": "dedicated",
+      "owned_pid": 18960,
+      "state": "connected",
+      "tabs": [
+        {
+          "dialog": null,
+          "id": "f4318513-be11-4225-b14f-bbaa613d3fd5",
+          "title": "",
+          "url": "about:blank"
+        }
+      ],
+      "task_id": "82f264ef-3f76-405d-9db5-77834e8fa6e5",
+      "version": "Chrome/154.0.8037.57"
+    }
+  ],
+  "status": "passed"
+}

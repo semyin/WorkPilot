@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-04T12:35:32.972Z",
+  "status": "failed",
+  "scope": "Harness setup failure, not product acceptance",
+  "checks": 0,
+  "binarySha256": "e75ccf1f67206fe965997cf56facdb3572fb1943f085d38c27d366eda2c0adee",
+  "error": "Native Tauri invoke is immutable; the attempted test wrapper did not install, so delayed-response gate never received a request. Abort this isolated window normally, then stop only its exact owned test Node process.",
+  "ownedProcesses": {
+    "test": 30368,
+    "desktop": 43668,
+    "webview": 24932
+  },
+  "diagnostic": {
+    "invokeDescriptor": {
+      "value": "omitted",
+      "writable": false,
+      "enumerable": false,
+      "configurable": false
+    },
+    "gateWasNotInstalled": true,
+    "observations": [
+      {
+        "task": "7efbdabd-8c33-407e-863e-3f1164936917",
+        "title": "running",
+        "sidebar": "running"
+      },
+      {
+        "task": "7efbdabd-8c33-407e-863e-3f1164936917",
+        "title": "completed",
+        "sidebar": "completed"
+      }
+    ],
+    "mismatches": []
+  }
+}

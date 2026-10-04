@@ -1,0 +1,35 @@
+{
+    "at":  "2026-10-04T12:42:23.8352684Z",
+    "version":  "0.1.0-alpha.13.2",
+    "installerSha256":  "79e6eed35e0638f62a385dac3f8aa41745a271865aee6f7483f2ca21097d8bde",
+    "session":  "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-7007ad4480ad4f9ba2bde12b60f545dc",
+    "installRoot":  "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-7007ad4480ad4f9ba2bde12b60f545dc\\ä¸­æ–‡ å®‰è£…",
+    "environment":  "Current Windows development machine, not a clean OS",
+    "preexistingProcesses":  [
+                                 {
+                                     "ProcessId":  34440,
+                                     "ExecutablePath":  "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+                                     "CreatedUtcTicks":  "639267050146798310"
+                                 },
+                                 {
+                                     "ProcessId":  19464,
+                                     "ExecutablePath":  "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+                                     "CreatedUtcTicks":  "639267050147126240"
+                                 }
+                             ],
+    "browserRegistrationsBefore":  "5c08e81d4ce5cf2921bf1833c1cc9f618958cc77d9b21df83b5782d8e2bb9270",
+    "shortcuts":  [
+                      "C:\\Users\\semyi\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\WorkPilot.lnk",
+                      "C:\\Users\\semyi\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\WorkPilot\\WorkPilot.lnk",
+                      "C:\\Users\\semyi\\Desktop\\WorkPilot.lnk"
+                  ],
+    "status":  "passed",
+    "checks":  [
+                   "exact_installer_current_user_unicode_space_path_binary_hash_and_registration",
+                   "uninstall_only_owned_files_keeps_project_unknown_file_databases_existing_processes_and_browser_registrations"
+               ],
+    "testShellEncodingIssue":  "Windows PowerShell 5 decoded the initial UTF-8 script without BOM using ANSI. The installed directory contains Unicode and a space but is not the intended Chinese label. This run does not prove the intended Chinese-path case. Original report is retained; r2 will repeat with corrected script encoding.",
+    "preservedDatabaseFiles":  0,
+    "existingProcessesPreservedAtUninstall":  2,
+    "finishedAt":  "2026-10-04T13:05:57.1179504Z"
+}

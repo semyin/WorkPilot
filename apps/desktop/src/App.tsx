@@ -5,6 +5,7 @@ import { TaskWorkspace } from "./TaskWorkspace";
 import { ModelSettings } from "./ModelSettings";
 import { WorkspaceSettings } from "./WorkspaceSettings";
 import { MaintenanceStatus } from "./MaintenanceStatus";
+import { NotificationCenter } from "./notifications/NotificationCenter";
 import { LanguageContext, workspaceAction, workspaceQuery } from "./workspaceClient";
 import type { WorkspaceData, WorkspacePreferences } from "./generated/contracts";
 export type Overview = Extract<WorkspaceData, { kind: "overview" }>;
@@ -31,6 +32,8 @@ function Workbench() {
   const [connectionError, setConnectionError] = useState("");
   const [connected, setConnected] = useState(false);
   const [maintenance, setMaintenance] = useState<boolean | null>(null);
+  const [notificationOpen, setNotificationOpen] = useState(0);
+  const [notificationUnread, setNotificationUnread] = useState(0);
   const english = preferences.language === "en";
   const refresh = async () => {
     const r = await workspaceQuery({ kind: "overview" });
@@ -82,6 +85,20 @@ function Workbench() {
   };
   return (
     <LanguageContext.Provider value={english}>
+      <NotificationCenter
+        openRequest={notificationOpen}
+        onUnread={setNotificationUnread}
+        projects={overview?.projects || []}
+        disabled={maintenance !== null}
+        onOpen={({ task_id, project_id }) => {
+          localStorage.setItem("workpilot.execution", task_id);
+          if (project_id) localStorage.setItem("workpilot.project", project_id);
+          else localStorage.removeItem("workpilot.project");
+          setSettings(false);
+          setModels(false);
+          setWorkspaceGeneration((value) => value + 1);
+        }}
+      />
       {maintenance !== null ? (
         <MaintenanceStatus running={maintenance} showRestart={!settings} />
       ) : (
@@ -97,6 +114,8 @@ function Workbench() {
             onRefresh: () => void refresh().catch((e) => setError(String(e))),
             onPreferences: update,
             onSettings: () => setSettings(true),
+            onNotifications: () => setNotificationOpen((value) => value + 1),
+            unreadNotifications: notificationUnread,
           }}
         />
       )}

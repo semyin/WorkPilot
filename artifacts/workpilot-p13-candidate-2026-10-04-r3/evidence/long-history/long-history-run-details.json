@@ -1,0 +1,1035 @@
+{
+  "at": "2026-10-04T14:41:06.938Z",
+  "version": "0.1.0-alpha.13.4",
+  "status": "passed",
+  "beganAt": "2026-10-04T14:38:56.867Z",
+  "endedAt": "2026-10-04T14:39:40.494Z",
+  "elapsedMs": 43627,
+  "conditions": "Formal dedicated measurement slot after root tests ended 2026-10-04T14:38:03.931Z. No other WorkPilot tests, builds or large copy jobs scheduled; root performs small documentation edits. Live Windows workstation; unrelated OS/user background work is not excluded.",
+  "sourceSha256": {
+    "scripts/p13-long-history-benchmark.mjs": "89e8339f77eaaf1d1e567196beaab851dd6da1eeb2e22d53b5ebf6f4c80094f6",
+    "scripts/p13-long-history-data.mjs": "de8f20da7bd5ddc75ddf1c2bcada65285c6abfed92f621584aaa31159dee5ef1",
+    "scripts/p13-long-history-fixture.mjs": "8fbcd4b2900f8d7b94da0cfbc1e9ebb7c3369be9731f9f83f13a00f6b63739b6",
+    "scripts/p13-long-history-scenario.mjs": "718bad3663923db192d070275de6f52e76f0c7924483b4b2c2d3642d88ba0ddb",
+    "scripts/p13-desktop-support.mjs": "6476180d3eb2dd937ba921685a7768e77d08a0978a5a23d6f1e147b09afa56a7",
+    "scripts/p13-desktop-resource-support.mjs": "474ddf5c28e67ad4f0bcc7474b750919e665bf58983b55b8c1a83d79068dfb4b",
+    "scripts/p13-benchmark-metrics.mjs": "277d0ace58ddc71d1400cc2a57440b9099c23eb5255718f4be2ea19c5b91392b",
+    "scripts/p13-desktop-observers.mjs": "7d3a1c20f31c553891c5ea2f8e319eac0b93a60b0f9a2992b206a856a52f7740",
+    "scripts/p13-desktop-processes.ps1": "96eb4dbe9a82b6261ca816e6a4f4ddb854a7660b67d8ceb167565b72f7f55a24",
+    "scripts/p13-process-sampler.ps1": "a556f7e2e0397a735ce7c145eaf7db08e74972e6ae6862f30e8c060b3dbda9e2"
+  },
+  "binarySha256s": {
+    "desktop": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+    "engine": "a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb"
+  },
+  "scope": {
+    "data": "100000 historical progress events plus one 2.1 MB UTF-8 body seeded only into a closed test-owned database; history task is one of four independent concurrent tasks",
+    "workload": "Four real native-engine HTTP streams from a local deterministic fixture; no paid service or local tools. One is cancelled, three continue and complete",
+    "ui": "Twenty inputs and twenty sidebar clicks; DOM-change timestamps, not physical display refresh",
+    "resources": "250 ms process sampling. Desktop, engine and profile-attributed UI WebView are summed per complete process-identity snapshot. CPU is a percentage of the whole machine; summed working sets may double-count shared pages. Test fixtures, automation and discovery processes are excluded",
+    "exclusions": "No four-hour soak, true cold startup, real model latency, browser/Office load, clean-Windows or macOS/Linux claim"
+  },
+  "seed": {
+    "taskId": "078b0bc7-532f-468d-af15-68676590dd2f",
+    "previousEventCount": 3,
+    "seededProgressEvents": 100000,
+    "seededBodyEvents": 1,
+    "objectId": "7f339bd233794ce25af0a44a7db423ecac6f9e3a775f397d34853e945c7a7f09",
+    "bodyBytes": 2100034,
+    "bodyCharacters": 700034,
+    "textEventId": "3ea5e06f-e1ad-46dd-a8fd-f3e53eb198c8",
+    "textEventSequence": 100033,
+    "startedAtMs": 1791124740661,
+    "endedAtMs": 1791124742309,
+    "closedDatabaseOnly": true
+  },
+  "measurements": {
+    "button": {
+      "scope": "Click event to sidebar aria-pressed DOM update, with four active streams and preseeded 100000 events",
+      "samples": [
+        98.1,
+        23,
+        47.9,
+        16.6,
+        18,
+        17.8,
+        16.8,
+        99.3,
+        90,
+        15.3,
+        16.4,
+        16.6,
+        95.9,
+        15.9,
+        24.9,
+        16.9,
+        51.1,
+        16.7,
+        18.2,
+        17.3
+      ],
+      "count": 20,
+      "p50Ms": 17.8,
+      "p95Ms": 98.1,
+      "maximumMs": 99.30000001192093,
+      "targetMs": 150,
+      "withinTarget": true
+    },
+    "input": {
+      "scope": "Textarea input event to enabled queue button DOM update; no user message is submitted",
+      "samples": [
+        1.3,
+        1,
+        0.9,
+        1.1,
+        0.8,
+        0.9,
+        0.7,
+        0.8,
+        0.7,
+        0.8,
+        0.9,
+        0.8,
+        0.9,
+        0.8,
+        0.9,
+        0.9,
+        0.9,
+        0.9,
+        0.8,
+        1.1
+      ],
+      "count": 20,
+      "p50Ms": 0.9,
+      "p95Ms": 1.1,
+      "maximumMs": 1.300000011920929,
+      "targetMs": 150,
+      "withinTarget": true
+    }
+  },
+  "searchMs": 1339.0326999999997,
+  "exportMs": 882.1907000000028,
+  "eventPageCounts": [
+    64,
+    64
+  ],
+  "bodyPages": [
+    "0–65535 / 2100034 bytes",
+    "65535–131070 / 2100034 bytes"
+  ],
+  "copied": {
+    "bytes": 2100034,
+    "sha256": "7f339bd233794ce25af0a44a7db423ecac6f9e3a775f397d34853e945c7a7f09"
+  },
+  "copyBoundary": "Native UI Copy full content handler executed; clipboard write payload intercepted only inside own WebView to verify exact bytes/hash without altering the user OS clipboard. Actual external paste is not claimed.",
+  "exported": {
+    "events": 100030,
+    "seededProgressVerified": 100000,
+    "objects": 25,
+    "bodyBytes": 2100034,
+    "bodySha256": "7f339bd233794ce25af0a44a7db423ecac6f9e3a775f397d34853e945c7a7f09",
+    "uniqueOrderedEvents": true
+  },
+  "stop": {
+    "atMs": 1791124761484,
+    "observedAtMs": 1791124761721,
+    "before": [
+      {
+        "model": "p13-long-stream-0",
+        "chunks": 27
+      },
+      {
+        "model": "p13-long-stream-1",
+        "chunks": 27
+      },
+      {
+        "model": "p13-long-stream-2",
+        "chunks": 27
+      },
+      {
+        "model": "p13-long-stream-3",
+        "chunks": 27
+      }
+    ],
+    "states": [
+      {
+        "taskId": "078b0bc7-532f-468d-af15-68676590dd2f",
+        "model": "p13-long-stream-0",
+        "state": "interrupted"
+      },
+      {
+        "taskId": "8d9d91d6-732f-4ec7-87df-9ca8d1296fce",
+        "model": "p13-long-stream-1",
+        "state": "running"
+      },
+      {
+        "taskId": "c3a69bb6-f320-49e7-b8fa-6515abf1ca57",
+        "model": "p13-long-stream-2",
+        "state": "running"
+      },
+      {
+        "taskId": "b5f8eed0-01ad-4289-915e-1a0806b441f4",
+        "model": "p13-long-stream-3",
+        "state": "running"
+      }
+    ],
+    "feedbackMs": 1.4000000357627869,
+    "interruptedDomMs": 175.9000000357628,
+    "scope": "One cancellation sample, not a stop p95 or local-tool-tree measurement"
+  },
+  "modelRequests": [
+    {
+      "model": "p13-long-stream-0",
+      "startedAtMs": 1791124751968,
+      "ended": true,
+      "completed": false,
+      "chunks": 27,
+      "emittedBytes": 720,
+      "endedAtMs": 1791124761504
+    },
+    {
+      "model": "p13-long-stream-1",
+      "startedAtMs": 1791124751975,
+      "ended": true,
+      "completed": true,
+      "chunks": 53,
+      "emittedBytes": 1422,
+      "completedAtMs": 1791124770690,
+      "endedAtMs": 1791124770693
+    },
+    {
+      "model": "p13-long-stream-2",
+      "startedAtMs": 1791124752074,
+      "ended": true,
+      "completed": true,
+      "chunks": 53,
+      "emittedBytes": 1422,
+      "completedAtMs": 1791124770691,
+      "endedAtMs": 1791124770693
+    },
+    {
+      "model": "p13-long-stream-3",
+      "startedAtMs": 1791124752077,
+      "ended": true,
+      "completed": true,
+      "chunks": 53,
+      "emittedBytes": 1422,
+      "completedAtMs": 1791124770691,
+      "endedAtMs": 1791124770693
+    }
+  ],
+  "resources": [
+    {
+      "phase": "history-idle",
+      "beganAt": "2026-10-04T14:39:03.012Z",
+      "endedAt": "2026-10-04T14:39:11.909Z",
+      "elapsedMs": 8901,
+      "excludedIncompleteCycles": 0,
+      "groups": [
+        {
+          "role": "ui-webview",
+          "samples": 24,
+          "observedProcesses": 6,
+          "workingSetBytes": {
+            "count": 24,
+            "min": 527958016,
+            "p50": 546029568,
+            "p95": 551751680,
+            "max": 552112128,
+            "mean": 543818752
+          },
+          "privateBytes": {
+            "count": 24,
+            "min": 342663168,
+            "p50": 355528704,
+            "p95": 360472576,
+            "max": 360800256,
+            "mean": 354129066.667
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 23,
+            "min": 0,
+            "p50": 0.58,
+            "p95": 2.621,
+            "max": 3.179,
+            "mean": 0.75
+          },
+          "processCounts": {
+            "count": 24,
+            "min": 6,
+            "p50": 6,
+            "p95": 6,
+            "max": 6,
+            "mean": 6
+          }
+        },
+        {
+          "role": "desktop",
+          "samples": 24,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 24,
+            "min": 30359552,
+            "p50": 30420992,
+            "p95": 30420992,
+            "max": 30420992,
+            "mean": 30417408
+          },
+          "privateBytes": {
+            "count": 24,
+            "min": 6488064,
+            "p50": 6492160,
+            "p95": 6492160,
+            "max": 6492160,
+            "mean": 6491989.333
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 23,
+            "min": 0,
+            "p50": 0,
+            "p95": 0.555,
+            "max": 1.149,
+            "mean": 0.124
+          },
+          "processCounts": {
+            "count": 24,
+            "min": 1,
+            "p50": 1,
+            "p95": 1,
+            "max": 1,
+            "mean": 1
+          }
+        },
+        {
+          "role": "engine",
+          "samples": 24,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 24,
+            "min": 17686528,
+            "p50": 17735680,
+            "p95": 17756160,
+            "max": 17756160,
+            "mean": 17732778.667
+          },
+          "privateBytes": {
+            "count": 24,
+            "min": 8232960,
+            "p50": 8232960,
+            "p95": 8253440,
+            "max": 8253440,
+            "mean": 8237226.667
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 23,
+            "min": 0,
+            "p50": 0.285,
+            "p95": 0.555,
+            "max": 0.576,
+            "mean": 0.2
+          },
+          "processCounts": {
+            "count": 24,
+            "min": 1,
+            "p50": 1,
+            "p95": 1,
+            "max": 1,
+            "mean": 1
+          }
+        },
+        {
+          "role": "other-owned",
+          "samples": 24,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 24,
+            "min": 7827456,
+            "p50": 7827456,
+            "p95": 7827456,
+            "max": 7827456,
+            "mean": 7827456
+          },
+          "privateBytes": {
+            "count": 24,
+            "min": 1249280,
+            "p50": 1249280,
+            "p95": 1249280,
+            "max": 1249280,
+            "mean": 1249280
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 23,
+            "min": 0,
+            "p50": 0,
+            "p95": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "processCounts": {
+            "count": 24,
+            "min": 1,
+            "p50": 1,
+            "p95": 1,
+            "max": 1,
+            "mean": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": "history-four-streams",
+      "beganAt": "2026-10-04T14:39:12.117Z",
+      "endedAt": "2026-10-04T14:39:21.473Z",
+      "elapsedMs": 9359,
+      "excludedIncompleteCycles": 0,
+      "groups": [
+        {
+          "role": "ui-webview",
+          "samples": 25,
+          "observedProcesses": 6,
+          "workingSetBytes": {
+            "count": 25,
+            "min": 564924416,
+            "p50": 659509248,
+            "p95": 727347200,
+            "max": 727392256,
+            "mean": 657360322.56
+          },
+          "privateBytes": {
+            "count": 25,
+            "min": 371838976,
+            "p50": 451801088,
+            "p95": 517767168,
+            "max": 518352896,
+            "mean": 452032266.24
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 24,
+            "min": 0.281,
+            "p50": 1.685,
+            "p95": 6.716,
+            "max": 7.185,
+            "mean": 2.537
+          },
+          "processCounts": {
+            "count": 25,
+            "min": 6,
+            "p50": 6,
+            "p95": 6,
+            "max": 6,
+            "mean": 6
+          }
+        },
+        {
+          "role": "desktop",
+          "samples": 25,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 25,
+            "min": 30597120,
+            "p50": 30945280,
+            "p95": 31064064,
+            "max": 31121408,
+            "mean": 30911037.44
+          },
+          "privateBytes": {
+            "count": 25,
+            "min": 6291456,
+            "p50": 6684672,
+            "p95": 6791168,
+            "max": 7217152,
+            "mean": 6642401.28
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 24,
+            "min": 0,
+            "p50": 0,
+            "p95": 0.583,
+            "max": 1.698,
+            "mean": 0.153
+          },
+          "processCounts": {
+            "count": 25,
+            "min": 1,
+            "p50": 1,
+            "p95": 1,
+            "max": 1,
+            "mean": 1
+          }
+        },
+        {
+          "role": "engine",
+          "samples": 25,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 25,
+            "min": 21123072,
+            "p50": 22786048,
+            "p95": 27324416,
+            "max": 27324416,
+            "mean": 23651614.72
+          },
+          "privateBytes": {
+            "count": 25,
+            "min": 9822208,
+            "p50": 11542528,
+            "p95": 16297984,
+            "max": 16297984,
+            "mean": 12525568
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 24,
+            "min": 0.842,
+            "p50": 2.291,
+            "p95": 7.132,
+            "max": 9.494,
+            "mean": 3.272
+          },
+          "processCounts": {
+            "count": 25,
+            "min": 1,
+            "p50": 1,
+            "p95": 1,
+            "max": 1,
+            "mean": 1
+          }
+        },
+        {
+          "role": "other-owned",
+          "samples": 25,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 25,
+            "min": 7827456,
+            "p50": 7827456,
+            "p95": 7827456,
+            "max": 7827456,
+            "mean": 7827456
+          },
+          "privateBytes": {
+            "count": 25,
+            "min": 1249280,
+            "p50": 1249280,
+            "p95": 1249280,
+            "max": 1249280,
+            "mean": 1249280
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 24,
+            "min": 0,
+            "p50": 0,
+            "p95": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "processCounts": {
+            "count": 25,
+            "min": 1,
+            "p50": 1,
+            "p95": 1,
+            "max": 1,
+            "mean": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": "history-three-after-stop",
+      "beganAt": "2026-10-04T14:39:21.721Z",
+      "endedAt": "2026-10-04T14:39:30.535Z",
+      "elapsedMs": 8817,
+      "excludedIncompleteCycles": 0,
+      "groups": [
+        {
+          "role": "ui-webview",
+          "samples": 24,
+          "observedProcesses": 6,
+          "workingSetBytes": {
+            "count": 24,
+            "min": 678371328,
+            "p50": 691875840,
+            "p95": 731521024,
+            "max": 732258304,
+            "mean": 698212352
+          },
+          "privateBytes": {
+            "count": 24,
+            "min": 465391616,
+            "p50": 479027200,
+            "p95": 521367552,
+            "max": 522190848,
+            "mean": 486002688
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 23,
+            "min": 0,
+            "p50": 0.281,
+            "p95": 0.882,
+            "max": 2.336,
+            "mean": 0.366
+          },
+          "processCounts": {
+            "count": 24,
+            "min": 6,
+            "p50": 6,
+            "p95": 6,
+            "max": 6,
+            "mean": 6
+          }
+        },
+        {
+          "role": "desktop",
+          "samples": 24,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 24,
+            "min": 30916608,
+            "p50": 31096832,
+            "p95": 31158272,
+            "max": 31166464,
+            "mean": 31093930.667
+          },
+          "privateBytes": {
+            "count": 24,
+            "min": 6500352,
+            "p50": 6688768,
+            "p95": 7217152,
+            "max": 7217152,
+            "mean": 6828885.333
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 23,
+            "min": 0,
+            "p50": 0,
+            "p95": 0.587,
+            "max": 0.587,
+            "mean": 0.101
+          },
+          "processCounts": {
+            "count": 24,
+            "min": 1,
+            "p50": 1,
+            "p95": 1,
+            "max": 1,
+            "mean": 1
+          }
+        },
+        {
+          "role": "engine",
+          "samples": 24,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 24,
+            "min": 27414528,
+            "p50": 27414528,
+            "p95": 27414528,
+            "max": 27414528,
+            "mean": 27414528
+          },
+          "privateBytes": {
+            "count": 24,
+            "min": 16506880,
+            "p50": 16506880,
+            "p95": 16506880,
+            "max": 16506880,
+            "mean": 16506880
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 23,
+            "min": 0,
+            "p50": 0.286,
+            "p95": 0.599,
+            "max": 0.864,
+            "mean": 0.252
+          },
+          "processCounts": {
+            "count": 24,
+            "min": 1,
+            "p50": 1,
+            "p95": 1,
+            "max": 1,
+            "mean": 1
+          }
+        },
+        {
+          "role": "other-owned",
+          "samples": 24,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 24,
+            "min": 7827456,
+            "p50": 7827456,
+            "p95": 7827456,
+            "max": 7827456,
+            "mean": 7827456
+          },
+          "privateBytes": {
+            "count": 24,
+            "min": 1249280,
+            "p50": 1249280,
+            "p95": 1249280,
+            "max": 1249280,
+            "mean": 1249280
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 23,
+            "min": 0,
+            "p50": 0,
+            "p95": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "processCounts": {
+            "count": 24,
+            "min": 1,
+            "p50": 1,
+            "p95": 1,
+            "max": 1,
+            "mean": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": "history-completed",
+      "beganAt": "2026-10-04T14:39:30.764Z",
+      "endedAt": "2026-10-04T14:39:39.869Z",
+      "elapsedMs": 9108,
+      "excludedIncompleteCycles": 0,
+      "groups": [
+        {
+          "role": "ui-webview",
+          "samples": 24,
+          "observedProcesses": 6,
+          "workingSetBytes": {
+            "count": 24,
+            "min": 578314240,
+            "p50": 685875200,
+            "p95": 711684096,
+            "max": 721158144,
+            "mean": 655728640
+          },
+          "privateBytes": {
+            "count": 24,
+            "min": 353251328,
+            "p50": 461234176,
+            "p95": 498298880,
+            "max": 499593216,
+            "mean": 432681642.667
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 23,
+            "min": 0,
+            "p50": 0.295,
+            "p95": 1.679,
+            "max": 1.977,
+            "mean": 0.616
+          },
+          "processCounts": {
+            "count": 24,
+            "min": 6,
+            "p50": 6,
+            "p95": 6,
+            "max": 6,
+            "mean": 6
+          }
+        },
+        {
+          "role": "desktop",
+          "samples": 24,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 24,
+            "min": 31059968,
+            "p50": 31199232,
+            "p95": 31232000,
+            "max": 31252480,
+            "mean": 31188992
+          },
+          "privateBytes": {
+            "count": 24,
+            "min": 6754304,
+            "p50": 7204864,
+            "p95": 7217152,
+            "max": 7217152,
+            "mean": 7153493.333
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 23,
+            "min": 0,
+            "p50": 0,
+            "p95": 0.286,
+            "max": 0.556,
+            "mean": 0.049
+          },
+          "processCounts": {
+            "count": 24,
+            "min": 1,
+            "p50": 1,
+            "p95": 1,
+            "max": 1,
+            "mean": 1
+          }
+        },
+        {
+          "role": "engine",
+          "samples": 24,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 24,
+            "min": 26726400,
+            "p50": 27525120,
+            "p95": 27557888,
+            "max": 27557888,
+            "mean": 27228330.667
+          },
+          "privateBytes": {
+            "count": 24,
+            "min": 14712832,
+            "p50": 16453632,
+            "p95": 16510976,
+            "max": 16510976,
+            "mean": 15822336
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 23,
+            "min": 0,
+            "p50": 0,
+            "p95": 0.287,
+            "max": 0.29,
+            "mean": 0.086
+          },
+          "processCounts": {
+            "count": 24,
+            "min": 1,
+            "p50": 1,
+            "p95": 1,
+            "max": 1,
+            "mean": 1
+          }
+        },
+        {
+          "role": "other-owned",
+          "samples": 24,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 24,
+            "min": 7806976,
+            "p50": 7806976,
+            "p95": 7827456,
+            "max": 7827456,
+            "mean": 7808682.667
+          },
+          "privateBytes": {
+            "count": 24,
+            "min": 1208320,
+            "p50": 1208320,
+            "p95": 1249280,
+            "max": 1249280,
+            "mean": 1211733.333
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 23,
+            "min": 0,
+            "p50": 0,
+            "p95": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "processCounts": {
+            "count": 24,
+            "min": 1,
+            "p50": 1,
+            "p95": 1,
+            "max": 1,
+            "mean": 1
+          }
+        }
+      ]
+    }
+  ],
+  "exitVerification": [
+    {
+      "pid": 10896,
+      "startedAtMs": 1791124737753,
+      "status": "exited"
+    },
+    {
+      "pid": 34064,
+      "startedAtMs": 1791124737633,
+      "status": "exited"
+    },
+    {
+      "pid": 16264,
+      "startedAtMs": 1791124737511,
+      "status": "exited"
+    },
+    {
+      "pid": 17452,
+      "startedAtMs": 1791124737495,
+      "status": "exited"
+    },
+    {
+      "pid": 20956,
+      "startedAtMs": 1791124737750,
+      "status": "exited"
+    },
+    {
+      "pid": 24316,
+      "startedAtMs": 1791124737888,
+      "status": "exited"
+    },
+    {
+      "pid": 40472,
+      "startedAtMs": 1791124737520,
+      "status": "exited"
+    },
+    {
+      "pid": 41636,
+      "startedAtMs": 1791124737610,
+      "status": "exited"
+    },
+    {
+      "pid": 43012,
+      "startedAtMs": 1791124737782,
+      "status": "exited"
+    },
+    {
+      "pid": 21388,
+      "startedAtMs": 1791124742520,
+      "status": "exited"
+    },
+    {
+      "pid": 41728,
+      "startedAtMs": 1791124742313,
+      "status": "exited"
+    },
+    {
+      "pid": 38548,
+      "startedAtMs": 1791124742325,
+      "status": "exited"
+    },
+    {
+      "pid": 41624,
+      "startedAtMs": 1791124742334,
+      "status": "exited"
+    },
+    {
+      "pid": 5632,
+      "startedAtMs": 1791124742552,
+      "status": "exited"
+    },
+    {
+      "pid": 11056,
+      "startedAtMs": 1791124742397,
+      "status": "exited"
+    },
+    {
+      "pid": 38412,
+      "startedAtMs": 1791124742523,
+      "status": "exited"
+    },
+    {
+      "pid": 39244,
+      "startedAtMs": 1791124742641,
+      "status": "exited"
+    },
+    {
+      "pid": 27848,
+      "startedAtMs": 1791124742417,
+      "status": "exited"
+    }
+  ],
+  "preSeedExitVerification": [
+    {
+      "pid": 10896,
+      "startedAtMs": 1791124737753,
+      "status": "exited"
+    },
+    {
+      "pid": 34064,
+      "startedAtMs": 1791124737633,
+      "status": "exited"
+    },
+    {
+      "pid": 16264,
+      "startedAtMs": 1791124737511,
+      "status": "exited"
+    },
+    {
+      "pid": 17452,
+      "startedAtMs": 1791124737495,
+      "status": "exited"
+    },
+    {
+      "pid": 20956,
+      "startedAtMs": 1791124737750,
+      "status": "exited"
+    },
+    {
+      "pid": 24316,
+      "startedAtMs": 1791124737888,
+      "status": "exited"
+    },
+    {
+      "pid": 40472,
+      "startedAtMs": 1791124737520,
+      "status": "exited"
+    },
+    {
+      "pid": 41636,
+      "startedAtMs": 1791124737610,
+      "status": "exited"
+    },
+    {
+      "pid": 43012,
+      "startedAtMs": 1791124737782,
+      "status": "exited"
+    }
+  ],
+  "observations": {
+    "warmReopenObservedMs": 626.0604000000003,
+    "historySelectionObservedMs": 74.00869999999941,
+    "coldStartup": false,
+    "leakConclusion": "Four short phases document the observed values only; this sample cannot establish long-term leak absence or replace the planned four-hour scenario."
+  },
+  "databases": {
+    "beforeSeed": {
+      "workpilot.sqlite3": 614400,
+      "workpilot.sqlite3-wal": 663352,
+      "workpilot.sqlite3-shm": 32768
+    },
+    "afterSeed": {
+      "workpilot.sqlite3": 39022592,
+      "workpilot.sqlite3-wal": 0,
+      "workpilot.sqlite3-shm": 0
+    },
+    "afterWork": {
+      "workpilot.sqlite3": 39272448,
+      "workpilot.sqlite3-wal": 1091832,
+      "workpilot.sqlite3-shm": 32768
+    },
+    "afterExit": {
+      "workpilot.sqlite3": 39272448,
+      "workpilot.sqlite3-wal": 1091832,
+      "workpilot.sqlite3-shm": 32768
+    }
+  },
+  "screenshotsReviewed": [
+    "long-history/measurement-CjjvbV/history-four-streams.png",
+    "long-history/measurement-CjjvbV/history-long-body-page.png",
+    "long-history/measurement-CjjvbV/history-three-after-stop.png"
+  ],
+  "visualReview": "All three screenshots reviewed. Four tasks shown running before cancellation; paged long content and full-copy acknowledgement visible; cancelled history task shown interrupted while peers continue. Native file-picker text follows OS language, not claimed as complete bilingual visual audit.",
+  "report": "long-history/measurement-CjjvbV/report.json",
+  "files": [
+    "report.json",
+    "resources.jsonl",
+    "owned-process-identities.json",
+    "history-four-streams.png",
+    "history-long-body-page.png",
+    "history-three-after-stop.png"
+  ],
+  "previousSelfTest": "artifacts/workpilot-p13-candidate-2026-10-04-r2/evidence/long-history/long-history-run.json",
+  "command": "$env:WORKPILOT_DESKTOP_BINARY = 'D:/workspace/kplocker/WorkPilot/artifacts/workpilot-p13-candidate-2026-10-04-r3/preview/workpilot-desktop.exe'\n$env:WORKPILOT_TEST_OUTPUT = 'D:/workspace/kplocker/WorkPilot/.test-results/p13-long-history-alpha13.4-r3'\n$env:WORKPILOT_BENCHMARK_CONDITIONS = 'Dedicated measurement slot; no other WorkPilot tests, builds or large copy jobs. Live workstation; unrelated OS/user background work is not excluded.'\nnode scripts/p13-long-history-benchmark.mjs --measure"
+}

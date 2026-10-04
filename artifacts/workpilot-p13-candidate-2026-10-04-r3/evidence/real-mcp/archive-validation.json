@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-04T14:08:14.517Z",
+  "status": "passed",
+  "filesVerified": 41,
+  "jsonParsed": 40,
+  "firstTlsClosedBeforeQueryTaskRun": true,
+  "secondTlsStartedOnlyAfterSecondApproval": true,
+  "firstConnectionClosedAt": "2026-10-04T14:05:25.017Z",
+  "queryRunStartedAtMs": 1791122725051,
+  "secondApprovalAt": "2026-10-04T14:05:25.940Z",
+  "secondConnectionAt": "2026-10-04T14:05:25.950Z",
+  "scriptLines": {
+    "main": 388,
+    "support": 123
+  }
+}

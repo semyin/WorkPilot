@@ -1,0 +1,117 @@
+[
+  {
+    "path": "analysis.json",
+    "bytes": 3862,
+    "sha256": "15fd5b46d870e4a76cd55de718df3587ecced7b3ee0ab731679a1cc8284752b2"
+  },
+  {
+    "path": "engine-pings.jsonl",
+    "bytes": 14340,
+    "sha256": "22aa2b6717f70229890fdc296c9bcfc7abf8ef927969ffb0fa3927ad6b5d18c9"
+  },
+  {
+    "path": "identify-17596.json",
+    "bytes": 65,
+    "sha256": "d8f744dbfd83cee492154934b80b6a1a103eb179cb1350628e60fb8142255326"
+  },
+  {
+    "path": "install.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "install.stdout.txt",
+    "bytes": 332,
+    "sha256": "803996bfeaaf938567f8c15a446b85cc1b9bce357f866dc291ab83a22a34404c"
+  },
+  {
+    "path": "installation-after-uninstall.json",
+    "bytes": 2231,
+    "sha256": "0dcb0ba7e3b509a340a580a76b78b809ef652c4bef6b93b68fbf4162e8493197"
+  },
+  {
+    "path": "installation-before-smoke.json",
+    "bytes": 2026,
+    "sha256": "12f387b6fdce85c2553cf09efff28b9038a7451aa4ccf0fbd45129b83eb1b352"
+  },
+  {
+    "path": "installed-smoke.stderr.txt",
+    "bytes": 739,
+    "sha256": "66a084f6a6e7b52ec13a302cf30d71a322a3de54e1690c346e4838cbacdaf708"
+  },
+  {
+    "path": "installed-smoke.stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "observer-exits.jsonl",
+    "bytes": 327,
+    "sha256": "71c85d44248976556b27caf91cafb78de21bd595d49e5851cc99b27e69bb72f6"
+  },
+  {
+    "path": "p12-observer-engine-events.jsonl",
+    "bytes": 23397,
+    "sha256": "912901ca157d06faf3438242528d6d6d8524ba22971b3586ade478878e5f764f"
+  },
+  {
+    "path": "p12-observer-identities.json",
+    "bytes": 2239,
+    "sha256": "c46b3c6899d62f4c2f7bd0b6ef4cdff0a071403eeb19f1572acf695619364556"
+  },
+  {
+    "path": "process-samples.jsonl",
+    "bytes": 372075,
+    "sha256": "453a85fafa4f6fc9c1ee457d394318a178d7c366efa43f7f57c7e521876d8558"
+  },
+  {
+    "path": "r3-observer-engine-events.jsonl",
+    "bytes": 22581,
+    "sha256": "038fd7fd9fdab20a75b757acdbf841e957a6501ab10b01bd664a58575eaa560c"
+  },
+  {
+    "path": "r3-observer-identities.json",
+    "bytes": 2249,
+    "sha256": "93e7e9db6a891e7297bc7953cce2e01c46367f73b4f6502b1e014acb1b856c97"
+  },
+  {
+    "path": "README.md",
+    "bytes": 1263,
+    "sha256": "fc3b1e4ec4ba67b7aa436595e8b405c7bb1d5873bca282d5d81f6aa446ad940a"
+  },
+  {
+    "path": "report.json",
+    "bytes": 110708,
+    "sha256": "a9e50b3022d5ac6ffc114b527170b35d134f00b039033a343f309fe3a01f1b9b"
+  },
+  {
+    "path": "stages.jsonl",
+    "bytes": 938,
+    "sha256": "9a241c8ddfb915cfdda525e3e6ddc8643496d5d32d751158921b0e76835b7c6f"
+  },
+  {
+    "path": "uninstall.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "uninstall.stdout.txt",
+    "bytes": 282,
+    "sha256": "476cbc783321c52c31449e1ab1468ad6269d079e3b423caf2cd1f005dbdc4e3f"
+  },
+  {
+    "path": "watch-specification.json",
+    "bytes": 1667,
+    "sha256": "5fa32de73b4b3076edc15f61fd13bb094a7dd92d53b3d41998014fa569d714e3"
+  },
+  {
+    "path": "watcher.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "watcher.stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

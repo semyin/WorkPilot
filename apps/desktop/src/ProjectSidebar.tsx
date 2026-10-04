@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import type { TaskReadStore } from "./task-workspace/taskReadStore";
 import { invoke } from "@tauri-apps/api/core";
 import type {
   WorkspaceProject,
@@ -24,6 +25,7 @@ export function ProjectSidebar({
   onNew,
   onProjectsChanged,
   english,
+  taskReads,
 }: {
   projects: WorkspaceProject[];
   catalog: ProfileCatalog;
@@ -32,7 +34,9 @@ export function ProjectSidebar({
   onNew: (project: WorkspaceProject | null) => void;
   onProjectsChanged: () => void;
   english: boolean;
+  taskReads: TaskReadStore;
 }) {
+  useSyncExternalStore(taskReads.subscribe, taskReads.version);
   const tr = useWords();
   const [project, setProject] = useState<string>(localStorage.getItem("workpilot.project") || "");
   const [search, setSearch] = useState("");
@@ -55,6 +59,7 @@ export function ProjectSidebar({
     let disposed = false;
     const poll = async () => {
       try {
+        const read = taskReads.beginRead();
         const r = await workspaceQuery({
           kind: "tasks",
           project_id: project || null,
@@ -64,6 +69,7 @@ export function ProjectSidebar({
           limit: 48,
         });
         if (!disposed && gen === generation.current && r.kind === "tasks") {
+          taskReads.observe(r.tasks, read);
           setTasks(r.tasks);
           setNext(r.next_before);
           setError("");
@@ -78,7 +84,7 @@ export function ProjectSidebar({
       disposed = true;
       clearTimeout(timer);
     };
-  }, [project, search, archived, before]);
+  }, [project, search, archived, before, taskReads]);
   const selectedProject = projects.find((p) => p.id === project) || null;
   const save = async () => {
     if (!edit) return;
@@ -157,24 +163,28 @@ export function ProjectSidebar({
         </button>
       </div>
       <nav className="workspace-task-list" aria-label={tr("任务列表", "Task list")}>
-        {tasks.map((t) => (
-          <button
-            key={t.id}
-            data-execution-id={t.id}
-            className={selected === t.id ? "chosen" : ""}
-            onClick={() => onSelect(t.id)}
-          >
-            <strong>{t.title}</strong>
-            <small>
-              <i data-state={t.state} />
-              {taskState(t.state, english)} ·{" "}
-              {new Intl.DateTimeFormat(english ? "en" : "zh-CN", {
-                month: "short",
-                day: "numeric",
-              }).format(t.updated_at_ms)}
-            </small>
-          </button>
-        ))}
+        {tasks.map((row) => {
+          const t = taskReads.task(row);
+          const state = taskReads.state(t);
+          return (
+            <button
+              key={t.id}
+              data-execution-id={t.id}
+              className={selected === t.id ? "chosen" : ""}
+              onClick={() => onSelect(t.id)}
+            >
+              <strong>{t.title}</strong>
+              <small>
+                <i data-state={state} />
+                {taskState(state, english)} ·{" "}
+                {new Intl.DateTimeFormat(english ? "en" : "zh-CN", {
+                  month: "short",
+                  day: "numeric",
+                }).format(t.updated_at_ms)}
+              </small>
+            </button>
+          );
+        })}
         {!tasks.length && <p>{tr("这里还没有任务。", "No tasks here yet.")}</p>}
       </nav>
       <div className="model-actions">

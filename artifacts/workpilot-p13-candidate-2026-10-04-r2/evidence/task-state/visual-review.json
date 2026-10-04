@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-04T13:09:32.704Z",
+  "reviewed": true,
+  "method": "Three final alpha13.3 native screenshots each opened with view_image.",
+  "findings": [
+    "Stopped task header and sidebar match; the independent task remains running.",
+    "English failed task and sidebar match; completed task stays completed.",
+    "After stopping a team and returning from its child, the parent and sidebar both show Interrupted; member state is independently checked by the script."
+  ],
+  "scope": "State synchronization and layout inspection. Local fixed model, real native desktop, controlled IPC delays; not real model quality or user acceptance.",
+  "screenshots": [
+    "stop-and-sidebar-zh.png",
+    "failed-and-sidebar-en.png",
+    "team-stopped-en.png"
+  ]
+}

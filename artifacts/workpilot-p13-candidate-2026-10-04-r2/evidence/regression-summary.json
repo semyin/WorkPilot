@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-04T13:17:34.859Z",
+  "version": "0.1.0-alpha.13.3",
+  "scope": "Fixed local model and actual local files, tools, browser and desktop; separate from paid real-service or human acceptance.",
+  "suites": [
+    {
+      "mode": "engine",
+      "count": 13,
+      "checks": 106,
+      "report": "regression/engine/summary.json",
+      "identities": {
+        "engine": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+        "desktop": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+        "updater": "b0e2fbdf872cacc71eeec897de06dac14fd58b14fcdb65eb996f900b339b5ae0"
+      }
+    },
+    {
+      "mode": "environment",
+      "count": 8,
+      "checks": 39,
+      "report": "regression/environment/summary.json",
+      "identities": {
+        "engine": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+        "desktop": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+        "updater": "b0e2fbdf872cacc71eeec897de06dac14fd58b14fcdb65eb996f900b339b5ae0"
+      }
+    },
+    {
+      "mode": "desktop",
+      "count": 5,
+      "checks": 22,
+      "report": "regression/desktop/summary.json",
+      "identities": {
+        "engine": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+        "desktop": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+        "updater": "b0e2fbdf872cacc71eeec897de06dac14fd58b14fcdb65eb996f900b339b5ae0"
+      }
+    }
+  ],
+  "checks": 167,
+  "status": "passed"
+}

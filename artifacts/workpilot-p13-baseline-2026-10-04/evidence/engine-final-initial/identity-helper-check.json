@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-04T10:56:33.508Z",
+  "status": "passed",
+  "platform": "win32",
+  "command": "node scripts/p13-process-identities-test.mjs",
+  "scope": "Uses this test's own actual Node process. Wrong start time/path simulate identity mismatches; this is not a claim that Windows was forced to recycle a PID.",
+  "checks": [
+    "read_owned_process_actual_identity",
+    "reject_same_pid_with_wrong_start_time",
+    "reject_same_pid_with_wrong_executable",
+    "missing_pid_is_exited"
+  ],
+  "owned": {
+    "pid": 10464,
+    "path": "D:\\nodejs\\node.exe",
+    "startedAtMs": 1791111392756
+  },
+  "verified": [
+    {
+      "pid": 10464,
+      "startedAtMs": 1791111392756,
+      "status": "alive"
+    },
+    {
+      "pid": 10464,
+      "startedAtMs": 1791111392755,
+      "status": "pid_reused"
+    },
+    {
+      "pid": 10464,
+      "startedAtMs": 1791111392756,
+      "status": "pid_reused"
+    },
+    {
+      "pid": 2147483647,
+      "startedAtMs": 1791111392756,
+      "status": "exited"
+    }
+  ]
+}

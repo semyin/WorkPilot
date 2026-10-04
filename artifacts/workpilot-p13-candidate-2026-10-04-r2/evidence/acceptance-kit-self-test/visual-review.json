@@ -1,0 +1,10 @@
+{
+  "viewed": [
+    "验收结果.png",
+    "browser-0.png",
+    "office-0-docx.png",
+    "office-1-xlsx.png",
+    "office-2-pptx.png"
+  ],
+  "result": "All five images were actually opened. Chinese report is readable; explicit development-machine self-test boundary is visible. All synthetic value-42 outputs are readable."
+}

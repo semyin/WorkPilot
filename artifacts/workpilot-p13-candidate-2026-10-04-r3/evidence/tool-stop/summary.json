@@ -1,0 +1,107 @@
+{
+  "at": "2026-10-04T14:34:24.815Z",
+  "status": "passed",
+  "source": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-tool-stop-r3-final\\run-UpZw8m",
+  "finalIdentity": {
+    "desktopSha256": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+    "engineSha256": "a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb"
+  },
+  "groups": 2,
+  "samples": {
+    "browser": 20,
+    "office": 20
+  },
+  "rawResourceRecords": 32001,
+  "verifiedExitedProcessIdentities": 270,
+  "browserStopMs": {
+    "count": 20,
+    "min": 109.19,
+    "p50": 117.74,
+    "p95": 130.126,
+    "max": 140.258,
+    "mean": 119.072
+  },
+  "officeStopMs": {
+    "count": 20,
+    "min": 6.901,
+    "p50": 22.343,
+    "p95": 31.662,
+    "max": 32.674,
+    "mean": 21.332
+  },
+  "officePermissionCleanupMs": {
+    "count": 20,
+    "min": 2141.655,
+    "p50": 2195.055,
+    "p95": 2258.469,
+    "max": 2269.925,
+    "mean": 2197.632
+  },
+  "officePreviewReplyMs": {
+    "count": 20,
+    "min": 2136.051,
+    "p50": 2188.575,
+    "p95": 2259.297,
+    "max": 2270.908,
+    "mean": 2196.233
+  },
+  "resourceGroups": [
+    {
+      "role": "ui-webview",
+      "cycles": 2541,
+      "peakWorkingSetMiB": 688.39,
+      "peakPrivateMiB": 492.09,
+      "cpuP95PercentOfWholeMachine": 1.294
+    },
+    {
+      "role": "other-owned",
+      "cycles": 2541,
+      "peakWorkingSetMiB": 23.13,
+      "peakPrivateMiB": 3.64,
+      "cpuP95PercentOfWholeMachine": 0
+    },
+    {
+      "role": "desktop",
+      "cycles": 2541,
+      "peakWorkingSetMiB": 33.05,
+      "peakPrivateMiB": 9.7,
+      "cpuP95PercentOfWholeMachine": 0.425
+    },
+    {
+      "role": "engine",
+      "cycles": 2541,
+      "peakWorkingSetMiB": 191.28,
+      "peakPrivateMiB": 178.62,
+      "cpuP95PercentOfWholeMachine": 6.453
+    },
+    {
+      "role": "dedicated-browser",
+      "cycles": 476,
+      "peakWorkingSetMiB": 501.96,
+      "peakPrivateMiB": 276.36,
+      "cpuP95PercentOfWholeMachine": 4.816
+    },
+    {
+      "role": "browser-driver",
+      "cycles": 2530,
+      "peakWorkingSetMiB": 41.63,
+      "peakPrivateMiB": 53.14,
+      "cpuP95PercentOfWholeMachine": 0
+    },
+    {
+      "role": "office-converter",
+      "cycles": 399,
+      "peakWorkingSetMiB": 408.93,
+      "peakPrivateMiB": 353.95,
+      "cpuP95PercentOfWholeMachine": 6.538
+    }
+  ],
+  "scope": "Real bundled dedicated Chromium and AppContainer Office renderer, fixed local fixtures; actual process exit separate from request/ACL/staging cleanup. Short probes with fewer than20 samples are not formal percentile acceptance.",
+  "conditions": "Frozen alpha.13.4 r3. Root confirmed isolated installation uninstalled14:21:38.874Z and no other project test/performance/build running before this suite. Formal20 browser+20 Office stop/resources serially; ordinary OS/user activity not controlled, filesystem cache not cleared. Earlier 14m47s soak closed for unknown reason and is retained failed, not considered fixed or counted.",
+  "boundaries": [
+    "Two functional groups with twenty repeated stop samples each; not forty unrelated feature cases.",
+    "Actual owned process exit measured separately from permission/staging cleanup and command reply.",
+    "Resource discovery may miss very short processes; summed working sets include shared pages. Raw samples and ownership are preserved.",
+    "No four-hour acceptance is implied; the earlier unexplained native shutdown remains separately failed."
+  ]
+}

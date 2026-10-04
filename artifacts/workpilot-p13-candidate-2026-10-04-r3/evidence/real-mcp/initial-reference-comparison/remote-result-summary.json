@@ -1,0 +1,49 @@
+{
+  "protocolVersion": "2025-06-18",
+  "contentBlocks": [
+    {
+      "type": "text",
+      "bytes": 27443,
+      "sha256": "99fdcd4ec71f791c91a98c1b3093deec82c58778c7b5196976da4707ea3679ee"
+    }
+  ],
+  "textCharacters": 26784,
+  "textSha256": "298e4cbc06d128981150451a39ce08b9341124a7559de9cf3b19fce462891f04",
+  "citationUrls": [
+    "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.windows.appnotifications.appnotificationmanager.notificationinvoked",
+    "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.windows.appnotifications.appnotificationmanager.register",
+    "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.windows.applifecycle.appinstance.getactivatedeventargs",
+    "https://learn.microsoft.com/windows/apps/develop/notifications/app-notifications/app-notifications-quickstart#handle-activation-from-an-app-notification",
+    "https://learn.microsoft.com/windows/apps/develop/notifications/app-notifications/images/toast-notification.png",
+    "https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/",
+    "https://learn.microsoft.com/windows/apps/develop/notifications/app-notifications/",
+    "https://learn.microsoft.com/windows/apps/develop/notifications/push-notifications/",
+    "https://learn.microsoft.com/windows/apps/develop/notifications/app-notifications/app-notifications-console",
+    "https://learn.microsoft.com/en-us/uwp/schemas/appxpackage/appx-package-manifest",
+    "https://learn.microsoft.com/windows/apps/develop/notifications/app-notifications/app-notifications-quickstart#update-the-app-package-manifest-file",
+    "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.windows.pushnotifications.pushnotificationmanager.register",
+    "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.windows.pushnotifications.pushnotificationmanager.pushreceived",
+    "https://learn.microsoft.com/windows/apps/develop/notifications/push-notifications/push-quickstart#configure-your-app-to-receive-push-notifications",
+    "https://learn.microsoft.com/en-us/entra/identity-platform/single-multi-account#who-can-sign-in-to-your-app",
+    "https://learn.microsoft.com/windows/apps/develop/notifications/push-notifications/images/push-notification-aad-app-registration-app-id.png",
+    "https://learn.microsoft.com/windows/apps/develop/notifications/push-notifications/images/push-notification-essentials-ui.png",
+    "https://learn.microsoft.com/windows/apps/develop/notifications/push-notifications/images/push-notification-object-id-field.png",
+    "https://learn.microsoft.com/windows/apps/develop/notifications/push-notifications/images/push-notification-aad-app-registration-secret.png",
+    "https://learn.microsoft.com/windows/apps/develop/notifications/push-notifications/push-quickstart#configure-your-app",
+    "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.windows.appnotifications.builder.appnotificationbuilder",
+    "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.windows.appnotifications.appnotificationmanager.show",
+    "https://learn.microsoft.com/windows/apps/develop/notifications/app-notifications/app-notifications-content",
+    "https://learn.microsoft.com/windows/apps/develop/notifications/app-notifications/app-notifications-dotnet#register-for-app-notifications",
+    "https://learn.microsoft.com/en-us/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification#create-an-app-in-windows-store",
+    "https://learn.microsoft.com/windows/apps/develop/notifications/push-notifications/push-quickstart#configure-your-apps-identity-in-microsoft-entra-id",
+    "https://learn.microsoft.com/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/guides/notifications#identity-setup",
+    "https://learn.microsoft.com/windows/apps/desktop/modernize/winrt-apis-desktop-apps",
+    "https://learn.microsoft.com/windows/apps/windows-app-sdk/use-windows-app-sdk-in-existing-project",
+    "https://learn.microsoft.com/windows/apps/develop/notifications/app-notifications/app-notifications-dotnet#packaged-app-setup",
+    "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.windows.appnotifications.appnotificationmanager",
+    "https://learn.microsoft.com/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/guides/toast-notifications#migration-for-c-apps"
+  ],
+  "rawResultBytes": 52795,
+  "rawResultSha256": "b1fc6bb1b1ed4a0445b5be787beb5786171cfc4834a85c560c5c748a004adf63",
+  "scope": "Public document search excerpts received; body remains in the isolated task history. No article body is copied into this summary."
+}

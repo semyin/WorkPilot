@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Windows便携验收工具包（工作区外开发机自检）",
+    "status": "passed",
+    "checks": 7,
+    "command": "Windows PowerShell 5.1 <external extracted toolkit>/Start-Acceptance.ps1 -InstallDir <r3/preview> -OutputDir <external sibling results> -SelfTest -NoOpen",
+    "binarySha256": "a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb",
+    "binaryRole": "engine",
+    "report": "acceptance-kit-self-test/report.json",
+    "coverage": "Actual extracted ZIP and working directory outside repository; bundled Node, fixed local models/endpoints, 9 components, restricted tools, dedicated browser, three Office previews. Does not verify clean OS, physical migration, OS offline or desktop UI experience."
+  },
+  {
+    "name": "便携验收入口错误目录和篡改拒绝",
+    "status": "passed",
+    "checks": 2,
+    "command": "Windows PowerShell 5.1 final extracted Start-Acceptance.ps1 with owned wrong installation / altered helper copy",
+    "binarySha256": "8bb6fa8c283b4d92120b1ef249a9b311b0f804d4cabbe9981159976c8be76a5e",
+    "binaryRole": "Windows PowerShell interpreter; no engine launched",
+    "report": "acceptance-kit-self-test/bootstrap-guards.json",
+    "coverage": "Final packaged launcher guards checked before Node/engine execution; launcher and manifest hashes recorded."
+  }
+]

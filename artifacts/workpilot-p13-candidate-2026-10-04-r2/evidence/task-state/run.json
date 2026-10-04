@@ -1,0 +1,35 @@
+{
+  "name": "P13 alpha13.3 native task state",
+  "status": "passed",
+  "checks": 6,
+  "command": "WORKPILOT_DESKTOP_BINARY=<r2>/preview/workpilot-desktop.exe WORKPILOT_TEST_OUTPUT=<new isolated directory> node scripts/p13-status-ui-test.mjs",
+  "binarySha256": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+  "report": "report.json",
+  "visualReview": "visual-review.json",
+  "observations": 22,
+  "mismatches": 0,
+  "normalDesktopExit": true,
+  "initialHarnessFailure": "initial-alpha13.2-harness-failure.json",
+  "files": [
+    {
+      "file": "report.json",
+      "sha256": "465728bd108881ba0afcaffeb8977a1f57326f331e5e25af0aaa0f7e765efdc8",
+      "bytes": 3725
+    },
+    {
+      "file": "stop-and-sidebar-zh.png",
+      "sha256": "5b3258331bf623ce9093b71fa979e6ede5cfe2b52bdd50ce263f5d9aabdbbcba",
+      "bytes": 192121
+    },
+    {
+      "file": "failed-and-sidebar-en.png",
+      "sha256": "fbbeefb268778dbdef446f0a07179ee2493877439ea09b50c2787b7fa4e615e3",
+      "bytes": 220719
+    },
+    {
+      "file": "team-stopped-en.png",
+      "sha256": "d3a3a4ba902308a41536b5db7d0d9a1dbcbe246fdb037e05bf9776faaa95944b",
+      "bytes": 233773
+    }
+  ]
+}

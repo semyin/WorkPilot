@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-04T14:07:26.995Z",
+  "scope": "Clarifications for preserved raw reports; no raw report is rewritten",
+  "credentialStatement": "The raw reports refer to absence of supplied external model/MCP/OAuth/user-account credentials. The product may create a local encrypted-content key for its isolated test store; this was not an account credential and was not sent to Microsoft.",
+  "urlCountStatement": "citationUrls includes Microsoft Learn document, section and image URLs. Count of distinct URLs is not a count of independent articles.",
+  "resultBoundary": "The complete public result was read and verified by the independent test driver. Over-24,000-byte results reach the fixed model as a stored-record reference. Do not claim the model read all document text.",
+  "initialFailures": "Both earlier discovery/search operations completed against the real endpoint; their overall tasks failed because the fixed test callback mishandled the large-result reference. Preserve both overall failures. No product change, task replay, model fallback or automatic retry occurred."
+}

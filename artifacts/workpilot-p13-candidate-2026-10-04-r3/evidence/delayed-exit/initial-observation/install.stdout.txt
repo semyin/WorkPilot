@@ -1,0 +1,5 @@
+{
+  "session": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-ec5c92a5296f4c29914e7dbdfe216574",
+  "status": "installed_pending_native_and_uninstall_checks",
+  "installRoot": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-ec5c92a5296f4c29914e7dbdfe216574\\?? ??"
+}

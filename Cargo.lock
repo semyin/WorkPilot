@@ -4795,6 +4795,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "tauri-winrt-notification"
+version = "0.8.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f37a6c354fd28fc9e322ed9bd47e3959576dad28c9d58ea1cf888cce1c7ccb36"
+dependencies = [
+ "thiserror 2.0.21",
+ "windows",
+ "windows-version",
+]
+
+[[package]]
 name = "tempfile"
 version = "3.27.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6012,14 +6023,14 @@ checksum = "1ebf944e87a7c253233ad6766e082e3cd714b5d03812acc24c318f549614536e"
 
 [[package]]
 name = "workpilot-browser-bridge"
-version = "0.1.0-alpha.12.15"
+version = "0.1.0-alpha.13.4"
 dependencies = [
  "serde_json",
 ]
 
 [[package]]
 name = "workpilot-contracts"
-version = "0.1.0-alpha.12.15"
+version = "0.1.0-alpha.13.4"
 dependencies = [
  "serde",
  "serde_json",
@@ -6029,15 +6040,18 @@ dependencies = [
 
 [[package]]
 name = "workpilot-desktop"
-version = "0.1.0-alpha.12.15"
+version = "0.1.0-alpha.13.4"
 dependencies = [
  "serde",
  "serde_json",
  "tauri",
  "tauri-build",
  "tauri-plugin-dialog",
+ "tauri-winrt-notification",
+ "tempfile",
  "tokio",
  "uuid",
+ "windows-sys 0.61.2",
  "workpilot-contracts",
  "workpilot-platform",
  "zeroize",
@@ -6045,7 +6059,7 @@ dependencies = [
 
 [[package]]
 name = "workpilot-engine"
-version = "0.1.0-alpha.12.15"
+version = "0.1.0-alpha.13.4"
 dependencies = [
  "serde",
  "serde_json",
@@ -6068,7 +6082,7 @@ dependencies = [
 
 [[package]]
 name = "workpilot-extensions"
-version = "0.1.0-alpha.12.15"
+version = "0.1.0-alpha.13.4"
 dependencies = [
  "base64 0.22.1",
  "futures-util",
@@ -6094,14 +6108,14 @@ dependencies = [
 
 [[package]]
 name = "workpilot-office"
-version = "0.1.0-alpha.12.15"
+version = "0.1.0-alpha.13.4"
 dependencies = [
  "serde_json",
 ]
 
 [[package]]
 name = "workpilot-platform"
-version = "0.1.0-alpha.12.15"
+version = "0.1.0-alpha.13.4"
 dependencies = [
  "directories",
  "keyring",
@@ -6123,7 +6137,7 @@ dependencies = [
 
 [[package]]
 name = "workpilot-policy"
-version = "0.1.0-alpha.12.15"
+version = "0.1.0-alpha.13.4"
 dependencies = [
  "serde",
  "serde_json",
@@ -6133,7 +6147,7 @@ dependencies = [
 
 [[package]]
 name = "workpilot-providers"
-version = "0.1.0-alpha.12.15"
+version = "0.1.0-alpha.13.4"
 dependencies = [
  "futures-util",
  "reqwest",
@@ -6150,7 +6164,7 @@ dependencies = [
 
 [[package]]
 name = "workpilot-runtime"
-version = "0.1.0-alpha.12.15"
+version = "0.1.0-alpha.13.4"
 dependencies = [
  "serde",
  "serde_json",
@@ -6169,7 +6183,7 @@ dependencies = [
 
 [[package]]
 name = "workpilot-storage"
-version = "0.1.0-alpha.12.15"
+version = "0.1.0-alpha.13.4"
 dependencies = [
  "chrono",
  "chrono-tz",
@@ -6188,7 +6202,7 @@ dependencies = [
 
 [[package]]
 name = "workpilot-tools"
-version = "0.1.0-alpha.12.15"
+version = "0.1.0-alpha.13.4"
 dependencies = [
  "cap-std",
  "serde",
@@ -6205,7 +6219,7 @@ dependencies = [
 
 [[package]]
 name = "workpilot-workbench"
-version = "0.1.0-alpha.12.15"
+version = "0.1.0-alpha.13.4"
 dependencies = [
  "base64 0.22.1",
  "futures-util",

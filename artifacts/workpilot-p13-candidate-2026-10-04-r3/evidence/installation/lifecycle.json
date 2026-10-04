@@ -1,0 +1,44 @@
+{
+    "at":  "2026-10-04T14:03:32.2870544Z",
+    "version":  "0.1.0-alpha.13.4",
+    "installerSha256":  "3a87818d62a3e5925b77aaa5eef1992c3360b2f8e3a88df4ab1fb9a4ee99ff4e",
+    "session":  "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-9d18967072c84d9994894b7cf535f15e",
+    "installRoot":  "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-9d18967072c84d9994894b7cf535f15e\\中文 安装",
+    "environment":  "Current Windows development machine, not a clean OS",
+    "preexistingProcesses":  [
+                                 {
+                                     "ProcessId":  34440,
+                                     "ExecutablePath":  "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+                                     "CreatedUtcTicks":  "639267050146798310"
+                                 },
+                                 {
+                                     "ProcessId":  19464,
+                                     "ExecutablePath":  "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+                                     "CreatedUtcTicks":  "639267050147126240"
+                                 },
+                                 {
+                                     "ProcessId":  15240,
+                                     "ExecutablePath":  "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+                                     "CreatedUtcTicks":  "639267190853637990"
+                                 },
+                                 {
+                                     "ProcessId":  26032,
+                                     "ExecutablePath":  "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+                                     "CreatedUtcTicks":  "639267190853873610"
+                                 }
+                             ],
+    "browserRegistrationsBefore":  "5c08e81d4ce5cf2921bf1833c1cc9f618958cc77d9b21df83b5782d8e2bb9270",
+    "shortcuts":  [
+                      "C:\\Users\\semyi\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\WorkPilot.lnk",
+                      "C:\\Users\\semyi\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\WorkPilot\\WorkPilot.lnk",
+                      "C:\\Users\\semyi\\Desktop\\WorkPilot.lnk"
+                  ],
+    "status":  "passed",
+    "checks":  [
+                   "exact_installer_current_user_chinese_space_path_binary_hash_and_registration",
+                   "uninstall_only_owned_files_keeps_project_unknown_file_databases_existing_processes_and_browser_registrations"
+               ],
+    "preservedDatabaseFiles":  0,
+    "existingProcessesPreservedAtUninstall":  0,
+    "finishedAt":  "2026-10-04T14:21:38.8744275Z"
+}

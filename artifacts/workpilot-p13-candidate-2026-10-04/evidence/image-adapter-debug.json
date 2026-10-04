@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-04T11:59:09.468Z",
+  "binarySha256": "14da86268e573aaf2b546e4c2dd9248a3fc88d89efe94173b4e17bae3151a5ab",
+  "service": "Local synthetic Bailian JSON + same-origin result download; not a real image service",
+  "checks": [
+    "approved_json_generation_and_reference_edit_download_without_forwarding_key_preserve_original",
+    "quota_foreign_url_redirect_oversize_corruption_disconnect_wrong_dimensions_fail_without_retry_or_file",
+    "cancel_result_download_closes_connection_and_writes_no_output",
+    "old_profiles_default_to_standard_images_and_keep_url_only_rejection"
+  ],
+  "status": "passed"
+}

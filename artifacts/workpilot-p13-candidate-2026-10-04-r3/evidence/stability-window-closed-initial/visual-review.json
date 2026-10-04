@@ -1,0 +1,9 @@
+{
+  "scope": "Read-only capture of the current owned native WebView at cycle 8. Task list, selected team task detail, model wait description and three-member collaboration visible. No page reload, click or close was issued by capture.",
+  "viewed": [
+    "native-window-early.png",
+    "office-0-docx.png",
+    "office-5-xlsx.png",
+    "office-10-pptx.png"
+  ]
+}

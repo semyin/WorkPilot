@@ -1,0 +1,3758 @@
+{
+  "at": "2026-10-04T13:46:40.875Z",
+  "beganAtMs": 1791121600875,
+  "output": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-long-history-selfcheck\\self-check-9dEtHX",
+  "binary": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-desktop.exe",
+  "binarySha256": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+  "engineSha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+  "machine": {
+    "os": {
+      "Caption": "Microsoft Windows 11 家庭版",
+      "Version": "10.0.26200",
+      "BuildNumber": "26200"
+    },
+    "architecture": "x64",
+    "kernel": "10.0.26200",
+    "cpuModel": "AMD Ryzen 7 7840H w/ Radeon(TM) 780M Graphics  ",
+    "logicalProcessors": 16,
+    "memoryBytes": 33618710528,
+    "availableMemoryBeforeBytes": 8645091328,
+    "node": "v22.23.2"
+  },
+  "selfTest": true,
+  "formalPerformanceEligible": false,
+  "conditions": "Short harness self-check on live workstation during unrelated alpha13.4 release build. Four input/button samples only; no formal p95 or isolated performance claim.",
+  "scope": {
+    "data": "100000 historical progress events plus one 2.1 MB UTF-8 body seeded only into a closed test-owned database; history task is one of four independent concurrent tasks",
+    "workload": "Four real native-engine HTTP streams from a local deterministic fixture; no paid service or local tools. One is cancelled, three continue and complete",
+    "ui": "Four inputs and four sidebar clicks only to validate the harness; no formal p95",
+    "resources": "250 ms process sampling. Desktop, engine and profile-attributed UI WebView are summed per complete process-identity snapshot. CPU is a percentage of the whole machine; summed working sets may double-count shared pages. Test fixtures, automation and discovery processes are excluded",
+    "exclusions": "No four-hour soak, true cold startup, real model latency, browser/Office load, clean-Windows or macOS/Linux claim"
+  },
+  "checks": [
+    "closed_owned_database_seeded_100000_progress_events_and_exact_2_1_mb_content",
+    "four_independent_streams_remain_running_through_input_buttons_record_pages_full_body_search_copy_and_export",
+    "full_export_contains_all_100000_unique_progress_records_and_exact_complete_body_hash",
+    "four_resource_phases_separately_attribute_desktop_engine_and_ui_webview_with_complete_identity_snapshots",
+    "stopping_history_task_closes_only_its_stream_while_three_peers_continue_emit_and_complete_without_retry",
+    "desktop_engine_and_profile_owned_webviews_exit_verified_by_pid_start_time_and_path"
+  ],
+  "phases": [
+    {
+      "phase": "history-idle",
+      "rawCycles": [
+        {
+          "role": "ui-webview",
+          "tick": 28,
+          "atMs": 1791121609332,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 547999744,
+          "privateBytes": 366751744,
+          "cpuPercent": 0,
+          "completeCpu": false
+        },
+        {
+          "role": "other-owned",
+          "tick": 28,
+          "atMs": 1791121609383,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": false
+        },
+        {
+          "role": "desktop",
+          "tick": 28,
+          "atMs": 1791121609403,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 32673792,
+          "privateBytes": 7536640,
+          "cpuPercent": 0,
+          "completeCpu": false
+        },
+        {
+          "role": "engine",
+          "tick": 28,
+          "atMs": 1791121609435,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 17739776,
+          "privateBytes": 8286208,
+          "cpuPercent": 0,
+          "completeCpu": false
+        },
+        {
+          "role": "ui-webview",
+          "tick": 29,
+          "atMs": 1791121609725,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 548356096,
+          "privateBytes": 367095808,
+          "cpuPercent": 1.122485632183908,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 29,
+          "atMs": 1791121609733,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 29,
+          "atMs": 1791121609750,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 32681984,
+          "privateBytes": 7544832,
+          "cpuPercent": 0.2814301152737752,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 29,
+          "atMs": 1791121609779,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 17747968,
+          "privateBytes": 8286208,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 30,
+          "atMs": 1791121610067,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 548982784,
+          "privateBytes": 367898624,
+          "cpuPercent": 2.535339150255892,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 30,
+          "atMs": 1791121610076,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 30,
+          "atMs": 1791121610097,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 32673792,
+          "privateBytes": 7536640,
+          "cpuPercent": 0.2814301152737752,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 30,
+          "atMs": 1791121610128,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 17747968,
+          "privateBytes": 8286208,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 31,
+          "atMs": 1791121610424,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 549744640,
+          "privateBytes": 368717824,
+          "cpuPercent": 2.186083057524686,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 31,
+          "atMs": 1791121610435,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 31,
+          "atMs": 1791121610456,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 32686080,
+          "privateBytes": 7548928,
+          "cpuPercent": 1.0880919220055711,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 31,
+          "atMs": 1791121610487,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 17747968,
+          "privateBytes": 8286208,
+          "cpuPercent": 0.5440459610027856,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 32,
+          "atMs": 1791121610778,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 553226240,
+          "privateBytes": 368947200,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 32,
+          "atMs": 1791121610790,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 32,
+          "atMs": 1791121610815,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 32677888,
+          "privateBytes": 7540736,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 32,
+          "atMs": 1791121610852,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 17747968,
+          "privateBytes": 8286208,
+          "cpuPercent": 0,
+          "completeCpu": true
+        }
+      ],
+      "cycleCoverage": [
+        {
+          "tick": 28,
+          "targetVersion": "history-idle-0",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 29,
+          "targetVersion": "history-idle-0",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 30,
+          "targetVersion": "history-idle-0",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 31,
+          "targetVersion": "history-idle-1",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 32,
+          "targetVersion": "history-idle-1",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        }
+      ],
+      "excludedIncompleteCycles": [],
+      "groups": [
+        {
+          "role": "ui-webview",
+          "samples": 5,
+          "observedProcesses": 6,
+          "workingSetBytes": {
+            "count": 5,
+            "min": 547999744,
+            "max": 553226240,
+            "mean": 549661900.8
+          },
+          "privateBytes": {
+            "count": 5,
+            "min": 366751744,
+            "max": 368947200,
+            "mean": 367882240
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 4,
+            "min": 0,
+            "max": 2.535,
+            "mean": 1.461
+          },
+          "processCounts": {
+            "count": 5,
+            "min": 6,
+            "max": 6,
+            "mean": 6
+          }
+        },
+        {
+          "role": "other-owned",
+          "samples": 5,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 5,
+            "min": 7827456,
+            "max": 7827456,
+            "mean": 7827456
+          },
+          "privateBytes": {
+            "count": 5,
+            "min": 1253376,
+            "max": 1253376,
+            "mean": 1253376
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 4,
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "processCounts": {
+            "count": 5,
+            "min": 1,
+            "max": 1,
+            "mean": 1
+          }
+        },
+        {
+          "role": "desktop",
+          "samples": 5,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 5,
+            "min": 32673792,
+            "max": 32686080,
+            "mean": 32678707.2
+          },
+          "privateBytes": {
+            "count": 5,
+            "min": 7536640,
+            "max": 7548928,
+            "mean": 7541555.2
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 4,
+            "min": 0,
+            "max": 1.088,
+            "mean": 0.413
+          },
+          "processCounts": {
+            "count": 5,
+            "min": 1,
+            "max": 1,
+            "mean": 1
+          }
+        },
+        {
+          "role": "engine",
+          "samples": 5,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 5,
+            "min": 17739776,
+            "max": 17747968,
+            "mean": 17746329.6
+          },
+          "privateBytes": {
+            "count": 5,
+            "min": 8286208,
+            "max": 8286208,
+            "mean": 8286208
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 4,
+            "min": 0,
+            "max": 0.544,
+            "mean": 0.136
+          },
+          "processCounts": {
+            "count": 5,
+            "min": 1,
+            "max": 1,
+            "mean": 1
+          }
+        }
+      ],
+      "beganAtMs": 1791121608464,
+      "actionBeganAtMs": 1791121609404,
+      "endedAtMs": 1791121611077,
+      "elapsedMs": 2616,
+      "discoveries": [
+        {
+          "atMs": 1791121609195,
+          "targetVersion": "history-idle-0",
+          "identities": [
+            "19648:1791121607638:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "29848:1791121607533:c:\\windows\\system32\\conhost.exe",
+            "6812:1791121607609:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40148:1791121607501:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-desktop.exe",
+            "44496:1791121607801:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "34868:1791121607912:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40472:1791121607522:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-sidecar.exe",
+            "41032:1791121607765:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "26776:1791121607777:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe"
+          ]
+        },
+        {
+          "atMs": 1791121610073,
+          "targetVersion": "history-idle-1",
+          "identities": [
+            "19648:1791121607638:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "29848:1791121607533:c:\\windows\\system32\\conhost.exe",
+            "6812:1791121607609:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40148:1791121607501:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-desktop.exe",
+            "44496:1791121607801:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "34868:1791121607912:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40472:1791121607522:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-sidecar.exe",
+            "41032:1791121607765:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "26776:1791121607777:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe"
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "history-four-streams",
+      "rawCycles": [
+        {
+          "role": "ui-webview",
+          "tick": 37,
+          "atMs": 1791121612187,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 571191296,
+          "privateBytes": 379187200,
+          "cpuPercent": 0,
+          "completeCpu": false
+        },
+        {
+          "role": "other-owned",
+          "tick": 37,
+          "atMs": 1791121612198,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": false
+        },
+        {
+          "role": "desktop",
+          "tick": 37,
+          "atMs": 1791121612220,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 32878592,
+          "privateBytes": 7565312,
+          "cpuPercent": 0,
+          "completeCpu": false
+        },
+        {
+          "role": "engine",
+          "tick": 37,
+          "atMs": 1791121612256,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 21422080,
+          "privateBytes": 9994240,
+          "cpuPercent": 0,
+          "completeCpu": false
+        },
+        {
+          "role": "ui-webview",
+          "tick": 38,
+          "atMs": 1791121612553,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 593641472,
+          "privateBytes": 398082048,
+          "cpuPercent": 8.792224853892042,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 38,
+          "atMs": 1791121612565,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 38,
+          "atMs": 1791121612587,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 32952320,
+          "privateBytes": 7557120,
+          "cpuPercent": 1.0643732970027246,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 38,
+          "atMs": 1791121612623,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 21540864,
+          "privateBytes": 9994240,
+          "cpuPercent": 2.660933242506812,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 39,
+          "atMs": 1791121612924,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 643076096,
+          "privateBytes": 441696256,
+          "cpuPercent": 7.286855521342967,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 39,
+          "atMs": 1791121612937,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 39,
+          "atMs": 1791121612963,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 32968704,
+          "privateBytes": 7569408,
+          "cpuPercent": 1.0388962765957446,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 39,
+          "atMs": 1791121612997,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 21549056,
+          "privateBytes": 9994240,
+          "cpuPercent": 2.350016711229946,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 40,
+          "atMs": 1791121613286,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 634355712,
+          "privateBytes": 432304128,
+          "cpuPercent": 6.848839278728585,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 40,
+          "atMs": 1791121613297,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 40,
+          "atMs": 1791121613320,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 32993280,
+          "privateBytes": 7569408,
+          "cpuPercent": 0.547093837535014,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 40,
+          "atMs": 1791121613351,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 21549056,
+          "privateBytes": 9994240,
+          "cpuPercent": 2.758651129943503,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 41,
+          "atMs": 1791121613651,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 635105280,
+          "privateBytes": 432795648,
+          "cpuPercent": 3.4789509068928344,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 41,
+          "atMs": 1791121613663,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 41,
+          "atMs": 1791121613684,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 32989184,
+          "privateBytes": 7565312,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 41,
+          "atMs": 1791121613717,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 21549056,
+          "privateBytes": 9994240,
+          "cpuPercent": 1.6009221311475408,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 42,
+          "atMs": 1791121614005,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 640139264,
+          "privateBytes": 438091776,
+          "cpuPercent": 4.119585687382298,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 42,
+          "atMs": 1791121614016,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 42,
+          "atMs": 1791121614040,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 32976896,
+          "privateBytes": 6668288,
+          "cpuPercent": 1.0972612359550562,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 42,
+          "atMs": 1791121614078,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 21655552,
+          "privateBytes": 10129408,
+          "cpuPercent": 2.164127423822715,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 43,
+          "atMs": 1791121614370,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 650842112,
+          "privateBytes": 448192512,
+          "cpuPercent": 6.726787283121011,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 43,
+          "atMs": 1791121614381,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 43,
+          "atMs": 1791121614402,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33046528,
+          "privateBytes": 7565312,
+          "cpuPercent": 1.0790745856353592,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 43,
+          "atMs": 1791121614437,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 24944640,
+          "privateBytes": 14372864,
+          "cpuPercent": 4.624390668523677,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 44,
+          "atMs": 1791121614734,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 652099584,
+          "privateBytes": 449032192,
+          "cpuPercent": 4.535286535884455,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 44,
+          "atMs": 1791121614746,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 44,
+          "atMs": 1791121614770,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33107968,
+          "privateBytes": 7577600,
+          "cpuPercent": 0.2653702445652174,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 44,
+          "atMs": 1791121614806,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 22908928,
+          "privateBytes": 11374592,
+          "cpuPercent": 6.086974932249323,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 45,
+          "atMs": 1791121615105,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 651718656,
+          "privateBytes": 448299008,
+          "cpuPercent": 5.279431489416245,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 45,
+          "atMs": 1791121615116,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 45,
+          "atMs": 1791121615140,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33177600,
+          "privateBytes": 7581696,
+          "cpuPercent": 0.2639358108108108,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 45,
+          "atMs": 1791121615175,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 22437888,
+          "privateBytes": 11669504,
+          "cpuPercent": 5.557672764227642,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 46,
+          "atMs": 1791121615469,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 653156352,
+          "privateBytes": 449175552,
+          "cpuPercent": 6.168504297423443,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 46,
+          "atMs": 1791121615482,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 46,
+          "atMs": 1791121615503,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33173504,
+          "privateBytes": 7553024,
+          "cpuPercent": 0.2690254820936639,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 46,
+          "atMs": 1791121615536,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 22581248,
+          "privateBytes": 11083776,
+          "cpuPercent": 5.680834487534626,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 47,
+          "atMs": 1791121615829,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 654561280,
+          "privateBytes": 450617344,
+          "cpuPercent": 5.97855714693269,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 47,
+          "atMs": 1791121615840,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 47,
+          "atMs": 1791121615863,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33243136,
+          "privateBytes": 7618560,
+          "cpuPercent": 1.3563368055555556,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 47,
+          "atMs": 1791121615895,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 22708224,
+          "privateBytes": 11698176,
+          "cpuPercent": 4.89641364902507,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 48,
+          "atMs": 1791121616189,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 656257024,
+          "privateBytes": 451624960,
+          "cpuPercent": 5.439928331680366,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 48,
+          "atMs": 1791121616201,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 48,
+          "atMs": 1791121616223,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33218560,
+          "privateBytes": 7589888,
+          "cpuPercent": 1.6276041666666667,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 48,
+          "atMs": 1791121616255,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 23687168,
+          "privateBytes": 12664832,
+          "cpuPercent": 5.696614583333334,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 49,
+          "atMs": 1791121616538,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 657272832,
+          "privateBytes": 452628480,
+          "cpuPercent": 2.8030116925261965,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 49,
+          "atMs": 1791121616549,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 49,
+          "atMs": 1791121616571,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33247232,
+          "privateBytes": 7618560,
+          "cpuPercent": 0.8418642241379312,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 49,
+          "atMs": 1791121616603,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 22413312,
+          "privateBytes": 10829824,
+          "cpuPercent": 3.9286997126436782,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 50,
+          "atMs": 1791121616903,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 672169984,
+          "privateBytes": 465616896,
+          "cpuPercent": 7.996195920517422,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 50,
+          "atMs": 1791121616914,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 50,
+          "atMs": 1791121616936,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33234944,
+          "privateBytes": 7610368,
+          "cpuPercent": 0.5351027397260274,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 50,
+          "atMs": 1791121616971,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 22564864,
+          "privateBytes": 11128832,
+          "cpuPercent": 1.8575917119565215,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 51,
+          "atMs": 1791121617267,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 683016192,
+          "privateBytes": 475103232,
+          "cpuPercent": 7.818910332809219,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 51,
+          "atMs": 1791121617278,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 51,
+          "atMs": 1791121617299,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33366016,
+          "privateBytes": 7573504,
+          "cpuPercent": 1.8831783746556474,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 51,
+          "atMs": 1791121617332,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 22593536,
+          "privateBytes": 11157504,
+          "cpuPercent": 2.705159279778393,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 52,
+          "atMs": 1791121617621,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 715276288,
+          "privateBytes": 507363328,
+          "cpuPercent": 5.479416280791343,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 52,
+          "atMs": 1791121617632,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 52,
+          "atMs": 1791121617656,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33394688,
+          "privateBytes": 7610368,
+          "cpuPercent": 0.8206407563025211,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 52,
+          "atMs": 1791121617688,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 27451392,
+          "privateBytes": 16035840,
+          "cpuPercent": 4.937675561797753,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 53,
+          "atMs": 1791121617982,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 719028224,
+          "privateBytes": 509960192,
+          "cpuPercent": 6.186107926164744,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 53,
+          "atMs": 1791121617994,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 53,
+          "atMs": 1791121618018,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33406976,
+          "privateBytes": 7618560,
+          "cpuPercent": 0.2697686464088398,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 53,
+          "atMs": 1791121618054,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 27467776,
+          "privateBytes": 16035840,
+          "cpuPercent": 9.071892076502733,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 54,
+          "atMs": 1791121618350,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 721252352,
+          "privateBytes": 512151552,
+          "cpuPercent": 3.6951129505461306,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 54,
+          "atMs": 1791121618364,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 54,
+          "atMs": 1791121618390,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33411072,
+          "privateBytes": 7618560,
+          "cpuPercent": 0.2625168010752688,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 54,
+          "atMs": 1791121618424,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26501120,
+          "privateBytes": 14954496,
+          "cpuPercent": 6.33445945945946,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 55,
+          "atMs": 1791121618716,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 722477056,
+          "privateBytes": 513310720,
+          "cpuPercent": 3.2327771227764934,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 55,
+          "atMs": 1791121618727,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 55,
+          "atMs": 1791121618751,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33357824,
+          "privateBytes": 7585792,
+          "cpuPercent": 0.5410318559556787,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 55,
+          "atMs": 1791121618786,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26505216,
+          "privateBytes": 15220736,
+          "cpuPercent": 3.776761049723757,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 56,
+          "atMs": 1791121619077,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 724889600,
+          "privateBytes": 515428352,
+          "cpuPercent": 4.070525876784606,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 56,
+          "atMs": 1791121619089,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 56,
+          "atMs": 1791121619111,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33402880,
+          "privateBytes": 7622656,
+          "cpuPercent": 1.6276041666666667,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 56,
+          "atMs": 1791121619142,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26505216,
+          "privateBytes": 15220736,
+          "cpuPercent": 2.7431530898876404,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 57,
+          "atMs": 1791121619439,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 725430272,
+          "privateBytes": 515805184,
+          "cpuPercent": 4.0465296961325965,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 57,
+          "atMs": 1791121619449,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 57,
+          "atMs": 1791121619473,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33460224,
+          "privateBytes": 7585792,
+          "cpuPercent": 0.5395372928176796,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 57,
+          "atMs": 1791121619505,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26505216,
+          "privateBytes": 15220736,
+          "cpuPercent": 2.690254820936639,
+          "completeCpu": true
+        }
+      ],
+      "cycleCoverage": [
+        {
+          "tick": 37,
+          "targetVersion": "history-four-streams-0",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 38,
+          "targetVersion": "history-four-streams-0",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 39,
+          "targetVersion": "history-four-streams-0",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 40,
+          "targetVersion": "history-four-streams-1",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 41,
+          "targetVersion": "history-four-streams-1",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 42,
+          "targetVersion": "history-four-streams-1",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 43,
+          "targetVersion": "history-four-streams-1",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 44,
+          "targetVersion": "history-four-streams-1",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 45,
+          "targetVersion": "history-four-streams-2",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 46,
+          "targetVersion": "history-four-streams-2",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 47,
+          "targetVersion": "history-four-streams-2",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 48,
+          "targetVersion": "history-four-streams-2",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 49,
+          "targetVersion": "history-four-streams-2",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 50,
+          "targetVersion": "history-four-streams-3",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 51,
+          "targetVersion": "history-four-streams-3",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 52,
+          "targetVersion": "history-four-streams-3",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 53,
+          "targetVersion": "history-four-streams-3",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 54,
+          "targetVersion": "history-four-streams-3",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 55,
+          "targetVersion": "history-four-streams-4",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 56,
+          "targetVersion": "history-four-streams-4",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 57,
+          "targetVersion": "history-four-streams-4",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        }
+      ],
+      "excludedIncompleteCycles": [],
+      "groups": [
+        {
+          "role": "ui-webview",
+          "samples": 21,
+          "observedProcesses": 6,
+          "workingSetBytes": {
+            "count": 21,
+            "min": 571191296,
+            "max": 725430272,
+            "mean": 665569377.524
+          },
+          "privateBytes": {
+            "count": 21,
+            "min": 379187200,
+            "max": 515805184,
+            "mean": 461260312.381
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 20,
+            "min": 2.803,
+            "max": 8.792,
+            "mean": 5.499
+          },
+          "processCounts": {
+            "count": 21,
+            "min": 6,
+            "max": 6,
+            "mean": 6
+          }
+        },
+        {
+          "role": "other-owned",
+          "samples": 21,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 21,
+            "min": 7827456,
+            "max": 7827456,
+            "mean": 7827456
+          },
+          "privateBytes": {
+            "count": 21,
+            "min": 1253376,
+            "max": 1253376,
+            "mean": 1253376
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 20,
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "processCounts": {
+            "count": 21,
+            "min": 1,
+            "max": 1,
+            "mean": 1
+          }
+        },
+        {
+          "role": "desktop",
+          "samples": 21,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 21,
+            "min": 32878592,
+            "max": 33460224,
+            "mean": 33190863.238
+          },
+          "privateBytes": {
+            "count": 21,
+            "min": 6668288,
+            "max": 7622656,
+            "mean": 7544051.81
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 20,
+            "min": 0,
+            "max": 1.883,
+            "mean": 0.797
+          },
+          "processCounts": {
+            "count": 21,
+            "min": 1,
+            "max": 1,
+            "mean": 1
+          }
+        },
+        {
+          "role": "engine",
+          "samples": 21,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 21,
+            "min": 21422080,
+            "max": 27467776,
+            "mean": 23668638.476
+          },
+          "privateBytes": {
+            "count": 21,
+            "min": 9994240,
+            "max": 16035840,
+            "mean": 12322328.381
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 20,
+            "min": 1.601,
+            "max": 9.072,
+            "mean": 4.106
+          },
+          "processCounts": {
+            "count": 21,
+            "min": 1,
+            "max": 1,
+            "mean": 1
+          }
+        }
+      ],
+      "beganAtMs": 1791121611270,
+      "actionBeganAtMs": 1791121612209,
+      "endedAtMs": 1791121619581,
+      "elapsedMs": 8312,
+      "discoveries": [
+        {
+          "atMs": 1791121612109,
+          "targetVersion": "history-four-streams-0",
+          "identities": [
+            "19648:1791121607638:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "29848:1791121607533:c:\\windows\\system32\\conhost.exe",
+            "6812:1791121607609:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40148:1791121607501:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-desktop.exe",
+            "44496:1791121607801:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "34868:1791121607912:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40472:1791121607522:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-sidecar.exe",
+            "41032:1791121607765:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "26776:1791121607777:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe"
+          ]
+        },
+        {
+          "atMs": 1791121613031,
+          "targetVersion": "history-four-streams-1",
+          "identities": [
+            "19648:1791121607638:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "29848:1791121607533:c:\\windows\\system32\\conhost.exe",
+            "6812:1791121607609:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40148:1791121607501:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-desktop.exe",
+            "44496:1791121607801:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "34868:1791121607912:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40472:1791121607522:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-sidecar.exe",
+            "41032:1791121607765:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "26776:1791121607777:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe"
+          ]
+        },
+        {
+          "atMs": 1791121614874,
+          "targetVersion": "history-four-streams-2",
+          "identities": [
+            "19648:1791121607638:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "29848:1791121607533:c:\\windows\\system32\\conhost.exe",
+            "6812:1791121607609:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40148:1791121607501:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-desktop.exe",
+            "44496:1791121607801:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "34868:1791121607912:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40472:1791121607522:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-sidecar.exe",
+            "41032:1791121607765:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "26776:1791121607777:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe"
+          ]
+        },
+        {
+          "atMs": 1791121616687,
+          "targetVersion": "history-four-streams-3",
+          "identities": [
+            "19648:1791121607638:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "29848:1791121607533:c:\\windows\\system32\\conhost.exe",
+            "6812:1791121607609:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40148:1791121607501:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-desktop.exe",
+            "44496:1791121607801:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "34868:1791121607912:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40472:1791121607522:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-sidecar.exe",
+            "41032:1791121607765:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "26776:1791121607777:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe"
+          ]
+        },
+        {
+          "atMs": 1791121618565,
+          "targetVersion": "history-four-streams-4",
+          "identities": [
+            "19648:1791121607638:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "29848:1791121607533:c:\\windows\\system32\\conhost.exe",
+            "6812:1791121607609:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40148:1791121607501:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-desktop.exe",
+            "44496:1791121607801:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "34868:1791121607912:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40472:1791121607522:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-sidecar.exe",
+            "41032:1791121607765:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "26776:1791121607777:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe"
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "history-three-after-stop",
+      "rawCycles": [
+        {
+          "role": "ui-webview",
+          "tick": 61,
+          "atMs": 1791121620570,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 713793536,
+          "privateBytes": 504033280,
+          "cpuPercent": 0,
+          "completeCpu": false
+        },
+        {
+          "role": "other-owned",
+          "tick": 61,
+          "atMs": 1791121620579,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": false
+        },
+        {
+          "role": "desktop",
+          "tick": 61,
+          "atMs": 1791121620600,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33517568,
+          "privateBytes": 7614464,
+          "cpuPercent": 0,
+          "completeCpu": false
+        },
+        {
+          "role": "engine",
+          "tick": 61,
+          "atMs": 1791121620631,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26587136,
+          "privateBytes": 15302656,
+          "cpuPercent": 0,
+          "completeCpu": false
+        },
+        {
+          "role": "ui-webview",
+          "tick": 62,
+          "atMs": 1791121620920,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 714665984,
+          "privateBytes": 504795136,
+          "cpuPercent": 1.4031537886486305,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 62,
+          "atMs": 1791121620929,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 62,
+          "atMs": 1791121620947,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33509376,
+          "privateBytes": 7610368,
+          "cpuPercent": 0.5628602305475504,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 62,
+          "atMs": 1791121620976,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26587136,
+          "privateBytes": 15302656,
+          "cpuPercent": 0.5661231884057971,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 63,
+          "atMs": 1791121621275,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 711168000,
+          "privateBytes": 500383744,
+          "cpuPercent": 3.5249769797421733,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 63,
+          "atMs": 1791121621286,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 63,
+          "atMs": 1791121621306,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33521664,
+          "privateBytes": 7614464,
+          "cpuPercent": 1.3601149025069637,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 63,
+          "atMs": 1791121621336,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26587136,
+          "privateBytes": 15302656,
+          "cpuPercent": 0.2712673611111111,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 64,
+          "atMs": 1791121621620,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 711897088,
+          "privateBytes": 501096448,
+          "cpuPercent": 2.5732805417142464,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 64,
+          "atMs": 1791121621628,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 64,
+          "atMs": 1791121621649,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33521664,
+          "privateBytes": 7610368,
+          "cpuPercent": 0.28471209912536444,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 64,
+          "atMs": 1791121621676,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26587136,
+          "privateBytes": 15302656,
+          "cpuPercent": 0.5744485294117647,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 65,
+          "atMs": 1791121621952,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 712245248,
+          "privateBytes": 501452800,
+          "cpuPercent": 2.0320044995610185,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 65,
+          "atMs": 1791121621963,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 65,
+          "atMs": 1791121621984,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33533952,
+          "privateBytes": 7626752,
+          "cpuPercent": 0.5830223880597015,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 65,
+          "atMs": 1791121622014,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26587136,
+          "privateBytes": 15302656,
+          "cpuPercent": 0.28892381656804733,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 66,
+          "atMs": 1791121622298,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 713338880,
+          "privateBytes": 502648832,
+          "cpuPercent": 3.6938181057051542,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 66,
+          "atMs": 1791121622308,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 66,
+          "atMs": 1791121622327,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33533952,
+          "privateBytes": 7626752,
+          "cpuPercent": 0.28471209912536444,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 66,
+          "atMs": 1791121622360,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26587136,
+          "privateBytes": 15302656,
+          "cpuPercent": 0.5644869942196532,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 67,
+          "atMs": 1791121622652,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 714412032,
+          "privateBytes": 503369728,
+          "cpuPercent": 0.2774325284090909,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 67,
+          "atMs": 1791121622661,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 67,
+          "atMs": 1791121622677,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33529856,
+          "privateBytes": 7614464,
+          "cpuPercent": 0.27901785714285715,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 67,
+          "atMs": 1791121622704,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26587136,
+          "privateBytes": 15302656,
+          "cpuPercent": 0.28388444767441856,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 68,
+          "atMs": 1791121622985,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 714694656,
+          "privateBytes": 503750656,
+          "cpuPercent": 3.210221785168666,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 68,
+          "atMs": 1791121622994,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 68,
+          "atMs": 1791121623015,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33538048,
+          "privateBytes": 7626752,
+          "cpuPercent": 0.5778476331360947,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 68,
+          "atMs": 1791121623045,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26587136,
+          "privateBytes": 15302656,
+          "cpuPercent": 0.8591458944281525,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 69,
+          "atMs": 1791121623336,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 715874304,
+          "privateBytes": 505036800,
+          "cpuPercent": 4.663360252808989,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 69,
+          "atMs": 1791121623347,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 69,
+          "atMs": 1791121623372,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33538048,
+          "privateBytes": 7614464,
+          "cpuPercent": 0.547093837535014,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 69,
+          "atMs": 1791121623405,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26587136,
+          "privateBytes": 15302656,
+          "cpuPercent": 0.5425347222222222,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 70,
+          "atMs": 1791121623687,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 692064256,
+          "privateBytes": 481296384,
+          "cpuPercent": 1.119352051037835,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 70,
+          "atMs": 1791121623694,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 70,
+          "atMs": 1791121623722,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33546240,
+          "privateBytes": 7626752,
+          "cpuPercent": 1.3950892857142858,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 70,
+          "atMs": 1791121623752,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26587136,
+          "privateBytes": 15302656,
+          "cpuPercent": 0.5628602305475504,
+          "completeCpu": true
+        }
+      ],
+      "cycleCoverage": [
+        {
+          "tick": 61,
+          "targetVersion": "history-three-after-stop-0",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 62,
+          "targetVersion": "history-three-after-stop-0",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 63,
+          "targetVersion": "history-three-after-stop-1",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 64,
+          "targetVersion": "history-three-after-stop-1",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 65,
+          "targetVersion": "history-three-after-stop-1",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 66,
+          "targetVersion": "history-three-after-stop-1",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 67,
+          "targetVersion": "history-three-after-stop-1",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 68,
+          "targetVersion": "history-three-after-stop-2",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 69,
+          "targetVersion": "history-three-after-stop-2",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 70,
+          "targetVersion": "history-three-after-stop-2",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        }
+      ],
+      "excludedIncompleteCycles": [],
+      "groups": [
+        {
+          "role": "ui-webview",
+          "samples": 10,
+          "observedProcesses": 6,
+          "workingSetBytes": {
+            "count": 10,
+            "min": 692064256,
+            "max": 715874304,
+            "mean": 711415398.4
+          },
+          "privateBytes": {
+            "count": 10,
+            "min": 481296384,
+            "max": 505036800,
+            "mean": 500786380.8
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 9,
+            "min": 0.277,
+            "max": 4.663,
+            "mean": 2.5
+          },
+          "processCounts": {
+            "count": 10,
+            "min": 6,
+            "max": 6,
+            "mean": 6
+          }
+        },
+        {
+          "role": "other-owned",
+          "samples": 10,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 10,
+            "min": 7827456,
+            "max": 7827456,
+            "mean": 7827456
+          },
+          "privateBytes": {
+            "count": 10,
+            "min": 1253376,
+            "max": 1253376,
+            "mean": 1253376
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 9,
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "processCounts": {
+            "count": 10,
+            "min": 1,
+            "max": 1,
+            "mean": 1
+          }
+        },
+        {
+          "role": "desktop",
+          "samples": 10,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 10,
+            "min": 33509376,
+            "max": 33546240,
+            "mean": 33529036.8
+          },
+          "privateBytes": {
+            "count": 10,
+            "min": 7610368,
+            "max": 7626752,
+            "mean": 7618560
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 9,
+            "min": 0.279,
+            "max": 1.395,
+            "mean": 0.653
+          },
+          "processCounts": {
+            "count": 10,
+            "min": 1,
+            "max": 1,
+            "mean": 1
+          }
+        },
+        {
+          "role": "engine",
+          "samples": 10,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 10,
+            "min": 26587136,
+            "max": 26587136,
+            "mean": 26587136
+          },
+          "privateBytes": {
+            "count": 10,
+            "min": 15302656,
+            "max": 15302656,
+            "mean": 15302656
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 9,
+            "min": 0.271,
+            "max": 0.859,
+            "mean": 0.502
+          },
+          "processCounts": {
+            "count": 10,
+            "min": 1,
+            "max": 1,
+            "mean": 1
+          }
+        }
+      ],
+      "beganAtMs": 1791121619797,
+      "actionBeganAtMs": 1791121620579,
+      "endedAtMs": 1791121623950,
+      "elapsedMs": 4155,
+      "discoveries": [
+        {
+          "atMs": 1791121620496,
+          "targetVersion": "history-three-after-stop-0",
+          "identities": [
+            "19648:1791121607638:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "29848:1791121607533:c:\\windows\\system32\\conhost.exe",
+            "6812:1791121607609:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40148:1791121607501:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-desktop.exe",
+            "44496:1791121607801:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "34868:1791121607912:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40472:1791121607522:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-sidecar.exe",
+            "41032:1791121607765:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "26776:1791121607777:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe"
+          ]
+        },
+        {
+          "atMs": 1791121621262,
+          "targetVersion": "history-three-after-stop-1",
+          "identities": [
+            "19648:1791121607638:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "29848:1791121607533:c:\\windows\\system32\\conhost.exe",
+            "6812:1791121607609:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40148:1791121607501:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-desktop.exe",
+            "44496:1791121607801:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "34868:1791121607912:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40472:1791121607522:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-sidecar.exe",
+            "41032:1791121607765:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "26776:1791121607777:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe"
+          ]
+        },
+        {
+          "atMs": 1791121622940,
+          "targetVersion": "history-three-after-stop-2",
+          "identities": [
+            "19648:1791121607638:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "29848:1791121607533:c:\\windows\\system32\\conhost.exe",
+            "6812:1791121607609:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40148:1791121607501:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-desktop.exe",
+            "44496:1791121607801:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "34868:1791121607912:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40472:1791121607522:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-sidecar.exe",
+            "41032:1791121607765:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "26776:1791121607777:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe"
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "history-completed",
+      "rawCycles": [
+        {
+          "role": "ui-webview",
+          "tick": 75,
+          "atMs": 1791121625072,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 711946240,
+          "privateBytes": 501170176,
+          "cpuPercent": 0,
+          "completeCpu": false
+        },
+        {
+          "role": "other-owned",
+          "tick": 75,
+          "atMs": 1791121625082,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": false
+        },
+        {
+          "role": "desktop",
+          "tick": 75,
+          "atMs": 1791121625103,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33615872,
+          "privateBytes": 7626752,
+          "cpuPercent": 0,
+          "completeCpu": false
+        },
+        {
+          "role": "engine",
+          "tick": 75,
+          "atMs": 1791121625134,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26120192,
+          "privateBytes": 14307328,
+          "cpuPercent": 0,
+          "completeCpu": false
+        },
+        {
+          "role": "ui-webview",
+          "tick": 76,
+          "atMs": 1791121625431,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 712495104,
+          "privateBytes": 501694464,
+          "cpuPercent": 2.7416685512732,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 76,
+          "atMs": 1791121625441,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 76,
+          "atMs": 1791121625460,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33595392,
+          "privateBytes": 7610368,
+          "cpuPercent": 0.547093837535014,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 76,
+          "atMs": 1791121625488,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26120192,
+          "privateBytes": 14307328,
+          "cpuPercent": 0.2758651129943503,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 77,
+          "atMs": 1791121625770,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 713076736,
+          "privateBytes": 502407168,
+          "cpuPercent": 1.1388871180245654,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 77,
+          "atMs": 1791121625780,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 77,
+          "atMs": 1791121625801,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33615872,
+          "privateBytes": 7626752,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 77,
+          "atMs": 1791121625832,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26120192,
+          "privateBytes": 14307328,
+          "cpuPercent": 0.28388444767441856,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 78,
+          "atMs": 1791121626120,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 712871936,
+          "privateBytes": 502083584,
+          "cpuPercent": 3.6066228693181817,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 78,
+          "atMs": 1791121626131,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 78,
+          "atMs": 1791121626153,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33615872,
+          "privateBytes": 7626752,
+          "cpuPercent": 0.2774325284090909,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 78,
+          "atMs": 1791121626189,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26120192,
+          "privateBytes": 14307328,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "ui-webview",
+          "tick": 79,
+          "atMs": 1791121626482,
+          "processIdentities": [
+            "19648:1791121607638",
+            "6812:1791121607609",
+            "44496:1791121607801",
+            "34868:1791121607912",
+            "41032:1791121607765",
+            "26776:1791121607777"
+          ],
+          "workingSetBytes": 713711616,
+          "privateBytes": 502964224,
+          "cpuPercent": 3.0014479285181848,
+          "completeCpu": true
+        },
+        {
+          "role": "other-owned",
+          "tick": 79,
+          "atMs": 1791121626491,
+          "processIdentities": [
+            "29848:1791121607533"
+          ],
+          "workingSetBytes": 7827456,
+          "privateBytes": 1253376,
+          "cpuPercent": 0,
+          "completeCpu": true
+        },
+        {
+          "role": "desktop",
+          "tick": 79,
+          "atMs": 1791121626511,
+          "processIdentities": [
+            "40148:1791121607501"
+          ],
+          "workingSetBytes": 33607680,
+          "privateBytes": 7614464,
+          "cpuPercent": 0.2727828212290503,
+          "completeCpu": true
+        },
+        {
+          "role": "engine",
+          "tick": 79,
+          "atMs": 1791121626540,
+          "processIdentities": [
+            "40472:1791121607522"
+          ],
+          "workingSetBytes": 26120192,
+          "privateBytes": 14307328,
+          "cpuPercent": 0.27822293447293445,
+          "completeCpu": true
+        }
+      ],
+      "cycleCoverage": [
+        {
+          "tick": 75,
+          "targetVersion": "history-completed-0",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 76,
+          "targetVersion": "history-completed-0",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 77,
+          "targetVersion": "history-completed-0",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 78,
+          "targetVersion": "history-completed-1",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        },
+        {
+          "tick": 79,
+          "targetVersion": "history-completed-1",
+          "complete": true,
+          "expectedProcesses": 9,
+          "sampledProcesses": 9
+        }
+      ],
+      "excludedIncompleteCycles": [],
+      "groups": [
+        {
+          "role": "ui-webview",
+          "samples": 5,
+          "observedProcesses": 6,
+          "workingSetBytes": {
+            "count": 5,
+            "min": 711946240,
+            "max": 713711616,
+            "mean": 712820326.4
+          },
+          "privateBytes": {
+            "count": 5,
+            "min": 501170176,
+            "max": 502964224,
+            "mean": 502063923.2
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 4,
+            "min": 1.139,
+            "max": 3.607,
+            "mean": 2.622
+          },
+          "processCounts": {
+            "count": 5,
+            "min": 6,
+            "max": 6,
+            "mean": 6
+          }
+        },
+        {
+          "role": "other-owned",
+          "samples": 5,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 5,
+            "min": 7827456,
+            "max": 7827456,
+            "mean": 7827456
+          },
+          "privateBytes": {
+            "count": 5,
+            "min": 1253376,
+            "max": 1253376,
+            "mean": 1253376
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 4,
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "processCounts": {
+            "count": 5,
+            "min": 1,
+            "max": 1,
+            "mean": 1
+          }
+        },
+        {
+          "role": "desktop",
+          "samples": 5,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 5,
+            "min": 33595392,
+            "max": 33615872,
+            "mean": 33610137.6
+          },
+          "privateBytes": {
+            "count": 5,
+            "min": 7610368,
+            "max": 7626752,
+            "mean": 7621017.6
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 4,
+            "min": 0,
+            "max": 0.547,
+            "mean": 0.274
+          },
+          "processCounts": {
+            "count": 5,
+            "min": 1,
+            "max": 1,
+            "mean": 1
+          }
+        },
+        {
+          "role": "engine",
+          "samples": 5,
+          "observedProcesses": 1,
+          "workingSetBytes": {
+            "count": 5,
+            "min": 26120192,
+            "max": 26120192,
+            "mean": 26120192
+          },
+          "privateBytes": {
+            "count": 5,
+            "min": 14307328,
+            "max": 14307328,
+            "mean": 14307328
+          },
+          "cpuPercentOfWholeMachine": {
+            "count": 4,
+            "min": 0,
+            "max": 0.284,
+            "mean": 0.209
+          },
+          "processCounts": {
+            "count": 5,
+            "min": 1,
+            "max": 1,
+            "mean": 1
+          }
+        }
+      ],
+      "beganAtMs": 1791121624221,
+      "actionBeganAtMs": 1791121625082,
+      "endedAtMs": 1791121626782,
+      "elapsedMs": 2563,
+      "discoveries": [
+        {
+          "atMs": 1791121624950,
+          "targetVersion": "history-completed-0",
+          "identities": [
+            "19648:1791121607638:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "29848:1791121607533:c:\\windows\\system32\\conhost.exe",
+            "6812:1791121607609:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40148:1791121607501:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-desktop.exe",
+            "44496:1791121607801:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "34868:1791121607912:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40472:1791121607522:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-sidecar.exe",
+            "41032:1791121607765:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "26776:1791121607777:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe"
+          ]
+        },
+        {
+          "atMs": 1791121625778,
+          "targetVersion": "history-completed-1",
+          "identities": [
+            "19648:1791121607638:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "29848:1791121607533:c:\\windows\\system32\\conhost.exe",
+            "6812:1791121607609:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40148:1791121607501:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-desktop.exe",
+            "44496:1791121607801:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "34868:1791121607912:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "40472:1791121607522:d:\\workspace\\kplocker\\workpilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview\\workpilot-sidecar.exe",
+            "41032:1791121607765:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe",
+            "26776:1791121607777:c:\\program files (x86)\\microsoft\\edgewebview\\application\\154.0.4258.53\\msedgewebview2.exe"
+          ]
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    "history-four-streams.png",
+    "history-long-body-page.png",
+    "history-three-after-stop.png"
+  ],
+  "tasks": [
+    {
+      "id": "3d80ad68-952c-452a-8b2c-cdf4a780eb25",
+      "title": "P13 100000-event history",
+      "model": "p13-long-stream-0"
+    },
+    {
+      "id": "4f4cdfcf-0e1f-4d50-ab06-0b01da3a1032",
+      "title": "P13 independent stream 1",
+      "model": "p13-long-stream-1"
+    },
+    {
+      "id": "f3b0a378-1509-49f2-8907-f31b42a11174",
+      "title": "P13 independent stream 2",
+      "model": "p13-long-stream-2"
+    },
+    {
+      "id": "7e5d9fa8-9f45-46fd-8c38-b03434d01a84",
+      "title": "P13 independent stream 3",
+      "model": "p13-long-stream-3"
+    }
+  ],
+  "databaseBeforeSeed": {
+    "workpilot.sqlite3": 614400,
+    "workpilot.sqlite3-wal": 663352,
+    "workpilot.sqlite3-shm": 32768
+  },
+  "preSeedExitVerification": [
+    {
+      "pid": 33624,
+      "startedAtMs": 1791121601651,
+      "status": "exited"
+    },
+    {
+      "pid": 29016,
+      "startedAtMs": 1791121601826,
+      "status": "exited"
+    },
+    {
+      "pid": 37548,
+      "startedAtMs": 1791121602265,
+      "status": "exited"
+    },
+    {
+      "pid": 40156,
+      "startedAtMs": 1791121602269,
+      "status": "exited"
+    },
+    {
+      "pid": 6128,
+      "startedAtMs": 1791121601793,
+      "status": "exited"
+    },
+    {
+      "pid": 43556,
+      "startedAtMs": 1791121602298,
+      "status": "exited"
+    },
+    {
+      "pid": 29024,
+      "startedAtMs": 1791121601683,
+      "status": "exited"
+    },
+    {
+      "pid": 43828,
+      "startedAtMs": 1791121601671,
+      "status": "exited"
+    },
+    {
+      "pid": 732,
+      "startedAtMs": 1791121602402,
+      "status": "exited"
+    }
+  ],
+  "seed": {
+    "taskId": "3d80ad68-952c-452a-8b2c-cdf4a780eb25",
+    "previousEventCount": 3,
+    "seededProgressEvents": 100000,
+    "seededBodyEvents": 1,
+    "objectId": "7f339bd233794ce25af0a44a7db423ecac6f9e3a775f397d34853e945c7a7f09",
+    "bodyBytes": 2100034,
+    "bodyCharacters": 700034,
+    "textEventId": "4d80598e-0682-4abf-862a-340448424d7d",
+    "textEventSequence": 100033,
+    "startedAtMs": 1791121605616,
+    "endedAtMs": 1791121607498,
+    "closedDatabaseOnly": true
+  },
+  "databaseAfterSeed": {
+    "workpilot.sqlite3": 38998016,
+    "workpilot.sqlite3-wal": 0,
+    "workpilot.sqlite3-shm": 0
+  },
+  "reopenObservedMs": 847.9724000000006,
+  "historySelectionObservedMs": 115.84550000000036,
+  "fourStarted": {
+    "atMs": 1791121611081,
+    "observedAtMs": 1791121611270,
+    "states": [
+      {
+        "taskId": "3d80ad68-952c-452a-8b2c-cdf4a780eb25",
+        "model": "p13-long-stream-0",
+        "state": "running"
+      },
+      {
+        "taskId": "4f4cdfcf-0e1f-4d50-ab06-0b01da3a1032",
+        "model": "p13-long-stream-1",
+        "state": "running"
+      },
+      {
+        "taskId": "f3b0a378-1509-49f2-8907-f31b42a11174",
+        "model": "p13-long-stream-2",
+        "state": "running"
+      },
+      {
+        "taskId": "7e5d9fa8-9f45-46fd-8c38-b03434d01a84",
+        "model": "p13-long-stream-3",
+        "state": "running"
+      }
+    ],
+    "openStreams": 4
+  },
+  "historyOperations": {
+    "beganAtMs": 1791121612209,
+    "endedAtMs": 1791121619090,
+    "measurements": {
+      "button": {
+        "count": 4,
+        "samples": [
+          60.5,
+          16.19999998807907,
+          21,
+          22.80000001192093
+        ],
+        "scope": "Click event to sidebar aria-pressed DOM update, with four active streams and preseeded 100000 events",
+        "diagnosticOnly": true,
+        "formalPercentiles": "not calculated in short self-test"
+      },
+      "input": {
+        "count": 4,
+        "samples": [
+          1.5,
+          1,
+          1,
+          1
+        ],
+        "scope": "Textarea input event to enabled queue button DOM update; no user message is submitted",
+        "diagnosticOnly": true,
+        "formalPercentiles": "not calculated in short self-test"
+      }
+    },
+    "searchMs": 2397.578800000001,
+    "exportMs": 909.7078000000001,
+    "eventPages": [
+      [
+        "#5 · command_accepted",
+        "#6 · execution_created",
+        "#7 · command_finished",
+        "#33 · progress",
+        "#34 · progress",
+        "#35 · progress",
+        "#36 · progress",
+        "#37 · progress",
+        "#38 · progress",
+        "#39 · progress",
+        "#40 · progress",
+        "#41 · progress",
+        "#42 · progress",
+        "#43 · progress",
+        "#44 · progress",
+        "#45 · progress",
+        "#46 · progress",
+        "#47 · progress",
+        "#48 · progress",
+        "#49 · progress",
+        "#50 · progress",
+        "#51 · progress",
+        "#52 · progress",
+        "#53 · progress",
+        "#54 · progress",
+        "#55 · progress",
+        "#56 · progress",
+        "#57 · progress",
+        "#58 · progress",
+        "#59 · progress",
+        "#60 · progress",
+        "#61 · progress",
+        "#62 · progress",
+        "#63 · progress",
+        "#64 · progress",
+        "#65 · progress",
+        "#66 · progress",
+        "#67 · progress",
+        "#68 · progress",
+        "#69 · progress",
+        "#70 · progress",
+        "#71 · progress",
+        "#72 · progress",
+        "#73 · progress",
+        "#74 · progress",
+        "#75 · progress",
+        "#76 · progress",
+        "#77 · progress",
+        "#78 · progress",
+        "#79 · progress",
+        "#80 · progress",
+        "#81 · progress",
+        "#82 · progress",
+        "#83 · progress",
+        "#84 · progress",
+        "#85 · progress",
+        "#86 · progress",
+        "#87 · progress",
+        "#88 · progress",
+        "#89 · progress",
+        "#90 · progress",
+        "#91 · progress",
+        "#92 · progress",
+        "#93 · progress"
+      ],
+      [
+        "#94 · progress",
+        "#95 · progress",
+        "#96 · progress",
+        "#97 · progress",
+        "#98 · progress",
+        "#99 · progress",
+        "#100 · progress",
+        "#101 · progress",
+        "#102 · progress",
+        "#103 · progress",
+        "#104 · progress",
+        "#105 · progress",
+        "#106 · progress",
+        "#107 · progress",
+        "#108 · progress",
+        "#109 · progress",
+        "#110 · progress",
+        "#111 · progress",
+        "#112 · progress",
+        "#113 · progress",
+        "#114 · progress",
+        "#115 · progress",
+        "#116 · progress",
+        "#117 · progress",
+        "#118 · progress",
+        "#119 · progress",
+        "#120 · progress",
+        "#121 · progress",
+        "#122 · progress",
+        "#123 · progress",
+        "#124 · progress",
+        "#125 · progress",
+        "#126 · progress",
+        "#127 · progress",
+        "#128 · progress",
+        "#129 · progress",
+        "#130 · progress",
+        "#131 · progress",
+        "#132 · progress",
+        "#133 · progress",
+        "#134 · progress",
+        "#135 · progress",
+        "#136 · progress",
+        "#137 · progress",
+        "#138 · progress",
+        "#139 · progress",
+        "#140 · progress",
+        "#141 · progress",
+        "#142 · progress",
+        "#143 · progress",
+        "#144 · progress",
+        "#145 · progress",
+        "#146 · progress",
+        "#147 · progress",
+        "#148 · progress",
+        "#149 · progress",
+        "#150 · progress",
+        "#151 · progress",
+        "#152 · progress",
+        "#153 · progress",
+        "#154 · progress",
+        "#155 · progress",
+        "#156 · progress",
+        "#157 · progress"
+      ]
+    ],
+    "bodyPages": [
+      "0–65535 / 2100034 bytes",
+      "65535–131070 / 2100034 bytes"
+    ],
+    "copied": {
+      "bytes": 2100034,
+      "sha256": "7f339bd233794ce25af0a44a7db423ecac6f9e3a775f397d34853e945c7a7f09"
+    },
+    "exported": {
+      "events": 100028,
+      "seededProgressVerified": 100000,
+      "objects": 23,
+      "bodyBytes": 2100034,
+      "bodySha256": "7f339bd233794ce25af0a44a7db423ecac6f9e3a775f397d34853e945c7a7f09",
+      "uniqueOrderedEvents": true
+    },
+    "afterStates": [
+      {
+        "taskId": "3d80ad68-952c-452a-8b2c-cdf4a780eb25",
+        "model": "p13-long-stream-0",
+        "state": "running"
+      },
+      {
+        "taskId": "4f4cdfcf-0e1f-4d50-ab06-0b01da3a1032",
+        "model": "p13-long-stream-1",
+        "state": "running"
+      },
+      {
+        "taskId": "f3b0a378-1509-49f2-8907-f31b42a11174",
+        "model": "p13-long-stream-2",
+        "state": "running"
+      },
+      {
+        "taskId": "7e5d9fa8-9f45-46fd-8c38-b03434d01a84",
+        "model": "p13-long-stream-3",
+        "state": "running"
+      }
+    ]
+  },
+  "stop": {
+    "atMs": 1791121619592,
+    "observedAtMs": 1791121619797,
+    "before": [
+      {
+        "model": "p13-long-stream-1",
+        "chunks": 24
+      },
+      {
+        "model": "p13-long-stream-0",
+        "chunks": 24
+      },
+      {
+        "model": "p13-long-stream-2",
+        "chunks": 24
+      },
+      {
+        "model": "p13-long-stream-3",
+        "chunks": 24
+      }
+    ],
+    "states": [
+      {
+        "taskId": "3d80ad68-952c-452a-8b2c-cdf4a780eb25",
+        "model": "p13-long-stream-0",
+        "state": "interrupted"
+      },
+      {
+        "taskId": "4f4cdfcf-0e1f-4d50-ab06-0b01da3a1032",
+        "model": "p13-long-stream-1",
+        "state": "running"
+      },
+      {
+        "taskId": "f3b0a378-1509-49f2-8907-f31b42a11174",
+        "model": "p13-long-stream-2",
+        "state": "running"
+      },
+      {
+        "taskId": "7e5d9fa8-9f45-46fd-8c38-b03434d01a84",
+        "model": "p13-long-stream-3",
+        "state": "running"
+      }
+    ],
+    "feedbackMs": 2,
+    "interruptedDomMs": 59,
+    "scope": "One cancellation sample, not a stop p95 or local-tool-tree measurement"
+  },
+  "afterStopStates": [
+    {
+      "taskId": "3d80ad68-952c-452a-8b2c-cdf4a780eb25",
+      "model": "p13-long-stream-0",
+      "state": "interrupted"
+    },
+    {
+      "taskId": "4f4cdfcf-0e1f-4d50-ab06-0b01da3a1032",
+      "model": "p13-long-stream-1",
+      "state": "running"
+    },
+    {
+      "taskId": "f3b0a378-1509-49f2-8907-f31b42a11174",
+      "model": "p13-long-stream-2",
+      "state": "running"
+    },
+    {
+      "taskId": "7e5d9fa8-9f45-46fd-8c38-b03434d01a84",
+      "model": "p13-long-stream-3",
+      "state": "running"
+    }
+  ],
+  "databaseAfterWork": {
+    "workpilot.sqlite3": 39178240,
+    "workpilot.sqlite3-wal": 1359632,
+    "workpilot.sqlite3-shm": 32768
+  },
+  "exitVerification": [
+    {
+      "pid": 33624,
+      "startedAtMs": 1791121601651,
+      "status": "exited"
+    },
+    {
+      "pid": 29016,
+      "startedAtMs": 1791121601826,
+      "status": "exited"
+    },
+    {
+      "pid": 37548,
+      "startedAtMs": 1791121602265,
+      "status": "exited"
+    },
+    {
+      "pid": 40156,
+      "startedAtMs": 1791121602269,
+      "status": "exited"
+    },
+    {
+      "pid": 6128,
+      "startedAtMs": 1791121601793,
+      "status": "exited"
+    },
+    {
+      "pid": 43556,
+      "startedAtMs": 1791121602298,
+      "status": "exited"
+    },
+    {
+      "pid": 29024,
+      "startedAtMs": 1791121601683,
+      "status": "exited"
+    },
+    {
+      "pid": 43828,
+      "startedAtMs": 1791121601671,
+      "status": "exited"
+    },
+    {
+      "pid": 732,
+      "startedAtMs": 1791121602402,
+      "status": "exited"
+    },
+    {
+      "pid": 19648,
+      "startedAtMs": 1791121607638,
+      "status": "exited"
+    },
+    {
+      "pid": 29848,
+      "startedAtMs": 1791121607533,
+      "status": "exited"
+    },
+    {
+      "pid": 6812,
+      "startedAtMs": 1791121607609,
+      "status": "exited"
+    },
+    {
+      "pid": 40148,
+      "startedAtMs": 1791121607501,
+      "status": "exited"
+    },
+    {
+      "pid": 44496,
+      "startedAtMs": 1791121607801,
+      "status": "exited"
+    },
+    {
+      "pid": 34868,
+      "startedAtMs": 1791121607912,
+      "status": "exited"
+    },
+    {
+      "pid": 40472,
+      "startedAtMs": 1791121607522,
+      "status": "exited"
+    },
+    {
+      "pid": 41032,
+      "startedAtMs": 1791121607765,
+      "status": "exited"
+    },
+    {
+      "pid": 26776,
+      "startedAtMs": 1791121607777,
+      "status": "exited"
+    }
+  ],
+  "databaseAfterExit": {
+    "workpilot.sqlite3": 39178240,
+    "workpilot.sqlite3-wal": 1359632,
+    "workpilot.sqlite3-shm": 32768
+  },
+  "targetMisses": [],
+  "status": "self_test_passed",
+  "modelRequests": [
+    {
+      "model": "p13-long-stream-1",
+      "startedAtMs": 1791121611147,
+      "ended": true,
+      "completed": true,
+      "chunks": 37,
+      "emittedBytes": 990,
+      "completedAtMs": 1791121624102,
+      "endedAtMs": 1791121624104
+    },
+    {
+      "model": "p13-long-stream-0",
+      "startedAtMs": 1791121611152,
+      "ended": true,
+      "completed": false,
+      "chunks": 24,
+      "emittedBytes": 639,
+      "endedAtMs": 1791121619615
+    },
+    {
+      "model": "p13-long-stream-2",
+      "startedAtMs": 1791121611170,
+      "ended": true,
+      "completed": true,
+      "chunks": 37,
+      "emittedBytes": 990,
+      "completedAtMs": 1791121624103,
+      "endedAtMs": 1791121624104
+    },
+    {
+      "model": "p13-long-stream-3",
+      "startedAtMs": 1791121611178,
+      "ended": true,
+      "completed": true,
+      "chunks": 37,
+      "emittedBytes": 990,
+      "completedAtMs": 1791121624103,
+      "endedAtMs": 1791121624104
+    }
+  ],
+  "endedAtMs": 1791121627366,
+  "elapsedMs": 26491,
+  "command": "node scripts/p13-long-history-benchmark.mjs --self-test"
+}

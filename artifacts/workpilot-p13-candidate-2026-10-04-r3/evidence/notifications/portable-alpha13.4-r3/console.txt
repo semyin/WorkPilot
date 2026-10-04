@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-04T13:51:51.198Z",
+  "platform": "win32",
+  "binarySha256": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+  "service": "Real Windows desktop and sidecar; synthetic local model; only newly created data/project directories",
+  "systemScope": "Portable copy: explicit system-notification fallback only; no Windows popup claim",
+  "checks": [
+    "four_real_terminal_task_events_foreground_suppression_and_metadata_only_records",
+    "notification_opens_exact_task_and_project_without_approval_or_resuming_execution",
+    "event_history_reads_and_webview_reload_do_not_duplicate_and_auto_approved_tool_does_not_request_human_attention",
+    "settings_switches_and_background_portable_explicit_fallback_keep_task_and_inbox",
+    "restart_preserves_read_state_without_resending_and_deleted_unknown_targets_do_not_run_work",
+    "real_readonly_settings_failure_preserves_bytes_and_bilingual_controls_and_test_notification_result",
+    "real_team_wait_automatically_resumes_without_spurious_human_input_notification"
+  ],
+  "screenshots": [
+    "notifications-inbox-zh.png",
+    "notification-settings-zh.png",
+    "notifications-inbox-en.png",
+    "notification-settings-en.png"
+  ],
+  "teamNotificationRegression": {
+    "taskId": "578d48e2-2774-4a67-a2e5-98d654c91c18",
+    "waitingEvents": [
+      {
+        "event_id": "b4623fa2-814f-4b07-b7bc-2c2ea7332449",
+        "sequence": 216,
+        "reason": "team_waiting"
+      }
+    ],
+    "notifications": [
+      {
+        "id": "48f28973-10e4-49e3-af80-8ad18ef381c4",
+        "kind": "completed"
+      }
+    ],
+    "modelRequests": 6,
+    "automaticallyCompleted": true,
+    "humanInputNotifications": 0
+  },
+  "status": "passed"
+}

@@ -1,0 +1,178 @@
+{
+  "name": "P13 alpha13.3 real protocols, different-model team, skill and memory evidence",
+  "status": "mixed_with_accepted_coverage_and_recorded_limits",
+  "at": "2026-10-04T13:22:06.342Z",
+  "version": "0.1.0-alpha.13.3",
+  "binarySha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+  "checks": 20,
+  "passed": 16,
+  "failed": 4,
+  "suites": [
+    {
+      "name": "format-initial",
+      "status": "failed",
+      "checks": 9,
+      "passed": 7,
+      "failed": 2,
+      "expectedChecks": 9,
+      "report": "format-initial.json",
+      "binarySha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+      "credentialsRemoved": true,
+      "plaintextCredentialFound": false,
+      "allSteps": {
+        "file": "format-initial-all-steps.json.gz",
+        "steps": 27,
+        "modelSteps": 15
+      },
+      "notStarted": [
+        "team:three_members_distinct_model_families"
+      ],
+      "notes": "Default GLM proposal did not emit a tool call; three-family team was not started. Passing current-engine protocol/file cases were retained."
+    },
+    {
+      "name": "glm-proposal-followup",
+      "status": "failed",
+      "checks": 2,
+      "passed": 1,
+      "failed": 1,
+      "expectedChecks": 2,
+      "report": "glm-proposal-followup.json",
+      "binarySha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+      "credentialsRemoved": true,
+      "plaintextCredentialFound": false,
+      "allSteps": {
+        "file": "glm-proposal-followup-all-steps.json.gz",
+        "steps": 77,
+        "modelSteps": 38
+      },
+      "notStarted": [],
+      "notes": "The clarified proposal passed, but the actual GLM member repeatedly supplied invalid version parameters. The 16-minute test limit canceled the unfinished team; it was not accepted."
+    },
+    {
+      "name": "team-two-families",
+      "status": "passed",
+      "checks": 1,
+      "passed": 1,
+      "failed": 0,
+      "expectedChecks": 1,
+      "report": "team-two-families.json",
+      "binarySha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+      "credentialsRemoved": true,
+      "plaintextCredentialFound": false,
+      "allSteps": {
+        "file": "team-two-families-all-steps.json.gz",
+        "steps": 62,
+        "modelSteps": 30
+      },
+      "notStarted": [],
+      "notes": null
+    },
+    {
+      "name": "skills-planning-initial",
+      "status": "failed",
+      "checks": 1,
+      "passed": 0,
+      "failed": 1,
+      "expectedChecks": 7,
+      "report": "skills-planning-initial.json",
+      "binarySha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+      "credentialsRemoved": true,
+      "plaintextCredentialFound": false,
+      "allSteps": {
+        "file": "skills-planning-initial-all-steps.json.gz",
+        "steps": 12,
+        "modelSteps": 5
+      },
+      "notStarted": [
+        "memory proposal",
+        "confirmation visibility",
+        "management confirmation",
+        "actual reuse",
+        "other project",
+        "deletion"
+      ],
+      "notes": "Planning mode correctly paused at update_plan; test setup did not reach draft creation. Corrected independent execution-mode sample follows."
+    },
+    {
+      "name": "skills-memory",
+      "status": "passed",
+      "checks": 7,
+      "passed": 7,
+      "failed": 0,
+      "expectedChecks": 7,
+      "report": "skills-memory.json",
+      "binarySha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+      "credentialsRemoved": true,
+      "plaintextCredentialFound": false,
+      "allSteps": {
+        "file": "skills-memory-all-steps.json.gz",
+        "steps": 55,
+        "modelSteps": 28
+      },
+      "notStarted": [],
+      "notes": null
+    }
+  ],
+  "acceptedCoverage": [
+    {
+      "name": "Qwen tool proposals across three protocols",
+      "checks": 3,
+      "report": "format-initial.json"
+    },
+    {
+      "name": "Actual file read/write/readback/register across three protocols",
+      "checks": 3,
+      "report": "format-initial.json"
+    },
+    {
+      "name": "DeepSeek Chat tool proposal",
+      "checks": 1,
+      "report": "format-initial.json"
+    },
+    {
+      "name": "GLM explicitly clarified tool proposal only",
+      "checks": 1,
+      "report": "glm-proposal-followup.json"
+    },
+    {
+      "name": "Two-family three-member actual team with dependency and parent inspection",
+      "checks": 1,
+      "report": "team-two-families.json",
+      "families": [
+        "Qwen",
+        "DeepSeek"
+      ],
+      "protocols": [
+        "chat_completions",
+        "responses"
+      ],
+      "outputs": {
+        "a.txt": "42",
+        "b.txt": "48",
+        "answer.txt": "90"
+      }
+    },
+    {
+      "name": "Qwen real creator, memory, confirmation, actual reuse, project isolation and deletion",
+      "checks": 7,
+      "report": "skills-memory.json"
+    }
+  ],
+  "limitations": [
+    "GLM+this service Chat endpoint did not successfully create the required new file; returned string null/empty string was refused, and the final bounded run was canceled unfinished. The evidence does not distinguish model output versus upstream conversion.",
+    "The default GLM probe did not emit a proposal; only explicit proposal wording succeeded.",
+    "Current two-family team parent text incorrectly calls it three models/three protocols. See parent-summary-correction.json for actual assignments and calls.",
+    "Qwen join had one rejected empty-string version parameter, then produced a correct JSON-null call in the same task without driver intervention. See format-recovery-observation.json; this is not a blanket recovery guarantee.",
+    "Skill/memory confirmations, exact file approval and deletion/uninstall were explicit test-driver management actions, not model self-approval or personal user acceptance.",
+    "The earlier alpha13.2 text/vision and other raw results are preserved under history-alpha13.2 only. They are not relabeled as alpha13.3 passes.",
+    "No user project, browser or third-party business operation was used. No database or credential was copied. All new test model credentials were removed and source plaintext scans passed."
+  ],
+  "sourceEvidence": "Each *-all-steps.json.gz includes every execution step with hash-verified full input/output. Each *-task-traces.json.gz is the original latest-64 snapshot, and *-events.json.gz the original full event stream. Plain JSON reports keep original success/error states. Gzip is lossless. The original .test-results directories remain for review.",
+  "commands": {
+    "protocols": "node scripts/p13-real-model-launch.mjs --format-validation",
+    "glm": "node scripts/p13-real-model-launch.mjs --glm-proposal-followup-from <current-format-report>",
+    "team": "node scripts/p13-real-model-launch.mjs --team-only-from <current-format-report> --two-families",
+    "skills": "node scripts/p13-real-model-launch.mjs --skills-memory-from <current-format-report>",
+    "requiredEnvironment": "WORKPILOT_ENGINE_BINARY=<r2 sidecar>, WORKPILOT_EXPECTED_VERSION=0.1.0-alpha.13.3, WORKPILOT_TEST_OUTPUT=<new isolated directory>; credential only through DPAPI child pipe, never command text."
+  }
+}

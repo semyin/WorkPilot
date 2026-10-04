@@ -1,0 +1,1692 @@
+{
+  "schema": 1,
+  "identity": {
+    "desktopSha256": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+    "engineSha256": "a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb"
+  },
+  "segments": [
+    {
+      "id": "bacf0faf-875d-4b18-ba3f-44ef1e2fca3f",
+      "startedAt": "2026-10-04T13:58:05.341Z",
+      "activeMs": 887454,
+      "status": "failed",
+      "events": 196,
+      "previousSegmentsDoNotCountTowardContinuousGate": true,
+      "desktop": {
+        "pid": 15240,
+        "parentPid": 36640,
+        "startedAtMs": 1791122285363,
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+        "role": "desktop",
+        "uiProfileVerified": false
+      },
+      "engine": {
+        "pid": 26032,
+        "parentPid": 15240,
+        "startedAtMs": 1791122285387,
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+        "role": "engine",
+        "uiProfileVerified": false
+      },
+      "lastHeartbeat": {
+        "at": "2026-10-04T14:12:55.280Z",
+        "cycle": 15,
+        "runningCycle": 14,
+        "phase": "between-cycles",
+        "samples": 4656,
+        "freeMemoryBytes": 8106532864,
+        "harness": {
+          "rss": 105615360,
+          "heapTotal": 56897536,
+          "heapUsed": 51742824,
+          "external": 4809252,
+          "arrayBuffers": 810988
+        }
+      },
+      "endedAt": "2026-10-04T14:13:02.806Z"
+    }
+  ],
+  "cycles": [
+    {
+      "index": 0,
+      "tasks": {
+        "roots": [
+          "d235f1d8-b191-4120-ba01-481ddc584dec",
+          "a7cc6029-3299-4628-b579-eeb1f62f0f83",
+          "1475f7c5-3e27-411d-b1ef-7f8a506e48c8",
+          "cb9286c7-2242-4a6e-904b-ee9c0055dcf7"
+        ],
+        "lead": "d52bd4b0-5034-4ed4-a12c-f952357c66f0",
+        "members": [
+          "b91a6549-d001-4dfe-8615-0ddcf084f088",
+          "96120212-24ce-4c9a-9467-0fd069e4c1fd",
+          "638053fa-00fa-4a77-9548-c8b2426433c2"
+        ],
+        "queuedMessageId": "92e58483-1ca9-4ed8-9df9-1d87d48e24dd"
+      },
+      "node": {
+        "count": 1,
+        "raw": [
+          {
+            "task": "36c8e19d-11f6-4660-a7b1-7789aa8ec241",
+            "processIds": [
+              30164,
+              44960
+            ],
+            "processIdentities": [
+              {
+                "pid": 30164,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122287572
+              },
+              {
+                "pid": 44960,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122287667
+              }
+            ],
+            "exitVerification": [
+              {
+                "pid": 30164,
+                "startedAtMs": 1791122287572,
+                "status": "exited"
+              },
+              {
+                "pid": 44960,
+                "startedAtMs": 1791122287667,
+                "status": "exited"
+              }
+            ],
+            "acknowledgementMs": 10.137399999999616,
+            "processExitMs": 33.0646999999999,
+            "terminalStateMs": 89.60419999999976
+          }
+        ],
+        "metricsMs": {
+          "cancelAcknowledgement": {
+            "count": 1,
+            "min": 10.137,
+            "p50": 10.137,
+            "p95": 10.137,
+            "max": 10.137,
+            "mean": 10.137
+          },
+          "processTreeExit": {
+            "count": 1,
+            "min": 33.065,
+            "p50": 33.065,
+            "p95": 33.065,
+            "max": 33.065,
+            "mean": 33.065
+          },
+          "interruptedState": {
+            "count": 1,
+            "min": 89.604,
+            "p50": 89.604,
+            "p95": 89.604,
+            "max": 89.604,
+            "mean": 89.604
+          }
+        },
+        "toolStopInitialTargetMs": 2000,
+        "toolStopInitialTargetMet": true,
+        "allOwnedTreesExited": true,
+        "heartbeatWritesStopped": true,
+        "boundary": "Cancellation IPC acknowledgement is separate from a UI click-to-feedback measurement. Actual PID/start-time/path identity is captured before timing. Fast PID absence checks define the exit timing endpoint; identity and heartbeat checks occur afterward and are excluded. No external PowerShell startup is counted as tool-stop latency."
+      },
+      "recovery": {
+        "task": "4647ecc9-dd8b-463b-97c7-c138261a13d2",
+        "modelCalls": 2,
+        "explicitResume": true
+      },
+      "browser": {
+        "task": "6caf935c-ad9d-4b05-ac46-55fe34596253",
+        "session": "af782e0a-b4fc-44ea-85ad-d1599f56449a",
+        "ownedPid": 24828,
+        "closure": {
+          "channel": "chromium",
+          "error": null,
+          "id": "af782e0a-b4fc-44ea-85ad-d1599f56449a",
+          "kind": "dedicated",
+          "owned_pid": 24828,
+          "state": "disconnected",
+          "tabs": [],
+          "task_id": "6caf935c-ad9d-4b05-ac46-55fe34596253",
+          "version": "Chrome/154.0.8037.57"
+        },
+        "screenshot": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-r3\\run-gpstWh\\bacf0faf-875d-4b18-ba3f-44ef1e2fca3f\\browser-0.png",
+        "download": {
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-r3\\run-gpstWh\\owned-project\\bacf0faf-875d-4b18-ba3f-44ef1e2fca3f\\browser-0\\result.csv",
+          "sha256": "f7154e3f98374db3d4f63165e434bba2c3e6aef971e2d2e837620633ccb0ac31",
+          "bytes": 24
+        }
+      },
+      "office": {
+        "task": "e35b8e48-8a7a-43ba-9ca3-076f1dee50bd",
+        "format": "docx",
+        "asset": "d86897f1-62e8-4d35-a7f1-f63a99ebcb58",
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-r3\\run-gpstWh\\owned-project\\bacf0faf-875d-4b18-ba3f-44ef1e2fca3f\\office-0\\result.docx",
+        "sha256": "b3159ca5e304ca930f21a383047308e3cdb57d7e0e4c7405994d98af1fc99c4b",
+        "preview": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-r3\\run-gpstWh\\bacf0faf-875d-4b18-ba3f-44ef1e2fca3f\\office-0-docx.png",
+        "pages": 1,
+        "renderer": "LibreOfficeKit 26.8.0 · 9e87389187e5"
+      },
+      "timer": {
+        "scheduleId": "96680ef9-f1e5-4421-b1e4-4ffa039346ee",
+        "task": "38a1c3ec-7e03-4e89-ae02-69a58391b82f",
+        "dueAtMs": 1791122321765,
+        "trigger": "timer"
+      },
+      "database": {
+        "workpilot.sqlite3": 983040,
+        "workpilot.sqlite3-wal": 1141272,
+        "workpilot.sqlite3-shm": 32768
+      },
+      "elapsedMs": 35250,
+      "modelCalls": 21
+    },
+    {
+      "index": 1,
+      "tasks": {
+        "roots": [
+          "6f2f5d96-88ac-4fae-9076-f5e3dce42346",
+          "fd4de7a4-f1d9-4171-9e9c-ca071545b869",
+          "786a3e9a-a7b2-42a3-a44c-78da80313f6b",
+          "8b1a019f-4554-439e-ba57-3c3baa26dca8"
+        ],
+        "lead": "9e3d9624-d66a-4631-86f5-25deede8fc4a",
+        "members": [
+          "0cb6e7b4-7406-4bc3-ae87-100b873139e9",
+          "21ccf98e-15c6-450d-b808-2a2da1d532d2",
+          "c0258e44-c094-423f-9973-6621b252ae8e"
+        ],
+        "queuedMessageId": "018af52a-36ce-469c-a3f4-9df50d11d81f"
+      },
+      "node": {
+        "count": 1,
+        "raw": [
+          {
+            "task": "e5425ace-0dd7-4eeb-be51-a16b4656c762",
+            "processIds": [
+              39300,
+              44384
+            ],
+            "processIdentities": [
+              {
+                "pid": 39300,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122347894
+              },
+              {
+                "pid": 44384,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122347964
+              }
+            ],
+            "exitVerification": [
+              {
+                "pid": 39300,
+                "startedAtMs": 1791122347894,
+                "status": "exited"
+              },
+              {
+                "pid": 44384,
+                "startedAtMs": 1791122347964,
+                "status": "exited"
+              }
+            ],
+            "acknowledgementMs": 16.66939999999886,
+            "processExitMs": 35.77150000000256,
+            "terminalStateMs": 84.43520000000717
+          }
+        ],
+        "metricsMs": {
+          "cancelAcknowledgement": {
+            "count": 1,
+            "min": 16.669,
+            "p50": 16.669,
+            "p95": 16.669,
+            "max": 16.669,
+            "mean": 16.669
+          },
+          "processTreeExit": {
+            "count": 1,
+            "min": 35.772,
+            "p50": 35.772,
+            "p95": 35.772,
+            "max": 35.772,
+            "mean": 35.772
+          },
+          "interruptedState": {
+            "count": 1,
+            "min": 84.435,
+            "p50": 84.435,
+            "p95": 84.435,
+            "max": 84.435,
+            "mean": 84.435
+          }
+        },
+        "toolStopInitialTargetMs": 2000,
+        "toolStopInitialTargetMet": true,
+        "allOwnedTreesExited": true,
+        "heartbeatWritesStopped": true,
+        "boundary": "Cancellation IPC acknowledgement is separate from a UI click-to-feedback measurement. Actual PID/start-time/path identity is captured before timing. Fast PID absence checks define the exit timing endpoint; identity and heartbeat checks occur afterward and are excluded. No external PowerShell startup is counted as tool-stop latency."
+      },
+      "recovery": {
+        "task": "bbdfd040-ac52-483a-a283-b0705e7509c3",
+        "modelCalls": 2,
+        "explicitResume": true
+      },
+      "browser": null,
+      "office": null,
+      "timer": null,
+      "database": {
+        "workpilot.sqlite3": 1232896,
+        "workpilot.sqlite3-wal": 1141272,
+        "workpilot.sqlite3-shm": 32768
+      },
+      "elapsedMs": 5809,
+      "modelCalls": 20
+    },
+    {
+      "index": 2,
+      "tasks": {
+        "roots": [
+          "51b7835a-66b4-4d2d-b83d-a8d9b199a7f7",
+          "71cbd2f4-abbf-4239-ac06-7bd7c94d4242",
+          "904a2c0a-b1c3-43de-a6f3-9cafc1978137",
+          "319fccda-b363-47d9-ac61-e7402d6c6c07"
+        ],
+        "lead": "906e2a21-b991-45b7-9c3b-bb785044bb7a",
+        "members": [
+          "89bce721-4428-4522-a0f8-d066fd16209d",
+          "d14514a1-9487-4b9e-9a29-529b92cbce3f",
+          "c4f9e0ef-8f83-4426-b85a-f5c79ba2c643"
+        ],
+        "queuedMessageId": "dde72daf-636f-47c2-9e32-6637944bcdfa"
+      },
+      "node": {
+        "count": 1,
+        "raw": [
+          {
+            "task": "1ba14962-2baa-491c-ab4d-ae8325834eef",
+            "processIds": [
+              12128,
+              43688
+            ],
+            "processIdentities": [
+              {
+                "pid": 12128,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122408205
+              },
+              {
+                "pid": 43688,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122408288
+              }
+            ],
+            "exitVerification": [
+              {
+                "pid": 12128,
+                "startedAtMs": 1791122408205,
+                "status": "exited"
+              },
+              {
+                "pid": 43688,
+                "startedAtMs": 1791122408288,
+                "status": "exited"
+              }
+            ],
+            "acknowledgementMs": 22.266099999993457,
+            "processExitMs": 22.410399999993388,
+            "terminalStateMs": 77.1878999999899
+          }
+        ],
+        "metricsMs": {
+          "cancelAcknowledgement": {
+            "count": 1,
+            "min": 22.266,
+            "p50": 22.266,
+            "p95": 22.266,
+            "max": 22.266,
+            "mean": 22.266
+          },
+          "processTreeExit": {
+            "count": 1,
+            "min": 22.41,
+            "p50": 22.41,
+            "p95": 22.41,
+            "max": 22.41,
+            "mean": 22.41
+          },
+          "interruptedState": {
+            "count": 1,
+            "min": 77.188,
+            "p50": 77.188,
+            "p95": 77.188,
+            "max": 77.188,
+            "mean": 77.188
+          }
+        },
+        "toolStopInitialTargetMs": 2000,
+        "toolStopInitialTargetMet": true,
+        "allOwnedTreesExited": true,
+        "heartbeatWritesStopped": true,
+        "boundary": "Cancellation IPC acknowledgement is separate from a UI click-to-feedback measurement. Actual PID/start-time/path identity is captured before timing. Fast PID absence checks define the exit timing endpoint; identity and heartbeat checks occur afterward and are excluded. No external PowerShell startup is counted as tool-stop latency."
+      },
+      "recovery": {
+        "task": "7b841bcd-1047-4899-bd2c-9b4deb31a911",
+        "modelCalls": 2,
+        "explicitResume": true
+      },
+      "browser": null,
+      "office": null,
+      "timer": null,
+      "database": {
+        "workpilot.sqlite3": 1560576,
+        "workpilot.sqlite3-wal": 1141272,
+        "workpilot.sqlite3-shm": 32768
+      },
+      "elapsedMs": 6050,
+      "modelCalls": 20
+    },
+    {
+      "index": 3,
+      "tasks": {
+        "roots": [
+          "44d35c5a-e6a0-42ee-be34-8a52c690d54b",
+          "6811e84c-e221-4bc5-aab1-e75ca223d3f4",
+          "5484940a-cf0f-405c-b035-c591406698a1",
+          "5bde79af-8e03-44c9-918d-10f742e74e4e"
+        ],
+        "lead": "64e4da50-b923-416f-a6cb-e257edee790d",
+        "members": [
+          "d577a50a-e66f-44ca-8c86-b0bf69b7b5ac",
+          "ea21fc33-ebda-4254-aab3-4537b398f148",
+          "ec08f9ea-42b7-43f8-86df-192f0716a1dc"
+        ],
+        "queuedMessageId": "dfd205d8-2375-4a28-8b0c-509bfd87e394"
+      },
+      "node": {
+        "count": 1,
+        "raw": [
+          {
+            "task": "07d7f46e-7c40-4a5f-8691-53d502c6c511",
+            "processIds": [
+              43256,
+              44116
+            ],
+            "processIdentities": [
+              {
+                "pid": 43256,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122468510
+              },
+              {
+                "pid": 44116,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122468579
+              }
+            ],
+            "exitVerification": [
+              {
+                "pid": 43256,
+                "startedAtMs": 1791122468510,
+                "status": "exited"
+              },
+              {
+                "pid": 44116,
+                "startedAtMs": 1791122468579,
+                "status": "exited"
+              }
+            ],
+            "acknowledgementMs": 9.157299999991665,
+            "processExitMs": 30.815200000011828,
+            "terminalStateMs": 85.07709999999497
+          }
+        ],
+        "metricsMs": {
+          "cancelAcknowledgement": {
+            "count": 1,
+            "min": 9.157,
+            "p50": 9.157,
+            "p95": 9.157,
+            "max": 9.157,
+            "mean": 9.157
+          },
+          "processTreeExit": {
+            "count": 1,
+            "min": 30.815,
+            "p50": 30.815,
+            "p95": 30.815,
+            "max": 30.815,
+            "mean": 30.815
+          },
+          "interruptedState": {
+            "count": 1,
+            "min": 85.077,
+            "p50": 85.077,
+            "p95": 85.077,
+            "max": 85.077,
+            "mean": 85.077
+          }
+        },
+        "toolStopInitialTargetMs": 2000,
+        "toolStopInitialTargetMet": true,
+        "allOwnedTreesExited": true,
+        "heartbeatWritesStopped": true,
+        "boundary": "Cancellation IPC acknowledgement is separate from a UI click-to-feedback measurement. Actual PID/start-time/path identity is captured before timing. Fast PID absence checks define the exit timing endpoint; identity and heartbeat checks occur afterward and are excluded. No external PowerShell startup is counted as tool-stop latency."
+      },
+      "recovery": {
+        "task": "ec4949c3-aa16-4be8-8255-ce60958c4883",
+        "modelCalls": 2,
+        "explicitResume": true
+      },
+      "browser": null,
+      "office": null,
+      "timer": null,
+      "database": {
+        "workpilot.sqlite3": 1843200,
+        "workpilot.sqlite3-wal": 1165992,
+        "workpilot.sqlite3-shm": 32768
+      },
+      "elapsedMs": 5777,
+      "modelCalls": 20
+    },
+    {
+      "index": 4,
+      "tasks": {
+        "roots": [
+          "75620ee7-58a5-42f8-94e2-642b7371a6b8",
+          "96ea4fd4-7693-4794-a1be-75d8546b4353",
+          "a306d4ab-0a27-486f-b2a4-815fcd04c6b2",
+          "71531c7f-4dc5-4d50-ad29-a83ce4d19155"
+        ],
+        "lead": "2e066607-ab87-4025-b814-a1a4807cf416",
+        "members": [
+          "d19f9ec3-dbc0-404a-9b39-30194da3bd46",
+          "a2ec53b6-dae7-4207-9e45-2535962a4786",
+          "b6cbc294-f402-4dbb-9cf6-30d484957ba6"
+        ],
+        "queuedMessageId": "1239bf1c-11eb-48f9-bf80-7537222dd359"
+      },
+      "node": {
+        "count": 1,
+        "raw": [
+          {
+            "task": "64afafad-e324-40ab-9fdc-420a13d424a0",
+            "processIds": [
+              23936,
+              39708
+            ],
+            "processIdentities": [
+              {
+                "pid": 23936,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122528692
+              },
+              {
+                "pid": 39708,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122528765
+              }
+            ],
+            "exitVerification": [
+              {
+                "pid": 23936,
+                "startedAtMs": 1791122528692,
+                "status": "exited"
+              },
+              {
+                "pid": 39708,
+                "startedAtMs": 1791122528765,
+                "status": "exited"
+              }
+            ],
+            "acknowledgementMs": 12.912000000011176,
+            "processExitMs": 35.021200000017416,
+            "terminalStateMs": 64.92720000000554
+          }
+        ],
+        "metricsMs": {
+          "cancelAcknowledgement": {
+            "count": 1,
+            "min": 12.912,
+            "p50": 12.912,
+            "p95": 12.912,
+            "max": 12.912,
+            "mean": 12.912
+          },
+          "processTreeExit": {
+            "count": 1,
+            "min": 35.021,
+            "p50": 35.021,
+            "p95": 35.021,
+            "max": 35.021,
+            "mean": 35.021
+          },
+          "interruptedState": {
+            "count": 1,
+            "min": 64.927,
+            "p50": 64.927,
+            "p95": 64.927,
+            "max": 64.927,
+            "mean": 64.927
+          }
+        },
+        "toolStopInitialTargetMs": 2000,
+        "toolStopInitialTargetMet": true,
+        "allOwnedTreesExited": true,
+        "heartbeatWritesStopped": true,
+        "boundary": "Cancellation IPC acknowledgement is separate from a UI click-to-feedback measurement. Actual PID/start-time/path identity is captured before timing. Fast PID absence checks define the exit timing endpoint; identity and heartbeat checks occur afterward and are excluded. No external PowerShell startup is counted as tool-stop latency."
+      },
+      "recovery": {
+        "task": "d961d233-1d0b-48fd-8cc5-90be631b0ee9",
+        "modelCalls": 2,
+        "explicitResume": true
+      },
+      "browser": null,
+      "office": null,
+      "timer": null,
+      "database": {
+        "workpilot.sqlite3": 2134016,
+        "workpilot.sqlite3-wal": 1165992,
+        "workpilot.sqlite3-shm": 32768
+      },
+      "elapsedMs": 5708,
+      "modelCalls": 20
+    },
+    {
+      "index": 5,
+      "tasks": {
+        "roots": [
+          "8d2593ed-9efc-4115-abbe-d9cbf5ba22a5",
+          "f99f83a1-8f6c-452d-9e2a-8eed1f23a3d6",
+          "6f0d3141-8b19-4e4c-91be-722a86ad6913",
+          "4d372dfb-d0fd-49bb-b158-a31aec1a8b79"
+        ],
+        "lead": "85e4ce9d-16c0-4715-8c38-0d66531e0a84",
+        "members": [
+          "97aa8d05-ea6a-4c91-9396-48f0405b8b35",
+          "d72d86d9-9e0d-410e-b5ec-d156bc846219",
+          "6df3004e-4ee9-4f5a-a69b-b4a7d7a5353f"
+        ],
+        "queuedMessageId": "f1978993-00de-4107-b45e-8f1d223ba074"
+      },
+      "node": {
+        "count": 1,
+        "raw": [
+          {
+            "task": "4b7d690f-42f1-4578-8eb9-bab0dee96bb4",
+            "processIds": [
+              38716,
+              32504
+            ],
+            "processIdentities": [
+              {
+                "pid": 38716,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122589303
+              },
+              {
+                "pid": 32504,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122589375
+              }
+            ],
+            "exitVerification": [
+              {
+                "pid": 38716,
+                "startedAtMs": 1791122589303,
+                "status": "exited"
+              },
+              {
+                "pid": 32504,
+                "startedAtMs": 1791122589375,
+                "status": "exited"
+              }
+            ],
+            "acknowledgementMs": 12.074599999992643,
+            "processExitMs": 30.442600000009406,
+            "terminalStateMs": 41.570999999996275
+          }
+        ],
+        "metricsMs": {
+          "cancelAcknowledgement": {
+            "count": 1,
+            "min": 12.075,
+            "p50": 12.075,
+            "p95": 12.075,
+            "max": 12.075,
+            "mean": 12.075
+          },
+          "processTreeExit": {
+            "count": 1,
+            "min": 30.443,
+            "p50": 30.443,
+            "p95": 30.443,
+            "max": 30.443,
+            "mean": 30.443
+          },
+          "interruptedState": {
+            "count": 1,
+            "min": 41.571,
+            "p50": 41.571,
+            "p95": 41.571,
+            "max": 41.571,
+            "mean": 41.571
+          }
+        },
+        "toolStopInitialTargetMs": 2000,
+        "toolStopInitialTargetMet": true,
+        "allOwnedTreesExited": true,
+        "heartbeatWritesStopped": true,
+        "boundary": "Cancellation IPC acknowledgement is separate from a UI click-to-feedback measurement. Actual PID/start-time/path identity is captured before timing. Fast PID absence checks define the exit timing endpoint; identity and heartbeat checks occur afterward and are excluded. No external PowerShell startup is counted as tool-stop latency."
+      },
+      "recovery": {
+        "task": "9423bff7-c42c-4225-97a9-6f2337d1b0c7",
+        "modelCalls": 2,
+        "explicitResume": true
+      },
+      "browser": {
+        "task": "b243e255-8c9b-4cf5-b880-08a449d2a619",
+        "session": "a6e98f9a-7518-46b0-b092-dbe897765734",
+        "ownedPid": 20064,
+        "closure": {
+          "channel": "chromium",
+          "error": null,
+          "id": "a6e98f9a-7518-46b0-b092-dbe897765734",
+          "kind": "dedicated",
+          "owned_pid": 20064,
+          "state": "disconnected",
+          "tabs": [],
+          "task_id": "b243e255-8c9b-4cf5-b880-08a449d2a619",
+          "version": "Chrome/154.0.8037.57"
+        },
+        "screenshot": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-r3\\run-gpstWh\\bacf0faf-875d-4b18-ba3f-44ef1e2fca3f\\browser-5.png",
+        "download": {
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-r3\\run-gpstWh\\owned-project\\bacf0faf-875d-4b18-ba3f-44ef1e2fca3f\\browser-5\\result.csv",
+          "sha256": "f7154e3f98374db3d4f63165e434bba2c3e6aef971e2d2e837620633ccb0ac31",
+          "bytes": 24
+        }
+      },
+      "office": {
+        "task": "4f02f73b-0e9c-4df6-b4cd-f0a52dd60504",
+        "format": "xlsx",
+        "asset": "516b5f79-7d63-4946-a150-13e6220a8108",
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-r3\\run-gpstWh\\owned-project\\bacf0faf-875d-4b18-ba3f-44ef1e2fca3f\\office-5\\result.xlsx",
+        "sha256": "dbc4a451cf85978e3d0cd694f3070209e5add88e27c15d2bc1aa5adcae49ce0d",
+        "preview": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-r3\\run-gpstWh\\bacf0faf-875d-4b18-ba3f-44ef1e2fca3f\\office-5-xlsx.png",
+        "pages": 1,
+        "renderer": "LibreOfficeKit 26.8.0 · 9e87389187e5"
+      },
+      "timer": null,
+      "database": {
+        "workpilot.sqlite3": 2498560,
+        "workpilot.sqlite3-wal": 1178352,
+        "workpilot.sqlite3-shm": 32768
+      },
+      "elapsedMs": 24075,
+      "modelCalls": 20
+    },
+    {
+      "index": 6,
+      "tasks": {
+        "roots": [
+          "757773a3-9aec-43ba-8da4-871934d4dabb",
+          "cf455a41-04ca-4d0d-8e3b-c170728937a9",
+          "0e458c0a-f483-4c6a-9f60-3bc175272410",
+          "e897cac7-4a4c-4507-a6b3-0e5869a20306"
+        ],
+        "lead": "f33fc8c3-4d43-47c7-af50-2fe3f3e41c24",
+        "members": [
+          "c8c120cd-4c68-44e1-b7cb-48cd5e13d5c3",
+          "a2307165-5fe1-4866-9c99-6a9d92fec315",
+          "ed6da58c-2c70-4a3f-9f95-62b3c82e0037"
+        ],
+        "queuedMessageId": "a4919219-0906-41c3-8388-ff2e9aa3f3c8"
+      },
+      "node": {
+        "count": 1,
+        "raw": [
+          {
+            "task": "b098a44b-5bed-4d11-8759-ed5bced37bc9",
+            "processIds": [
+              20172,
+              41208
+            ],
+            "processIdentities": [
+              {
+                "pid": 20172,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122649028
+              },
+              {
+                "pid": 41208,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122649120
+              }
+            ],
+            "exitVerification": [
+              {
+                "pid": 20172,
+                "startedAtMs": 1791122649028,
+                "status": "exited"
+              },
+              {
+                "pid": 41208,
+                "startedAtMs": 1791122649120,
+                "status": "exited"
+              }
+            ],
+            "acknowledgementMs": 18.12630000000354,
+            "processExitMs": 46.521000000007916,
+            "terminalStateMs": 88.32830000005197
+          }
+        ],
+        "metricsMs": {
+          "cancelAcknowledgement": {
+            "count": 1,
+            "min": 18.126,
+            "p50": 18.126,
+            "p95": 18.126,
+            "max": 18.126,
+            "mean": 18.126
+          },
+          "processTreeExit": {
+            "count": 1,
+            "min": 46.521,
+            "p50": 46.521,
+            "p95": 46.521,
+            "max": 46.521,
+            "mean": 46.521
+          },
+          "interruptedState": {
+            "count": 1,
+            "min": 88.328,
+            "p50": 88.328,
+            "p95": 88.328,
+            "max": 88.328,
+            "mean": 88.328
+          }
+        },
+        "toolStopInitialTargetMs": 2000,
+        "toolStopInitialTargetMet": true,
+        "allOwnedTreesExited": true,
+        "heartbeatWritesStopped": true,
+        "boundary": "Cancellation IPC acknowledgement is separate from a UI click-to-feedback measurement. Actual PID/start-time/path identity is captured before timing. Fast PID absence checks define the exit timing endpoint; identity and heartbeat checks occur afterward and are excluded. No external PowerShell startup is counted as tool-stop latency."
+      },
+      "recovery": {
+        "task": "147767b8-3aec-4a31-8fd9-87deac62a5c5",
+        "modelCalls": 2,
+        "explicitResume": true
+      },
+      "browser": null,
+      "office": null,
+      "timer": null,
+      "database": {
+        "workpilot.sqlite3": 2752512,
+        "workpilot.sqlite3-wal": 1178352,
+        "workpilot.sqlite3-shm": 32768
+      },
+      "elapsedMs": 6059,
+      "modelCalls": 20
+    },
+    {
+      "index": 7,
+      "tasks": {
+        "roots": [
+          "a1ae8866-ca16-4d2b-97e1-2e989c78e220",
+          "c2736c51-f589-43e3-8867-5c0b81ccaf2e",
+          "2c7add94-e0ce-48db-b472-2087e54c0ced",
+          "c7202d42-1d5e-48f3-88d7-1eea2b6f5aa2"
+        ],
+        "lead": "f56a32f3-7cc8-4501-9e34-5bc6d98e4d70",
+        "members": [
+          "6997b144-e9f4-4a1d-9c85-f9a886e0b1af",
+          "57271be0-538f-4011-8fb9-57f1d2a4529d",
+          "136d4253-c9ac-443e-aaba-c537c46263a0"
+        ],
+        "queuedMessageId": "d28fa725-2190-451c-b28b-3b41549df1c4"
+      },
+      "node": {
+        "count": 1,
+        "raw": [
+          {
+            "task": "7ead5790-cb12-44a5-99ee-3942110b76e4",
+            "processIds": [
+              40308,
+              11944
+            ],
+            "processIdentities": [
+              {
+                "pid": 40308,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122709815
+              },
+              {
+                "pid": 11944,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122709902
+              }
+            ],
+            "exitVerification": [
+              {
+                "pid": 40308,
+                "startedAtMs": 1791122709815,
+                "status": "exited"
+              },
+              {
+                "pid": 11944,
+                "startedAtMs": 1791122709902,
+                "status": "exited"
+              }
+            ],
+            "acknowledgementMs": 25.27109999995446,
+            "processExitMs": 37.402199999953154,
+            "terminalStateMs": 83.11499999999069
+          }
+        ],
+        "metricsMs": {
+          "cancelAcknowledgement": {
+            "count": 1,
+            "min": 25.271,
+            "p50": 25.271,
+            "p95": 25.271,
+            "max": 25.271,
+            "mean": 25.271
+          },
+          "processTreeExit": {
+            "count": 1,
+            "min": 37.402,
+            "p50": 37.402,
+            "p95": 37.402,
+            "max": 37.402,
+            "mean": 37.402
+          },
+          "interruptedState": {
+            "count": 1,
+            "min": 83.115,
+            "p50": 83.115,
+            "p95": 83.115,
+            "max": 83.115,
+            "mean": 83.115
+          }
+        },
+        "toolStopInitialTargetMs": 2000,
+        "toolStopInitialTargetMet": true,
+        "allOwnedTreesExited": true,
+        "heartbeatWritesStopped": true,
+        "boundary": "Cancellation IPC acknowledgement is separate from a UI click-to-feedback measurement. Actual PID/start-time/path identity is captured before timing. Fast PID absence checks define the exit timing endpoint; identity and heartbeat checks occur afterward and are excluded. No external PowerShell startup is counted as tool-stop latency."
+      },
+      "recovery": {
+        "task": "04361acb-357a-497c-839e-4f3c5ba3ed70",
+        "modelCalls": 2,
+        "explicitResume": true
+      },
+      "browser": null,
+      "office": null,
+      "timer": null,
+      "database": {
+        "workpilot.sqlite3": 3076096,
+        "workpilot.sqlite3-wal": 1178352,
+        "workpilot.sqlite3-shm": 32768
+      },
+      "elapsedMs": 5908,
+      "modelCalls": 20
+    },
+    {
+      "index": 8,
+      "tasks": {
+        "roots": [
+          "cac6da68-eb5e-43f1-96b9-14f2e206ae4e",
+          "9598a60c-7b27-4253-8b8d-ecbc3a902a79",
+          "e38c4516-12aa-4bf9-b29c-68e8033bc1f8",
+          "1e9c9bbc-0361-4e0f-8221-001741935f5c"
+        ],
+        "lead": "88433942-0ce3-4960-9870-f82a590f4ff1",
+        "members": [
+          "e8def745-ca0a-41bb-bdf3-f2188b6b7058",
+          "93f8acaa-42a2-44a5-aee5-1375a67eb9a6",
+          "89bb066f-c115-4453-a33f-27560cbe83c5"
+        ],
+        "queuedMessageId": "8c6f2e55-16a0-4f4a-820c-44da33803afb"
+      },
+      "node": {
+        "count": 1,
+        "raw": [
+          {
+            "task": "b793f783-e83e-42d5-8d79-53c59527324f",
+            "processIds": [
+              33916,
+              19552
+            ],
+            "processIdentities": [
+              {
+                "pid": 33916,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122770014
+              },
+              {
+                "pid": 19552,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122770077
+              }
+            ],
+            "exitVerification": [
+              {
+                "pid": 33916,
+                "startedAtMs": 1791122770014,
+                "status": "exited"
+              },
+              {
+                "pid": 19552,
+                "startedAtMs": 1791122770077,
+                "status": "exited"
+              }
+            ],
+            "acknowledgementMs": 12.86040000000503,
+            "processExitMs": 18.927199999976438,
+            "terminalStateMs": 63.5681999999797
+          }
+        ],
+        "metricsMs": {
+          "cancelAcknowledgement": {
+            "count": 1,
+            "min": 12.86,
+            "p50": 12.86,
+            "p95": 12.86,
+            "max": 12.86,
+            "mean": 12.86
+          },
+          "processTreeExit": {
+            "count": 1,
+            "min": 18.927,
+            "p50": 18.927,
+            "p95": 18.927,
+            "max": 18.927,
+            "mean": 18.927
+          },
+          "interruptedState": {
+            "count": 1,
+            "min": 63.568,
+            "p50": 63.568,
+            "p95": 63.568,
+            "max": 63.568,
+            "mean": 63.568
+          }
+        },
+        "toolStopInitialTargetMs": 2000,
+        "toolStopInitialTargetMet": true,
+        "allOwnedTreesExited": true,
+        "heartbeatWritesStopped": true,
+        "boundary": "Cancellation IPC acknowledgement is separate from a UI click-to-feedback measurement. Actual PID/start-time/path identity is captured before timing. Fast PID absence checks define the exit timing endpoint; identity and heartbeat checks occur afterward and are excluded. No external PowerShell startup is counted as tool-stop latency."
+      },
+      "recovery": {
+        "task": "76a7abd3-ddd0-4545-a7e3-2911e0ac5fe1",
+        "modelCalls": 2,
+        "explicitResume": true
+      },
+      "browser": null,
+      "office": null,
+      "timer": null,
+      "database": {
+        "workpilot.sqlite3": 3403776,
+        "workpilot.sqlite3-wal": 1178352,
+        "workpilot.sqlite3-shm": 32768
+      },
+      "elapsedMs": 5675,
+      "modelCalls": 20
+    },
+    {
+      "index": 9,
+      "tasks": {
+        "roots": [
+          "17813dd3-97bb-40e7-a787-fce214be29eb",
+          "64886061-37d8-4d11-8c0f-79c7ecad2b2c",
+          "93e8419f-63ad-438e-8a1e-857ce350857b",
+          "cb291b94-7ce0-429e-93b1-9d02c7c99519"
+        ],
+        "lead": "0e5d58f9-5e9c-4553-a5d6-424d3e274fc2",
+        "members": [
+          "d486bc8b-91f6-4030-abf3-aeebadf5e17a",
+          "730bbba5-7835-455e-b80f-b13b922cf672",
+          "ea42ac8a-3dd7-4580-ae52-aed374ac6355"
+        ],
+        "queuedMessageId": "f6b3925a-408a-4b71-aba5-76423cc92355"
+      },
+      "node": {
+        "count": 1,
+        "raw": [
+          {
+            "task": "60f83a8a-5b41-4094-af2d-27c94890c0bb",
+            "processIds": [
+              44020,
+              23984
+            ],
+            "processIdentities": [
+              {
+                "pid": 44020,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122831058
+              },
+              {
+                "pid": 23984,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122831139
+              }
+            ],
+            "exitVerification": [
+              {
+                "pid": 44020,
+                "startedAtMs": 1791122831058,
+                "status": "exited"
+              },
+              {
+                "pid": 23984,
+                "startedAtMs": 1791122831139,
+                "status": "exited"
+              }
+            ],
+            "acknowledgementMs": 14.321600000024773,
+            "processExitMs": 30.850800000014715,
+            "terminalStateMs": 73.83620000001974
+          }
+        ],
+        "metricsMs": {
+          "cancelAcknowledgement": {
+            "count": 1,
+            "min": 14.322,
+            "p50": 14.322,
+            "p95": 14.322,
+            "max": 14.322,
+            "mean": 14.322
+          },
+          "processTreeExit": {
+            "count": 1,
+            "min": 30.851,
+            "p50": 30.851,
+            "p95": 30.851,
+            "max": 30.851,
+            "mean": 30.851
+          },
+          "interruptedState": {
+            "count": 1,
+            "min": 73.836,
+            "p50": 73.836,
+            "p95": 73.836,
+            "max": 73.836,
+            "mean": 73.836
+          }
+        },
+        "toolStopInitialTargetMs": 2000,
+        "toolStopInitialTargetMet": true,
+        "allOwnedTreesExited": true,
+        "heartbeatWritesStopped": true,
+        "boundary": "Cancellation IPC acknowledgement is separate from a UI click-to-feedback measurement. Actual PID/start-time/path identity is captured before timing. Fast PID absence checks define the exit timing endpoint; identity and heartbeat checks occur afterward and are excluded. No external PowerShell startup is counted as tool-stop latency."
+      },
+      "recovery": {
+        "task": "5ba05fb6-9d24-4cc5-a6a7-6969978136f3",
+        "modelCalls": 2,
+        "explicitResume": true
+      },
+      "browser": null,
+      "office": null,
+      "timer": null,
+      "database": {
+        "workpilot.sqlite3": 3706880,
+        "workpilot.sqlite3-wal": 1178352,
+        "workpilot.sqlite3-shm": 32768
+      },
+      "elapsedMs": 5832,
+      "modelCalls": 20
+    },
+    {
+      "index": 10,
+      "tasks": {
+        "roots": [
+          "3d631b45-9c83-49bf-966e-cfedd095e8df",
+          "c9e3285d-52db-48b1-b8bf-32d22e8e6df8",
+          "cb9b0169-bb85-47bc-b871-dadb6af0bb68",
+          "7637dfb1-ca10-4c45-b71b-b2881eb2f1ea"
+        ],
+        "lead": "ac26ab01-3d7e-4019-a62e-ab4c7dac2378",
+        "members": [
+          "dc75da09-0bea-4b13-a2ae-5f8ab36b3b34",
+          "3d8e6b55-c0a1-4423-8fa8-03376c3f4930",
+          "08f02930-265f-4664-8707-e795f5df655d"
+        ],
+        "queuedMessageId": "9b1617e6-fd15-4e49-86fb-039f1bd442c9"
+      },
+      "node": {
+        "count": 1,
+        "raw": [
+          {
+            "task": "6af1b33f-5dd6-492d-bd3c-4c78cce1454a",
+            "processIds": [
+              43296,
+              13388
+            ],
+            "processIdentities": [
+              {
+                "pid": 43296,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122891065
+              },
+              {
+                "pid": 13388,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122891126
+              }
+            ],
+            "exitVerification": [
+              {
+                "pid": 43296,
+                "startedAtMs": 1791122891065,
+                "status": "exited"
+              },
+              {
+                "pid": 13388,
+                "startedAtMs": 1791122891126,
+                "status": "exited"
+              }
+            ],
+            "acknowledgementMs": 12.474599999957718,
+            "processExitMs": 29.394100000034086,
+            "terminalStateMs": 126.44960000005085
+          }
+        ],
+        "metricsMs": {
+          "cancelAcknowledgement": {
+            "count": 1,
+            "min": 12.475,
+            "p50": 12.475,
+            "p95": 12.475,
+            "max": 12.475,
+            "mean": 12.475
+          },
+          "processTreeExit": {
+            "count": 1,
+            "min": 29.394,
+            "p50": 29.394,
+            "p95": 29.394,
+            "max": 29.394,
+            "mean": 29.394
+          },
+          "interruptedState": {
+            "count": 1,
+            "min": 126.45,
+            "p50": 126.45,
+            "p95": 126.45,
+            "max": 126.45,
+            "mean": 126.45
+          }
+        },
+        "toolStopInitialTargetMs": 2000,
+        "toolStopInitialTargetMet": true,
+        "allOwnedTreesExited": true,
+        "heartbeatWritesStopped": true,
+        "boundary": "Cancellation IPC acknowledgement is separate from a UI click-to-feedback measurement. Actual PID/start-time/path identity is captured before timing. Fast PID absence checks define the exit timing endpoint; identity and heartbeat checks occur afterward and are excluded. No external PowerShell startup is counted as tool-stop latency."
+      },
+      "recovery": {
+        "task": "a2ede9ef-6e10-4bc7-98a3-375f190d9000",
+        "modelCalls": 2,
+        "explicitResume": true
+      },
+      "browser": {
+        "task": "fbee8b79-bf5f-4f93-b8c0-c41ae3dc5ff3",
+        "session": "839b1496-0fbf-46b7-9112-0a1a584ca4d7",
+        "ownedPid": 21320,
+        "closure": {
+          "channel": "chromium",
+          "error": null,
+          "id": "839b1496-0fbf-46b7-9112-0a1a584ca4d7",
+          "kind": "dedicated",
+          "owned_pid": 21320,
+          "state": "disconnected",
+          "tabs": [],
+          "task_id": "fbee8b79-bf5f-4f93-b8c0-c41ae3dc5ff3",
+          "version": "Chrome/154.0.8037.57"
+        },
+        "screenshot": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-r3\\run-gpstWh\\bacf0faf-875d-4b18-ba3f-44ef1e2fca3f\\browser-10.png",
+        "download": {
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-r3\\run-gpstWh\\owned-project\\bacf0faf-875d-4b18-ba3f-44ef1e2fca3f\\browser-10\\result.csv",
+          "sha256": "f7154e3f98374db3d4f63165e434bba2c3e6aef971e2d2e837620633ccb0ac31",
+          "bytes": 24
+        }
+      },
+      "office": {
+        "task": "eb36b593-fa8f-4bf8-b84e-9818986d2080",
+        "format": "pptx",
+        "asset": "8e671c7b-aec6-4715-9416-da253b587131",
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-r3\\run-gpstWh\\owned-project\\bacf0faf-875d-4b18-ba3f-44ef1e2fca3f\\office-10\\result.pptx",
+        "sha256": "f8f0c02a2f73451144e5212ade508c4ce5a4dd9a94af95384e2718e9b41273c0",
+        "preview": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-r3\\run-gpstWh\\bacf0faf-875d-4b18-ba3f-44ef1e2fca3f\\office-10-pptx.png",
+        "pages": 1,
+        "renderer": "LibreOfficeKit 26.8.0 · 9e87389187e5"
+      },
+      "timer": null,
+      "database": {
+        "workpilot.sqlite3": 4067328,
+        "workpilot.sqlite3-wal": 1178352,
+        "workpilot.sqlite3-shm": 32768
+      },
+      "elapsedMs": 24865,
+      "modelCalls": 20
+    },
+    {
+      "index": 11,
+      "tasks": {
+        "roots": [
+          "09826e4c-378e-4b2c-89e9-1b2291514d3f",
+          "0f55e00e-e573-4ce1-81d8-f155ed919ad1",
+          "f13ee950-db92-4f16-9943-b2fcff7b71a8",
+          "deacf2ff-7377-420f-88bf-4f3002be5cd8"
+        ],
+        "lead": "7bc7694c-935b-4692-a41a-7d54659585b8",
+        "members": [
+          "1f18ba76-adc9-4886-be96-b84f37eac697",
+          "adb62691-421b-4bdc-a12c-d06a380db9d4",
+          "5ff6d5ec-5970-4d43-bc2a-be4b1e12925b"
+        ],
+        "queuedMessageId": "2c646ec3-dcd1-4995-84f3-6a207e41e83b"
+      },
+      "node": {
+        "count": 1,
+        "raw": [
+          {
+            "task": "397b2891-8a7c-4612-b546-b765cf5bd76b",
+            "processIds": [
+              44600,
+              43776
+            ],
+            "processIdentities": [
+              {
+                "pid": 44600,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122951184
+              },
+              {
+                "pid": 43776,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791122951247
+              }
+            ],
+            "exitVerification": [
+              {
+                "pid": 44600,
+                "startedAtMs": 1791122951184,
+                "status": "exited"
+              },
+              {
+                "pid": 43776,
+                "startedAtMs": 1791122951247,
+                "status": "exited"
+              }
+            ],
+            "acknowledgementMs": 33.62430000002496,
+            "processExitMs": 33.77059999993071,
+            "terminalStateMs": 69.70139999990351
+          }
+        ],
+        "metricsMs": {
+          "cancelAcknowledgement": {
+            "count": 1,
+            "min": 33.624,
+            "p50": 33.624,
+            "p95": 33.624,
+            "max": 33.624,
+            "mean": 33.624
+          },
+          "processTreeExit": {
+            "count": 1,
+            "min": 33.771,
+            "p50": 33.771,
+            "p95": 33.771,
+            "max": 33.771,
+            "mean": 33.771
+          },
+          "interruptedState": {
+            "count": 1,
+            "min": 69.701,
+            "p50": 69.701,
+            "p95": 69.701,
+            "max": 69.701,
+            "mean": 69.701
+          }
+        },
+        "toolStopInitialTargetMs": 2000,
+        "toolStopInitialTargetMet": true,
+        "allOwnedTreesExited": true,
+        "heartbeatWritesStopped": true,
+        "boundary": "Cancellation IPC acknowledgement is separate from a UI click-to-feedback measurement. Actual PID/start-time/path identity is captured before timing. Fast PID absence checks define the exit timing endpoint; identity and heartbeat checks occur afterward and are excluded. No external PowerShell startup is counted as tool-stop latency."
+      },
+      "recovery": {
+        "task": "61c579f8-5bf5-4598-ad3f-449ea1384c33",
+        "modelCalls": 2,
+        "explicitResume": true
+      },
+      "browser": null,
+      "office": null,
+      "timer": null,
+      "database": {
+        "workpilot.sqlite3": 4358144,
+        "workpilot.sqlite3-wal": 1178352,
+        "workpilot.sqlite3-shm": 32768
+      },
+      "elapsedMs": 5698,
+      "modelCalls": 20
+    },
+    {
+      "index": 12,
+      "tasks": {
+        "roots": [
+          "f4ce0c6e-cbb3-4159-abf5-3f015b2788da",
+          "b43d68b8-7d72-4d8f-b961-d22e83edaf73",
+          "3b59666c-deff-4458-9bb0-93c0eacbfe01",
+          "33740bbb-b42b-49b6-9044-36e81a87a075"
+        ],
+        "lead": "1ea81721-23da-4dd5-b18c-ca57e6ab362d",
+        "members": [
+          "31fb74ef-54b2-4450-ba19-d732cd4abcb3",
+          "9bb264f3-d56e-41cf-b507-897705c5e2f6",
+          "0586bfbb-0163-4c8f-a12d-61ffef518bd5"
+        ],
+        "queuedMessageId": "54bbc0b1-5972-448e-a9dc-c8fc833f9c5c"
+      },
+      "node": {
+        "count": 1,
+        "raw": [
+          {
+            "task": "05becec9-6cc2-46b3-9df2-e35d0a0d916a",
+            "processIds": [
+              16124,
+              44372
+            ],
+            "processIdentities": [
+              {
+                "pid": 16124,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791123011246
+              },
+              {
+                "pid": 44372,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791123011328
+              }
+            ],
+            "exitVerification": [
+              {
+                "pid": 16124,
+                "startedAtMs": 1791123011246,
+                "status": "exited"
+              },
+              {
+                "pid": 44372,
+                "startedAtMs": 1791123011328,
+                "status": "exited"
+              }
+            ],
+            "acknowledgementMs": 19.533200000063516,
+            "processExitMs": 41.322999999974854,
+            "terminalStateMs": 111.65509999997448
+          }
+        ],
+        "metricsMs": {
+          "cancelAcknowledgement": {
+            "count": 1,
+            "min": 19.533,
+            "p50": 19.533,
+            "p95": 19.533,
+            "max": 19.533,
+            "mean": 19.533
+          },
+          "processTreeExit": {
+            "count": 1,
+            "min": 41.323,
+            "p50": 41.323,
+            "p95": 41.323,
+            "max": 41.323,
+            "mean": 41.323
+          },
+          "interruptedState": {
+            "count": 1,
+            "min": 111.655,
+            "p50": 111.655,
+            "p95": 111.655,
+            "max": 111.655,
+            "mean": 111.655
+          }
+        },
+        "toolStopInitialTargetMs": 2000,
+        "toolStopInitialTargetMet": true,
+        "allOwnedTreesExited": true,
+        "heartbeatWritesStopped": true,
+        "boundary": "Cancellation IPC acknowledgement is separate from a UI click-to-feedback measurement. Actual PID/start-time/path identity is captured before timing. Fast PID absence checks define the exit timing endpoint; identity and heartbeat checks occur afterward and are excluded. No external PowerShell startup is counted as tool-stop latency."
+      },
+      "recovery": {
+        "task": "b0dbcad6-4db9-4964-a908-2d47bca86abf",
+        "modelCalls": 2,
+        "explicitResume": true
+      },
+      "browser": null,
+      "office": null,
+      "timer": null,
+      "database": {
+        "workpilot.sqlite3": 4616192,
+        "workpilot.sqlite3-wal": 1178352,
+        "workpilot.sqlite3-shm": 32768
+      },
+      "elapsedMs": 5955,
+      "modelCalls": 20
+    },
+    {
+      "index": 13,
+      "tasks": {
+        "roots": [
+          "b3216f43-e550-4c71-99ad-bd36351bfa5b",
+          "daf6f2c0-fe89-4dc5-84ad-f4504c6be554",
+          "24ffea04-7f78-4393-8f3b-469cf3d73c57",
+          "d255aeb7-1c94-46f7-8bcd-9f25a8d1b0ba"
+        ],
+        "lead": "907b08ee-25eb-4281-baff-343d587f8829",
+        "members": [
+          "9106e660-d359-4976-8196-776a442560cb",
+          "08a0470c-cf19-4ced-99ba-1284130f93e4",
+          "992362bc-d61c-429e-91ae-fafa11fd3731"
+        ],
+        "queuedMessageId": "9fcaa606-072f-4530-b57c-846b6b2620c9"
+      },
+      "node": {
+        "count": 1,
+        "raw": [
+          {
+            "task": "ef89e888-28a7-4d12-a98d-e6fb69c15b1c",
+            "processIds": [
+              44380,
+              40224
+            ],
+            "processIdentities": [
+              {
+                "pid": 44380,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791123071562
+              },
+              {
+                "pid": 40224,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791123071632
+              }
+            ],
+            "exitVerification": [
+              {
+                "pid": 44380,
+                "startedAtMs": 1791123071562,
+                "status": "exited"
+              },
+              {
+                "pid": 40224,
+                "startedAtMs": 1791123071632,
+                "status": "exited"
+              }
+            ],
+            "acknowledgementMs": 10.115400000009686,
+            "processExitMs": 16.808100000023842,
+            "terminalStateMs": 55.32579999999143
+          }
+        ],
+        "metricsMs": {
+          "cancelAcknowledgement": {
+            "count": 1,
+            "min": 10.115,
+            "p50": 10.115,
+            "p95": 10.115,
+            "max": 10.115,
+            "mean": 10.115
+          },
+          "processTreeExit": {
+            "count": 1,
+            "min": 16.808,
+            "p50": 16.808,
+            "p95": 16.808,
+            "max": 16.808,
+            "mean": 16.808
+          },
+          "interruptedState": {
+            "count": 1,
+            "min": 55.326,
+            "p50": 55.326,
+            "p95": 55.326,
+            "max": 55.326,
+            "mean": 55.326
+          }
+        },
+        "toolStopInitialTargetMs": 2000,
+        "toolStopInitialTargetMet": true,
+        "allOwnedTreesExited": true,
+        "heartbeatWritesStopped": true,
+        "boundary": "Cancellation IPC acknowledgement is separate from a UI click-to-feedback measurement. Actual PID/start-time/path identity is captured before timing. Fast PID absence checks define the exit timing endpoint; identity and heartbeat checks occur afterward and are excluded. No external PowerShell startup is counted as tool-stop latency."
+      },
+      "recovery": {
+        "task": "b8c17146-0724-4227-a54c-c43a5e9a37e7",
+        "modelCalls": 2,
+        "explicitResume": true
+      },
+      "browser": null,
+      "office": null,
+      "timer": null,
+      "database": {
+        "workpilot.sqlite3": 4894720,
+        "workpilot.sqlite3-wal": 1178352,
+        "workpilot.sqlite3-shm": 32768
+      },
+      "elapsedMs": 5814,
+      "modelCalls": 20
+    },
+    {
+      "index": 14,
+      "tasks": {
+        "roots": [
+          "0f6d1078-7a59-4acb-9f19-ac0b2eb0a5f0",
+          "ce929374-0d84-4506-85a8-2cbbde9b609a",
+          "c1066244-f834-4bfe-8db2-2fabe06aad91",
+          "b646547f-66ed-4db3-a598-06bba6a06686"
+        ],
+        "lead": "36514bf5-0981-4860-89ff-3fc03041453a",
+        "members": [
+          "ff86b077-de86-41bd-a176-55e06c4baebd",
+          "2c215a70-b488-4c56-ae6e-91c6284a498f",
+          "72dbdf49-7504-4fa4-a301-154871ae3df0"
+        ],
+        "queuedMessageId": "3e79b7ed-73a4-466a-9e5b-abf188852260"
+      },
+      "node": {
+        "count": 1,
+        "raw": [
+          {
+            "task": "bcb7425c-775d-4559-a776-6973ca5f1cac",
+            "processIds": [
+              15128,
+              39332
+            ],
+            "processIdentities": [
+              {
+                "pid": 15128,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791123132768
+              },
+              {
+                "pid": 39332,
+                "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\browser-runtime\\node.exe",
+                "startedAtMs": 1791123132891
+              }
+            ],
+            "exitVerification": [
+              {
+                "pid": 15128,
+                "startedAtMs": 1791123132768,
+                "status": "exited"
+              },
+              {
+                "pid": 39332,
+                "startedAtMs": 1791123132891,
+                "status": "exited"
+              }
+            ],
+            "acknowledgementMs": 52.39260000002105,
+            "processExitMs": 72.26850000000559,
+            "terminalStateMs": 164.53659999999218
+          }
+        ],
+        "metricsMs": {
+          "cancelAcknowledgement": {
+            "count": 1,
+            "min": 52.393,
+            "p50": 52.393,
+            "p95": 52.393,
+            "max": 52.393,
+            "mean": 52.393
+          },
+          "processTreeExit": {
+            "count": 1,
+            "min": 72.269,
+            "p50": 72.269,
+            "p95": 72.269,
+            "max": 72.269,
+            "mean": 72.269
+          },
+          "interruptedState": {
+            "count": 1,
+            "min": 164.537,
+            "p50": 164.537,
+            "p95": 164.537,
+            "max": 164.537,
+            "mean": 164.537
+          }
+        },
+        "toolStopInitialTargetMs": 2000,
+        "toolStopInitialTargetMet": true,
+        "allOwnedTreesExited": true,
+        "heartbeatWritesStopped": true,
+        "boundary": "Cancellation IPC acknowledgement is separate from a UI click-to-feedback measurement. Actual PID/start-time/path identity is captured before timing. Fast PID absence checks define the exit timing endpoint; identity and heartbeat checks occur afterward and are excluded. No external PowerShell startup is counted as tool-stop latency."
+      },
+      "recovery": {
+        "task": "15692445-2870-40f8-844a-2dc93e2709bb",
+        "modelCalls": 2,
+        "explicitResume": true
+      },
+      "browser": null,
+      "office": null,
+      "timer": null,
+      "database": {
+        "workpilot.sqlite3": 5210112,
+        "workpilot.sqlite3-wal": 1178352,
+        "workpilot.sqlite3-shm": 32768
+      },
+      "elapsedMs": 7575,
+      "modelCalls": 20
+    }
+  ],
+  "status": "failed"
+}

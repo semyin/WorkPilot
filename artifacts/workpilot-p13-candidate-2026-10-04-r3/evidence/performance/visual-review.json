@@ -1,0 +1,54 @@
+{
+  "at": "2026-10-04T14:43:13.065Z",
+  "images": [
+    {
+      "path": "desktop/workbench-timing-en.png",
+      "bytes": 208733,
+      "sha256": "6a2863f40b1afd0db688cf151c8212ba53497637892d672d598b7f1495c2c349",
+      "originalSha256": "6a2863f40b1afd0db688cf151c8212ba53497637892d672d598b7f1495c2c349",
+      "originalBytes": 208733,
+      "review": "Viewed actual normal workbench screenshots in Chinese/English and first/last visible-event samples, idle/new-task and model-wait resource snapshots. Readable task/output/status, no unexpected overlays; historical-scroll position is not a scroll-follow claim."
+    },
+    {
+      "path": "desktop/workbench-timing-zh.png",
+      "bytes": 178175,
+      "sha256": "1dbb192fb9535d1ce466bb6f6644e41e86952a71371fb5fb4b9ac6e5c35ff20c",
+      "originalSha256": "1dbb192fb9535d1ce466bb6f6644e41e86952a71371fb5fb4b9ac6e5c35ff20c",
+      "originalBytes": 178175,
+      "review": "Viewed actual normal workbench screenshots in Chinese/English and first/last visible-event samples, idle/new-task and model-wait resource snapshots. Readable task/output/status, no unexpected overlays; historical-scroll position is not a scroll-follow claim."
+    },
+    {
+      "path": "visible-event/visible-0.png",
+      "bytes": 187445,
+      "sha256": "ab4068f077220bdd6575724ce55f31e4f82eb33161a793d93a26bef64cd6cca7",
+      "originalSha256": "ab4068f077220bdd6575724ce55f31e4f82eb33161a793d93a26bef64cd6cca7",
+      "originalBytes": 187445,
+      "review": "Viewed actual normal workbench screenshots in Chinese/English and first/last visible-event samples, idle/new-task and model-wait resource snapshots. Readable task/output/status, no unexpected overlays; historical-scroll position is not a scroll-follow claim."
+    },
+    {
+      "path": "visible-event/visible-19.png",
+      "bytes": 209400,
+      "sha256": "0bed077ee425f979606c86113572db15a2306ff999c61b0959647d83b703ea2b",
+      "originalSha256": "0bed077ee425f979606c86113572db15a2306ff999c61b0959647d83b703ea2b",
+      "originalBytes": 209400,
+      "review": "Viewed actual normal workbench screenshots in Chinese/English and first/last visible-event samples, idle/new-task and model-wait resource snapshots. Readable task/output/status, no unexpected overlays; historical-scroll position is not a scroll-follow claim."
+    },
+    {
+      "path": "desktop-resources/idle.png",
+      "bytes": 211743,
+      "sha256": "ee9b993bb3f9def0bb3cd178a2ae15106e7c815f0a5bc84f8cabd618ac95fecb",
+      "originalSha256": "ee9b993bb3f9def0bb3cd178a2ae15106e7c815f0a5bc84f8cabd618ac95fecb",
+      "originalBytes": 211743,
+      "review": "Viewed actual normal workbench screenshots in Chinese/English and first/last visible-event samples, idle/new-task and model-wait resource snapshots. Readable task/output/status, no unexpected overlays; historical-scroll position is not a scroll-follow claim."
+    },
+    {
+      "path": "desktop-resources/model-wait.png",
+      "bytes": 200662,
+      "sha256": "e5c38bb908e9dc58f2af1e6bc9174a14c0bd9b462043b533da71f59a17b669d7",
+      "originalSha256": "e5c38bb908e9dc58f2af1e6bc9174a14c0bd9b462043b533da71f59a17b669d7",
+      "originalBytes": 200662,
+      "review": "Viewed actual normal workbench screenshots in Chinese/English and first/last visible-event samples, idle/new-task and model-wait resource snapshots. Readable task/output/status, no unexpected overlays; historical-scroll position is not a scroll-follow claim."
+    }
+  ],
+  "humanAcceptance": false
+}

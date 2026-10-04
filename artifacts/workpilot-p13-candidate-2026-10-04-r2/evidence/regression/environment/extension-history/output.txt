@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-04T13:11:29.858Z",
+  "platform": "win32",
+  "binarySha256": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+  "checks": [
+    "all_70_versions_and_pending_draft_and_uninstalled_state_export_encrypted_bad_old_source_refused_current_only_remains_available",
+    "bad_old_destination_rolls_back_all_visible_installations_and_drafts_then_retry_restores_all_70_versions",
+    "oldest_version_beyond_64_row_history_page_can_roll_back_without_enabling_and_other_package_version_is_refused",
+    "migrated_draft_resources_remain_readable_AI_can_create_a_revised_draft_and_explicit_confirmation_installs_it_without_deleting_original_draft",
+    "reexport_and_restart_keep_earlier_versions_pending_draft_and_uninstalled_state_duplicate_import_never_reinstalls"
+  ],
+  "status": "passed"
+}

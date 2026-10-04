@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-04T10:19:39.185Z",
+  "platform": "win32",
+  "os": "10.0.26200",
+  "cpu": "AMD Ryzen 7 7840H w/ Radeon(TM) 780M Graphics  ",
+  "logicalProcessors": 16,
+  "memoryBytes": 33618710528,
+  "binarySha256": "c7b81dca8b21989ae2e8d9fcecf5a267adb83d9b4aad2a993f5f030ba99bcaf0",
+  "service": "Synthetic local Responses model, real Windows desktop and engine; no external model or personal data",
+  "conditions": "Fresh app and WebView data for each startup. OS file cache is not cleared. UI tests run in the normal workbench, not P00 diagnostics. Observer timestamps are DOM updates, not physical screen pixels.",
+  "checks": [],
+  "measurements": {},
+  "eventSamples": [],
+  "startupSamples": [],
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: A stored engine text event must back every observed result"
+}

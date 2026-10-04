@@ -1,0 +1,5051 @@
+{
+  "at": "2026-10-04T12:16:56.084Z",
+  "binary": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\workpilot-desktop.exe",
+  "binarySha256": "5333f4fd6d4de13e6098062241ee36f7cfadda9ff23727c92d5cb4fc3a1bf4c1",
+  "engineSha256": "6b8e19ef43fcc0a9c9fcce28229ff955a554c23e3954c05878195482b4f2f740",
+  "machine": {
+    "os": {
+      "Caption": "Microsoft Windows 11 家庭版",
+      "Version": "10.0.26200",
+      "BuildNumber": "26200"
+    },
+    "architecture": "x64",
+    "kernel": "10.0.26200",
+    "cpuModel": "AMD Ryzen 7 7840H w/ Radeon(TM) 780M Graphics  ",
+    "logicalProcessors": 16,
+    "memoryBytes": 33618710528,
+    "availableMemoryBeforeBytes": 8640671744,
+    "node": "v22.23.2"
+  },
+  "count": 1,
+  "only": "browser",
+  "checks": [
+    "real_outputs_verified_and_all_requested_cancellations_observe_live_owned_processes"
+  ],
+  "browser": [
+    {
+      "acknowledgementMs": 169.9434000000001,
+      "processExitMs": 133.6836999999996,
+      "identities": [
+        {
+          "pid": 43176,
+          "parentPid": 43544,
+          "startedAtMs": 1791116218723,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+          "role": "dedicated-browser",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 43544,
+          "parentPid": 43832,
+          "startedAtMs": 1791116218443,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+          "role": "dedicated-browser",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 31108,
+          "parentPid": 43544,
+          "startedAtMs": 1791116218593,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+          "role": "dedicated-browser",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 41384,
+          "parentPid": 43544,
+          "startedAtMs": 1791116218651,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+          "role": "dedicated-browser",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 36488,
+          "parentPid": 43544,
+          "startedAtMs": 1791116218723,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+          "role": "dedicated-browser",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 17492,
+          "parentPid": 43544,
+          "startedAtMs": 1791116218680,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+          "role": "dedicated-browser",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 42292,
+          "parentPid": 43544,
+          "startedAtMs": 1791116218600,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+          "role": "dedicated-browser",
+          "uiProfileVerified": false
+        }
+      ],
+      "verification": [
+        {
+          "pid": 43176,
+          "startedAtMs": 1791116218723,
+          "status": "exited"
+        },
+        {
+          "pid": 43544,
+          "startedAtMs": 1791116218443,
+          "status": "exited"
+        },
+        {
+          "pid": 31108,
+          "startedAtMs": 1791116218593,
+          "status": "exited"
+        },
+        {
+          "pid": 41384,
+          "startedAtMs": 1791116218651,
+          "status": "exited"
+        },
+        {
+          "pid": 36488,
+          "startedAtMs": 1791116218723,
+          "status": "exited"
+        },
+        {
+          "pid": 17492,
+          "startedAtMs": 1791116218680,
+          "status": "exited"
+        },
+        {
+          "pid": 42292,
+          "startedAtMs": 1791116218600,
+          "status": "exited"
+        }
+      ],
+      "resources": {
+        "phase": "browser-0",
+        "rawCycles": [
+          {
+            "role": "engine",
+            "tick": 15,
+            "atMs": 1791116220453,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15806464,
+            "privateBytes": 4079616,
+            "cpuPercent": 0,
+            "completeCpu": false
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 15,
+            "atMs": 1791116220463,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 502464512,
+            "privateBytes": 278016000,
+            "cpuPercent": 0,
+            "completeCpu": false
+          },
+          {
+            "role": "desktop",
+            "tick": 15,
+            "atMs": 1791116220473,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0,
+            "completeCpu": false
+          },
+          {
+            "role": "other-owned",
+            "tick": 15,
+            "atMs": 1791116220492,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": false
+          },
+          {
+            "role": "browser-driver",
+            "tick": 15,
+            "atMs": 1791116220519,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": false
+          },
+          {
+            "role": "ui-webview",
+            "tick": 15,
+            "atMs": 1791116220528,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 521486336,
+            "privateBytes": 333107200,
+            "cpuPercent": 0,
+            "completeCpu": false
+          },
+          {
+            "role": "engine",
+            "tick": 16,
+            "atMs": 1791116220750,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15814656,
+            "privateBytes": 4079616,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 16,
+            "atMs": 1791116220761,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 506789888,
+            "privateBytes": 279498752,
+            "cpuPercent": 1.2891914191419143,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 16,
+            "atMs": 1791116220773,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0.32552083333333337,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 16,
+            "atMs": 1791116220797,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 16,
+            "atMs": 1791116220822,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 16,
+            "atMs": 1791116220833,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 521486336,
+            "privateBytes": 333107200,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "engine",
+            "tick": 17,
+            "atMs": 1791116221068,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15814656,
+            "privateBytes": 4079616,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 17,
+            "atMs": 1791116221079,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 523108352,
+            "privateBytes": 284975104,
+            "cpuPercent": 10.230654761904761,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 17,
+            "atMs": 1791116221090,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 17,
+            "atMs": 1791116221110,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 17,
+            "atMs": 1791116221134,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 17,
+            "atMs": 1791116221143,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 521502720,
+            "privateBytes": 333107200,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "engine",
+            "tick": 18,
+            "atMs": 1791116221369,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15818752,
+            "privateBytes": 4083712,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 18,
+            "atMs": 1791116221381,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 523124736,
+            "privateBytes": 284979200,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 18,
+            "atMs": 1791116221392,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 18,
+            "atMs": 1791116221415,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 18,
+            "atMs": 1791116221436,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 18,
+            "atMs": 1791116221447,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 521744384,
+            "privateBytes": 333193216,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "engine",
+            "tick": 19,
+            "atMs": 1791116221685,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15818752,
+            "privateBytes": 4083712,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 19,
+            "atMs": 1791116221694,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 523464704,
+            "privateBytes": 284983296,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 19,
+            "atMs": 1791116221707,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0.3100198412698413,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 19,
+            "atMs": 1791116221729,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 19,
+            "atMs": 1791116221749,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 19,
+            "atMs": 1791116221761,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 521744384,
+            "privateBytes": 333193216,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "engine",
+            "tick": 20,
+            "atMs": 1791116221981,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15818752,
+            "privateBytes": 4083712,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 20,
+            "atMs": 1791116221993,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 523399168,
+            "privateBytes": 284975104,
+            "cpuPercent": 0.6576178451178452,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 20,
+            "atMs": 1791116222003,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 20,
+            "atMs": 1791116222026,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 20,
+            "atMs": 1791116222048,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 20,
+            "atMs": 1791116222058,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 521953280,
+            "privateBytes": 333291520,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "engine",
+            "tick": 21,
+            "atMs": 1791116222286,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15818752,
+            "privateBytes": 4083712,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 21,
+            "atMs": 1791116222298,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 523513856,
+            "privateBytes": 284983296,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 21,
+            "atMs": 1791116222305,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 21,
+            "atMs": 1791116222330,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 21,
+            "atMs": 1791116222352,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 21,
+            "atMs": 1791116222365,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 522039296,
+            "privateBytes": 333414400,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "engine",
+            "tick": 22,
+            "atMs": 1791116222599,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15818752,
+            "privateBytes": 4083712,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 22,
+            "atMs": 1791116222611,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 523542528,
+            "privateBytes": 284987392,
+            "cpuPercent": 0.30709512578616355,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 22,
+            "atMs": 1791116222621,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 22,
+            "atMs": 1791116222643,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 22,
+            "atMs": 1791116222665,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 22,
+            "atMs": 1791116222678,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 522350592,
+            "privateBytes": 333787136,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "engine",
+            "tick": 23,
+            "atMs": 1791116222904,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15818752,
+            "privateBytes": 4083712,
+            "cpuPercent": 0.6403688524590164,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 23,
+            "atMs": 1791116222912,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 523546624,
+            "privateBytes": 284987392,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 23,
+            "atMs": 1791116222923,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 23,
+            "atMs": 1791116222942,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 23,
+            "atMs": 1791116222964,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 23,
+            "atMs": 1791116222974,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 521723904,
+            "privateBytes": 333099008,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "engine",
+            "tick": 24,
+            "atMs": 1791116223201,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15818752,
+            "privateBytes": 4083712,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 24,
+            "atMs": 1791116223211,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 523546624,
+            "privateBytes": 284987392,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 24,
+            "atMs": 1791116223223,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 24,
+            "atMs": 1791116223244,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 24,
+            "atMs": 1791116223264,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 24,
+            "atMs": 1791116223276,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 521723904,
+            "privateBytes": 332509184,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "engine",
+            "tick": 25,
+            "atMs": 1791116223504,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15818752,
+            "privateBytes": 4083712,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 25,
+            "atMs": 1791116223515,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 523575296,
+            "privateBytes": 284987392,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 25,
+            "atMs": 1791116223524,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0.3244393687707641,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 25,
+            "atMs": 1791116223544,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 25,
+            "atMs": 1791116223569,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 25,
+            "atMs": 1791116223579,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 522022912,
+            "privateBytes": 333189120,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "engine",
+            "tick": 26,
+            "atMs": 1791116223803,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15818752,
+            "privateBytes": 4083712,
+            "cpuPercent": 0.32660953177257523,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 26,
+            "atMs": 1791116223810,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 523796480,
+            "privateBytes": 284532736,
+            "cpuPercent": 1.6689362060876194,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 26,
+            "atMs": 1791116223822,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 26,
+            "atMs": 1791116223841,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 26,
+            "atMs": 1791116223863,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 26,
+            "atMs": 1791116223873,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 513634304,
+            "privateBytes": 324784128,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "engine",
+            "tick": 27,
+            "atMs": 1791116224098,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15818752,
+            "privateBytes": 4083712,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 27,
+            "atMs": 1791116224108,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 523849728,
+            "privateBytes": 284594176,
+            "cpuPercent": 0.9853233820305969,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 27,
+            "atMs": 1791116224119,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 27,
+            "atMs": 1791116224140,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 27,
+            "atMs": 1791116224159,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 27,
+            "atMs": 1791116224170,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 513642496,
+            "privateBytes": 324784128,
+            "cpuPercent": 0.32770553691275167,
+            "completeCpu": true
+          },
+          {
+            "role": "engine",
+            "tick": 28,
+            "atMs": 1791116224401,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15818752,
+            "privateBytes": 4083712,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 28,
+            "atMs": 1791116224411,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 523972608,
+            "privateBytes": 284663808,
+            "cpuPercent": 0.32229785478547857,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 28,
+            "atMs": 1791116224419,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 28,
+            "atMs": 1791116224442,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 28,
+            "atMs": 1791116224464,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 28,
+            "atMs": 1791116224474,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 515342336,
+            "privateBytes": 326766592,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "engine",
+            "tick": 29,
+            "atMs": 1791116224700,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15818752,
+            "privateBytes": 4083712,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 29,
+            "atMs": 1791116224712,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 524017664,
+            "privateBytes": 284733440,
+            "cpuPercent": 0.6489073865580538,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 29,
+            "atMs": 1791116224722,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 29,
+            "atMs": 1791116224743,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 29,
+            "atMs": 1791116224763,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 29,
+            "atMs": 1791116224770,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 514035712,
+            "privateBytes": 325107712,
+            "cpuPercent": 0.3288089225589226,
+            "completeCpu": true
+          },
+          {
+            "role": "engine",
+            "tick": 30,
+            "atMs": 1791116225001,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15818752,
+            "privateBytes": 4083712,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 30,
+            "atMs": 1791116225010,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 524017664,
+            "privateBytes": 284733440,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 30,
+            "atMs": 1791116225019,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 30,
+            "atMs": 1791116225043,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 30,
+            "atMs": 1791116225063,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 30,
+            "atMs": 1791116225073,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 514240512,
+            "privateBytes": 325234688,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "engine",
+            "tick": 31,
+            "atMs": 1791116225301,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15818752,
+            "privateBytes": 4083712,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 31,
+            "atMs": 1791116225311,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 524017664,
+            "privateBytes": 284733440,
+            "cpuPercent": 0.3233650662251656,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 31,
+            "atMs": 1791116225319,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 31,
+            "atMs": 1791116225342,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 31,
+            "atMs": 1791116225362,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 31,
+            "atMs": 1791116225369,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 514240512,
+            "privateBytes": 325234688,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "engine",
+            "tick": 32,
+            "atMs": 1791116225599,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15818752,
+            "privateBytes": 4083712,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 32,
+            "atMs": 1791116225609,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 524021760,
+            "privateBytes": 284737536,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 32,
+            "atMs": 1791116225620,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 32,
+            "atMs": 1791116225640,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 32,
+            "atMs": 1791116225659,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 32,
+            "atMs": 1791116225670,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 514265088,
+            "privateBytes": 325255168,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "engine",
+            "tick": 33,
+            "atMs": 1791116225898,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15818752,
+            "privateBytes": 4083712,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 33,
+            "atMs": 1791116225908,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 518070272,
+            "privateBytes": 278769664,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 33,
+            "atMs": 1791116225918,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 33,
+            "atMs": 1791116225939,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 33,
+            "atMs": 1791116225959,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 33,
+            "atMs": 1791116225969,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 514322432,
+            "privateBytes": 325304320,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "engine",
+            "tick": 34,
+            "atMs": 1791116226186,
+            "processIdentities": [
+              "33040:1791116216767"
+            ],
+            "workingSetBytes": 15818752,
+            "privateBytes": 4083712,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "dedicated-browser",
+            "tick": 34,
+            "atMs": 1791116226198,
+            "processIdentities": [
+              "43176:1791116218723",
+              "43544:1791116218443",
+              "31108:1791116218593",
+              "41384:1791116218651",
+              "36488:1791116218723",
+              "17492:1791116218680",
+              "42292:1791116218600"
+            ],
+            "workingSetBytes": 518074368,
+            "privateBytes": 278773760,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "desktop",
+            "tick": 34,
+            "atMs": 1791116226208,
+            "processIdentities": [
+              "40696:1791116216746"
+            ],
+            "workingSetBytes": 30392320,
+            "privateBytes": 6201344,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "other-owned",
+            "tick": 34,
+            "atMs": 1791116226230,
+            "processIdentities": [
+              "24116:1791116218370",
+              "42632:1791116216779"
+            ],
+            "workingSetBytes": 15835136,
+            "privateBytes": 2510848,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "browser-driver",
+            "tick": 34,
+            "atMs": 1791116226248,
+            "processIdentities": [
+              "43832:1791116218357"
+            ],
+            "workingSetBytes": 34320384,
+            "privateBytes": 51138560,
+            "cpuPercent": 0,
+            "completeCpu": true
+          },
+          {
+            "role": "ui-webview",
+            "tick": 34,
+            "atMs": 1791116226258,
+            "processIdentities": [
+              "23516:1791116217033",
+              "35688:1791116216879",
+              "42308:1791116217020",
+              "25100:1791116216911",
+              "42488:1791116217053",
+              "3484:1791116217159"
+            ],
+            "workingSetBytes": 514322432,
+            "privateBytes": 325304320,
+            "cpuPercent": 0,
+            "completeCpu": true
+          }
+        ],
+        "cycleCoverage": [
+          {
+            "tick": 15,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 16,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 17,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 18,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 19,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 20,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 21,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 22,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 23,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 24,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 25,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 26,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 27,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 28,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 29,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 30,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 31,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 32,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 33,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          },
+          {
+            "tick": 34,
+            "targetVersion": null,
+            "complete": true,
+            "expectedProcesses": 18,
+            "sampledProcesses": 18
+          }
+        ],
+        "excludedIncompleteCycles": [],
+        "groups": [
+          {
+            "role": "engine",
+            "samples": 20,
+            "observedProcesses": 1,
+            "workingSetBytes": {
+              "count": 20,
+              "min": 15806464,
+              "p50": 15818752,
+              "p95": 15818752,
+              "max": 15818752,
+              "mean": 15817728
+            },
+            "privateBytes": {
+              "count": 20,
+              "min": 4079616,
+              "p50": 4083712,
+              "p95": 4083712,
+              "max": 4083712,
+              "mean": 4083097.6
+            },
+            "cpuPercentOfWholeMachine": {
+              "count": 19,
+              "min": 0,
+              "p50": 0,
+              "p95": 0.64,
+              "max": 0.64,
+              "mean": 0.051
+            },
+            "processCounts": {
+              "count": 20,
+              "min": 1,
+              "p50": 1,
+              "p95": 1,
+              "max": 1,
+              "mean": 1
+            }
+          },
+          {
+            "role": "dedicated-browser",
+            "samples": 20,
+            "observedProcesses": 7,
+            "workingSetBytes": {
+              "count": 20,
+              "min": 502464512,
+              "p50": 523542528,
+              "p95": 524017664,
+              "max": 524021760,
+              "mean": 521195724.8
+            },
+            "privateBytes": {
+              "count": 20,
+              "min": 278016000,
+              "p50": 284733440,
+              "p95": 284987392,
+              "max": 284987392,
+              "mean": 283631616
+            },
+            "cpuPercentOfWholeMachine": {
+              "count": 19,
+              "min": 0,
+              "p50": 0,
+              "p95": 10.231,
+              "max": 10.231,
+              "mean": 0.865
+            },
+            "processCounts": {
+              "count": 20,
+              "min": 7,
+              "p50": 7,
+              "p95": 7,
+              "max": 7,
+              "mean": 7
+            }
+          },
+          {
+            "role": "desktop",
+            "samples": 20,
+            "observedProcesses": 1,
+            "workingSetBytes": {
+              "count": 20,
+              "min": 30392320,
+              "p50": 30392320,
+              "p95": 30392320,
+              "max": 30392320,
+              "mean": 30392320
+            },
+            "privateBytes": {
+              "count": 20,
+              "min": 6201344,
+              "p50": 6201344,
+              "p95": 6201344,
+              "max": 6201344,
+              "mean": 6201344
+            },
+            "cpuPercentOfWholeMachine": {
+              "count": 19,
+              "min": 0,
+              "p50": 0,
+              "p95": 0.326,
+              "max": 0.326,
+              "mean": 0.051
+            },
+            "processCounts": {
+              "count": 20,
+              "min": 1,
+              "p50": 1,
+              "p95": 1,
+              "max": 1,
+              "mean": 1
+            }
+          },
+          {
+            "role": "other-owned",
+            "samples": 20,
+            "observedProcesses": 2,
+            "workingSetBytes": {
+              "count": 20,
+              "min": 15835136,
+              "p50": 15835136,
+              "p95": 15835136,
+              "max": 15835136,
+              "mean": 15835136
+            },
+            "privateBytes": {
+              "count": 20,
+              "min": 2510848,
+              "p50": 2510848,
+              "p95": 2510848,
+              "max": 2510848,
+              "mean": 2510848
+            },
+            "cpuPercentOfWholeMachine": {
+              "count": 19,
+              "min": 0,
+              "p50": 0,
+              "p95": 0,
+              "max": 0,
+              "mean": 0
+            },
+            "processCounts": {
+              "count": 20,
+              "min": 2,
+              "p50": 2,
+              "p95": 2,
+              "max": 2,
+              "mean": 2
+            }
+          },
+          {
+            "role": "browser-driver",
+            "samples": 20,
+            "observedProcesses": 1,
+            "workingSetBytes": {
+              "count": 20,
+              "min": 34320384,
+              "p50": 34320384,
+              "p95": 34320384,
+              "max": 34320384,
+              "mean": 34320384
+            },
+            "privateBytes": {
+              "count": 20,
+              "min": 51138560,
+              "p50": 51138560,
+              "p95": 51138560,
+              "max": 51138560,
+              "mean": 51138560
+            },
+            "cpuPercentOfWholeMachine": {
+              "count": 19,
+              "min": 0,
+              "p50": 0,
+              "p95": 0,
+              "max": 0,
+              "mean": 0
+            },
+            "processCounts": {
+              "count": 20,
+              "min": 1,
+              "p50": 1,
+              "p95": 1,
+              "max": 1,
+              "mean": 1
+            }
+          },
+          {
+            "role": "ui-webview",
+            "samples": 20,
+            "observedProcesses": 6,
+            "workingSetBytes": {
+              "count": 20,
+              "min": 513634304,
+              "p50": 521486336,
+              "p95": 522039296,
+              "max": 522350592,
+              "mean": 518391193.6
+            },
+            "privateBytes": {
+              "count": 20,
+              "min": 324784128,
+              "p50": 332509184,
+              "p95": 333414400,
+              "max": 333787136,
+              "mean": 329638707.2
+            },
+            "cpuPercentOfWholeMachine": {
+              "count": 19,
+              "min": 0,
+              "p50": 0,
+              "p95": 0.329,
+              "max": 0.329,
+              "mean": 0.035
+            },
+            "processCounts": {
+              "count": 20,
+              "min": 6,
+              "p50": 6,
+              "p95": 6,
+              "max": 6,
+              "mean": 6
+            }
+          }
+        ]
+      },
+      "observationBeganAtMs": 1791116220430,
+      "observationEndedAtMs": 1791116226466
+    }
+  ],
+  "office": [],
+  "deliveries": [
+    {
+      "task": "73c539c2-7593-4ae0-b4c3-94cc9d1daa4e",
+      "session": "6eef9cc8-37bd-4fa5-ad25-c05b06c6ef07",
+      "ownedPid": 43544,
+      "closure": {
+        "acknowledgementMs": 169.9434000000001,
+        "processExitMs": 133.6836999999996,
+        "identities": [
+          {
+            "pid": 43176,
+            "parentPid": 43544,
+            "startedAtMs": 1791116218723,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+            "role": "dedicated-browser",
+            "uiProfileVerified": false
+          },
+          {
+            "pid": 43544,
+            "parentPid": 43832,
+            "startedAtMs": 1791116218443,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+            "role": "dedicated-browser",
+            "uiProfileVerified": false
+          },
+          {
+            "pid": 31108,
+            "parentPid": 43544,
+            "startedAtMs": 1791116218593,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+            "role": "dedicated-browser",
+            "uiProfileVerified": false
+          },
+          {
+            "pid": 41384,
+            "parentPid": 43544,
+            "startedAtMs": 1791116218651,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+            "role": "dedicated-browser",
+            "uiProfileVerified": false
+          },
+          {
+            "pid": 36488,
+            "parentPid": 43544,
+            "startedAtMs": 1791116218723,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+            "role": "dedicated-browser",
+            "uiProfileVerified": false
+          },
+          {
+            "pid": 17492,
+            "parentPid": 43544,
+            "startedAtMs": 1791116218680,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+            "role": "dedicated-browser",
+            "uiProfileVerified": false
+          },
+          {
+            "pid": 42292,
+            "parentPid": 43544,
+            "startedAtMs": 1791116218600,
+            "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+            "role": "dedicated-browser",
+            "uiProfileVerified": false
+          }
+        ],
+        "verification": [
+          {
+            "pid": 43176,
+            "startedAtMs": 1791116218723,
+            "status": "exited"
+          },
+          {
+            "pid": 43544,
+            "startedAtMs": 1791116218443,
+            "status": "exited"
+          },
+          {
+            "pid": 31108,
+            "startedAtMs": 1791116218593,
+            "status": "exited"
+          },
+          {
+            "pid": 41384,
+            "startedAtMs": 1791116218651,
+            "status": "exited"
+          },
+          {
+            "pid": 36488,
+            "startedAtMs": 1791116218723,
+            "status": "exited"
+          },
+          {
+            "pid": 17492,
+            "startedAtMs": 1791116218680,
+            "status": "exited"
+          },
+          {
+            "pid": 42292,
+            "startedAtMs": 1791116218600,
+            "status": "exited"
+          }
+        ],
+        "resources": {
+          "phase": "browser-0",
+          "rawCycles": [
+            {
+              "role": "engine",
+              "tick": 15,
+              "atMs": 1791116220453,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15806464,
+              "privateBytes": 4079616,
+              "cpuPercent": 0,
+              "completeCpu": false
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 15,
+              "atMs": 1791116220463,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 502464512,
+              "privateBytes": 278016000,
+              "cpuPercent": 0,
+              "completeCpu": false
+            },
+            {
+              "role": "desktop",
+              "tick": 15,
+              "atMs": 1791116220473,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0,
+              "completeCpu": false
+            },
+            {
+              "role": "other-owned",
+              "tick": 15,
+              "atMs": 1791116220492,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": false
+            },
+            {
+              "role": "browser-driver",
+              "tick": 15,
+              "atMs": 1791116220519,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": false
+            },
+            {
+              "role": "ui-webview",
+              "tick": 15,
+              "atMs": 1791116220528,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 521486336,
+              "privateBytes": 333107200,
+              "cpuPercent": 0,
+              "completeCpu": false
+            },
+            {
+              "role": "engine",
+              "tick": 16,
+              "atMs": 1791116220750,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15814656,
+              "privateBytes": 4079616,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 16,
+              "atMs": 1791116220761,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 506789888,
+              "privateBytes": 279498752,
+              "cpuPercent": 1.2891914191419143,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 16,
+              "atMs": 1791116220773,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0.32552083333333337,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 16,
+              "atMs": 1791116220797,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 16,
+              "atMs": 1791116220822,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 16,
+              "atMs": 1791116220833,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 521486336,
+              "privateBytes": 333107200,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "engine",
+              "tick": 17,
+              "atMs": 1791116221068,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15814656,
+              "privateBytes": 4079616,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 17,
+              "atMs": 1791116221079,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 523108352,
+              "privateBytes": 284975104,
+              "cpuPercent": 10.230654761904761,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 17,
+              "atMs": 1791116221090,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 17,
+              "atMs": 1791116221110,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 17,
+              "atMs": 1791116221134,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 17,
+              "atMs": 1791116221143,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 521502720,
+              "privateBytes": 333107200,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "engine",
+              "tick": 18,
+              "atMs": 1791116221369,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15818752,
+              "privateBytes": 4083712,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 18,
+              "atMs": 1791116221381,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 523124736,
+              "privateBytes": 284979200,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 18,
+              "atMs": 1791116221392,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 18,
+              "atMs": 1791116221415,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 18,
+              "atMs": 1791116221436,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 18,
+              "atMs": 1791116221447,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 521744384,
+              "privateBytes": 333193216,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "engine",
+              "tick": 19,
+              "atMs": 1791116221685,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15818752,
+              "privateBytes": 4083712,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 19,
+              "atMs": 1791116221694,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 523464704,
+              "privateBytes": 284983296,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 19,
+              "atMs": 1791116221707,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0.3100198412698413,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 19,
+              "atMs": 1791116221729,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 19,
+              "atMs": 1791116221749,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 19,
+              "atMs": 1791116221761,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 521744384,
+              "privateBytes": 333193216,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "engine",
+              "tick": 20,
+              "atMs": 1791116221981,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15818752,
+              "privateBytes": 4083712,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 20,
+              "atMs": 1791116221993,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 523399168,
+              "privateBytes": 284975104,
+              "cpuPercent": 0.6576178451178452,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 20,
+              "atMs": 1791116222003,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 20,
+              "atMs": 1791116222026,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 20,
+              "atMs": 1791116222048,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 20,
+              "atMs": 1791116222058,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 521953280,
+              "privateBytes": 333291520,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "engine",
+              "tick": 21,
+              "atMs": 1791116222286,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15818752,
+              "privateBytes": 4083712,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 21,
+              "atMs": 1791116222298,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 523513856,
+              "privateBytes": 284983296,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 21,
+              "atMs": 1791116222305,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 21,
+              "atMs": 1791116222330,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 21,
+              "atMs": 1791116222352,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 21,
+              "atMs": 1791116222365,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 522039296,
+              "privateBytes": 333414400,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "engine",
+              "tick": 22,
+              "atMs": 1791116222599,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15818752,
+              "privateBytes": 4083712,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 22,
+              "atMs": 1791116222611,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 523542528,
+              "privateBytes": 284987392,
+              "cpuPercent": 0.30709512578616355,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 22,
+              "atMs": 1791116222621,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 22,
+              "atMs": 1791116222643,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 22,
+              "atMs": 1791116222665,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 22,
+              "atMs": 1791116222678,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 522350592,
+              "privateBytes": 333787136,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "engine",
+              "tick": 23,
+              "atMs": 1791116222904,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15818752,
+              "privateBytes": 4083712,
+              "cpuPercent": 0.6403688524590164,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 23,
+              "atMs": 1791116222912,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 523546624,
+              "privateBytes": 284987392,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 23,
+              "atMs": 1791116222923,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 23,
+              "atMs": 1791116222942,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 23,
+              "atMs": 1791116222964,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 23,
+              "atMs": 1791116222974,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 521723904,
+              "privateBytes": 333099008,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "engine",
+              "tick": 24,
+              "atMs": 1791116223201,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15818752,
+              "privateBytes": 4083712,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 24,
+              "atMs": 1791116223211,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 523546624,
+              "privateBytes": 284987392,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 24,
+              "atMs": 1791116223223,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 24,
+              "atMs": 1791116223244,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 24,
+              "atMs": 1791116223264,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 24,
+              "atMs": 1791116223276,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 521723904,
+              "privateBytes": 332509184,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "engine",
+              "tick": 25,
+              "atMs": 1791116223504,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15818752,
+              "privateBytes": 4083712,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 25,
+              "atMs": 1791116223515,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 523575296,
+              "privateBytes": 284987392,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 25,
+              "atMs": 1791116223524,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0.3244393687707641,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 25,
+              "atMs": 1791116223544,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 25,
+              "atMs": 1791116223569,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 25,
+              "atMs": 1791116223579,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 522022912,
+              "privateBytes": 333189120,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "engine",
+              "tick": 26,
+              "atMs": 1791116223803,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15818752,
+              "privateBytes": 4083712,
+              "cpuPercent": 0.32660953177257523,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 26,
+              "atMs": 1791116223810,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 523796480,
+              "privateBytes": 284532736,
+              "cpuPercent": 1.6689362060876194,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 26,
+              "atMs": 1791116223822,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 26,
+              "atMs": 1791116223841,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 26,
+              "atMs": 1791116223863,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 26,
+              "atMs": 1791116223873,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 513634304,
+              "privateBytes": 324784128,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "engine",
+              "tick": 27,
+              "atMs": 1791116224098,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15818752,
+              "privateBytes": 4083712,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 27,
+              "atMs": 1791116224108,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 523849728,
+              "privateBytes": 284594176,
+              "cpuPercent": 0.9853233820305969,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 27,
+              "atMs": 1791116224119,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 27,
+              "atMs": 1791116224140,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 27,
+              "atMs": 1791116224159,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 27,
+              "atMs": 1791116224170,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 513642496,
+              "privateBytes": 324784128,
+              "cpuPercent": 0.32770553691275167,
+              "completeCpu": true
+            },
+            {
+              "role": "engine",
+              "tick": 28,
+              "atMs": 1791116224401,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15818752,
+              "privateBytes": 4083712,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 28,
+              "atMs": 1791116224411,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 523972608,
+              "privateBytes": 284663808,
+              "cpuPercent": 0.32229785478547857,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 28,
+              "atMs": 1791116224419,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 28,
+              "atMs": 1791116224442,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 28,
+              "atMs": 1791116224464,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 28,
+              "atMs": 1791116224474,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 515342336,
+              "privateBytes": 326766592,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "engine",
+              "tick": 29,
+              "atMs": 1791116224700,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15818752,
+              "privateBytes": 4083712,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 29,
+              "atMs": 1791116224712,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 524017664,
+              "privateBytes": 284733440,
+              "cpuPercent": 0.6489073865580538,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 29,
+              "atMs": 1791116224722,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 29,
+              "atMs": 1791116224743,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 29,
+              "atMs": 1791116224763,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 29,
+              "atMs": 1791116224770,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 514035712,
+              "privateBytes": 325107712,
+              "cpuPercent": 0.3288089225589226,
+              "completeCpu": true
+            },
+            {
+              "role": "engine",
+              "tick": 30,
+              "atMs": 1791116225001,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15818752,
+              "privateBytes": 4083712,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 30,
+              "atMs": 1791116225010,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 524017664,
+              "privateBytes": 284733440,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 30,
+              "atMs": 1791116225019,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 30,
+              "atMs": 1791116225043,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 30,
+              "atMs": 1791116225063,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 30,
+              "atMs": 1791116225073,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 514240512,
+              "privateBytes": 325234688,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "engine",
+              "tick": 31,
+              "atMs": 1791116225301,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15818752,
+              "privateBytes": 4083712,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 31,
+              "atMs": 1791116225311,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 524017664,
+              "privateBytes": 284733440,
+              "cpuPercent": 0.3233650662251656,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 31,
+              "atMs": 1791116225319,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 31,
+              "atMs": 1791116225342,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 31,
+              "atMs": 1791116225362,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 31,
+              "atMs": 1791116225369,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 514240512,
+              "privateBytes": 325234688,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "engine",
+              "tick": 32,
+              "atMs": 1791116225599,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15818752,
+              "privateBytes": 4083712,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 32,
+              "atMs": 1791116225609,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 524021760,
+              "privateBytes": 284737536,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 32,
+              "atMs": 1791116225620,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 32,
+              "atMs": 1791116225640,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 32,
+              "atMs": 1791116225659,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 32,
+              "atMs": 1791116225670,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 514265088,
+              "privateBytes": 325255168,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "engine",
+              "tick": 33,
+              "atMs": 1791116225898,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15818752,
+              "privateBytes": 4083712,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 33,
+              "atMs": 1791116225908,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 518070272,
+              "privateBytes": 278769664,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 33,
+              "atMs": 1791116225918,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 33,
+              "atMs": 1791116225939,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 33,
+              "atMs": 1791116225959,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 33,
+              "atMs": 1791116225969,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 514322432,
+              "privateBytes": 325304320,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "engine",
+              "tick": 34,
+              "atMs": 1791116226186,
+              "processIdentities": [
+                "33040:1791116216767"
+              ],
+              "workingSetBytes": 15818752,
+              "privateBytes": 4083712,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "dedicated-browser",
+              "tick": 34,
+              "atMs": 1791116226198,
+              "processIdentities": [
+                "43176:1791116218723",
+                "43544:1791116218443",
+                "31108:1791116218593",
+                "41384:1791116218651",
+                "36488:1791116218723",
+                "17492:1791116218680",
+                "42292:1791116218600"
+              ],
+              "workingSetBytes": 518074368,
+              "privateBytes": 278773760,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "desktop",
+              "tick": 34,
+              "atMs": 1791116226208,
+              "processIdentities": [
+                "40696:1791116216746"
+              ],
+              "workingSetBytes": 30392320,
+              "privateBytes": 6201344,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "other-owned",
+              "tick": 34,
+              "atMs": 1791116226230,
+              "processIdentities": [
+                "24116:1791116218370",
+                "42632:1791116216779"
+              ],
+              "workingSetBytes": 15835136,
+              "privateBytes": 2510848,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "browser-driver",
+              "tick": 34,
+              "atMs": 1791116226248,
+              "processIdentities": [
+                "43832:1791116218357"
+              ],
+              "workingSetBytes": 34320384,
+              "privateBytes": 51138560,
+              "cpuPercent": 0,
+              "completeCpu": true
+            },
+            {
+              "role": "ui-webview",
+              "tick": 34,
+              "atMs": 1791116226258,
+              "processIdentities": [
+                "23516:1791116217033",
+                "35688:1791116216879",
+                "42308:1791116217020",
+                "25100:1791116216911",
+                "42488:1791116217053",
+                "3484:1791116217159"
+              ],
+              "workingSetBytes": 514322432,
+              "privateBytes": 325304320,
+              "cpuPercent": 0,
+              "completeCpu": true
+            }
+          ],
+          "cycleCoverage": [
+            {
+              "tick": 15,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 16,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 17,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 18,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 19,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 20,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 21,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 22,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 23,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 24,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 25,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 26,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 27,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 28,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 29,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 30,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 31,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 32,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 33,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            },
+            {
+              "tick": 34,
+              "targetVersion": null,
+              "complete": true,
+              "expectedProcesses": 18,
+              "sampledProcesses": 18
+            }
+          ],
+          "excludedIncompleteCycles": [],
+          "groups": [
+            {
+              "role": "engine",
+              "samples": 20,
+              "observedProcesses": 1,
+              "workingSetBytes": {
+                "count": 20,
+                "min": 15806464,
+                "p50": 15818752,
+                "p95": 15818752,
+                "max": 15818752,
+                "mean": 15817728
+              },
+              "privateBytes": {
+                "count": 20,
+                "min": 4079616,
+                "p50": 4083712,
+                "p95": 4083712,
+                "max": 4083712,
+                "mean": 4083097.6
+              },
+              "cpuPercentOfWholeMachine": {
+                "count": 19,
+                "min": 0,
+                "p50": 0,
+                "p95": 0.64,
+                "max": 0.64,
+                "mean": 0.051
+              },
+              "processCounts": {
+                "count": 20,
+                "min": 1,
+                "p50": 1,
+                "p95": 1,
+                "max": 1,
+                "mean": 1
+              }
+            },
+            {
+              "role": "dedicated-browser",
+              "samples": 20,
+              "observedProcesses": 7,
+              "workingSetBytes": {
+                "count": 20,
+                "min": 502464512,
+                "p50": 523542528,
+                "p95": 524017664,
+                "max": 524021760,
+                "mean": 521195724.8
+              },
+              "privateBytes": {
+                "count": 20,
+                "min": 278016000,
+                "p50": 284733440,
+                "p95": 284987392,
+                "max": 284987392,
+                "mean": 283631616
+              },
+              "cpuPercentOfWholeMachine": {
+                "count": 19,
+                "min": 0,
+                "p50": 0,
+                "p95": 10.231,
+                "max": 10.231,
+                "mean": 0.865
+              },
+              "processCounts": {
+                "count": 20,
+                "min": 7,
+                "p50": 7,
+                "p95": 7,
+                "max": 7,
+                "mean": 7
+              }
+            },
+            {
+              "role": "desktop",
+              "samples": 20,
+              "observedProcesses": 1,
+              "workingSetBytes": {
+                "count": 20,
+                "min": 30392320,
+                "p50": 30392320,
+                "p95": 30392320,
+                "max": 30392320,
+                "mean": 30392320
+              },
+              "privateBytes": {
+                "count": 20,
+                "min": 6201344,
+                "p50": 6201344,
+                "p95": 6201344,
+                "max": 6201344,
+                "mean": 6201344
+              },
+              "cpuPercentOfWholeMachine": {
+                "count": 19,
+                "min": 0,
+                "p50": 0,
+                "p95": 0.326,
+                "max": 0.326,
+                "mean": 0.051
+              },
+              "processCounts": {
+                "count": 20,
+                "min": 1,
+                "p50": 1,
+                "p95": 1,
+                "max": 1,
+                "mean": 1
+              }
+            },
+            {
+              "role": "other-owned",
+              "samples": 20,
+              "observedProcesses": 2,
+              "workingSetBytes": {
+                "count": 20,
+                "min": 15835136,
+                "p50": 15835136,
+                "p95": 15835136,
+                "max": 15835136,
+                "mean": 15835136
+              },
+              "privateBytes": {
+                "count": 20,
+                "min": 2510848,
+                "p50": 2510848,
+                "p95": 2510848,
+                "max": 2510848,
+                "mean": 2510848
+              },
+              "cpuPercentOfWholeMachine": {
+                "count": 19,
+                "min": 0,
+                "p50": 0,
+                "p95": 0,
+                "max": 0,
+                "mean": 0
+              },
+              "processCounts": {
+                "count": 20,
+                "min": 2,
+                "p50": 2,
+                "p95": 2,
+                "max": 2,
+                "mean": 2
+              }
+            },
+            {
+              "role": "browser-driver",
+              "samples": 20,
+              "observedProcesses": 1,
+              "workingSetBytes": {
+                "count": 20,
+                "min": 34320384,
+                "p50": 34320384,
+                "p95": 34320384,
+                "max": 34320384,
+                "mean": 34320384
+              },
+              "privateBytes": {
+                "count": 20,
+                "min": 51138560,
+                "p50": 51138560,
+                "p95": 51138560,
+                "max": 51138560,
+                "mean": 51138560
+              },
+              "cpuPercentOfWholeMachine": {
+                "count": 19,
+                "min": 0,
+                "p50": 0,
+                "p95": 0,
+                "max": 0,
+                "mean": 0
+              },
+              "processCounts": {
+                "count": 20,
+                "min": 1,
+                "p50": 1,
+                "p95": 1,
+                "max": 1,
+                "mean": 1
+              }
+            },
+            {
+              "role": "ui-webview",
+              "samples": 20,
+              "observedProcesses": 6,
+              "workingSetBytes": {
+                "count": 20,
+                "min": 513634304,
+                "p50": 521486336,
+                "p95": 522039296,
+                "max": 522350592,
+                "mean": 518391193.6
+              },
+              "privateBytes": {
+                "count": 20,
+                "min": 324784128,
+                "p50": 332509184,
+                "p95": 333414400,
+                "max": 333787136,
+                "mean": 329638707.2
+              },
+              "cpuPercentOfWholeMachine": {
+                "count": 19,
+                "min": 0,
+                "p50": 0,
+                "p95": 0.329,
+                "max": 0.329,
+                "mean": 0.035
+              },
+              "processCounts": {
+                "count": 20,
+                "min": 6,
+                "p50": 6,
+                "p95": 6,
+                "max": 6,
+                "mean": 6
+              }
+            }
+          ]
+        },
+        "observationBeganAtMs": 1791116220430,
+        "observationEndedAtMs": 1791116226466
+      },
+      "screenshot": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-tool-stop\\run-vXGh4F\\browser-0.png",
+      "download": {
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-tool-stop\\run-vXGh4F\\owned-project\\browser-0\\result.csv",
+        "sha256": "f7154e3f98374db3d4f63165e434bba2c3e6aef971e2d2e837620633ccb0ac31",
+        "bytes": 24
+      }
+    }
+  ],
+  "conditions": "Calibration only; root build and CLI regression may overlap. Extended observation collects >=20 cycles but does not change the 2-second process stop target.",
+  "scope": "Real bundled dedicated Chromium and AppContainer Office renderer, fixed local fixtures; actual process exit separate from request/ACL/staging cleanup. Short probes with fewer than20 samples are not formal percentile acceptance.",
+  "status": "probe_passed_not_twenty_samples",
+  "exitVerification": [
+    {
+      "pid": 3484,
+      "startedAtMs": 1791116217159,
+      "status": "exited"
+    },
+    {
+      "pid": 40696,
+      "startedAtMs": 1791116216746,
+      "status": "exited"
+    },
+    {
+      "pid": 42488,
+      "startedAtMs": 1791116217053,
+      "status": "exited"
+    },
+    {
+      "pid": 42632,
+      "startedAtMs": 1791116216779,
+      "status": "exited"
+    },
+    {
+      "pid": 42308,
+      "startedAtMs": 1791116217020,
+      "status": "exited"
+    },
+    {
+      "pid": 33040,
+      "startedAtMs": 1791116216767,
+      "status": "exited"
+    },
+    {
+      "pid": 25100,
+      "startedAtMs": 1791116216911,
+      "status": "exited"
+    },
+    {
+      "pid": 35688,
+      "startedAtMs": 1791116216879,
+      "status": "exited"
+    },
+    {
+      "pid": 23516,
+      "startedAtMs": 1791116217033,
+      "status": "exited"
+    },
+    {
+      "pid": 43176,
+      "startedAtMs": 1791116218723,
+      "status": "exited"
+    },
+    {
+      "pid": 43544,
+      "startedAtMs": 1791116218443,
+      "status": "exited"
+    },
+    {
+      "pid": 24116,
+      "startedAtMs": 1791116218370,
+      "status": "exited"
+    },
+    {
+      "pid": 31108,
+      "startedAtMs": 1791116218593,
+      "status": "exited"
+    },
+    {
+      "pid": 43832,
+      "startedAtMs": 1791116218357,
+      "status": "exited"
+    },
+    {
+      "pid": 41384,
+      "startedAtMs": 1791116218651,
+      "status": "exited"
+    },
+    {
+      "pid": 36488,
+      "startedAtMs": 1791116218723,
+      "status": "exited"
+    },
+    {
+      "pid": 17492,
+      "startedAtMs": 1791116218680,
+      "status": "exited"
+    },
+    {
+      "pid": 42292,
+      "startedAtMs": 1791116218600,
+      "status": "exited"
+    }
+  ],
+  "metrics": {
+    "browser": {
+      "acknowledgementMs": {
+        "count": 1,
+        "min": 169.943,
+        "p50": 169.943,
+        "p95": 169.943,
+        "max": 169.943,
+        "mean": 169.943
+      },
+      "processExitMs": {
+        "count": 1,
+        "min": 133.684,
+        "p50": 133.684,
+        "p95": 133.684,
+        "max": 133.684,
+        "mean": 133.684
+      }
+    },
+    "office": {
+      "acknowledgementMs": {
+        "count": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null,
+        "mean": null
+      },
+      "processExitMs": {
+        "count": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null,
+        "mean": null
+      },
+      "cleanupMs": {
+        "count": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null,
+        "mean": null
+      },
+      "workspaceCleanupMs": {
+        "count": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null,
+        "mean": null
+      },
+      "replyMs": {
+        "count": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null,
+        "mean": null
+      }
+    }
+  },
+  "resources": {
+    "records": 515,
+    "observedProcessIdentities": 18,
+    "firstAtMs": 1791116218509,
+    "lastAtMs": 1791116227783,
+    "reusedPids": [],
+    "scope": "Per-cycle sums of identity-verified observed processes; discovery/sampling may miss very short-lived processes and transition cycles can be partial. Dedicated-browser stop cases separately require complete snapshots. Working-set sums include shared pages; private bytes are committed private memory. Five-minute buckets describe this run, not a leak diagnosis.",
+    "groups": [
+      {
+        "role": "ui-webview",
+        "cycles": 34,
+        "workingSetBytes": {
+          "count": 34,
+          "min": 506105856,
+          "p50": 515342336,
+          "p95": 522039296,
+          "max": 522350592,
+          "mean": 515975649.882
+        },
+        "privateBytes": {
+          "count": 34,
+          "min": 317108224,
+          "p50": 326987776,
+          "p95": 333414400,
+          "max": 333787136,
+          "mean": 327912990.118
+        },
+        "cpuPercentOfWholeMachine": {
+          "count": 33,
+          "min": 0,
+          "p50": 0,
+          "p95": 2.457,
+          "max": 6.193,
+          "mean": 0.505
+        },
+        "processCounts": {
+          "count": 34,
+          "min": 6,
+          "p50": 6,
+          "p95": 6,
+          "max": 6,
+          "mean": 6
+        },
+        "fiveMinuteBuckets": [
+          {
+            "index": 0,
+            "workingSetBytes": {
+              "count": 34,
+              "min": 506105856,
+              "p50": 515342336,
+              "p95": 522039296,
+              "max": 522350592,
+              "mean": 515975649.882
+            },
+            "privateBytes": {
+              "count": 34,
+              "min": 317108224,
+              "p50": 326987776,
+              "p95": 333414400,
+              "max": 333787136,
+              "mean": 327912990.118
+            },
+            "cpuPercentOfWholeMachine": {
+              "count": 33,
+              "min": 0,
+              "p50": 0,
+              "p95": 2.457,
+              "max": 6.193,
+              "mean": 0.505
+            }
+          }
+        ]
+      },
+      {
+        "role": "desktop",
+        "cycles": 34,
+        "workingSetBytes": {
+          "count": 34,
+          "min": 30158848,
+          "p50": 30392320,
+          "p95": 30396416,
+          "max": 30396416,
+          "mean": 30368466.824
+        },
+        "privateBytes": {
+          "count": 34,
+          "min": 6184960,
+          "p50": 6201344,
+          "p95": 6205440,
+          "max": 6217728,
+          "mean": 6200741.647
+        },
+        "cpuPercentOfWholeMachine": {
+          "count": 33,
+          "min": 0,
+          "p50": 0,
+          "p95": 0.326,
+          "max": 0.452,
+          "mean": 0.043
+        },
+        "processCounts": {
+          "count": 34,
+          "min": 1,
+          "p50": 1,
+          "p95": 1,
+          "max": 1,
+          "mean": 1
+        },
+        "fiveMinuteBuckets": [
+          {
+            "index": 0,
+            "workingSetBytes": {
+              "count": 34,
+              "min": 30158848,
+              "p50": 30392320,
+              "p95": 30396416,
+              "max": 30396416,
+              "mean": 30368466.824
+            },
+            "privateBytes": {
+              "count": 34,
+              "min": 6184960,
+              "p50": 6201344,
+              "p95": 6205440,
+              "max": 6217728,
+              "mean": 6200741.647
+            },
+            "cpuPercentOfWholeMachine": {
+              "count": 33,
+              "min": 0,
+              "p50": 0,
+              "p95": 0.326,
+              "max": 0.452,
+              "mean": 0.043
+            }
+          }
+        ]
+      },
+      {
+        "role": "other-owned",
+        "cycles": 34,
+        "workingSetBytes": {
+          "count": 34,
+          "min": 7831552,
+          "p50": 15835136,
+          "p95": 15835136,
+          "max": 15835136,
+          "mean": 13486200.471
+        },
+        "privateBytes": {
+          "count": 34,
+          "min": 1253376,
+          "p50": 2510848,
+          "p95": 2510848,
+          "max": 2510848,
+          "mean": 2142087.529
+        },
+        "cpuPercentOfWholeMachine": {
+          "count": 32,
+          "min": 0,
+          "p50": 0,
+          "p95": 0,
+          "max": 0,
+          "mean": 0
+        },
+        "processCounts": {
+          "count": 34,
+          "min": 1,
+          "p50": 2,
+          "p95": 2,
+          "max": 2,
+          "mean": 1.735
+        },
+        "fiveMinuteBuckets": [
+          {
+            "index": 0,
+            "workingSetBytes": {
+              "count": 34,
+              "min": 7831552,
+              "p50": 15835136,
+              "p95": 15835136,
+              "max": 15835136,
+              "mean": 13486200.471
+            },
+            "privateBytes": {
+              "count": 34,
+              "min": 1253376,
+              "p50": 2510848,
+              "p95": 2510848,
+              "max": 2510848,
+              "mean": 2142087.529
+            },
+            "cpuPercentOfWholeMachine": {
+              "count": 32,
+              "min": 0,
+              "p50": 0,
+              "p95": 0,
+              "max": 0,
+              "mean": 0
+            }
+          }
+        ]
+      },
+      {
+        "role": "engine",
+        "cycles": 34,
+        "workingSetBytes": {
+          "count": 34,
+          "min": 14229504,
+          "p50": 15818752,
+          "p95": 15822848,
+          "max": 15822848,
+          "mean": 15727555.765
+        },
+        "privateBytes": {
+          "count": 34,
+          "min": 3911680,
+          "p50": 4083712,
+          "p95": 4083712,
+          "max": 4476928,
+          "mean": 4079013.647
+        },
+        "cpuPercentOfWholeMachine": {
+          "count": 33,
+          "min": 0,
+          "p50": 0,
+          "p95": 1.409,
+          "max": 1.905,
+          "mean": 0.177
+        },
+        "processCounts": {
+          "count": 34,
+          "min": 1,
+          "p50": 1,
+          "p95": 1,
+          "max": 1,
+          "mean": 1
+        },
+        "fiveMinuteBuckets": [
+          {
+            "index": 0,
+            "workingSetBytes": {
+              "count": 34,
+              "min": 14229504,
+              "p50": 15818752,
+              "p95": 15822848,
+              "max": 15822848,
+              "mean": 15727555.765
+            },
+            "privateBytes": {
+              "count": 34,
+              "min": 3911680,
+              "p50": 4083712,
+              "p95": 4083712,
+              "max": 4476928,
+              "mean": 4079013.647
+            },
+            "cpuPercentOfWholeMachine": {
+              "count": 33,
+              "min": 0,
+              "p50": 0,
+              "p95": 1.409,
+              "max": 1.905,
+              "mean": 0.177
+            }
+          }
+        ]
+      },
+      {
+        "role": "dedicated-browser",
+        "cycles": 23,
+        "workingSetBytes": {
+          "count": 23,
+          "min": 386289664,
+          "p50": 523513856,
+          "p95": 524017664,
+          "max": 524021760,
+          "mean": 515058821.565
+        },
+        "privateBytes": {
+          "count": 23,
+          "min": 200384512,
+          "p50": 284733440,
+          "p95": 284987392,
+          "max": 284987392,
+          "mean": 279589754.435
+        },
+        "cpuPercentOfWholeMachine": {
+          "count": 22,
+          "min": 0,
+          "p50": 0,
+          "p95": 1.669,
+          "max": 10.231,
+          "mean": 0.761
+        },
+        "processCounts": {
+          "count": 23,
+          "min": 5,
+          "p50": 7,
+          "p95": 7,
+          "max": 7,
+          "mean": 6.913
+        },
+        "fiveMinuteBuckets": [
+          {
+            "index": 0,
+            "workingSetBytes": {
+              "count": 23,
+              "min": 386289664,
+              "p50": 523513856,
+              "p95": 524017664,
+              "max": 524021760,
+              "mean": 515058821.565
+            },
+            "privateBytes": {
+              "count": 23,
+              "min": 200384512,
+              "p50": 284733440,
+              "p95": 284987392,
+              "max": 284987392,
+              "mean": 279589754.435
+            },
+            "cpuPercentOfWholeMachine": {
+              "count": 22,
+              "min": 0,
+              "p50": 0,
+              "p95": 1.669,
+              "max": 10.231,
+              "mean": 0.761
+            }
+          }
+        ]
+      },
+      {
+        "role": "browser-driver",
+        "cycles": 25,
+        "workingSetBytes": {
+          "count": 25,
+          "min": 32284672,
+          "p50": 34320384,
+          "p95": 34320384,
+          "max": 34320384,
+          "mean": 34024652.8
+        },
+        "privateBytes": {
+          "count": 25,
+          "min": 49848320,
+          "p50": 51138560,
+          "p95": 51138560,
+          "max": 51138560,
+          "mean": 50887720.96
+        },
+        "cpuPercentOfWholeMachine": {
+          "count": 24,
+          "min": 0,
+          "p50": 0,
+          "p95": 0,
+          "max": 0,
+          "mean": 0
+        },
+        "processCounts": {
+          "count": 25,
+          "min": 1,
+          "p50": 1,
+          "p95": 1,
+          "max": 1,
+          "mean": 1
+        },
+        "fiveMinuteBuckets": [
+          {
+            "index": 0,
+            "workingSetBytes": {
+              "count": 25,
+              "min": 32284672,
+              "p50": 34320384,
+              "p95": 34320384,
+              "max": 34320384,
+              "mean": 34024652.8
+            },
+            "privateBytes": {
+              "count": 25,
+              "min": 49848320,
+              "p50": 51138560,
+              "p95": 51138560,
+              "max": 51138560,
+              "mean": 50887720.96
+            },
+            "cpuPercentOfWholeMachine": {
+              "count": 24,
+              "min": 0,
+              "p50": 0,
+              "p95": 0,
+              "max": 0,
+              "mean": 0
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "processes": [
+    {
+      "pid": 3484,
+      "parentPid": 35688,
+      "startedAtMs": 1791116217159,
+      "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+      "role": "ui-webview",
+      "uiProfileVerified": true
+    },
+    {
+      "pid": 40696,
+      "parentPid": 43272,
+      "startedAtMs": 1791116216746,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "desktop",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 42488,
+      "parentPid": 35688,
+      "startedAtMs": 1791116217053,
+      "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+      "role": "ui-webview",
+      "uiProfileVerified": true
+    },
+    {
+      "pid": 42632,
+      "parentPid": 33040,
+      "startedAtMs": 1791116216779,
+      "path": "C:\\Windows\\system32\\conhost.exe",
+      "role": "other-owned",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 42308,
+      "parentPid": 35688,
+      "startedAtMs": 1791116217020,
+      "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+      "role": "ui-webview",
+      "uiProfileVerified": true
+    },
+    {
+      "pid": 33040,
+      "parentPid": 40696,
+      "startedAtMs": 1791116216767,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "engine",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 25100,
+      "parentPid": 35688,
+      "startedAtMs": 1791116216911,
+      "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+      "role": "ui-webview",
+      "uiProfileVerified": true
+    },
+    {
+      "pid": 35688,
+      "parentPid": 40696,
+      "startedAtMs": 1791116216879,
+      "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+      "role": "ui-webview",
+      "uiProfileVerified": true
+    },
+    {
+      "pid": 23516,
+      "parentPid": 35688,
+      "startedAtMs": 1791116217033,
+      "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+      "role": "ui-webview",
+      "uiProfileVerified": true
+    },
+    {
+      "pid": 43176,
+      "parentPid": 43544,
+      "startedAtMs": 1791116218723,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+      "role": "dedicated-browser",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 43544,
+      "parentPid": 43832,
+      "startedAtMs": 1791116218443,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+      "role": "dedicated-browser",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 24116,
+      "parentPid": 43832,
+      "startedAtMs": 1791116218370,
+      "path": "C:\\Windows\\system32\\conhost.exe",
+      "role": "other-owned",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 31108,
+      "parentPid": 43544,
+      "startedAtMs": 1791116218593,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+      "role": "dedicated-browser",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 43832,
+      "parentPid": 33040,
+      "startedAtMs": 1791116218357,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\browser-runtime\\node.exe",
+      "role": "browser-driver",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 41384,
+      "parentPid": 43544,
+      "startedAtMs": 1791116218651,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+      "role": "dedicated-browser",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 36488,
+      "parentPid": 43544,
+      "startedAtMs": 1791116218723,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+      "role": "dedicated-browser",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 17492,
+      "parentPid": 43544,
+      "startedAtMs": 1791116218680,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+      "role": "dedicated-browser",
+      "uiProfileVerified": false
+    },
+    {
+      "pid": 42292,
+      "parentPid": 43544,
+      "startedAtMs": 1791116218600,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\chromium-runtime\\chrome.exe",
+      "role": "dedicated-browser",
+      "uiProfileVerified": false
+    }
+  ],
+  "command": "node scripts/p13-tool-stop-benchmark.mjs --samples 1 --only browser"
+}

@@ -1,0 +1,37 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WorkPilot 便携验收结果</title><style>
+body{font:16px/1.7 system-ui,'Microsoft YaHei',sans-serif;margin:40px auto;padding:0 24px;max-width:1000px;color:#153149;background:#f5f8fb}article{background:white;border:1px solid #d9e3eb;padding:28px;border-radius:14px}h1{margin-top:0}table{border-collapse:collapse;width:100%}td,th{padding:10px;text-align:left;border-bottom:1px solid #d9e3eb}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eef2f6;padding:16px}a{color:#075b9a}.result{color:#147144}small{color:#526979}</style><article>
+<h1>WorkPilot 便携验收结果</h1><h2 class="result">自动检查已通过</h2>
+<p>这是开发机上的工具包自检，不代表干净系统或另一台电脑已经验收。</p>
+<p>安装目录：D:\workspace\kplocker\WorkPilot\artifacts\workpilot-p13-candidate-2026-10-04-r3\preview<br>开始时间：2026-10-04T13:59:19.643Z<br>结束时间：2026-10-04T14:00:42.293Z</p>
+<table><thead><tr><th>检查内容</th><th>结果</th><th>耗时</th></tr></thead><tbody><tr><td>软件自带的 9 类组件完整性</td><td>通过</td><td>19 秒</td></tr><tr><td>受限 Python、Node 和 Git 操作测试文件</td><td>通过</td><td>4 秒</td></tr><tr><td>三种模型接口不可达时停止，并保留本地资料</td><td>通过</td><td>7 秒</td></tr><tr><td>随包专用浏览器、真实下载和截图</td><td>通过</td><td>2 秒</td></tr><tr><td>DOCX 生成、读取与原版式预览</td><td>通过</td><td>19 秒</td></tr><tr><td>XLSX 生成、读取与原版式预览</td><td>通过</td><td>16 秒</td></tr><tr><td>PPTX 生成、读取与原版式预览</td><td>通过</td><td>15 秒</td></tr></tbody></table>
+
+<h2>本次检查的范围</h2><p>检查软件自带组件、受限制的 Python/Node/Git 工具、本地已有资料、专用浏览器下载和 Word/Excel/PPT 生成预览。模型响应来自本机固定测试服务，不需要密钥，也不产生云模型费用。网络异常使用不可连接的本机地址，不等于拔网线或关闭系统网络。</p>
+<h2>仍需人工确认</h2><ul><li>确认这台电脑的系统是否干净，以及是否为另一台实体电脑。</li><li>实际打开 WorkPilot，检查窗口、输入、任务、通知和安装/卸载体验。</li><li>如验收要求整机断网，需要操作者在真实断网后另外验证；工具包不会改动网络或电源设置。</li></ul>
+<h2>查看测试产物</h2><ul><li><a href="browser-0.png">browser-0.png</a></li><li><a href="office-0-docx.png">office-0-docx.png</a></li><li><a href="office-1-xlsx.png">office-1-xlsx.png</a></li><li><a href="office-2-pptx.png">office-2-pptx.png</a></li></ul><p>所有产物和测试资料都在本次新建的结果目录。<a href="report.json">原始结果报告</a>包含程序校验值、运行环境和逐项数据；工具不会自动上传它们。</p>
+<details><summary>程序校验值与退出情况</summary><pre>{
+  &quot;identity&quot;: {
+    &quot;workpilot-desktop.exe&quot;: &quot;69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d&quot;,
+    &quot;workpilot-sidecar.exe&quot;: &quot;a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb&quot;,
+    &quot;browser-runtime/node.exe&quot;: &quot;0d0f5e39f9f3d9587bc19f73eab3c2c9c4903fd02d6dbf9c853dd81b3d95fad4&quot;,
+    &quot;runtime-catalog.json&quot;: &quot;151f0b75b4120ead3fb16c7718d4ef14ba53cec6394d008c1cf6e791b9baca65&quot;
+  },
+  &quot;finalIdentity&quot;: {
+    &quot;workpilot-desktop.exe&quot;: &quot;69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d&quot;,
+    &quot;workpilot-sidecar.exe&quot;: &quot;a0388178665c1f8a81aa4b2cd4997b6926b51ad419354afae2f11a64b1526efb&quot;,
+    &quot;browser-runtime/node.exe&quot;: &quot;0d0f5e39f9f3d9587bc19f73eab3c2c9c4903fd02d6dbf9c853dd81b3d95fad4&quot;,
+    &quot;runtime-catalog.json&quot;: &quot;151f0b75b4120ead3fb16c7718d4ef14ba53cec6394d008c1cf6e791b9baca65&quot;
+  },
+  &quot;engineExits&quot;: [
+    {
+      &quot;pid&quot;: 39652,
+      &quot;exitCode&quot;: 0,
+      &quot;normal&quot;: true
+    },
+    {
+      &quot;pid&quot;: 40488,
+      &quot;exitCode&quot;: 0,
+      &quot;normal&quot;: true
+    }
+  ]
+}</pre></details>
+<small>“自动检查通过”不等于整个 P13 或所有平台均已验收。请与项目验收清单一起使用。</small></article></html>

@@ -1,0 +1,71 @@
+{
+  "at": "2026-10-04T12:14:19.309Z",
+  "binary": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\workpilot-desktop.exe",
+  "binarySha256": "5333f4fd6d4de13e6098062241ee36f7cfadda9ff23727c92d5cb4fc3a1bf4c1",
+  "engineSha256": "6b8e19ef43fcc0a9c9fcce28229ff955a554c23e3954c05878195482b4f2f740",
+  "machine": {
+    "os": {
+      "Caption": "Microsoft Windows 11 家庭版",
+      "Version": "10.0.26200",
+      "BuildNumber": "26200"
+    },
+    "architecture": "x64",
+    "kernel": "10.0.26200",
+    "cpuModel": "AMD Ryzen 7 7840H w/ Radeon(TM) 780M Graphics  ",
+    "logicalProcessors": 16,
+    "memoryBytes": 33618710528,
+    "availableMemoryBeforeBytes": 7280992256,
+    "node": "v22.23.2"
+  },
+  "count": 1,
+  "only": "office",
+  "checks": [],
+  "browser": [],
+  "office": [
+    {
+      "index": 0,
+      "format": "docx",
+      "identity": {
+        "pid": 36528,
+        "parentPid": 39164,
+        "startedAtMs": 1791116072741,
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04\\preview\\office-runtime\\office\\program\\workpilot-office.exe",
+        "role": "office-converter",
+        "uiProfileVerified": false
+      },
+      "acknowledgementMs": 12.65900000000147,
+      "processExitMs": 38.10150000000067,
+      "cleanupMs": 4348.005500000001,
+      "workspaceCleanupMs": 4348.1271,
+      "replyMs": 4805.396699999999,
+      "verification": [
+        {
+          "pid": 36528,
+          "startedAtMs": 1791116072741,
+          "status": "exited"
+        }
+      ],
+      "ledgers": [
+        {
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-tool-stop\\run-P4m8PW\\desktop-data\\test\\tool-sandboxes\\WorkPilot.Tool.20b3803b-a29b-4eb0-8e67-81959ff1fe6d.json",
+          "workspace": "C:\\Users\\semyi\\AppData\\Local\\Temp\\wp-office-334520bd37fa9bd20c742352\\25eec2103cf84899ad55",
+          "name": "WorkPilot.Tool.20b3803b-a29b-4eb0-8e67-81959ff1fe6d"
+        }
+      ]
+    }
+  ],
+  "deliveries": [
+    {
+      "task": "dada1ecd-3f9c-4174-afcc-4c716f76a1e6",
+      "format": "docx",
+      "asset": "7ecd0039-0a90-4057-a43c-294ada0fdf25",
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-tool-stop\\run-P4m8PW\\owned-project\\office-0\\result.docx",
+      "sha256": "39c86faa93626719aa10faf55ab7a3208b8d97a247f742c792e07b60e4442e59",
+      "preview": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-tool-stop\\run-P4m8PW\\office-0-docx.png",
+      "pages": 57,
+      "renderer": "LibreOfficeKit 26.8.0 · c01ef833e17e"
+    }
+  ],
+  "conditions": "Calibration of test harness only. Frozen candidate engine, desktop may be superseded after this run. Root independent build/CLI activity can overlap; not formal percentiles.",
+  "scope": "Real bundled dedicated Chromium and AppContainer Office renderer, fixed local fixtures; actual process exit separate from request/ACL/staging cleanup. Short probes with fewer than20 samples are not formal percentile acceptance."
+}

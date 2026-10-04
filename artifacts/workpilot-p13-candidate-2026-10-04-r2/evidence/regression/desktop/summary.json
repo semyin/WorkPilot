@@ -1,0 +1,64 @@
+{
+  "at": "2026-10-04T13:09:46.170Z",
+  "mode": "desktop",
+  "preview": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r2\\preview",
+  "identities": {
+    "engine": "ae85d9f5ff96050a31f54df6ecdecedd31e889fe68c21dd12093157dd3e138d7",
+    "desktop": "0b1f5dc557ebd39b56da7ed17b12a4c08e3605d39c512707f505c650976777a9",
+    "updater": "b0e2fbdf872cacc71eeec897de06dac14fd58b14fcdb65eb996f900b339b5ae0"
+  },
+  "suites": [
+    {
+      "name": "workspace",
+      "command": "node scripts/workspace-desktop-smoke.mjs",
+      "began": "2026-10-04T13:09:46.174Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 10,
+      "elapsedSeconds": 38.56,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\desktop-cWQi2w\\workspace\\report.json"
+    },
+    {
+      "name": "team-restore",
+      "command": "node scripts/team-restore-desktop.mjs",
+      "began": "2026-10-04T13:10:24.740Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 3,
+      "elapsedSeconds": 6.31,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\desktop-cWQi2w\\team-restore\\report.json"
+    },
+    {
+      "name": "migration",
+      "command": "node scripts/migration-desktop.mjs",
+      "began": "2026-10-04T13:10:31.047Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 3,
+      "elapsedSeconds": 5.95,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\desktop-cWQi2w\\migration\\report.json"
+    },
+    {
+      "name": "maintenance",
+      "command": "node scripts/maintenance-desktop-test.mjs",
+      "began": "2026-10-04T13:10:37.001Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 2,
+      "elapsedSeconds": 9.66,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\desktop-cWQi2w\\maintenance\\report.json"
+    },
+    {
+      "name": "update",
+      "command": "node scripts/update-desktop-test.mjs",
+      "began": "2026-10-04T13:10:46.658Z",
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 4,
+      "elapsedSeconds": 66.18,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-regression\\desktop-cWQi2w\\update\\report.json"
+    }
+  ],
+  "status": "passed",
+  "finishedAt": "2026-10-04T13:11:52.875Z"
+}

@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-04T14:23:05.979Z",
+  "uninstall": "Owned current-user installation removed; project and unlisted installation file preserved, browser registrations unchanged",
+  "originalApplications": {
+    "desktopPid": 34440,
+    "enginePid": 19464,
+    "status": "Both already exited before uninstall, alongside the first r3 soak. Cause unknown; no claim that this run proved preservation of running original applications",
+    "neverRestarted": true
+  },
+  "databasesWithinLifecycleSession": 0,
+  "databasePreservationClaim": false,
+  "processesAlreadyAbsentAtUninstall": [
+    34440,
+    19464,
+    15240,
+    26032
+  ],
+  "processPreservationClaim": false,
+  "otherEvidence": "Separate multi-instance normal-exit test passed using nine new isolated desktops; P12 and r2 lifecycle evidence remains bound to original reports",
+  "userExperience": false,
+  "cleanWindows": false
+}

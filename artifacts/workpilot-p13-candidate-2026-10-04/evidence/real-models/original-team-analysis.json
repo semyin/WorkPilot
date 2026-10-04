@@ -1,0 +1,162 @@
+{
+  "at": "2026-10-04T12:26:15.011Z",
+  "status": "failed",
+  "passed": 14,
+  "checks": 15,
+  "binarySha256": "6b8e19ef43fcc0a9c9fcce28229ff955a554c23e3954c05878195482b4f2f740",
+  "teamTask": "80c6f1a8-e90c-4330-8b23-bc53f5246a4b",
+  "teamBeforeCleanup": "awaiting_input",
+  "actualOutputs": {
+    "a.txt": null,
+    "b.txt": "48",
+    "answer.txt": null
+  },
+  "midRunHumanInstructions": 0,
+  "automaticModelFallbacks": 0,
+  "unknownOrFailedWritesNeverExecuted": true,
+  "members": [
+    {
+      "key": "alpha",
+      "taskId": "c6480999-3722-4256-bc18-4076f7d8143e",
+      "profileId": "p13-glm-chat",
+      "state": "awaiting_input",
+      "review": "pending",
+      "actualModels": [
+        "glm-5.3"
+      ],
+      "badWriteAttempts": [
+        {
+          "arguments": {
+            "expected_sha256": "null",
+            "path": "a.txt",
+            "text": "42"
+          },
+          "result": {
+            "call_id": "call_687808f595f84f12af6f3ded",
+            "is_error": true,
+            "output": "{\"error\":\"file changed; read it before requesting an overwrite\",\"executed\":false}"
+          }
+        },
+        {
+          "arguments": {
+            "expected_sha256": "null",
+            "path": "a.txt",
+            "text": "42"
+          },
+          "result": {
+            "call_id": "call_9257214cf1ea4093af392da9",
+            "is_error": true,
+            "output": "{\"error\":\"file changed; read it before requesting an overwrite\",\"executed\":false}"
+          }
+        },
+        {
+          "arguments": {
+            "expected_sha256": "null",
+            "path": "./a.txt",
+            "text": "42"
+          },
+          "result": {
+            "call_id": "call_d9adbfc287dc4531b2db44d1",
+            "is_error": true,
+            "output": "{\"error\":\"path leaves the supported project namespace\",\"executed\":false}"
+          }
+        },
+        {
+          "arguments": {
+            "expected_sha256": "null",
+            "path": "a.txt",
+            "text": "42"
+          },
+          "result": {
+            "call_id": "call_f11f7dcfa2164ca9bc9e57c0",
+            "is_error": true,
+            "output": "{\"error\":\"file changed; read it before requesting an overwrite\",\"executed\":false}"
+          }
+        },
+        {
+          "arguments": {
+            "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "path": "a.txt",
+            "text": "42"
+          },
+          "result": {
+            "call_id": "call_f45a661e98134e9e867b7de7",
+            "is_error": true,
+            "output": "{\"error\":\"file changed; read it before requesting an overwrite\",\"executed\":false}"
+          }
+        },
+        {
+          "arguments": {
+            "expected_sha256": "98010bd9270f9b100b6214a21754fd33bdc8d41b2bc9f9dd16ff54d3c34ffd71",
+            "path": "a.txt",
+            "text": "42"
+          },
+          "result": {
+            "call_id": "call_053f0feb6c8a40e7bbda2ce3",
+            "is_error": true,
+            "output": "{\"error\":\"file changed; read it before requesting an overwrite\",\"executed\":false}"
+          }
+        },
+        {
+          "arguments": {
+            "expected_sha256": "838f47ea2910e9ad220da149d129dea8fd5ee589b3ad22af893757b25dbb0b89",
+            "path": "a.txt",
+            "text": "42"
+          },
+          "result": {
+            "call_id": "call_7e838b8d9ebd4c6da3c93d17",
+            "is_error": true,
+            "output": "{\"error\":\"file changed; read it before requesting an overwrite\",\"executed\":false}"
+          }
+        },
+        {
+          "arguments": {
+            "expected_sha256": "null",
+            "path": "a.txt",
+            "text": "42"
+          },
+          "result": {
+            "call_id": "call_32a09780eb874189bf6ff5f1",
+            "is_error": true,
+            "output": "{\"error\":\"file changed; read it before requesting an overwrite\",\"executed\":false}"
+          }
+        },
+        {
+          "arguments": {
+            "expected_sha256": "null",
+            "path": "a.txt",
+            "text": "42"
+          },
+          "result": {
+            "call_id": "call_9ec333a2fdce4ff681127353",
+            "is_error": true,
+            "output": "{\"error\":\"file changed; read it before requesting an overwrite\",\"executed\":false}"
+          }
+        }
+      ]
+    },
+    {
+      "key": "beta",
+      "taskId": "96c93422-9d73-4d99-9748-7677a06bb588",
+      "profileId": "p13-deepseek-chat",
+      "state": "completed",
+      "review": "accepted",
+      "actualModels": [
+        "deepseek-v4.1-flash"
+      ],
+      "badWriteAttempts": []
+    },
+    {
+      "key": "join",
+      "taskId": "0b49a765-4dae-418b-90cb-4fd40d84ac37",
+      "profileId": "p13-qwen-responses",
+      "state": "queued",
+      "review": "pending",
+      "actualModels": [],
+      "badWriteAttempts": []
+    }
+  ],
+  "credentialsRemoved": true,
+  "plaintextCredentialFound": false,
+  "note": "Original team failed its required independent deliveries. The test did not answer any ask_user, steer a member, replace a model, create missing model outputs, or reuse this result as a passing team sample. The subsequent explicit run starts a fresh directory and task with a clearer JSON-null example."
+}

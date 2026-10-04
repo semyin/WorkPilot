@@ -1,0 +1,3602 @@
+{
+  "status": "failed",
+  "command": "node scripts/p13-delayed-exit-repro.mjs --run",
+  "scope": "Two newly created P12/r3 observer instances; protected installation, original complete installation-desktop-smoke, at least 90 seconds after smoke exit, protected uninstall, then normal observer exits",
+  "installationScript": "scripts/p13-installation.ps1",
+  "smokeScript": "scripts/installation-desktop-smoke.mjs",
+  "processSamplingMs": 1000,
+  "enginePingMs": 5000,
+  "postSmokeObservationMs": 90006.3935,
+  "productSourceChanges": false,
+  "at": "2026-10-04T14:40:52.113Z",
+  "directory": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf",
+  "testDriverPid": 42548,
+  "stages": [
+    {
+      "name": "observers-ready",
+      "at": "2026-10-04T14:40:55.731Z"
+    },
+    {
+      "name": "install-started",
+      "at": "2026-10-04T14:40:57.275Z",
+      "runnerPid": 20276
+    },
+    {
+      "name": "install-process-ended",
+      "label": "install",
+      "pid": 20276,
+      "startedAt": "2026-10-04T14:40:57.275Z",
+      "finishedAt": "2026-10-04T14:41:48.526Z",
+      "code": 0,
+      "signal": null,
+      "stdoutTruncated": false,
+      "stdoutFile": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf\\install.stdout.txt",
+      "stderrFile": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf\\install.stderr.txt"
+    },
+    {
+      "name": "installed-before-smoke",
+      "at": "2026-10-04T14:41:48.529Z",
+      "installRoot": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-ec5c92a5296f4c29914e7dbdfe216574\\?? ??"
+    },
+    {
+      "name": "installed-smoke-running",
+      "at": "2026-10-04T14:41:49.379Z",
+      "runner": {
+        "pid": 17596,
+        "path": "D:\\nodejs\\node.exe",
+        "startedAtMs": 1791124908570
+      }
+    },
+    {
+      "name": "post-smoke-observation-started",
+      "at": "2026-10-04T14:41:49.594Z",
+      "minimumMilliseconds": 90000,
+      "smokeExitAt": "2026-10-04T14:41:49.593Z"
+    },
+    {
+      "name": "post-smoke-observation-ended",
+      "at": "2026-10-04T14:43:19.601Z",
+      "observedMs": 90006.3935
+    },
+    {
+      "name": "uninstall-started",
+      "at": "2026-10-04T14:43:19.622Z",
+      "runnerPid": 37364
+    },
+    {
+      "name": "uninstall-process-ended",
+      "label": "uninstall",
+      "pid": 37364,
+      "startedAt": "2026-10-04T14:43:19.622Z",
+      "finishedAt": "2026-10-04T14:43:35.296Z",
+      "code": 0,
+      "signal": null,
+      "stdoutTruncated": false,
+      "stdoutFile": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf\\uninstall.stdout.txt",
+      "stderrFile": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf\\uninstall.stderr.txt"
+    },
+    {
+      "name": "post-uninstall-observation",
+      "at": "2026-10-04T14:43:35.298Z"
+    },
+    {
+      "name": "normal-observer-cleanup",
+      "at": "2026-10-04T14:43:42.341Z"
+    }
+  ],
+  "observers": [
+    {
+      "label": "p12-observer",
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "data": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf\\p12-observer",
+      "startedAt": "2026-10-04T14:40:52.604Z",
+      "desktopPid": 39456,
+      "ready": {
+        "protocol": "workpilot.v1",
+        "event_id": "cf3b0acb-672d-4607-a54e-b68dab6bb440",
+        "sequence": 1,
+        "task_id": null,
+        "task_sequence": null,
+        "agent_id": null,
+        "source": "engine",
+        "at_ms": 1791124852698,
+        "request_id": null,
+        "kind": "ready",
+        "pid": 9076,
+        "version": "0.1.0-alpha.12.15",
+        "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf\\p12-observer\\test"
+      },
+      "identities": [
+        {
+          "pid": 29800,
+          "parentPid": 39456,
+          "startedAtMs": 1791124852709,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 9076,
+          "parentPid": 39456,
+          "startedAtMs": 1791124852631,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+          "role": "engine",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 15288,
+          "parentPid": 29800,
+          "startedAtMs": 1791124852963,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 43616,
+          "parentPid": 29800,
+          "startedAtMs": 1791124852830,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 38528,
+          "parentPid": 29800,
+          "startedAtMs": 1791124852860,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 41536,
+          "parentPid": 29800,
+          "startedAtMs": 1791124852834,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 17508,
+          "parentPid": 9076,
+          "startedAtMs": 1791124852642,
+          "path": "C:\\Windows\\system32\\conhost.exe",
+          "role": "other-owned",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 32064,
+          "parentPid": 29800,
+          "startedAtMs": 1791124852729,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 39456,
+          "parentPid": 42548,
+          "startedAtMs": 1791124852611,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+          "role": "desktop",
+          "uiProfileVerified": false
+        }
+      ]
+    },
+    {
+      "label": "r3-observer",
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "data": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf\\r3-observer",
+      "startedAt": "2026-10-04T14:40:54.095Z",
+      "desktopPid": 40668,
+      "ready": {
+        "protocol": "workpilot.v1",
+        "event_id": "d02f0d45-92e1-423f-9049-cad5f6a8343d",
+        "sequence": 1,
+        "task_id": null,
+        "task_sequence": null,
+        "agent_id": null,
+        "source": "engine",
+        "at_ms": 1791124854173,
+        "request_id": null,
+        "kind": "ready",
+        "pid": 27572,
+        "version": "0.1.0-alpha.13.4",
+        "data_dir": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf\\r3-observer\\test"
+      },
+      "identities": [
+        {
+          "pid": 25992,
+          "parentPid": 37992,
+          "startedAtMs": 1791124854360,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 27572,
+          "parentPid": 40668,
+          "startedAtMs": 1791124854122,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+          "role": "engine",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 37992,
+          "parentPid": 40668,
+          "startedAtMs": 1791124854199,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 44696,
+          "parentPid": 37992,
+          "startedAtMs": 1791124854470,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 35048,
+          "parentPid": 37992,
+          "startedAtMs": 1791124854331,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 42340,
+          "parentPid": 27572,
+          "startedAtMs": 1791124854128,
+          "path": "C:\\Windows\\system32\\conhost.exe",
+          "role": "other-owned",
+          "uiProfileVerified": false
+        },
+        {
+          "pid": 41620,
+          "parentPid": 37992,
+          "startedAtMs": 1791124854219,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 44164,
+          "parentPid": 37992,
+          "startedAtMs": 1791124854334,
+          "path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\154.0.4258.53\\msedgewebview2.exe",
+          "role": "ui-webview",
+          "uiProfileVerified": true
+        },
+        {
+          "pid": 40668,
+          "parentPid": 42548,
+          "startedAtMs": 1791124854098,
+          "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+          "role": "desktop",
+          "uiProfileVerified": false
+        }
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "kind": "original_installed_smoke_failed",
+      "code": 1,
+      "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf\\installed-smoke\\report.json"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:02.241Z",
+      "phase": "post-smoke-observation-started",
+      "label": "r3-observer",
+      "pid": 40668,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:07.257Z",
+      "phase": "post-smoke-observation-started",
+      "label": "p12-observer",
+      "pid": 39456,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:07.258Z",
+      "phase": "post-smoke-observation-started",
+      "label": "r3-observer",
+      "pid": 40668,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:12.270Z",
+      "phase": "post-smoke-observation-started",
+      "label": "p12-observer",
+      "pid": 39456,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:12.271Z",
+      "phase": "post-smoke-observation-started",
+      "label": "r3-observer",
+      "pid": 40668,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:17.287Z",
+      "phase": "post-smoke-observation-started",
+      "label": "p12-observer",
+      "pid": 39456,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:17.288Z",
+      "phase": "post-smoke-observation-started",
+      "label": "r3-observer",
+      "pid": 40668,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:19.604Z",
+      "phase": "before-uninstall",
+      "label": "p12-observer",
+      "pid": 39456,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:19.605Z",
+      "phase": "before-uninstall",
+      "label": "r3-observer",
+      "pid": 40668,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:22.303Z",
+      "phase": "uninstall-started",
+      "label": "p12-observer",
+      "pid": 39456,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:22.304Z",
+      "phase": "uninstall-started",
+      "label": "r3-observer",
+      "pid": 40668,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:27.316Z",
+      "phase": "uninstall-started",
+      "label": "p12-observer",
+      "pid": 39456,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:27.317Z",
+      "phase": "uninstall-started",
+      "label": "r3-observer",
+      "pid": 40668,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:32.318Z",
+      "phase": "uninstall-started",
+      "label": "p12-observer",
+      "pid": 39456,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:32.321Z",
+      "phase": "uninstall-started",
+      "label": "r3-observer",
+      "pid": 40668,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:35.300Z",
+      "phase": "after-uninstall",
+      "label": "p12-observer",
+      "pid": 39456,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:35.301Z",
+      "phase": "after-uninstall",
+      "label": "r3-observer",
+      "pid": 40668,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:37.323Z",
+      "phase": "post-uninstall-observation",
+      "label": "p12-observer",
+      "pid": 39456,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:37.325Z",
+      "phase": "post-uninstall-observation",
+      "label": "r3-observer",
+      "pid": 40668,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:40.309Z",
+      "phase": "five-seconds-after-uninstall",
+      "label": "p12-observer",
+      "pid": 39456,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "kind": "observer_ping_failed",
+      "at": "2026-10-04T14:43:40.310Z",
+      "phase": "five-seconds-after-uninstall",
+      "label": "r3-observer",
+      "pid": 40668,
+      "healthy": false,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    }
+  ],
+  "cleanup": [
+    {
+      "at": "2026-10-04T14:43:42.344Z",
+      "label": "p12-observer",
+      "pid": 39456,
+      "alreadyExited": true,
+      "exitCode": 0,
+      "signalCode": null,
+      "finishedAt": "2026-10-04T14:43:42.344Z",
+      "identities": [
+        {
+          "pid": 29800,
+          "startedAtMs": 1791124852709,
+          "status": "exited"
+        },
+        {
+          "pid": 9076,
+          "startedAtMs": 1791124852631,
+          "status": "exited"
+        },
+        {
+          "pid": 15288,
+          "startedAtMs": 1791124852963,
+          "status": "exited"
+        },
+        {
+          "pid": 43616,
+          "startedAtMs": 1791124852830,
+          "status": "exited"
+        },
+        {
+          "pid": 38528,
+          "startedAtMs": 1791124852860,
+          "status": "exited"
+        },
+        {
+          "pid": 41536,
+          "startedAtMs": 1791124852834,
+          "status": "exited"
+        },
+        {
+          "pid": 17508,
+          "startedAtMs": 1791124852642,
+          "status": "exited"
+        },
+        {
+          "pid": 32064,
+          "startedAtMs": 1791124852729,
+          "status": "exited"
+        },
+        {
+          "pid": 39456,
+          "startedAtMs": 1791124852611,
+          "status": "exited"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-04T14:43:42.778Z",
+      "label": "r3-observer",
+      "pid": 40668,
+      "alreadyExited": true,
+      "exitCode": 0,
+      "signalCode": null,
+      "finishedAt": "2026-10-04T14:43:42.778Z",
+      "identities": [
+        {
+          "pid": 25992,
+          "startedAtMs": 1791124854360,
+          "status": "exited"
+        },
+        {
+          "pid": 27572,
+          "startedAtMs": 1791124854122,
+          "status": "exited"
+        },
+        {
+          "pid": 37992,
+          "startedAtMs": 1791124854199,
+          "status": "exited"
+        },
+        {
+          "pid": 44696,
+          "startedAtMs": 1791124854470,
+          "status": "exited"
+        },
+        {
+          "pid": 35048,
+          "startedAtMs": 1791124854331,
+          "status": "exited"
+        },
+        {
+          "pid": 42340,
+          "startedAtMs": 1791124854128,
+          "status": "exited"
+        },
+        {
+          "pid": 41620,
+          "startedAtMs": 1791124854219,
+          "status": "exited"
+        },
+        {
+          "pid": 44164,
+          "startedAtMs": 1791124854334,
+          "status": "exited"
+        },
+        {
+          "pid": 40668,
+          "startedAtMs": 1791124854098,
+          "status": "exited"
+        }
+      ]
+    }
+  ],
+  "binaryHashes": {
+    "r3": "69e67169b755925c389b0e618b9b69ccf80494e713af01ef247ffd06f227c41d",
+    "p12": "c7b81dca8b21989ae2e8d9fcecf5a267adb83d9b4aad2a993f5f030ba99bcaf0",
+    "installer": "3a87818d62a3e5925b77aaa5eef1992c3360b2f8e3a88df4ab1fb9a4ee99ff4e"
+  },
+  "watcherPid": 16536,
+  "installation": {
+    "session": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-ec5c92a5296f4c29914e7dbdfe216574",
+    "status": "installed_pending_native_and_uninstall_checks",
+    "installRoot": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-installation\\session-ec5c92a5296f4c29914e7dbdfe216574\\?? ??"
+  },
+  "smokeProcess": {
+    "label": "installed-smoke",
+    "pid": 17596,
+    "startedAt": "2026-10-04T14:41:48.579Z",
+    "finishedAt": "2026-10-04T14:41:49.593Z",
+    "code": 1,
+    "signal": null,
+    "stdoutTruncated": false,
+    "stdoutFile": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf\\installed-smoke.stdout.txt",
+    "stderrFile": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf\\installed-smoke.stderr.txt"
+  },
+  "smoke": {
+    "status": "failed",
+    "error": "Smoke report unavailable: Error: ENOENT: no such file or directory, open 'D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf\\installed-smoke\\report.json'"
+  },
+  "uninstall": {
+    "label": "uninstall",
+    "pid": 37364,
+    "startedAt": "2026-10-04T14:43:19.622Z",
+    "finishedAt": "2026-10-04T14:43:35.296Z",
+    "code": 0,
+    "signal": null,
+    "stdoutTruncated": false,
+    "stdoutFile": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf\\uninstall.stdout.txt",
+    "stderrFile": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf\\uninstall.stderr.txt"
+  },
+  "watcherExit": {
+    "label": "watcher",
+    "pid": 16536,
+    "startedAt": "2026-10-04T14:40:55.747Z",
+    "finishedAt": "2026-10-04T14:43:45.067Z",
+    "code": 0,
+    "signal": null,
+    "stdout": "",
+    "stdoutTruncated": false,
+    "stdoutFile": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf\\watcher.stdout.txt",
+    "stderrFile": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-delayed-exit\\run-mpcUkf\\watcher.stderr.txt"
+  },
+  "unexpectedIdentitySamples": [
+    {
+      "kind": "sample",
+      "tick": 127,
+      "atMs": 1791124982054,
+      "elapsedMs": 126011,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 127,
+      "atMs": 1791124982054,
+      "elapsedMs": 126012,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 128,
+      "atMs": 1791124983056,
+      "elapsedMs": 127013,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 128,
+      "atMs": 1791124983056,
+      "elapsedMs": 127013,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 128,
+      "atMs": 1791124983058,
+      "elapsedMs": 127015,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 128,
+      "atMs": 1791124983059,
+      "elapsedMs": 127016,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 129,
+      "atMs": 1791124984048,
+      "elapsedMs": 128006,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 129,
+      "atMs": 1791124984049,
+      "elapsedMs": 128006,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 129,
+      "atMs": 1791124984049,
+      "elapsedMs": 128006,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 129,
+      "atMs": 1791124984049,
+      "elapsedMs": 128006,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 130,
+      "atMs": 1791124985052,
+      "elapsedMs": 129009,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 130,
+      "atMs": 1791124985052,
+      "elapsedMs": 129009,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 130,
+      "atMs": 1791124985052,
+      "elapsedMs": 129009,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 130,
+      "atMs": 1791124985052,
+      "elapsedMs": 129009,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 131,
+      "atMs": 1791124986048,
+      "elapsedMs": 130005,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 131,
+      "atMs": 1791124986048,
+      "elapsedMs": 130006,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 131,
+      "atMs": 1791124986049,
+      "elapsedMs": 130006,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 131,
+      "atMs": 1791124986049,
+      "elapsedMs": 130006,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 132,
+      "atMs": 1791124987049,
+      "elapsedMs": 131006,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 132,
+      "atMs": 1791124987049,
+      "elapsedMs": 131007,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 132,
+      "atMs": 1791124987050,
+      "elapsedMs": 131007,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 132,
+      "atMs": 1791124987050,
+      "elapsedMs": 131007,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 133,
+      "atMs": 1791124988050,
+      "elapsedMs": 132007,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 133,
+      "atMs": 1791124988050,
+      "elapsedMs": 132007,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 133,
+      "atMs": 1791124988050,
+      "elapsedMs": 132007,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 133,
+      "atMs": 1791124988050,
+      "elapsedMs": 132007,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 134,
+      "atMs": 1791124989046,
+      "elapsedMs": 133003,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 134,
+      "atMs": 1791124989046,
+      "elapsedMs": 133003,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 134,
+      "atMs": 1791124989046,
+      "elapsedMs": 133003,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 134,
+      "atMs": 1791124989046,
+      "elapsedMs": 133004,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 135,
+      "atMs": 1791124990050,
+      "elapsedMs": 134007,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 135,
+      "atMs": 1791124990050,
+      "elapsedMs": 134007,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 135,
+      "atMs": 1791124990050,
+      "elapsedMs": 134008,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 135,
+      "atMs": 1791124990051,
+      "elapsedMs": 134008,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 136,
+      "atMs": 1791124991057,
+      "elapsedMs": 135014,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 136,
+      "atMs": 1791124991057,
+      "elapsedMs": 135014,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 136,
+      "atMs": 1791124991057,
+      "elapsedMs": 135014,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 136,
+      "atMs": 1791124991057,
+      "elapsedMs": 135014,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 137,
+      "atMs": 1791124992045,
+      "elapsedMs": 136002,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 137,
+      "atMs": 1791124992045,
+      "elapsedMs": 136002,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 137,
+      "atMs": 1791124992045,
+      "elapsedMs": 136002,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 137,
+      "atMs": 1791124992045,
+      "elapsedMs": 136003,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 138,
+      "atMs": 1791124993054,
+      "elapsedMs": 137012,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 138,
+      "atMs": 1791124993055,
+      "elapsedMs": 137012,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 138,
+      "atMs": 1791124993056,
+      "elapsedMs": 137013,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 138,
+      "atMs": 1791124993056,
+      "elapsedMs": 137013,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 139,
+      "atMs": 1791124994060,
+      "elapsedMs": 138017,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 139,
+      "atMs": 1791124994060,
+      "elapsedMs": 138018,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 139,
+      "atMs": 1791124994061,
+      "elapsedMs": 138018,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 139,
+      "atMs": 1791124994061,
+      "elapsedMs": 138018,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 140,
+      "atMs": 1791124995045,
+      "elapsedMs": 139002,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 140,
+      "atMs": 1791124995045,
+      "elapsedMs": 139002,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 140,
+      "atMs": 1791124995045,
+      "elapsedMs": 139002,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 140,
+      "atMs": 1791124995045,
+      "elapsedMs": 139002,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 141,
+      "atMs": 1791124996054,
+      "elapsedMs": 140011,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 141,
+      "atMs": 1791124996054,
+      "elapsedMs": 140011,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 141,
+      "atMs": 1791124996054,
+      "elapsedMs": 140011,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 141,
+      "atMs": 1791124996054,
+      "elapsedMs": 140011,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 142,
+      "atMs": 1791124997046,
+      "elapsedMs": 141004,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 142,
+      "atMs": 1791124997047,
+      "elapsedMs": 141004,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 142,
+      "atMs": 1791124997047,
+      "elapsedMs": 141004,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 142,
+      "atMs": 1791124997047,
+      "elapsedMs": 141004,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 143,
+      "atMs": 1791124998054,
+      "elapsedMs": 142012,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 143,
+      "atMs": 1791124998055,
+      "elapsedMs": 142012,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 143,
+      "atMs": 1791124998055,
+      "elapsedMs": 142012,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 143,
+      "atMs": 1791124998055,
+      "elapsedMs": 142012,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 144,
+      "atMs": 1791124999052,
+      "elapsedMs": 143010,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 144,
+      "atMs": 1791124999053,
+      "elapsedMs": 143010,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 144,
+      "atMs": 1791124999053,
+      "elapsedMs": 143010,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 144,
+      "atMs": 1791124999053,
+      "elapsedMs": 143010,
+      "phase": "post-smoke-observation-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 145,
+      "atMs": 1791125000050,
+      "elapsedMs": 144007,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 145,
+      "atMs": 1791125000050,
+      "elapsedMs": 144007,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 145,
+      "atMs": 1791125000051,
+      "elapsedMs": 144009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 145,
+      "atMs": 1791125000052,
+      "elapsedMs": 144009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 146,
+      "atMs": 1791125001051,
+      "elapsedMs": 145009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 146,
+      "atMs": 1791125001051,
+      "elapsedMs": 145009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 146,
+      "atMs": 1791125001052,
+      "elapsedMs": 145009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 146,
+      "atMs": 1791125001052,
+      "elapsedMs": 145009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 147,
+      "atMs": 1791125002051,
+      "elapsedMs": 146009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 147,
+      "atMs": 1791125002052,
+      "elapsedMs": 146009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 147,
+      "atMs": 1791125002052,
+      "elapsedMs": 146009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 147,
+      "atMs": 1791125002052,
+      "elapsedMs": 146009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 148,
+      "atMs": 1791125003051,
+      "elapsedMs": 147008,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 148,
+      "atMs": 1791125003051,
+      "elapsedMs": 147008,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 148,
+      "atMs": 1791125003051,
+      "elapsedMs": 147008,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 148,
+      "atMs": 1791125003051,
+      "elapsedMs": 147008,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 149,
+      "atMs": 1791125004053,
+      "elapsedMs": 148010,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 149,
+      "atMs": 1791125004053,
+      "elapsedMs": 148010,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 149,
+      "atMs": 1791125004053,
+      "elapsedMs": 148010,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 149,
+      "atMs": 1791125004053,
+      "elapsedMs": 148010,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 150,
+      "atMs": 1791125005052,
+      "elapsedMs": 149009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 150,
+      "atMs": 1791125005052,
+      "elapsedMs": 149009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 150,
+      "atMs": 1791125005052,
+      "elapsedMs": 149009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 150,
+      "atMs": 1791125005052,
+      "elapsedMs": 149009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 151,
+      "atMs": 1791125006053,
+      "elapsedMs": 150010,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 151,
+      "atMs": 1791125006053,
+      "elapsedMs": 150010,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 151,
+      "atMs": 1791125006053,
+      "elapsedMs": 150010,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 151,
+      "atMs": 1791125006053,
+      "elapsedMs": 150011,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 152,
+      "atMs": 1791125007052,
+      "elapsedMs": 151009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 152,
+      "atMs": 1791125007052,
+      "elapsedMs": 151009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 152,
+      "atMs": 1791125007052,
+      "elapsedMs": 151009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 152,
+      "atMs": 1791125007052,
+      "elapsedMs": 151009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 153,
+      "atMs": 1791125008049,
+      "elapsedMs": 152007,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 153,
+      "atMs": 1791125008050,
+      "elapsedMs": 152007,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 153,
+      "atMs": 1791125008050,
+      "elapsedMs": 152007,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 153,
+      "atMs": 1791125008050,
+      "elapsedMs": 152007,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 154,
+      "atMs": 1791125009049,
+      "elapsedMs": 153006,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 154,
+      "atMs": 1791125009049,
+      "elapsedMs": 153006,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 154,
+      "atMs": 1791125009049,
+      "elapsedMs": 153006,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 154,
+      "atMs": 1791125009049,
+      "elapsedMs": 153006,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 155,
+      "atMs": 1791125010049,
+      "elapsedMs": 154006,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 155,
+      "atMs": 1791125010049,
+      "elapsedMs": 154006,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 155,
+      "atMs": 1791125010049,
+      "elapsedMs": 154006,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 155,
+      "atMs": 1791125010049,
+      "elapsedMs": 154007,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 156,
+      "atMs": 1791125011052,
+      "elapsedMs": 155009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 156,
+      "atMs": 1791125011052,
+      "elapsedMs": 155010,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 156,
+      "atMs": 1791125011053,
+      "elapsedMs": 155010,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 156,
+      "atMs": 1791125011053,
+      "elapsedMs": 155010,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 157,
+      "atMs": 1791125012051,
+      "elapsedMs": 156008,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 157,
+      "atMs": 1791125012051,
+      "elapsedMs": 156008,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 157,
+      "atMs": 1791125012051,
+      "elapsedMs": 156008,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 157,
+      "atMs": 1791125012051,
+      "elapsedMs": 156008,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 158,
+      "atMs": 1791125013051,
+      "elapsedMs": 157008,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 158,
+      "atMs": 1791125013051,
+      "elapsedMs": 157008,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 158,
+      "atMs": 1791125013051,
+      "elapsedMs": 157008,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 158,
+      "atMs": 1791125013051,
+      "elapsedMs": 157008,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 159,
+      "atMs": 1791125014052,
+      "elapsedMs": 158009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 159,
+      "atMs": 1791125014052,
+      "elapsedMs": 158009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 159,
+      "atMs": 1791125014052,
+      "elapsedMs": 158009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 159,
+      "atMs": 1791125014052,
+      "elapsedMs": 158009,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 160,
+      "atMs": 1791125015050,
+      "elapsedMs": 159007,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 160,
+      "atMs": 1791125015050,
+      "elapsedMs": 159007,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 160,
+      "atMs": 1791125015050,
+      "elapsedMs": 159007,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 160,
+      "atMs": 1791125015050,
+      "elapsedMs": 159007,
+      "phase": "uninstall-started",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 161,
+      "atMs": 1791125016047,
+      "elapsedMs": 160004,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 161,
+      "atMs": 1791125016047,
+      "elapsedMs": 160004,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 161,
+      "atMs": 1791125016047,
+      "elapsedMs": 160004,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 161,
+      "atMs": 1791125016048,
+      "elapsedMs": 160005,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 162,
+      "atMs": 1791125017052,
+      "elapsedMs": 161009,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 162,
+      "atMs": 1791125017052,
+      "elapsedMs": 161009,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 162,
+      "atMs": 1791125017053,
+      "elapsedMs": 161010,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 162,
+      "atMs": 1791125017053,
+      "elapsedMs": 161010,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 163,
+      "atMs": 1791125018052,
+      "elapsedMs": 162009,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 163,
+      "atMs": 1791125018052,
+      "elapsedMs": 162009,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 163,
+      "atMs": 1791125018052,
+      "elapsedMs": 162009,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 163,
+      "atMs": 1791125018052,
+      "elapsedMs": 162010,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 164,
+      "atMs": 1791125019050,
+      "elapsedMs": 163008,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 164,
+      "atMs": 1791125019051,
+      "elapsedMs": 163008,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 164,
+      "atMs": 1791125019051,
+      "elapsedMs": 163008,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 164,
+      "atMs": 1791125019051,
+      "elapsedMs": 163008,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 165,
+      "atMs": 1791125020050,
+      "elapsedMs": 164007,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 165,
+      "atMs": 1791125020050,
+      "elapsedMs": 164007,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 165,
+      "atMs": 1791125020050,
+      "elapsedMs": 164007,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 165,
+      "atMs": 1791125020050,
+      "elapsedMs": 164008,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 166,
+      "atMs": 1791125021044,
+      "elapsedMs": 165001,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 166,
+      "atMs": 1791125021044,
+      "elapsedMs": 165001,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 166,
+      "atMs": 1791125021044,
+      "elapsedMs": 165001,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 166,
+      "atMs": 1791125021044,
+      "elapsedMs": 165001,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 167,
+      "atMs": 1791125022057,
+      "elapsedMs": 166015,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 39456,
+      "parentPid": 42548,
+      "startedAtMs": 1791124852611,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 167,
+      "atMs": 1791125022058,
+      "elapsedMs": 166015,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 9076,
+      "parentPid": 39456,
+      "startedAtMs": 1791124852631,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "p12-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 167,
+      "atMs": 1791125022058,
+      "elapsedMs": 166015,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 27572,
+      "parentPid": 40668,
+      "startedAtMs": 1791124854122,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+      "role": "observer-engine",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    },
+    {
+      "kind": "sample",
+      "tick": 167,
+      "atMs": 1791125022058,
+      "elapsedMs": 166015,
+      "phase": "post-uninstall-observation",
+      "requiredAlive": true,
+      "pid": 40668,
+      "parentPid": 42548,
+      "startedAtMs": 1791124854098,
+      "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+      "role": "observer-desktop",
+      "label": "r3-observer",
+      "status": "exited",
+      "actual": {
+        "status": "exited"
+      }
+    }
+  ],
+  "watcherSummary": {
+    "samples": 676,
+    "ticks": 169,
+    "identities": [
+      {
+        "pid": 9076,
+        "parentPid": 39456,
+        "startedAtMs": 1791124852631,
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-sidecar.exe",
+        "role": "observer-engine",
+        "uiProfileVerified": false,
+        "label": "p12-observer"
+      },
+      {
+        "pid": 39456,
+        "parentPid": 42548,
+        "startedAtMs": 1791124852611,
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p12-complete-2026-10-04\\preview\\workpilot-desktop.exe",
+        "role": "observer-desktop",
+        "uiProfileVerified": false,
+        "label": "p12-observer"
+      },
+      {
+        "pid": 27572,
+        "parentPid": 40668,
+        "startedAtMs": 1791124854122,
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-sidecar.exe",
+        "role": "observer-engine",
+        "uiProfileVerified": false,
+        "label": "r3-observer"
+      },
+      {
+        "pid": 40668,
+        "parentPid": 42548,
+        "startedAtMs": 1791124854098,
+        "path": "D:\\workspace\\kplocker\\WorkPilot\\artifacts\\workpilot-p13-candidate-2026-10-04-r3\\preview\\workpilot-desktop.exe",
+        "role": "observer-desktop",
+        "uiProfileVerified": false,
+        "label": "r3-observer"
+      }
+    ],
+    "unexpected": 162
+  },
+  "finishedAt": "2026-10-04T14:43:45.069Z"
+}

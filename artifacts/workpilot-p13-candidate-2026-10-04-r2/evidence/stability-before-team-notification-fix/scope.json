@@ -1,0 +1,10 @@
+{
+  "status": "paused_not_passed",
+  "continuousMs": 785534,
+  "cycles": 13,
+  "samples": 4149,
+  "observedOwnedProcessesAllExited": 82,
+  "reason": "Root requested normal pause after independent review found normal team_waiting incorrectly asks user for input. The replacement binary needs a fresh continuous four-hour run. No prior span is accumulated.",
+  "binaryStable": true,
+  "source": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p13-soak-r2\\run-iUj7XP"
+}

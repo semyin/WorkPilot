@@ -75,6 +75,21 @@ export function TaskWorkspaceHeader({
               {tr("项目与任务", "Projects & tasks")}
             </button>
             <button onClick={desktop.onSettings}>{tr("设置", "Settings")}</button>
+            {desktop.onNotifications && (
+              <button
+                onClick={desktop.onNotifications}
+                data-testid="notification-center-open"
+                aria-label={tr(
+                  `通知中心（${desktop.unreadNotifications || 0} 条未读）`,
+                  `Notification center (${desktop.unreadNotifications || 0} unread)`,
+                )}
+              >
+                {tr("通知", "Notifications")}
+                {!!desktop.unreadNotifications && (
+                  <b className="notification-unread">{desktop.unreadNotifications}</b>
+                )}
+              </button>
+            )}
             <button
               className="language"
               onClick={() => desktop.onPreferences({ ...prefs, language: english ? "zh" : "en" })}

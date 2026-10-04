@@ -9,7 +9,7 @@ use std::{
     },
     time::Duration,
 };
-use workpilot_contracts::{ImageRequest, ImageService};
+use workpilot_contracts::{ImageProtocol, ImageRequest, ImageService};
 use workpilot_platform::credentials::Secret;
 pub struct ImageOutput {
     pub images: Vec<Vec<u8>>,
@@ -42,6 +42,13 @@ pub fn validate_request(service: &ImageService, request: &ImageRequest) -> Resul
     }
     if service.auth_required && service.credential.is_none() {
         return Err("图片服务尚未填写密钥 / Image service key is missing".into());
+    }
+    if service.protocol == ImageProtocol::AliyunImages
+        && (request.format != "png"
+            || request.quality.is_some()
+            || service.model.starts_with("qwen-image-3.0") && request.references.len() > 3)
+    {
+        return Err("百炼图像适配输出 PNG，不发送 quality；Qwen Image 3.0 最多 3 张参考图 / Bailian uses PNG without quality; Qwen Image 3.0 accepts at most 3 references".into());
     }
     if !service.sizes.contains(&request.size)
         || request
@@ -104,15 +111,17 @@ pub async fn generate(
     if stop.load(Ordering::SeqCst) {
         return Err("图片生成已停止 / Image generation stopped".into());
     }
+    let aliyun = service.protocol == ImageProtocol::AliyunImages;
+    let timeout = Duration::from_secs(if aliyun { 600 } else { 180 });
     let client = reqwest::Client::builder()
         .redirect(reqwest::redirect::Policy::none())
         .retry(reqwest::retry::never())
         .connect_timeout(Duration::from_secs(15))
-        .timeout(Duration::from_secs(180))
+        .timeout(timeout)
         .build()
         .map_err(|e| e.to_string())?;
     let url = base_url(&service.base_url)?
-        .join(if references.is_empty() {
+        .join(if references.is_empty() || aliyun {
             "images/generations"
         } else {
             "images/edits"
@@ -122,7 +131,20 @@ pub async fn generate(
     if let Some(secret) = secret {
         call = call.bearer_auth(secret.expose());
     }
-    if references.is_empty() {
+    if aliyun {
+        let mut body = json!({"model":service.model,"prompt":request.prompt,"size":request.size,"n":request.count});
+        if !references.is_empty() {
+            body["image"] = json!(
+                references
+                    .iter()
+                    .map(|(_, media, bytes)| {
+                        format!("data:{media};base64,{}", STANDARD.encode(bytes))
+                    })
+                    .collect::<Vec<_>>()
+            );
+        }
+        call = call.json(&body);
+    } else if references.is_empty() {
         let mut body = json!({"model":service.model,"prompt":request.prompt,"size":request.size,"n":request.count,"output_format":request.format});
         if let Some(q) = &request.quality {
             body["quality"] = json!(q);
@@ -201,13 +223,21 @@ pub async fn generate(
         let mut images = vec![];
         let mut prompts = vec![];
         for item in data {
-            let encoded=item["b64_json"].as_str().ok_or("此适配器要求 b64_json 图片内容；仅有链接不能当作成功 / This adapter requires b64_json image bytes")?;
-            if encoded.len() > 44 * 1024 * 1024 {
-                return Err("图片超过 32 MiB / Image exceeds limit".into());
-            }
-            let image = STANDARD
-                .decode(encoded)
-                .map_err(|_| "图片编码损坏 / Invalid image encoding")?;
+            let image = if let Some(encoded) = item["b64_json"].as_str() {
+                if encoded.len() > 44 * 1024 * 1024 {
+                    return Err("图片超过 32 MiB / Image exceeds limit".into());
+                }
+                STANDARD
+                    .decode(encoded)
+                    .map_err(|_| "图片编码损坏 / Invalid image encoding")?
+            } else if aliyun {
+                let raw = item["url"]
+                    .as_str()
+                    .ok_or("图片返回缺少内容或地址 / Image data or URL is missing")?;
+                super::image_download::download(&client, raw, &service.base_url).await?
+            } else {
+                return Err("此适配器要求 b64_json 图片内容；仅有链接不能当作成功 / This adapter requires b64_json image bytes".into());
+            };
             if image.is_empty() || image.len() > 32 * 1024 * 1024 {
                 return Err("图片为空或过大 / Empty or oversized image".into());
             }
@@ -220,5 +250,9 @@ pub async fn generate(
             revised_prompts: prompts,
         })
     };
-    tokio::select! {biased;_=stopped(stop)=>Err("图片生成已停止；服务可能已计费，请核对用量，不会自动重试 / Stopped; provider may have charged; no retry".into()),result=operation=>result}
+    tokio::select! {
+        biased;
+        _ = stopped(stop) => Err("图片生成已停止；服务可能已计费，请核对用量，不会自动重试 / Stopped; provider may have charged; no retry".into()),
+        result = tokio::time::timeout(timeout, operation) => result.unwrap_or_else(|_| Err("图片服务超时；不会自动重试 / Image service timed out; no retry".into()))
+    }
 }
