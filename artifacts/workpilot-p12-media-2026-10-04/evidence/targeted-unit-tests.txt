@@ -1,0 +1,23 @@
+   Compiling workpilot-storage v0.1.0-alpha.12.7 (D:\workspace\kplocker\WorkPilot\crates\storage)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.25s
+     Running unittests src\lib.rs (target\debug\deps\workpilot_storage-ea59ced303917544.exe)
+
+running 3 tests
+test media_transfer_tests::attachment_preview_uses_whole_library_and_rejects_archived_running_or_secret_metadata ... ok
+test media_transfer_tests::attachment_batch_rolls_back_on_second_insert_cancel_stale_state_and_foreign_mapping ... ok
+test media_transfer_tests::attachment_import_preserves_origin_and_ids_without_rebinding_or_resurrecting ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 66 filtered out; finished in 0.07s
+
+     Running unittests src\bin\workpilot-data.rs (target\debug\deps\workpilot_data-60373c32fede48d9.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 1 test
+test transfer::media::tests::media_archive_authenticates_originals_and_rejects_bad_names_and_limits ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 9 filtered out; finished in 4.63s
+

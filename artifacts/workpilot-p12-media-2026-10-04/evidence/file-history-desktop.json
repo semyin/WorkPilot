@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-04T02:17:57.472Z",
+  "platform": "win32",
+  "binarySha256": "8ead81a221ca0e87467d59bde58794fa81b53501919cf93ade83599bfbafbd3c",
+  "checks": [
+    "native_ui_selects_revisions_exports_encrypted_file_and_clears_passphrase",
+    "wrong_password_rejected_preview_precedes_import_existing_file_preserved_restore_requires_approval",
+    "english_preview_no_duplicate_import_and_no_horizontal_overflow",
+    "native_application_exits_cleanly"
+  ],
+  "status": "passed"
+}

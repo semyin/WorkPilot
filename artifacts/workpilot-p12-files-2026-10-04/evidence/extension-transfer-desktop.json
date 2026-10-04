@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-04T00:15:24.997Z",
+  "platform": "win32",
+  "binarySha256": "d080de41e8043fd2f24870a20b1e7ba64b6ca68015bc072554a0ebd543d016d3",
+  "checks": [
+    "native_multi_selection_encrypted_export_repeated_password_clear_and_same_scope_conflicts_block_import",
+    "native_wrong_password_preview_files_permissions_dependencies_explicit_import_keeps_packages_disabled_without_credentials",
+    "english_preview_duplicate_import_no_new_installations_and_no_horizontal_overflow",
+    "source_and_target_applications_exit_without_leaving_owned_work"
+  ],
+  "status": "passed"
+}

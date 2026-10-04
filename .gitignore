@@ -33,6 +33,8 @@ coverage/
 *.wphistory
 *.wpsettings
 *.wpextensions
+*.wpfiles
+*.wpmedia
 
 # Local credentials and signing keys. Sanitized example files may be committed.
 .env

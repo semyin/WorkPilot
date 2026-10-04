@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-04T02:10:53.379Z",
+  "platform": "win32",
+  "binary": {
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\target\\release\\workpilot-engine.exe",
+    "sha256": "301d72a4941a35a16060800fc07a3163571641a225e105d76d1c3b2cf5690a5a"
+  },
+  "model": "Deterministic local responses/chat_completions/messages; actual files and Images HTTP fixture",
+  "checks": [
+    "three_protocols_receive_attachment_content_read_citations_generate_docx_and_resume_approval_without_duplicate_files",
+    "actual_image_bytes_reach_each_protocol_with_explicit_vision_capability",
+    "unknown_vision_capability_blocks_image_request_before_network_without_switching_model",
+    "attachment_bound_to_task_but_not_in_delivered_message_is_hidden_from_model_tools",
+    "text_only_model_can_generate_images_without_claiming_vision_image_error_stops_task_without_retry"
+  ],
+  "status": "passed"
+}

@@ -1,6 +1,6 @@
 {
   "name": "workpilot",
-  "version": "0.1.0-alpha.12.5",
+  "version": "0.1.0-alpha.12.7",
   "private": true,
   "type": "module",
   "engines": {
@@ -70,7 +70,11 @@
     "test:schedules-engine": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/schedules-engine-test.mjs",
     "test:schedules-desktop": "node scripts/schedules-desktop-smoke.mjs",
     "test:extension-transfer": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/extension-transfer-test.mjs",
-    "test:extension-transfer-desktop": "node scripts/extension-transfer-desktop.mjs"
+    "test:extension-transfer-desktop": "node scripts/extension-transfer-desktop.mjs",
+    "test:file-transfer": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/file-transfer-test.mjs",
+    "test:file-transfer-desktop": "node scripts/file-transfer-desktop.mjs",
+    "test:media-transfer": "node scripts/cargo.mjs build -p workpilot-engine --locked && node scripts/media-transfer-test.mjs",
+    "test:media-transfer-desktop": "node scripts/media-transfer-desktop.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",

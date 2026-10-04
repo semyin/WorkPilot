@@ -12,6 +12,7 @@ import {
 import { useWords } from "./workspaceClient";
 import { Saved } from "./SavedContent";
 import { FileHistory } from "./file-workbench/FileHistory";
+import { FileTransferPanel } from "./file-workbench/FileTransferPanel";
 import "./files.css";
 
 export function FileWorkbench({ task, onClose }: { task: string; onClose: () => void }) {
@@ -233,6 +234,7 @@ export function FileWorkbench({ task, onClose }: { task: string; onClose: () => 
   };
   const operationTitle = (op: WorkbenchOperation) => {
     if (op.kind === "history_import") return tr("导入文件历史", "Import file history");
+    if (op.kind === "files_import") return tr("导入项目文件", "Import project files");
     if (op.kind === "terminal") return tr("运行命令 · ", "Run command · ") + op.summary;
     if (op.kind === "git_commit") return tr("提交选中文件", "Commit selected files");
     if (op.summary.startsWith("恢复文件版本 ")) return tr("恢复文件版本", "Restore file version");
@@ -247,6 +249,7 @@ export function FileWorkbench({ task, onClose }: { task: string; onClose: () => 
   const tabs = [
     ["files", tr("文件", "Files")],
     ["history", tr("修改历史", "File history")],
+    ["transfer", tr("文件迁移", "File transfer")],
     ["terminal", tr("终端", "Terminal")],
     ["git", "Git"],
   ];
@@ -297,6 +300,16 @@ export function FileWorkbench({ task, onClose }: { task: string; onClose: () => 
           </div>
         )}
         <main className="file-workbench-main">
+          {tab === "transfer" && (
+            <FileTransferPanel
+              task={task}
+              onOperation={async (op, intent) => {
+                if (intent) setIntent((old) => ({ ...old, [op.id]: intent }));
+                effects.current.set(op.id, { kind: "import_files", manifest_blob: "" });
+                await poll();
+              }}
+            />
+          )}
           {tab === "files" && (
             <div className="file-browser">
               <aside>

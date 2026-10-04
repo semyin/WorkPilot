@@ -9,6 +9,10 @@ mod extension_transfer_tests;
 mod extensions;
 mod history_transfer;
 mod media;
+mod media_transfer;
+pub use media_transfer::{MediaImportBatch, MediaImportCandidate};
+#[cfg(test)]
+mod media_transfer_tests;
 mod memory;
 #[cfg(test)]
 mod memory_tests;

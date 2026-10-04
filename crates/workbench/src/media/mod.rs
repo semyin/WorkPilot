@@ -1,6 +1,7 @@
 mod images;
 pub mod model;
 mod office;
+mod transfer;
 mod worker;
 use crate::vault::{Result, Vault};
 use base64::{Engine, engine::general_purpose::STANDARD};
@@ -185,6 +186,7 @@ impl Manager {
             path: source.path,
             version: source.version,
             operation_id: source.operation,
+            origin: None,
         };
         let vault = Vault::open(&self.data)?;
         let original = vault.put(bytes)?;

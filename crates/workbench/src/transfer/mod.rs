@@ -1,5 +1,8 @@
 mod codec;
 mod extensions;
+mod file_index;
+pub(crate) mod files;
+mod media;
 mod project;
 #[cfg(test)]
 mod tests;
@@ -14,7 +17,10 @@ use std::{
     fs,
     io::{Seek, SeekFrom, Write},
     path::{Path, PathBuf},
-    sync::atomic::{AtomicBool, Ordering},
+    sync::{
+        Arc, Mutex,
+        atomic::{AtomicBool, Ordering},
+    },
 };
 use workpilot_contracts::*;
 use workpilot_storage::Storage;
@@ -24,7 +30,8 @@ pub(crate) struct Manager {
     storage: Storage,
     data: PathBuf,
     out: tokio::sync::mpsc::Sender<Wire>,
-    stop: AtomicBool,
+    stop: Arc<AtomicBool>,
+    media_owner: Mutex<Option<String>>,
     closing: AtomicBool,
     gate: tokio::sync::Mutex<()>,
 }
@@ -34,13 +41,19 @@ impl Manager {
             storage,
             data,
             out,
-            stop: AtomicBool::new(false),
+            stop: Arc::new(AtomicBool::new(false)),
+            media_owner: Mutex::new(None),
             closing: AtomicBool::new(false),
             gate: tokio::sync::Mutex::new(()),
         }
     }
     pub fn cancel_all(&self) {
         self.stop.store(true, Ordering::Relaxed);
+    }
+    pub fn cancel_task(&self, task: &str) {
+        if self.media_owner.lock().unwrap().as_deref() == Some(task) {
+            self.cancel_all();
+        }
     }
     pub fn shutdown(&self) {
         self.closing.store(true, Ordering::SeqCst);

@@ -1,0 +1,62 @@
+{
+  "at": "2026-10-04T02:10:07.611Z",
+  "platform": "win32",
+  "binary": {
+    "path": "D:\\workspace\\kplocker\\WorkPilot\\target\\release\\workpilot-engine.exe",
+    "sha256": "301d72a4941a35a16060800fc07a3163571641a225e105d76d1c3b2cf5690a5a"
+  },
+  "service": "Real local files and isolated document worker; synthetic Images API only",
+  "checks": [
+    "chunked_upload_exact_content_source_range_and_cross_task_denial",
+    "real_docx_xlsx_pptx_pdf_csv_markdown_generation_readback_formula_42_and_pdf_render",
+    "generation_uses_file_history_external_edit_blocks_old_approval_and_refresh_reads_new_bytes",
+    "corrupt_password_legacy_unknown_encoding_and_oversize_inputs_are_errors_not_empty_success",
+    "dedicated_image_profile_system_secret_generate_and_multipart_edit_real_bytes_dimensions_usage_cost_unknown",
+    "image_error_disconnect_wrong_format_dimensions_and_count_fail_once_missing_service_never_fakes_success",
+    "image_request_cancellation_is_prompt_and_does_not_retry_or_write_a_result",
+    "image_credential_not_in_event_stream_and_profile_removal_cleans_credential",
+    "real_encrypted_pdf_is_reported_as_password_protected_and_active_parse_can_be_cancelled",
+    "image_key_cannot_accidentally_be_saved_in_plaintext_profile_metadata"
+  ],
+  "stopMs": 70,
+  "parseStopMs": 7,
+  "samples": [
+    {
+      "format": "docx",
+      "sha256": "541ed651ff73fded338b87762a68d4672ee484f5c7d781cacc5ffe032dcb8b87",
+      "bytes": 9964,
+      "units": 9
+    },
+    {
+      "format": "xlsx",
+      "sha256": "b9ea11c7a287445f7695f80a0099000daef8f893eb38eef71d26e15c5ee9a475",
+      "bytes": 15901,
+      "units": 4
+    },
+    {
+      "format": "pptx",
+      "sha256": "e14c257ac352ce5dd1ad4193b4b9e587f3ea2e0c2b227aebb24ec7795dd931a6",
+      "bytes": 77287,
+      "units": 2
+    },
+    {
+      "format": "pdf",
+      "sha256": "76e58a6dbb2e3fcdd57a065db399e32a54752765ce438df5866298bd170de106",
+      "bytes": 13834201,
+      "units": 1
+    },
+    {
+      "format": "csv",
+      "sha256": "0ba0cbbd14fdfba79326874e23b7eb71ac2af25abf31d01928bbea0226d391a0",
+      "bytes": 77,
+      "units": 4
+    },
+    {
+      "format": "md",
+      "sha256": "ad5ab9077fd6f7afdc9c5af61ceb69c06251743ca4b9b1d4e610ad6a849bd050",
+      "bytes": 29,
+      "units": 4
+    }
+  ],
+  "status": "passed"
+}

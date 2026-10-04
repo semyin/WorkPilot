@@ -1,0 +1,46 @@
+[
+  {
+    "name": "media-transfer-desktop",
+    "command": "node scripts/media-transfer-desktop.mjs",
+    "status": "passed",
+    "checks": 4,
+    "exitCode": 0,
+    "began": "2026-10-04T02:16:39.559Z",
+    "ended": "2026-10-04T02:16:57.583Z",
+    "binarySha256": "8ead81a221ca0e87467d59bde58794fa81b53501919cf93ade83599bfbafbd3c",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-media-media-transfer-desktop\\report.json"
+  },
+  {
+    "name": "media-desktop",
+    "command": "node scripts/media-desktop-smoke.mjs",
+    "status": "passed",
+    "checks": 8,
+    "exitCode": 0,
+    "began": "2026-10-04T02:16:57.584Z",
+    "ended": "2026-10-04T02:17:52.254Z",
+    "binarySha256": "8ead81a221ca0e87467d59bde58794fa81b53501919cf93ade83599bfbafbd3c",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-media-media-desktop\\report.json"
+  },
+  {
+    "name": "file-transfer-desktop",
+    "command": "node scripts/file-transfer-desktop.mjs",
+    "status": "passed",
+    "checks": 4,
+    "exitCode": 0,
+    "began": "2026-10-04T02:17:52.256Z",
+    "ended": "2026-10-04T02:17:57.100Z",
+    "binarySha256": "8ead81a221ca0e87467d59bde58794fa81b53501919cf93ade83599bfbafbd3c",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-media-file-transfer-desktop\\report.json"
+  },
+  {
+    "name": "file-history-desktop",
+    "command": "node scripts/history-transfer-desktop.mjs",
+    "status": "passed",
+    "checks": 4,
+    "exitCode": 0,
+    "began": "2026-10-04T02:17:57.101Z",
+    "ended": "2026-10-04T02:18:00.765Z",
+    "binarySha256": "8ead81a221ca0e87467d59bde58794fa81b53501919cf93ade83599bfbafbd3c",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-media-file-history-desktop\\report.json"
+  }
+]

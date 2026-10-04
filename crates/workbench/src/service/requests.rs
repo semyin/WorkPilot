@@ -29,6 +29,14 @@ impl State {
             let (context, prepared) = self.prepare(task, action).await?;
             let automatic = context.policy.effective_permission == PermissionMode::FullAccess;
             let (kind, summary, port) = match &prepared.action {
+                WorkbenchAction::ImportFiles { .. } => (
+                    "files_import",
+                    format!(
+                        "导入 {} 个文件 / Import files",
+                        prepared.scope["files"].as_array().map_or(0, Vec::len)
+                    ),
+                    None,
+                ),
                 WorkbenchAction::Media { effect } => (
                     "media",
                     format!(
@@ -174,7 +182,9 @@ impl State {
                     Err(e)
                         if matches!(
                             prepared.action,
-                            WorkbenchAction::Extension { .. } | WorkbenchAction::Media { .. }
+                            WorkbenchAction::Extension { .. }
+                                | WorkbenchAction::Media { .. }
+                                | WorkbenchAction::ImportFiles { .. }
                         ) =>
                     {
                         op.state = "failed".into();

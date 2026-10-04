@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-04T00:05:08.561Z",
+  "platform": "win32",
+  "binarySha256": "d048efd28642298f092fdafdfec2d1c94dd1891369f702cbb9aa830013f3af15",
+  "checks": [
+    "registered_model_credential_in_binary_bytes_blocks_export_without_producing_an_archive",
+    "encrypted_exact_binary_export_no_overwrite_duplicate_missing_credential_path_traversal_junction_hardlink_rejected",
+    "separate_data_and_offline_source_nested_unicode_binary_empty_file_roundtrip_approval_waits_and_creates_linked_file_history",
+    "restart_and_repeated_import_reuses_operation_without_replacing_later_edits_and_existing_targets_block_entire_new_import",
+    "changed_preview_and_late_approval_conflict_write_nothing_preserve_existing_bytes_and_mark_failed",
+    "stop_pending_and_restart_never_write_or_automatically_replay_files",
+    "manual_file_import_obeys_request_approval_auto_review_and_full_access_modes",
+    "chat_mode_cannot_write_and_linked_destination_cannot_escape_project",
+    "archive_passphrase_absent_from_normal_databases_content_records_and_logs"
+  ],
+  "status": "passed"
+}

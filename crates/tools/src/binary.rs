@@ -48,7 +48,16 @@ pub fn user_path(path: &str) -> Result<()> {
 }
 impl Root {
     pub fn binary_snapshot(&self, path: &str) -> Result<BinarySnapshot> {
-        let (dir, name) = self.parent(path)?;
+        let (dir, name) = match self.parent(path) {
+            Ok(parent) => parent,
+            Err(Error::Io(e)) if e.kind() == std::io::ErrorKind::NotFound => {
+                return Ok(BinarySnapshot {
+                    version: absent(),
+                    bytes: vec![],
+                });
+            }
+            Err(e) => return Err(e),
+        };
         let mut options = OpenOptions::new();
         options.read(true);
         #[cfg(windows)]

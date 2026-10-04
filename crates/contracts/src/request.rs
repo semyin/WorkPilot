@@ -11,6 +11,14 @@ pub struct Request {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 pub enum Command {
+    MediaTransfer {
+        task_id: String,
+        action: MediaTransferAction,
+    },
+    FileTransfer {
+        task_id: String,
+        action: FileTransferAction,
+    },
     ExtensionTransfer {
         task_id: Option<String>,
         action: ExtensionTransferAction,
@@ -221,6 +229,18 @@ impl Request {
             return Err("invalid request_id");
         }
         match &self.command {
+            Command::MediaTransfer { task_id, action } => {
+                if !valid_id(task_id) {
+                    return Err("invalid task id");
+                }
+                action.validate()?;
+            }
+            Command::FileTransfer { task_id, action } => {
+                if !valid_id(task_id) {
+                    return Err("invalid task id");
+                }
+                action.validate()?;
+            }
             Command::ExtensionTransfer { task_id, action } => {
                 if task_id.as_ref().is_some_and(|id| !valid_id(id)) {
                     return Err("invalid task");

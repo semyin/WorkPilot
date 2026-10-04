@@ -1,0 +1,72 @@
+{
+  "at": "2026-10-04T00:17:27.746Z",
+  "phase": "P12-file-transfer-slice",
+  "status": "local_checks_pass_with_documented_limits_phase_not_accepted",
+  "appVersion": "0.1.0-alpha.12.6",
+  "schema": 11,
+  "platform": "Windows 11 Home x64 developer machine",
+  "basePushedCommit": "a99054478510ce96298f22af5cbf957a9a49de1c",
+  "thisSliceCommittedOrPushed": false,
+  "checks": {
+    "rust": 142,
+    "rustIgnored": 2,
+    "node": 11,
+    "newUnitTests": 4,
+    "engine": 34,
+    "desktop": 21,
+    "codeFiles": 329,
+    "maximumCodeLines": 984,
+    "localLinks": 590,
+    "sourceFiles": 456,
+    "deliveryFiles": 25123,
+    "deliveryBytes": 1989333375,
+    "credentialScannedTextFiles": 904,
+    "credentialPatternMatches": 0,
+    "trackedDiffWhitespaceCheck": "passed",
+    "bilingualScreenshotsViewed": true
+  },
+  "build": {
+    "command": "npm run build (Tauri build --no-bundle)",
+    "appVersion": "0.1.0-alpha.12.6",
+    "at": "2026-10-04T00:14:15.493Z",
+    "platform": "win32",
+    "desktop": "d080de41e8043fd2f24870a20b1e7ba64b6ca68015bc072554a0ebd543d016d3",
+    "engine": "d048efd28642298f092fdafdfec2d1c94dd1891369f702cbb9aa830013f3af15",
+    "runtimeCheck": "a4722582c7e4136f10173f6eb7b1129894f65323cd52cddb0aa1d6dbee649d99",
+    "browserSetup": "65f848921865a40251ca3f53b808cfba41830075ded117848ec8e8dc6ef5cbea",
+    "companion": "38872155c1eda51f21ab29a40395433fe305c531f8699d19d80899caf3246575"
+  },
+  "fileTransferLimits": {
+    "files": 128,
+    "perFileBytes": 67108864,
+    "totalBytes": 268435456,
+    "metadataBytes": 1048576
+  },
+  "delivery": "Runnable Windows preview; no new installer build or installation in this slice",
+  "previousDeliveryPreserved": [
+    "workpilot-p12-extensions-2026-10-04",
+    "workpilot-p12-memory-history-2026-10-04",
+    "workpilot-p12-settings-2026-10-04",
+    "workpilot-p12-history-2026-10-04"
+  ],
+  "originalUserProcessesPreserved": [
+    25624,
+    12372
+  ],
+  "modelTests": "Local deterministic fixtures only; no new commercial-model acceptance",
+  "pending": [
+    "Full sessions/multi-agent records and complete content references",
+    "Attachment/media records; unified path/reference and multi-project mapping",
+    "Earlier extension versions and drafts",
+    "Version cleanup and team permanent deletion",
+    "T-P12-01/02/04/05/06",
+    "E-P12-01",
+    "E-P08-01",
+    "E-P09-01",
+    "E-P10-01/02",
+    "E-P11-01/02",
+    "O-01/Q44",
+    "Native file picker and user experience",
+    "Physical cross-machine recovery; clean installation; macOS/Linux"
+  ]
+}

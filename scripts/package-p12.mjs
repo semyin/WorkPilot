@@ -4,9 +4,9 @@ import { execFileSync } from "node:child_process";
 import { join, dirname, relative, resolve, isAbsolute } from "node:path";
 import { root } from "./cargo.mjs";
 
-export const destination = join(root, "artifacts/workpilot-p12-extensions-2026-10-04");
+export const destination = join(root, "artifacts/workpilot-p12-media-2026-10-04");
 const preview = join(destination, "preview");
-const previous = join(root, "artifacts/workpilot-p12-memory-history-2026-10-04");
+const previous = join(root, "artifacts/workpilot-p12-files-2026-10-04");
 const hash = (b) => createHash("sha256").update(b).digest("hex");
 const build = JSON.parse(await readFile(join(root, ".local/desktop-release-receipt.json"), "utf8"));
 const sources = JSON.parse(
@@ -279,7 +279,7 @@ await writeFile(
   join(destination, "source-and-binary-manifest.json"),
   JSON.stringify(
     {
-      phase: "P12-extension-transfer-slice",
+      phase: "P12-media-transfer-slice",
       at: new Date().toISOString(),
       build,
       baseCommit: execFileSync("git", ["rev-parse", "HEAD"], {

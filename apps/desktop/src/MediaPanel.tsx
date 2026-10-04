@@ -12,6 +12,7 @@ import { useWords } from "./workspaceClient";
 import { Saved } from "./SavedContent";
 import { executionCommand } from "./executionClient";
 import "./media.css";
+import { MediaTransferPanel } from "./MediaTransferPanel";
 type Page = { asset: MediaAsset; units: DocumentUnit[]; next: number | null; total: number };
 const isOffice = (asset: MediaAsset) =>
   [
@@ -34,7 +35,15 @@ const newService = (): ImageService => ({
   request_base64: false,
   auth_required: true,
 });
-export function MediaPanel({ task, onClose }: { task: string | null; onClose: () => void }) {
+export function MediaPanel({
+  task,
+  onClose,
+  onAttach,
+}: {
+  task: string | null;
+  onClose: () => void;
+  onAttach: (asset: MediaAsset) => void;
+}) {
   const tr = useWords(),
     [tab, setTab] = useState("files"),
     [assets, setAssets] = useState<MediaAsset[]>([]),
@@ -233,6 +242,7 @@ export function MediaPanel({ task, onClose }: { task: string | null; onClose: ()
       <nav>
         {[
           ["files", tr("附件与成果", "Attachments & outputs")],
+          ["transfer", tr("附件迁移", "Attachment transfer")],
           ["images", tr("生成图片", "Generate images")],
           ["settings", tr("图片服务设置", "Image service settings")],
         ].map(([key, label]) => (
@@ -249,6 +259,12 @@ export function MediaPanel({ task, onClose }: { task: string | null; onClose: ()
         )}
         {notice && <p role="status">{notice}</p>}
         {busy && <p role="status">{tr("正在处理…", "Working…")}</p>}
+        {tab === "transfer" &&
+          (task ? (
+            <MediaTransferPanel task={task} assets={assets} onImported={refresh} />
+          ) : (
+            <p>{tr("请先选择一个任务。", "Select a task first.")}</p>
+          ))}
         {tab === "files" && (
           <>
             {!task ? (
@@ -296,6 +312,18 @@ export function MediaPanel({ task, onClose }: { task: string | null; onClose: ()
                             : tr("输入资料", "Input file")}
                         </small>
                         {asset.path && <small>{asset.path}</small>}
+                        {asset.origin && (
+                          <small>
+                            {tr("迁入来源：", "Imported from: ")}
+                            {asset.origin.name} · {new Date(asset.origin.at_ms).toLocaleString()}
+                          </small>
+                        )}
+                        <button
+                          disabled={busy}
+                          onClick={() => void act(async () => onAttach(asset))}
+                        >
+                          {tr("加入下一条消息", "Add to next message")}
+                        </button>
                         <small>
                           {tr("内容版本：", "Content version: ")}
                           {asset.sha256.slice(0, 12)}

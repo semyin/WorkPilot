@@ -127,7 +127,13 @@ impl State {
         }
         op.state = "running".into();
         self.save_operation(op, false).await?;
-        let paths = if let WorkbenchAction::Media { effect } = &prepared.action {
+        let paths = if let WorkbenchAction::ImportFiles { manifest_blob } = &prepared.action {
+            Some(
+                self.transfer
+                    .file_plan(manifest_blob, &op.task_id, &context.root)?
+                    .paths()?,
+            )
+        } else if let WorkbenchAction::Media { effect } = &prepared.action {
             Some(effect.paths())
         } else if let WorkbenchAction::Browser {
             action: BrowserAction::Download { path, .. },
@@ -189,6 +195,10 @@ impl State {
     ) -> Result<Value> {
         let root = &context.root;
         match action {
+            WorkbenchAction::ImportFiles { manifest_blob } => {
+                self.transfer
+                    .execute_files(manifest_blob, &op.task_id, root, &live.stop)
+            }
             WorkbenchAction::Media { effect } => {
                 let (value, events) = self
                     .media

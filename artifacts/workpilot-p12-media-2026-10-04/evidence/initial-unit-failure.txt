@@ -1,0 +1,50 @@
+   Compiling workpilot-contracts v0.1.0-alpha.12.7 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-policy v0.1.0-alpha.12.7 (D:\workspace\kplocker\WorkPilot\crates\policy)
+   Compiling workpilot-platform v0.1.0-alpha.12.7 (D:\workspace\kplocker\WorkPilot\crates\platform)
+   Compiling workpilot-storage v0.1.0-alpha.12.7 (D:\workspace\kplocker\WorkPilot\crates\storage)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 21.14s
+     Running unittests src\lib.rs (target\debug\deps\workpilot_storage-ea59ced303917544.exe)
+
+running 3 tests
+test media_transfer_tests::attachment_preview_uses_whole_library_and_rejects_archived_running_or_secret_metadata ... FAILED
+test media_transfer_tests::attachment_batch_rolls_back_on_second_insert_cancel_stale_state_and_foreign_mapping ... FAILED
+test media_transfer_tests::attachment_import_preserves_origin_and_ids_without_rebinding_or_resurrecting ... FAILED
+
+failures:
+
+---- media_transfer_tests::attachment_preview_uses_whole_library_and_rejects_archived_running_or_secret_metadata stdout ----
+
+thread 'media_transfer_tests::attachment_preview_uses_whole_library_and_rejects_archived_running_or_secret_metadata' (40248) panicked at crates\storage\src\media_transfer_tests.rs:158:53:
+called `Result::unwrap()` on an `Err` value: Conflict
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- media_transfer_tests::attachment_batch_rolls_back_on_second_insert_cancel_stale_state_and_foreign_mapping stdout ----
+
+thread 'media_transfer_tests::attachment_batch_rolls_back_on_second_insert_cancel_stale_state_and_foreign_mapping' (5772) panicked at crates\storage\src\media_transfer_tests.rs:147:51:
+called `Result::unwrap()` on an `Err` value: Conflict
+
+---- media_transfer_tests::attachment_import_preserves_origin_and_ids_without_rebinding_or_resurrecting stdout ----
+
+thread 'media_transfer_tests::attachment_import_preserves_origin_and_ids_without_rebinding_or_resurrecting' (11076) panicked at crates\storage\src\media_transfer_tests.rs:76:65:
+called `Result::unwrap()` on an `Err` value: Conflict
+
+
+failures:
+    media_transfer_tests::attachment_batch_rolls_back_on_second_insert_cancel_stale_state_and_foreign_mapping
+    media_transfer_tests::attachment_import_preserves_origin_and_ids_without_rebinding_or_resurrecting
+    media_transfer_tests::attachment_preview_uses_whole_library_and_rejects_archived_running_or_secret_metadata
+
+test result: FAILED. 0 passed; 3 failed; 0 ignored; 0 measured; 66 filtered out; finished in 0.06s
+
+error: test failed, to rerun pass `-p workpilot-storage --lib`
+file:///D:/workspace/kplocker/WorkPilot/scripts/cargo.mjs:25
+      else reject(new Error(command + " exited with " + (code ?? signal)));
+                  ^
+
+Error: C:\Users\semyi\.cargo\bin\cargo.exe exited with 101
+    at ChildProcess.<anonymous> (file:///D:/workspace/kplocker/WorkPilot/scripts/cargo.mjs:25:19)
+    at Object.onceWrapper (node:events:634:26)
+    at ChildProcess.emit (node:events:519:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+
+Node.js v22.23.2

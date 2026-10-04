@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-04T00:10:45.660Z",
+  "platform": "win32",
+  "binarySha256": "76c4fbbb924828dea002e9e3906fa9a51f3f2f7a5956cec0848636fee02c13ac",
+  "checks": [
+    "native_cross_folder_selection_export_password_confirmation_and_clear",
+    "native_wrong_password_mapping_preview_pending_approval_then_exact_binary_files_and_history",
+    "existing_file_conflict_blocks_import_english_duplicate_views_one_operation_no_horizontal_overflow",
+    "native_application_clean_exit_without_javascript_errors"
+  ],
+  "status": "passed"
+}

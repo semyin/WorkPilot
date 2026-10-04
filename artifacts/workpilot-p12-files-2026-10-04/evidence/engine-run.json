@@ -1,0 +1,57 @@
+[
+  {
+    "name": "file-transfer-engine",
+    "command": "node scripts/file-transfer-test.mjs",
+    "status": "passed",
+    "checks": 9,
+    "exitCode": 0,
+    "began": "2026-10-04T00:05:08.463Z",
+    "ended": "2026-10-04T00:05:16.001Z",
+    "binarySha256": "d048efd28642298f092fdafdfec2d1c94dd1891369f702cbb9aa830013f3af15",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-files-file-transfer-engine\\report.json"
+  },
+  {
+    "name": "file-history-engine",
+    "command": "node scripts/history-transfer-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-04T00:05:16.002Z",
+    "ended": "2026-10-04T00:05:17.545Z",
+    "binarySha256": "d048efd28642298f092fdafdfec2d1c94dd1891369f702cbb9aa830013f3af15",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-files-file-history-engine\\report.json"
+  },
+  {
+    "name": "settings-engine",
+    "command": "node scripts/project-transfer-test.mjs",
+    "status": "passed",
+    "checks": 4,
+    "exitCode": 0,
+    "began": "2026-10-04T00:05:17.546Z",
+    "ended": "2026-10-04T00:05:19.112Z",
+    "binarySha256": "d048efd28642298f092fdafdfec2d1c94dd1891369f702cbb9aa830013f3af15",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-files-settings-engine\\report.json"
+  },
+  {
+    "name": "extension-transfer-engine",
+    "command": "node scripts/extension-transfer-test.mjs",
+    "status": "passed",
+    "checks": 6,
+    "exitCode": 0,
+    "began": "2026-10-04T00:05:19.113Z",
+    "ended": "2026-10-04T00:05:24.943Z",
+    "binarySha256": "d048efd28642298f092fdafdfec2d1c94dd1891369f702cbb9aa830013f3af15",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-files-extension-transfer-engine\\report.json"
+  },
+  {
+    "name": "workbench-engine",
+    "command": "node scripts/workbench-engine-test.mjs",
+    "status": "passed",
+    "checks": 10,
+    "exitCode": 0,
+    "began": "2026-10-04T00:05:24.944Z",
+    "ended": "2026-10-04T00:05:33.657Z",
+    "binarySha256": "d048efd28642298f092fdafdfec2d1c94dd1891369f702cbb9aa830013f3af15",
+    "report": ".test-results\\workbench-engine\\report.json"
+  }
+]

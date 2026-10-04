@@ -1,0 +1,68 @@
+[
+  {
+    "name": "media-transfer-engine",
+    "command": "node scripts/media-transfer-test.mjs",
+    "status": "passed",
+    "checks": 7,
+    "exitCode": 0,
+    "began": "2026-10-04T02:08:33.237Z",
+    "ended": "2026-10-04T02:10:06.897Z",
+    "binarySha256": "301d72a4941a35a16060800fc07a3163571641a225e105d76d1c3b2cf5690a5a",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-media-media-transfer-engine\\report.json"
+  },
+  {
+    "name": "media-engine",
+    "command": "node scripts/media-engine-test.mjs",
+    "status": "passed",
+    "checks": 10,
+    "exitCode": 0,
+    "began": "2026-10-04T02:10:06.898Z",
+    "ended": "2026-10-04T02:10:53.215Z",
+    "binarySha256": "301d72a4941a35a16060800fc07a3163571641a225e105d76d1c3b2cf5690a5a",
+    "report": ".test-results\\media-engine\\report.json"
+  },
+  {
+    "name": "media-model",
+    "command": "node scripts/media-model-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-04T02:10:53.216Z",
+    "ended": "2026-10-04T02:11:18.410Z",
+    "binarySha256": "301d72a4941a35a16060800fc07a3163571641a225e105d76d1c3b2cf5690a5a",
+    "report": ".test-results\\media-model\\report.json"
+  },
+  {
+    "name": "file-transfer-engine",
+    "command": "node scripts/file-transfer-test.mjs",
+    "status": "passed",
+    "checks": 9,
+    "exitCode": 0,
+    "began": "2026-10-04T02:11:18.410Z",
+    "ended": "2026-10-04T02:11:22.014Z",
+    "binarySha256": "301d72a4941a35a16060800fc07a3163571641a225e105d76d1c3b2cf5690a5a",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-media-file-transfer-engine\\report.json"
+  },
+  {
+    "name": "file-history-engine",
+    "command": "node scripts/history-transfer-test.mjs",
+    "status": "passed",
+    "checks": 5,
+    "exitCode": 0,
+    "began": "2026-10-04T02:11:22.015Z",
+    "ended": "2026-10-04T02:11:23.595Z",
+    "binarySha256": "301d72a4941a35a16060800fc07a3163571641a225e105d76d1c3b2cf5690a5a",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-media-file-history-engine\\report.json"
+  },
+  {
+    "name": "extension-transfer-engine",
+    "command": "node scripts/extension-transfer-test.mjs",
+    "status": "passed",
+    "checks": 6,
+    "exitCode": 0,
+    "began": "2026-10-04T02:11:23.596Z",
+    "ended": "2026-10-04T02:11:28.500Z",
+    "binarySha256": "301d72a4941a35a16060800fc07a3163571641a225e105d76d1c3b2cf5690a5a",
+    "report": "D:\\workspace\\kplocker\\WorkPilot\\.test-results\\p12-media-extension-transfer-engine\\report.json"
+  }
+]

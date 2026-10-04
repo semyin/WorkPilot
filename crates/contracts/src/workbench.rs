@@ -28,6 +28,9 @@ pub enum FileEdit {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 pub enum WorkbenchAction {
+    ImportFiles {
+        manifest_blob: String,
+    },
     Media {
         effect: MediaEffect,
     },
@@ -103,6 +106,12 @@ impl WorkbenchAction {
             !p.is_empty() && p.len() <= 4096 && !p.contains('\0')
         }
         match self {
+            Self::ImportFiles { manifest_blob }
+                if manifest_blob.len() != 64
+                    || !manifest_blob.bytes().all(|b| b.is_ascii_hexdigit()) =>
+            {
+                return Err("invalid file import manifest");
+            }
             Self::Media { effect } => return effect.validate(),
             Self::ReadDocument { path: p, .. } if !path(p) => return Err("invalid file path"),
             Self::Extension { effect } => return effect.validate(),
@@ -209,7 +218,10 @@ impl WorkbenchAction {
         Ok(())
     }
     pub fn mutates(&self) -> bool {
-        if matches!(self, Self::Extension { .. } | Self::Media { .. }) {
+        if matches!(
+            self,
+            Self::Extension { .. } | Self::Media { .. } | Self::ImportFiles { .. }
+        ) {
             return true;
         }
         if let Self::Browser { action } = self {

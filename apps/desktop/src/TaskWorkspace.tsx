@@ -887,6 +887,23 @@ export function TaskWorkspace({
           key={creating ? "global-media" : selected || "global-media"}
           task={creating ? null : selected}
           onClose={() => setMediaOpen(false)}
+          onAttach={(asset) => {
+            if (!selected || asset.task_id !== selected)
+              throw new Error(
+                tr("请在附件所属任务中使用。", "Use the attachment in its own task."),
+              );
+            if (
+              messageAttachments.length >= 16 &&
+              !messageAttachments.some((a) => a.id === asset.id)
+            )
+              throw new Error(
+                tr("一条消息最多添加 16 个附件。", "At most 16 attachments per message."),
+              );
+            setMessageAttachments((old) =>
+              old.some((a) => a.id === asset.id) ? old : [...old, asset],
+            );
+            setMediaOpen(false);
+          }}
         />
       )}
       {memoryOpen && (

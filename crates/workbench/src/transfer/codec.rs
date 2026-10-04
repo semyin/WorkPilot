@@ -4,7 +4,7 @@ use ring::{
     aead, pbkdf2,
     rand::{SecureRandom, SystemRandom},
 };
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Serialize, de::DeserializeOwned};
 use sha2::{Digest, Sha256};
 use std::{
     collections::{BTreeMap, HashSet},
@@ -214,17 +214,45 @@ fn unframe(
     bytes.truncate(size);
     Ok(bytes)
 }
+pub(super) trait ArchiveIndex: Serialize + DeserializeOwned {
+    const MAGIC: &'static [u8; 8];
+    fn objects(&self) -> Result<BTreeMap<String, u64>>;
+}
+impl ArchiveIndex for Manifest {
+    const MAGIC: &'static [u8; 8] = MAGIC;
+    fn objects(&self) -> Result<BTreeMap<String, u64>> {
+        self.objects()
+    }
+}
 pub(super) fn write(
-    mut output: impl Write,
+    output: impl Write,
     password: &str,
     manifest: &Manifest,
+    stop: &AtomicBool,
+    object: impl FnMut(&str) -> Result<Vec<u8>>,
+) -> Result<()> {
+    write_index(output, password, manifest, stop, object)
+}
+pub(super) fn read(
+    input: impl Read,
+    password: &str,
+    stop: &AtomicBool,
+    object: impl FnMut(&str, &[u8]) -> Result<()>,
+) -> Result<(Manifest, String)> {
+    read_index(input, password, stop, object)
+}
+
+pub(super) fn write_index<I: ArchiveIndex>(
+    mut output: impl Write,
+    password: &str,
+    manifest: &I,
     stop: &AtomicBool,
     mut object: impl FnMut(&str) -> Result<Vec<u8>>,
 ) -> Result<()> {
     let objects = manifest.objects()?;
     check(stop)?;
     let mut header = [0; 24];
-    header[..8].copy_from_slice(MAGIC);
+    header[..8].copy_from_slice(I::MAGIC);
     SystemRandom::new()
         .fill(&mut header[8..])
         .map_err(|_| "Randomness unavailable")?;
@@ -249,12 +277,12 @@ pub(super) fn write(
     }
     check(stop)
 }
-pub(super) fn read(
+pub(super) fn read_index<I: ArchiveIndex>(
     input: impl Read,
     password: &str,
     stop: &AtomicBool,
     mut object: impl FnMut(&str, &[u8]) -> Result<()>,
-) -> Result<(Manifest, String)> {
+) -> Result<(I, String)> {
     check(stop)?;
     let mut input = Reader {
         inner: input,
@@ -265,13 +293,12 @@ pub(super) fn read(
     input
         .read_exact(&mut header)
         .map_err(|_| "不完整的备份 / Incomplete archive")?;
-    if &header[..8] != MAGIC {
-        return Err("不是支持的 WorkPilot 历史备份 / Unsupported history archive".into());
+    if &header[..8] != I::MAGIC {
+        return Err("不是支持的 WorkPilot 备份 / Unsupported archive".into());
     }
     let key = key(password, &header[8..])?;
     let meta = unframe(&mut input, &key, &header, 0, MAX_META)?;
-    let manifest: Manifest =
-        serde_json::from_slice(&meta).map_err(|_| "Invalid history manifest")?;
+    let manifest: I = serde_json::from_slice(&meta).map_err(|_| "Invalid history manifest")?;
     let objects = manifest.objects()?;
     for (index, (sha, size)) in objects.iter().enumerate() {
         check(stop)?;

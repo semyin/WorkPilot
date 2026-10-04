@@ -1,0 +1,49 @@
+   Compiling workpilot-contracts v0.1.0-alpha.12.5 (D:\workspace\kplocker\WorkPilot\crates\contracts)
+   Compiling workpilot-platform v0.1.0-alpha.12.5 (D:\workspace\kplocker\WorkPilot\crates\platform)
+   Compiling workpilot-policy v0.1.0-alpha.12.5 (D:\workspace\kplocker\WorkPilot\crates\policy)
+   Compiling workpilot-storage v0.1.0-alpha.12.5 (D:\workspace\kplocker\WorkPilot\crates\storage)
+   Compiling workpilot-tools v0.1.0-alpha.12.5 (D:\workspace\kplocker\WorkPilot\crates\tools)
+   Compiling workpilot-providers v0.1.0-alpha.12.5 (D:\workspace\kplocker\WorkPilot\crates\providers)
+   Compiling workpilot-extensions v0.1.0-alpha.12.5 (D:\workspace\kplocker\WorkPilot\crates\extensions)
+   Compiling workpilot-workbench v0.1.0-alpha.12.5 (D:\workspace\kplocker\WorkPilot\crates\workbench)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 23.16s
+     Running unittests src\lib.rs (target\debug\deps\workpilot_tools-5e1473eaa159ca0d.exe)
+
+running 8 tests
+test file_import::tests::nested_binary_create_only_and_invalid_paths ... ok
+test binary::tests::new_file_and_rename_never_replace_existing_destination ... ok
+test files::tests::existing_open_writer_blocks_managed_overwrite ... ok
+test files::tests::search_reports_limits_and_read_slices_respect_utf8 ... ok
+test files::tests::managed_write_binds_identity_content_and_creation_state ... ok
+test worker::tests::dropping_async_call_waits_until_owned_work_observes_stop ... ok
+test files::tests::parent_escape_devices_links_and_cross_root_rebind_are_rejected ... ok
+test binary::tests::binary_versions_reject_conflicts_and_keep_complete_bytes ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s
+
+     Running unittests src\lib.rs (target\debug\deps\workpilot_workbench-004e08132c02c552.exe)
+
+running 8 tests
+test transfer::tests::traversal_excess_size_duplicate_entries_and_cancellation_are_rejected ... ok
+test transfer::file_index::tests::rejects_ambiguous_paths_credentials_and_counts ... ok
+test vault::tests::exact_binary_history_is_encrypted_and_tampering_fails ... ok
+test transfer::tests::encrypted_archive_preserves_binary_and_sources_without_exporting_local_identity ... ok
+test transfer::file_index::tests::file_archive_is_authenticated_and_distinct_from_history ... ok
+test transfer::tests::extension_archive_has_distinct_authenticated_format_and_bound ... ok
+test transfer::tests::settings_document_is_encrypted_authenticated_bounded_and_distinct_from_history ... ok
+test transfer::tests::wrong_password_tampering_truncation_and_trailing_bytes_are_rejected ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 12.90s
+
+   Doc-tests workpilot_tools
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests workpilot_workbench
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

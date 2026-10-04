@@ -18,6 +18,8 @@ pub struct MediaAsset {
     pub path: Option<String>,
     pub version: Option<FileVersion>,
     pub operation_id: Option<String>,
+    #[serde(default)]
+    pub origin: Option<MediaAssetOrigin>,
 }
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 pub struct ImageDimensions {

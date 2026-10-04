@@ -37,6 +37,10 @@ mod project_transfer;
 pub use project_transfer::*;
 mod extension_transfer;
 pub use extension_transfer::*;
+mod file_transfer;
+pub use file_transfer::*;
+mod media_transfer;
+pub use media_transfer::*;
 
 pub const PROTOCOL: &str = "workpilot.v1";
 pub const SCHEMA_VERSION: u32 = 11;

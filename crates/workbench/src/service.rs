@@ -230,6 +230,8 @@ impl Service {
         if matches!(
             &request.command,
             Command::HistoryTransfer { .. }
+                | Command::FileTransfer { .. }
+                | Command::MediaTransfer { .. }
                 | Command::ProjectTransfer { .. }
                 | Command::ExtensionTransfer { .. }
         ) {
@@ -250,6 +252,23 @@ impl Service {
             self.requests.push(tokio::task::spawn_blocking(move || {
                 runtime.block_on(async move {
                     let result = match command {
+                        Command::MediaTransfer { task_id, action } => {
+                            state
+                                .transfer
+                                .handle_media(task_id, action, &state.media)
+                                .await
+                        }
+                        Command::FileTransfer { task_id, action } => {
+                            match state.transfer.handle_files(task_id.clone(), action).await {
+                                Ok(crate::transfer::files::FileReply::Data(data)) => Ok(data),
+                                Ok(crate::transfer::files::FileReply::Ready { id, action }) => {
+                                    state
+                                        .handle(&id, &task_id, action, state.browser.epoch())
+                                        .await
+                                }
+                                Err(e) => Err(e),
+                            }
+                        }
                         Command::HistoryTransfer { task_id, action } => {
                             state.transfer.handle(task_id, action).await
                         }
@@ -399,6 +418,7 @@ impl Service {
     }
     fn cancel_task(&self, task: &str) {
         self.state.media.cancel_task(task);
+        self.state.transfer.cancel_task(task);
         self.state.browser.cancel_task(task);
         self.state.images.lock().unwrap().remove(task);
         for live in self.state.live.lock().unwrap().values() {

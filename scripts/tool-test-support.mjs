@@ -103,6 +103,8 @@ async function launch(directory, fault) {
         (command.kind === "media" && command.action?.kind === "preview") ||
           command.kind === "inspect_installation" ||
           command.kind === "history_transfer" ||
+          command.kind === "file_transfer" ||
+          command.kind === "media_transfer" ||
           command.kind === "project_transfer" ||
           command.kind === "extension_transfer"
           ? 120000

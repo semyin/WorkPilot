@@ -89,6 +89,22 @@ async fn pick_extension_archive(
     )
     .await
 }
+#[tauri::command]
+async fn pick_file_archive(
+    view: Webview,
+    app: tauri::AppHandle,
+    save: bool,
+) -> Result<Option<String>, String> {
+    pick_transfer_archive(view, app, save, "wpfiles", "WorkPilot-files.wpfiles").await
+}
+#[tauri::command]
+async fn pick_media_archive(
+    view: Webview,
+    app: tauri::AppHandle,
+    save: bool,
+) -> Result<Option<String>, String> {
+    pick_transfer_archive(view, app, save, "wpmedia", "WorkPilot-attachments.wpmedia").await
+}
 async fn pick_transfer_archive(
     view: Webview,
     app: tauri::AppHandle,
@@ -240,6 +256,8 @@ impl Bridge {
             &request.command,
             Command::Media { .. }
                 | Command::HistoryTransfer { .. }
+                | Command::FileTransfer { .. }
+                | Command::MediaTransfer { .. }
                 | Command::ProjectTransfer { .. }
                 | Command::ExtensionTransfer { .. }
                 | Command::InspectInstallation { .. }
@@ -657,6 +675,8 @@ fn main() {
             engine_command,
             pick_history_archive,
             pick_extension_archive,
+            pick_file_archive,
+            pick_media_archive,
             pick_settings_archive,
             project_open_external,
             extension_open_login,

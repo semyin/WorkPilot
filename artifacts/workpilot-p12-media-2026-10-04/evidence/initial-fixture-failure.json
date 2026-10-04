@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-04T01:46:48.738Z",
+  "platform": "win32",
+  "binarySha256": "0e1f9dc493e42f895f042d925e30f95598415dcafb9fcacacc29dc843633c3fb",
+  "checks": [],
+  "status": "failed",
+  "error": "TypeError [ERR_INVALID_ARG_TYPE]: The \"path\" argument must be of type string. Received undefined\n    at Object.join (node:path:528:7)\n    at generateDocument (file:///D:/workspace/kplocker/WorkPilot/services/documents/write.mjs:177:21)\n    at file:///D:/workspace/kplocker/WorkPilot/scripts/media-transfer-test.mjs:75:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)"
+}

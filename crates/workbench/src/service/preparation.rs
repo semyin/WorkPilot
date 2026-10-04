@@ -214,6 +214,11 @@ impl State {
     ) -> Result<(Context, Prepared)> {
         let context = self.context(task, true).await?;
         let scope = match &action {
+            WorkbenchAction::ImportFiles { manifest_blob } => {
+                self.transfer
+                    .prepare_files(manifest_blob, task, &context.root)
+                    .await?
+            }
             WorkbenchAction::Media { effect } => {
                 self.media.prepare(task, &context.root, effect).await?
             }

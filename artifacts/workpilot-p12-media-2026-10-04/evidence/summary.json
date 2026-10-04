@@ -1,0 +1,78 @@
+{
+  "at": "2026-10-04T02:18:33.827Z",
+  "phase": "P12-media-transfer-slice",
+  "status": "local_checks_pass_with_documented_limits_phase_not_accepted",
+  "appVersion": "0.1.0-alpha.12.7",
+  "schema": 11,
+  "platform": "Windows 11 Home x64 developer machine",
+  "basePushedCommit": "a99054478510ce96298f22af5cbf957a9a49de1c",
+  "thisSliceCommittedOrPushed": false,
+  "checks": {
+    "rust": 146,
+    "rustIgnored": 2,
+    "node": 11,
+    "newUnitTests": 4,
+    "engine": 42,
+    "desktop": 20,
+    "codeFiles": 338,
+    "maximumCodeLines": 984,
+    "localLinks": 607,
+    "sourceFiles": 466,
+    "deliveryFiles": 25123,
+    "deliveryBytes": 1989630335,
+    "credentialScannedTextFiles": 946,
+    "credentialPatternMatches": 0,
+    "trackedDiffWhitespaceCheck": "passed",
+    "bilingualScreenshotsViewed": true,
+    "migratedDocumentPreviewsViewed": true
+  },
+  "build": {
+    "command": "npm run build (Tauri build --no-bundle)",
+    "appVersion": "0.1.0-alpha.12.7",
+    "at": "2026-10-04T02:16:18.000Z",
+    "platform": "win32",
+    "desktop": "8ead81a221ca0e87467d59bde58794fa81b53501919cf93ade83599bfbafbd3c",
+    "engine": "301d72a4941a35a16060800fc07a3163571641a225e105d76d1c3b2cf5690a5a",
+    "runtimeCheck": "e58df0196e5daeec392ca46f2db81a086bdf7b96b7e3188961a2289eb68f9799",
+    "browserSetup": "bdfbbb3fde3969d14899c2c2e30aee9157f69c7725af24000d52562303cd740b",
+    "companion": "f2f39405ecd30df7cd22e57da4120bb624d1feaf3b51bd9dcb658a694838fcd4"
+  },
+  "mediaTransferLimits": {
+    "assets": 64,
+    "perAssetBytes": 33554432,
+    "totalBytes": 268435456,
+    "metadataBytes": 1048576,
+    "processingBudgetSeconds": 90,
+    "cancellationWaitsForWorkerCleanup": true
+  },
+  "delivery": "Runnable Windows preview; no new installer build or installation in this slice",
+  "previousDeliveryPreserved": [
+    "workpilot-p12-files-2026-10-04",
+    "workpilot-p12-extensions-2026-10-04",
+    "workpilot-p12-memory-history-2026-10-04",
+    "workpilot-p12-settings-2026-10-04",
+    "workpilot-p12-history-2026-10-04"
+  ],
+  "originalUserProcessesPreserved": [
+    25624,
+    12372
+  ],
+  "modelTests": "Local deterministic fixtures only; no new commercial-model acceptance",
+  "knownDefect": "T-P10-03: source generated PDF text extraction maps digits to private-use glyphs; source/imported bytes and extracted units remain identical; PDF generation fix pending",
+  "pending": [
+    "T-P10-03 generated PDF numeric text mapping",
+    "Full sessions/multi-agent records and message attachment references",
+    "Unified path/reference and multi-project mapping",
+    "Earlier extension versions and drafts",
+    "Unreferenced encrypted objects; version cleanup and team permanent deletion",
+    "T-P12-01/02/04/05/06",
+    "E-P12-01",
+    "E-P08-01",
+    "E-P09-01",
+    "E-P10-01/02",
+    "E-P11-01/02",
+    "O-01/Q44",
+    "Native file picker and user experience",
+    "Physical cross-machine recovery; clean installation; macOS/Linux"
+  ]
+}
