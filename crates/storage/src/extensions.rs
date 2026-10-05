@@ -230,20 +230,6 @@ impl Store {
     ) -> Result<Option<CredentialRef>> {
         Ok(self.connection.query_row("SELECT credential_ref FROM extension_credentials WHERE installation_id=?1 AND server_id=?2 AND key=?3",params![id,server,key],|r|r.get::<_,String>(0)).optional()?.map(|id|CredentialRef{id}))
     }
-    pub fn extension_set_credential(
-        &mut self,
-        id: &str,
-        server: &str,
-        key: &str,
-        reference: Option<&CredentialRef>,
-    ) -> Result<()> {
-        if let Some(reference) = reference {
-            self.connection.execute("INSERT INTO extension_credentials VALUES(?1,?2,?3,?4) ON CONFLICT(installation_id,server_id,key) DO UPDATE SET credential_ref=excluded.credential_ref",params![id,server,key,reference.id])?;
-        } else {
-            self.connection.execute("DELETE FROM extension_credentials WHERE installation_id=?1 AND server_id=?2 AND key=?3",params![id,server,key])?;
-        }
-        Ok(())
-    }
     pub fn extension_credentials(&self, id: &str) -> Result<Vec<CredentialRef>> {
         let mut q = self
             .connection
