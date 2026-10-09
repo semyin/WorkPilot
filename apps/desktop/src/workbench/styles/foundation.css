@@ -1,0 +1,48 @@
+/* Keep old diagnostic pages intact; reset their global element rules at this boundary. */
+.workbench {
+  position: fixed;
+  inset: 0;
+  color: var(--text);
+  background: var(--surface);
+  font:
+    13px "Segoe UI",
+    "PingFang SC",
+    "Microsoft YaHei",
+    sans-serif;
+}
+:where(.workbench, .wb-dialog, .wb-popover) header,
+:where(.workbench, .wb-dialog, .wb-popover) footer {
+  all: unset;
+  display: block;
+  box-sizing: border-box;
+}
+:where(.workbench, .wb-dialog, .wb-popover) footer span {
+  flex: initial;
+  line-height: normal;
+}
+:where(.workbench, .wb-dialog, .wb-popover) button {
+  padding: 0;
+  border-radius: 0;
+}
+:where(.workbench, .wb-dialog, .wb-popover) button:hover:not(:disabled) {
+  background: var(--hover);
+}
+:where(.workbench, .wb-dialog, .wb-popover) h1,
+:where(.workbench, .wb-dialog, .wb-popover) h2 {
+  color: inherit;
+}
+:root:has(.workbench) {
+  --ink: var(--text);
+  --side: var(--sidebar);
+  --base: var(--soft);
+  --selected: var(--hover);
+  --code: var(--soft);
+}
+.wb-dialog,
+.wb-popover {
+  font:
+    13px "Segoe UI",
+    "PingFang SC",
+    "Microsoft YaHei",
+    sans-serif;
+}

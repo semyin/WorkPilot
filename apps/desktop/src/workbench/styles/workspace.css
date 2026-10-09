@@ -1,0 +1,684 @@
+/* Ported from the approved 2026-10-09 proposal. Layout values stay in sync; wb- isolates legacy styles. */
+.wb-conversation-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  scrollbar-gutter: stable;
+}
+.wb-conversation {
+  max-width: 850px;
+  padding: 36px 50px 32px;
+  margin: auto;
+  font-size: 14px;
+  line-height: 1.85;
+}
+.wb-user-message {
+  margin: 0 0 30px auto;
+  padding: 12px 17px;
+  background: #f2f3f5;
+  border-radius: 13px 13px 4px 13px;
+  width: fit-content;
+  max-width: 87%;
+  font-size: 13px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.wb-assistant-header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 14px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.wb-assistant-header img {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+}
+.wb-assistant-header time {
+  font-size: 10px;
+  color: #989ca4;
+  font-weight: 400;
+}
+.wb-assistant-message p {
+  margin: 0 0 17px;
+}
+.wb-assistant-message h2 {
+  margin: 23px 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.wb-assistant-message ol {
+  padding-left: 22px;
+  margin: 14px 0 21px;
+}
+.wb-assistant-message li {
+  padding: 3px 0 3px 3px;
+}
+.wb-assistant-message li strong {
+  font-weight: 600;
+}
+.wb-step-summary {
+  border-left: 2px solid #e8ebee;
+  padding-left: 14px;
+  margin: 22px 0;
+  font-size: 12px;
+  color: #737984;
+}
+:where(.workbench, .wb-dialog, .wb-popover) summary {
+  cursor: pointer;
+}
+.wb-step-summary summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+}
+.wb-step-summary summary svg {
+  width: 13px;
+  height: 13px;
+}
+.wb-step-summary[open] summary > svg:last-child {
+  transform: rotate(90deg);
+}
+.wb-step-list {
+  margin-top: 9px;
+  padding-left: 2px;
+  display: grid;
+  gap: 8px;
+  font-size: 11px;
+}
+.wb-step-list div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wb-step-list svg {
+  width: 13px;
+  height: 13px;
+  color: var(--green);
+}
+.wb-step-list code {
+  font:
+    10px Consolas,
+    monospace;
+  color: #9296a0;
+  margin-left: auto;
+}
+.wb-collaborators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 18px 0 24px;
+}
+.wb-collaborators button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 6px 10px;
+  font-size: 11px;
+}
+.wb-collaborators svg {
+  width: 13px;
+  height: 13px;
+  color: var(--green);
+}
+.wb-collaborators .wb-initial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: #eef0f3;
+  border-radius: 5px;
+  font-size: 10px;
+  color: #758397;
+}
+.wb-working-line {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #7c838d;
+  font-size: 12px;
+}
+.wb-result-list {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 18px 0;
+}
+.wb-result-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px 14px;
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+.wb-result-row:last-child {
+  border: 0;
+}
+.wb-file-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 31px;
+  height: 35px;
+  border-radius: 6px;
+  background: #edf1f8;
+  color: #6a7f9c;
+  flex-shrink: 0;
+}
+.wb-result-row strong {
+  display: block;
+  font-weight: 550;
+  font-size: 12px;
+}
+.wb-result-row small {
+  display: block;
+  font-size: 10px;
+  line-height: 1.8;
+}
+.wb-result-row > svg {
+  margin-left: auto;
+  width: 14px;
+  height: 14px;
+  color: #9ba1ab;
+}
+.wb-approval {
+  border: 1px solid #e6dfd1;
+  background: #fcfbf8;
+  padding: 18px;
+  border-radius: 10px;
+  margin: 23px 0;
+  font-size: 12px;
+}
+.wb-approval-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 13px;
+}
+.wb-approval-title svg {
+  width: 17px;
+  height: 17px;
+  color: #957441;
+}
+.wb-approval p {
+  color: #74716a;
+  margin: 9px 0 13px;
+}
+.wb-approval-scope {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 11px;
+  margin: 10px 0 14px;
+  border: 1px solid #eae6df;
+  border-radius: 6px;
+  background: #fffdf9;
+  font-size: 11px;
+}
+.wb-approval details {
+  margin-bottom: 15px;
+  color: #84775f;
+  font-size: 11px;
+}
+.wb-approval pre {
+  color: #6d706f;
+  padding: 10px;
+  border-radius: 5px;
+  background: #f1f1ec;
+  white-space: pre-wrap;
+  line-height: 1.7;
+}
+.wb-button-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wb-solid-button,
+.wb-outline-button {
+  padding: 8px 13px;
+  border-radius: 7px;
+  font-weight: 550;
+  font-size: 12px;
+}
+.wb-solid-button {
+  color: white;
+  background: var(--accent);
+}
+.wb-solid-button:hover {
+  background: #424957;
+}
+.wb-outline-button {
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.wb-notice {
+  background: var(--soft);
+  border-radius: 8px;
+  padding: 14px 16px;
+  color: var(--muted);
+  font-size: 12px;
+  margin: 18px 0;
+}
+.wb-composer-area {
+  padding: 10px 38px 19px;
+  max-width: 850px;
+  width: 100%;
+  align-self: center;
+  background: var(--surface);
+}
+.wb-composer {
+  border: 1px solid #dcdfe4;
+  border-radius: 14px;
+  padding: 12px 12px 9px;
+  box-shadow: 0 2px 7px #222a3a06;
+  background: var(--surface);
+}
+.wb-composer:focus-within {
+  border-color: #b3bac5;
+  box-shadow: 0 0 0 2px #5c6c8610;
+}
+.wb-composer.wb-dragging {
+  outline: 2px dashed #899cb9;
+  background: #f6f8fc;
+}
+.wb-composer textarea {
+  width: 100%;
+  resize: none;
+  border: 0;
+  padding: 0 4px;
+  background: transparent;
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 13px;
+  min-height: 51px;
+  max-height: 132px;
+  outline: 0;
+}
+.wb-composer textarea::placeholder {
+  color: #979ca5;
+}
+.wb-composer-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 9px;
+}
+.wb-composer-options {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  min-width: 0;
+}
+.wb-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #727985;
+  padding: 6px 7px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+.wb-option svg {
+  width: 12px;
+  height: 12px;
+}
+.wb-permission {
+  margin-right: 7px;
+}
+.wb-send-button {
+  width: 31px;
+  height: 31px;
+  color: #fff;
+  background: #292d37;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+.wb-send-button:hover {
+  background: #46505f;
+}
+.wb-send-button svg {
+  width: 17px;
+  height: 17px;
+}
+.wb-composer-hint {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: #969aa3;
+  font-size: 10px;
+  margin: 9px 5px 0;
+}
+.wb-queue-list {
+  margin-bottom: 7px;
+}
+.wb-queue-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--soft);
+  font-size: 11px;
+}
+.wb-queue-item > span {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wb-queue-item small {
+  white-space: nowrap;
+  font-size: 10px;
+}
+.wb-queue-item button {
+  font-size: 10px;
+  color: #566c8d;
+  padding: 3px 5px;
+  border-radius: 4px;
+}
+.wb-queue-item .wb-icon-button {
+  width: 20px;
+  height: 20px;
+}
+.wb-attachment-list {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.wb-attachment-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 4px 7px;
+  margin-bottom: 7px;
+  font-size: 10px;
+}
+.wb-attachment-chip span {
+  max-width: 150px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.wb-attachment-chip svg {
+  width: 13px;
+  height: 13px;
+}
+.wb-attachment-chip button {
+  padding: 0;
+}
+.wb-work-panel {
+  flex: 0 0 348px;
+  min-width: 0;
+  border-left: 1px solid var(--line);
+  background: #fbfbfc;
+  display: flex;
+  flex-direction: column;
+}
+.wb-panel-heading {
+  height: 51px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wb-panel-heading strong {
+  font-size: 12px;
+  font-weight: 550;
+}
+.wb-panel-tabs {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid var(--line);
+  padding: 0 20px;
+}
+.wb-panel-tabs button {
+  padding: 9px 0 10px;
+  font-size: 11px;
+  color: #7c818a;
+  border-bottom: 2px solid transparent;
+}
+.wb-panel-tabs .wb-active {
+  border-color: #4f5867;
+  color: #353e4e;
+}
+.wb-panel-tabs button:hover {
+  background: transparent;
+  color: #333;
+}
+.wb-panel-content {
+  overflow: auto;
+  padding: 22px 20px;
+  flex: 1;
+  font-size: 12px;
+  line-height: 1.75;
+}
+.wb-panel-content h2 {
+  font-size: 14px;
+  margin: 0 0 7px;
+  font-weight: 600;
+}
+.wb-panel-caption {
+  font-size: 10px;
+  color: #9498a0;
+  margin-bottom: 15px;
+}
+.wb-paper {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 23px 19px;
+  margin-top: 18px;
+  box-shadow: 0 3px 8px #1d263a03;
+}
+.wb-paper .wb-document-eyebrow {
+  color: #9c9fa6;
+  font-size: 9px;
+  letter-spacing: 1.4px;
+}
+.wb-paper h3 {
+  font-size: 17px;
+  margin: 11px 0 2px;
+  font-weight: 600;
+}
+.wb-paper h4 {
+  margin: 25px 0 8px;
+  font-size: 11px;
+}
+.wb-paper p {
+  color: #747b87;
+  font-size: 11px;
+  margin: 8px 0;
+}
+.wb-paper .wb-document-line {
+  display: block;
+  height: 5px;
+  border-radius: 3px;
+  background: #e9ebef;
+  margin-top: 8px;
+}
+.wb-paper .wb-document-line.wb-short {
+  width: 64%;
+}
+.wb-paper ol {
+  font-size: 10px;
+  color: #747b87;
+  padding-left: 17px;
+}
+.wb-panel-content .wb-result-row {
+  padding: 10px 4px;
+}
+.wb-panel-content .wb-result-row.wb-selected {
+  background: #f0f3f6;
+  border-radius: 6px;
+}
+.wb-panel-meta {
+  font-size: 10px;
+  color: #9498a0;
+  margin-top: 13px;
+}
+.wb-tree-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 4px;
+}
+.wb-tree-row.wb-indented {
+  padding-left: 20px;
+}
+.wb-tree-row svg {
+  width: 15px;
+  height: 15px;
+  color: #8d96a5;
+}
+.wb-tree-row small {
+  margin-left: auto;
+  font-size: 10px;
+}
+.wb-timeline-item {
+  padding: 0 0 24px 16px;
+  border-left: 1px solid #dfe4e8;
+  position: relative;
+}
+.wb-timeline-item::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: #a6b7a9;
+  border-radius: 50%;
+  position: absolute;
+  left: -3px;
+  top: 5px;
+}
+.wb-timeline-item h4 {
+  margin: 0 0 4px;
+  font-size: 12px;
+  font-weight: 550;
+}
+.wb-timeline-item p {
+  font-size: 11px;
+  color: #7d8490;
+  margin: 0;
+}
+.wb-timeline-item details {
+  font-size: 10px;
+  margin-top: 8px;
+  color: #87909c;
+}
+.wb-timeline-item pre {
+  white-space: pre-wrap;
+  font:
+    10px/1.8 Consolas,
+    monospace;
+  background: #f0f2f4;
+  padding: 9px;
+  border-radius: 5px;
+}
+.wb-new-work {
+  padding-top: clamp(30px, 11vh, 120px);
+}
+.wb-welcome-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.wb-new-work h2 {
+  margin: 0 0 8px;
+  font-size: 26px;
+  font-weight: 550;
+  letter-spacing: -0.5px;
+}
+.wb-new-work p {
+  color: #8a9099;
+  font-size: 13px;
+}
+.wb-suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 32px;
+  max-width: 450px;
+}
+.wb-suggestions button {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  gap: 10px;
+  padding: 11px 12px;
+  border-radius: 7px;
+  font-size: 12px;
+  color: #717b89;
+}
+.wb-suggestions svg {
+  width: 16px;
+  height: 16px;
+}
+.wb-suggestions button > svg:last-child {
+  margin-left: auto;
+  width: 12px;
+  height: 12px;
+}
+.wb-page-intro {
+  margin: 1px 0 28px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.wb-page-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.wb-page-toolbar h2 {
+  font-size: 17px;
+  font-weight: 550;
+  margin: 0;
+}
+.wb-collection-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+.wb-collection-row > svg {
+  color: #7f8998;
+  width: 20px;
+  height: 20px;
+}
+.wb-collection-row h3 {
+  font-size: 13px;
+  margin: 0 0 3px;
+  font-weight: 550;
+}
+.wb-collection-row p {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 0;
+}
+.wb-collection-row .wb-outline-button {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 11px;
+}

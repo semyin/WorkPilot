@@ -1,0 +1,314 @@
+/* Ported from the approved 2026-10-09 proposal. Layout values stay in sync; wb- isolates legacy styles. */
+.wb-settings-dialog {
+  width: 850px;
+  max-width: calc(100vw - 40px);
+  border-radius: 14px;
+}
+.wb-settings-layout {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  height: min(620px, calc(100dvh - 88px));
+  min-height: 320px;
+}
+.wb-settings-navigation {
+  display: flex;
+  flex-direction: column;
+  background: var(--sidebar);
+  padding: 25px 13px 17px;
+  border-right: 1px solid var(--line);
+  min-height: 0;
+}
+.wb-settings-navigation h2 {
+  margin: 0 11px 26px;
+  font-size: 17px;
+  font-weight: 600;
+}
+.wb-settings-navigation nav {
+  display: grid;
+  gap: 5px;
+  overflow: auto;
+}
+.wb-settings-navigation button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  min-height: 37px;
+  padding: 9px 11px;
+  border-radius: 7px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.wb-settings-navigation button svg {
+  width: 16px;
+  height: 16px;
+}
+.wb-settings-navigation button.wb-active {
+  background: #e6e9ed;
+  color: #3d5066;
+  font-weight: 550;
+}
+.wb-settings-brand {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: auto;
+  padding: 20px 10px 0;
+  color: #969aa2;
+  font-size: 10px;
+}
+.wb-settings-brand img {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  opacity: 0.6;
+}
+.wb-settings-brand small {
+  margin-left: auto;
+  font-size: 9px;
+}
+.wb-settings-main {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+}
+.wb-settings-main > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 27px 28px 23px;
+  gap: 16px;
+}
+.wb-settings-main h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+.wb-settings-main > header p {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.wb-settings-scroll {
+  overflow: auto;
+  min-height: 0;
+  flex: 1;
+  padding: 0 29px 25px;
+  scrollbar-gutter: stable;
+}
+.wb-settings-group-label {
+  padding: 12px 0 4px;
+  color: #9298a2;
+  font-size: 10px;
+}
+.wb-settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 21px 0;
+  border-bottom: 1px solid var(--line);
+}
+.wb-settings-row > div {
+  flex: 1;
+  min-width: 0;
+}
+.wb-settings-row strong {
+  font-size: 12px;
+  font-weight: 550;
+}
+.wb-settings-row p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.85;
+}
+.wb-settings-row .wb-select-trigger {
+  min-width: 131px;
+  flex-shrink: 0;
+}
+.wb-settings-switch {
+  border-radius: 20px;
+  width: 34px;
+  height: 21px;
+  padding: 3px;
+  background: #d7dbe1;
+  flex: 0 0 auto;
+}
+.wb-settings-switch[aria-checked="true"] {
+  background: #64798e;
+}
+.wb-settings-switch span {
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px #26384d25;
+  transition: transform var(--motion-quick) var(--motion-ease);
+}
+.wb-settings-switch[aria-checked="true"] span {
+  transform: translateX(13px);
+}
+.wb-settings-note {
+  border-radius: 8px;
+  background: var(--soft);
+  padding: 14px 15px;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-top: 24px;
+}
+.wb-settings-note kbd {
+  color: var(--text);
+  margin: 0 3px;
+}
+.wb-settings-intro {
+  margin: 10px 0 16px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+.wb-settings-main > footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 29px;
+  border-top: 1px solid var(--line);
+  gap: 15px;
+}
+.wb-settings-main > footer > span {
+  color: #949aa4;
+  font-size: 10px;
+}
+.wb-service-row {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  border-bottom: 1px solid var(--line);
+  padding: 20px 0;
+}
+.wb-service-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  color: #7c8da2;
+  background: var(--soft);
+}
+.wb-service-row strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 550;
+}
+.wb-service-row small {
+  display: block;
+  font-size: 11px;
+  margin-top: 6px;
+}
+.wb-sample-tag {
+  margin-left: auto;
+  padding: 3px 6px;
+  font-size: 10px;
+  color: var(--muted);
+  border-radius: 5px;
+  background: var(--soft);
+  white-space: nowrap;
+}
+.wb-settings-detail {
+  border-bottom: 1px solid var(--line);
+  padding: 16px 0;
+  font-size: 12px;
+}
+.wb-settings-detail summary {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  list-style: none;
+}
+.wb-settings-detail summary svg {
+  width: 15px;
+  height: 15px;
+  color: #8b95a1;
+}
+.wb-settings-detail summary svg:last-child {
+  margin-left: auto;
+}
+.wb-settings-detail > div {
+  padding: 10px 23px 5px;
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 11px;
+}
+.wb-memory-example {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 18px;
+  margin-top: 22px;
+  font-size: 12px;
+}
+.wb-memory-example small {
+  font-size: 10px;
+}
+:root[data-theme="dark"] .wb-settings-navigation button.wb-active {
+  color: #c8d4e5;
+  background: #333b46;
+}
+@media (max-width: 760px) {
+  .wb-settings-layout {
+    grid-template-columns: 150px minmax(0, 1fr);
+  }
+  .wb-settings-row {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .wb-settings-row > div {
+    flex-basis: 100%;
+  }
+  .wb-settings-navigation {
+    padding-inline: 9px;
+  }
+  .wb-settings-main > header {
+    padding: 24px 20px 18px;
+  }
+  .wb-settings-scroll {
+    padding-inline: 20px;
+  }
+  .wb-settings-brand small {
+    display: none;
+  }
+}
+@media (max-width: 500px) {
+  .wb-settings-dialog {
+    max-width: calc(100vw - 24px);
+  }
+  .wb-settings-layout {
+    grid-template-columns: 54px minmax(0, 1fr);
+  }
+  .wb-settings-navigation {
+    padding: 23px 7px 14px;
+  }
+  .wb-settings-navigation h2,
+  .wb-settings-navigation button span,
+  .wb-settings-brand {
+    display: none;
+  }
+  .wb-settings-navigation button {
+    justify-content: center;
+    padding: 10px;
+  }
+  .wb-settings-main > footer {
+    padding: 14px 20px;
+  }
+  .wb-settings-main > footer > span {
+    display: none;
+  }
+  .wb-settings-main > footer > button {
+    margin-left: auto;
+  }
+}

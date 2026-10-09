@@ -1,0 +1,311 @@
+/* Ported from the approved 2026-10-09 proposal. Layout values stay in sync; wb- isolates legacy styles. */
+.wb-popover {
+  position: fixed;
+  z-index: 30;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 28px #1a233c19;
+  border-radius: 10px;
+  padding: 6px;
+  min-width: 190px;
+  max-width: calc(100vw - 24px);
+}
+.wb-popover h3 {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--muted);
+  margin: 7px 8px;
+}
+.wb-menu-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 9px 9px;
+  text-align: left;
+  gap: 9px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+.wb-menu-row svg {
+  color: #8b94a2;
+  width: 14px;
+  height: 14px;
+}
+.wb-menu-row .wb-menu-check {
+  margin-left: auto;
+  color: var(--green);
+}
+.wb-menu-row.wb-danger {
+  color: #a65855;
+}
+.wb-dialog {
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  max-width: min(620px, calc(100vw - 32px));
+  width: 570px;
+  color: var(--text);
+  background: var(--surface);
+  box-shadow: 0 24px 80px #17233a22;
+}
+.wb-dialog::backdrop {
+  background: #20263340;
+  backdrop-filter: blur(2px);
+}
+.wb-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 23px 12px;
+}
+.wb-dialog-header h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+.wb-dialog-content {
+  padding: 0 25px 25px;
+  max-height: 70vh;
+  overflow: auto;
+  line-height: 1.8;
+}
+.wb-dialog-content > p {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 8px 0 22px;
+}
+.wb-dialog-content label {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 17px;
+  font-size: 12px;
+}
+.wb-dialog-content input,
+.wb-dialog-content select {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid #dfe2e7;
+  border-radius: 7px;
+  padding: 9px 11px;
+  color: var(--text);
+}
+.wb-dialog-content .wb-button-row {
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.wb-search-result {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  padding: 11px;
+  border-radius: 7px;
+  text-align: left;
+  font-size: 12px;
+}
+.wb-search-result svg {
+  width: 16px;
+  height: 16px;
+  color: #8b94a1;
+}
+.wb-search-result small {
+  margin-left: auto;
+  font-size: 10px;
+}
+.wb-notification-item {
+  display: flex;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.wb-notification-item > svg {
+  color: #9e815b;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.wb-notification-item strong {
+  font-size: 12px;
+  font-weight: 550;
+}
+.wb-notification-item p {
+  color: var(--muted);
+  font-size: 11px;
+  margin: 3px 0 12px;
+}
+.wb-toast {
+  position: fixed;
+  z-index: 100;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  background: #343b47;
+  border-radius: 9px;
+  padding: 11px 18px;
+  box-shadow: 0 6px 22px #19233620;
+  max-width: 80vw;
+  font-size: 12px;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #24262b;
+  --sidebar: #1e2024;
+  --soft: #2c2f35;
+  --line: #36393f;
+  --text: #d5d8df;
+  --muted: #969da8;
+  --hover: #33363e;
+  --accent: #596c8b;
+  background: var(--surface);
+  color: var(--text);
+}
+:root[data-theme="dark"] .wb-user-message,
+:root[data-theme="dark"] .wb-task-link.wb-current,
+:root[data-theme="dark"] .wb-primary-nav .wb-selected {
+  background: #353b46;
+  color: #e1e6ef;
+}
+:root[data-theme="dark"] .wb-work-panel {
+  background: #212328;
+}
+:root[data-theme="dark"] .wb-approval,
+:root[data-theme="dark"] .wb-approval-scope {
+  background: #34312a;
+  border-color: #514939;
+}
+:root[data-theme="dark"] .wb-approval pre,
+:root[data-theme="dark"] .wb-paper .wb-document-line {
+  background: #36393e;
+}
+:root[data-theme="dark"] .wb-composer,
+:root[data-theme="dark"] .wb-new-task {
+  border-color: #42464f;
+}
+@media (min-width: 1450px) {
+  .wb-sidebar {
+    width: 246px;
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+  .wb-work-panel {
+    flex-basis: 390px;
+  }
+  .wb-conversation {
+    padding-top: 46px;
+  }
+}
+@media (max-width: 1150px) {
+  .wb-work-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 360px;
+    z-index: 12;
+    box-shadow: -12px 0 40px #17243b12;
+  }
+  .wb-workspace-header {
+    padding: 0 25px;
+  }
+  .wb-conversation {
+    padding: 30px 34px;
+  }
+  .wb-composer-area {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+}
+@media (max-width: 800px) {
+  .wb-sidebar {
+    width: 192px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .wb-new-task kbd,
+  .wb-task-link small,
+  .wb-primary-nav kbd {
+    display: none;
+  }
+  .wb-brand strong {
+    font-size: 14px;
+  }
+  .wb-conversation {
+    padding: 25px;
+  }
+  .wb-workspace-header {
+    height: 68px;
+    padding: 0 21px;
+  }
+  .wb-header-actions {
+    gap: 4px;
+  }
+  .wb-composer-area {
+    padding: 10px 20px 15px;
+  }
+  .wb-composer-hint > span:last-child {
+    display: none;
+  }
+  .wb-permission {
+    margin-right: 0;
+  }
+}
+@media (max-width: 620px) {
+  .wb-sidebar {
+    display: none;
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 228px;
+    z-index: 15;
+    box-shadow: 12px 0 40px #17243b12;
+  }
+  .wb-sidebar-mobile-open .wb-sidebar {
+    display: flex;
+  }
+  .wb-restore-sidebar {
+    display: inline-flex;
+  }
+  .wb-workspace-header {
+    padding: 0 13px;
+  }
+  .wb-conversation {
+    padding: 26px 20px;
+  }
+  .wb-composer-area {
+    padding: 8px 12px 14px;
+  }
+  .wb-composer-toolbar {
+    gap: 3px;
+  }
+  .wb-composer-options {
+    gap: 0;
+  }
+  .wb-option {
+    padding: 5px;
+    font-size: 10px;
+    gap: 4px;
+  }
+  .wb-permission > [data-icon] {
+    display: none;
+  }
+  .wb-work-panel {
+    width: min(100vw, 360px);
+  }
+  :where(.workbench, .wb-dialog, .wb-popover) h1 {
+    max-width: 180px;
+    font-size: 14px;
+  }
+  .wb-status-badge {
+    font-size: 10px;
+  }
+  .wb-new-work {
+    padding-top: 7vh;
+  }
+  .wb-new-work h2 {
+    font-size: 23px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wb-spinner {
+    animation: none;
+  }
+}

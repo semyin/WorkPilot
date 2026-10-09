@@ -1,0 +1,260 @@
+/* Ported from the approved 2026-10-09 proposal. Layout values stay in sync; wb- isolates legacy styles. */
+.wb-app-shell {
+  --sidebar-width: 228px;
+  --sidebar-padding: 12px;
+  --panel-width: 348px;
+}
+.wb-sidebar {
+  width: var(--sidebar-width);
+  overflow: hidden;
+  opacity: 1;
+  transition:
+    width var(--motion-panel) var(--motion-ease),
+    padding var(--motion-panel) var(--motion-ease),
+    opacity var(--motion-quick) ease,
+    visibility 0ms;
+}
+.wb-sidebar > * {
+  min-width: calc(var(--sidebar-width) - var(--sidebar-padding) * 2 - 1px);
+}
+.wb-sidebar-collapsed .wb-sidebar {
+  display: flex;
+  width: 0;
+  padding-left: 0;
+  padding-right: 0;
+  border-right-width: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    width var(--motion-panel) var(--motion-ease),
+    padding var(--motion-panel) var(--motion-ease),
+    opacity var(--motion-quick) ease,
+    visibility 0ms var(--motion-panel);
+}
+.wb-project-tasks {
+  overflow: hidden;
+}
+.wb-task-link {
+  cursor: default;
+}
+.wb-task-link:focus-visible {
+  outline-offset: -2px;
+}
+.wb-notification-button {
+  position: relative;
+}
+.wb-notification-dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #b3875d;
+  border-radius: 50%;
+  top: 5px;
+  right: 5px;
+  box-shadow: 0 0 0 2px var(--surface);
+}
+.wb-composer-options {
+  min-width: 0;
+}
+.wb-composer-toolbar {
+  flex-wrap: wrap;
+  row-gap: 8px;
+}
+.wb-composer-left {
+  flex-wrap: wrap;
+}
+.wb-composer-left .wb-permission {
+  margin-right: 0;
+}
+.wb-composer-right {
+  margin-left: auto;
+}
+.wb-context-ring {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  padding: 0;
+  color: #8996a7;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+.wb-context-ring svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke-width: 2;
+}
+.wb-context-track {
+  stroke: #e4e7ec;
+}
+.wb-context-used {
+  stroke: #889aac;
+  stroke-linecap: round;
+  transition: stroke-dasharray var(--motion-panel) ease;
+}
+.wb-thinking-option {
+  margin-right: 5px;
+}
+.wb-work-panel {
+  position: relative;
+  flex: 0 0 0;
+  width: 0;
+  min-width: 0;
+  opacity: 0;
+  visibility: hidden;
+  border-left-width: 0;
+  overflow: hidden;
+  transition:
+    flex-basis var(--motion-panel) var(--motion-ease),
+    width var(--motion-panel) var(--motion-ease),
+    opacity var(--motion-quick) ease,
+    visibility 0ms var(--motion-panel);
+}
+.wb-panel-open .wb-work-panel {
+  flex-basis: var(--panel-width);
+  width: var(--panel-width);
+  opacity: 1;
+  visibility: visible;
+  border-left-width: 1px;
+  transition:
+    flex-basis var(--motion-panel) var(--motion-ease),
+    width var(--motion-panel) var(--motion-ease),
+    opacity var(--motion-quick) ease,
+    visibility 0ms;
+}
+.wb-work-panel > .wb-panel-heading,
+.wb-work-panel > .wb-panel-tabs,
+.wb-work-panel > .wb-panel-content {
+  min-width: calc(var(--panel-width) - 1px);
+}
+.wb-panel-content {
+  overflow-wrap: anywhere;
+}
+.wb-panel-resize {
+  position: absolute;
+  z-index: 3;
+  width: 7px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  cursor: col-resize;
+  touch-action: none;
+  outline: none;
+}
+.wb-panel-resize::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 50px;
+  border-radius: 3px;
+  left: 2px;
+  top: calc(50% - 25px);
+  background: #d0d7e0;
+  transition:
+    background-color var(--motion-quick) ease,
+    height var(--motion-quick) ease;
+}
+.wb-panel-resize:hover::after,
+.wb-panel-resize:focus-visible::after,
+.wb-is-resizing .wb-panel-resize::after {
+  height: 76px;
+  top: calc(50% - 38px);
+  background: #8da1bb;
+}
+.wb-is-resizing,
+.wb-is-resizing * {
+  cursor: col-resize !important;
+  user-select: none !important;
+}
+.wb-is-resizing .wb-work-panel {
+  transition: none;
+}
+:root[data-theme="dark"] .wb-context-track {
+  stroke: #414850;
+}
+@media (min-width: 1450px) {
+  .wb-app-shell {
+    --sidebar-width: 246px;
+    --sidebar-padding: 17px;
+  }
+}
+@media (max-width: 1150px) {
+  .wb-work-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 12;
+    width: var(--panel-width);
+    transform: translateX(100%);
+    box-shadow: -12px 0 40px #17243b12;
+    transition:
+      transform var(--motion-panel) var(--motion-ease),
+      opacity var(--motion-quick) ease,
+      visibility 0ms var(--motion-panel);
+  }
+  .wb-panel-open .wb-work-panel {
+    transform: translateX(0);
+    transition:
+      transform var(--motion-panel) var(--motion-ease),
+      opacity var(--motion-quick) ease,
+      visibility 0ms;
+  }
+}
+@media (max-width: 800px) {
+  .wb-app-shell {
+    --sidebar-width: 192px;
+    --sidebar-padding: 8px;
+  }
+  .wb-composer-toolbar {
+    flex-wrap: wrap;
+  }
+  .wb-composer-left {
+    flex-wrap: wrap;
+  }
+  .wb-composer-right {
+    padding-top: 2px;
+  }
+}
+@media (max-width: 620px) {
+  .wb-app-shell {
+    --sidebar-width: 228px;
+    --sidebar-padding: 8px;
+  }
+  .wb-sidebar,
+  .wb-sidebar-collapsed .wb-sidebar {
+    display: flex;
+    width: var(--sidebar-width);
+    padding: 18px var(--sidebar-padding) 12px;
+    border-right-width: 1px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-100%);
+    transition:
+      transform var(--motion-panel) var(--motion-ease),
+      opacity var(--motion-quick) ease,
+      visibility 0ms var(--motion-panel);
+  }
+  .wb-sidebar-mobile-open .wb-sidebar {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    transition:
+      transform var(--motion-panel) var(--motion-ease),
+      opacity var(--motion-quick) ease,
+      visibility 0ms;
+  }
+  .wb-composer-right {
+    gap: 1px;
+  }
+  .wb-thinking-option {
+    margin-right: 2px;
+  }
+  .wb-context-ring {
+    margin-right: 0;
+    width: 24px;
+  }
+}

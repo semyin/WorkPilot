@@ -1,0 +1,78 @@
+:root {
+  --motion-quick: 150ms;
+  --motion-panel: 230ms;
+  --motion-ease: cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+button,
+input,
+textarea {
+  transition:
+    background-color var(--motion-quick) ease,
+    color var(--motion-quick) ease,
+    border-color var(--motion-quick) ease,
+    box-shadow var(--motion-quick) ease;
+}
+.sidebar,
+.workspace,
+.work-panel,
+.composer,
+dialog,
+.settings-navigation {
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+}
+.new-task:active,
+.solid-button:active,
+.send-button:active {
+  transform: translateY(1px);
+}
+.option > span:last-child svg,
+.select-trigger > svg,
+.project-heading > span:first-child svg {
+  transition: transform var(--motion-quick) var(--motion-ease);
+}
+.option[aria-expanded="true"] > span:last-child svg,
+.select-trigger[aria-expanded="true"] > svg {
+  transform: rotate(180deg);
+}
+.project-heading[aria-expanded="false"] > span:first-child svg {
+  transform: rotate(-90deg);
+}
+details > summary > svg:last-child {
+  transition: transform var(--motion-quick) var(--motion-ease);
+}
+details[data-expanded="true"] > summary > svg:last-child {
+  transform: rotate(90deg);
+}
+details[data-expanded="false"] > summary > svg:last-child {
+  transform: rotate(0);
+}
+dialog {
+  overflow: visible;
+  padding: 0;
+}
+#dialog-body {
+  overflow: hidden;
+  border-radius: inherit;
+}
+.reduce-motion {
+  --motion-quick: 0ms;
+  --motion-panel: 0ms;
+}
+.reduce-motion .spinner {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-quick: 0ms;
+    --motion-panel: 0ms;
+  }
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0ms !important;
+  }
+}

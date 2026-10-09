@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { ContentRef, Event as EngineEvent, WorkspaceArtifact } from "./generated/contracts";
+import type { ContentRef, Event as EngineEvent } from "./generated/contracts";
 import { workspaceAction, workspaceQuery, useWords } from "./workspaceClient";
 import { Saved } from "./SavedContent";
 import { executionCommand } from "./executionClient";
@@ -209,50 +209,6 @@ export function RecordPanel({ task }: { task: string }) {
           "Only the current page is rendered; export includes all persisted records.",
         )}
       </small>
-    </section>
-  );
-}
-export function ArtifactPanel({ task, sequence }: { task: string; sequence: number }) {
-  const tr = useWords();
-  const [artifacts, setArtifacts] = useState<WorkspaceArtifact[]>([]);
-  const [error, setError] = useState("");
-  const [open, setOpen] = useState<string | null>(null);
-  useEffect(() => {
-    let disposed = false;
-    void workspaceQuery({ kind: "artifacts", task_id: task })
-      .then((r) => {
-        if (!disposed && r.kind === "artifacts") setArtifacts(r.artifacts);
-      })
-      .catch((e) => {
-        if (!disposed) setError(String(e));
-      });
-    return () => {
-      disposed = true;
-    };
-  }, [task, sequence]);
-  return (
-    <section>
-      <h3>{tr("成果文件", "Artifact files")}</h3>
-      <p>
-        {tr(
-          "展示助手实际登记的文件版本。查看、编辑、比较与恢复项目文件，请打开“文件与终端”。",
-          "Files registered by the assistants. Open Files and terminal to browse, edit, compare and restore project files.",
-        )}
-      </p>
-      {artifacts.map((a) => (
-        <details
-          key={a.id}
-          onToggle={(e) => {
-            if (e.currentTarget.open) setOpen(a.id);
-          }}
-        >
-          <summary>{a.path}</summary>
-          <small>{a.title}</small>
-          {open === a.id && <Saved reference={a.content} plain />}
-        </details>
-      ))}
-      {!artifacts.length && <p>{tr("暂时没有登记的成果。", "No registered artifacts yet.")}</p>}
-      {error && <p className="error">{error}</p>}
     </section>
   );
 }

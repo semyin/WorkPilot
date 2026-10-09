@@ -6,7 +6,8 @@ export async function workbenchScenario({ page, folder, task, report, output }) 
   page.setDefaultTimeout(15000);
   await page.evaluate((task) => localStorage.setItem("workpilot.execution", task), task);
   await page.reload();
-  await page.getByRole("button", { name: "文件与终端", exact: true }).click();
+  await page.getByRole("button", { name: "工作区工具", exact: true }).click();
+  await page.getByRole("menuitem", { name: "文件与终端", exact: true }).click();
   const panel = page.getByRole("dialog", { name: "文件与终端", exact: true });
   await expect(panel).toBeVisible();
   await panel.getByRole("button", { name: "· notes.txt", exact: true }).click();
@@ -85,8 +86,12 @@ export async function workbenchScenario({ page, folder, task, report, output }) 
   report.checks.push("native_terminal_runs_real_powershell_with_saved_output");
   await page.screenshot({ path: join(output, "workbench-terminal-zh.png") });
   await panel.getByRole("button", { name: "返回对话", exact: true }).click();
-  await page.getByRole("button", { name: "English", exact: true }).click();
-  await page.getByRole("button", { name: "Files and terminal", exact: true }).click();
+  await page.getByRole("button", { name: "设置", exact: true }).click();
+  await page.getByRole("combobox", { name: "界面语言", exact: true }).click();
+  await page.getByRole("option", { name: "English", exact: true }).click();
+  await page.getByRole("button", { name: "保存设置", exact: true }).click();
+  await page.getByRole("button", { name: "Workspace tools", exact: true }).click();
+  await page.getByRole("menuitem", { name: "Files and terminal", exact: true }).click();
   const english = page.getByRole("dialog", { name: "Files and terminal", exact: true });
   await expect(
     english.getByRole("heading", { name: "Project workspace", exact: true }),

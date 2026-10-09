@@ -1,4 +1,6 @@
+import { ApprovalCard } from "./workbench/ApprovalCard";
 import { useEffect, useRef, useState } from "react";
+import { Select } from "./workbench/Menu";
 import type {
   DefaultToolSettings,
   PermissionMode,
@@ -21,21 +23,16 @@ const permissionNames = {
   auto_review: ["帮我批准", "Review for me"],
   full_access: ["完全访问", "Full access"],
 };
-function Permissions({ inherit, english }: { inherit?: boolean; english: boolean }) {
-  return (
-    <>
-      {inherit && (
-        <option value="">
-          {english ? "Inherit project / global default" : "继承项目 / 全局设置"}
-        </option>
-      )}
-      {Object.entries(permissionNames).map(([key, names]) => (
-        <option key={key} value={key}>
-          {names[english ? 1 : 0]}
-        </option>
-      ))}
-    </>
-  );
+function permissionOptions(english: boolean, inherit = false) {
+  return [
+    ...(inherit
+      ? [{ value: "", label: english ? "Inherit project / global default" : "继承项目 / 全局设置" }]
+      : []),
+    ...Object.entries(permissionNames).map(([value, names]) => ({
+      value,
+      label: names[english ? 1 : 0],
+    })),
+  ];
 }
 export function ToolFields({
   value,
@@ -61,35 +58,32 @@ export function ToolFields({
       </label>
       <label>
         {tr("任务权限", "Task permission")}
-        <select
-          aria-label={tr("任务权限", "Task permission")}
+        <Select
+          label={tr("任务权限", "Task permission")}
           value={value.permission || ""}
-          onChange={(e) =>
-            onChange({ ...value, permission: (e.target.value as PermissionMode) || null })
+          options={permissionOptions(english, true)}
+          onChange={(permission) =>
+            onChange({ ...value, permission: (permission || null) as PermissionMode | null })
           }
-        >
-          <Permissions inherit english={english} />
-        </select>
+        />
       </label>
       <label>
         {tr("独立审批所用模型", "Independent review model")}
-        <select
-          aria-label={tr("独立审批所用模型", "Independent review model")}
+        <Select
+          label={tr("独立审批所用模型", "Independent review model")}
           value={value.review_profile_id || ""}
-          onChange={(e) => onChange({ ...value, review_profile_id: e.target.value || null })}
-        >
-          <option value="">
-            {tr(
-              "继承全局设置；未设置时使用任务模型独立审查",
-              "Inherit default; otherwise review separately with task model",
-            )}
-          </option>
-          {catalog.profiles.map(({ profile: p }) => (
-            <option key={p.id} value={p.id}>
-              {p.label}
-            </option>
-          ))}
-        </select>
+          options={[
+            {
+              value: "",
+              label: tr(
+                "继承全局设置；未设置时使用任务模型独立审查",
+                "Inherit default; otherwise review separately with task model",
+              ),
+            },
+            ...catalog.profiles.map(({ profile: p }) => ({ value: p.id, label: p.label })),
+          ]}
+          onChange={(id) => onChange({ ...value, review_profile_id: id || null })}
+        />
       </label>
       <label className="check-label">
         <input
@@ -127,6 +121,8 @@ export function ToolPanel({
   active,
   start,
   inherited = false,
+  approvalsOnly = false,
+  hideApprovals = false,
 }: {
   task: string;
   english: boolean;
@@ -134,6 +130,8 @@ export function ToolPanel({
   active: boolean;
   start: () => Promise<unknown>;
   inherited?: boolean;
+  approvalsOnly?: boolean;
+  hideApprovals?: boolean;
 }) {
   const tr = (zh: string, en: string) => (english ? en : zh);
   const [state, setState] = useState<ToolTaskState | null>(null);
@@ -204,6 +202,24 @@ export function ToolPanel({
     });
   if (!state) return null;
   const pending = state.approvals.filter((a) => a.state === "pending" && !a.consumed);
+  if (approvalsOnly)
+    return (
+      <>
+        {pending.map((a) => (
+          <ApprovalCard
+            key={a.id}
+            approval={a}
+            disabled={busy || active}
+            onDecide={(approve) => void decide(a, approve)}
+          />
+        ))}
+        {error && (
+          <p className="error" role="alert">
+            {error}
+          </p>
+        )}
+      </>
+    );
   return (
     <section className="tool-panel">
       <p data-testid="effective-permission">
@@ -253,29 +269,23 @@ export function ToolPanel({
         )}
         <details>
           <summary>{tr("全局默认权限", "Global permission defaults")}</summary>
-          <select
-            aria-label={tr("全局默认权限", "Global permission defaults")}
+          <Select
+            label={tr("全局默认权限", "Global permission defaults")}
             value={defaults.permission}
-            onChange={(e) =>
-              setDefaults({ ...defaults, permission: e.target.value as PermissionMode })
+            options={permissionOptions(english)}
+            onChange={(permission) =>
+              setDefaults({ ...defaults, permission: permission as PermissionMode })
             }
-          >
-            <Permissions english={english} />
-          </select>
-          <select
-            aria-label={tr("全局审批模型", "Global review model")}
+          />
+          <Select
+            label={tr("全局审批模型", "Global review model")}
             value={defaults.review_profile_id || ""}
-            onChange={(e) =>
-              setDefaults({ ...defaults, review_profile_id: e.target.value || null })
-            }
-          >
-            <option value="">{tr("各任务模型独立审查", "Each task model, separate review")}</option>
-            {catalog.profiles.map(({ profile: p }) => (
-              <option key={p.id} value={p.id}>
-                {p.label}
-              </option>
-            ))}
-          </select>
+            options={[
+              { value: "", label: tr("各任务模型独立审查", "Each task model, separate review") },
+              ...catalog.profiles.map(({ profile: p }) => ({ value: p.id, label: p.label })),
+            ]}
+            onChange={(id) => setDefaults({ ...defaults, review_profile_id: id || null })}
+          />
           <p>
             {tr(
               "保存全局设置会停止所有运行中的任务，使旧审批失效。",
@@ -294,71 +304,72 @@ export function ToolPanel({
           </button>
         </details>
       </details>
-      {pending.map((a) => (
-        <article className="approval-card" key={a.id} data-approval-id={a.id}>
-          <h3>
-            {tr("等待你确认：", "Approval required: ")}
-            {a.intent.tool === "write_file"
-              ? tr(
-                  a.intent.version.exists ? "替换文件内容" : "新建文件",
-                  a.intent.version.exists ? "Replace file contents" : "Create file",
-                )
-              : a.intent.tool === "run_command"
-                ? tr("运行命令", "Run a command")
-                : a.intent.tool}
-          </h3>
-          <p>
-            {tr("目标：", "Target: ")}
-            {a.intent.target}
-          </p>
-          <p>
-            {tr("执行范围：", "Execution scope: ")}
-            {a.intent.risk === "process"
-              ? tr(
-                  "系统隔离：可修改已选文件夹，无法访问网络；系统允许的公共资源仍可能可读。",
-                  "AppContainer: selected folder access, no network capability; OS-permitted public resources may be readable.",
-                )
-              : tr("仅限本任务已授权的文件夹", "Only this task's authorized folder")}
-          </p>
-          {a.intent.tool === "write_file" ? (
-            <>
-              <p>{tr("准备写入的完整内容：", "Complete proposed contents:")}</p>
-              <pre>{String((a.intent.arguments as { text?: unknown }).text ?? "")}</pre>
-            </>
-          ) : (
-            <pre>{JSON.stringify(a.intent.arguments, null, 2)}</pre>
-          )}
-          {a.review && (
+      {!hideApprovals &&
+        pending.map((a) => (
+          <article className="approval-card" key={a.id} data-approval-id={a.id}>
+            <h3>
+              {tr("等待你确认：", "Approval required: ")}
+              {a.intent.tool === "write_file"
+                ? tr(
+                    a.intent.version.exists ? "替换文件内容" : "新建文件",
+                    a.intent.version.exists ? "Replace file contents" : "Create file",
+                  )
+                : a.intent.tool === "run_command"
+                  ? tr("运行命令", "Run a command")
+                  : a.intent.tool}
+            </h3>
             <p>
-              {tr("独立审批意见：", "Independent review: ")}
-              {a.review.reason || a.review.state}
+              {tr("目标：", "Target: ")}
+              {a.intent.target}
             </p>
-          )}
-          {a.review?.diagnostic && (
-            <p>{english ? a.review.diagnostic.message_en : a.review.diagnostic.message_zh}</p>
-          )}
-          <small>
-            {tr(
-              "只批准此版本的操作。文件或权限改变后，需要重新确认。",
-              "Approval covers this exact action and version. File or policy changes invalidate it.",
+            <p>
+              {tr("执行范围：", "Execution scope: ")}
+              {a.intent.risk === "process"
+                ? tr(
+                    "系统隔离：可修改已选文件夹，无法访问网络；系统允许的公共资源仍可能可读。",
+                    "AppContainer: selected folder access, no network capability; OS-permitted public resources may be readable.",
+                  )
+                : tr("仅限本任务已授权的文件夹", "Only this task's authorized folder")}
+            </p>
+            {a.intent.tool === "write_file" ? (
+              <>
+                <p>{tr("准备写入的完整内容：", "Complete proposed contents:")}</p>
+                <pre>{String((a.intent.arguments as { text?: unknown }).text ?? "")}</pre>
+              </>
+            ) : (
+              <pre>{JSON.stringify(a.intent.arguments, null, 2)}</pre>
             )}
-          </small>
-          <div className="model-actions">
-            <button disabled={busy || active} onClick={() => void decide(a, true)}>
-              {tr("批准并继续", "Approve and continue")}
-            </button>
-            <button disabled={busy || active} onClick={() => void decide(a, false)}>
-              {tr("拒绝此操作", "Reject action")}
-            </button>
-          </div>
-          <details>
-            <summary>{tr("完整审批依据", "Full approval details")}</summary>
-            <pre>{JSON.stringify(a, null, 2)}</pre>
-            {a.review?.input && <Saved reference={a.review.input} />}
-            {a.review?.output && <Saved reference={a.review.output} />}
-          </details>
-        </article>
-      ))}
+            {a.review && (
+              <p>
+                {tr("独立审批意见：", "Independent review: ")}
+                {a.review.reason || a.review.state}
+              </p>
+            )}
+            {a.review?.diagnostic && (
+              <p>{english ? a.review.diagnostic.message_en : a.review.diagnostic.message_zh}</p>
+            )}
+            <small>
+              {tr(
+                "只批准此版本的操作。文件或权限改变后，需要重新确认。",
+                "Approval covers this exact action and version. File or policy changes invalidate it.",
+              )}
+            </small>
+            <div className="model-actions">
+              <button disabled={busy || active} onClick={() => void decide(a, true)}>
+                {tr("批准并继续", "Approve and continue")}
+              </button>
+              <button disabled={busy || active} onClick={() => void decide(a, false)}>
+                {tr("拒绝此操作", "Reject action")}
+              </button>
+            </div>
+            <details>
+              <summary>{tr("完整审批依据", "Full approval details")}</summary>
+              <pre>{JSON.stringify(a, null, 2)}</pre>
+              {a.review?.input && <Saved reference={a.review.input} />}
+              {a.review?.output && <Saved reference={a.review.output} />}
+            </details>
+          </article>
+        ))}
       {state.changes.length > 0 && (
         <details>
           <summary>

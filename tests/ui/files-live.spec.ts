@@ -56,6 +56,7 @@ test("P07 real engine: edit, approval, conflicts, history, static preview and te
       JSON.stringify({ ...report, status: "passed" }, null, 2) + "\n",
     );
   } finally {
+    await page.close();
     await engine.close();
   }
 });

@@ -1,3 +1,4 @@
+import { MemoryPanel } from "./MemoryPanel";
 import { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { LegacyApp } from "./LegacyApp";
@@ -13,7 +14,7 @@ const defaults: WorkspacePreferences = {
   language: localStorage.getItem("workpilot.language") === "en" ? "en" : "zh",
   theme: "system",
   sidebar_width: 250,
-  inspector_width: 380,
+  inspector_width: 348,
   sidebar_closed: false,
   inspector_closed: false,
   revision: 0,
@@ -26,6 +27,7 @@ function Workbench() {
   const [overview, setOverview] = useState<Overview | null>(null);
   const [preferences, setPreferences] = useState(defaults);
   const [models, setModels] = useState(false);
+  const [memory, setMemory] = useState(false);
   const [settings, setSettings] = useState(false);
   const [workspaceGeneration, setWorkspaceGeneration] = useState(0);
   const [error, setError] = useState("");
@@ -39,7 +41,15 @@ function Workbench() {
     const r = await workspaceQuery({ kind: "overview" });
     if (r.kind === "overview") {
       setOverview(r);
-      setPreferences(r.preferences);
+      setPreferences(
+        localStorage.getItem("workpilot.layout") === "proposal-v2"
+          ? r.preferences
+          : {
+              ...r.preferences,
+              inspector_width:
+                r.preferences.inspector_width === 380 ? 348 : r.preferences.inspector_width,
+            },
+      );
       setConnected(true);
     }
   };
@@ -52,7 +62,15 @@ function Workbench() {
         const r = await workspaceQuery({ kind: "overview" });
         if (!disposed && r.kind === "overview") {
           setOverview(r);
-          setPreferences(r.preferences);
+          setPreferences(
+            localStorage.getItem("workpilot.layout") === "proposal-v2"
+              ? r.preferences
+              : {
+                  ...r.preferences,
+                  inspector_width:
+                    r.preferences.inspector_width === 380 ? 348 : r.preferences.inspector_width,
+                },
+          );
           setConnected(true);
           setConnectionError("");
         }
@@ -78,6 +96,7 @@ function Workbench() {
   }, [preferences.language, preferences.theme, english]);
   const save = async (p: WorkspacePreferences) => {
     await workspaceAction({ kind: "save_preferences", preferences: p });
+    localStorage.setItem("workpilot.layout", "proposal-v2");
     await refresh();
   };
   const update = (p: WorkspacePreferences) => {
@@ -149,6 +168,10 @@ function Workbench() {
       {settings && overview && (
         <WorkspaceSettings
           preferences={preferences}
+          onMemory={() => {
+            setSettings(false);
+            setMemory(true);
+          }}
           scheduler={overview.scheduler}
           dataDir={overview.data_dir}
           onPreferences={save}
@@ -166,6 +189,18 @@ function Workbench() {
           }}
         />
       )}{" "}
+      {memory && (
+        <MemoryPanel
+          projects={overview?.projects || []}
+          initialProject={null}
+          onClose={() => setMemory(false)}
+          onNavigate={(id) => {
+            localStorage.setItem("workpilot.execution", id);
+            setMemory(false);
+            setWorkspaceGeneration((v) => v + 1);
+          }}
+        />
+      )}
       {models && <ModelSettings language={preferences.language} onClose={() => setModels(false)} />}
     </LanguageContext.Provider>
   );

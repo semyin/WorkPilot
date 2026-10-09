@@ -1,3 +1,5 @@
+import { Dialog } from "../workbench/Dialog";
+import { Icon } from "../workbench/Icon";
 import { useContext, useEffect, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
@@ -170,67 +172,61 @@ export function NotificationCenter({
         </button>
       )}
       {open && (
-        <div
-          className="workspace-modal notification-modal"
-          role="dialog"
-          aria-label={tr("通知中心", "Notification center")}
-        >
-          <section>
-            <div className="notification-heading">
-              <h2>{tr("通知中心", "Notification center")}</h2>
-              <button onClick={() => setOpen(false)}>{tr("关闭", "Close")}</button>
-            </div>
-            <p>
+        <Dialog title={tr("通知中心", "Notification center")} onClose={() => setOpen(false)}>
+          <p>
+            {tr(
+              "保留最近 128 条提醒。打开只查看任务，不会继续执行。",
+              "Keeps the latest 128 notifications. Opening only views the task; it never resumes work.",
+            )}
+          </p>
+          <button
+            disabled={disabled || busy || !snapshot?.unread}
+            onClick={() => {
+              setError("");
+              void invoke("notifications_read", { id: null }).catch(() =>
+                setError(tr("已读状态未能保存。", "Could not mark notifications as read.")),
+              );
+            }}
+          >
+            {tr("全部标为已读", "Mark all as read")}
+          </button>
+          {snapshot?.overflow && (
+            <p role="status">
               {tr(
-                "保留最近 128 条提醒。打开只查看任务，不会继续执行。",
-                "Keeps the latest 128 notifications. Opening only views the task; it never resumes work.",
+                "短时间内提醒较多，部分状态请到任务列表查看。",
+                "Many changes arrived together; check the task list for additional states.",
               )}
             </p>
-            <button
-              disabled={disabled || busy || !snapshot?.unread}
-              onClick={() => {
-                setError("");
-                void invoke("notifications_read", { id: null }).catch(() =>
-                  setError(tr("已读状态未能保存。", "Could not mark notifications as read.")),
-                );
-              }}
-            >
-              {tr("全部标为已读", "Mark all as read")}
-            </button>
-            {snapshot?.overflow && (
-              <p role="status">
-                {tr(
-                  "短时间内提醒较多，部分状态请到任务列表查看。",
-                  "Many changes arrived together; check the task list for additional states.",
-                )}
-              </p>
-            )}
-            {snapshot?.storage_error && (
-              <p role="alert">
-                {tr(
-                  "通知记录未能保存；任务记录仍可在工作台查看。",
-                  "Notification records could not be saved; task records remain in the workspace.",
-                )}
-              </p>
-            )}
-            {error && (
-              <p className="error" role="alert">
-                {error}
-              </p>
-            )}
-            {!snapshot?.entries.length && (
-              <p>{tr("还没有新的任务提醒。", "No new task notifications yet.")}</p>
-            )}
-            <ol className="notification-list">
-              {snapshot?.entries.slice(0, limit).map((notice) => {
-                const task = titles[notice.task_id];
-                const project = projects.find((p) => p.id === task?.project);
-                return (
-                  <li
-                    key={notice.id}
-                    data-notification-kind={notice.kind}
-                    data-unread={!notice.read}
-                  >
+          )}
+          {snapshot?.storage_error && (
+            <p role="alert">
+              {tr(
+                "通知记录未能保存；任务记录仍可在工作台查看。",
+                "Notification records could not be saved; task records remain in the workspace.",
+              )}
+            </p>
+          )}
+          {error && (
+            <p className="error" role="alert">
+              {error}
+            </p>
+          )}
+          {!snapshot?.entries.length && (
+            <p>{tr("还没有新的任务提醒。", "No new task notifications yet.")}</p>
+          )}
+          <div className="wb-notifications">
+            {snapshot?.entries.slice(0, limit).map((notice) => {
+              const task = titles[notice.task_id];
+              const project = projects.find((p) => p.id === task?.project);
+              return (
+                <div
+                  className="wb-notification-item"
+                  key={notice.id}
+                  data-notification-kind={notice.kind}
+                  data-unread={!notice.read}
+                >
+                  <Icon name={notice.kind.includes("approval") ? "shield" : "bell"} />
+                  <div>
                     <strong>{noticeLabel(notice.kind, english)}</strong>
                     {!notice.read && (
                       <span className="notification-unread">{tr("未读", "Unread")}</span>
@@ -248,20 +244,24 @@ export function NotificationCenter({
                       {new Date(notice.at_ms).toLocaleString(english ? "en" : "zh-CN")}
                     </time>
                     <small>{deliveryLabel(notice.delivery, english)}</small>
-                    <button disabled={disabled || busy} onClick={() => void navigate(notice.id)}>
+                    <button
+                      className="wb-outline-button"
+                      disabled={disabled || busy}
+                      onClick={() => void navigate(notice.id)}
+                    >
                       {tr("打开任务", "Open task")}
                     </button>
-                  </li>
-                );
-              })}
-            </ol>
-            {snapshot && snapshot.entries.length > limit && (
-              <button onClick={() => setLimit((n) => n + 20)}>
-                {tr("显示更早提醒", "Show earlier notifications")}
-              </button>
-            )}
-          </section>
-        </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          {snapshot && snapshot.entries.length > limit && (
+            <button onClick={() => setLimit((n) => n + 20)}>
+              {tr("显示更早提醒", "Show earlier notifications")}
+            </button>
+          )}
+        </Dialog>
       )}
     </>
   );

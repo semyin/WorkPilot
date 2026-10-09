@@ -1,8 +1,16 @@
-import { MigrationRecovery } from "./task-archive/MigrationRecovery";
+import { useWorkbenchMotion } from "./workbench/motion";
+import { CollectionPage, type Collection } from "./workbench/CollectionPage";
+import { NewTaskWelcome } from "./workbench/NewTaskWelcome";
+import { TaskSession } from "./task-workspace/TaskSession";
+import { ComposerControls } from "./workbench/ComposerControls";
+import { Icon } from "./workbench/Icon";
+import {
+  messageDrafts as savedMessages,
+  creationDrafts as savedCreations,
+} from "./workbench/drafts";
 import { TaskMessages } from "./task-workspace/TaskMessages";
-import { HistoryEvent } from "./task-workspace/HistoryEvent";
 import { TaskCreateForm } from "./task-workspace/TaskCreateForm";
-import { TaskInspector } from "./task-workspace/TaskInspector";
+import { TaskInspector, type InspectorTab } from "./task-workspace/TaskInspector";
 import { TaskWorkspaceHeader } from "./task-workspace/TaskWorkspaceHeader";
 import { taskLabels } from "./task-workspace/taskLabels";
 import { useEffect, useRef, useState, useSyncExternalStore, type CSSProperties } from "react";
@@ -16,12 +24,12 @@ import type {
   WorkMode,
   EventPage,
   WorkspaceProject,
+  PermissionMode,
 } from "./generated/contracts";
 import { executionCommand as command } from "./executionClient";
 import { ToolPanel, initialTools } from "./ToolPanel";
 import { TeamPanel } from "./TeamPanel";
 import { ProjectSidebar } from "./ProjectSidebar";
-import { Conversation } from "./Conversation";
 import { MediaPanel } from "./MediaPanel";
 import { MemoryPanel } from "./MemoryPanel";
 import { SchedulePanel } from "./SchedulePanel";
@@ -30,7 +38,6 @@ import type { MediaAsset } from "./generated/contracts";
 import { ResizeHandle } from "./ResizeHandle";
 import { FileWorkbench } from "./FileWorkbench";
 import { ExtensionPanel } from "./ExtensionPanel";
-import { workspaceAction } from "./workspaceClient";
 import type { TaskDesktop } from "./task-workspace/types";
 const limitsDefault: ExecutionLimits = {
   max_steps: 32,
@@ -49,7 +56,10 @@ export function TaskWorkspace({
   onModels: () => void;
   desktop?: TaskDesktop;
 }) {
+  useWorkbenchMotion();
   const english = language === "en";
+  const [page, setPage] = useState<"tasks" | Collection>("tasks");
+  const [focusedArtifact, setFocusedArtifact] = useState<string | null>(null);
   const tr = (zh: string, en: string) => (english ? en : zh);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [catalog, setCatalog] = useState<ProfileCatalog>({ profiles: [], global_default: null });
@@ -63,7 +73,7 @@ export function TaskWorkspace({
     ? { ...detail.snapshot, task: taskReads.task(detail.snapshot.task) }
     : null;
   const [creating, setCreating] = useState(!selected);
-  const [browserOpen, setBrowserOpen] = useState(false);
+  const [inspectorTab, setInspectorTab] = useState<InspectorTab>("artifacts");
   const [config, setConfig] = useState<ExecutionConfig>({
     title: "",
     goal: "",
@@ -80,7 +90,7 @@ export function TaskWorkspace({
   const [mode, setMode] = useState<WorkMode>("chat");
   const [profile, setProfile] = useState("");
   const [limits, setLimits] = useState(limitsDefault);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(() => savedMessages.get(selected || "")?.text || "");
   const live = detail?.live_text || "";
   const reasoning = detail?.live_reasoning || "";
   const [error, setError] = useState("");
@@ -90,23 +100,51 @@ export function TaskWorkspace({
   const [showHistory, setShowHistory] = useState(false);
   const [reviewResults, setReviewResults] = useState<Record<string, string>>({});
   const archived = detail?.archived || false;
-  const effectiveModel = detail?.effective_profile
-    ? `${detail.effective_profile.label} · ${detail.effective_profile.model}`
-    : tr("尚未选择模型", "No model selected");
   const effectivePermission = detail?.effective_permission || "request_approval";
-  const [renaming, setRenaming] = useState<string | null>(null);
   const [fileWorkspace, setFileWorkspace] = useState(false);
   const [extensionsOpen, setExtensionsOpen] = useState(false);
   const [mediaOpen, setMediaOpen] = useState(false);
   const [memoryOpen, setMemoryOpen] = useState(false);
   const [schedulesOpen, setSchedulesOpen] = useState(false);
   const [initialAttachments, setInitialAttachments] = useState<MediaAsset[]>([]);
-  const [messageAttachments, setMessageAttachments] = useState<MediaAsset[]>([]);
+  const [messageAttachments, setMessageAttachments] = useState<MediaAsset[]>(
+    () => savedMessages.get(selected || "")?.attachments || [],
+  );
   const [attachmentBusy, setAttachmentBusy] = useState(false);
   useEffect(() => {
-    setMessageAttachments([]);
     setAttachmentBusy(false);
   }, [selected, creating]);
+  const messageDrafts = useRef(savedMessages);
+  const creationDrafts = useRef(savedCreations);
+  const rememberCreation = () => {
+    if (creating)
+      creationDrafts.current.set(config.project_id || "", {
+        config,
+        tools,
+        constraints,
+        attachments: initialAttachments,
+      });
+  };
+  const rememberMessage = () => {
+    if (selected)
+      messageDrafts.current.set(selected, { text: message, attachments: messageAttachments });
+  };
+  useEffect(() => {
+    if (selected && !creating) {
+      if (message || messageAttachments.length)
+        savedMessages.set(selected, { text: message, attachments: messageAttachments });
+      else savedMessages.delete(selected);
+    }
+  }, [selected, creating, message, messageAttachments]);
+  useEffect(() => {
+    if (creating)
+      savedCreations.set(config.project_id || "", {
+        config,
+        tools,
+        constraints,
+        attachments: initialAttachments,
+      });
+  }, [creating, config, tools, constraints, initialAttachments]);
   const settingsTask = useRef("");
   const active =
     stopping ||
@@ -116,7 +154,7 @@ export function TaskWorkspace({
   const completedWithoutMessages =
     snapshot?.task.state === "completed" &&
     !snapshot.messages.some((m) => ["queued", "steer_requested"].includes(m.state));
-  const { status, reasonLabel } = taskLabels(english);
+  const { status } = taskLabels(english);
   const chooseTask = (task: string | null) => {
     if (selection.current.task !== task)
       selection.current = { task, generation: selection.current.generation + 1 };
@@ -202,6 +240,7 @@ export function TaskWorkspace({
         if (initialAttachments.length)
           await media(task, { kind: "bind", asset_ids: initialAttachments.map((a) => a.id) });
         setInitialAttachments([]);
+        creationDrafts.current.delete(config.project_id || "");
         chooseTask(task);
         setCreating(false);
         settingsTask.current = "";
@@ -215,14 +254,14 @@ export function TaskWorkspace({
         if (startNow) await start(task);
       }
     });
-  const configure = (selectedMode: WorkMode) =>
+  const configure = (selectedMode: WorkMode, selectedProfile = profile) =>
     snapshot &&
     command(
       {
         kind: "configure_execution",
         task_id: snapshot.task.id,
         mode: selectedMode,
-        profile_id: profile || null,
+        profile_id: selectedProfile || null,
         limits,
       },
       english,
@@ -241,6 +280,7 @@ export function TaskWorkspace({
         },
         english,
       );
+      messageDrafts.current.delete(selected);
       if (selection.current === origin) {
         setMessageAttachments([]);
         setMessage("");
@@ -264,30 +304,26 @@ export function TaskWorkspace({
         setShowHistory(true);
       }
     });
-  const profileOptions = (
-    <>
-      <option value="">{tr("继承默认模型", "Inherit default model")}</option>
-      {catalog.profiles.map(({ profile }) => (
-        <option key={profile.id} value={profile.id}>
-          {profile.label} · {profile.model}
-        </option>
-      ))}
-    </>
-  );
-  const modes = (
-    <>
-      <option value="chat">{tr("聊天", "Chat")}</option>
-      <option value="plan">{tr("先规划再执行", "Plan first")}</option>
-      <option value="execute">{tr("直接执行", "Execute")}</option>
-    </>
-  );
-  const needsReview = snapshot?.steps.filter((s) => s.state === "needs_review") || [];
   const newTask = (project: WorkspaceProject | null) => {
+    if (busy) return;
+    setPage("tasks");
+    rememberMessage();
+    rememberCreation();
+    setMessageAttachments([]);
     setCreating(true);
     chooseTask(null);
     localStorage.removeItem("workpilot.execution");
     setError("");
     setMessage("");
+    const draft = creationDrafts.current.get(project?.id || "");
+    if (draft) {
+      setConfig(draft.config);
+      setTools(draft.tools);
+      setConstraints(draft.constraints);
+      setInitialAttachments(draft.attachments);
+      return;
+    }
+    setInitialAttachments([]);
     setConfig({
       ...config,
       title: "",
@@ -311,23 +347,32 @@ export function TaskWorkspace({
     setConstraints("");
   };
   const selectTask = (id: string) => {
+    setPage("tasks");
+    if (busy) return;
+    rememberMessage();
+    rememberCreation();
     chooseTask(id);
     setCreating(false);
     setError("");
-    setMessage("");
-    setRenaming(null);
+    const draft = messageDrafts.current.get(id);
+    setMessage(draft?.text || "");
+    setMessageAttachments(draft?.attachments || []);
   };
-  const toolPanel = snapshot && (
-    <ToolPanel
-      key={`tools-${snapshot.task.id}`}
-      task={snapshot.task.id}
-      english={english}
-      catalog={catalog}
-      active={active}
-      inherited={!!team && team.root_task_id !== snapshot.task.id}
-      start={() => start(snapshot.task.id)}
-    />
-  );
+  const renderTools = (approvalsOnly = false) =>
+    snapshot && (
+      <ToolPanel
+        approvalsOnly={approvalsOnly}
+        hideApprovals={!!desktop}
+        key={`tools-${snapshot.task.id}`}
+        task={snapshot.task.id}
+        english={english}
+        catalog={catalog}
+        active={active}
+        inherited={!!team && team.root_task_id !== snapshot.task.id}
+        start={() => start(snapshot.task.id)}
+      />
+    );
+  const toolPanel = renderTools();
   const teamPanel = snapshot &&
     team &&
     (snapshot.task.mode === "execute" || team.members.length > 0) && (
@@ -344,129 +389,285 @@ export function TaskWorkspace({
       />
     );
   const prefs = desktop?.preferences;
+  const openInspector = (tab: InspectorTab) => {
+    setInspectorTab(tab);
+    if (prefs?.inspector_closed) desktop?.onPreferences({ ...prefs, inspector_closed: false });
+  };
+  const canStop =
+    !!snapshot &&
+    (active ||
+      ["awaiting_input", "awaiting_approval"].includes(snapshot.task.state) ||
+      !!team?.members.some((m) =>
+        ["queued", "running", "awaiting_input", "awaiting_approval"].includes(m.state),
+      ));
+  const onContinue = () => {
+    if (snapshot)
+      void act(async () => {
+        await configure(mode);
+        await start(snapshot.task.id);
+      });
+  };
+  const changeMode = (value: WorkMode) =>
+    void act(async () => {
+      const origin = selection.current;
+      await configure(value);
+      if (selection.current === origin) setMode(value);
+    });
+  const changeProfile = (value: string) =>
+    void act(async () => {
+      const origin = selection.current;
+      await configure(mode, value);
+      if (selection.current === origin) setProfile(value);
+    });
+  const changePermission = (permission: PermissionMode | null) =>
+    void act(async () => {
+      if (!snapshot) return;
+      const id = snapshot.task.id;
+      const current = await command(
+        { kind: "read", query: { kind: "task_tools", task_id: id } },
+        english,
+      );
+      if (current.kind === "task_tools")
+        await command(
+          {
+            kind: "configure_task_tools",
+            task_id: id,
+            settings: { ...current.state.policy.settings, permission },
+          },
+          english,
+        );
+    });
+  const projectName =
+    desktop?.overview?.projects.find(
+      (p) => p.id === (creating ? config.project_id : snapshot?.task.project_id),
+    )?.settings.name || tr("个人空间", "Personal space");
   return (
     <div
-      className={
-        desktop
-          ? "model-overlay execution-overlay workspace-root"
-          : "model-overlay execution-overlay"
-      }
+      className={`workbench ${prefs?.sidebar_closed ? "wb-sidebar-collapsed" : ""} ${["tasks", "library"].includes(page) && !creating && !prefs?.inspector_closed ? "wb-panel-open" : ""}`}
+      data-sidebar-closed={!!prefs?.sidebar_closed}
+      data-inspector-closed={!!prefs?.inspector_closed}
       style={
         prefs
           ? ({
-              "--left": prefs.sidebar_closed ? "0px" : `${prefs.sidebar_width}px`,
-              "--right": prefs.inspector_closed ? "0px" : `${prefs.inspector_width}px`,
+              "--left": `${prefs.sidebar_width}px`,
+              "--right": `${prefs.inspector_width}px`,
             } as CSSProperties)
           : undefined
       }
       role={desktop ? "region" : "dialog"}
       aria-label={tr("任务执行", "Task execution")}
     >
-      <TaskWorkspaceHeader
-        english={english}
-        desktop={desktop}
-        selected={selected}
-        onClose={onClose}
-        onModels={onModels}
-        open={{
-          extensions: () => setExtensionsOpen(true),
-          files: () => setFileWorkspace(true),
-          browser: () => setBrowserOpen(true),
-          memory: () => setMemoryOpen(true),
-          schedules: () => setSchedulesOpen(true),
-          media: () => setMediaOpen(true),
-        }}
-      />
-      <div className="execution-columns">
+      <div className="wb-app-shell">
         {desktop ? (
           <>
-            <div className="workspace-sidebar-wrap" hidden={prefs?.sidebar_closed}>
+            <div
+              className="wb-sidebar-wrap"
+              inert={prefs?.sidebar_closed}
+              aria-hidden={prefs?.sidebar_closed}
+            >
               <ProjectSidebar
                 projects={desktop.overview?.projects || []}
                 catalog={catalog}
-                selected={selected}
+                selected={page === "tasks" ? selected : null}
+                onTasks={() => setPage("tasks")}
+                taskPage={page === "tasks"}
                 onSelect={selectTask}
                 onNew={newTask}
                 onProjectsChanged={desktop.onRefresh}
                 english={english}
                 taskReads={taskReads}
+                busy={busy}
+                onCollapse={() =>
+                  prefs && desktop.onPreferences({ ...prefs, sidebar_closed: true })
+                }
+                navigation={[
+                  {
+                    label: tr("资料库", "Library"),
+                    icon: "files",
+                    active: page === "library",
+                    onClick: () => setPage("library"),
+                  },
+                  {
+                    label: tr("技能与连接", "Skills & connections"),
+                    icon: "spark",
+                    active: page === "skills",
+                    onClick: () => setPage("skills"),
+                  },
+                  {
+                    label: tr("定时任务", "Schedules"),
+                    icon: "clock",
+                    active: page === "schedules",
+                    onClick: () => setPage("schedules"),
+                  },
+                  { label: tr("设置", "Settings"), icon: "settings", onClick: desktop.onSettings },
+                ]}
               />
             </div>
-            {prefs && !prefs.sidebar_closed ? (
-              <ResizeHandle
-                side="left"
-                width={prefs.sidebar_width}
-                onChange={(sidebar_width) => desktop.onPreferences({ ...prefs, sidebar_width })}
-                label={tr("调整项目栏宽度", "Resize project sidebar")}
-              />
-            ) : (
-              <div />
-            )}
           </>
         ) : (
           <aside className="model-list">
-            <button
-              onClick={() => {
-                setCreating(true);
-                setError("");
-                setConfig({
-                  ...config,
-                  title: "",
-                  goal: "",
-                  constraints: [],
-                  project_rules: "",
-                  mode: "chat",
-                  controlled_tools: false,
-                });
-                setConstraints("");
-                setTools(initialTools);
-              }}
-            >
+            <button type="button" onClick={() => newTask(null)}>
               {tr("+ 新建任务", "+ New task")}
             </button>
-            {tasks.map((row) => {
-              const task = taskReads.task(row);
-              return (
-                <button
-                  key={task.id}
-                  data-execution-id={task.id}
-                  className={!creating && selected === task.id ? "chosen" : ""}
-                  onClick={() => {
-                    selectTask(task.id);
-                  }}
-                >
-                  <strong>{task.title}</strong>
-                  <small>{status(taskReads.state(task))}</small>
-                </button>
-              );
-            })}
-            <small>
-              {tr(
-                "关闭此页面或隐藏窗口后，任务继续运行。",
-                "Tasks keep running when this page or window is hidden.",
-              )}
-            </small>
+            {tasks.map((task) => (
+              <button
+                type="button"
+                key={task.id}
+                data-execution-id={task.id}
+                onClick={() => selectTask(task.id)}
+              >
+                {task.title}
+              </button>
+            ))}
           </aside>
         )}
-        <main className="execution-main">
-          {desktop && !!desktop.overview?.notices.length && (
-            <details className="workspace-notices">
-              <summary>
-                {tr("需要处理", "Needs attention")} · {desktop.overview.notices.length}
-              </summary>
-              {desktop.overview.notices.map((n) => (
-                <button key={n.task_id} onClick={() => selectTask(n.task_id)}>
-                  {n.title} · {status(n.state)}
-                </button>
-              ))}
-            </details>
-          )}
-          {(error || readError) && (
-            <div className="error" role="alert">
-              {error || readError}
-            </div>
-          )}
-          {creating ? (
+        <main className="wb-workspace">
+          <TaskWorkspaceHeader
+            english={english}
+            desktop={desktop}
+            selected={selected}
+            onClose={onClose}
+            onModels={onModels}
+            title={
+              page !== "tasks"
+                ? {
+                    library: tr("资料库", "Library"),
+                    skills: tr("技能与连接", "Skills & connections"),
+                    schedules: tr("定时任务", "Schedules"),
+                  }[page]
+                : creating
+                  ? tr("新任务", "New task")
+                  : snapshot?.task.title || tr("正在读取任务…", "Loading task…")
+            }
+            project={projectName}
+            taskPage={page === "tasks"}
+            showWorkspace={page === "tasks" || (page === "library" && !!snapshot)}
+            status={
+              page === "tasks" && !creating && snapshot ? (
+                <span
+                  className="wb-status-badge"
+                  data-testid="execution-status"
+                  data-task-id={snapshot.task.id}
+                  data-state={stopping ? "stopping" : snapshot.task.state}
+                >
+                  {active ? (
+                    <span className="wb-spinner" />
+                  ) : (
+                    <Icon
+                      name={
+                        snapshot.task.state === "completed"
+                          ? "check"
+                          : snapshot.task.state === "awaiting_approval"
+                            ? "shield"
+                            : "stop"
+                      }
+                    />
+                  )}
+                  {status(stopping ? "stopping" : snapshot.task.state)}
+                </span>
+              ) : undefined
+            }
+            open={{
+              extensions: () => setExtensionsOpen(true),
+              files: () => setFileWorkspace(true),
+              browser: () => openInspector("browser"),
+              memory: () => setMemoryOpen(true),
+              schedules: () => setSchedulesOpen(true),
+              media: () => setMediaOpen(true),
+            }}
+          />
+          <div
+            className="wb-conversation-scroll"
+            key={page + (creating ? `create-${config.project_id || "standalone"}` : selected)}
+          >
+            {(error || readError) && (
+              <div className="error" role="alert">
+                {error || readError}
+              </div>
+            )}
+            {page !== "tasks" ? (
+              <div className="wb-conversation">
+                <CollectionPage
+                  key={page}
+                  page={page}
+                  project={creating ? config.project_id : snapshot?.task.project_id || null}
+                  onManage={() =>
+                    page === "library"
+                      ? setMediaOpen(true)
+                      : page === "skills"
+                        ? setExtensionsOpen(true)
+                        : setSchedulesOpen(true)
+                  }
+                  onArtifact={(a) => {
+                    selectTask(a.task_id);
+                    setFocusedArtifact(a.id);
+                    openInspector("artifacts");
+                  }}
+                  onBrowser={() => {
+                    setPage("tasks");
+                    openInspector("browser");
+                  }}
+                />
+              </div>
+            ) : creating ? (
+              <div className="wb-conversation">
+                <NewTaskWelcome onPrompt={(goal) => setConfig({ ...config, goal })} />
+              </div>
+            ) : (
+              snapshot && (
+                <div className="wb-conversation">
+                  <TaskSession
+                    english={english}
+                    desktop={!!desktop}
+                    snapshot={snapshot}
+                    active={active}
+                    busy={busy}
+                    archived={archived}
+                    toolPanel={toolPanel}
+                    teamPanel={teamPanel}
+                    approvals={
+                      snapshot.task.state === "awaiting_approval" ? renderTools(true) : null
+                    }
+                    onActivity={() => openInspector("activity")}
+                    collaborators={
+                      team && team.members.length > 0 ? (
+                        <div className="wb-collaborators">
+                          {team.members
+                            .filter((m) => !m.superseded_by)
+                            .map((m) => (
+                              <button key={m.task_id} onClick={() => selectTask(m.task_id)}>
+                                <span className="wb-initial">{m.role.slice(0, 1)}</span>
+                                {m.role}
+                                {m.state === "running" ? (
+                                  <span className="wb-spinner" />
+                                ) : (
+                                  <Icon name={m.state === "completed" ? "check" : "clock"} />
+                                )}
+                              </button>
+                            ))}
+                        </div>
+                      ) : null
+                    }
+                    setMediaOpen={setMediaOpen}
+                    setExtensionsOpen={setExtensionsOpen}
+                    setMessage={setMessage}
+                    setMode={setMode}
+                    act={act}
+                    configure={configure}
+                    start={start}
+                    live={live}
+                    reasoning={reasoning}
+                    reviewResults={reviewResults}
+                    setReviewResults={setReviewResults}
+                    showHistory={showHistory}
+                    history={history}
+                    readHistory={readHistory}
+                  />
+                </div>
+              )
+            )}
+          </div>
+          {page === "tasks" && creating && (
             <TaskCreateForm
               english={english}
               desktop={desktop}
@@ -482,397 +683,96 @@ export function TaskWorkspace({
               setAttachmentBusy={setAttachmentBusy}
               attachmentBusy={attachmentBusy}
               busy={busy}
-              modes={modes}
-              profileOptions={profileOptions}
               create={create}
+              onModels={onModels}
             />
-          ) : (
-            snapshot && (
-              <>
-                <div className="execution-title">
-                  <h2>{snapshot.task.title}</h2>
-                  <span
-                    data-testid="execution-status"
-                    data-task-id={snapshot.task.id}
-                    data-state={stopping ? "stopping" : snapshot.task.state}
+          )}
+          {page === "tasks" && !creating && snapshot && (
+            <div className="wb-composer-area wb-task-composer">
+              <TaskMessages
+                english={english}
+                desktop={!!desktop}
+                selected={selected}
+                snapshot={snapshot}
+                message={message}
+                setMessage={setMessage}
+                messageAttachments={messageAttachments}
+                setMessageAttachments={setMessageAttachments}
+                setAttachmentBusy={setAttachmentBusy}
+                busy={busy}
+                attachmentBusy={attachmentBusy}
+                archived={archived}
+                active={active}
+                sendMessage={sendMessage}
+                act={act}
+                stopping={stopping}
+                canStop={canStop}
+                canContinue={!active && !completedWithoutMessages}
+                project={projectName}
+                onStop={() => void stopTask(snapshot.task.id)}
+                onContinue={onContinue}
+                controls={(action, attachment) => (
+                  <ComposerControls
+                    attachment={attachment}
+                    catalog={catalog}
+                    profile={profile}
+                    model={detail?.effective_profile || null}
+                    mode={mode}
+                    permission={effectivePermission}
+                    onProfile={changeProfile}
+                    onMode={changeMode}
+                    onPermissionDetails={() => openInspector("tools")}
+                    onPermission={changePermission}
+                    disabled={active || busy || archived}
+                    onModels={onModels}
                   >
-                    {stopping ? tr("正在停止", "Stopping") : status(snapshot.task.state)}
-                  </span>
-                </div>
-                {desktop && (
-                  <>
-                    <div className="workspace-task-meta">
-                      <small>
-                        {effectiveModel} ·{" "}
-                        {effectivePermission === "full_access"
-                          ? tr("完全访问", "Full access")
-                          : effectivePermission === "auto_review"
-                            ? tr("帮我批准", "Review for me")
-                            : tr("请求审批", "Request approval")}{" "}
-                        ·{" "}
-                        {snapshot.task.mode === "chat"
-                          ? tr("聊天", "Chat")
-                          : snapshot.task.mode === "plan"
-                            ? tr("规划", "Plan")
-                            : tr("执行", "Execute")}
-                      </small>
-                      {team?.root_task_id === snapshot.task.id && (
-                        <>
-                          <button onClick={() => setRenaming(snapshot.task.title)}>
-                            {tr("重命名", "Rename")}
-                          </button>
-                          <button
-                            disabled={busy || active}
-                            onClick={() =>
-                              void act(async () => {
-                                await workspaceAction({
-                                  kind: "archive_task",
-                                  task_id: snapshot.task.id,
-                                  archived: !archived,
-                                });
-                              })
-                            }
-                          >
-                            {archived
-                              ? tr("恢复任务", "Restore task")
-                              : tr("归档任务", "Archive task")}
-                          </button>
-                        </>
-                      )}
-                    </div>
-                    {renaming !== null && (
-                      <div className="model-actions">
-                        <input
-                          aria-label={tr("新的任务名称", "New task title")}
-                          value={renaming}
-                          onChange={(e) => setRenaming(e.target.value)}
-                        />
-                        <button
-                          disabled={busy || !renaming.trim()}
-                          onClick={() =>
-                            void act(async () => {
-                              await workspaceAction({
-                                kind: "rename_task",
-                                task_id: snapshot.task.id,
-                                title: renaming,
-                              });
-                              setRenaming(null);
-                            })
-                          }
-                        >
-                          {tr("保存名称", "Save title")}
-                        </button>
-                        <button onClick={() => setRenaming(null)}>{tr("取消", "Cancel")}</button>
-                      </div>
-                    )}
-                    {archived && (
-                      <p className="execution-notice">
-                        {tr(
-                          "任务已归档。恢复后可继续。",
-                          "This task is archived. Restore it to continue.",
-                        )}
-                      </p>
-                    )}
-                  </>
+                    {action}
+                  </ComposerControls>
                 )}
-                <MigrationRecovery key={`recovery-${snapshot.task.id}`} task={snapshot.task.id} />
-                {!desktop && toolPanel}
-                <details className="execution-goal">
-                  <summary>{tr("任务目标和限制", "Goal and constraints")}</summary>
-                  <p>{snapshot.context.goal}</p>
-                  {snapshot.context.constraints.map((c, i) => (
-                    <p key={i}>• {c}</p>
-                  ))}
-                </details>
-                <div className="model-actions">
-                  <button
-                    disabled={busy || active || archived || completedWithoutMessages}
-                    title={
-                      completedWithoutMessages
-                        ? tr("发送新的要求后再继续。", "Send a new instruction to continue.")
-                        : undefined
-                    }
-                    onClick={() =>
-                      void act(async () => {
-                        await configure(mode);
-                        await start(snapshot.task.id);
-                      })
-                    }
-                  >
-                    {tr("继续任务", "Continue task")}
-                  </button>
-                  <button
-                    disabled={
-                      busy ||
-                      stopping ||
-                      (!active &&
-                        !["awaiting_input", "awaiting_approval"].includes(snapshot.task.state) &&
-                        !team?.members.some((m) =>
-                          ["queued", "running", "awaiting_input", "awaiting_approval"].includes(
-                            m.state,
-                          ),
-                        ))
-                    }
-                    onClick={() => void stopTask(snapshot.task.id)}
-                  >
-                    {tr("停止任务", "Stop task")}
-                  </button>
-                  <button disabled={busy} onClick={() => void readHistory()}>
-                    {tr("完整事件", "Full events")}
-                  </button>
-                </div>
-                {!desktop && teamPanel}
-                {snapshot.latest_run?.diagnostic && (
-                  <div className="error" role="alert">
-                    {english
-                      ? snapshot.latest_run.diagnostic.message_en
-                      : snapshot.latest_run.diagnostic.message_zh}
-                    <p>{snapshot.latest_run.diagnostic.detail}</p>
-                  </div>
-                )}
-                {reasonLabel(snapshot.latest_run?.reason) && (
-                  <p className="execution-notice">{reasonLabel(snapshot.latest_run?.reason)}</p>
-                )}
-                {snapshot.latest_run?.reason === "awaiting_media_approval" && (
-                  <button onClick={() => setMediaOpen(true)}>
-                    {tr("查看文件或图片待批准操作", "Review pending file or image generation")}
-                  </button>
-                )}
-                {snapshot.latest_run?.reason === "awaiting_extension_approval" && (
-                  <button onClick={() => setExtensionsOpen(true)}>
-                    {tr("查看扩展待批准操作", "Review pending extension action")}
-                  </button>
-                )}
-                {snapshot.context.question && (
-                  <section className="execution-question">
-                    <h3>{tr("需要你的输入", "Your input is needed")}</h3>
-                    <p>
-                      {snapshot.context.question.plan_confirmation
-                        ? tr(
-                            "计划已保存。可补充要求，或明确开始执行。",
-                            "The plan is saved. Revise your requirements or explicitly start execution.",
-                          )
-                        : snapshot.context.question.text}
-                    </p>
-                    <div className="model-actions">
-                      {snapshot.context.question.choices.map((choice) => (
-                        <button key={choice} onClick={() => setMessage(choice)}>
-                          {choice}
-                        </button>
-                      ))}
-                      {snapshot.context.question.plan_confirmation && (
-                        <button
-                          className="primary"
-                          disabled={busy || active}
-                          onClick={() =>
-                            void act(async () => {
-                              await configure("execute");
-                              setMode("execute");
-                              await start(snapshot.task.id);
-                            })
-                          }
-                        >
-                          {tr("开始执行计划", "Execute this plan")}
-                        </button>
-                      )}
-                    </div>
-                  </section>
-                )}
-                {!!snapshot.context.plan.length && (
-                  <ol className="execution-plan">
-                    {snapshot.context.plan.map((s) => (
-                      <li key={s.id} data-plan-state={s.status}>
-                        <span>
-                          {s.status === "done" ? "✓" : s.status === "running" ? "◉" : "○"}
-                        </span>{" "}
-                        {s.text}
-                      </li>
-                    ))}
-                  </ol>
-                )}
-                {desktop && (
-                  <Conversation
-                    key={`conversation-${snapshot.task.id}`}
-                    task={snapshot.task.id}
-                    sequence={snapshot.task.last_sequence}
-                  />
-                )}
-                <pre
-                  className="execution-answer"
-                  data-testid="execution-answer"
-                  hidden={!!desktop && !active}
-                >
-                  {live ||
-                    snapshot.context.last_text ||
-                    (active
-                      ? tr("等待模型回复…", "Waiting for model output…")
-                      : snapshot.task.state === "awaiting_input"
-                        ? tr(
-                            "请补充所需信息或确认上方计划。",
-                            "Provide the requested input or confirm the plan above.",
-                          )
-                        : tr(
-                            "本次没有完整的文字结果，可查看右侧执行过程。",
-                            "No complete text result is available. See the execution trace.",
-                          ))}
-                </pre>
-                {reasoning && (
-                  <details>
-                    <summary>{tr("服务公开的推理", "Reasoning shared by the service")}</summary>
-                    <pre>{reasoning}</pre>
-                  </details>
-                )}
-                {snapshot.context.digest && (
-                  <p>
-                    {tr(
-                      "已整理较早的上下文，原始记录仍可查看；任务目标和用户要求保留。",
-                      "Earlier context was condensed. Original records, the goal and user requirements are preserved.",
-                    )}
-                  </p>
-                )}
-                {needsReview.map((s) => (
-                  <section className="execution-review" key={s.id}>
-                    <strong>
-                      {tr("结果需要核对：", "Review required: ")}
-                      {s.name}
-                    </strong>
-                    <p>
-                      {tr(
-                        "继续任务会先查询已保存的执行凭据。有凭据就采用原结果；没有凭据时，需要你核对是否执行过。",
-                        "Continue first checks the saved receipt. An existing result is reused; without a receipt, verify what actually happened.",
-                      )}
-                    </p>
-                    <button
-                      disabled={busy || active}
-                      onClick={() =>
-                        void act(async () => {
-                          await command(
-                            {
-                              kind: "resolve_execution_action",
-                              task_id: snapshot.task.id,
-                              action_id: s.id,
-                              resolution: { kind: "not_applied" },
-                            },
-                            english,
-                          );
-                        })
-                      }
-                    >
-                      {tr("确认未执行，允许重新运行", "Confirm not applied; allow another attempt")}
-                    </button>
-                  </section>
-                ))}
-                <TaskMessages
-                  english={english}
-                  desktop={!!desktop}
-                  selected={selected}
-                  snapshot={snapshot}
-                  message={message}
-                  setMessage={setMessage}
-                  messageAttachments={messageAttachments}
-                  setMessageAttachments={setMessageAttachments}
-                  setAttachmentBusy={setAttachmentBusy}
-                  busy={busy}
-                  attachmentBusy={attachmentBusy}
-                  archived={archived}
-                  active={active}
-                  sendMessage={sendMessage}
-                  act={act}
-                />
-                {needsReview.map((s) => (
-                  <section key={"result-" + s.id} className="execution-review">
-                    <label>
-                      {tr(
-                        "已执行的结果（确认后填写）",
-                        "Existing result (verify before recording)",
-                      )}
-                      <textarea
-                        aria-label={tr(
-                          "已执行的结果（确认后填写）",
-                          "Existing result (verify before recording)",
-                        )}
-                        value={reviewResults[s.id] || ""}
-                        onChange={(e) =>
-                          setReviewResults({ ...reviewResults, [s.id]: e.target.value })
-                        }
-                      />
-                    </label>
-                    <button
-                      disabled={busy || active || !reviewResults[s.id]?.trim()}
-                      onClick={() =>
-                        void act(async () => {
-                          await command(
-                            {
-                              kind: "resolve_execution_action",
-                              task_id: snapshot.task.id,
-                              action_id: s.id,
-                              resolution: { kind: "applied", output: reviewResults[s.id] },
-                            },
-                            english,
-                          );
-                        })
-                      }
-                    >
-                      {tr("确认已执行，采用此结果", "Confirm applied; use this result")}
-                    </button>
-                  </section>
-                ))}
-                {showHistory && (
-                  <section className="execution-history">
-                    <h3>{tr("完整事件记录", "Complete event history")}</h3>
-                    {history?.events.map((e) => (
-                      <HistoryEvent key={e.sequence} event={e} />
-                    ))}
-                    <button disabled={busy} onClick={() => void readHistory()}>
-                      {tr("从头查看", "Read from start")}
-                    </button>
-                    {history?.has_more && (
-                      <button disabled={busy} onClick={() => void readHistory(history.next_after)}>
-                        {tr("下一页", "Next page")}
-                      </button>
-                    )}
-                  </section>
-                )}
-              </>
-            )
+              />
+            </div>
           )}
         </main>
-        {desktop &&
-          (prefs && !prefs.inspector_closed ? (
-            <ResizeHandle
-              side="right"
-              width={prefs.inspector_width}
-              onChange={(inspector_width) => desktop.onPreferences({ ...prefs, inspector_width })}
-              label={tr("调整详情栏宽度", "Resize details panel")}
-            />
-          ) : (
-            <div />
-          ))}
+
         <TaskInspector
           english={english}
           prefs={prefs}
-          creating={creating}
+          creating={creating || !["tasks", "library"].includes(page)}
+          focusedArtifact={focusedArtifact}
           snapshot={snapshot}
           toolPanel={toolPanel}
           teamPanel={teamPanel}
-          browserOpen={browserOpen}
-          setBrowserOpen={setBrowserOpen}
           busy={busy}
           active={active}
           mode={mode}
           setMode={setMode}
-          modes={modes}
           profile={profile}
           setProfile={setProfile}
-          profileOptions={profileOptions}
           limits={limits}
           setLimits={setLimits}
-          desktop={!!desktop}
           saveSettings={() =>
             void act(async () => {
               await configure(mode);
             })
           }
+          tab={inspectorTab}
+          onTab={setInspectorTab}
+          onClose={() => prefs && desktop?.onPreferences({ ...prefs, inspector_closed: true })}
+          onFiles={() => setFileWorkspace(true)}
+          catalog={catalog}
+          resize={
+            desktop && prefs ? (
+              <ResizeHandle
+                side="right"
+                width={prefs.inspector_width}
+                onChange={(inspector_width) => desktop.onPreferences({ ...prefs, inspector_width })}
+                label={tr("调整详情栏宽度", "Resize details panel")}
+              />
+            ) : undefined
+          }
+          readHistory={() => {
+            void readHistory();
+          }}
         />
       </div>
       {mediaOpen && (

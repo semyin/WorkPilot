@@ -2,9 +2,11 @@
 
 面向个人和小团队的通用 AI 桌面工作平台。采用自研 Rust 执行引擎、React/Tauri 2 桌面和 SQLite 本地存储，支持模型接入、工具执行、多助手、浏览器、文件、技能与定时任务。
 
-当前 Windows 候选版为 `0.1.0-alpha.13.4`，数据版本 11。实现及本轮短时验证完成，正式 V1 仍待干净 Windows、物理换机和用户体验验收；macOS、Linux 尚未实机验收。
+当前交付 `0.1.0-alpha.13.4` 作为功能验证版保留。根据 2026-10-09 用户反馈，工作台的布局、操作流程与整体产品体验尚未完成；当前回到 P06 产品化重做，P13 正式验收尚未开始。已有功能和自动验证是基础，不代表产品已经成熟。
 
 - [开发计划与当前进度](docs/README.md)
+- [工作台改版提案（示例数据）](artifacts/workpilot-product-design-2026-10-09/index.html)
+- [新版工作台的实际接入与边界](docs/development/P06-工作台与记录.md#第一批正式接入2026-10-09)
 - [当前候选版使用说明](artifacts/workpilot-p13-candidate-2026-10-04-r3/README.md)
 - [验收矩阵](docs/development/P13-验收矩阵.md) · [用户体验清单](docs/development/P13-用户体验清单.md)
 - [开发约定](AGENTS.md) · [构建环境准备](docs/development/P00-开发与验证.md)

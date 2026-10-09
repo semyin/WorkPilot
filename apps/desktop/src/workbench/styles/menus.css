@@ -1,0 +1,144 @@
+/* Ported from the approved 2026-10-09 proposal. Layout values stay in sync; wb- isolates legacy styles. */
+.wb-popover {
+  z-index: 100;
+  min-width: 218px;
+  width: max-content;
+  max-width: min(310px, calc(100vw - 24px));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 5px;
+  box-shadow:
+    0 4px 12px #1b26370b,
+    0 14px 35px #1b26371a;
+}
+.wb-menu-heading {
+  padding: 8px 9px 7px;
+  color: var(--muted);
+  font-size: 10px;
+  max-width: 290px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.wb-menu-row {
+  min-height: 35px;
+  padding: 9px 10px;
+  gap: 10px;
+  border-radius: 7px;
+  text-align: left;
+}
+.wb-menu-row:focus-visible {
+  outline: none;
+  background: var(--soft);
+  box-shadow: inset 0 0 0 1px #758ba436;
+}
+.wb-menu-row.wb-chosen {
+  color: #4f647e;
+}
+.wb-menu-row:disabled {
+  opacity: 0.48;
+  background: transparent;
+}
+.wb-menu-copy {
+  display: block;
+  flex: 1;
+}
+.wb-menu-copy strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+}
+.wb-menu-copy small {
+  display: block;
+  font-size: 10px;
+  line-height: 1.65;
+  color: var(--muted);
+  margin-top: 3px;
+}
+.wb-menu-check {
+  display: flex;
+  margin-left: auto;
+}
+.wb-select-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 36px;
+  min-width: 150px;
+  padding: 8px 11px;
+  background: var(--surface);
+  border: 1px solid #dfe2e7;
+  border-radius: 7px;
+  font-size: 12px;
+  text-align: left;
+}
+.wb-select-trigger:hover,
+.wb-select-trigger[aria-expanded="true"] {
+  background: var(--soft);
+  border-color: #bfc8d4;
+}
+.wb-select-trigger > svg {
+  width: 13px;
+  height: 13px;
+  color: #8a929e;
+}
+.wb-field-label {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 16px;
+  font-size: 12px;
+}
+.wb-field-label .wb-select-trigger {
+  width: 100%;
+}
+.wb-context-card {
+  padding: 9px 11px 11px;
+  width: 250px;
+}
+.wb-context-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+.wb-context-amount strong {
+  font-size: 26px;
+  font-weight: 550;
+  color: var(--text);
+}
+.wb-context-amount span,
+.wb-context-card p {
+  font-size: 11px;
+  color: var(--muted);
+}
+.wb-context-meter {
+  height: 5px;
+  border-radius: 6px;
+  background: var(--line);
+  overflow: hidden;
+  margin-top: 11px;
+}
+.wb-context-meter span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #889aab;
+}
+.wb-context-card small {
+  display: block;
+  font-size: 10px;
+  line-height: 1.8;
+}
+.wb-context-card > button {
+  display: block;
+  margin: 16px 0 0 auto;
+  font-size: 11px;
+}
+:root[data-theme="dark"] .wb-select-trigger {
+  border-color: var(--line);
+}
+:root[data-theme="dark"] .wb-menu-row.wb-chosen {
+  color: #bbcde1;
+}

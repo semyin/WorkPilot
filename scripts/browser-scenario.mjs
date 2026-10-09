@@ -9,7 +9,8 @@ export async function browserScenario({ page, task, url, report, output, channel
   page.setDefaultTimeout(15000);
   await page.evaluate((task) => localStorage.setItem("workpilot.execution", task), task);
   await page.reload();
-  await page.getByRole("button", { name: "浏览器", exact: true }).click();
+  await page.getByRole("button", { name: "工作区工具", exact: true }).click();
+  await page.getByRole("menuitem", { name: "浏览器", exact: true }).click();
   const panel = page.locator("#inspector-browser");
   await panel.getByRole("button", { name: "启动专用 " + label, exact: true }).click();
   await expect(panel.getByLabel("已授权标签页", { exact: true })).not.toHaveValue("");
@@ -62,7 +63,10 @@ export async function browserScenario({ page, task, url, report, output, channel
   await expect(panel.getByRole("button", { name: "读取当前页面", exact: true })).toBeEnabled();
   await expect(panel.getByRole("button", { name: "查看截图", exact: true })).toBeDisabled();
   report.checks.push("takeover_blocks_automation_resume_requires_fresh_page_read");
-  await page.getByRole("button", { name: "English", exact: true }).click();
+  await page.getByRole("button", { name: "设置", exact: true }).click();
+  await page.getByRole("combobox", { name: "界面语言", exact: true }).click();
+  await page.getByRole("option", { name: "English", exact: true }).click();
+  await page.getByRole("button", { name: "保存设置", exact: true }).click();
   await panel.getByText("Connect daily Chrome / Edge", { exact: true }).click();
   await panel.getByRole("button", { name: "Pair Edge", exact: true }).click();
   await expect(
@@ -82,6 +86,13 @@ export async function browserScenario({ page, task, url, report, output, channel
   );
   report.checks.push("english_connection_instructions_one_use_code_and_explicit_revocation");
   await page.evaluate(() => (document.documentElement.dataset.theme = "dark"));
+  await expect
+    .poll(() =>
+      panel
+        .getByLabel("Page URL", { exact: true })
+        .evaluate((el) => getComputedStyle(el).backgroundColor),
+    )
+    .not.toBe("rgb(255, 255, 255)");
   const contrast = await panel.getByLabel("Page URL", { exact: true }).evaluate((el) => {
     const s = getComputedStyle(el);
     return { background: s.backgroundColor, color: s.color };

@@ -1,0 +1,266 @@
+.app-shell {
+  --sidebar-width: 228px;
+  --sidebar-padding: 12px;
+  --panel-width: 348px;
+}
+.sidebar {
+  width: var(--sidebar-width);
+  overflow: hidden;
+  opacity: 1;
+  transition:
+    width var(--motion-panel) var(--motion-ease),
+    padding var(--motion-panel) var(--motion-ease),
+    opacity var(--motion-quick) ease,
+    visibility 0ms;
+}
+.sidebar > * {
+  min-width: calc(var(--sidebar-width) - var(--sidebar-padding) * 2 - 1px);
+}
+.sidebar-collapsed .sidebar {
+  display: flex;
+  width: 0;
+  padding-left: 0;
+  padding-right: 0;
+  border-right-width: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    width var(--motion-panel) var(--motion-ease),
+    padding var(--motion-panel) var(--motion-ease),
+    opacity var(--motion-quick) ease,
+    visibility 0ms var(--motion-panel);
+}
+.project-tasks {
+  overflow: hidden;
+}
+.task-link {
+  cursor: default;
+}
+.task-link:focus-visible {
+  outline-offset: -2px;
+}
+.notification-button {
+  position: relative;
+}
+.notification-dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #b3875d;
+  border-radius: 50%;
+  top: 5px;
+  right: 5px;
+  box-shadow: 0 0 0 2px var(--surface);
+}
+.composer-options {
+  min-width: 0;
+}
+.composer-toolbar {
+  flex-wrap: wrap;
+  row-gap: 8px;
+}
+.composer-left {
+  flex-wrap: wrap;
+}
+.composer-left .permission {
+  margin-right: 0;
+}
+.composer-right {
+  margin-left: auto;
+}
+.context-ring {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  padding: 0;
+  color: #8996a7;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+.context-ring svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke-width: 2;
+}
+.context-track {
+  stroke: #e4e7ec;
+}
+.context-used {
+  stroke: #889aac;
+  stroke-linecap: round;
+  transition: stroke-dasharray var(--motion-panel) ease;
+}
+.thinking-option {
+  margin-right: 5px;
+}
+.work-panel {
+  position: relative;
+  flex: 0 0 0;
+  width: 0;
+  min-width: 0;
+  opacity: 0;
+  visibility: hidden;
+  border-left-width: 0;
+  overflow: hidden;
+  transition:
+    flex-basis var(--motion-panel) var(--motion-ease),
+    width var(--motion-panel) var(--motion-ease),
+    opacity var(--motion-quick) ease,
+    visibility 0ms var(--motion-panel);
+}
+.panel-open .work-panel {
+  flex-basis: var(--panel-width);
+  width: var(--panel-width);
+  opacity: 1;
+  visibility: visible;
+  border-left-width: 1px;
+  transition:
+    flex-basis var(--motion-panel) var(--motion-ease),
+    width var(--motion-panel) var(--motion-ease),
+    opacity var(--motion-quick) ease,
+    visibility 0ms;
+}
+.work-panel > .panel-heading,
+.work-panel > .panel-tabs,
+.work-panel > .panel-content {
+  min-width: calc(var(--panel-width) - 1px);
+}
+.panel-content {
+  overflow-wrap: anywhere;
+}
+.panel-resize {
+  position: absolute;
+  z-index: 3;
+  width: 7px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  cursor: col-resize;
+  touch-action: none;
+  outline: none;
+}
+.panel-resize::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 50px;
+  border-radius: 3px;
+  left: 2px;
+  top: calc(50% - 25px);
+  background: #d0d7e0;
+  transition:
+    background-color var(--motion-quick) ease,
+    height var(--motion-quick) ease;
+}
+.panel-resize:hover::after,
+.panel-resize:focus-visible::after,
+.is-resizing .panel-resize::after {
+  height: 76px;
+  top: calc(50% - 38px);
+  background: #8da1bb;
+}
+.is-resizing,
+.is-resizing * {
+  cursor: col-resize !important;
+  user-select: none !important;
+}
+.is-resizing .work-panel {
+  transition: none;
+}
+body.dark .context-track {
+  stroke: #414850;
+}
+@media (min-width: 1450px) {
+  .app-shell {
+    --sidebar-width: 246px;
+    --sidebar-padding: 17px;
+  }
+}
+@media (max-width: 1150px) {
+  .work-panel {
+    position: fixed;
+    top: 32px;
+    right: 0;
+    bottom: 0;
+    z-index: 12;
+    width: var(--panel-width);
+    transform: translateX(100%);
+    box-shadow: -12px 0 40px #17243b12;
+    transition:
+      transform var(--motion-panel) var(--motion-ease),
+      opacity var(--motion-quick) ease,
+      visibility 0ms var(--motion-panel);
+  }
+  .panel-open .work-panel {
+    transform: translateX(0);
+    transition:
+      transform var(--motion-panel) var(--motion-ease),
+      opacity var(--motion-quick) ease,
+      visibility 0ms;
+  }
+}
+@media (max-width: 800px) {
+  .app-shell {
+    --sidebar-width: 192px;
+    --sidebar-padding: 8px;
+  }
+  .composer-toolbar {
+    flex-wrap: wrap;
+  }
+  .composer-left {
+    flex-wrap: wrap;
+  }
+  .composer-right {
+    padding-top: 2px;
+  }
+}
+@media (max-width: 620px) {
+  .app-shell {
+    --sidebar-width: 228px;
+    --sidebar-padding: 8px;
+  }
+  .sidebar,
+  .sidebar-collapsed .sidebar {
+    display: flex;
+    width: var(--sidebar-width);
+    padding: 18px var(--sidebar-padding) 12px;
+    border-right-width: 1px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-100%);
+    transition:
+      transform var(--motion-panel) var(--motion-ease),
+      opacity var(--motion-quick) ease,
+      visibility 0ms var(--motion-panel);
+  }
+  .sidebar-mobile-open .sidebar {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    transition:
+      transform var(--motion-panel) var(--motion-ease),
+      opacity var(--motion-quick) ease,
+      visibility 0ms;
+  }
+  .composer-right {
+    gap: 1px;
+  }
+  .thinking-option {
+    margin-right: 2px;
+  }
+  .context-ring {
+    margin-right: 0;
+    width: 24px;
+  }
+  .proposal-bar {
+    padding-inline: 12px;
+    gap: 4px;
+  }
+  .demo-state-control > span {
+    display: none;
+  }
+}

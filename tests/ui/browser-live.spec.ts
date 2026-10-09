@@ -44,6 +44,7 @@ test("P08 real engine and browser: approvals, DOM, screenshot, takeover and conn
       JSON.stringify({ ...report, status: "passed" }, null, 2) + "\n",
     );
   } finally {
+    await page.close();
     await engine.close();
     await site.close();
   }

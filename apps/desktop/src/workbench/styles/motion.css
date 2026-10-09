@@ -1,0 +1,85 @@
+/* Ported from the approved 2026-10-09 proposal. Layout values stay in sync; wb- isolates legacy styles. */
+:root:has(.workbench) {
+  --motion-quick: 150ms;
+  --motion-panel: 230ms;
+  --motion-ease: cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+:where(.workbench, .wb-dialog, .wb-popover) button,
+:where(.workbench, .wb-dialog, .wb-popover) input,
+:where(.workbench, .wb-dialog, .wb-popover) textarea {
+  transition:
+    background-color var(--motion-quick) ease,
+    color var(--motion-quick) ease,
+    border-color var(--motion-quick) ease,
+    box-shadow var(--motion-quick) ease;
+}
+.wb-sidebar,
+.wb-workspace,
+.wb-work-panel,
+.wb-composer,
+.wb-dialog,
+.wb-settings-navigation {
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+}
+.wb-new-task:active,
+.wb-solid-button:active,
+.wb-send-button:active {
+  transform: translateY(1px);
+}
+.wb-option > span:last-child svg,
+.wb-select-trigger > svg,
+.wb-project-heading > span:first-child svg {
+  transition: transform var(--motion-quick) var(--motion-ease);
+}
+.wb-option[aria-expanded="true"] > span:last-child svg,
+.wb-select-trigger[aria-expanded="true"] > svg {
+  transform: rotate(180deg);
+}
+.wb-project-heading[aria-expanded="false"] > span:first-child svg {
+  transform: rotate(-90deg);
+}
+:where(.workbench, .wb-dialog, .wb-popover) details > summary > svg:last-child {
+  transition: transform var(--motion-quick) var(--motion-ease);
+}
+:where(.workbench, .wb-dialog, .wb-popover)
+  details[data-expanded="true"]
+  > summary
+  > svg:last-child {
+  transform: rotate(90deg);
+}
+:where(.workbench, .wb-dialog, .wb-popover)
+  details[data-expanded="false"]
+  > summary
+  > svg:last-child {
+  transform: rotate(0);
+}
+.wb-dialog {
+  overflow: visible;
+  padding: 0;
+}
+.wb-dialog-body {
+  overflow: hidden;
+  border-radius: inherit;
+}
+.wb-reduce-motion {
+  --motion-quick: 0ms;
+  --motion-panel: 0ms;
+}
+.wb-reduce-motion .wb-spinner {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root:has(.workbench) {
+    --motion-quick: 0ms;
+    --motion-panel: 0ms;
+  }
+  :where(.workbench, .wb-dialog, .wb-popover) *,
+  :where(.workbench, .wb-dialog, .wb-popover) *::before,
+  :where(.workbench, .wb-dialog, .wb-popover) *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0ms !important;
+  }
+}

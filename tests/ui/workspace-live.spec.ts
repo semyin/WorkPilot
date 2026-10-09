@@ -70,7 +70,7 @@ test("P06 real engine: project, conversation, queue, records, archive and prefer
       "700",
     );
     const fit = await page.evaluate(() => {
-      const box = document.querySelector(".execution-details")!.getBoundingClientRect();
+      const box = document.querySelector(".wb-work-panel")!.getBoundingClientRect();
       return box.right <= innerWidth + 1 && box.width > 260;
     });
     expect(fit).toBe(true);
@@ -78,6 +78,7 @@ test("P06 real engine: project, conversation, queue, records, archive and prefer
     expect(errors).toEqual([]);
     await writeFile(join(output, "report.json"), JSON.stringify(report, null, 2) + "\n");
   } finally {
+    await page.close();
     await engine.close();
     await fixture.close();
   }
