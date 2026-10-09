@@ -3,7 +3,7 @@ use super::*;
 use serde_json::{Value, json};
 use std::collections::{BTreeMap, BTreeSet};
 mod cleanup;
-mod deletion;
+pub(super) mod deletion;
 #[cfg(test)]
 mod migration_tests;
 mod references;

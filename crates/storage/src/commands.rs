@@ -71,6 +71,16 @@ impl Store {
         if !new_task && let Some(task_id) = &task_id {
             self.task(task_id)?;
         }
+        let deleting = if let Command::DeleteTask { task_id } = &request.command {
+            if self.member_parent(task_id)?.is_some() {
+                return Err(Error::Invalid(
+                    "请从主任务删除整组协作记录 / Delete the group from its main task",
+                ));
+            }
+            self.team_subtree(task_id)?
+        } else {
+            Vec::new()
+        };
         let queued = if let Command::Enqueue { text, .. } = &request.command {
             let count:u32=self.connection.query_row("SELECT count(*) FROM messages WHERE task_id=?1 AND state IN ('queued','steer_requested')",[&task_id],|r|r.get(0))?;
             if count >= 128 {
@@ -186,21 +196,26 @@ impl Store {
                 // Persists intent only; P03 dispatches cancellation to actual work.
             }
             Command::DeleteTask { task_id } => {
-                let grouped: bool = tx.query_row(
-                    "SELECT EXISTS(SELECT 1 FROM team_members WHERE task_id=?1 OR root_task_id=?1)",
+                let scheduling: bool = tx.query_row(
+                    "SELECT EXISTS(SELECT 1 FROM team_control WHERE task_id=?1 AND enabled=1)",
                     [task_id],
                     |r| r.get(0),
                 )?;
-                if grouped {
-                    return Err(Error::Invalid(
-                        "团队任务保留完整成员与交付记录，当前不能单独删除",
-                    ));
-                }
-                let unsafe_delete: bool = tx.query_row("SELECT EXISTS(SELECT 1 FROM runs WHERE task_id=?1 AND state IN ('queued','running')) OR EXISTS(SELECT 1 FROM tool_calls WHERE task_id=?1 AND state IN ('started','needs_review')) OR EXISTS(SELECT 1 FROM workbench_operations WHERE task_id=?1 AND json_extract(data_json,'$.state') IN ('queued','running','stopping'))", [task_id], |r| r.get(0))?;
-                if unsafe_delete {
+                if scheduling {
                     return Err(Error::Conflict);
                 }
-                tx.execute("DELETE FROM tasks WHERE id=?1", [task_id])?;
+                for id in &deleting {
+                    let unsafe_delete: bool = tx.query_row(
+                        "SELECT EXISTS(SELECT 1 FROM tasks WHERE id=?1 AND state IN ('running','stopping'))
+                        OR EXISTS(SELECT 1 FROM runs WHERE task_id=?1 AND state IN ('queued','running'))
+                        OR EXISTS(SELECT 1 FROM tool_calls WHERE task_id=?1 AND state IN ('started','needs_review'))
+                        OR EXISTS(SELECT 1 FROM workbench_operations WHERE task_id=?1 AND json_extract(data_json,'$.state') IN ('queued','running','stopping'))",
+                        [id], |r| r.get(0))?;
+                    if unsafe_delete {
+                        return Err(Error::Conflict);
+                    }
+                }
+                super::maintenance::deletion::delete_groups(&tx, &deleting)?;
                 events.clear(); // Cascaded task events cannot be delivered as still-existing records.
             }
             Command::Ping => events.push(record(

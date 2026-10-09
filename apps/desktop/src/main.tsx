@@ -13,6 +13,7 @@ import "./workbench/styles/settings.css";
 import "./workbench/styles/search.css";
 import "./workbench/styles/workspace-controls.css";
 import "./workbench/styles/integration.css";
+import "./workbench/styles/sidebar.css";
 document.documentElement.dataset.motion = localStorage.getItem("workpilot.motion") || "on";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

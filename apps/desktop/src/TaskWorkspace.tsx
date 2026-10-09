@@ -173,7 +173,7 @@ export function TaskWorkspace({
         if (!disposed) {
           if (list.kind === "executions") {
             taskReads.observe(list.tasks, read);
-            setTasks(list.tasks);
+            setTasks(list.tasks.filter((task) => !taskReads.isDeleted(task.id)));
           }
           if (profiles.kind === "profiles") setCatalog(profiles.catalog);
         }
@@ -473,6 +473,21 @@ export function TaskWorkspace({
                 taskPage={page === "tasks"}
                 onSelect={selectTask}
                 onNew={newTask}
+                onDeleted={(ids) => {
+                  taskReads.remove(ids);
+                  setTasks((current) => current.filter((task) => !ids.includes(task.id)));
+                  if (selection.current.task && ids.includes(selection.current.task)) {
+                    setFileWorkspace(false);
+                    setExtensionsOpen(false);
+                    setMediaOpen(false);
+                    setFocusedArtifact(null);
+                    newTask(
+                      desktop.overview?.projects.find((p) => p.id === snapshot?.task.project_id) ||
+                        null,
+                    );
+                  }
+                  ids.forEach((id) => savedMessages.delete(id));
+                }}
                 onProjectsChanged={desktop.onRefresh}
                 english={english}
                 taskReads={taskReads}

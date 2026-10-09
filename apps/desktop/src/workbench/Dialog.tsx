@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { Icon } from "./Icon";
 import { useWords } from "../workspaceClient";
+import { captureFocusReturn } from "./focus";
 export function Dialog({
   title,
   children,
@@ -23,11 +24,15 @@ export function Dialog({
   const [leaving, setLeaving] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => {
-    const previous = document.activeElement as HTMLElement | null;
-    ref.current?.showModal();
+    const restoreFocus = captureFocusReturn(document.activeElement as HTMLElement | null);
+    const dialog = ref.current;
+    dialog?.showModal();
     return () => {
       clearTimeout(timer.current);
-      if (previous?.isConnected) previous.focus({ preventScroll: true });
+      // Release native modal focus trapping before restoring the opener. This also
+      // makes React's development setup/cleanup cycle return to the same control.
+      dialog?.close();
+      restoreFocus();
     };
   }, []);
   const close = () => {

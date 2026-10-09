@@ -8,6 +8,9 @@ import { Dialog } from "./workbench/Dialog";
 import { ProjectGroup } from "./workbench/ProjectGroup";
 import { ProjectDialog } from "./workbench/ProjectDialog";
 import { TaskSearch } from "./workbench/TaskSearch";
+import { TaskDeleteDialog } from "./workbench/TaskDeleteDialog";
+import { createProjectFromFolder } from "./workbench/createProject";
+import { captureFocusReturn } from "./workbench/focus";
 import appIcon from "../../../assets/icons/png/128.png";
 
 export function ProjectSidebar({
@@ -17,6 +20,7 @@ export function ProjectSidebar({
   onSelect,
   onNew,
   onProjectsChanged,
+  onDeleted,
   english,
   taskReads,
   navigation,
@@ -31,6 +35,7 @@ export function ProjectSidebar({
   onSelect: (id: string) => void;
   onNew: (project: WorkspaceProject | null) => void;
   onProjectsChanged: () => void;
+  onDeleted: (ids: string[]) => void;
   english: boolean;
   taskReads: TaskReadStore;
   navigation?: Array<{ label: string; icon: IconName; active?: boolean; onClick: () => void }>;
@@ -48,7 +53,10 @@ export function ProjectSidebar({
     [next, setNext] = useState<string | null>(null);
   const [error, setError] = useState(""),
     [refresh, setRefresh] = useState(0);
-  const [editing, setEditing] = useState<WorkspaceProject | null | undefined>(undefined);
+  const [editing, setEditing] = useState<WorkspaceProject | null>(null);
+  const [creatingProject, setCreatingProject] = useState(false);
+  const pickingProject = useRef(false);
+  const [deleting, setDeleting] = useState<Task | null>(null);
   const [search, setSearch] = useState(false);
   const [menu, setMenu] = useState<{
     task: Task;
@@ -61,7 +69,8 @@ export function ProjectSidebar({
   const generation = useRef(0);
   const [loadedQuery, setLoadedQuery] = useState("");
   const queryKey = `${archived}:${before || ""}`;
-  const visibleTasks = loadedQuery === queryKey ? tasks : [];
+  const visibleTasks =
+    loadedQuery === queryKey ? tasks.filter((t) => !taskReads.isDeleted(t.id)) : [];
   useEffect(() => {
     localStorage.setItem("workpilot.project", project);
   }, [project]);
@@ -130,6 +139,29 @@ export function ProjectSidebar({
       setError(String(e));
     } finally {
       setSaving(false);
+    }
+  };
+  const createProject = async (anchor: HTMLElement, pointer: boolean) => {
+    if (pickingProject.current) return;
+    const restoreFocus = captureFocusReturn(anchor, pointer);
+    pickingProject.current = true;
+    setCreatingProject(true);
+    setError("");
+    try {
+      const created = await createProjectFromFolder();
+      if (created) {
+        setProject(created.id);
+        onProjectsChanged();
+      }
+    } catch (error) {
+      setError(error instanceof Error ? error.message : String(error));
+    } finally {
+      pickingProject.current = false;
+      setCreatingProject(false);
+      requestAnimationFrame(() => {
+        if (document.activeElement === document.body || document.activeElement === anchor)
+          restoreFocus();
+      });
     }
   };
   const row = (raw: Task, independent = false) => {
@@ -247,7 +279,8 @@ export function ProjectSidebar({
             type="button"
             className="wb-icon-button"
             aria-label={tr("新建项目", "New project")}
-            onClick={() => setEditing(null)}
+            disabled={creatingProject}
+            onClick={(event) => void createProject(event.currentTarget, event.detail > 0)}
           >
             <Icon name="plus" />
           </button>
@@ -260,6 +293,7 @@ export function ProjectSidebar({
               count={visibleTasks.filter((t) => t.project_id === p.id).length}
               onSelect={() => setProject(p.id)}
               onSettings={() => setEditing(p)}
+              busy={busy}
               onNew={() => {
                 setProject(p.id);
                 onNew(p);
@@ -330,14 +364,14 @@ export function ProjectSidebar({
           onClose={() => setSearch(false)}
         />
       )}
-      {editing !== undefined && (
+      {editing && (
         <ProjectDialog
           project={editing}
           catalog={catalog}
-          onClose={() => setEditing(undefined)}
+          onClose={() => setEditing(null)}
           onSaved={(p) => {
             setProject(p.id);
-            setEditing(undefined);
+            setEditing(null);
             onProjectsChanged();
           }}
         />
@@ -360,6 +394,17 @@ export function ProjectSidebar({
                 ),
               description: tr("保留内容与执行记录", "Keep its content and history"),
             },
+            {
+              value: "delete",
+              label: tr("删除任务", "Delete task"),
+              icon: "trash",
+              danger: true,
+              disabled:
+                busy || saving || ["running", "stopping"].includes(taskReads.state(menu.task)),
+              description: ["running", "stopping"].includes(taskReads.state(menu.task))
+                ? tr("先停止任务，再删除", "Stop the task before deleting")
+                : tr("删除对话与记录，保留项目文件", "Remove records, keep project files"),
+            },
           ]}
           onClose={() => setMenu(null)}
           onPick={(value) => {
@@ -367,10 +412,24 @@ export function ProjectSidebar({
             if (value === "rename") {
               setRename(target);
               setTitle(target.title);
+            } else if (value === "delete") {
+              setDeleting(target);
             } else
               void mutate(() =>
                 workspaceAction({ kind: "archive_task", task_id: target.id, archived: !archived }),
               );
+          }}
+        />
+      )}
+      {deleting && (
+        <TaskDeleteDialog
+          task={deleting}
+          onClose={() => setDeleting(null)}
+          onDeleted={(ids) => {
+            onDeleted(ids);
+            setTasks((current) => current.filter((t) => !ids.includes(t.id)));
+            setDeleting(null);
+            setRefresh((value) => value + 1);
           }}
         />
       )}

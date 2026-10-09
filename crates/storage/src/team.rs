@@ -45,8 +45,15 @@ impl Store {
         if let Some(s) = value {
             return Ok(serde_json::from_str(&s)?);
         }
+        let enabled = match self.execution_snapshot(&root) {
+            Ok(snapshot) => !snapshot.config.controlled_tools,
+            // Legacy task records exist without an execution configuration. They
+            // have no automatic team but still need to be inspected and deleted.
+            Err(Error::NotFound) => false,
+            Err(error) => return Err(error),
+        };
         Ok(TeamSettings {
-            enabled: !self.execution_snapshot(&root)?.config.controlled_tools,
+            enabled,
             ..Default::default()
         })
     }

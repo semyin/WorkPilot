@@ -39,6 +39,8 @@ pub mod schedule_time;
 #[cfg(test)]
 mod task_archive_tests;
 #[cfg(test)]
+mod task_deletion_tests;
+#[cfg(test)]
 mod task_history_restore_tests;
 #[cfg(test)]
 mod task_media_restore_tests;

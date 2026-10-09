@@ -29,6 +29,12 @@ cap-std = "=4.0.3"
 chrono = { version = "=0.4.45", default-features = false, features = ["std"] }
 chrono-tz = "=0.10.4"
 
+# Keep local development artifacts bounded. Backtraces retain symbols, but full
+# type/variable debug data and per-edit incremental snapshots are not retained.
+[profile.dev]
+debug = 1
+incremental = false
+
 [profile.release]
 opt-level = "s"
 lto = "thin"

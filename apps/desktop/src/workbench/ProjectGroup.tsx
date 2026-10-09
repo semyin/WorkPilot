@@ -10,6 +10,7 @@ export function ProjectGroup({
   onSelect,
   onNew,
   onSettings,
+  busy = false,
 }: {
   name: string;
   count: number;
@@ -17,6 +18,7 @@ export function ProjectGroup({
   onSelect: () => void;
   onNew: () => void;
   onSettings: () => void;
+  busy?: boolean;
 }) {
   const tr = useWords();
   const [open, setOpen] = useState(true);
@@ -27,32 +29,47 @@ export function ProjectGroup({
   const id = useId();
   return (
     <section className={`wb-disclosure ${open ? "is-open" : ""}`}>
-      <button
-        type="button"
-        className="wb-project-heading"
-        aria-expanded={open}
-        aria-controls={id}
-        title={tr("右键可新建任务或设置项目", "Right-click to create a task or manage the project")}
-        onClick={() => {
-          setOpen(!open);
-          onSelect();
-        }}
-        onContextMenu={(e) => {
-          e.preventDefault();
-          setMenu({ anchor: e.currentTarget, point: { x: e.clientX, y: e.clientY } });
-        }}
-        onKeyDown={(e) => {
-          if ((e.shiftKey && e.key === "F10") || e.key === "ContextMenu") {
+      <div className="wb-project-row">
+        <button
+          type="button"
+          className="wb-project-heading"
+          aria-expanded={open}
+          aria-controls={id}
+          title={name}
+          onClick={() => {
+            setOpen(!open);
+            onSelect();
+          }}
+          onContextMenu={(e) => {
             e.preventDefault();
-            setMenu({ anchor: e.currentTarget });
-          }
-        }}
-      >
-        <Icon name="down" />
-        <Icon name="folder" />
-        <span>{name}</span>
-        <small>{count}</small>
-      </button>
+            setMenu({ anchor: e.currentTarget, point: { x: e.clientX, y: e.clientY } });
+          }}
+          onKeyDown={(e) => {
+            if ((e.shiftKey && e.key === "F10") || e.key === "ContextMenu") {
+              e.preventDefault();
+              setMenu({ anchor: e.currentTarget });
+            }
+          }}
+        >
+          <Icon name="down" />
+          <Icon name="folder" />
+          <span>{name}</span>
+          <small>{count}</small>
+        </button>
+        <button
+          type="button"
+          className="wb-icon-button wb-project-new"
+          aria-label={tr(`在 ${name} 中新建任务`, `New task in ${name}`)}
+          title={tr("新建任务", "New task")}
+          disabled={busy}
+          onClick={() => {
+            setOpen(true);
+            onNew();
+          }}
+        >
+          <Icon name="edit" />
+        </button>
+      </div>
       <div id={id} className="wb-disclosure-body" aria-hidden={!open} inert={!open}>
         <div>
           <div className="wb-project-tasks">{children}</div>
@@ -63,7 +80,7 @@ export function ProjectGroup({
           {...menu}
           label={name}
           items={[
-            { value: "new", label: tr("新建任务", "New task"), icon: "plus" },
+            { value: "new", label: tr("新建任务", "New task"), icon: "edit", disabled: busy },
             { value: "settings", label: tr("项目设置", "Project settings"), icon: "settings" },
           ]}
           onPick={(value) => (value === "new" ? onNew() : onSettings())}

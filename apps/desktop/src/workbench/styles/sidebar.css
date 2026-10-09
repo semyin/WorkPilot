@@ -1,0 +1,50 @@
+.wb-project-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+}
+.wb-project-row .wb-project-heading {
+  flex: 1;
+  min-width: 0;
+  width: auto;
+}
+.wb-project-new {
+  flex: 0 0 26px;
+  width: 26px;
+  height: 26px;
+  color: var(--muted);
+}
+.wb-project-new svg {
+  width: 14px;
+  height: 14px;
+}
+:where(.workbench, .wb-dialog, .wb-popover) button[data-pointer-focus]:focus-visible {
+  outline: none;
+}
+:where(.workbench, .wb-dialog, .wb-popover) .wb-danger {
+  color: #bd4242;
+}
+.wb-delete-dialog .wb-dialog-actions button {
+  min-height: 34px;
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-weight: 550;
+}
+.wb-dialog button.wb-danger-button {
+  color: #fff;
+  background: #bc4141;
+  border-color: transparent;
+}
+.wb-dialog button.wb-danger-button:hover:not(:disabled) {
+  background: #a63131;
+}
+.wb-delete-title {
+  margin: 0 0 12px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+[data-theme="dark"] .wb-danger {
+  color: #ef9292;
+}

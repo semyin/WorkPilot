@@ -12,6 +12,7 @@ function compare(a: Task, b: Task) {
 export class TaskReadStore {
   private tasks = new Map<string, ObservedTask>();
   private stops = new Map<string, StopRequest>();
+  private deleted = new Set<string>();
   private listeners = new Set<() => void>();
   private revision = 0;
   private read = 0;
@@ -32,6 +33,7 @@ export class TaskReadStore {
   observe(tasks: Task[], read: number) {
     let changed = false;
     for (const task of tasks) {
+      if (this.deleted.has(task.id)) continue;
       const previous = this.tasks.get(task.id);
       const order = previous ? compare(task, previous.task) : 1;
       if (order < 0 || (order === 0 && previous && read < previous.read)) continue;
@@ -55,6 +57,17 @@ export class TaskReadStore {
       if (!this.stops.has(id)) this.tasks.delete(id);
     }
     if (changed) this.changed();
+  }
+  isDeleted(id: string) {
+    return this.deleted.has(id);
+  }
+  remove(ids: string[]) {
+    for (const id of ids) {
+      this.deleted.add(id);
+      this.tasks.delete(id);
+      this.stops.delete(id);
+    }
+    this.changed();
   }
   task(fallback: Task) {
     const known = this.tasks.get(fallback.id)?.task;

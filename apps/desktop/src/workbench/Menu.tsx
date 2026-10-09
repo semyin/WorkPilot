@@ -2,6 +2,7 @@ import { motionDuration } from "./motion";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Icon, type IconName } from "./Icon";
+import { captureFocusReturn } from "./focus";
 
 export type MenuItem = {
   value: string;
@@ -9,6 +10,7 @@ export type MenuItem = {
   description?: string;
   icon?: IconName;
   disabled?: boolean;
+  danger?: boolean;
 };
 export function Menu({
   anchor,
@@ -31,12 +33,13 @@ export function Menu({
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const [position, setPosition] = useState({ left: 0, top: 0 });
   const [leaving, setLeaving] = useState(false);
+  const [restoreFocus] = useState(() => captureFocusReturn(anchor, !!point));
   const close = (focus = true, pick?: string) => {
     if (timer.current) return;
     setLeaving(true);
     // Apply the choice before another control (for example Save) can read it.
     // The animation only delays removal of the menu, never the user's action.
-    if (focus && anchor.isConnected) anchor.focus({ preventScroll: true });
+    if (focus) restoreFocus();
     if (pick !== undefined) onPick(pick);
     timer.current = setTimeout(() => {
       onClose();
@@ -105,7 +108,7 @@ export function Menu({
         <button
           key={item.value}
           type="button"
-          className={`wb-menu-row ${selected === item.value ? "wb-chosen" : ""}`}
+          className={`wb-menu-row ${selected === item.value ? "wb-chosen" : ""} ${item.danger ? "wb-danger" : ""}`}
           role={isSelect ? "option" : "menuitem"}
           aria-selected={isSelect ? selected === item.value : undefined}
           disabled={item.disabled || leaving}

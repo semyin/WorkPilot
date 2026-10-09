@@ -15,22 +15,13 @@ export function ProjectDialog({
   onClose,
   onSaved,
 }: {
-  project: WorkspaceProject | null;
+  project: WorkspaceProject;
   catalog: ProfileCatalog;
   onClose: () => void;
   onSaved: (project: WorkspaceProject) => void;
 }) {
   const tr = useWords();
-  const [edit, setEdit] = useState<ProjectSettings>(
-    project?.settings || {
-      name: "",
-      root_path: "",
-      default_profile_id: null,
-      permission: "request_approval",
-      rules: "",
-      revision: 0,
-    },
-  );
+  const [edit, setEdit] = useState<ProjectSettings>(project.settings);
   const [busy, setBusy] = useState(false),
     [error, setError] = useState("");
   const save = async () => {
@@ -39,7 +30,7 @@ export function ProjectDialog({
     try {
       const r = await workspaceAction({
         kind: "save_project",
-        project_id: project?.id || null,
+        project_id: project.id,
         settings: edit,
       });
       if (r.kind === "project_saved") onSaved(r.project);

@@ -1,5 +1,6 @@
 use super::*;
-pub(super) fn delete_groups(tx: &Connection, tasks: &[String]) -> Result<()> {
+// Shared by offline cleanup and the live task command after its active-work guards.
+pub(crate) fn delete_groups(tx: &Connection, tasks: &[String]) -> Result<()> {
     tx.execute_batch("CREATE TEMP TABLE IF NOT EXISTS deleting_tasks(id TEXT PRIMARY KEY); DELETE FROM deleting_tasks;")?;
     for id in tasks {
         tx.execute("INSERT INTO deleting_tasks VALUES(?1)", [id])?;

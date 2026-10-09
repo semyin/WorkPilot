@@ -46,6 +46,10 @@ test("product workbench uses real task data, menus, drafts and bounded layout", 
     await page.goto("/");
     await expect(page.getByRole("heading", { name: "开始一项新工作" })).toBeVisible();
     await page.getByRole("button", { name: "新建项目", exact: true }).click();
+    await expect(page.locator(".wb-project-heading")).toHaveCount(1);
+    await expect(page.getByRole("dialog")).toHaveCount(0);
+    await page.locator(".wb-project-heading").click({ button: "right" });
+    await page.getByRole("menuitem", { name: "项目设置", exact: true }).click();
     await page.getByLabel("项目名称", { exact: true }).fill("WorkPilot 界面重做");
     await page.getByLabel("项目文件夹", { exact: true }).fill(engine.directory);
     await page.getByRole("combobox", { name: "默认模型", exact: true }).click();
